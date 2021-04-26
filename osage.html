@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 10%;
+                margin-right: 10%;
+                width: 29%;
+                font-size: 24px;
+                height: 200px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "‎" + inuk
+                }
+
+                inukKey = {
+                    "𐓘͘": "⠾",
+                    "𐓣͘": "⠷",
+                    "𐓪͘": "⠽",
+                    "𐓘": "⠁",
+                    "𐓟": "⠑",
+                    "𐓣": "⠊",
+                    "𐓪": "⠕",
+                    "𐓶": "⠥",
+                    "𐓙": "⠯",
+                    "𐓚": "⠻",
+                    "𐓫": "⠿",
+                    "𐓜": "⠃",
+                    "𐓲": "⠉",
+                    "𐓝": "⠡",
+                    "𐓵": "⠹",
+                    "𐓡": "⠥",
+                    "𐓤": "⠅",
+                    "𐓧": "⠇",
+                    "𐓨": "⠍",
+                    "𐓩": "⠝",
+                    "𐓬": "⠏",
+                    "𐓮": "⠎",
+                    "𐓯": "⠱",
+                    "𐓰": "⠞",
+                    "𐓷": "⠺",
+                    "𐓸": "⠭",
+                    "𐓺": "⠵",
+                    "𐓻": "⠮",
+                    "'": "⠄",
+                    "\\.": "⠲",
+                    "\\,": "⠂",
+                    "\\:": "⠆",
+                    "\\?": "⠦",
+                    "\\!": "⠖",
+                    "\\*": "⠐⠔",
+                    " 1": "⠀⠼⠁",
+                    " 2": "⠀⠼⠃",
+                    " 3": "⠀⠼⠉",
+                    " 4": "⠀⠼⠙",
+                    " 5": "⠀⠼⠑",
+                    " 6": "⠀⠼⠋",
+                    " 7": "⠀⠼⠛",
+                    " 8": "⠀⠼⠓",
+                    " 9": "⠀⠼⠊",
+                    " 0": "⠀⠼⠚",
+                    "1": "⠁",
+                    "2": "⠃",
+                    "3": "⠉",
+                    "4": "⠙",
+                    "5": "⠑",
+                    "6": "⠋",
+                    "7": "⠛",
+                    "8": "⠓",
+                    "9": "⠊",
+                    "0": "⠚",
+                    " ": "⠀",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Osage to Braille</h1>
+        <textarea id="inuk" placeholder="enter Osage text"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+    </body>
+</html>

@@ -1,0 +1,364 @@
+/*
+background brown: #221A0F;
+red: #DC3958;
+orange: #F06431;
+yellow: #F79A32;
+green: #889B4A;
+cyan: #088649;
+blue: #8AB1B0;
+purple: #98676A;
+light: #D3AF86;
+*/
+
+.red{
+    color: #DC3958;
+}
+.orange{
+    color: #f06431;
+}
+.yellow{
+    color: #F79A32;
+}
+.green{
+    color: #889B4A;
+}
+.cyan{
+    color: #088649;
+}
+.blue{
+    color: #8ab1b0;
+}
+.purple{
+    color: #6c71c4;
+}
+
+*{
+    font-family: "Noto Sans";
+}
+#changelog h2::selection, #changelog p::selection{
+    background-color: #8ab1b0;
+}
+::selection{
+    background-color: #fbebd4;
+}
+DOM, body{
+    background-color: #221A0F;
+}
+
+/*1. letterly title*/
+
+#header{
+    color: #D3AF86;
+    font-weight: 100;
+    font-size: 48px;
+    text-align: center;
+}
+
+
+/*2. sentence title*/
+
+h2{
+    font-size: 36px;
+    color: #D3AF86;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+
+/*3. words*/
+
+#words{
+    font-size: 28px;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #D3AF86;
+    text-align: center;
+}
+
+
+/*4. letter*/
+
+#letter{
+    text-align: center;
+    font-size: 64px;
+    color: #DC3958;
+}
+
+
+/*5. continue button*/
+
+.widebutton{
+    width: 80%;
+    margin-left: 9%;
+    margin-right: 9%;
+    color: #221A0F;
+    font-size: 32px;
+    border: #D3AF86 2px solid;
+    border-radius: 5px;
+    outline: none;
+}
+.correct{
+    background-color: #889B4A;
+}
+.correct:hover{
+    background-color: #088649;
+}
+.incorrect{
+    background-color: #dc3958;
+}
+.incorrect:hover{
+    background-color: #dc322f;
+}
+.interesting{
+    background-color: #839496;
+}
+.interesting:hover{
+    background-color: #586e75;
+}
+
+
+/*6. multiple choice buttons*/
+
+#multiplechoice button{
+    width: 26%;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #F79A32;
+    color: #221A0F;
+    font-size: 32px;
+    border: #D3AF86 2px solid;
+    border-radius: 5px;
+    outline: none;
+}
+
+#multiplechoice button:hover{
+    background-color: #F06431;
+}
+
+
+/*7. pronunciation line*/
+
+#letterinfo p{
+    width: 49%;
+    float: left;
+    text-align: center;
+    font-size: 24px;
+}
+
+#pronunciation{
+    color: #98676A;
+}
+
+#pronunciation span{
+    text-decoration: underline;
+    color: #DC3958;
+    font-weight: 700;
+}
+
+#listen{
+    color: #8AB1B0;
+    touch-action: manipulation;
+}
+
+
+/*8. input*/
+
+input{
+    width: 90%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: #D3AF86 2px solid;
+    background-color: #221A0F;
+    font-size: 48px;
+    color: #DC3958;
+    outline: none
+}
+
+input::placeholder{
+    color: #DC3958
+}
+
+/*9. keyboard*/
+
+.keyboard{
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    border: 2px #98676A solid;
+    height: 170px;
+}
+
+.key{
+    background-color: #D3AF86;
+    height: 30px;
+    width: 5.4%;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.key:active{
+    background-color: #DC3958;
+}
+
+.bluekey{
+    background-color: #268bd2;
+    height: 30px;
+    width: 5.4%;
+    float: left;
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.mediumbluekey{
+    background-color: #268bd2;
+    height: 30px;
+    width: 7.4%;
+    float: left;
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
+.largebluekey{
+    background-color: #268bd2;
+    height: 30px;
+    width: 12.4%;
+    float: left;
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.orangekey{
+    background-color: #F06431;
+    height: 30px;
+    width: 13.4%;
+    float: left;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/*10. enter button*/
+
+#enterbutton{
+    background-color: #8ab1b0;
+}
+#enterbutton:hover{
+    background-color: #268bd2;
+}
+
+/* MENU AREA */
+
+#menu_header{
+    color: #D3AF86;
+    text-align: center;
+}
+.script{
+    width: 97%;
+    text-align: left;
+    height: auto;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    padding: 5px;
+    border-radius: 30px;
+}
+.script h2{
+    color: #221A0F;
+}
+.scriptexplanation{
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+    margin: 3%;
+}
+#change p{
+    margin: 0;
+}
+#osage-script, #arabic-script{
+    background-color: #DC3958;
+}
+#cyrillic-script, #hiragana-script{
+    background-color: #f06431;
+}
+#hebrew-script, #hangul-script{
+    background-color: #F79A32;
+}
+#greek-script, #devanagari-script{
+    background-color: #889B4A;
+}
+#tifinagh-script, #eastnagari-script{
+    background-color: #088649;
+}
+#armenian-script{
+    background-color: #8ab1b0;
+}
+#georgian-script{
+    background-color: #6c71c4;
+}
+#adlam-script{
+    background-color: #7e602c;
+}
+#changelog{
+    background-color: #fbebd4;
+}
+.levelbox{
+    height: 60px;
+    width: 100%;
+}
+@media(max-width: 900px){
+    .levelbox{
+        height: 130px;
+    }
+}
+.levelpanel h2{
+    text-align: left;
+    font-size: 24px;
+}
+.levelpanel p{
+    text-align: left;
+    font-size: 20px;
+}
+.levelbox div{
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #221A0F;
+    float: left;
+    height: 55px;
+    width: 55px;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+.levelbox div:hover{
+    background-color: #221A0F;
+    color: #D3AF86;
+}
+.levelbox div span{
+    font-size: 150%;
+}
+
+/* */
+#root{
+    display: none;
+}

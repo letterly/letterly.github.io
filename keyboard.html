@@ -1,0 +1,311 @@
+<html>
+    <head>
+        <title>Osage Keyboard</title>
+        <style>
+            *{
+                font-family: 'Noto Sans';
+            }
+            DOM, body{
+                background-color: #002b36;
+            }
+            h1{
+                text-align: center;
+                font-size: 48px;
+                color: #fdf6e3;
+            }
+            textarea{
+                background-color: #fdf6e3;
+                color: #002b36;
+                width: 96%;
+                font-size: 36px;
+                height: 250px;
+                resize: none;
+                margin: 1%;
+                border: none;
+                outline: none;
+            }
+            textarea::placeholder{
+                color: #657b83;
+            }
+            .key{
+                background-color: #fdf6e3;
+                height: 66px;
+                width: 50px;
+                float: left;
+                margin: 1%;
+                border: none;
+            }
+            #capskey{
+                height: 66px;
+                float: left;
+                margin: 1%;
+                border: none;
+                background-color: #eee8d5;
+                width: 150px;
+            }
+            .key:hover, #capskey:hover{
+                background-color: #2aa198;
+            }
+            .main, .latin{
+                line-height: 0%;
+                text-align: center;
+                text-transform: capitalize;
+                font-weight: 900;
+            }
+            .main{
+                color: #dc322f;
+                font-size: 28px;
+            }
+            .latin{
+                font-size: 14px;
+                color: #cb4b16;
+            }
+            .row{
+                width: 80%;
+                float: left;
+            }
+            #row2{
+                margin-left: 15px;
+            }
+            #row3{
+                margin-left: 30px;
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var caps = false
+                var textarea = [].slice.call(document.getElementsByTagName("textarea"))[0]
+                var key = [].slice.call(document.getElementsByClassName('key'))
+                console.log(key)
+                key.forEach((element, index) => {
+                    element.addEventListener('click', (event) => {
+                        if(element.textContent.trim().slice(0,1).charCodeAt() > 50000) x = element.textContent.trim().slice(0,2)
+                        else x = element.textContent.trim().slice(0,1)
+                        type(x)
+                    })
+                })
+                capslock = document.getElementById("capskey")
+                capslock.addEventListener('click', (event) => {
+                    if(!caps){
+                        caps = true;
+                        capslock.style.backgroundColor = "#dc322f";
+                        document.getElementById("capskeytext").style.color = "#fdf6e3";
+                    }
+                    else{
+                        caps = false;
+                        capslock.style.backgroundColor = "#fdf6e3";
+                        document.getElementById("capskeytext").style.color = "#dc322f";
+                    }
+                })
+                this.addEventListener('keypress', event => {
+                    eventCode = {
+                        "KeyQ": "𐓝",
+                        "KeyW": "𐓷",
+                        "KeyE": "𐓟",
+                        "KeyR": "𐓜",
+                        "KeyT": "𐓰",
+                        "KeyY": "𐓯",
+                        "KeyU": "𐓶",
+                        "KeyI": "𐓣",
+                        "KeyO": "𐓪",
+                        "KeyP": "𐓬",
+                        "KeyA": "𐓘",
+                        "KeyS": "𐓮",
+                        "KeyD": "𐓵",
+                        "KeyF": "𐓚",
+                        "KeyG": "𐓹",
+                        "KeyH": "𐓡",
+                        "KeyJ": "𐓻",
+                        "KeyK": "𐓤",
+                        "KeyL": "𐓧",
+                        "Semicolon": "͘",
+                        "KeyZ": "𐓺",
+                        "KeyX": "𐓸",
+                        "KeyC": "𐓲",
+                        "KeyV": "𐓙",
+                        "KeyB": "𐓫",
+                        "KeyN": "𐓩",
+                        "KeyM": "𐓨",
+                        "Space": " ",
+                    }
+                    if(Object.keys(eventCode).includes(event.code)) event.preventDefault();
+                    if(eventCode[event.code] !== undefined) type(eventCode[event.code])
+                })
+                function type(letter){
+                    if(caps) letter = letter.toUpperCase()
+                    caps = false
+                    capslock.style.backgroundColor = "#fdf6e3";
+                    document.getElementById("capskeytext").style.color = "#dc322f";
+                    n = textarea.selectionStart
+                    textarea.value = textarea.value.slice(0, textarea.selectionStart) + letter + textarea.value.slice(textarea.selectionStart)
+                    if(textarea.value.includes("𐓘͘𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓘͘𐓣͘", "𐓚")
+                        n-=4
+                    }
+                    if(textarea.value.includes("𐓪͘𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓪͘𐓣͘", "𐓫")
+                        n-=4
+                    }
+                    if(textarea.value.includes("𐓘𐓟")){
+                        textarea.value = textarea.value.replace("𐓘𐓟", "𐓙")
+                        n-=2
+                    }
+                    if(textarea.value.includes("𐓙͘")){
+                        textarea.value = textarea.value.replace("𐓙͘", "𐓚")
+                        n-=2
+                    }
+                    if(textarea.value.includes("𐓘𐓣")){
+                        textarea.value = textarea.value.replace("𐓘𐓣", "𐓙")
+                        n-=2
+                    }
+                    if(textarea.value.includes("𐓘𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓘𐓣͘", "𐓚")
+                        n-=3
+                    }
+                    if(textarea.value.includes("𐓘͘𐓣")){
+                        textarea.value = textarea.value.replace("𐓘͘𐓣", "𐓚")
+                        n-=3
+                    }
+                    if(textarea.value.includes("𐓟𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓟𐓣͘", "𐓚")
+                        n-=3
+                    }
+                    if(textarea.value.includes("𐓪𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓪𐓣͘", "𐓫")
+                        n-=3
+                    }
+                    if(textarea.value.includes("𐓶𐓣͘")){
+                        textarea.value = textarea.value.replace("𐓶𐓣͘", "𐓫")
+                        n-=3
+                    }
+                    if(letter.charCodeAt() > 10000) textarea.selectionStart = n + 2
+                    else textarea.selectionStart = n + 2
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <h1>Osage Keyboard</h1>
+        <textarea placeholder="Write here"></textarea>
+        <div id="keyboard">
+            <div id="row1" class="row">
+                <div class="key">
+                    <p class="main">𐓝</p>
+                    <p class="latin">q</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓷</p>
+                    <p class="latin">w</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓟</p>
+                    <p class="latin">e</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓜</p>
+                    <p class="latin">r</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓰</p>
+                    <p class="latin">t</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓯</p>
+                    <p class="latin">y</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓶</p>
+                    <p class="latin">u</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓣</p>
+                    <p class="latin">i</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓪</p>
+                    <p class="latin">o</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓬</p>
+                    <p class="latin">p</p>
+                </div>
+            </div>
+            <div id="row2" class="row">
+                <div class="key">
+                    <p class="main">𐓘</p>
+                    <p class="latin">a</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓮</p>
+                    <p class="latin">s</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓵</p>
+                    <p class="latin">d</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓚</p>
+                    <p class="latin">f</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓹</p>
+                    <p class="latin">g</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓡</p>
+                    <p class="latin">h</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓻</p>
+                    <p class="latin">j</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓤</p>
+                    <p class="latin">k</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓧</p>
+                    <p class="latin">l</p>
+                </div>
+                <div class="key">
+                    <p class="main">͘</p>
+                    <p class="latin">;</p>
+                </div>
+            </div>
+            <div id="row3" class="row">
+                <div class="key">
+                    <p class="main">𐓺</p>
+                    <p class="latin">z</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓸</p>
+                    <p class="latin">x</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓲</p>
+                    <p class="latin">c</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓙</p>
+                    <p class="latin">v</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓫</p>
+                    <p class="latin">b</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓩</p>
+                    <p class="latin">n</p>
+                </div>
+                <div class="key">
+                    <p class="main">𐓨</p>
+                    <p class="latin">m</p>
+                </div>
+                <div id="capskey">
+                    <p class="main" id="capskeytext">shift</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

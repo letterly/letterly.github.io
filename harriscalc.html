@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <style>
+            body, DOM{
+                background-color: #221a0f;
+                font-family: Verdana;
+            }
+            #content{
+                background-color: #fbebd4;
+                height: 54px;
+                width: 100%;
+                margin-bottom: 10px;
+                font-size: 44px;
+                font-weight: 700;
+            }
+            .number{
+                background-color: #f79a32;
+            }
+            .n{
+                color: #f79a32;
+            }
+            .operator{
+                background-color: #dc3958;
+            }
+            .o{
+                color: #dc3958;
+            }
+            .syntax{
+                background-color: #a57a4c;
+            }
+            .s{
+                color: #a57a4c;
+            }
+            .constant{
+                background-color: #889b4a;
+            }
+            .c{
+                color: #889b4a;
+            }
+            .equals{
+                background-color: #088649;
+            }
+            .input{
+                background-color: #8ab1b0;
+            }
+            h1{
+                text-align: center;
+                font-size: 48px;
+                color: #fbebd4;
+            }
+            button{
+                color: #fbebd4;
+                border: none;
+                height: 50px;
+                font-size: 28px;
+            }
+            .o-:first-child, .o + .o-, .s + .o-{
+                color: #f79a32;
+            }
+        </style>
+        <script>
+            function balancedParentheses(phrase){
+                if(phrase.includes("()")) return false
+                n = 0
+                for(x of phrase){
+                    if(x == "(") n++
+                    if(x == ")") n--
+                    if(n < 0) return false
+                }
+                if(n == 0) return true
+                else return false
+            }
+            function render(id){
+                tp = id.charAt(0)
+                cn = id.slice(1)
+                document.getElementById("content").innerHTML += `<span class="${tp} ${id}">${cn}</span>`
+            }
+            function equals(){
+                if(!balancedParentheses(document.getElementById("content").textContent)){
+                    alert("parentheses error")
+                    return 0;
+                }
+                e = Array.from(document.getElementById("content").childNodes)
+                equation = []
+                // parses equation
+                for(ex of e){
+                    ex = ex.textContent
+                    console.log(ex)
+                    ex = ex.replace(/𞥐/g, "0").replace(/𞥑/g, "1").replace(/𞥒/g, "2").replace(/𞥓/g, "3").replace(/𞥔/g, "4").replace(/𞥕/g, "5").replace(/𞥖/g, "6").replace(/𞥗/g, "7").replace(/𞥘/g, "8").replace(/𞥙/g, "9")
+                    if((equation.length > 0) && (!isNaN(ex) || ex == ".")){
+                        n = equation[equation.length-1]
+                        if(!isNaN(n) || n == "." || (n == "-" && (equation.length == 1 ||"+-*/^".includes(equation[equation.length-2])))) equation[equation.length-1] += ex
+                        else equation.push(ex)
+                    }
+                    else equation.push(ex)
+                }
+                console.log(equation)
+                newequation = []
+                // adds implicit multiplication sign x
+                for(second of equation){
+                    first = newequation[newequation.length-1]
+                    if(first == undefined) first = "+"
+                    if(second == "(" && !("+-*/^".includes(first))) newequation.push("x")
+                    else if("πe".includes(second) && !(isNaN(first))) newequation.push("x")
+                    if(second == "π") second = "3.14159"
+                    else if(second == "e") second = "2.71828"
+                    newequation.push(second)
+                }
+                console.log(+(bruhmoment(newequation)[0]).toFixed(5))
+                document.getElementById("content").innerHTML = `<span class="n">${((+(bruhmoment(newequation)[0]).toFixed(5)) + "").replace(/0/g, "𞥐").replace(/1/g, "𞥑").replace(/2/g, "𞥒").replace(/3/g, "𞥓").replace(/4/g, "𞥔").replace(/5/g, "𞥕").replace(/6/g, "𞥖").replace(/7/g, "𞥗").replace(/8/g, "𞥘").replace(/9/g, "𞥙")}</span>`
+            }
+            function del(){
+                d = document.getElementById("content")
+                if(d.hasChildNodes()) d.removeChild(d.lastChild)
+            }
+
+            //non button functions
+            function solvephrase(phrase){
+                newphrase = []
+                for(item of phrase.reverse()){
+                    if(newphrase[newphrase.length-1] == "^"){
+                        exp = Math.pow(item, newphrase[newphrase.length-2])
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(exp)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase.reverse()
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "x"){
+                        mult = newphrase[newphrase.length-2] * item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(mult)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "*"){
+                        mult = newphrase[newphrase.length-2] * item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(mult)
+                    }
+                    else if(newphrase[newphrase.length-1] == "/"){
+                        div = newphrase[newphrase.length-2] / item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(div)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "+"){
+                        add = +newphrase[newphrase.length-2] + +item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(add)
+                    }
+                    else if(newphrase[newphrase.length-1] == "-"){
+                        sub = newphrase[newphrase.length-2] - item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(sub)
+                    }
+                    else newphrase.push(item)
+                }
+                return newphrase
+            }
+            function bruhmoment(phrase){
+                phrase.unshift("(")
+                phrase.push(")")
+                while(phrase.includes(")")){
+                    x = phrase.slice(0, phrase.indexOf(")"))
+                    n = x.lastIndexOf("(")
+                    g = phrase.slice(n+1, phrase.indexOf(")"))
+                    phrase = phrase.slice(0, n).concat(solvephrase(g), phrase.slice(phrase.indexOf(")")+1))
+                }
+                return phrase
+            }
+        </script>
+    </head>
+    <body>
+        <h1>HarrisCalc</h1>
+        <div id="content" dir="rtl"></div>
+        <div id="buttons">
+            <button id="n𞥙" class="number" onclick="render(this.id)">𞥙</button>
+            <button id="n𞥘" class="number" onclick="render(this.id)">𞥘</button>
+            <button id="n𞥗" class="number" onclick="render(this.id)">𞥗</button>
+            <button id="n𞥖" class="number" onclick="render(this.id)">𞥖</button>
+            <button id="n𞥕" class="number" onclick="render(this.id)">𞥕</button>
+            <button id="n𞥔" class="number" onclick="render(this.id)">𞥔</button>
+            <button id="n𞥓" class="number" onclick="render(this.id)">𞥓</button>
+            <button id="n𞥒" class="number" onclick="render(this.id)">𞥒</button>
+            <button id="n𞥑" class="number" onclick="render(this.id)">𞥑</button>
+            <button id="n𞥐" class="number" onclick="render(this.id)">𞥐</button>
+            <button id="n." class="number" onclick="render(this.id)">.</button>
+            <button id="o+" class="operator" onclick="render(this.id)">+</button>
+            <button id="o-" class="operator" onclick="render(this.id)">-</button>
+            <button id="o*" class="operator" onclick="render(this.id)">*</button>
+            <button id="o/" class="operator" onclick="render(this.id)">/</button>
+            <button id="o^" class="operator" onclick="render(this.id)">^</button>
+            <button id="s(" class="syntax" onclick="render(this.id)">(</button>
+            <button id="s)" class="syntax" onclick="render(this.id)">)</button>
+            <button id="cπ" class="constant" onclick="render(this.id)">π</button>
+            <button id="ce" class="constant" onclick="render(this.id)">e</button>
+            <button id="e=" class="equals" onclick="equals()">=</button>
+            <button id="iDEL" class="input" onclick="del()">DEL</button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <style>
+            *{
+                font-family: "InupiaqNumbers", "Verdana";
+            }
+            body, DOM{
+                background-color: #221a0f;
+            }
+            #content{
+                background-color: #fbebd4;
+                height: 54px;
+                width: 100%;
+                margin-bottom: 10px;
+                font-size: 44px;
+                font-weight: 700;
+            }
+            .number{
+                background-color: #f79a32;
+            }
+            .n{
+                color: #f79a32;
+            }
+            .operator{
+                background-color: #dc3958;
+            }
+            .o{
+                color: #dc3958;
+            }
+            .syntax{
+                background-color: #a57a4c;
+            }
+            .s{
+                color: #a57a4c;
+            }
+            .constant{
+                background-color: #889b4a;
+            }
+            .c{
+                color: #889b4a;
+            }
+            .equals{
+                background-color: #088649;
+            }
+            .input{
+                background-color: #8ab1b0;
+            }
+            h1{
+                text-align: center;
+                font-size: 48px;
+                color: #fbebd4;
+            }
+            button{
+                color: #fbebd4;
+                border: none;
+                font-size: 36px;
+            }
+            .o-:first-child, .o + .o-, .s + .o-{
+                color: #f79a32;
+            }
+        </style>
+        <script>
+            numerals = ""
+            numbers = "0123456789abcdefghij"
+
+            function isanumber(str){
+                str = "" + str
+                if("0123456789abcdefghij.".includes(str.charAt(0))){
+                    console.log('t')
+                    return true;
+                }
+                else{
+                    console.log('f')
+                    return false
+                }
+            }
+            function balancedParentheses(phrase){
+                if(phrase.includes("()")) return false
+                n = 0
+                for(x of phrase){
+                    if(x == "(") n++
+                    if(x == ")") n--
+                    if(n < 0) return false
+                }
+                if(n == 0) return true
+                else return false
+            }
+            function render(id){
+                tp = id.charAt(0)
+                cn = id.charAt(1)
+                document.getElementById("content").innerHTML += `<span class="${tp} ${id}">${cn}</span>`
+            }
+            function equals(){
+                if(!balancedParentheses(document.getElementById("content").textContent)){
+                    alert("parentheses error")
+                    return 0;
+                }
+                e = Array.from(document.getElementById("content").childNodes)
+                equation = []
+                // parses equation
+                for(ex of e){
+                    ex = ex.textContent
+                    console.log(ex)
+                    if(ex.charCodeAt(0) > 50000){
+                        ex = ex.split("").map(v => v == "." ? "." : numbers.charAt(numerals.indexOf(v))).join("")
+                    }
+                    if((equation.length > 0) && (isanumber(ex) || ex == ".")){
+                        n = equation[equation.length-1]
+                        if((isanumber(n)) || n == "." || (n == "-" && (equation.length == 1 ||"+-*/^".includes(equation[equation.length-2])))) equation[equation.length-1] += ex
+                        else equation.push(ex)
+                    }
+                    else equation.push(ex)
+                }
+                console.log(equation)
+                newequation = []
+                // adds implicit multiplication sign x
+                for(second of equation){
+                    first = newequation[newequation.length-1]
+                    console.log("AAA")
+                    console.log(first, second)
+                    if(first == undefined) first = "+"
+                    if(second == "(" && !("+-*/^".includes(first))) newequation.push("x")
+                    else if("πE".includes(second) && (isanumber(first))){
+                        console.log(':)')
+                        newequation.push("x")
+                    } 
+                    if(second == "π") second = "3.2gce"
+                    else if(second == "E") second = "2.e765"
+                    if("0123456789abcdefghij".includes((""+second).charAt(0))){
+                        console.log(second)
+                        dec = second.includes(".") ? second.split(".") : null
+                        second = parseInt((""+second), 20)
+                        dcount = 1
+                        if(dec !== null){
+                            for(d of dec){
+                                second += numbers.indexOf(d) / Math.pow(20, dcount)
+                                dcount++
+                            }
+                        }
+                        console.log(second)
+                    }
+                    newequation.push(second)
+                }
+                console.log(newequation)
+                console.log(bruhmoment(newequation))
+                res = bruhmoment(newequation)[0]
+                //res = Math.round((res + Number.EPSILON) * 10000) / 10000
+                res = res.toString(20)
+                console.log(res)
+                res = res.split("")
+                newres = ""
+                for(r of res){
+                    if(numbers.includes(r)){
+                        newres += numerals[numbers.indexOf(r)]
+                    }
+                    else{
+                        newres += r
+                    }
+                }
+                document.getElementById("content").innerHTML = `<span class="n">${newres}</span>`
+            }
+            function del(){
+                d = document.getElementById("content")
+                if(d.hasChildNodes()) d.removeChild(d.lastChild)
+            }
+
+            //non button functions
+            function solvephrase(phrase){
+                newphrase = []
+                for(item of phrase.reverse()){
+                    if(newphrase[newphrase.length-1] == "^"){
+                        exp = Math.pow(item, newphrase[newphrase.length-2])
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(exp)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase.reverse()
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "x"){
+                        mult = newphrase[newphrase.length-2] * item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(mult)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "*"){
+                        mult = newphrase[newphrase.length-2] * item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(mult)
+                    }
+                    else if(newphrase[newphrase.length-1] == "/"){
+                        div = newphrase[newphrase.length-2] / item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(div)
+                    }
+                    else newphrase.push(item)
+                }
+                phrase = newphrase
+                newphrase = []
+                for(item of phrase){
+                    if(newphrase[newphrase.length-1] == "+"){
+                        add = +newphrase[newphrase.length-2] + +item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(add)
+                    }
+                    else if(newphrase[newphrase.length-1] == "-"){
+                        sub = newphrase[newphrase.length-2] - item
+                        newphrase.pop()
+                        newphrase.pop()
+                        newphrase.push(sub)
+                    }
+                    else newphrase.push(item)
+                }
+                return newphrase
+            }
+            function bruhmoment(phrase){
+                phrase.unshift("(")
+                phrase.push(")")
+                while(phrase.includes(")")){
+                    x = phrase.slice(0, phrase.indexOf(")"))
+                    n = x.lastIndexOf("(")
+                    g = phrase.slice(n+1, phrase.indexOf(")"))
+                    phrase = phrase.slice(0, n).concat(solvephrase(g), phrase.slice(phrase.indexOf(")")+1))
+                }
+                return phrase
+            }
+        </script>
+    </head>
+    <body>
+        <h1>IñupiaqCalc</h1>
+        <div id="content"></div>
+        <div id="buttons">
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n" class="number" onclick="render(this.id)"></button>
+            <button id="n." class="number" onclick="render(this.id)">.</button>
+            <button id="o+" class="operator" onclick="render(this.id)">+</button>
+            <button id="o-" class="operator" onclick="render(this.id)">-</button>
+            <button id="o*" class="operator" onclick="render(this.id)">*</button>
+            <button id="o/" class="operator" onclick="render(this.id)">/</button>
+            <button id="o^" class="operator" onclick="render(this.id)">^</button>
+            <button id="s(" class="syntax" onclick="render(this.id)">(</button>
+            <button id="s)" class="syntax" onclick="render(this.id)">)</button>
+            <button id="cπ" class="constant" onclick="render(this.id)">π</button>
+            <button id="cE" class="constant" onclick="render(this.id)">E</button>
+            <button id="e=" class="equals" onclick="equals()">=</button>
+            <button id="iDEL" class="input" onclick="del()">DEL</button>
+        </div>
+    </body>
+</html>

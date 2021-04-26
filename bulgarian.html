@@ -1,0 +1,955 @@
+<html>
+    <head>
+        <title>bulgarian.project</title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <style>
+            /*
+background brown: #221A0F;
+red: #DC3958;
+orange: #F06431;
+yellow: #F79A32;
+green: #889B4A;
+cyan: #088649;
+blue: #8AB1B0;
+purple: #98676A;
+light: #D3AF86;
+*/
+*{
+    font-family: 'Montserrat';
+}
+DOM, body{
+    background-color: #221A0F;
+}
+h1{
+    color: #D3AF86;
+    font-size: 48px;
+}
+.person{
+    width: 100%;
+    float: left;
+}
+.pronoun{
+    width: 10%;
+    float: left;
+    text-align: right;
+    font-size: 28px;
+}
+.person input{
+    width: 50%;
+    float: right !important;
+}
+.regbutton{
+    float: left;
+    margin: 6px;
+    color: #221A0F;
+    border: none;
+    width: 50%;
+    min-width: 330px;
+    height: 80px;
+    font-size: 36px;
+    border-radius: 5px;
+    outline: none;
+    font-weight: 700;
+}
+.scriptbutton{
+    float: left;
+    margin: 6px;
+    background-color: #D3AF86;
+    color: #221A0F;
+    border: none;
+    width: 200px;
+    height: 80px;
+    font-size: 36px;
+    border-radius: 5px;
+    outline: none;
+}
+.buttonbloc{
+    width: 100%;
+    float: left;
+}
+.header{
+    font-weight: 400;
+}
+.inputbutton{
+    border: 8px #D3AF86 solid;
+    background-color: #221A0F;
+    color: #D3AF86;
+}
+.inputbutton::placeholder{
+    color: #D3AF86;
+}
+#verb .inputbutton::placeholder{
+    color: #F79A32;
+}
+.grammar{
+    font-size: 40px;
+    font-weight: 700;
+    color: #D3AF86;
+    line-height: 120%;
+}
+/**/
+.bgnoun{
+    color: #F06431;
+}
+.ennoun{
+    color: #221A0F;
+    background-color: #F06431;
+}
+.bgprnm{
+    color: #F79A32;
+}
+.enprnm{
+    color: #221A0F;
+    background-color: #F79A32;
+}
+.bgadj{
+    color: #889B4A;
+}
+.enadj{
+    color: #221A0F;
+    background-color: #889B4A;
+}
+.bgprep{
+    color: #98676A;
+}
+.enprep{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.bgpunc{
+    color: #D3AF86;
+}
+.enpunc{
+    color: #221A0F;
+    background-color: #D3AF86;
+}
+.bgverb{
+    color: #8AB1B0;
+}
+.enverb{
+    color: #221A0F;
+    background-color: #8AB1B0;
+}
+.bgconj{
+    color: #088649;
+}
+.enconj{
+    color: #221A0F;
+    background-color: #088649;
+}
+.enarcl{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.enpart{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.bgpart{
+    color: #98676A;
+}
+.enadv{
+    color: #221A0F;
+    background-color: #DC3958;
+}
+.bgadv{
+    color: #DC3958;
+}
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <script>
+            lesson = {
+    "1.1": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "az": "I",
+                "sum": "am",
+                "ot": "from",
+                "v": "in",
+                "Bulgariya": "Bulgaria",
+            },
+        },
+        {
+            type: "choice",
+            lang: "bg",
+            word: "Ot",
+            choices: ["From", "In", "I"],
+            answer: "From",
+        },
+        {
+            type: "bgtranslate",
+            bg: "Az sum v Bulgariya",
+            en: "I am in Bulgaria",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "ti": "you",
+                "si": "are",
+                "Surbiya": "Serbia",
+                "i": "and",
+            },
+        },
+        {
+            type: "bgtranslate",
+            bg: "Ti si ot Surbiya",
+            en: "You are from Serbia",
+        },
+        {
+            type: "entranslate",
+            bg: "Ti i az",
+            en: "You and I",
+        },
+
+        /*
+        {
+            type: "gender",
+            word: "Den",
+            gender: "masculine",
+        },
+        {
+            type: "showverb",
+            verb: "sum",
+            conjugation: ["sum", "si", "e", "sme", "ste", "se"],
+        },
+        */
+       /*
+        {
+            type: "verb",
+            verb: "sum",
+            conjugation: ["sum", "si", "e", "sme", "ste", "se"],
+        },
+        //grammar
+        */
+    ],
+    "1.2": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "toy": "he",
+                "tya": "she",
+                "to": "it",
+                "nie": "we",
+                "vie": "you (plural)",
+                "te": "they",
+                "Gurciya": "Greece",
+            },
+        },
+        {
+            type: "grammar",
+            grammar: "In English, the verb |to be| changes form based on the subject (|I am|, |you are|, etc.). In Bulgarian, verbs change based on subject too. The verb ^sum^ (to be) has six forms, depending on 1st, 2nd, or 3rd person as well as singular/plural.",
+        },
+        {
+            type: "showverb",
+            verb: "sum",
+            def: "be",
+            conjugation: ["sum", "si", "e", "sme", "ste", "sa"],
+        },
+        {
+            type: "bgtranslate",
+            bg: "Tya e",
+            en: "She is",
+        },
+        {
+            type: "entranslate",
+            en: "We are in Bulgaria",
+            bg: "Nie sme v Bulgariya",
+        },
+        {
+            type: "bgtranslate",
+            en: "They are from Greece",
+            bg: "Te sa ot Gurciya",
+        },
+        {
+            type: "choice",
+            lang: "bg",
+            word: "Vie",
+            choices: ["We", "They", "You (plural)"],
+            answer: "You (plural)",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "no": "but",
+                "da": "yes",
+                "ne": "no / not (precedes verb)",
+                "kude": "where (interrogative)",
+                "Evropa": "Europe",
+                "Albaniya": "Albania",
+            },
+        },
+        {
+            type: "bgtranslate",
+            bg: "Kude e Bulgariya?",
+            en: "Where is Bulgaria?",
+        },
+        {
+            type: "entranslate",
+            bg: "Da Bulgariya e v Evropa",
+            en: "Yes, Bulgaria is in Europe",
+        },
+        {
+            type: "entranslate",
+            bg: "Toy ne e v Albaniya",
+            en: "He is not in Albania",
+        },
+    ],
+    "1.3": [
+        {
+            type: "showverb",
+            verb: "govorya",
+            def: "speak",
+            conjugation: ["govorya", "govorish", "govori", "govorim", "govorite", "govoryat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "bulgarski": "bulgarian",
+                "srubski": "serbian",
+                "grucki": "greek",
+                "albanski": "albanian",
+                "angliyski": "english",
+                "tourski": "turkish",
+            },
+        },
+        {
+            type: "bgtranslate",
+            bg: "Tya ne govori angliyski",
+            en: "She does not speak English",
+        },
+        {
+            type: "entranslate",
+            bg: "V Haskovo nie govorim tourski i bulgarski",
+            en: "In Haskovo we speak Turkish and Bulgarian",
+        },
+        {
+            type: "grammar",
+            grammar: "In Bulgarian, you can sometimes drop the subject before a verb, because the suffix of the verb implies the subject. For example, we always know that the verb ^sme^ is referring to the subject ^nie^.",
+        },
+        {
+            type: "bgtranslate",
+            bg: "Te sa ot Gurciya no ne govoryat gurcki",
+            en: ["They are from Greece but they do not speak Greek", "They are from Greece but do not speak Greek"],
+        },
+        {
+            type: "showverb",
+            verb: "ucha",
+            def: "study",
+            conjugation: ["ucha", "uchish", "uchi", "uchim", "uchite", "uchat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "ili": "or",
+                "ako": "if",
+                "Kaliforniya": "california",
+                "s": "with",
+                "ispanski": "spanish",
+                "frenski": "french",
+                "Kanada": "canada",
+            },
+        },
+        {
+            type: "bgtranslate",
+            bg: "Ako si ot Kaliforniya, govorish angliyski ili ispanski",
+            en: "If you are from California you speak English or Spanish",
+        },
+        {
+            type: "entranslate",
+            bg: "Toy uchi frenski v Kanada",
+            en: "He studies French in Canada",
+        },
+        {
+            type: "verb",
+            verb: "govorya",
+            def: "speak",
+            conjugation: ["govorya", "govorish", "govori", "govorim", "govorite", "govoryat"],
+        },
+        {
+            type: "bgtranslate",
+            bg: "Uchim s Ivan",
+            en: ["We study with Ivan", "We are studying with Ivan"],
+        },
+    ],
+    "2.1": [
+        {
+            type: "showverb",
+            verb: "ima",
+            def: "have",
+            conjugation: ["imam", "imash", "ima", "imame", "imate", "imat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "yabulka": "apple",
+                "banan": "banana",
+                "mango": "mango",
+                "krousha": "pear",
+                "dinya": "watermelon",
+                "grozdov": "grape",
+                "dnes": "today",
+                "touk": "here",
+            },
+        },
+        {
+            type: "grammar",
+            grammar: "Nouns can be one of three genders in Bulgarian: Feminine, Masculine, and Neutral. Generally speaking, nouns ending in 'a' or '^ya^' are Feminine, nouns ending in 'e' or 'o' are Neutral, and nouns ending in a consonant are Masculine.",
+        },
+        {
+            type: "gender",
+            word: "Yabulka",
+            gender: "feminine",
+        },
+        {
+            type: "gender",
+            word: "Krousha",
+            gender: "feminine",
+        },
+        {
+            type: "gender",
+            word: "Grozdov",
+            gender: "masculine",
+        },
+        {
+            type: "gender",
+            word: "Mango",
+            gender: "neutral",
+        },
+        {
+            type: "grammar",
+            grammar: "Nouns are by default indefinite (|a|/|an| in English). To make nouns definite (|the| in English), add the suffix ^-ta^ to a feminine noun or ^-to^ to a neutral noun. If a masculine noun is the subject, add ^-ut^, otherwise add ^-a^",
+        },
+        {
+            type: "bgtranslate",
+            bg: "Yabulkata",
+            en: "The apple",
+        },
+        {
+            type: "entranslate",
+            bg: "Mangoto",
+            en: "The mango",
+        },
+        {
+            type: "entranslate",
+            bg: ["Az sum touka i imam banana", "Az sum touka i az imam banana"],
+            en: "I am here and I have the banana",
+        },
+        {
+            type: "verb",
+            verb: "ima",
+            conjugation: ["imam", "imash", "ima", "imame", "imate", "imat"],
+        },
+    ],
+    "2.2": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "cherven": "red",
+                "oranzhev": "orange",
+                "zhult": "yellow",
+                "zelen": "green",
+                "sin": "blue",
+            },
+        },
+        {
+            "type": "grammar",
+            "grammar": "Adjectives change based on the gender of the noun they modify, adding either '-a' or '-o' to feminine and neutral nouns respectively. For example, ^zholt^ is masculine, ^zholta^ is feminine, and ^zholto^ is neutral."
+        },
+        {
+            type: "bgtranslate",
+            bg: "Yabulkata e zelena",
+            en: "The apple is green",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "lilav": "purple",
+                "rozov": "pink",
+                "byal": "white",
+                "chern": "black",
+                "siv": "gray",
+            },
+        },
+        {
+            type: "entranslate",
+            bg: "Bulgariya e byala zelena i chervena",
+            en: "Bulgaria is white green and red",
+        },
+        {
+            type: "entranslate",
+            en: "In Albania, we have a purple watermelon",
+            bg: "V Albaniya, imame lilava dinya",
+        },
+        {
+            type: "choice",
+            lang: "en",
+            word: "Black",
+            choices: ["Siv", "Chern", "Cherven"],
+            answer: "Chern",
+        },
+    ]
+}
+english = {
+    "i": "prnm",
+    "you": "prnm",
+    "he": "prnm",
+    "she": "prnm",
+    "it": "prnm",
+    "we": "prnm",
+    "they": "prnm",
+    "am": "verb",
+    "are": "verb",
+    "is": "verb",
+    "from": "prep",
+    "a": "arcl",
+    "an": "arcl",
+    "the": "arcl",
+    "serbia": "noun",
+    "macedonia": "noun",
+    "greece": "noun",
+    "bulgarian": "noun",
+    "serbian": "noun",
+    "greek": "noun",
+    "spanish": "noun",
+    "albanian": "noun",
+    "turkish": "noun",
+    "french": "noun",
+    "english": "noun",
+    "study": "verb",
+    "speak": "verb",
+    "and": "conj",
+    "or": "conj",
+    "but": "conj",
+    "coffee": "noun",
+    "in": "prep",
+    ".": "punc",
+    "to": "prep",
+    "be": "verb",
+    "day": "noun",
+    "ivan": "noun",
+    "yes": "part",
+    "no": "part",
+    "where": "adv",
+    "albania": "noun",
+    "europe": "noun",
+    "not": "adv",
+    "california": "noun",
+    "bulgaria": "noun",
+    "canada": "noun",
+    "with": "conj",
+    "if": "conj",
+    "have": "verb",
+    "has": "verb",
+    "haskovo": "noun",
+    "apple": "noun",
+    "banana": "noun",
+    "mango": "noun",
+    "coconut": "noun",
+    "watermelon": "noun",
+    "grape": "noun",
+    "today": "adv",
+    "here": "adv",
+    "red": "adj",
+    "orange": "adj",
+    "yellow": "adj",
+    "green": "adj",
+    "blue": "adj",
+    "purple": "adj",
+    "pink": "adj",
+    "white": "adj",
+    "black": "adj",
+    "gray": "adj",
+    "studies": "verb",
+    "pear": "noun",
+    "mango": "noun",
+}
+bulgarian = {
+    "az": "prnm",
+    "ti": "prnm",
+    "toy": "prnm",
+    "to": "prnm",
+    "tya": "prnm",
+    "nie": "prnm",
+    "vie": "prnm",
+    "te": "prnm",
+    "sum": "verb",
+    "si": "verb",
+    "e": "verb",
+    "sme": "verb",
+    "ste": "verb",
+    "sa": "verb",
+    "ot": "prep",
+    "surbiya": "noun",
+    "gurciya": "noun",
+    "bulgarski": "noun",
+    "srubski": "noun",
+    "tourski": "noun",
+    "grucki": "noun",
+    "ispanski": "noun",
+    "frenski": "noun",
+    "albanski": "noun",
+    "angliyski": "noun",
+    "i": "conj",
+    "ili": "conj",
+    "no": "conj",
+    "kafe": "noun",
+    "v": "prep",
+    ".": "punc",
+    "dnes": "noun",
+    "ivan": "noun",
+    "ne": "part",
+    "da": "part",
+    "albaniya": "noun",
+    "evropa": "noun",
+    "kude": "adv",
+    "ako": "conj",
+    "s": "conj",
+    "kanada": "noun",
+    "kaliforniya": "noun",
+    "bulgariya": "noun",
+    "govorya": "verb",
+    "govorish": "verb",
+    "govori": "verb",
+    "govorim": "verb",
+    "govorite": "verb",
+    "govoryat": "verb",
+    "ucha": "verb",
+    "uchish": "verb",
+    "uchi": "verb",
+    "uchim": "verb",
+    "uchite": "verb",
+    "uchat": "verb",
+    "imam": "verb",
+    "imash": "verb",
+    "ima": "verb",
+    "imame": "verb",
+    "imate": "verb",
+    "imat": "verb",
+    "yabulka": "noun",
+    "yabulkata": "noun",
+    "banan": "noun",
+    "mango": "noun",
+    "krousha": "noun",
+    "dinya": "noun",
+    "grozdov": "noun",
+    "dnes": "adv",
+    "touk": "adv",
+    "cherven": "adj",
+    "chervena": "adj",
+    "oranzhev": "adj",
+    "zhult": "adj",
+    "zelen": "adj",
+    "zelena": "adj",
+    "sin": "adj",
+    "lilav": "adj",
+    "lilava": "adj",
+    "rozov": "adj",
+    "byal": "adj",
+    "byala": "adj",
+    "chern": "adj",
+    "siv": "adj",
+}
+alphabet = {
+    "zh": "ж", 
+    "ch": "ч", 
+    "sht": "щ",
+    "sh": "ш",
+    "you": "ю",
+    "ya": "я",
+    "ou": "у", 
+    "'": "ь",
+    "c": "ц", 
+    "a": "а", 
+    "y": "й",
+    "b": "б", 
+    "v": "в", 
+    "g": "г", 
+    "d": "д", 
+    "e": "е", 
+    "z": "з", 
+    "i": "и", 
+    "k": "к", 
+    "l": "л", 
+    "m": "м", 
+    "n": "н", 
+    "o": "о", 
+    "p": "п", 
+    "r": "р", 
+    "s": "с", 
+    "t": "т", 
+    "u": "ъ", 
+    "f": "ф", 
+    "h": "х", 
+    " ": " ", 
+}
+        </script>
+        <script>
+            script = ""
+levelNumber = ""
+levelPart = 0
+document.addEventListener("DOMContentLoaded", function(){
+    scriptSwitch("latin")
+    showDiv("levelselect")
+})
+function showDiv(id){
+    for(x of Array.from(document.getElementsByClassName("helladiv"))) x.style.display = "none";
+    document.getElementById(id).style.display = "inherit";
+    switch(id){
+        case "bgtranslate":
+            document.getElementById("eninput").value = ""
+            document.getElementById("bgtranslatebutton").outerHTML = `<button class="regbutton enterbutton" id="bgtranslatebutton" onclick="bgtranslate()" style="background-color: #98676A;">Enter</button>`
+            document.getElementById("bgtotranslate").innerHTML = bgcolor(lesson[levelNumber][levelPart].bg)
+            break
+        case "entranslate":
+            document.getElementById("bginput").value = ""
+            document.getElementById("entranslatebutton").outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="entranslate()" style="background-color: #98676A;">Enter</button>`
+            document.getElementById("entotranslate").innerHTML = encolor(lesson[levelNumber][levelPart].en)
+            break
+        case "grammar":
+            grammarexplanation = lesson[levelNumber][levelPart].grammar
+            grammarexplanation = grammarexplanation.split("|").map((content, index) => index % 2 == 0 ? content : encolor(content)).join("")
+            grammarexplanation = grammarexplanation.split("^").map((content, index) => index % 2 == 0 ? content : bgcolor(content)).join("")
+            document.getElementById("grammarexplanation").innerHTML = grammarexplanation
+            break
+        case "vocabulary":
+            vocab = lesson[levelNumber][levelPart].vocab
+            document.getElementById("vocabdiv").innerHTML = Object.entries(vocab).map(q => `<p class="grammar">${bgcolor(q[0])} => ${encolor(q[1])}</p>`).join("")
+            break
+        case "choice":
+            document.getElementById("choiceword").innerHTML = lesson[levelNumber][levelPart].lang == "en" ? encolor(lesson[levelNumber][levelPart].word) : bgcolor(lesson[levelNumber][levelPart].word)
+            document.getElementById("choice1").textContent = lesson[levelNumber][levelPart].choices[0]
+            document.getElementById("choice2").textContent = lesson[levelNumber][levelPart].choices[1]
+            document.getElementById("choice3").textContent = lesson[levelNumber][levelPart].choices[2]
+            document.getElementById("choicebutton").style.display = "none"
+            break
+        case "gender":
+            document.getElementById("genderword").innerHTML = bgcolor(lesson[levelNumber][levelPart].word)
+            document.getElementById("genderbutton").style.display = "none"
+            break
+        case "verb":
+            document.getElementById("verbword").textContent = script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].verb) : lesson[levelNumber][levelPart].verb
+            for(var z = 0; z < 6; z++){
+                if(script == "cyrillic") document.getElementById(z).placeholder = cyrillic(document.getElementById(z).placeholder)
+                document.getElementById(z).value = ""
+                document.getElementById(z).style.borderColor = "#D3AF86";
+            }
+            document.getElementById("verbbutton").outerHTML = `<button class="regbutton enterbutton" id="verbbutton" onclick="verbcheck()" style="background-color: #98676A;">Enter</button>`
+        case "showverb":
+            document.getElementById("showverbword").textContent = script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].verb) : lesson[levelNumber][levelPart].verb
+            document.getElementById("showverbdef").textContent = `${lesson[levelNumber][levelPart].def}`
+            prnms = ["Az", "Ti", "Toy/Tya/To", "Nie", "Vie", "Te"]
+            verblist = ""
+            for(var t = 0; t < prnms.length; t++){
+                verblist += `<h1><span class="bgprnm">${script == "cyrillic" ? cyrillic(prnms[t]) : prnms[t]}</span> <span class="bgverb">${script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].conjugation[t]) : lesson[levelNumber][levelPart].conjugation[t]}</span></h1>`
+            }
+            document.getElementById("verbdiv").innerHTML = verblist
+            break
+    }
+}
+function scriptSwitch(name){
+    script = name
+    opname = name == "latin" ? "cyrillic" : "latin" 
+    document.getElementById(opname).style.fontWeight = 400
+    document.getElementById(name).style.fontWeight = 700
+}
+function bgcolor(text){
+    return text.split(" ").map(y => `<span class='bg${bulgarian[y.toLowerCase().replace(/\,/g, "").replace(/\?/g, "").replace(/\!/g, "").replace(/\./g, "")]}'>${script == "cyrillic" ? cyrillic(y) : y}</span>`).join(" ")
+}
+function encolor(text){
+    return text.split(" ").map(y => `<span class='en${english[y.toLowerCase().replace(/\,/g, "").replace(/\?/g, "").replace(/\!/g, "").replace(/\./g, "")]}'>${y}</span>`).join(" ")
+}
+function cyrillic(text){
+    for(u of Object.entries(alphabet)){
+        var regex = new RegExp(u[0], "g");
+        text = text.replace(regex, u[1]);
+        regex = new RegExp(u[0].charAt(0).toUpperCase() + u[0].slice(1), "g");
+        text = text.replace(regex, u[1].toUpperCase());
+    }
+    return text
+}
+function latin(text){
+    for(u of Object.entries(alphabet)){
+        var regex = new RegExp(u[1], "g");
+        text = text.replace(regex, u[0]);
+        regex = new RegExp(u[1].toUpperCase(), "g");
+        text = text.replace(regex, u[0].charAt(0).toUpperCase() + u[0].slice(1));
+    }
+    return text
+}
+function startLevel(level){
+    levelPart = 0
+    levelNumber = level
+    showDiv(lesson[levelNumber][levelPart].type)
+}
+function nextLevelPart(){
+    levelPart++
+    if(lesson[levelNumber].length == levelPart) showDiv("levelselect")
+    else showDiv(lesson[levelNumber][levelPart].type)
+}
+function verbcheck(){
+    correct = true
+    for(var e = 0; e < 6; e++){
+        ee = document.getElementById(e)
+        console.log(lesson[levelNumber][levelPart].conjugation[e])
+        console.log(ee.value)
+        if(ee.value.toLowerCase().trim() == lesson[levelNumber][levelPart].conjugation[e]){
+            ee.style.borderColor = "#889B4A";
+        }
+        else{
+            correct = false
+            ee.style.borderColor = "#DC3958";
+        }
+    }
+    verbbutton = document.getElementById("verbbutton")
+    if(correct){
+        verbbutton.outerHTML = `<button class="regbutton enterbutton" id="bgtranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        verbbutton.outerHTML = `<button class="regbutton enterbutton" id="bgtranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function bgtranslate(){
+    eninput = document.getElementById("eninput").value.trim();
+    eninput = eninput.toLowerCase()
+        .replace(/'m/g, " am")
+        .replace(/'re/g, " are")
+        .replace(/he's/g, "he is")
+        .replace(/it's/g, "it is")
+        .replace(/n't/g, " not")
+        .replace(/\./g, "")
+        .replace(/\,/g, "")
+    answer = lesson[levelNumber][levelPart].en
+    if(typeof answer == "object") answer = answer.map(p => p.toLowerCase())
+    else answer = answer.toLowerCase()
+    bgtranslatebutton = document.getElementById("bgtranslatebutton")
+    if((typeof answer == "object" && answer.includes(eninput)) || latin(eninput) == answer){
+        bgtranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="bgtranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        bgtranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="bgtranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function entranslate(){
+    bginput = document.getElementById("bginput").value.trim();
+    bginput = bginput.toLowerCase().replace(/\./g, "")
+    answer = lesson[levelNumber][levelPart].bg
+    if(typeof answer == "object") answer = answer.map(p => p.toLowerCase())
+    else answer = answer.toLowerCase()
+    entranslatebutton = document.getElementById("entranslatebutton")
+    if((typeof answer == "object" && answer.includes(latin(bginput))) || latin(bginput) == answer){
+        entranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        entranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function choiceenter(a){
+    document.getElementById("choicebutton").style.display = "inherit"
+    if(lesson[levelNumber][levelPart].answer == a.textContent){
+        document.getElementById("choicebutton").textContent = "Correct! Continue..."
+        document.getElementById("choicebutton").style.backgroundColor = "#889B4A"
+    }
+    else{
+        document.getElementById("choicebutton").textContent = "Incorrect! Continue..."
+        document.getElementById("choicebutton").style.backgroundColor = "#DC3958"
+    }
+}
+function genderenter(a){
+    document.getElementById("genderbutton").style.display = "inherit"
+    if(lesson[levelNumber][levelPart].gender == a){
+        document.getElementById("genderbutton").textContent = "Correct! Continue..."
+        document.getElementById("genderbutton").style.backgroundColor = "#889B4A"
+    }
+    else{
+        document.getElementById("genderbutton").textContent = "Incorrect! Continue..."
+        document.getElementById("genderbutton").style.backgroundColor = "#DC3958"
+    }
+}
+        </script>
+    </head>
+    <body>
+        <div id="levelselect" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Level Select</h1>
+            <div id="scriptselect" class="buttonbloc">
+                <button class="scriptbutton" id="latin" onclick="scriptSwitch(this.id)">Latin</button>
+                <button class="scriptbutton" id="cyrillic" onclick="scriptSwitch(this.id)">Cyrillic</button>
+            </div>
+            <div id="scriptselect" class="buttonbloc">
+                <button class="regbutton levelbutton" id="1.1" onclick="startLevel(this.id)" style="background-color: #DC3958;">1.1 Introduction</button>
+                <button class="regbutton levelbutton" id="1.2" onclick="startLevel(this.id)" style="background-color: #F06431;">1.2 To Be</button>
+                <button class="regbutton levelbutton" id="1.3" onclick="startLevel(this.id)" style="background-color: #F79A32;">1.3 Languages</button>
+                <button class="regbutton levelbutton" id="2.1" onclick="startLevel(this.id)" style="background-color: #889B4A;">2.1 Nouns</button>
+                <button class="regbutton levelbutton" id="2.2" onclick="startLevel(this.id)" style="background-color: #088649;">2.2 Colors</button>
+            </div>
+        </div>
+        <div id="bgtranslate" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Translate the following sentence:</h1>
+            <h1 id="bgtotranslate"><span class="bgprnm">Jas</span> <span class="bgverb">sum</span> <span class="bgprep">od</span> <span class="bgnoun">Srbija</span><span class="bgpunc">.</span></h1>
+            <input class="regbutton inputbutton" id="eninput" placeholder="type here..."></input>
+            <button class="regbutton enterbutton" id="bgtranslatebutton" onclick="bgtranslate()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="entranslate" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Translate the following sentence:</h1>
+            <h1 id="entotranslate"><span class="enprnm">He</span> <span class="enverb">is</span> <span class="enprep">from</span> <span class="ennoun">Greece</span><span class="enpunc">.</span></h1>
+            <input class="regbutton inputbutton" id="bginput" placeholder="type here..."></input>
+            <button class="regbutton enterbutton" id="entranslatebutton" onclick="entranslate()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="grammar" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Grammar</h1>
+            <p class="grammar" id="grammarexplanation">Verb endings in Bulgarian change based on the subject. For example <span class="bgprnm">jas</span> <span class="bgverb">znam</span> means <span class="enprnm">I</span> <span class="enverb">know</span> while <span class="bgprnm">ti</span> <span class="bgverb">znash</span> means <span class="enprnm">you</span> <span class="enverb">know</span>. In English the verb <span class="enverb">know</span> doesn’t change but in Macedonian it changes from <span class="bgverb">znam</span> to <span class="bgverb">znash</span>.</p>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="vocabulary" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Vocabulary</h1>
+            <div id="vocabdiv">
+                <p class="grammar"><span class="bgconj">и</span> => <span class="enconj">and</span></p>
+                <p class="grammar"><span class="bgconj">или</span> => <span class="enconj">or</span></p>
+                <p class="grammar"><span class="bgprep">во</span> => <span class="enprep">in</span></p>
+                <p class="grammar"><span class="bgnoun">кафе</span> => <span class="ennoun">coffee</span></p>
+            </div>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="choice" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>What is the translation for this?</h1>
+            <h1 id="choiceword"><span class="bgnoun">Grad</span></h1>
+            <button class="regbutton enterbutton" id="choice1" onclick="choiceenter(this)" style="background-color: #F79A32;">Country</button>
+            <button class="regbutton enterbutton" id="choice2" onclick="choiceenter(this)" style="background-color: #F79A32;">City</button>
+            <button class="regbutton enterbutton" id="choice3" onclick="choiceenter(this)" style="background-color: #F79A32;">House</button>
+            <button class="regbutton enterbutton" id="choicebutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="gender" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>What is the gender is this word?</h1>
+            <h1 id="genderword"><span class="bgnoun">Ден</span></h1>
+            <button class="regbutton enterbutton" id="masculine" onclick="genderenter(this.id)" style="background-color: #8AB1B0;">Masculine</button>
+            <button class="regbutton enterbutton" id="feminine" onclick="genderenter(this.id)" style="background-color: #088649;">Feminine</button>
+            <button class="regbutton enterbutton" id="neutral" onclick="genderenter(this.id)" style="background-color: #98676A;">Neutral</button>
+            <button class="regbutton enterbutton" id="genderbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="verb" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Conjugate the following verb in the <u>present tense</u>: <span id="verbword" class="bgverb">Zboruva</span></h1>
+            <input class="regbutton inputbutton" id="0" placeholder="Az"></input>
+            <input class="regbutton inputbutton" id="1" placeholder="Ti"></input>
+            <input class="regbutton inputbutton" id="2" placeholder="Toy/Tya/To"></input>
+            <input class="regbutton inputbutton" id="3" placeholder="Nie"></input>
+            <input class="regbutton inputbutton" id="4" placeholder="Vie"></input>
+            <input class="regbutton inputbutton" id="5" placeholder="Te"></input>
+            <button class="regbutton enterbutton" id="verbbutton" onclick="verbcheck()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="showverb" class="helladiv">
+            <h1 class="header">bulgarian.project</h1>
+            <h1>Here are the forms of the following verb: <span id="showverbword" class="bgverb"></span> (<span class="enprep">to</span> <span id="showverbdef" class="enverb"></span>)</h1>
+            <div id="verbdiv"></div>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+    </body>
+</html>

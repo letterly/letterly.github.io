@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            *{
+                font-family: 'Verdana' !important;
+            }
+            input{
+                width: 100%;
+                height: 10%;
+                font-size: 48px;
+            }
+            button{
+                text-align: center;
+                height: 80px;
+                margin: 20px;
+                font-size: 24px;
+            }
+        </style>
+        <script>
+            function num(i){
+                nums = {
+                    westarabic: "0123456789",
+                    eastarabic: "٠١٢٣٤٥٦٧٨٩",
+                    nko: "߀߁߂߃߄߅߆߇߈߉",
+                    adlam: ["𞥐","𞥑","𞥒","𞥓","𞥔","𞥕", "𞥖" ,"𞥗" ,"𞥘" ,"𞥙"],
+                }
+                input = document.getElementById("input").value
+                console.log(input)
+                input = input.replace(/[0٠߀]/g, nums[i][0])
+                input = input.replace(/[1١߁]/g, nums[i][1])
+                input = input.replace(/[2߂٢]/g, nums[i][2])
+                input = input.replace(/[3٣߃]/g, nums[i][3])
+                input = input.replace(/[4٤߄]/g, nums[i][4])
+                console.log(input)
+                input = input.replace(/[5٥߅]/g, nums[i][5])
+                console.log(input)
+
+                input = input.replace(/[6٦߆]/g, nums[i][6])
+                input = input.replace(/[7٧߇]/g, nums[i][7])
+                input = input.replace(/[8٨߈]/g, nums[i][8])
+                input = input.replace(/[9٩߉]/g, nums[i][9])
+                console.log(input)
+                //
+                input = input.replace(/𞥐/g, nums[i][0])
+                input = input.replace(/𞥑/g, nums[i][1])
+                input = input.replace(/𞥒/g, nums[i][2])
+                input = input.replace(/𞥓/g, nums[i][3])
+                input = input.replace(/𞥔/g, nums[i][4])
+                input = input.replace(/𞥕/g, nums[i][5])
+                input = input.replace(/𞥖/g, nums[i][6])
+                input = input.replace(/𞥗/g, nums[i][7])
+                input = input.replace(/𞥘/g, nums[i][8])
+                input = input.replace(/𞥙/g, nums[i][9])
+
+
+                document.getElementById("input").value = input.replace(/�/g, "")
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Number Converter</h1>
+        <input id="input" placeholder="Write a number"></input>
+        <button id="westarabic" onclick="num(this.id)">Western Arabic <br> 0123456789</button>
+        <button id="eastarabic" onclick="num(this.id)">Eastern Arabic <br> ٠١٢٣٤٥٦٧٨٩</button>
+        <button id="nko" onclick="num(this.id)">N'ko <br> ߀߁߂߃߄߅߆߇߈߉</button>
+        <button id="adlam" onclick="num(this.id)">Adlam <br> 𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙</button>
+    </body>
+</html>

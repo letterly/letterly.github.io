@@ -1,0 +1,943 @@
+<html>
+    <head>
+        <title>macedonian.project</title>
+        <meta charset="utf-8">
+        <style>
+            /*
+background brown: #221A0F;
+red: #DC3958;
+orange: #F06431;
+yellow: #F79A32;
+green: #889B4A;
+cyan: #088649;
+blue: #8AB1B0;
+purple: #98676A;
+light: #D3AF86;
+*/
+*{
+    font-family: 'Montserrat';
+}
+DOM, body{
+    background-color: #221A0F;
+}
+h1{
+    color: #D3AF86;
+    font-size: 48px;
+}
+.person{
+    width: 100%;
+    float: left;
+}
+.pronoun{
+    width: 10%;
+    float: left;
+    text-align: right;
+    font-size: 28px;
+}
+.person input{
+    width: 50%;
+    float: right !important;
+}
+.regbutton{
+    float: left;
+    margin: 6px;
+    color: #221A0F;
+    border: none;
+    width: 50%;
+    min-width: 330px;
+    height: 80px;
+    font-size: 36px;
+    border-radius: 5px;
+    outline: none;
+    font-weight: 700;
+}
+.scriptbutton{
+    float: left;
+    margin: 6px;
+    background-color: #D3AF86;
+    color: #221A0F;
+    border: none;
+    width: 200px;
+    height: 80px;
+    font-size: 36px;
+    border-radius: 5px;
+    outline: none;
+}
+.buttonbloc{
+    width: 100%;
+    float: left;
+}
+.header{
+    font-weight: 400;
+}
+.inputbutton{
+    border: 8px #D3AF86 solid;
+    background-color: #221A0F;
+    color: #D3AF86;
+}
+.inputbutton::placeholder{
+    color: #D3AF86;
+}
+#verb .inputbutton::placeholder{
+    color: #F79A32;
+}
+.grammar{
+    font-size: 40px;
+    font-weight: 700;
+    color: #D3AF86;
+    line-height: 120%;
+}
+/**/
+.mknoun{
+    color: #F06431;
+}
+.ennoun{
+    color: #221A0F;
+    background-color: #F06431;
+}
+.mkprnm{
+    color: #F79A32;
+}
+.enprnm{
+    color: #221A0F;
+    background-color: #F79A32;
+}
+.mkadj{
+    color: #889B4A;
+}
+.enadj{
+    color: #221A0F;
+    background-color: #889B4A;
+}
+.mkprep{
+    color: #98676A;
+}
+.enprep{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.mkpunc{
+    color: #D3AF86;
+}
+.enpunc{
+    color: #221A0F;
+    background-color: #D3AF86;
+}
+.mkverb{
+    color: #8AB1B0;
+}
+.enverb{
+    color: #221A0F;
+    background-color: #8AB1B0;
+}
+.mkconj{
+    color: #088649;
+}
+.enconj{
+    color: #221A0F;
+    background-color: #088649;
+}
+.enarcl{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.enpart{
+    color: #221A0F;
+    background-color: #98676A;
+}
+.mkpart{
+    color: #98676A;
+}
+.enadv{
+    color: #221A0F;
+    background-color: #DC3958;
+}
+.mkadv{
+    color: #DC3958;
+}
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <script>
+            //data.js
+            lesson = {
+    "1.1": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "jas": "I",
+                "sum": "am",
+                "od": "from",
+                "vo": "in",
+                "Makedonija": "Macedonia",
+            },
+        },
+        {
+            type: "choice",
+            lang: "mk",
+            word: "Od",
+            choices: ["From", "In", "I"],
+            answer: "From",
+        },
+        {
+            type: "mktranslate",
+            mk: "Jas sum vo Makedonija",
+            en: "I am in Macedonia",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "ti": "you",
+                "si": "are",
+                "Srbija": "Serbia",
+                "i": "and",
+            },
+        },
+        {
+            type: "mktranslate",
+            mk: "Ti si od Srbija",
+            en: "You are from Serbia",
+        },
+        {
+            type: "entranslate",
+            mk: "Ti i jas",
+            en: "You and I",
+        },
+
+        /*
+        {
+            type: "gender",
+            word: "Den",
+            gender: "masculine",
+        },
+        {
+            type: "showverb",
+            verb: "sum",
+            conjugation: ["sum", "si", "e", "sme", "ste", "se"],
+        },
+        */
+       /*
+        {
+            type: "verb",
+            verb: "sum",
+            conjugation: ["sum", "si", "e", "sme", "ste", "se"],
+        },
+        //grammar
+        */
+    ],
+    "1.2": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "toj": "he",
+                "taa": "she",
+                "toa": "it",
+                "nie": "we",
+                "vie": "you (plural)",
+                "tie": "they",
+                "Grcija": "Greece",
+            },
+        },
+        {
+            type: "grammar",
+            grammar: "In English, the verb |to be| changes form based on the subject (|I am|, |you are|, etc.). In Macedonian, verbs change based on subject too. The verb ^sum^ (to be) has six forms, depending on 1st, 2nd, or 3rd person as well as singular/plural.",
+        },
+        {
+            type: "showverb",
+            verb: "sum",
+            def: "be",
+            conjugation: ["sum", "si", "e", "sme", "ste", "se"],
+        },
+        {
+            type: "mktranslate",
+            mk: "Taa e",
+            en: "She is",
+        },
+        {
+            type: "entranslate",
+            en: "We are in Macedonia",
+            mk: "Nie sme vo Makedonija",
+        },
+        {
+            type: "mktranslate",
+            en: "They are from Greece",
+            mk: "Tie se od Grcija",
+        },
+        {
+            type: "choice",
+            lang: "mk",
+            word: "Vie",
+            choices: ["We", "They", "You (plural)"],
+            answer: "You (plural)",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "no": "but",
+                "da": "yes",
+                "ne": "no / not (precedes verb)",
+                "kade": "where (interrogative)",
+                "Evropa": "Europe",
+                "Albanija": "Albania",
+            },
+        },
+        {
+            type: "mktranslate",
+            mk: "Kade e Makedonija?",
+            en: "Where is Macedonia?",
+        },
+        {
+            type: "entranslate",
+            mk: "Da Makedonija e vo Evropa",
+            en: "Yes, Macedonia is in Europe",
+        },
+        {
+            type: "entranslate",
+            mk: "Toj ne e vo Albanija",
+            en: "He is not in Albania",
+        },
+    ],
+    "1.3": [
+        {
+            type: "showverb",
+            verb: "zboruva",
+            def: "speak",
+            conjugation: ["zboruvam", "zboruvash", "zboruva", "zboruvame", "zboruvate", "zboruvaat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "makedonski": "macedonian",
+                "srpski": "serbian",
+                "grchki": "greek",
+                "albanski": "albanian",
+                "angliski": "english",
+            },
+        },
+        {
+            type: "mktranslate",
+            mk: "Taa ne zboruva angliski",
+            en: "She does not speak English",
+        },
+        {
+            type: "entranslate",
+            mk: "Vo Tetovo nie zboruvame albanski i makedonski",
+            en: "In Tetovo we speak Albanian and Macedonian",
+        },
+        {
+            type: "grammar",
+            grammar: "In Macedonian, you can sometimes drop the subject before a verb, because the suffix of the verb implies the subject. For example, we always know that the verb ^sme^ is referring to the subject ^nie^.",
+        },
+        {
+            type: "mktranslate",
+            mk: "Tie se od Grcija no ne zboruvaat grchki",
+            en: ["They are from Greece but they do not speak Greek", "They are from Greece but do not speak Greek"],
+        },
+        {
+            type: "showverb",
+            verb: "uchi",
+            def: "study",
+            conjugation: ["ucham", "uchish", "uchi", "uchime", "uchite", "uchat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "ili": "or",
+                "ako": "if",
+                "Kalifornija": "california",
+                "so": "with",
+                "shpanski": "spanish",
+                "francuski": "french",
+                "Kanada": "canada",
+            },
+        },
+        {
+            type: "mktranslate",
+            mk: "Ako si od Kalifornija, zboruvash angliski ili shpanski",
+            en: "if you are from california you speak english or spanish",
+        },
+        {
+            type: "entranslate",
+            mk: "Toj uchi francuski vo Kanada",
+            en: "He studies French in Canada",
+        },
+        {
+            type: "verb",
+            verb: "zboruva",
+            conjugation: ["zboruvam", "zboruvash", "zboruva", "zboruvame", "zboruvate", "zboruvaat"],
+        },
+        {
+            type: "mktranslate",
+            mk: "Uchime so Ljupcho",
+            en: ["We study with Ljupcho", "We are studying with Ljupcho"],
+        },
+    ],
+    "2.1": [
+        {
+            type: "showverb",
+            verb: "ima",
+            def: "have",
+            conjugation: ["imam", "imash", "ima", "imame", "imate", "imaat"],
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "jabolko": "apple",
+                "banana": "banana",
+                "mango": "mango",
+                "kokos": "coconut",
+                "lubenica": "watermelon",
+                "grozje": "grape",
+                "denes": "today",
+                "tuka": "here",
+            },
+        },
+        {
+            type: "grammar",
+            grammar: "Nouns can be one of three genders in Macedonian: Feminine, Masculine, and Neutral. Generally speaking, nouns ending in 'a' are Feminine, nouns ending in 'e' or 'o' are Neutral, and nouns ending in a consonant are Masculine.",
+        },
+        {
+            type: "gender",
+            word: "Jabolko",
+            gender: "neutral",
+        },
+        {
+            type: "gender",
+            word: "Kokos",
+            gender: "masculine",
+        },
+        {
+            type: "gender",
+            word: "Grozje",
+            gender: "neutral",
+        },
+        {
+            type: "gender",
+            word: "Banana",
+            gender: "feminine",
+        },
+        {
+            type: "grammar",
+            grammar: "Nouns are by default indefinite (|a|/|an| in English). To make nouns definite (|the| in English), add the suffix ^-ta^ to a feminine noun, ^-ot^ to a masculine noun, and ^-to^ to a neutral noun.",
+        },
+        {
+            type: "mktranslate",
+            mk: "Bananata",
+            en: "The banana",
+        },
+        {
+            type: "entranslate",
+            mk: "Mangoto",
+            en: "The mango",
+        },
+        {
+            type: "entranslate",
+            mk: ["Jas sum tuka i imam kokosot", "Jas sum tuka i jas imam kokosot"],
+            en: "I am here and I have the coconut",
+        },
+        {
+            type: "verb",
+            verb: "ima",
+            conjugation: ["imam", "imash", "ima", "imame", "imate", "imaat"],
+        },
+    ],
+    "2.2": [
+        {
+            type: "vocabulary",
+            vocab: {
+                "crven": "red",
+                "portokalov": "orange",
+                "zholt": "yellow",
+                "zelen": "green",
+                "sin": "blue",
+            },
+        },
+        {
+            "type": "grammar",
+            "grammar": "Adjectives change based on the gender of the noun they modify, adding either '-a' or '-o' to feminine and neutral nouns respectively. For example, ^zholt^ is masculine, ^zholta^ is feminine, and ^zholto^ is neutral."
+        },
+        {
+            type: "mktranslate",
+            mk: "Jabolkoto e zeleno",
+            en: "The apple is green",
+        },
+        {
+            type: "entranslate",
+            mk: "Makedonija e crvena i zholta",
+            en: "Macedonia is red and yellow",
+        },
+        {
+            type: "vocabulary",
+            vocab: {
+                "violetov": "purple",
+                "rozov": "pink",
+                "bel": "white",
+                "crn": "black",
+                "siv": "gray",
+            },
+        },
+        {
+            type: "entranslate",
+            en: "In Albania, we have a purple watermelon",
+            mk: "Vo Albanija, imame violetova lubenica"
+        },
+        {
+            type: "choice",
+            lang: "en",
+            word: "Black",
+            choices: ["Siv", "Crn", "Crven"],
+            answer: "Crn",
+        },
+    ]
+}
+english = {
+    "i": "prnm",
+    "you": "prnm",
+    "he": "prnm",
+    "she": "prnm",
+    "it": "prnm",
+    "we": "prnm",
+    "they": "prnm",
+    "am": "verb",
+    "are": "verb",
+    "is": "verb",
+    "from": "prep",
+    "a": "arcl",
+    "an": "arcl",
+    "the": "arcl",
+    "serbia": "noun",
+    "macedonia": "noun",
+    "greece": "noun",
+    "macedonian": "noun",
+    "serbian": "noun",
+    "greek": "noun",
+    "spanish": "noun",
+    "albanian": "noun",
+    "french": "noun",
+    "english": "noun",
+    "study": "verb",
+    "speak": "verb",
+    "and": "conj",
+    "or": "conj",
+    "but": "conj",
+    "coffee": "noun",
+    "in": "prep",
+    ".": "punc",
+    "to": "prep",
+    "be": "verb",
+    "day": "noun",
+    "ljupcho": "noun",
+    "yes": "part",
+    "no": "part",
+    "where": "adv",
+    "albania": "noun",
+    "europe": "noun",
+    "not": "adv",
+    "california": "noun",
+    "canada": "noun",
+    "with": "conj",
+    "if": "conj",
+    "have": "verb",
+    "has": "verb",
+    "tetovo": "noun",
+    "apple": "noun",
+    "banana": "noun",
+    "mango": "noun",
+    "coconut": "noun",
+    "watermelon": "noun",
+    "grape": "noun",
+    "today": "adv",
+    "here": "adv",
+    "red": "adj",
+    "orange": "adj",
+    "yellow": "adj",
+    "green": "adj",
+    "blue": "adj",
+    "purple": "adj",
+    "pink": "adj",
+    "white": "adj",
+    "black": "adj",
+    "gray": "adj",
+}
+macedonian = {
+    "jas": "prnm",
+    "ti": "prnm",
+    "toj": "prnm",
+    "toa": "prnm",
+    "taa": "prnm",
+    "nie": "prnm",
+    "vie": "prnm",
+    "tie": "prnm",
+    "sum": "verb",
+    "si": "verb",
+    "e": "verb",
+    "sme": "verb",
+    "ste": "verb",
+    "se": "verb",
+    "od": "prep",
+    "srbija": "noun",
+    "makedonija": "noun",
+    "grcija": "noun",
+    "makedonski": "noun",
+    "srpski": "noun",
+    "grchki": "noun",
+    "shpanski": "noun",
+    "francuski": "noun",
+    "albanski": "noun",
+    "angliski": "noun",
+    "i": "conj",
+    "ili": "conj",
+    "no": "conj",
+    "kafe": "noun",
+    "vo": "prep",
+    ".": "punc",
+    "den": "noun",
+    "ljupcho": "noun",
+    "ne": "part",
+    "da": "part",
+    "albanija": "noun",
+    "evropa": "noun",
+    "kade": "adv",
+    "ako": "conj",
+    "so": "conj",
+    "kanada": "noun",
+    "kalifornija": "noun",
+    "zboruvam": "verb",
+    "zboruvash": "verb",
+    "zboruva": "verb",
+    "zboruvame": "verb",
+    "zboruvate": "verb",
+    "zboruvaat": "verb",
+    "ucham": "verb",
+    "uchish": "verb",
+    "uchi": "verb",
+    "uchime": "verb",
+    "uchite": "verb",
+    "uchat": "verb",
+    "jabolko": "noun",
+    "jabolkoto": "noun",
+    "banana": "noun",
+    "bananata": "noun",
+    "mango": "noun",
+    "kokos": "noun",
+    "lubenica": "noun",
+    "grozje": "noun",
+    "denes": "adv",
+    "tuka": "adv",
+    "crven": "adj",
+    "crvena": "adj",
+    "portokalov": "adj",
+    "zholt": "adj",
+    "zholto": "adj",
+    "zholta": "adj",
+    "zelen": "adj",
+    "zeleno": "adj",
+    "sin": "adj",
+    "violetov": "adj",
+    "rozov": "adj",
+    "bel": "adj",
+    "crn": "adj",
+    "siv": "adj",
+}
+alphabet = {
+    "dzh": "џ", 
+    "dz": "ѕ", 
+    "gj": "ѓ", 
+    "zh": "ж", 
+    "lj": "љ", 
+    "nj": "њ", 
+    "kj": "ќ", 
+    "ch": "ч", 
+    "sh": "ш", 
+        "c": "ц", 
+    "a": "а", 
+    "b": "б", 
+    "v": "в", 
+    "g": "г", 
+    "d": "д", 
+    "e": "е", 
+    "z": "з", 
+    "i": "и", 
+    "j": "ј", 
+    "k": "к", 
+    "l": "л", 
+    "m": "м", 
+    "n": "н", 
+    "o": "о", 
+    "p": "п", 
+    "r": "р", 
+    "s": "с", 
+    "t": "т", 
+    "u": "у", 
+    "f": "ф", 
+    "h": "х", 
+    " ": " ", 
+}
+        </script>
+        <script>
+            //work.js
+            script = ""
+levelNumber = ""
+levelPart = 0
+document.addEventListener("DOMContentLoaded", function(){
+    scriptSwitch("latin")
+    showDiv("levelselect")
+})
+function showDiv(id){
+    for(x of Array.from(document.getElementsByClassName("helladiv"))) x.style.display = "none";
+    document.getElementById(id).style.display = "inherit";
+    switch(id){
+        case "mktranslate":
+            document.getElementById("eninput").value = ""
+            document.getElementById("mktranslatebutton").outerHTML = `<button class="regbutton enterbutton" id="mktranslatebutton" onclick="mktranslate()" style="background-color: #98676A;">Enter</button>`
+            document.getElementById("mktotranslate").innerHTML = mkcolor(lesson[levelNumber][levelPart].mk)
+            break
+        case "entranslate":
+            document.getElementById("mkinput").value = ""
+            document.getElementById("entranslatebutton").outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="entranslate()" style="background-color: #98676A;">Enter</button>`
+            document.getElementById("entotranslate").innerHTML = encolor(lesson[levelNumber][levelPart].en)
+            break
+        case "grammar":
+            grammarexplanation = lesson[levelNumber][levelPart].grammar
+            grammarexplanation = grammarexplanation.split("|").map((content, index) => index % 2 == 0 ? content : encolor(content)).join("")
+            grammarexplanation = grammarexplanation.split("^").map((content, index) => index % 2 == 0 ? content : mkcolor(content)).join("")
+            document.getElementById("grammarexplanation").innerHTML = grammarexplanation
+            break
+        case "vocabulary":
+            vocab = lesson[levelNumber][levelPart].vocab
+            document.getElementById("vocabdiv").innerHTML = Object.entries(vocab).map(q => `<p class="grammar">${mkcolor(q[0])} => ${encolor(q[1])}</p>`).join("")
+            break
+        case "choice":
+            document.getElementById("choiceword").innerHTML = lesson[levelNumber][levelPart].lang == "en" ? encolor(lesson[levelNumber][levelPart].word) : mkcolor(lesson[levelNumber][levelPart].word)
+            document.getElementById("choice1").textContent = lesson[levelNumber][levelPart].choices[0]
+            document.getElementById("choice2").textContent = lesson[levelNumber][levelPart].choices[1]
+            document.getElementById("choice3").textContent = lesson[levelNumber][levelPart].choices[2]
+            document.getElementById("choicebutton").style.display = "none"
+            break
+        case "gender":
+            document.getElementById("genderword").innerHTML = mkcolor(lesson[levelNumber][levelPart].word)
+            document.getElementById("genderbutton").style.display = "none"
+            break
+        case "verb":
+            document.getElementById("verbword").textContent = script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].verb) : lesson[levelNumber][levelPart].verb
+            for(var z = 0; z < 6; z++){
+                document.getElementById(z).value = ""
+                document.getElementById(z).style.borderColor = "#D3AF86";
+            }
+            document.getElementById("verbbutton").outerHTML = `<button class="regbutton enterbutton" id="verbbutton" onclick="verbcheck()" style="background-color: #98676A;">Enter</button>`
+        case "showverb":
+            document.getElementById("showverbword").textContent = script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].verb) : lesson[levelNumber][levelPart].verb
+            document.getElementById("showverbdef").textContent = `${lesson[levelNumber][levelPart].def}`
+            prnms = ["Jas", "Ti", "Toj/Taa/Toa", "Nie", "Vie", "Tie"]
+            verblist = ""
+            for(var t = 0; t < prnms.length; t++){
+                verblist += `<h1><span class="mkprnm">${script == "cyrillic" ? cyrillic(prnms[t]) : prnms[t]}</span> <span class="mkverb">${script == "cyrillic" ? cyrillic(lesson[levelNumber][levelPart].conjugation[t]) : lesson[levelNumber][levelPart].conjugation[t]}</span></h1>`
+            }
+            document.getElementById("verbdiv").innerHTML = verblist
+            break
+    }
+}
+function scriptSwitch(name){
+    script = name
+    opname = name == "latin" ? "cyrillic" : "latin" 
+    document.getElementById(opname).style.fontWeight = 400
+    document.getElementById(name).style.fontWeight = 700
+}
+function mkcolor(text){
+    return text.split(" ").map(y => `<span class='mk${macedonian[y.toLowerCase().replace(/\,/g, "").replace(/\?/g, "").replace(/\!/g, "").replace(/\./g, "")]}'>${script == "cyrillic" ? cyrillic(y) : y}</span>`).join(" ")
+}
+function encolor(text){
+    return text.split(" ").map(y => `<span class='en${english[y.toLowerCase().replace(/\,/g, "").replace(/\?/g, "").replace(/\!/g, "").replace(/\./g, "")]}'>${y}</span>`).join(" ")
+}
+function cyrillic(text){
+    for(u of Object.entries(alphabet)){
+        var regex = new RegExp(u[0], "g");
+        text = text.replace(regex, u[1]);
+        regex = new RegExp(u[0].charAt(0).toUpperCase() + u[0].slice(1), "g");
+        text = text.replace(regex, u[1].toUpperCase());
+    }
+    return text
+}
+function latin(text){
+    for(u of Object.entries(alphabet)){
+        var regex = new RegExp(u[1], "g");
+        text = text.replace(regex, u[0]);
+        regex = new RegExp(u[1].toUpperCase(), "g");
+        text = text.replace(regex, u[0].charAt(0).toUpperCase() + u[0].slice(1));
+    }
+    return text
+}
+function startLevel(level){
+    levelPart = 0
+    levelNumber = level
+    showDiv(lesson[levelNumber][levelPart].type)
+}
+function nextLevelPart(){
+    levelPart++
+    if(lesson[levelNumber].length == levelPart) showDiv("levelselect")
+    else showDiv(lesson[levelNumber][levelPart].type)
+}
+function verbcheck(){
+    correct = true
+    for(var e = 0; e < 6; e++){
+        ee = document.getElementById(e)
+        console.log(lesson[levelNumber][levelPart].conjugation[e])
+        console.log(ee.value)
+        if(ee.value.toLowerCase().trim() == lesson[levelNumber][levelPart].conjugation[e]){
+            ee.style.borderColor = "#889B4A";
+        }
+        else{
+            correct = false
+            ee.style.borderColor = "#DC3958";
+        }
+    }
+    verbbutton = document.getElementById("verbbutton")
+    if(correct){
+        verbbutton.outerHTML = `<button class="regbutton enterbutton" id="mktranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        verbbutton.outerHTML = `<button class="regbutton enterbutton" id="mktranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function mktranslate(){
+    eninput = document.getElementById("eninput").value.trim();
+    eninput = eninput.toLowerCase()
+        .replace(/'m/g, " am")
+        .replace(/'re/g, " are")
+        .replace(/he's/g, "he is")
+        .replace(/it's/g, "it is")
+        .replace(/n't/g, " not")
+        .replace(/\./g, "")
+        .replace(/\,/g, "")
+    answer = lesson[levelNumber][levelPart].en
+    if(typeof answer == "object") answer = answer.map(p => p.toLowerCase())
+    else answer = answer.toLowerCase()
+    mktranslatebutton = document.getElementById("mktranslatebutton")
+    if((typeof answer == "object" && answer.includes(eninput)) || latin(eninput) == answer){
+        mktranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="mktranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        mktranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="mktranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function entranslate(){
+    mkinput = document.getElementById("mkinput").value.trim();
+    mkinput = mkinput.toLowerCase().replace(/\./g, "")
+    answer = lesson[levelNumber][levelPart].mk
+    if(typeof answer == "object") answer = answer.map(p => p.toLowerCase())
+    else answer = answer.toLowerCase()
+    entranslatebutton = document.getElementById("entranslatebutton")
+    if((typeof answer == "object" && answer.includes(latin(mkinput))) || latin(mkinput) == answer){
+        entranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="nextLevelPart()" style="background-color: #889B4A;">Correct! Continue...</button>`
+    }
+    else{
+        entranslatebutton.outerHTML = `<button class="regbutton enterbutton" id="entranslatebutton" onclick="nextLevelPart()" style="background-color: #DC3958;">Incorrect! Continue...</button>`
+    }
+}
+function choiceenter(a){
+    document.getElementById("choicebutton").style.display = "inherit"
+    if(lesson[levelNumber][levelPart].answer == a.textContent){
+        document.getElementById("choicebutton").textContent = "Correct! Continue..."
+        document.getElementById("choicebutton").style.backgroundColor = "#889B4A"
+    }
+    else{
+        document.getElementById("choicebutton").textContent = "Incorrect! Continue..."
+        document.getElementById("choicebutton").style.backgroundColor = "#DC3958"
+    }
+}
+function genderenter(a){
+    document.getElementById("genderbutton").style.display = "inherit"
+    if(lesson[levelNumber][levelPart].gender == a){
+        document.getElementById("genderbutton").textContent = "Correct! Continue..."
+        document.getElementById("genderbutton").style.backgroundColor = "#889B4A"
+    }
+    else{
+        document.getElementById("genderbutton").textContent = "Incorrect! Continue..."
+        document.getElementById("genderbutton").style.backgroundColor = "#DC3958"
+    }
+}
+        </script>
+    </head>
+    <body>
+        <div id="levelselect" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Level Select</h1>
+            <div id="scriptselect" class="buttonbloc">
+                <button class="scriptbutton" id="latin" onclick="scriptSwitch(this.id)">Latin</button>
+                <button class="scriptbutton" id="cyrillic" onclick="scriptSwitch(this.id)">Cyrillic</button>
+            </div>
+            <div id="scriptselect" class="buttonbloc">
+                <button class="regbutton levelbutton" id="1.1" onclick="startLevel(this.id)" style="background-color: #DC3958;">1.1 Introduction</button>
+                <button class="regbutton levelbutton" id="1.2" onclick="startLevel(this.id)" style="background-color: #F06431;">1.2 To Be</button>
+                <button class="regbutton levelbutton" id="1.3" onclick="startLevel(this.id)" style="background-color: #F79A32;">1.3 Languages</button>
+                <button class="regbutton levelbutton" id="2.1" onclick="startLevel(this.id)" style="background-color: #889B4A;">2.1 Nouns</button>
+                <button class="regbutton levelbutton" id="2.2" onclick="startLevel(this.id)" style="background-color: #088649;">2.2 Colors</button>
+            </div>
+        </div>
+        <div id="mktranslate" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Translate the following sentence:</h1>
+            <h1 id="mktotranslate"><span class="mkprnm">Jas</span> <span class="mkverb">sum</span> <span class="mkprep">od</span> <span class="mknoun">Srbija</span><span class="mkpunc">.</span></h1>
+            <input class="regbutton inputbutton" id="eninput" placeholder="type here..."></input>
+            <button class="regbutton enterbutton" id="mktranslatebutton" onclick="mktranslate()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="entranslate" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Translate the following sentence:</h1>
+            <h1 id="entotranslate"><span class="enprnm">He</span> <span class="enverb">is</span> <span class="enprep">from</span> <span class="ennoun">Greece</span><span class="enpunc">.</span></h1>
+            <input class="regbutton inputbutton" id="mkinput" placeholder="type here..."></input>
+            <button class="regbutton enterbutton" id="entranslatebutton" onclick="entranslate()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="grammar" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Grammar</h1>
+            <p class="grammar" id="grammarexplanation">Verb endings in Macedonian change based on the subject. For example <span class="mkprnm">jas</span> <span class="mkverb">znam</span> means <span class="enprnm">I</span> <span class="enverb">know</span> while <span class="mkprnm">ti</span> <span class="mkverb">znash</span> means <span class="enprnm">you</span> <span class="enverb">know</span>. In English the verb <span class="enverb">know</span> doesn’t change but in Macedonian it changes from <span class="mkverb">znam</span> to <span class="mkverb">znash</span>.</p>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="vocabulary" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Vocabulary</h1>
+            <div id="vocabdiv">
+                <p class="grammar"><span class="mkconj">и</span> => <span class="enconj">and</span></p>
+                <p class="grammar"><span class="mkconj">или</span> => <span class="enconj">or</span></p>
+                <p class="grammar"><span class="mkprep">во</span> => <span class="enprep">in</span></p>
+                <p class="grammar"><span class="mknoun">кафе</span> => <span class="ennoun">coffee</span></p>
+            </div>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="choice" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>What is the translation for this?</h1>
+            <h1 id="choiceword"><span class="mknoun">Grad</span></h1>
+            <button class="regbutton enterbutton" id="choice1" onclick="choiceenter(this)" style="background-color: #F79A32;">Country</button>
+            <button class="regbutton enterbutton" id="choice2" onclick="choiceenter(this)" style="background-color: #F79A32;">City</button>
+            <button class="regbutton enterbutton" id="choice3" onclick="choiceenter(this)" style="background-color: #F79A32;">House</button>
+            <button class="regbutton enterbutton" id="choicebutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="gender" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>What is the gender is this word?</h1>
+            <h1 id="genderword"><span class="mknoun">Ден</span></h1>
+            <button class="regbutton enterbutton" id="masculine" onclick="genderenter(this.id)" style="background-color: #8AB1B0;">Masculine</button>
+            <button class="regbutton enterbutton" id="feminine" onclick="genderenter(this.id)" style="background-color: #088649;">Feminine</button>
+            <button class="regbutton enterbutton" id="neutral" onclick="genderenter(this.id)" style="background-color: #98676A;">Neutral</button>
+            <button class="regbutton enterbutton" id="genderbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+        <div id="verb" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Conjugate the following verb in the <u>present tense</u>: <span id="verbword" class="mkverb">Zboruva</span></h1>
+            <input class="regbutton inputbutton" id="0" placeholder="Jas"></input>
+            <input class="regbutton inputbutton" id="1" placeholder="Ti"></input>
+            <input class="regbutton inputbutton" id="2" placeholder="Toj/Taa/Toa"></input>
+            <input class="regbutton inputbutton" id="3" placeholder="Nie"></input>
+            <input class="regbutton inputbutton" id="4" placeholder="Vie"></input>
+            <input class="regbutton inputbutton" id="5" placeholder="Tie"></input>
+            <button class="regbutton enterbutton" id="verbbutton" onclick="verbcheck()" style="background-color: #98676A;">Enter</button>
+        </div>
+        <div id="showverb" class="helladiv">
+            <h1 class="header">macedonian.project</h1>
+            <h1>Here are the forms of the following verb: <span id="showverbword" class="mkverb"></span> (<span class="enprep">to</span> <span id="showverbdef" class="enverb"></span>)</h1>
+            <div id="verbdiv"></div>
+            <button class="regbutton enterbutton" onclick="nextLevelPart()" style="background-color: #98676A;">Continue</button>
+        </div>
+    </body>
+</html>
