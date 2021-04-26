@@ -31,7 +31,7 @@ function presentation(letterino){
             "נ": "ן",
             "כ": "ך",
         }
-        return Object.keys(finalkey).includes(letterino) ? letterino + finalkey[letterino] : letterino
+        return finalkey[letterino] != undefined ? (letterino + finalkey[letterino]) : letterino
     }
     else if(L.script == "arabic") return `${letterino} ${letterino}ـ ـ${letterino}ـ  ـ${letterino}`
     else if(S.cameral) return (letterino.toUpperCase() + letterino)
@@ -39,7 +39,7 @@ function presentation(letterino){
 }
 function pronunciationhandler(data){
     if(data.includes(",")) return `${language == "korean" ? "syllable" : "word"}-initially ${pronunciationhandler(data.split(",")[0])}, otherwise ${pronunciationhandler(data.split(",")[1])}`
-    z = (L.toIPA[data] != undefined) ? ipa[L.toIPA[data]] : ipa[data]
+    z = ipa[L.toIPA[data]] ?? ipa[data]
     return z.replace(/\[/g, "<span>").replace(/\]/g, "</span>")
 }
 function format(data){
@@ -132,7 +132,7 @@ function tlit(word){
 }
 function soundify(d){
     d = L.alphabet[d]
-    return L.toIPA[d] != undefined ? L.toIPA[d] : d
+    return L.toIPA[d] ?? d
 }
 document.addEventListener('keydown', (e) => {
     if(input == document.activeElement) event.preventDefault()
@@ -150,13 +150,9 @@ document.addEventListener('keyup', (e) => {
 document.addEventListener('mousedown', (e) => {
     if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#DC3958" 
     else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen"){
-        c = L.alphabet[letter.textContent.split(" ")[0].toLowerCase()]
-        if(L.script == "osage") c = L.alphabet[letter.textContent.split(" ")[0]] /*fallback lol*/ 
-        if(c == undefined) c = L.alphabet[letter.textContent.slice(0, 1 + S.plane).toLowerCase()]
-        console.log(c)
-        if(c.includes(",")) c = c.split(",")[0]
-        c = L.toIPA[c] != undefined ? L.toIPA[c] : c
-        new Audio("sounds/" + c + ".m4a").play() //soon m4a
+        c = L.alphabet[L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0]]
+        c = L.toIPA[c] ?? c
+        new Audio("sounds/" + c + ".m4a").play()
     }
 })
 document.addEventListener('mouseup', (e) => {
