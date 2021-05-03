@@ -1,0 +1,298 @@
+<html>
+    <head>
+        <style>
+.verb{
+    color: #dc3958
+}
+.noun{
+    color: #889b4a
+}
+.positional{
+    color: #8ab1b0;
+}
+.adjective{
+    color: #f06431;
+}
+.idk{
+    color: #98676a;
+}
+body{
+    background-color: #221a0f;
+}
+
+*{
+    font-family: 'Noto Sans';
+}
+/**/
+#keyboard{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: calc((66px + 2%) * 3);
+}
+.key{
+    background-color: #fdf6e3;
+    height: 66px;
+    width: 50px;
+    float: left;
+    margin: 1%;
+    border: none;
+}
+.key:hover{
+    background-color: #2aa198;
+}
+.main, .latin{
+    line-height: 0%;
+    text-align: center;
+    font-weight: 900;
+}
+.main{
+    color: #dc322f;
+    font-size: 28px;
+}
+.latin{
+    font-size: 14px;
+    color: #cb4b16;
+}
+.row{
+    width: 100%;
+    float: left;
+}
+#row2{
+    margin-left: 15px;
+}
+#row3{
+    margin-left: 30px;
+}
+#row0{
+    margin-left: 465px;
+}
+#entry{
+  background-color: #fdf6e3;
+}
+textarea{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    resize: none;
+    background-color: #fbebd4;
+    color: #a57a4c;
+    font-size: 36px;
+    height: 300px;
+}
+div{
+    color: #fbebd4
+}
+#result{
+    font-size: 36px;
+    border: 1px white solid;
+    padding: 2px;
+    float: left;
+    height: 100px;
+    width: 90%;
+    margin: 5%;
+    overflow: scroll;
+}
+span{
+    font-size: 22px;
+}
+        </style>
+        <script>
+eventCode = {
+    "Digit8": "̕",
+    "Digit9": "́",
+    "Digit0": "ɬ",
+    "Minus": "č", 
+    "Equal": "š",
+    "KeyQ": "q",
+    "KeyW": "w",
+    "KeyE": "e",
+    "KeyR": "r",
+    "KeyT": "t",
+    "KeyY": "y",
+    "KeyU": "u",
+    "KeyI": "i",
+    "KeyO": "o",
+    "KeyP": "p",
+    "BracketLeft": "ə",
+    "BracketRight": "ʔ",
+    "Slash": "ʷ",
+    "KeyA": "a",
+    "KeyS": "s",
+    "KeyD": "d",
+    "KeyF": "f",
+    "KeyG": "g",
+    "KeyH": "h",
+    "KeyJ": "j",
+    "KeyK": "k",
+    "KeyL": "l",
+    "Semicolon": "x̣",
+    "Quote": "'",
+    "KeyZ": "z",
+    "KeyX": "x",
+    "KeyC": "c",
+    "KeyV": "v",
+    "KeyB": "b",
+    "KeyN": "n",
+    "KeyM": "m",
+    "Comma": "ŋ",
+    "Period": "ƛ",
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    var textarea = [].slice.call(document.getElementsByTagName("textarea"))[0]
+    var key = [].slice.call(document.getElementsByClassName('key'))
+    key.forEach((element, index) => {
+        element.addEventListener('click', (event) => {
+           textarea.value += event.target.textContent.trim().charAt(0)
+        })
+    })
+    this.addEventListener('keydown', event => {
+        if(Object.keys(eventCode).includes(event.code)) event.preventDefault()
+        if(eventCode[event.code] !== undefined){
+            textarea.value += eventCode[event.code]
+            if(event.code != "Enter" && event.code != "Space") document.getElementById(event.code).style.backgroundColor = "#2aa198"
+            if(event.code == "Enter"){
+                textarea.value = ""
+            }
+        }
+    })
+    this.addEventListener('keyup', event => {
+        if(Object.keys(eventCode).includes(event.code)) event.preventDefault()
+        if(eventCode[event.code] !== undefined && event.code != "Enter" && event.code != "Space") document.getElementById(event.code).style.backgroundColor = "#fdf6e3"
+    })
+})
+
+        </script>
+        <title>s'klallam project</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="keyboard">
+            <div id="row0" class="row">
+                <div class="key" id="Digit8">
+                    <p class="main">̕</p>
+                </div>
+                <div class="key" id="Digit9">
+                    <p class="main">́</p>
+                </div>
+                <div class="key" id="Digit0">
+                    <p class="main">ɬ</p>
+                </div>
+                <div class="key" id="Minus">
+                    <p class="main">č</p>
+                </div>
+                <div class="key" id="Equal">
+                    <p class="main">š</p>
+                </div>
+            </div>
+            <div id="row1" class="row">
+                <div class="key" id="KeyQ">
+                    <p class="main">q</p>
+                </div>
+                <div class="key" id="KeyW">
+                    <p class="main">w</p>
+                </div>
+                <div class="key" id="KeyE">
+                    <p class="main">e</p>
+                </div>
+                <div class="key" id="KeyR">
+                    <p class="main">r</p>
+                </div>
+                <div class="key" id="KeyT">
+                    <p class="main">t</p>
+                </div>
+                <div class="key" id="KeyY">
+                    <p class="main">y</p>
+                </div>
+                <div class="key" id="KeyU">
+                    <p class="main">u</p>
+                </div>
+                <div class="key" id="KeyI">
+                    <p class="main">i</p>
+                </div>
+                <div class="key" id="KeyO">
+                    <p class="main">o</p>
+                </div>
+                <div class="key" id="KeyP">
+                    <p class="main">p</p>
+                </div>
+                <div class="key" id="BracketLeft">
+                    <p class="main">ə</p>
+                </div>
+                <div class="key" id="BracketRight">
+                    <p class="main">ʔ</p>
+                </div>
+            </div>
+            <div id="row2" class="row">
+                <div class="key" id="KeyA">
+                    <p class="main">a</p>
+                </div>
+                <div class="key" id="KeyS">
+                    <p class="main">s</p>
+                </div>
+                <div class="key" id="KeyD">
+                    <p class="main">d</p>
+                </div>
+                <div class="key" id="KeyF">
+                    <p class="main">f</p>
+                </div>
+                <div class="key" id="KeyG">
+                  <p class="main">g</p>
+                </div>
+                <div class="key" id="KeyH">
+                    <p class="main">h</p>
+                </div>
+                <div class="key" id="KeyJ">
+                    <p class="main">j</p>
+                </div>
+                <div class="key" id="KeyK">
+                    <p class="main">k</p>
+                </div>
+                <div class="key" id="KeyL">
+                    <p class="main">l</p>
+                </div>
+                <div class="key" id="Semicolon">
+                    <p class="main">x̣</p>
+                </div>
+                <div class="key" id="Quote">
+                    <p class="main">'</p>
+                </div>
+            </div>
+            <div id="row3" class="row">
+                <div class="key" id="KeyZ">
+                    <p class="main">z</p>
+                </div>
+                <div class="key" id="KeyX">
+                    <p class="main">x</p>
+                </div>
+                <div class="key" id="KeyC">
+                    <p class="main">c</p>
+                </div>
+                <div class="key" id="KeyV">
+                    <p class="main">v</p>
+                </div>
+                <div class="key" id="KeyB">
+                    <p class="main">b</p>
+                </div>
+                <div class="key" id="KeyN">
+                    <p class="main">n</p>
+                </div>
+                <div class="key" id="KeyM">
+                    <p class="main">m</p>
+                </div>
+                <div class="key" id="Comma">
+                    <p class="main">ŋ</p>
+                </div>
+                <div class="key" id="Period">
+                    <p class="main">ƛ</p>
+                </div>
+                <div class="key" id="Slash">
+                    <p class="main">ʷ</p>
+                </div>
+            </div>
+        </div>
+        <textarea placeholder="write here..."></textarea>
+    </body>
+</html>
