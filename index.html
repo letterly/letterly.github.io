@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Letterly- Learn to Read</title>
+        <title>Letterly|Learn to Read</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="favicon.ico?">
         <link rel="stylesheet" href="styles.css">
@@ -85,6 +85,21 @@
                 <div id="Slash" class="key" onclick="entertext(this.id)"></div>
                 <div id="ShiftRight" class="orangekey" onclick="entertext(this.id)">shift</div>
             </div>
+
+            <!-- #6.5 Number Keyboard-->
+
+            <div id="numberkeyboard" class="keyboard">
+                <div id="D1" class="key" onclick="entertext(this.id)">1</div>
+                <div id="D2" class="key" onclick="entertext(this.id)">2</div>
+                <div id="D3" class="key" onclick="entertext(this.id)">3</div>
+                <div id="D4" class="key" onclick="entertext(this.id)">4</div>
+                <div id="D5" class="key" onclick="entertext(this.id)">5</div>
+                <div id="D6" class="key" onclick="entertext(this.id)">6</div>
+                <div id="D7" class="key" onclick="entertext(this.id)">7</div>
+                <div id="D8" class="key" onclick="entertext(this.id)">8</div>
+                <div id="D9" class="key" onclick="entertext(this.id)">9</div>
+                <div id="D0" class="key" onclick="entertext(this.id)">0</div>
+            </div>
                         
             <!-- #7 Pronunciation Line -->
             <div id="letterinfo">
@@ -102,16 +117,39 @@
             <button id="enterbutton" class="widebutton" onclick="enter()">Enter</button>
         </div>
         <div id="menu">
+            <div class="script" id="table">
+                <h2>Script Directory</h2>
+                <p>
+                    <span><a class="red" href="#arabic-script">Arabic</a></span>
+                    <span><a class="orange" href="#cyrillic-script">Cyrillic</a></span>
+                    <span><a class="yellow" href="#hebrew-script">Hebrew</a></span>
+                    <span><a class="green" href="#greek-script">Greek</a></span>
+                    <span><a class="darkgreen" href="#armenian-script">Armenian</a></span>
+                    <span><a class="cyan" href="#tifinagh-script">Tifinagh</a></span>
+                    <span><a class="blue" href="#georgian-script">Georgian</a></span>
+                    <span><a class="purple" href="#adlam-script">Adlam</a></span>
+                    <span><a class="pink" href="#osage-script">Osage</a></span>
+                    <span><a class="red" href="#hiragana-script">Hiragana</a></span>
+                    <span><a class="orange" href="#hangul-script">Hangul</a></span>
+                    <span><a class="yellow" href="#devanagari-script">Devanagari</a></span>
+                    <span><a class="green" href="#eastnagari-script">Eastern Nagari</a></span>
+                </p>
+            </div>
             <div class="script" id="arabic-script">
                 <h2>كتابة عربية | Arabic Script</h2>
+                <div class="levelpanel" id="arabic">
+                    <h2>العربية | Arabic</h2>
+                    <p>Arabic is probably the most important language you will find on this site. There are over 300 million Arabic speakers in the world and it is an official language in 26 countries! In addition, Arabic is the liturgical language of Islam (the second largest religion on Earth) and one of six official working languages of the United Nations. Wherever Islam went, from Senegal to Suriname to Spain, Arabic impacted the local language and provided many loan words (many like Algebra and kebab have come into English).</p>
+                    <div class="levelbox" id="arabic-levels"></div>
+                </div>
                 <div class="levelpanel" id="uyghur">
                     <h2>ئۇيغۇر | Uyghur</h2>
                     <p>Alongside other languages like Turkish, Uzbek, and Kazakh- Uyghur is one of the Turkic languages. Most Uyghurs are Muslim and therefore write in the a variant of the same alphabet of their religious texts. However, unlike the Arabic language, all vowels are fully written. There are maybe 12 million Uyghurs in northwestern China now, with an additional 2 million around the world (particularly Kazakhstan, Turkey, and Uzbekistan).</p>
                     <div class="levelbox" id="uyghur-levels"></div>
                 </div>
-                <div class="levelpanel" id="arabic">
-                    <h2>العربية | Arabic</h2>
-                    <p>Coming Soon!</p>
+                <div class="levelpanel" id="persian">
+                    <h2>فارسی | Persian</h2>
+                    <p>Coming soon!</p>
                 </div>
             </div>
             <div class="script" id="cyrillic-script">
@@ -220,7 +258,8 @@
                 <h2>ひらがな | Hiragana</h2>
                 <div class="levelpanel" id="hiragana">
                     <h2>日本語 | Japanese</h2>
-                    <p>Coming soon!</p>
+                    <p>Japanese is one of these most spoken languages in East Asia, with around 130 million speakers. However, it is also one of the hardest to learn to read. In fact, there are three different writing systems used together to write Japanese- this will teach you the syllable-based system for native Japanese words called Hiragana. Katakana will be on this website later, but I do not know if we will ever have the third system (Kanji).</p>
+                    <div class="levelbox" id="hiragana-levels"></div>
                 </div>
             </div>
             <div class="script" id="hangul-script">
@@ -245,22 +284,30 @@
                 </div>
             </div>
             <div class="script" id="changelog">
-                <h2>Changelog</h2>
+                <h2><a href="changelog.html" target="_blank">Changelog</a></h2>
                 <div class="levelpanel" id="change">
-                    <h2>25 April 2021 | 13 Iyar 5781 | 13 Ramadan 1442</h2>
+                    <p><b>4 May 2021 <small>22 Iyar 5781 | 22 Ramadan 1442 | 8 Jamál 178 | 22 Vaisakh 553</small></b></p>
+                    <p>Biggest update yet! Added Japanese (Hiragana) and Arabic, which I am sure will be some of the most popular languages on the site. A section to teach Adlam numbers was added to the Fulani course. There is now a small 'About' section on the bottom as well as a directory on the top. The colors have been changed somewhat.</p>
+                    <p><b>25 April 2021 | 13 Iyar 5781 | 13 Ramadan 1442</b></p>
                     <p>Recorded all of the sounds myself, now they are .m4a files so audio will now work on Safari and Opera Mobile. I changed how the front page looks a little. Does anyone even read the changelog?</p>
-                    <h2>21 April 2021 | 9 Iyar 5781 | 9 Ramadan 1442</h2>
+                    <p><b>21 April 2021 | 9 Iyar 5781 | 9 Ramadan 1442</b></p>
                     <p>Ukrainian and Uyghur have been added to the website! I switched around the order of writing systems on the site a bit. Contact me at harrismowbray@yahoo.com with any questions or comments.</p>
-                    <h2>16 April 2021 | 4 Iyar 5781 | 4 Ramadan 1442</h2>
+                    <p><b>16 April 2021 | 4 Iyar 5781 | 4 Ramadan 1442</b></p>
                     <p>Many glitches were fixed in different courses. Made some very small stylistic edits. Also, the Osage course is now up! ;) Soon I will replace all current audio files with .m4a files so that the website works everywhere.</p>
-                    <h2>11 April 2021 | 29 Nisan 5781 | 29 Sha'ban 1442</h2>
-                    <p>The Rusyn language was added. Some audio glitches have been fixed, but there might be issues on some phones. The full changelog will now be stored in <a href="changelog.html" target="_blank">here</a>.</p>
-                    <h2>10 April 2021 | 28 Nisan 5781 | 28 Sha'ban 1442</h2>
+                    <p><b>11 April 2021 | 29 Nisan 5781 | 29 Sha'ban 1442</b></p>
+                    <p>The Rusyn language was added. Some audio glitches have been fixed, but there might be issues on some phones. The full changelog will now be stored in <a href="changelog.html" target="_blank"><i>here</i></a>.</p>
+                    <p><b>10 April 2021 | 28 Nisan 5781 | 28 Sha'ban 1442</b></p>
                     <p>Yiddish and Fulani added! A small glitch fixed.</p>
-                    <h2>8 April 2021 | 26 Nisan 5781 | 26 Sha'ban 1442</h2>
+                    <p><b>8 April 2021 | 26 Nisan 5781 | 26 Sha'ban 1442</b></p>
                     <p>Macedonian and Serbian courses now live! Improved Greek course and added a new level to Hebrew.</p>
-                    <h2>7 April 2021 | 25 Nisan 5781 | 25 Sha'ban 1442</h2>
+                    <p><b>7 April 2021 | 25 Nisan 5781 | 25 Sha'ban 1442</b></p>
                     <p>Released first version of website. There may be some bugs or badly explained parts, sorry in advance. If you want to help improve the existing courses or make new ones, contact me.</p>
+                </div>
+            </div>
+            <div class="script" id="about">
+                <h2>About</h2>
+                <div class="levelpanel">
+                    <p>This website was coded from scratch by Harris Mowbray. The goal is to provide a free resource to allow anyone to learn the different writing systems of the world.</p>
                 </div>
             </div>
         </div>
