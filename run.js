@@ -6,13 +6,14 @@ keyboardNum = 1
 L = {}
 S = {}
 function preformat(la, le){
-    language = la
-    lesson = le
     exercise = 1
+    lesson = le
+    language = la
     menu.style.display = "none"
     root.style.display = "block"
     L = languageData[language]
     S = scriptData[L.script]
+    console.log(L.plan[le-1][exercise-1])
     format(L.plan[lesson-1][exercise-1])
 }
 function unformat(){
@@ -21,19 +22,10 @@ function unformat(){
 }
 function presentation(letterino){
     if(!S.plane && letterino.length > 1 && S.cameral) return letterino
-    if(letterino == "և") return "և"
+    else if(letterino == "և") return "և"
     else if(letterino == "σ") return "Σσς"
-    else if(L.script == "hebrew"){
-        finalkey = {
-            "פ": "ף",
-            "צ": "ץ",
-            "מ": "ם",
-            "נ": "ן",
-            "כ": "ך",
-        }
-        return finalkey[letterino] != undefined ? (letterino + finalkey[letterino]) : letterino
-    }
-    else if(L.script == "arabic") return `${letterino} ${letterino}ـ ـ${letterino}ـ  ـ${letterino}`
+    else if(L.script == "hebrew") return {"פ": "פף","צ": "צץ","מ": "מם","נ": "נן","כ": "כך",}[letterino] ?? letterino
+    else if(L.script == "arabic" && !("َُِْٰ".includes(letterino))) return `${letterino} ${letterino}ـ ـ${letterino}ـ  ـ${letterino}`
     else if(S.cameral) return (letterino.toUpperCase() + letterino)
     else return letterino
 }
@@ -43,22 +35,36 @@ function pronunciationhandler(data){
     return z.replace(/\[/g, "<span>").replace(/\]/g, "</span>")
 }
 function format(data){
+    console.log(data)
     questiontypes = {
         "i": ["sentence", "words", "continuebutton"], //info
         "l": ["sentence", "letter", "letterinfo", "continuebutton"], //letter
         "d": ["sentence", "letter", "input", "keyboard", "enterbutton"], //definition
         "t": ["sentence", "letter", "input", "keyboard", "enterbutton"], //translit
         "c": ["sentence", "letter", "multiplechoice"], //capital
+        "n": ["sentence", "letter", "continuebutton"], //number
+        "m": ["sentence", "letter", "input", "numberkeyboard", "enterbutton"], //number
     }
     questiontype = data.split(":")[0]
     otherdata = data.split(":")[1]
-    typelist = ["sentence", "letter", "letterinfo", "multiplechoice", "enterbutton", "continuebutton", "input", "keyboard", "words"]
+    typelist = ["sentence", "letter", "letterinfo", "multiplechoice", "enterbutton", "continuebutton", "input", "keyboard", "words", "numberkeyboard"]
     for(var t of typelist) document.getElementById(t).style.display = questiontypes[questiontype].includes(t) ? "" : "none"
     switch(questiontype){
+        case "n": //number
+            buttonmoral("Interesting! ;)")
+            sentence.textContent = "New digit"
+            letter.innerHTML = `${otherdata}<span style='color: #D3AF86'> (${S.numerals.indexOf(otherdata)})</span>`
+            break
+        case "m": //math
+            input.value = ""
+            sentence.textContent = "Convert this to Western numerals"
+            letter.textContent = otherdata
+            break
         case "c":
             target = otherdata.split(">")[0]
             answers = otherdata.split(">")[1].split(" ")
-            sentence.textContent = `Find the ${target.toUpperCase() != target ? "uppercase" : "lowercase"} version of this letter:`
+            if(L.script != "arabic") sentence.textContent = `Find the ${target.toUpperCase() != target ? "uppercase" : "lowercase"} version of this letter:`
+            else sentence.textContent = `Find the isolated version of this letter:`
             letter.textContent = target
             for(g of [0,1,2]) document.getElementById("b" + (g+1)).textContent = answers[g]
             break
@@ -71,7 +77,14 @@ function format(data){
             buttonmoral("Interesting! ;)")
             sentence.textContent = "New letter"
             letter.innerHTML = `${presentation(otherdata)}<span style='color: #D3AF86'> (${L.alphabet[otherdata]})</span>`
-            pronunciation.innerHTML = pronunciationhandler(soundify(otherdata))
+            if(language == "hiragana" && lesson >= 3){
+                listen.innerHTML = ""
+                pronunciation.innerHTML = ""
+            }
+            else{
+                listen.innerHTML = "<b>[Listen here]</b>"
+                pronunciation.innerHTML = pronunciationhandler(soundify(otherdata))
+            }
             break
         case "t":
             input.value = ""
@@ -80,8 +93,8 @@ function format(data){
             for(b of document.getElementsByClassName("key")) b.textContent = ""
             if(otherdata.charCodeAt(0) > 1000){
                 for(ltr of "QWERTYUIOPASDFGHJKLZXCVBNM".split("")) document.getElementById("Key" + ltr).textContent = ltr.toLowerCase()
-                Quote.textContent = "'"
                 for(letr in L.latinKeyboard) document.getElementById("Digit" + (+letr + 1)).textContent = L.latinKeyboard[letr]
+                Quote.textContent = "'"
             }
             else for(letr of Object.entries(L.nativeKeyboard)) document.getElementById(letr[0]).textContent = letr[1]
             for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#D3AF86"
@@ -97,7 +110,7 @@ function format(data){
     }
 }
 function multchoice(answer){
-    buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() ? "Correct! :)" : "Incorrect! :(")
+    buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :)" : "Incorrect! :(")
     multiplechoice.style.display = "none"
 }
 function next(){
@@ -111,12 +124,9 @@ function buttonmoral(p,q){
 function enter(){
     enterbutton.style.display = "none"
     ans = input.value
-    if(questiontype == "t"){
-        lett = letter.textContent
-        if(lett.charCodeAt(0) > 1000) buttonmoral(tlit(lett) == ans ? "Correct! :)" : "Incorrect! :(")
-        else buttonmoral(tlit(ans) == lett ?  "Correct! :)" : "Incorrect! :(")
-    }
+    if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :)" : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :)" : "Incorrect! :(")
     else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :)" : "Incorrect! :(")
+    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => S.numerals[x]).join("") == letter.textContent ? "Correct! :)" : "Incorrect! :(")
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
@@ -131,29 +141,28 @@ function tlit(word){
     return word
 }
 function soundify(d){
-    d = L.alphabet[d]
-    return L.toIPA[d] ?? d
+    return L.toIPA[L.alphabet[d]] ?? L.alphabet[d]
 }
 document.addEventListener('keydown', (e) => {
+    e = e.code
+    if(questiontype == "m") e = e.replace("Digit", "D")
     if(input == document.activeElement) event.preventDefault()
-    if(document.getElementById(e.code)){
-        entertext(e.code)
-        document.getElementById(e.code).style.backgroundColor = "#DC3958"
+    if(document.getElementById(e)){
+        entertext(e)
+        document.getElementById(e).style.backgroundColor = "#DC3958"
     }
 })
 document.addEventListener('keyup', (e) => {
-    if(document.getElementById(e.code).className.includes("blue")) document.getElementById(e.code).style.backgroundColor = "#268bd2"
-    else if(document.getElementById(e.code).className.includes("orange")) document.getElementById(e.code).style.backgroundColor = "#F06431"
-    else if(document.getElementById(e.code).textContent == "") document.getElementById(e.code).style.backgroundColor = "#6c71c4"
-    else document.getElementById(e.code).style.backgroundColor = "#D3AF86"
+    e = e.code
+    if(questiontype == "m") e = e.replace("Digit", "D")
+    if(document.getElementById(e).className.includes("blue")) document.getElementById(e).style.backgroundColor = "#268bd2"
+    else if(document.getElementById(e).className.includes("orange")) document.getElementById(e).style.backgroundColor = "#F06431"
+    else if(document.getElementById(e).textContent == "") document.getElementById(e).style.backgroundColor = "#6c71c4"
+    else document.getElementById(e).style.backgroundColor = "#D3AF86"
 })
 document.addEventListener('mousedown', (e) => {
     if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#DC3958" 
-    else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen"){
-        c = L.alphabet[L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0]]
-        c = L.toIPA[c] ?? c
-        new Audio("sounds/" + c + ".m4a").play()
-    }
+    else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen") new Audio(`sounds/${soundify(L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0])}.m4a`).play()
 })
 document.addEventListener('mouseup', (e) => {
     if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#D3AF86" 
