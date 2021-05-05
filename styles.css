@@ -11,7 +11,7 @@ light: #D3AF86;
 */
 
 .red{
-    color: #DC3958;
+    color: #dc322f;
 }
 .orange{
     color: #f06431;
@@ -22,14 +22,20 @@ light: #D3AF86;
 .green{
     color: #889B4A;
 }
-.cyan{
+.darkgreen{
     color: #088649;
+}
+.cyan{
+    color: #2aa198;
 }
 .blue{
     color: #8ab1b0;
 }
 .purple{
     color: #6c71c4;
+}
+.pink{
+    color: #d33682;
 }
 
 *{
@@ -188,7 +194,15 @@ input::placeholder{
     margin-left: 8%;
     margin-right: 8%;
     border: 2px #98676A solid;
+}
+#keyboard{
     height: 170px;
+}
+#numberkeyboard{
+    height: 50px;
+}
+#numberkeyboard div{
+    width: 8%;
 }
 
 .key{
@@ -282,7 +296,7 @@ input::placeholder{
     margin-right: 1%;
     margin-bottom: 1%;
     padding: 5px;
-    border-radius: 30px;
+    border-radius: 50px;
 }
 .script h2{
     color: #221A0F;
@@ -296,35 +310,52 @@ input::placeholder{
 #change p{
     margin: 0;
 }
-#osage-script, #arabic-script{
-    background-color: #DC3958;
+#arabic-script, #hiragana-script{
+    background-color: #dc322f;
 }
-#cyrillic-script, #hiragana-script{
+#cyrillic-script, #hangul-script{
     background-color: #f06431;
 }
-#hebrew-script, #hangul-script{
+#hebrew-script, #devanagari-script{
     background-color: #F79A32;
 }
-#greek-script, #devanagari-script{
+#greek-script, #eastnagari-script{
     background-color: #889B4A;
 }
-#tifinagh-script, #eastnagari-script{
+#armenian-script, #cherokee-script{
     background-color: #088649;
 }
-#armenian-script{
-    background-color: #8ab1b0;
+#tifinagh-script{
+    background-color: #2aa198;
 }
 #georgian-script{
-    background-color: #6c71c4;
+    background-color: #8ab1b0;
 }
 #adlam-script{
-    background-color: #7e602c;
+    background-color: #6c71c4;
+}
+#osage-script{
+    background-color: #d33682;
 }
 #changelog{
     background-color: #fbebd4;
 }
+#about{
+    background-color: #839496;
+}
+#table{
+    background-color: #fbebd4;
+}
+#table a{
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+#table span:hover{
+    text-decoration: underline;
+}
 .levelbox{
-    height: 60px;
+    height: 90px;
     width: 100%;
 }
 @media(max-width: 900px){
@@ -347,7 +378,7 @@ input::placeholder{
     float: left;
     height: 55px;
     width: 55px;
-    margin-right: 10px;
+    margin-right: 5px;
     border-radius: 15px;
 }
 .levelbox div:hover{
@@ -355,7 +386,14 @@ input::placeholder{
     color: #D3AF86;
 }
 .levelbox div span{
-    font-size: 150%;
+    font-size: 175%;
+}
+#changelog a{
+    color: #221A0F;
+    text-decoration: none;
+}
+#changelog a:hover{
+    text-decoration: underline;
 }
 
 /* */
