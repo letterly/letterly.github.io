@@ -17,6 +17,7 @@ ipa = {
     "ɕ": "long [sh] in [sh]eer",
     "f": "[f] in [face]",
     "ɑ": "[a] in [a]lso",
+    "aa": "lengthened [a] in [a]lso",
     "b": "[b] in [b]ean",
     "g": "[g] in [g]reat",
     "d": "[d] in [d]ark",
@@ -107,4 +108,10 @@ ipa = {
     "ø": "[i] in h[i]t but with the lips rounded",
     "la": "[la] in [la]va",
     "ɯ": "[oo] in g[oo]se",
+    //
+    "ko": "[ko] in [ko]ala", //
+    "hi": "[hi] in a[hi] tuna",
+    "tsu": "[tsu] in [tsu]nami",
+    "te": "[te] in [te]ll",
+    "so": "[so] in [so]da",
 }
