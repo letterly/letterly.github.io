@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <style>
+.verb{
+    color: #dc3958
+}
+.noun{
+    color: #889b4a
+}
+.positional{
+    color: #8ab1b0;
+}
+.adjective{
+    color: #f06431;
+}
+.idk{
+    color: #98676a;
+}
+body{
+    background-color: #221a0f;
+}
+
+*{
+    font-family: 'Noto Sans';
+}
+/**/
+#keyboard{
+    width: 80%;
+    margin-left: 15%;
+    margin-right: 5%;
+    height: calc((66px + 2%) * 3);
+}
+.key{
+    background-color: #fdf6e3;
+    height: 66px;
+    width: 50px;
+    float: left;
+    margin: 1%;
+    border: none;
+}
+.key:hover{
+    background-color: #2aa198;
+}
+.main{
+    line-height: 0%;
+    text-align: center;
+    font-weight: 900;
+    text-transform: capitalize;
+    color: #dc322f;
+    font-size: 28px;
+}
+.latin{
+    font-size: 14px;
+    color: #cb4b16;
+}
+.row{
+    width: 80%;
+    float: left;
+}
+#row2{
+    margin-left: 15px;
+}
+#row3{
+    margin-left: 30px;
+}
+#entry{
+  background-color: #fdf6e3;
+}
+textarea{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    resize: none;
+    background-color: #fbebd4;
+    color: #a57a4c;
+    font-size: 36px;
+    height: 300px;
+}
+div{
+    color: #fbebd4
+}
+#result{
+    font-size: 36px;
+    border: 1px white solid;
+    padding: 2px;
+    float: left;
+    height: 100px;
+    width: 90%;
+    margin: 5%;
+    overflow: scroll;
+}
+span{
+    font-size: 22px;
+}
+        </style>
+        <script>
+eventCode = {
+    "ShiftLeft": "",
+    "KeyQ": "W",
+    "KeyW": "E",
+    "KeyE": "R",
+    "KeyR": "T",
+    "KeyT": "Ts",
+    "KeyY": "Y",
+    "KeyU": "U",
+    "KeyI": "I",
+    "KeyO": "O",
+    "KeyP": "P",
+    "KeyA": "Q",
+    "KeyS": "A",
+    "KeyD": "S",
+    "KeyF": "Sh",
+    "KeyG": "F",
+    "KeyH": "H",
+    "KeyJ": "K",
+    "KeyK": "L",
+    "KeyL": "Ll",
+    "Semicolon": "Ñ",
+    "Quote": "J",
+    "KeyZ": "Z",
+    "KeyX": "X",
+    "KeyC": "Ch",
+    "KeyV": "B",
+    "KeyB": "N",
+    "KeyN": "M",
+    "KeyM": "V",
+    "Comma": "G",
+    "Period": "D",
+    "Slash": "C",
+}
+caps = true
+
+document.addEventListener("DOMContentLoaded", function(){
+    var textarea = [].slice.call(document.getElementsByTagName("textarea"))[0]
+    var key = [].slice.call(document.getElementsByClassName('key'))
+    key.forEach((element, index) => {
+        element.addEventListener('click', (event) => {
+           textarea.value += caps ? event.target.textContent.trim() : event.target.textContent.trim().toLowerCase()
+        })
+    })
+    this.addEventListener('keydown', event => {
+        if(Object.keys(eventCode).includes(event.code)) event.preventDefault()
+        if(eventCode[event.code] !== undefined){
+            textarea.value += caps ? eventCode[event.code] : eventCode[event.code].toLowerCase()
+            if(!["Space", "Enter", "ShiftLeft"].includes(event.code)) document.getElementById(event.code).style.backgroundColor = "#2aa198"
+            else if(event.code == "ShiftLeft"){
+                caps = !caps
+                for(var i of document.getElementsByClassName('main')) i.style.textTransform = caps ? "capitalize" : "lowercase"
+            }
+            else if(event.code == "Enter") textarea.value = ""
+        }
+    })
+    this.addEventListener('keyup', event => {
+        if(Object.keys(eventCode).includes(event.code)) event.preventDefault()
+        if(eventCode[event.code] !== undefined && !["Space", "Enter", "ShiftLeft"].includes(event.code)) document.getElementById(event.code).style.backgroundColor = "#fdf6e3"
+    })
+})
+
+        </script>
+        <title>kichwa project</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="keyboard">
+            <div id="row1" class="row">
+                <div class="key" id="KeyQ">
+                    <p class="main">W</p>
+                </div>
+                <div class="key" id="KeyW">
+                    <p class="main">E</p>
+                </div>
+                <div class="key" id="KeyE">
+                    <p class="main">R</p>
+                </div>
+                <div class="key" id="KeyR">
+                    <p class="main">T</p>
+                </div>
+                <div class="key" id="KeyT">
+                    <p class="main">Ts</p>
+                </div>
+                <div class="key" id="KeyY">
+                    <p class="main">Y</p>
+                </div>
+                <div class="key" id="KeyU">
+                    <p class="main">U</p>
+                </div>
+                <div class="key" id="KeyI">
+                    <p class="main">I</p>
+                </div>
+                <div class="key" id="KeyO">
+                    <p class="main">O</p>
+                </div>
+                <div class="key" id="KeyP">
+                    <p class="main">P</p>
+                </div>
+            </div>
+            <div id="row2" class="row">
+                <div class="key" id="KeyA">
+                    <p class="main">Q</p>
+                </div>
+                <div class="key" id="KeyS">
+                    <p class="main">A</p>
+                </div>
+                <div class="key" id="KeyD">
+                    <p class="main">S</p>
+                </div>
+                <div class="key" id="KeyF">
+                    <p class="main">Sh</p>
+                </div>
+                <div class="key" id="KeyG">
+                  <p class="main">F</p>
+                </div>
+                <div class="key" id="KeyH">
+                    <p class="main">H</p>
+                </div>
+                <div class="key" id="KeyJ">
+                    <p class="main">K</p>
+                </div>
+                <div class="key" id="KeyK">
+                    <p class="main">L</p>
+                </div>
+                <div class="key" id="KeyL">
+                    <p class="main">Ll</p>
+                </div>
+                <div class="key" id="Semicolon">
+                    <p class="main">Ñ</p>
+                </div>
+                <div class="key" id="Quote">
+                    <p class="main">J</p>
+                </div>
+            </div>
+            <div id="row3" class="row">
+                <div class="key" id="KeyZ">
+                    <p class="main">Z</p>
+                </div>
+                <div class="key" id="KeyX">
+                    <p class="main">X</p>
+                </div>
+                <div class="key" id="KeyC">
+                    <p class="main">Ch</p>
+                </div>
+                <div class="key" id="KeyV">
+                    <p class="main">B</p>
+                </div>
+                <div class="key" id="KeyB">
+                    <p class="main">N</p>
+                </div>
+                <div class="key" id="KeyN">
+                    <p class="main">M</p>
+                </div>
+                <div class="key" id="KeyM">
+                    <p class="main">V</p>
+                </div>
+                <div class="key" id="Comma">
+                    <p class="main">G</p>
+                </div>
+                <div class="key" id="Period">
+                    <p class="main">D</p>
+                </div>
+                <div class="key" id="Slash">
+                    <p class="main">C</p>
+                </div>
+            </div>
+        </div>
+        <textarea placeholder="Escribe aquí"></textarea>
+    </body>
+</html>
