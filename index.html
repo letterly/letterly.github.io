@@ -11,7 +11,7 @@
     </head>
     <body>
         <!-- #1 Header -->
-        <h1 id="header" onclick="unformat()"><span class="orange">letterly</span>.<span class="red">github</span>.<span class="blue">io</span></h1>
+        <h1 id="header" onclick="unformat()"><span class="cyan">letterly</span>.<span class="green">github</span>.<span class="yellow">io</span></h1>
         <div id="root">
             <!-- #2 Sentence Title -->
             <h2 id="sentence"></h2>
@@ -44,7 +44,7 @@
                 <div id="Digit0" class="key" onclick="entertext(this.id)"></div>
                 <div id="Minus" class="key" onclick="entertext(this.id)"></div>
                 <div id="Equal" class="key" onclick="entertext(this.id)"></div>
-                <div id="Backspace" class="mediumbluekey">del</div>
+                <div id="Backspace" class="mediumbluekey" onclick="delet()">del</div>
                 <div id="Tab" class="mediumbluekey"></div>
                 <div id="KeyQ" class="key" onclick="entertext(this.id)"></div>
                 <div id="KeyW" class="key" onclick="entertext(this.id)"></div>
@@ -99,6 +99,7 @@
                 <div id="D8" class="key" onclick="entertext(this.id)">8</div>
                 <div id="D9" class="key" onclick="entertext(this.id)">9</div>
                 <div id="D0" class="key" onclick="entertext(this.id)">0</div>
+                <div id="numberdelete" class="key" onclick="delet()">del</div>
             </div>
                         
             <!-- #7 Pronunciation Line -->
@@ -118,21 +119,28 @@
         </div>
         <div id="menu">
             <div class="script" id="table">
-                <h2>Script Directory</h2>
+                <h2>Table of Contents</h2>
                 <p>
-                    <span><a class="red" href="#arabic-script">Arabic</a></span>
-                    <span><a class="orange" href="#cyrillic-script">Cyrillic</a></span>
-                    <span><a class="yellow" href="#hebrew-script">Hebrew</a></span>
-                    <span><a class="green" href="#greek-script">Greek</a></span>
-                    <span><a class="darkgreen" href="#armenian-script">Armenian</a></span>
-                    <span><a class="cyan" href="#tifinagh-script">Tifinagh</a></span>
-                    <span><a class="blue" href="#georgian-script">Georgian</a></span>
-                    <span><a class="purple" href="#adlam-script">Adlam</a></span>
-                    <span><a class="pink" href="#osage-script">Osage</a></span>
-                    <span><a class="red" href="#hiragana-script">Hiragana</a></span>
-                    <span><a class="orange" href="#hangul-script">Hangul</a></span>
-                    <span><a class="yellow" href="#devanagari-script">Devanagari</a></span>
-                    <span><a class="green" href="#eastnagari-script">Eastern Nagari</a></span>
+                    <span><a class="red" href="#arabic">Arabic</a></span>
+                    <span><a class="red" href="#uyghur">Uyghur</a></span>
+                    <span><a class="orange" href="#russian">Russian</a></span>
+                    <span><a class="orange" href="#bulgarian">Bulgarian</a></span>
+                    <span><a class="orange" href="#macedonian">Macedonian</a></span>
+                    <span><a class="orange" href="#serbian">Serbian</a></span>
+                    <span><a class="orange" href="#rusyn">Rusyn</a></span>
+                    <span><a class="orange" href="#ukrainian">Ukrainian</a></span>
+                    <span><a class="yellow" href="#hebrew">Hebrew</a></span>
+                    <span><a class="yellow" href="#yiddish">Yiddish</a></span>
+                    <span><a class="green" href="#greek">Greek</a></span>
+                    <span><a class="darkgreen" href="#armenian">Armenian</a></span>
+                    <span><a class="cyan" href="#tamazight">Central Atlas Tamazight</a></span>
+                    <span><a class="blue" href="#georgian">Georgian</a></span>
+                    <span><a class="purple" href="#fulani">Fulani</a></span>
+                    <span><a class="pink" href="#osage">Osage</a></span>
+                    <span><a class="red" href="#hiragana">Japanese</a></span>
+                    <span><a class="orange" href="#korean">Korean</a></span>
+                    <span><a class="yellow" href="#bengali">Bengali</a></span>
+                    <span><a class="black" href="#changelog">Changelog</a></span>
                 </p>
             </div>
             <div class="script" id="arabic-script">
@@ -149,6 +157,10 @@
                 </div>
                 <div class="levelpanel" id="persian">
                     <h2>فارسی | Persian</h2>
+                    <p>Coming soon!</p>
+                </div>
+                <div class="levelpanel" id="urdu">
+                    <h2><span class="urdufont">اُردُو</span> | Urdu</h2>
                     <p>Coming soon!</p>
                 </div>
             </div>
@@ -239,9 +251,9 @@
                 </div>
             </div>
             <div class="script" id="adlam-script">
-                <h2>𞤀𞤣𞤤𞤢𞤥 | Adlam</h2>
+                <h2><span class="adlamFont">𞤀𞤣𞤤𞤢𞤥</span> | Adlam</h2>
                 <div class="levelpanel" id="fulani">
-                    <h2>𞤊𞤵𞤤𞤬𞤵𞤤𞤣𞤫 | Fulani</h2>
+                    <h2><span class="adlamFont">𞤊𞤵𞤤𞤬𞤵𞤤𞤣𞤫</span> | Fulani</h2>
                     <p>The Fulani language is one of the most spoken in Africa. There are approximately 35 million first language speakers and another 30 million second language speakers. Fula people live across Western and Central Africa in countries as far apart as Mauritania, Ethiopia, and Cameroon. Historically, Fulani has been written in various forms of the Latin or Arabic script, but in the 1980s an indigenous alphabet known as Adlam was created by Abdoulaye and Ibrahima Barry in Guinea. Adlam is growing to be the primary alphabet of the Fulani language in modern times.</p>
                     <div class="levelbox" id="fulani-levels"></div>
                 </div>
@@ -266,30 +278,53 @@
                 <h2>한글 | Hangul</h2>
                 <div class="levelpanel" id="korean">
                     <h2>한국어 | Korean</h2>
+                    <p>King Sejong the Great developed the Korean alphabet, known as Hangul, to write his country's language. Previously, Chinese characters were used to write Korean words. Presently, Korean is spoken in South Korea, North Korea, and two autonomous counties in China. North Korea has a slightly simplified form of alphabet but it will not be taught here as it is not useful given the current political situation.</p>
                     <p>Coming Soon!</p>
+                    <!-- <div class="levelbox" id="korean-levels"></div> -->
+                </div>
+            </div>
+            <div class="script" id="easternnagari-script">
+                <h2>পূর্ব নাগরী লিপি | Eastern Nagari</h2>
+                <div class="levelpanel" id="bengali">
+                    <h2>বাংলা | Bengali</h2>
+                    <p>While most people do not think of Bengali when thinking of widely-spoken languages, but Bengali is the fifth-most widely spoken native language in the world. Not only do nearly all of Bangladesh's ~160 million citizens speak Bengali natively, but so do the majority of people in the Indian states of West Bengal and Tripura. Across India and Bangladesh, there are many dialects of Bengali, some of which are considered separate languages, varying by geography and religious community.</p>
+                    <p>Coming Soon!</p>
+                    <!-- <div class="levelbox" id="bengali-levels"></div> -->
                 </div>
             </div>
             <div class="script" id="devanagari-script">
                 <h2>देवनागरी | Devanagari</h2>
                 <div class="levelpanel" id="hindi">
                     <h2>हिन्दी | Hindi</h2>
+                    <p>Alongside English, Hindi is one of India's official languages. Though only a little over half of the population of India speaks Hindi as a first, second, or third language, that is still a lot of people (~700 million)! Indeed, Hindi is the fourth most spoken language in the world. Outside of South Asia, Hindi is actually an official language in the Polynesian nation of Fiji.</p>
                     <p>Coming soon!</p>
                 </div>
             </div>
-            <div class="script" id="eastnagari-script">
-                <h2>পূর্ব নাগরী লিপি | Eastern Nagari</h2>
-                <div class="levelpanel" id="bengali">
-                    <h2>বাংলা | Bengali</h2>
+            <!--
+            <div class="script" id="cherokee-script">
+                <h2>ᏣᎳᎩ ᏗᎪᏪᎵ | Cherokee Syllabary</h2>
+                <div class="levelpanel" id="cherokee">
+                    <h2>ᏣᎳᎩ | Cherokee</h2>
                     <p>Coming soon!</p>
                 </div>
             </div>
+            <div class="script" id="gurmukhi-script">
+                <h2>ਗੁਰਮੁਖੀ | Gurmukhi</h2>
+                <div class="levelpanel" id="punjabi">
+                    <h2>ਪੰਜਾਬੀ | Punjabi</h2>
+                    <p>Coming soon!</p>
+                </div>
+            </div>
+            -->
             <div class="script" id="changelog">
                 <h2><a href="changelog.html" target="_blank">Changelog</a></h2>
                 <div class="levelpanel" id="change">
+                    <p><b>6 May 2021 <small>24 Iyar 5781 | 24 Ramadan 1442 | 10 Jamál 178 | 24 Vaisakh 553</small></b></p>
+                    <p>First update without new languages. Completely redid the table of contents on the top. Fixed a glitch in the Hebrew and Arabic courses. Beginning to add support for new fonts (Adlam uses a new one now). Issues with the delete button fixed- there is now a delete button on number-related exercizes.</p>
                     <p><b>4 May 2021 <small>22 Iyar 5781 | 22 Ramadan 1442 | 8 Jamál 178 | 22 Vaisakh 553</small></b></p>
                     <p>Biggest update yet! Added Japanese (Hiragana) and Arabic, which I am sure will be some of the most popular languages on the site. A section to teach Adlam numbers was added to the Fulani course. There is now a small 'About' section on the bottom as well as a directory on the top. The colors have been changed somewhat.</p>
                     <p><b>25 April 2021 | 13 Iyar 5781 | 13 Ramadan 1442</b></p>
-                    <p>Recorded all of the sounds myself, now they are .m4a files so audio will now work on Safari and Opera Mobile. I changed how the front page looks a little. Does anyone even read the changelog?</p>
+                    <p>Recorded all of the sounds myself, now they are .m4a files so audio will now work on Safari and Opera Mini. I changed how the front page looks a little. Does anyone even read the changelog?</p>
                     <p><b>21 April 2021 | 9 Iyar 5781 | 9 Ramadan 1442</b></p>
                     <p>Ukrainian and Uyghur have been added to the website! I switched around the order of writing systems on the site a bit. Contact me at harrismowbray@yahoo.com with any questions or comments.</p>
                     <p><b>16 April 2021 | 4 Iyar 5781 | 4 Ramadan 1442</b></p>
@@ -307,7 +342,7 @@
             <div class="script" id="about">
                 <h2>About</h2>
                 <div class="levelpanel">
-                    <p>This website was coded from scratch by Harris Mowbray. The goal is to provide a free resource to allow anyone to learn the different writing systems of the world.</p>
+                    <p>This website was coded from scratch by Harris Mowbray. The goal is to provide a free resource to allow anyone to learn the different writing systems of the world. You can contact me at harrismowbray@yahoo.com with any questions or comments on the site.</p>
                 </div>
             </div>
         </div>
