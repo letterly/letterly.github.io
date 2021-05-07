@@ -13,9 +13,6 @@ function preformat(la, le){
     root.style.display = "block"
     L = languageData[language]
     S = scriptData[L.script]
-    console.log(L.plan)
-    console.log(L.plan[le-1])
-    console.log(L.plan[le-1][exercise-1])
     format(L.plan[lesson-1][exercise-1])
 }
 function unformat(){
@@ -31,13 +28,9 @@ function presentation(letterino){
     else if(S.cameral) return fontWrap(letterino.toUpperCase() + letterino)
     else return letterino
 }
-function pronunciationhandler(data){
-    if(data.includes(",")) return `${language == "korean" ? "syllable" : "word"}-initially ${pronunciationhandler(data.split(",")[0])}, otherwise ${pronunciationhandler(data.split(",")[1])}`
-    z = ipa[L.toIPA[data]] ?? ipa[data]
-    return z.replace(/\[/g, "<span>").replace(/\]/g, "</span>")
-}
+pronunciationhandler = (data) => data.includes(",") ? (`${language == "korean" ? "syllable" : "word"}-initially ${pronunciationhandler(data.split(",")[0])}, otherwise ${pronunciationhandler(data.split(",")[1])}`) : (ipa[L.toIPA[data]] ?? ipa[data]).replace(/\[/g, "<span>").replace(/\]/g, "</span>")
+
 function format(data){
-    console.log(data)
     questiontypes = {
         "i": ["sentence", "words", "continuebutton"], //info
         "l": ["sentence", "letter", "letterinfo", "continuebutton"], //letter
@@ -124,10 +117,9 @@ function multchoice(answer){
 function next(){
     ++exercise > L.plan[lesson-1].length ? unformat() : format(L.plan[lesson-1][exercise-1])
 }
-function fontWrap(text){
-    if(L.font) return `<span class="${L.font}">${text}</span>`
-    else return text
-}
+
+fontWrap = (text) => L.font ? `<span class="${L.font}">${text}</span>` : text
+
 function buttonmoral(p,q){
     continuebutton.style.display = ""
     continuebutton.textContent = p + " Continue..."
@@ -142,9 +134,7 @@ function enter(){
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
-    rrr = 1 + S.plane
-    if(rrr == 2 && word.charCodeAt(0) < 1000)
-    if(L.alphabet[word.slice(0, rrr)].includes(",")) word = L.alphabet[word.slice(0, rrr)].split(",")[0] + word.slice(1)
+    if(L.alphabet[word.slice(0, 1 + S.plane)]?.includes(",")) word = L.alphabet[word.slice(0, 1 + S.plane)].split(",")[0] + word.slice(1)
     for(f of Object.entries(L.alphabet)){
         if(f[1].includes(",")) f[1] = f[1].split(",")[1]
         regex = new RegExp(f[0].replace("X", ""), "g")
@@ -152,17 +142,12 @@ function tlit(word){
     }
     return word
 }
-function soundify(d){
-    return L.toIPA[L.alphabet[d]] ?? L.alphabet[d]
-}
+soundify = (d) => L.toIPA[L.alphabet[d]] ?? L.alphabet[d]
 document.addEventListener('keydown', (e) => {
     e = e.code
     if(questiontype == "m") e = e.replace("Digit", "D")
     if(input == document.activeElement) event.preventDefault()
-    if(document.getElementById(e)){
-        entertext(e)
-        document.getElementById(e).style.backgroundColor = "#DC3958"
-    }
+    if(document.getElementById(e)) entertext(e)
 })
 document.addEventListener('keyup', (e) => {
     e = e.code
@@ -179,11 +164,10 @@ document.addEventListener('mousedown', (e) => {
 document.addEventListener('mouseup', (e) => {
     if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#D3AF86" 
 })
-function delet(){
-    if(input.value.charAt(input.value.length-2) == "�") input.value = input.value.slice(0, input.value.length - 2)
-    else input.value = input.value.slice(0, input.value.length - 1)
-}
+delet = () => input.value = input.value.slice(0, input.value.length - (input.value.charCodeAt(input.value.length-2) == 55354 ? 2 : 1))
+
 function entertext(code){
+    document.getElementById(code).style.backgroundColor = "#DC3958"
     switch(code){
         case "Backspace":
             delet()
