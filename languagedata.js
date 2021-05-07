@@ -122,6 +122,21 @@ languageData = {
   greek: {
       script: "greek",
       alphabet: {
+        "ά": "α",
+        "ί": "ι",
+        "ό": "ο",
+        "ει": "i",
+        "οι": "i",
+        "υι": "i",
+        "αι": "e",
+        "ου": "u",
+        "αυ": "av,af",
+        "ευ": "ev,ef",
+        "μπ": "b,mb",
+        "ντ": "d,nd",
+        "τζ": "dz",
+        "γγ": "ng",
+        "γκ": "gk,ng",
           "α": "a",
           "β": "v",
           "γ": "g,y",
@@ -147,18 +162,6 @@ languageData = {
           "χ": "ch",
           "ψ": "ps",
           "ω": "o",
-          "ει": "i",
-          "οι": "i",
-          "υι": "i",
-          "αι": "e",
-          "ου": "u",
-          "αυ": "av,af",
-          "ευ": "ev,ef",
-          "μπ": "b,mb",
-          "ντ": "d,nd",
-          "τζ": "dz",
-          "γγ": "ng",
-          "γκ": "gk,ng",
       },
       toIPA: {
           "gk": "g",
@@ -201,8 +204,8 @@ languageData = {
       },
       plan: [
           ['i:Welcome to the lesson! This will teach you how to read Modern Greek not Ancient Greek, so that you can communicate with people who are alive today and not three thousand years ago.','l:ν', 'l:β', 'l:ρ', 'l:α', 'l:ι', 't:Ιράν'],
-          ['l:ς', 'l:λ', 'l:φ', 'l:κ', 'l:ε', 't:Σλοβενία', 't:Καλιφόρνια'],
-          ['l:η', 'l:ο', 'l:ω', 'l:δ', 'l:π', 'l:τ', 'd:Νεβάδα>Nevada', 'd:Κόστα Ρίκα>Costa Rica', 'd:Πακιστάν>Pakistan', 't:Περσεφόνη'],
+          ['l:ς', 'l:λ', 'l:φ', 'l:κ', 'l:ε', 'l:ο', 't:Σλοβενία', 't:Καλιφόρνια'],
+          ['l:η', 'l:ω', 'l:δ', 'l:π', 'l:τ', 'd:Νεβάδα>Nevada', 'd:Κόστα Ρίκα>Costa Rica', 'd:Πακιστάν>Pakistan', 't:Περσεφόνη'],
           ['l:μ', 'l:ξ', 'l:υ', 'l:γ', 't:ξενοφοβία', "c:η>Η Ν Γ", 't:Τελ Αβίβ'],
           ['l:γ', 'l:ζ', 'l:θ', 'l:χ', "c:Ω>ξ ψ ω", 't:καλλιγραφία', 'd:Μεξικό>Mexico', 't:Θεσσαλονίκη'],
           ['l:αι', 'l:ει', 'l:οι', 'l:υι', 'l:ου', 't:Αλεξάνδρεια', 't:Παραγουάη', 't:Σωκράτης', "c:γ>Γ Ξ Λ"],
@@ -1120,8 +1123,8 @@ languageData = {
           "שׁ": "sh",
           "שׂ": "s",
           "ת": "t",
-          "וּ": "u",
-          "וֹ": "o",
+          "וּ": "u",
+          "וֹ": "o",
           "ו": "v",
           "ְX": "",
           "ֱX": "e",
@@ -1173,7 +1176,7 @@ languageData = {
           "Comma": "ת",
           "Period": "ץ",
       },
-      plan: [
+      plan: [ //וֹ
           ['i:This course is for Modern Hebrew not Biblical Hebrew. Remember that Hebrew is RIGHT TO LEFT, it is very important to read in the correct direction.','l:ה', "i:By the way there are some vowels that go under the main letters. To demonstrate, they will be always put under the letter 'X' (which is not a Hebrew letter but rather represents any Hebrew letter).", 'l:ַX', 'l:ר', 'l:ְX', 't:הַר'],
           ['l:א', 'l:ת', 'l:ָX', 't:אַתְ', 't:אַתָה'],
           ['l:ִX', 'l:בּ', 'l:י', 'l:ד', 't:בַּיִת', 't:יָד'],
@@ -1181,7 +1184,7 @@ languageData = {
           ['l:ס', 'l:פ', 'l:נ', 't:סְפָרַד', 't:יַרְדֵן', 't:יָוָן'],
           ['l:וּ', 'l:מ', 'l:צ', 't:סוּרְיָה', 't:מִצְרַיִם'],
           ['l:שׁ', 'l:ט', 'l:ג', 't:יְרוּשָׁלַיִם', 't:אַפְגָנִיסְטָן'],
-          ['l:וּ', 'l:ז', 'l:פּ', 't:הוֹדוּ', 't:בְּרָזִיל', 't:פִילִיפִּינִים'],
+          ['l:וֹ', 'l:ז', 'l:פּ', 't:הוֹדוּ', 't:בְּרָזִיל', 't:פִילִיפִּינִים'],
           ['l:ו', 'l:ֶX', 'l:ע', 'l:ק', 't:טַיְוָן', 't:סֶרְבְּיָה', 't:עִירַאק'],
           ['l:ח', 'l:ֻX', 'l:ֲX', 't:שֻׁלְחַן', 't:אֲסֵפָה'],
           ['l:ֱX', 'l:ֳX', 'l:ֹX', 't:אֱמֶת', 't:צִפֳּרִים', 't:יַהֲלוֹם', 'l:כ', 'l:כּ', 'l:שׂ', 't:כָּחֹל', 't:הֲלָכָה', 't:יִשְׂרָאֵל'],
@@ -1189,6 +1192,7 @@ languageData = {
       ],
   },
   fulani: {
+    font: "adlamFont",
     script: "adlam",
     alphabet: {
         "𞤢𞥄": "aa",
@@ -1290,11 +1294,14 @@ languageData = {
         "KeyM": "𞤥",
     },
     plan: [
-        ["i:Remember, Fulani is written from RIGHT TO LEFT. This is very important if you do not want to read it backwards.", "l:𞤭", "l:𞤥", "l:𞤳", "l:𞤮", "t:𞤥𞤭", "t:𞤳𞤮"],
+        ["i:Remember, Fulani is written from RIGHT TO LEFT. This is very important if you do not want to read it backwards.",
+        "l:𞤭", "l:𞤥", "l:𞤳", "l:𞤮", "t:𞤥𞤭", "t:𞤳𞤮"],
         ["l:𞤫", "l:𞤢", "l:𞤤", "l:𞤵", "t:𞤢𞤤𞤳𞤵𞤤𞤫", "t:omo"],
-        ["l:𞤶", "l:𞤧","l:𞤪", "l:𞤣", "i:To double the letter 'a' to 'aa', turn '𞤢' into '𞤢𞥄'.", "t:𞤶𞤢𞤪𞤢𞥄𞤥𞤢", "t:adlam", "t:𞤥𞤢𞤧𞤫"],
-        ["i:To double any vowel other than '𞤢', change '𞤫' into '𞤫𞥅' (for example).","l:𞤲", "l:𞤱", "l:𞤺", "l:𞤼", "t:wontugal", "t:𞤳𞤵𞥅𞤧𞤵𞥅𞤶𞤭", "d:𞤅𞤫𞤲𞤫𞤺𞤢𞥄𞤤>Senegal", "d:𞤑𞤢𞤥𞤫𞤪𞤵𞤲>Cameroon"],
-        ["i:To double any consonant add a horizontal above it, like '𞤥' to '𞤥𞥆'.", "l:𞤸", "l:𞤹", "l:𞤰", "l:𞤷", "t:𞤷𞤢𞤤𞤼𞤵𞤳𞤢", "t:𞤤𞤭𞤰𞥆𞤭", "t:𞤼𞤵𞥅𞤺𞤭𞤲𞤮𞤪𞤣𞤫", "t:soriya"],
+        ["l:𞤶", "l:𞤧","l:𞤪", "l:𞤣", "i:To double the letter 'a' to 'aa', turn <span class='adlamFont'>'𞤢'</span> into <span class='adlamFont'>'𞤢𞥄'</span>.", "t:𞤶𞤢𞤪𞤢𞥄𞤥𞤢", "t:adlam", "t:𞤥𞤢𞤧𞤫"],
+        ["i:To double any vowel other than <span class='adlamFont'>'𞤢'</span>, change <span class='adlamFont'>'𞤫'</span> into <span class='adlamFont'>'𞤫𞥅'</span> (for example).",
+        "l:𞤲", "l:𞤱", "l:𞤺", "l:𞤼", "t:wontugal", "t:𞤳𞤵𞥅𞤧𞤵𞥅𞤶𞤭", "d:𞤅𞤫𞤲𞤫𞤺𞤢𞥄𞤤>Senegal", "d:𞤑𞤢𞤥𞤫𞤪𞤵𞤲>Cameroon"],
+        ["i:To double any consonant add a horizontal above it, like <span class='adlamFont'>'𞤥'</span> to <span class='adlamFont'>'𞤥𞥆'</span>.",
+        "l:𞤸", "l:𞤹", "l:𞤰", "l:𞤷", "t:𞤷𞤢𞤤𞤼𞤵𞤳𞤢", "t:𞤤𞤭𞤰𞥆𞤭", "t:𞤼𞤵𞥅𞤺𞤭𞤲𞤮𞤪𞤣𞤫", "t:soriya"],
         ["l:𞤴", "l:𞤨", "l:𞤬", "l:𞤦", "t:𞤶𞤫𞤴𞤣𞤵𞤳𞤢", "c:𞤲>𞤕 𞤙 𞤐", "t:𞤆𞤮𞥅𞤪𞤫𞤣𞤢𞥄𞤳𞤢", "t:𞤶𞤮𞥅𞤺𞤢𞤪𞤢𞤬𞤭", "t:labiriya"],
         ["l:𞤯", "l:𞤩", "l:𞤽", "l:𞤻", "t:𞤱𞤢𞤤𞤭𞤴𞥆𞤵𞥅𞤩𞤫","c:𞤗>𞤽 𞤹 𞤦", "t:𞤣𞤭𞤥𞤵𞤳𞤵𞤪𞤢𞥄𞤯𞤭𞤴𞥆𞤢", "t:𞤊𞤢𞤪𞤢𞤲𞤧𞤭𞥅𞤩𞤫", "t:𞤃𞤢𞥄𞤧𞤭𞤲𞤢𞤽𞤳𞤮𞥅𞤪𞤫"],
         ["i:Adlam has its own digits which are written from right-to-left, just like the rest of the alphabet.",
@@ -1606,7 +1613,7 @@ languageData = {
         ["l:ج", "l:خ", "l:ح", "t:j", "t:تَجَاوُزَات‎", "t:اِصْطَلَحَ", "t:اِسْتَخْرَجَ"],
         ["l:ظ", "t:لَحْظَتَذَاكَ", "l:ص", "l:ض", "t:يَسْتَصْبِرُ", "d:تْشِيكُوسْلُوفَاكِيَا>Czechoslovakia", "t:اِسْتَحْضَرَ", "l:إ", "t:مِيتُوكُنْدْرِيُون"], //
         ["i:In real life, vowel markings are not used (outside a few contexts). Try to translate the following country names without vowel markings.",
-        "d:إيطاليا>Italy", "d:نيكاراغوا>Nicaragua", "d:بنجلاديش>Bangladesh", "d:منغوليا>Mongolia", "d:إندونيسيا>Indonesia"] //
+        "d:إيطاليا>Italy", "d:نيكاراغوا>Nicaragua", "d:بنجلاديش>Bangladesh", "d:منغوليا>Mongolia", "d:إندونيسيا>Indonesia"], //
         ["i:In many (but not all) parts of the Arabic-speaking world use a separate set of digits instead of the Western ones. These are not used in North African countries (Algeria, Morocco, Tunisia etc.), but have been used in the Middle East for much longer than our familiar Western digit system (0123456789). The next two lessons will teach you these numbers. IMPORTANT NOTE - Unlike Arabic, these numbers are written from LEFT TO RIGHT.",
         "n:٠", "n:١", "m:١٠", "n:٢", "n:٣", "m:٢٠٢١", "n:٤", "m:٤٠٤"],
         ["n:٥", "n:٦", "m:٢٥٠٦", "n:٧", "n:٨", "m:٨٧٤٧٨", "n:٩", "m:٩٧٦٥٤٣١٠"],
@@ -1818,59 +1825,122 @@ languageData = {
         "t:きじゅん", "t:とうじょう", "t:たいしゃ", "t:ちょんぎれる"] //ya part1
     ],
   },
+  /*
+  korean: {
+    script: "hangul",
+    alphabet: {
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+    },
+    toIPA: {},
+    latinKeyboard: [], //
+    nativeKeyboard: {},
+    plan: [
+        [],
+        [],
+        [],
+    ],
+  },
+  bengali: {
+    script: "easternnagari",
+    alphabet: {},
+    toIPA: {},
+    latinKeyboard: [],
+    nativeKeyboard: {},
+    plan: [
+        [],
+        [],
+        [],
+    ],
+  },
+  */
 }
 
 scriptData = {
+    easternnagari: {
+        cameral: true,
+        plane: false,
+        keyboardDimensions: 1,
+        numerals: "𑓐𑓑𑓒𑓓𑓔𑓕𑓖𑓗𑓘𑓙",
+        direction: "ltr",
+    },
+    devanagari: {
+        cameral: true,
+        plane: false,
+        keyboardDimensions: 1,
+        numerals: "०१२३४५६७८९",
+        direction: "ltr",
+    },
+    hangul: {
+        cameral: true,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+    },
     cyrillic: {
         cameral: true,
         plane: false,
         keyboardDimensions: 1,
+        direction: "ltr",
     },
     adlam: {
         cameral: true,
         plane: true,
         keyboardDimensions: 1,
         numerals: ["𞥐", "𞥑", "𞥒", "𞥓", "𞥔", "𞥕", "𞥖", "𞥗", "𞥘", "𞥙"],
+        direction: "rtl",
     },
     tifinagh: {
         cameral: false,
         plane: false,
         keyboardDimensions: 2,
+        direction: "ltr",
     },
     arabic: {
         cameral: false,
         plane: false,
         keyboardDimensions: 1,
         numerals: "٠١٢٣٤٥٦٧٨٩",
+        direction: "rtl",
     },
     georgian: {
         cameral: false,
         plane: false,
         keyboardDimensions: 2,
+        direction: "ltr",
     },
     osage: {
         cameral: false,
         plane: false,
         keyboardDimensions: 1,
+        direction: "ltr",
     },
     hiragana: {
         cameral: false,
         plane: false,
         keyboardDimensions: 2,
+        direction: "ltr",
     },
     hebrew: {
         cameral: false,
         plane: false,
         keyboardDimensions: 1,
+        direction: "rtl",
     },
     armenian: {
         cameral: true,
         plane: false,
         keyboardDimensions: 1,
+        direction: "ltr",
     },
     greek: {
         cameral: true,
         plane: false,
         keyboardDimensions: 1,
+        direction: "ltr",
     },
 }
