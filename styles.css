@@ -37,6 +37,9 @@ light: #D3AF86;
 .pink{
     color: #d33682;
 }
+.black{
+    color: #221A0F;
+}
 
 *{
     font-family: "Noto Sans";
@@ -184,7 +187,8 @@ input{
 }
 
 input::placeholder{
-    color: #DC3958
+    color: #DC3958;
+    font-family: 'Noto Sans';
 }
 
 /*9. keyboard*/
@@ -202,7 +206,7 @@ input::placeholder{
     height: 50px;
 }
 #numberkeyboard div{
-    width: 8%;
+    width: 7%;
 }
 
 .key{
@@ -316,16 +320,16 @@ input::placeholder{
 #cyrillic-script, #hangul-script{
     background-color: #f06431;
 }
-#hebrew-script, #devanagari-script{
+#hebrew-script, #easternnagari-script{
     background-color: #F79A32;
 }
-#greek-script, #eastnagari-script{
+#greek-script, #devanagari-script{
     background-color: #889B4A;
 }
 #armenian-script, #cherokee-script{
     background-color: #088649;
 }
-#tifinagh-script{
+#tifinagh-script, #gurmukhi-script{
     background-color: #2aa198;
 }
 #georgian-script{
@@ -347,7 +351,7 @@ input::placeholder{
     background-color: #fbebd4;
 }
 #table a{
-    font-size: 20px;
+    font-size: 28px;
     text-decoration: none;
     font-weight: 600;
 }
@@ -399,4 +403,18 @@ input::placeholder{
 /* */
 #root{
     display: none;
+}
+@font-face {
+    font-family: urduFont;
+    src: url(fonts/urduFont.ttf);
+}
+.urduFont{
+    font-family: urduFont;
+}
+@font-face {
+    font-family: adlamFont;
+    src: url(fonts/adlamFont.ttf);
+}
+.adlamFont{
+    font-family: adlamFont;
 }
