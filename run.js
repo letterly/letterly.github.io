@@ -67,8 +67,8 @@ function format(data){
             answers = otherdata.split(">")[1].split(" ")
             if(L.script != "arabic") sentence.textContent = `Find the ${target.toUpperCase() != target ? "uppercase" : "lowercase"} version of this letter:`
             else sentence.textContent = `Find the isolated version of this letter:`
-            letter.textContent = target
-            for(g of [0,1,2]) document.getElementById("b" + (g+1)).textContent = answers[g]
+            letter.innerHTML = fontWrap(target)
+            for(g of [0,1,2]) document.getElementById("b" + (g+1)).innerHTML = fontWrap(answers[g])
             break
         case "i":
             buttonmoral("Interesting! ;)")
