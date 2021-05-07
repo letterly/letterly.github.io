@@ -13,6 +13,8 @@ function preformat(la, le){
     root.style.display = "block"
     L = languageData[language]
     S = scriptData[L.script]
+    console.log(L.plan)
+    console.log(L.plan[le-1])
     console.log(L.plan[le-1][exercise-1])
     format(L.plan[lesson-1][exercise-1])
 }
@@ -26,7 +28,7 @@ function presentation(letterino){
     else if(letterino == "σ") return "Σσς"
     else if(L.script == "hebrew") return {"פ": "פף","צ": "צץ","מ": "מם","נ": "נן","כ": "כך",}[letterino] ?? letterino
     else if(L.script == "arabic" && !("َُِْٰ".includes(letterino))) return `${letterino} ${letterino}ـ ـ${letterino}ـ  ـ${letterino}`
-    else if(S.cameral) return (letterino.toUpperCase() + letterino)
+    else if(S.cameral) return fontWrap(letterino.toUpperCase() + letterino)
     else return letterino
 }
 function pronunciationhandler(data){
@@ -53,12 +55,12 @@ function format(data){
         case "n": //number
             buttonmoral("Interesting! ;)")
             sentence.textContent = "New digit"
-            letter.innerHTML = `${otherdata}<span style='color: #D3AF86'> (${S.numerals.indexOf(otherdata)})</span>`
+            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #D3AF86'> (${S.numerals.indexOf(otherdata)})</span>`
             break
         case "m": //math
             input.value = ""
             sentence.textContent = "Convert this to Western numerals"
-            letter.textContent = otherdata
+            letter.innerHTML = fontWrap(otherdata)
             break
         case "c":
             target = otherdata.split(">")[0]
@@ -71,12 +73,12 @@ function format(data){
         case "i":
             buttonmoral("Interesting! ;)")
             sentence.textContent = "Some helpful information ;)"
-            words.textContent = otherdata
+            words.innerHTML = otherdata
             break
         case "l":
             buttonmoral("Interesting! ;)")
             sentence.textContent = "New letter"
-            letter.innerHTML = `${presentation(otherdata)}<span style='color: #D3AF86'> (${L.alphabet[otherdata]})</span>`
+            letter.innerHTML = `${presentation(otherdata)}<span style='color: #D3AF86'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata]: "silent"})</span>`
             if(language == "hiragana" && lesson >= 3){
                 listen.innerHTML = ""
                 pronunciation.innerHTML = ""
@@ -89,14 +91,20 @@ function format(data){
         case "t":
             input.value = ""
             sentence.textContent = `Transliterate this ${otherdata.length > 1 ? "word": "letter"} to ${otherdata.charCodeAt(0) > 1000 ? "Latin" : language.charAt(0).toUpperCase() + language.slice(1)}`
-            letter.textContent = otherdata
             for(b of document.getElementsByClassName("key")) b.textContent = ""
             if(otherdata.charCodeAt(0) > 1000){
+                if(L.font) input.style
+                letter.innerHTML = fontWrap(otherdata)
                 for(ltr of "QWERTYUIOPASDFGHJKLZXCVBNM".split("")) document.getElementById("Key" + ltr).textContent = ltr.toLowerCase()
                 for(letr in L.latinKeyboard) document.getElementById("Digit" + (+letr + 1)).textContent = L.latinKeyboard[letr]
                 Quote.textContent = "'"
+                input.style.fontFamily = ""
             }
-            else for(letr of Object.entries(L.nativeKeyboard)) document.getElementById(letr[0]).textContent = letr[1]
+            else{
+                input.style.fontFamily = L.font
+                letter.innerHTML = otherdata
+                for(letr of Object.entries(L.nativeKeyboard)) document.getElementById(letr[0]).innerHTML = fontWrap(letr[1])
+            }
             for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#D3AF86"
             break
         case "d":
@@ -115,6 +123,10 @@ function multchoice(answer){
 }
 function next(){
     ++exercise > L.plan[lesson-1].length ? unformat() : format(L.plan[lesson-1][exercise-1])
+}
+function fontWrap(text){
+    if(L.font) return `<span class="${L.font}">${text}</span>`
+    else return text
 }
 function buttonmoral(p,q){
     continuebutton.style.display = ""
@@ -167,10 +179,14 @@ document.addEventListener('mousedown', (e) => {
 document.addEventListener('mouseup', (e) => {
     if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#D3AF86" 
 })
+function delet(){
+    if(input.value.charAt(input.value.length-2) == "�") input.value = input.value.slice(0, input.value.length - 2)
+    else input.value = input.value.slice(0, input.value.length - 1)
+}
 function entertext(code){
     switch(code){
         case "Backspace":
-            input.value = input.value.slice(0, input.value.length - 1)
+            delet()
             break
         case "Enter":
             if(continuebutton.style.display != "none") next()
