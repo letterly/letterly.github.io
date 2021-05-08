@@ -2,8 +2,12 @@
     <head>
         <title>Kore Sebeli Clock</title>
         <style>
+            @font-face {
+                font-family: koreFont;
+                src: url(../fonts/koreFont.otf);
+            }
             *{
-                font-family: "KORE SEBELI v1";
+                font-family: koreFont;
             }
             text{
                 font-size: 24px;
@@ -56,6 +60,7 @@
             <line id="minute" x1="200" y1="200" x2="200" y2="120" stroke="black"></line>
             <line id="hour" x1="200" y1="200" x2="200" y2="130" stroke="black" stroke-width="5"></line>
         </svg>
-        <p>‏<span id="thehour"></span>:<span id="theminute"></span>:<span id="thesecond"></span></p>
+        <p><span id="thehour"></span>:<span id="theminute"></span>:<span id="thesecond"></span></p>
     </body>
 </html>
+
