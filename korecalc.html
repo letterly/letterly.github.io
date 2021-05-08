@@ -1,8 +1,15 @@
 <html>
     <head>
         <style>
+            @font-face {
+                font-family: koreFont;
+                src: url(../fonts/koreFont.otf);
+            }
             *{
-                font-family: "KORE SEBELI v1", "Verdana";
+                font-family: koreFont;
+            }
+            .english{
+                font-family: "Verdana";
             }
             body, DOM{
                 background-color: #221a0f;
@@ -208,7 +215,7 @@
         </script>
     </head>
     <body>
-        <h1>KoreSebeliCalc</h1>
+        <h1 class="english">KoreSebeliCalc</h1>
         <div id="content"></div>
         <div id="buttons">
             <button id="n0" class="number" onclick="render(this.id)">0</button>
@@ -230,9 +237,9 @@
             <button id="s(" class="syntax" onclick="render(this.id)">(</button>
             <button id="s)" class="syntax" onclick="render(this.id)">)</button>
             <button id="cπ" class="constant" onclick="render(this.id)">π</button>
-            <button id="cE" class="constant" onclick="render(this.id)">E</button>
+            <button id="cE" class="english constant" onclick="render(this.id)">E</button>
             <button id="e=" class="equals" onclick="equals()">=</button>
-            <button id="iDEL" class="input" onclick="del()">DEL</button>
+            <button id="iDEL" class="input english" onclick="del()">DEL</button>
         </div>
     </body>
 </html>
