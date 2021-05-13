@@ -77,7 +77,7 @@ function format(){
                 input.style.fontFamily = ""
             }
             else{
-                input.style.fontFamily = L.font
+                input.style.fontFamily = L.font ?? "Noto Sans"
                 letter.innerHTML = otherdata
                 for(letr of Object.entries(L.nativeKeyboard)) document.getElementById(letr[0]).innerHTML = fontWrap(letr[1])
             }

@@ -498,7 +498,6 @@ languageData = {
         "Period": "в",
         "Slash": "ю",
         "Minus": "е",
-        "Plus": "щ",
     },
     plan: [
         ["l:а", "l:ч", "l:б", "t:ch", "t:ачаа",  "l:л", "t:b", "l:о", "t:л", "t:Балба", "t:o", "t:боол"],
@@ -882,7 +881,7 @@ languageData = {
     },
     plan: [
         ["i:Hi! We will be learning Rusyn based on Slovakia's 'Prešov' Alphabet. There are other dialects of Rusyn out there.", "l:а", "l:п", "l:о", "t:папа", "t:апо","l:р", "l:к", "l:з", "t:закрок", "t:pro"],
-        ["l:с", "l:т", "l:м", "t:traktor", "t:макрокозмос","l:н", "l:в", "l:и", "l:д", "t:назвати", "t:medovnik"],
+        ["l:с", "l:т", "l:м", "t:traktor", "t:макрокозмос","l:н", "l:в", "l:и", "t:n", "l:д", "t:назвати", "t:medovnik"],
         ["l:е", "l:л", "t:лекваровник", "t:klopopati","l:ш", "l:ч", "l:ф", "t:зашмарити", "t:часоприсловник", "t:fotoreporter"],
         ["l:б", "l:й", "l:ы", "t:баршановый", "t:понагороджовати","l:ґ", "l:г", "l:у", "t:штонайбрыдшый", "t:ґырґнути"],
         ["l:ю", "l:я", "l:і", "t:юрісдікція", "t:експанзія","l:ë", "l:ї", "l:є", "t:якнайприємнїшый", "t:єднопостїлёвый", "d:Ямайка>Jamaica"],
@@ -1407,7 +1406,7 @@ languageData = {
     },
     plan: [
         ["i:Remember, Fulani is written from RIGHT TO LEFT. This is very important if you do not want to read it backwards.",
-        "l:𞤭", "l:𞤥", "l:𞤳", "l:𞤮", "t:𞤥𞤭", "t:𞤳𞤮"],
+        "l:𞤭", "l:𞤥", "l:𞤳", "l:𞤮", "t:𞤥𞤭", "t:𞤳𞤮", "t:k"],
         ["l:𞤫", "l:𞤢", "l:𞤤", "l:𞤵", "t:𞤢𞤤𞤳𞤵𞤤𞤫", "t:omo"],
         ["l:𞤶", "l:𞤧","l:𞤪", "l:𞤣", "i:To double the letter 'a' to 'aa', turn <span class='adlamFont'>'𞤢'</span> into <span class='adlamFont'>'𞤢𞥄'</span>.", "t:𞤶𞤢𞤪𞤢𞥄𞤥𞤢", "t:adlam", "t:𞤥𞤢𞤧𞤫"],
         ["i:To double any vowel other than <span class='adlamFont'>'𞤢'</span>, change <span class='adlamFont'>'𞤫'</span> into <span class='adlamFont'>'𞤫𞥅'</span> (for example).",
