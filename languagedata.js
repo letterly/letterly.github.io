@@ -509,7 +509,7 @@ languageData = {
         ["l:я", "l:в", "l:ы", "t:таны",  "l:д", "t:ятгашаазгай", "t:ц", "t:ü", "t:өвөөлж"],
         ["l:к", "l:ю", "l:п", "t:u", "d:Википедиа>Wikipedia", 
         "i:The letter 'ь' does not have its own sound. ь indicated the palatalization of the preceding consonant",
-        "l:ь", "d:>компьютер", "t:я", "t:цахилгаанжуулалтыхантайгаа"],
+        "l:ь", "d:computer>компьютер", "t:я", "t:цахилгаанжуулалтыхантайгаа"],
       ],
     },
   macedonian: {
