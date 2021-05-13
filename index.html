@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Letterly|Learn to Read</title>
+        <title>Letterly | Learn to Read</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="favicon.ico?">
         <link rel="stylesheet" href="styles.css">
@@ -11,7 +11,7 @@
     </head>
     <body>
         <!-- #1 Header -->
-        <h1 id="header" onclick="unformat()"><span class="cyan">letterly</span>.<span class="green">github</span>.<span class="yellow">io</span></h1>
+        <h1 id="header" onclick="switchAround('block', 'none')"><span class="cyan">letterly</span>.<span class="green">github</span>.<span class="yellow">io</span></h1>
         <div id="root">
             <!-- #2 Sentence Title -->
             <h2 id="sentence"></h2>
@@ -118,6 +118,12 @@
             <button id="enterbutton" class="widebutton" onclick="enter()">Enter</button>
         </div>
         <div id="menu">
+            <div class="script" id="welcome">
+                <h2>Welcome</h2>
+                <div class="levelpanel">
+                    <p>Welcome to my website ^^ Choose the language you want to learn how to read from the Table of Contents down below. If you don't see the language you are looking for, you can either <a href="#about" style="color:#fbebd4">request it</a> or come back later. I am <a href="#changelog" style="color:#fbebd4">frequently updating</a> the site with new languages and new features, as well as fixing bugs.</p>
+                </div>
+            </div>
             <div class="script" id="table">
                 <h2>Table of Contents</h2>
                 <p>
@@ -129,6 +135,7 @@
                     <span><a class="orange" href="#serbian">Serbian</a></span>
                     <span><a class="orange" href="#rusyn">Rusyn</a></span>
                     <span><a class="orange" href="#ukrainian">Ukrainian</a></span>
+                    <span><a class="orange" href="#mongolian">Mongolian</a></span>
                     <span><a class="yellow" href="#hebrew">Hebrew</a></span>
                     <span><a class="yellow" href="#yiddish">Yiddish</a></span>
                     <span><a class="green" href="#greek">Greek</a></span>
@@ -141,6 +148,7 @@
                     <span><a class="orange" href="#korean">Korean</a></span>
                     <span><a class="yellow" href="#bengali">Bengali</a></span>
                     <span><a class="black" href="#changelog">Changelog</a></span>
+                    <span><a style="background-color: #221A0F; color: #fbebd4" href="#about">About/Contact</a></span>
                 </p>
             </div>
             <div class="script" id="arabic-script">
@@ -196,12 +204,14 @@
                     <p>During Soviet times, the Ukrainian language was often discarded in favor of Russian, but recently this language has been undergoing a major revitalization! Books, movies, and TV shows are being created in Ukrainian like never before in history. Around forty million people speak Ukrainian, making it one of Europe's major languages- so make sure you know how to read a couple words in it at the very least.</p>
                     <div class="levelbox" id="ukrainian-levels"></div>
                 </div>
-                <div class="levelpanel" id="tajik">
-                    <h2>Тоҷикӣ | Tajik</h2>
-                    <p>Coming soon!</p>
-                </div>
                 <div class="levelpanel" id="mongolian">
                     <h2>Монгол | Mongolian</h2>
+                    <p>Under Genghis Khan, the Mongolian Empire became the largest land-based empire in history, stretching across most of Eurasia. Today, the Mongolian nation has been reduced to a small inland republic between Russia and China with a few million people. Due to influence from the Soviet Union, Mongolia adopted the Cyrillic alphabet to replace their traditional alphabet. The traditional alphabet, which is written top-to-bottom, is still used about Mongolians in China- but this course will only teach the Mongolian Cyrillic alphabet.</p>
+                    <div class="levelbox" id="mongolian-levels"></div>
+                </div>
+                <div class="levelpanel" id="tajik">
+                    <h2>Тоҷикӣ | Tajik</h2>
+                    <p>The mountaineous Republic of Tajikistan's national language is Tajik, which is a divergent dialect of Persian/Dari written in the Cyrillic alphabet. Additionally, Tajik is spoken by a large portion of the population of Uzbekistan and it is the main language in some major cities. Because of the geographic isolation, Tajik has kept some vocabulary and grammar that no longer exists in standardized Persian/Dari which are spoken in Iran in Afghanistan.</p>
                     <p>Coming soon!</p>
                 </div>
             </div>
@@ -232,6 +242,12 @@
                     <h2>հայերեն | Armenian</h2>
                     <p>The Armenian language has a literary tradition that began in 405 CE after the priest Mesrop Mashtots invented its alphabet. In present times, Armenian is spoken by nearly seven million people. In addition to being the national language of the Republic of Armenia, you can find many speakers across the Armenian diaspora in Georgia, Russia, the USA, Lebanon, and other countries. Come learn how to read this beautiful language!</p>
                     <div class="levelbox" id="armenian-levels"></div>
+                </div>
+                <div class="levelpanel" id="westernarmenian">
+                    <h2>Արեւմտահայերէն | Western Armenian</h2>
+                    <p>In the diaspora, many Armenians use the Western Armenian standard, which was historically spoken in much of Turkey and the Middle East. This dialect uses a much older spelling convention than standard Armenian, as it was uneffected by the Soviet Union's orthography reform in the 1920's.</p>
+                    <p>Coming soon!</p>
+                    <!-- <div class="levelbox" id="westernarmenian-levels"></div> -->
                 </div>
             </div>
             <div class="script" id="tifinagh-script">
@@ -319,14 +335,16 @@
             <div class="script" id="changelog">
                 <h2><a href="changelog.html" target="_blank">Changelog</a></h2>
                 <div class="levelpanel" id="change">
-                    <p><b>6 May 2021 <small>24 Iyar 5781 | 24 Ramadan 1442 | 10 Jamál 178 | 24 Vaisakh 553</small></b></p>
-                    <p>First update without new languages. Completely redid the table of contents on the top. Fixed a glitch in the Hebrew and Arabic courses. Beginning to add support for new fonts (Adlam uses a new one now). Issues with the delete button fixed- there is now a delete button on number-related exercizes.</p>
+                    <p><b>13 May 2021 <small>2 Sivan 5781 | 1 Shawwal 1442 | 17 Jamál 178 | 30 Vaisakh 553</small></b></p>
+                    <p>Added Mongolian! There is now a welcome section. Worked on some backend improvements.</p>
+                    <p><b>6 May 2021 <small>24 Iyar 5781 | 24 Ramadan 1442 | 10 Jamál 178 | 23 Vaisakh 553</small></b></p>
+                    <p>Completely redid the table of contents on the top. Fixed a glitch in the Hebrew and Arabic courses. Beginning to add support for new fonts (Adlam uses a new one now). Issues with the delete button fixed- there is now a delete button on number-related exercises.</p>
                     <p><b>4 May 2021 <small>22 Iyar 5781 | 22 Ramadan 1442 | 8 Jamál 178 | 22 Vaisakh 553</small></b></p>
                     <p>Biggest update yet! Added Japanese (Hiragana) and Arabic, which I am sure will be some of the most popular languages on the site. A section to teach Adlam numbers was added to the Fulani course. There is now a small 'About' section on the bottom as well as a directory on the top. The colors have been changed somewhat.</p>
                     <p><b>25 April 2021 | 13 Iyar 5781 | 13 Ramadan 1442</b></p>
                     <p>Recorded all of the sounds myself, now they are .m4a files so audio will now work on Safari and Opera Mini. I changed how the front page looks a little. Does anyone even read the changelog?</p>
                     <p><b>21 April 2021 | 9 Iyar 5781 | 9 Ramadan 1442</b></p>
-                    <p>Ukrainian and Uyghur have been added to the website! I switched around the order of writing systems on the site a bit. Contact me at harrismowbray@yahoo.com with any questions or comments.</p>
+                    <p>Ukrainian and Uyghur have been added to the website! I switched around the order of writing systems on the site a bit.</p>
                     <p><b>16 April 2021 | 4 Iyar 5781 | 4 Ramadan 1442</b></p>
                     <p>Many glitches were fixed in different courses. Made some very small stylistic edits. Also, the Osage course is now up! ;) Soon I will replace all current audio files with .m4a files so that the website works everywhere.</p>
                     <p><b>11 April 2021 | 29 Nisan 5781 | 29 Sha'ban 1442</b></p>
@@ -340,9 +358,9 @@
                 </div>
             </div>
             <div class="script" id="about">
-                <h2>About</h2>
+                <h2>About/Contact</h2>
                 <div class="levelpanel">
-                    <p>This website was coded from scratch by Harris Mowbray. The goal is to provide a free resource to allow anyone to learn the different writing systems of the world. You can contact me at harrismowbray@yahoo.com with any questions or comments on the site.</p>
+                    <p>This website was coded by Harris Mowbray with the goal of providing a free resource to allow anyone to learn the different writing systems of the world. You can contact me at <a href="mailto:harrismowbray@yahoo.com?subject=Letterly%20Mail&body=Peace%20be%20upon%20you%20Harris">harrismowbray@yahoo.com</a> with any questions or comments on the site. The underlying code behind the website is just plain HTML, CSS, and JavaScript- no outside frameworks were used.</p>
                 </div>
             </div>
         </div>
