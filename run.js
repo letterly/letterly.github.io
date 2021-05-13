@@ -110,17 +110,17 @@ function enter(){
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
     if(L.alphabet[word.slice(0, 1 + S.plane)]?.includes(",")) word = L.alphabet[word.slice(0, 1 + S.plane)].split(",")[0] + word.slice(1)
-    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].length-1])
+    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
 soundify = (d) => L.toIPA[L.alphabet[d]] ?? L.alphabet[d]
 document.addEventListener('keydown', (e) => {
-    e = (questiontype == "m") ? e.code : e.code.replace("Digit", "D")
+    e = (questiontype == "m") ? e.code.replace("Digit", "D") : e.code
     if(input == document.activeElement) event.preventDefault()
     if(document.getElementById(e)) entertext(e)
 })
 document.addEventListener('keyup', (e) => {
-    e = (questiontype == "m") ? e.code : e.code.replace("Digit", "D")
+    e = (questiontype == "m") ? e.code.replace("Digit", "D") : e.code
     if(document.getElementById(e).className.includes("blue")) document.getElementById(e).style.backgroundColor = "#268bd2"
     else if(document.getElementById(e).className.includes("orange")) document.getElementById(e).style.backgroundColor = "#F06431"
     else if(document.getElementById(e).textContent == "") document.getElementById(e).style.backgroundColor = "#6c71c4"
@@ -135,7 +135,7 @@ document.addEventListener('mouseup', (e) => {
 })
 delet = () => input.value = input.value.slice(0, input.value.length - (input.value.charCodeAt(input.value.length-2) == 55354 ? 2 : 1))
 function entertext(code){
-    //document.getElementById(code).style.backgroundColor = "#DC3958"
+    document.getElementById(code).style.backgroundColor = "#DC3958"
     switch(code){
         case "Backspace":
             delet()
