@@ -7,35 +7,35 @@ green: #889B4A;
 cyan: #088649;
 blue: #8AB1B0;
 purple: #98676A;
-light: #D3AF86;
+light: #e4c6a5;
 */
 
 .red{
-    color: #dc322f;
+    color: #dc322f !important;
 }
 .orange{
-    color: #f06431;
+    color: #f06431 !important;
 }
 .yellow{
-    color: #F79A32;
+    color: #F79A32 !important;
 }
 .green{
-    color: #889B4A;
+    color: #889B4A !important;
 }
 .darkgreen{
-    color: #088649;
+    color: #088649 !important;
 }
 .cyan{
-    color: #2aa198;
+    color: #2aa198 !important;
 }
 .blue{
-    color: #8ab1b0;
+    color: #8ab1b0 !important;
 }
 .purple{
-    color: #6c71c4;
+    color: #6c71c4 !important;
 }
 .pink{
-    color: #d33682;
+    color: #d33682 !important;
 }
 .black{
     color: #221A0F;
@@ -44,11 +44,8 @@ light: #D3AF86;
 *{
     font-family: "Noto Sans";
 }
-#changelog h2::selection, #changelog p::selection{
-    background-color: #8ab1b0;
-}
 ::selection{
-    background-color: #fbebd4;
+    background-color: #d33682;
 }
 DOM, body{
     background-color: #221A0F;
@@ -57,7 +54,7 @@ DOM, body{
 /*1. letterly title*/
 
 #header{
-    color: #D3AF86;
+    color: #e4c6a5;
     font-weight: 100;
     font-size: 48px;
     text-align: center;
@@ -68,7 +65,7 @@ DOM, body{
 
 h2{
     font-size: 36px;
-    color: #D3AF86;
+    color: #e4c6a5;
     text-align: center;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -81,7 +78,7 @@ h2{
     font-size: 28px;
     margin-left: 5%;
     margin-right: 5%;
-    color: #D3AF86;
+    color: #e4c6a5;
     text-align: center;
 }
 
@@ -103,8 +100,8 @@ h2{
     margin-right: 9%;
     color: #221A0F;
     font-size: 32px;
-    border: #D3AF86 2px solid;
-    border-radius: 5px;
+    border: #e4c6a5 2px solid;
+    border-radius: 10px;
     outline: none;
 }
 .correct{
@@ -136,7 +133,7 @@ h2{
     background-color: #F79A32;
     color: #221A0F;
     font-size: 32px;
-    border: #D3AF86 2px solid;
+    border: #e4c6a5 2px solid;
     border-radius: 5px;
     outline: none;
 }
@@ -179,11 +176,12 @@ input{
     margin-right: 4%;
     margin-top: 1%;
     margin-bottom: 1%;
-    border: #D3AF86 2px solid;
+    border: #e4c6a5 2px solid;
     background-color: #221A0F;
     font-size: 48px;
     color: #DC3958;
-    outline: none
+    outline: none;
+    border-radius: 10px;
 }
 
 input::placeholder{
@@ -198,6 +196,7 @@ input::placeholder{
     margin-left: 8%;
     margin-right: 8%;
     border: 2px #98676A solid;
+    border-radius: 10px;
 }
 #keyboard{
     height: 170px;
@@ -210,7 +209,7 @@ input::placeholder{
 }
 
 .key{
-    background-color: #D3AF86;
+    background-color: #e4c6a5;
     height: 30px;
     width: 5.4%;
     float: left;
@@ -221,6 +220,7 @@ input::placeholder{
     margin-right: 0.8%;
     margin-top: 6px;
     margin-bottom: 6px;
+    border-radius: 5px;
 }
 
 .key:active{
@@ -236,6 +236,7 @@ input::placeholder{
     margin-right: 0.8%;
     margin-top: 6px;
     margin-bottom: 6px;
+    border-radius: 5px;
 }
 
 .mediumbluekey{
@@ -250,6 +251,7 @@ input::placeholder{
     font-weight: 700;
     font-size: 20px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .largebluekey{
@@ -261,6 +263,7 @@ input::placeholder{
     margin-right: 0.8%;
     margin-top: 6px;
     margin-bottom: 6px;
+    border-radius: 5px;
 }
 
 .orangekey{
@@ -275,6 +278,7 @@ input::placeholder{
     margin-right: 0.8%;
     margin-top: 6px;
     margin-bottom: 6px;
+    border-radius: 5px;
 }
 
 /*10. enter button*/
@@ -289,19 +293,22 @@ input::placeholder{
 /* MENU AREA */
 
 #menu_header{
-    color: #D3AF86;
+    color: #e4c6a5;
     text-align: center;
 }
 .script{
-    width: 98.4%;
     text-align: left;
     height: auto;
     margin-bottom: 1%;
     padding: 10px;
     border-radius: 50px;
+    background-color: #221A0F;
+    border: #e4c6a5 2px solid;
+    color: #e4c6a5;
+    width: calc(98.4% - 4px);
 }
 .script h2{
-    color: #221A0F;
+    color: #e4c6a5;
 }
 .scriptexplanation{
     text-align: center;
@@ -312,62 +319,37 @@ input::placeholder{
 #change p{
     margin: 0;
 }
-#arabic-script, #hiragana-script{
-    background-color: #dc322f;
-}
-#cyrillic-script, #hangul-script{
-    background-color: #f06431;
-}
-#hebrew-script, #easternnagari-script{
-    background-color: #F79A32;
-}
-#greek-script, #devanagari-script{
-    background-color: #889B4A;
-}
-#armenian-script, #cherokee-script{
-    background-color: #088649;
-}
-#tifinagh-script, #gurmukhi-script{
-    background-color: #2aa198;
-}
-#georgian-script{
-    background-color: #8ab1b0;
-}
-#adlam-script{
-    background-color: #6c71c4;
-}
-#osage-script{
-    background-color: #d33682;
-}
 #changelog{
-    background-color: #fbebd4;
+    background-color: #e4c6a5;
 }
-#about, #welcome{
-    background-color: #221A0F;
-    border: #fbebd4 2px solid;
-    color: #fbebd4;
-    width: calc(98.4% - 4px);
+.metadiv{
+    background-color: #e4c6a5;
+    width: 98.4%;
+    color: #221a0f;
+    border: none;
 }
-#about h2, #welcome h2{
-    color: #fbebd4;
-}
-#about a{
-    color: #fbebd4;
+.metadiv a, .metadiv h2{
+    color: #221a0f;
 }
 #table{
-    background-color: #fbebd4;
+    background-color: #e4c6a5;
 }
 #table a{
     font-size: 28px;
     text-decoration: none;
     font-weight: 600;
 }
+#table p{
+    margin-left: 2%;
+    margin-right: 2%;
+}
 #table span:hover{
     text-decoration: underline;
 }
 .levelbox{
     height: 90px;
-    width: 100%;
+    width: 98%;
+    margin-left: 2%;
 }
 @media(max-width: 900px){
     .levelbox{
@@ -377,15 +359,18 @@ input::placeholder{
 .levelpanel h2{
     text-align: left;
     font-size: 28px;
+    margin-left: 2%;
 }
 .levelpanel p{
     text-align: left;
     font-size: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 .levelbox div{
     font-weight: 700;
     text-align: center;
-    border: 2px solid #221A0F;
+    border: 2px solid #e4c6a5;
     float: left;
     height: 55px;
     width: 55px;
@@ -393,8 +378,8 @@ input::placeholder{
     border-radius: 15px;
 }
 .levelbox div:hover{
-    background-color: #221A0F;
-    color: #D3AF86;
+    background-color: #e4c6a5;
+    color: #221A0F;
 }
 .levelbox div span{
     font-size: 175%;
@@ -405,6 +390,12 @@ input::placeholder{
 }
 #changelog a:hover{
     text-decoration: underline;
+}
+.calendar{
+    font-weight: 700;
+}
+.calendar span{
+    font-size: 85%;
 }
 
 /* */

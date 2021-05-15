@@ -11,7 +11,7 @@
     </head>
     <body>
         <!-- #1 Header -->
-        <h1 id="header" onclick="switchAround('block', 'none')"><span class="cyan">letterly</span>.<span class="green">github</span>.<span class="yellow">io</span></h1>
+        <h1 id="header" onclick="switchAround('block', 'none')"><span class="yellow">letterly</span>.<span class="green">github</span>.<span class="pink">io</span></h1>
         <div id="root">
             <!-- #2 Sentence Title -->
             <h2 id="sentence"></h2>
@@ -118,50 +118,45 @@
             <button id="enterbutton" class="widebutton" onclick="enter()">Enter</button>
         </div>
         <div id="menu">
-            <div class="script" id="welcome">
-                <h2>Welcome</h2>
+            <div class="script metadiv" id="welcome">
+                <h2 class="cyan">Welcome to the Site</h2>
                 <div class="levelpanel">
-                    <p>Welcome to my website ^^ Choose the language you want to learn how to read from the Table of Contents down below. If you don't see the language you are looking for, you can either <a href="#about" style="color:#fbebd4">request it</a> or come back later. I am <a href="#changelog" style="color:#fbebd4">frequently updating</a> the site with new languages and new features, as well as fixing bugs.</p>
+                    <p>Welcome to my website ^^ Choose the language you want to learn how to read from the Table of Contents down below. If you don't see the language you are looking for, you can either <a href="#about">request it</a> or come back later. I am <a href="#changelog">frequently updating</a> the site with new languages and new features, as well as fixing bugs.</p>
                 </div>
             </div>
-            <div class="script" id="table">
+            <div class="script metadiv" id="table">
                 <h2>Table of Contents</h2>
                 <p>
-                    <span><a class="red" href="#arabic">Arabic</a></span>
-                    <span><a class="red" href="#uyghur">Uyghur</a></span>
-                    <span><a class="orange" href="#russian">Russian</a></span>
-                    <span><a class="orange" href="#bulgarian">Bulgarian</a></span>
-                    <span><a class="orange" href="#macedonian">Macedonian</a></span>
-                    <span><a class="orange" href="#serbian">Serbian</a></span>
-                    <span><a class="orange" href="#rusyn">Rusyn</a></span>
-                    <span><a class="orange" href="#ukrainian">Ukrainian</a></span>
-                    <span><a class="orange" href="#mongolian">Mongolian</a></span>
-                    <span><a class="yellow" href="#hebrew">Hebrew</a></span>
-                    <span><a class="yellow" href="#yiddish">Yiddish</a></span>
-                    <span><a class="green" href="#greek">Greek</a></span>
-                    <span><a class="darkgreen" href="#armenian">Armenian</a></span>
-                    <span><a class="cyan" href="#tamazight">Central Atlas Tamazight</a></span>
-                    <span><a class="blue" href="#georgian">Georgian</a></span>
-                    <span><a class="purple" href="#fulani">Fulani</a></span>
-                    <span><a class="pink" href="#osage">Osage</a></span>
-                    <span><a class="red" href="#hiragana">Japanese</a></span>
-                    <span><a class="orange" href="#korean">Korean</a></span>
-                    <span><a class="yellow" href="#bengali">Bengali</a></span>
-                    <span><a class="black" href="#changelog">Changelog</a></span>
+                    <span><a class="black" href="#arabic">Arabic</a></span> |
+                    <span><a class="black" href="#armenian">Armenian</a></span> |
+                    <span><a class="black" href="#bengali">Bengali</a></span> |
+                    <span><a class="black" href="#bulgarian">Bulgarian</a></span> |
+                    <span><a class="black" href="#tamazight">Central Atlas Tamazight</a></span> |
+                    <span><a class="black" href="#fulani">Fulani</a></span> |
+                    <span><a class="black" href="#georgian">Georgian</a></span> |
+                    <span><a class="black" href="#greek">Greek</a></span> |
+                    <span><a class="black" href="#hebrew">Hebrew</a></span> |
+                    <span><a class="black" href="#hiragana">Japanese</a></span> |
+                    <span><a class="black" href="#korean">Korean</a></span> |
+                    <span><a class="black" href="#macedonian">Macedonian</a></span> |
+                    <span><a class="black" href="#mongolian">Mongolian</a></span> |
+                    <span><a class="black" href="#osage">Osage</a></span> |
+                    <span><a class="black" href="#russian">Russian</a></span> |
+                    <span><a class="black" href="#rusyn">Rusyn</a></span> |
+                    <span><a class="black" href="#serbian">Serbian</a></span> |
+                    <span><a class="black" href="#ukrainian">Ukrainian</a></span> |
+                    <span><a class="black" href="#uyghur">Uyghur</a></span> |
+                    <span><a class="black" href="#yiddish">Yiddish</a></span> |
+                    <span><a style="background-color: #221A0F; color: #fbebd4" href="#changelog">Changelog</a></span> |
                     <span><a style="background-color: #221A0F; color: #fbebd4" href="#about">About/Contact</a></span>
                 </p>
             </div>
             <div class="script" id="arabic-script">
-                <h2>كتابة عربية | Arabic Script</h2>
+                <h2 class="green">كتابة عربية | Arabic Script</h2>
                 <div class="levelpanel" id="arabic">
                     <h2>العربية | Arabic</h2>
                     <p>Arabic is probably the most important language you will find on this site. There are over 300 million Arabic speakers in the world and it is an official language in 26 countries! In addition, Arabic is the liturgical language of Islam (the second largest religion on Earth) and one of six official working languages of the United Nations. Wherever Islam went, from Senegal to Suriname to Spain, Arabic impacted the local language and provided many loan words (many like Algebra and kebab have come into English).</p>
                     <div class="levelbox" id="arabic-levels"></div>
-                </div>
-                <div class="levelpanel" id="uyghur">
-                    <h2>ئۇيغۇر | Uyghur</h2>
-                    <p>Alongside other languages like Turkish, Uzbek, and Kazakh- Uyghur is one of the Turkic languages. Most Uyghurs are Muslim and therefore write in the a variant of the same alphabet of their religious texts. However, unlike the Arabic language, all vowels are fully written. There are maybe 12 million Uyghurs in northwestern China now, with an additional 2 million around the world (particularly Kazakhstan, Turkey, and Uzbekistan).</p>
-                    <div class="levelbox" id="uyghur-levels"></div>
                 </div>
                 <div class="levelpanel" id="persian">
                     <h2>فارسی | Persian</h2>
@@ -171,14 +166,14 @@
                     <h2><span class="urdufont">اُردُو</span> | Urdu</h2>
                     <p>Coming soon!</p>
                 </div>
+                <div class="levelpanel" id="uyghur">
+                    <h2>ئۇيغۇر | Uyghur</h2>
+                    <p>Alongside other languages like Turkish, Uzbek, and Kazakh- Uyghur is one of the Turkic languages. Most Uyghurs are Muslim and therefore write in the a variant of the same alphabet of their religious texts. However, unlike the Arabic language, all vowels are fully written. There are maybe 12 million Uyghurs in northwestern China now, with an additional 2 million around the world (particularly Kazakhstan, Turkey, and Uzbekistan).</p>
+                    <div class="levelbox" id="uyghur-levels"></div>
+                </div>
             </div>
             <div class="script" id="cyrillic-script">
-                <h2>Кириллица | Cyrillic Script</h2>
-                <div class="levelpanel" id="russian">
-                    <h2>Русский | Russian</h2>
-                    <p>Despite the collapse of the Soviet Union in 1991, Russian remains important in Eastern Europe and is even growing in popularity in Central Asia- with an estimated 260 million total speakers! Russian is one of the six official languages of the United Nations, and is the most spoken first language in Europe. If you want to be able to read an official language of four different countries (Russia, Kazakhstan, Belarus, Kyrgyzstan), click down below.</p>
-                    <div class="levelbox" id="russian-levels"></div>
-                </div>
+                <h2 class="purple">Кириллица | Cyrillic Script</h2>
                 <div class="levelpanel" id="bulgarian">
                     <h2>Български | Bulgarian</h2>
                     <p>Bulgarian is a South Slavic language with around 8-9 million speakers in the Republic of Bulgaria- an EU Member State on the Balkan peninsula. Historically, Middle Bulgarian was spoken in a much larger area in the Second Bulgarian Empire. Because of this, there are still many Bulgarian speaking towns in southern Ukraine and Moldova. Select a level below, to become literate in a language that is known for its simple grammar (compared to other Slavic languages).</p>
@@ -189,34 +184,39 @@
                     <p>In the heart of the Balkan Peninsula you will find a small multiethnic nation called the Republic of North Macedonia. The national language and language of interethnic communication is Macedonian, a Slavic language which is related to both Serbian and Bulgarian. In terms of orthography and grammar, Macedonian is very simple compared to other languages of the region- it was codified around the late 1800s and early 1900s as the Ottoman Empire began to collapse. Before visiting Skopje, make sure to take these quick lessons to become acquainted with the alphabet.</p>
                     <div class="levelbox" id="macedonian-levels"></div>
                 </div>
-                <div class="levelpanel" id="serbian">
-                    <h2>Српски | Serbian</h2>
-                    <p>The Serbian language is part of a pluricentric South Slavic language which includes literary varieties such as "Croatian" and "Bosnian". However, Serbian is unique among these varieties that it is written in two alphabets, Cyrillic (slightly more often) and Latin. Serbian is official in four countries (Serbia, Bosnia & Herzegovina, Montenegro, and Kosovo) which is a lot more languages that most on this site. So now that you are convinced, start the Serbian course below.</p>
-                    <div class="levelbox" id="serbian-levels"></div>
+                <div class="levelpanel" id="mongolian">
+                    <h2>Монгол | Mongolian</h2>
+                    <p>Under Genghis Khan, the Mongolian Empire became the largest land-based empire in history, stretching across most of Eurasia. Today, the Mongolian nation has been reduced to a small inland republic between Russia and China with a few million people. Due to influence from the Soviet Union, Mongolia adopted the Cyrillic alphabet to replace their traditional alphabet. The traditional alphabet, which is written top-to-bottom, is still used about Mongolians in China- but this course will only teach the Mongolian Cyrillic alphabet.</p>
+                    <div class="levelbox" id="mongolian-levels"></div>
+                </div>
+                <div class="levelpanel" id="russian">
+                    <h2>Русский | Russian</h2>
+                    <p>Despite the collapse of the Soviet Union in 1991, Russian remains important in Eastern Europe and is even growing in popularity in Central Asia- with an estimated 260 million total speakers! Russian is one of the six official languages of the United Nations, and is the most spoken first language in Europe. If you want to be able to read an official language of four different countries (Russia, Kazakhstan, Belarus, Kyrgyzstan), click down below.</p>
+                    <div class="levelbox" id="russian-levels"></div>
                 </div>
                 <div class="levelpanel" id="rusyn">
                     <h2>Русиньскый | Rusyn</h2>
                     <p>Unlike most ethnic groups in Europe, the Rusyns are not all concentrated in one area. Rusyns live primarily in Slovakia, Ukraine, Poland, and Serbia- among other Central European countries. Rusyn is an East Slavic language like Belarusian, Russian, and Ukrainian, and it's spoken by around half a million people.</p>
                     <div class="levelbox" id="rusyn-levels"></div>
                 </div>
-                <div class="levelpanel" id="ukrainian">
-                    <h2>Українська | Ukrainian</h2>
-                    <p>During Soviet times, the Ukrainian language was often discarded in favor of Russian, but recently this language has been undergoing a major revitalization! Books, movies, and TV shows are being created in Ukrainian like never before in history. Around forty million people speak Ukrainian, making it one of Europe's major languages- so make sure you know how to read a couple words in it at the very least.</p>
-                    <div class="levelbox" id="ukrainian-levels"></div>
-                </div>
-                <div class="levelpanel" id="mongolian">
-                    <h2>Монгол | Mongolian</h2>
-                    <p>Under Genghis Khan, the Mongolian Empire became the largest land-based empire in history, stretching across most of Eurasia. Today, the Mongolian nation has been reduced to a small inland republic between Russia and China with a few million people. Due to influence from the Soviet Union, Mongolia adopted the Cyrillic alphabet to replace their traditional alphabet. The traditional alphabet, which is written top-to-bottom, is still used about Mongolians in China- but this course will only teach the Mongolian Cyrillic alphabet.</p>
-                    <div class="levelbox" id="mongolian-levels"></div>
+                <div class="levelpanel" id="serbian">
+                    <h2>Српски | Serbian</h2>
+                    <p>The Serbian language is part of a pluricentric South Slavic language which includes literary varieties such as "Croatian" and "Bosnian". However, Serbian is unique among these varieties that it is written in two alphabets, Cyrillic (slightly more often) and Latin. Serbian is official in four countries (Serbia, Bosnia & Herzegovina, Montenegro, and Kosovo) which is a lot more languages that most on this site. So now that you are convinced, start the Serbian course below.</p>
+                    <div class="levelbox" id="serbian-levels"></div>
                 </div>
                 <div class="levelpanel" id="tajik">
                     <h2>Тоҷикӣ | Tajik</h2>
                     <p>The mountaineous Republic of Tajikistan's national language is Tajik, which is a divergent dialect of Persian/Dari written in the Cyrillic alphabet. Additionally, Tajik is spoken by a large portion of the population of Uzbekistan and it is the main language in some major cities. Because of the geographic isolation, Tajik has kept some vocabulary and grammar that no longer exists in standardized Persian/Dari which are spoken in Iran in Afghanistan.</p>
                     <p>Coming soon!</p>
                 </div>
+                <div class="levelpanel" id="ukrainian">
+                    <h2>Українська | Ukrainian</h2>
+                    <p>During Soviet times, the Ukrainian language was often discarded in favor of Russian, but recently this language has been undergoing a major revitalization! Books, movies, and TV shows are being created in Ukrainian like never before in history. Around forty million people speak Ukrainian, making it one of Europe's major languages- so make sure you know how to read a couple words in it at the very least.</p>
+                    <div class="levelbox" id="ukrainian-levels"></div>
+                </div>
             </div>
             <div class="script" id="hebrew-script">
-                <h2>אלפבית עברי | Hebrew Alphabet</h2>
+                <h2 class="cyan">אלפבית עברי | Hebrew Alphabet</h2>
                 <div class="levelpanel" id="hebrew">
                     <h2>עברית | Hebrew</h2>
                     <p>For millenia, Hebrew has remained the holy language of Judaism and it's the original language of the Old Testament (Tanakh). At the start of the 20th century, nobody used Hebrew outside of religious contexts. Now Hebrew is spoken by over ten million people and it is the national language of the State of Israel. This is the first foreign alphabet I learned; if I did it, you can too!</p>
@@ -229,15 +229,55 @@
                 </div>
             </div>
             <div class="script" id="greek-script">
-                <h2>Ελληνικό αλφάβητο | Greek Alphabet</h2>
+                <h2 class="blue">Ελληνικό αλφάβητο | Greek Alphabet</h2>
                 <div class="levelpanel" id="greek">
                     <h2>Ελληνική | Greek</h2>
                     <p>In ancient times, the foundations for philosophy, mathematics, and logic were first transcribed in Greek. While Greek is no longer considered the main language of Western civilization, it is still the main language of both Cyprus and Greece and spoken by smaller communities in countries like Georgia, Ukraine, and Italy. Many Greek letters are important in science and mathematics, and a lot of Greek word roots have entered international vocabulary. The odds are that you are already familiar with some Greek letters, so don't hesitate to get started.</p>
                     <div class="levelbox" id="greek-levels"></div>
                 </div>
             </div>
+            <div class="script" id="tifinagh-script">
+                <h2 class="yellow">ⵜⵉⴼⵉⵏⴰⵖ | Tifinagh Script</h2>
+                <div class="levelpanel" id="tamazight">
+                    <h2>ⵜⴰⵎⴰⵣⵉⵖⵜ | Central Atlas Tamazight</h2>
+                    <p>The Amazigh languages are spoken by tens of millions of people across North Africa and the Sahel. Central Atlas Tamazight is the second-most spoken Amazigh language (with around 5 million speakers), spoken entirely in Morocco in the Atlas mountains. A modern variation of the ancient Tifinagh alphabet is principly used to write this language, with encourage from the government. A minority of people use Latin or Arabic but this is increasingly rare, so I suggest you start learning now.</p>
+                    <div class="levelbox" id="tamazight-levels"></div>
+                </div>
+            </div>
+            <div class="script" id="georgian-script">
+                <h2 class="red">ქართული დამწერლობა | Georgian Alphabet</h2>
+                <div class="levelpanel" id="georgian">
+                    <h2>ქართული | Georgian</h2>
+                    <p>The mountaineous republic of Georgia is situated in the southern Caucausus, where the Georgian people have maintained their language and culture for thousands of years, surviving centuries of foreign occupation. The Georgian language has an easy alphabet, with no capital/lowercase letter distinction. Doesn't sound so hard right? If you want to communicate with the ~3.7 million Georgians in the world, consider completing this course's levels.</p>
+                    <div class="levelbox" id="georgian-levels"></div>
+                </div>
+            </div>
+            <div class="script" id="adlam-script">
+                <h2 class="darkgreen"><span class="adlamFont">𞤀𞤣𞤤𞤢𞤥</span> | Adlam</h2>
+                <div class="levelpanel" id="fulani">
+                    <h2><span class="adlamFont">𞤊𞤵𞤤𞤬𞤵𞤤𞤣𞤫</span> | Fulani</h2>
+                    <p>The Fulani language is one of the most spoken in Africa. There are approximately 35 million first language speakers and another 30 million second language speakers. Fula people live across Western and Central Africa in countries as far apart as Mauritania, Ethiopia, and Cameroon. Historically, Fulani has been written in various forms of the Latin or Arabic script, but in the 1980s an indigenous alphabet known as Adlam was created by Abdoulaye and Ibrahima Barry in Guinea. Adlam is growing to be the primary alphabet of the Fulani language in modern times.</p>
+                    <div class="levelbox" id="fulani-levels"></div>
+                </div>
+            </div>
+            <div class="script" id="osage-script">
+                <h2 class="yellow">𐓏𐒰𐓓𐒰𐓓𐒷 | Osage</h2>
+                <div class="levelpanel" id="osage">
+                    <h2>𐓏𐒰𐓓𐒰𐓓𐒷 𐒻𐒷 | Osage</h2>
+                    <p>Osage is a highly endangered language which was historically spoken around the American Midwest but is now mostly taught in the Osage Nation (in northeastern Oklahoma). In 2006, a new script was created for the Osage language, which accurately represents all of the sounds which exist in the language. This makes Osage, alongside Cherokee, one of only two Native American alphabets to use an indigenous script.</p>
+                    <div class="levelbox" id="osage-levels"></div>
+                </div>
+            </div>
+            <div class="script" id="hiragana-script">
+                <h2 class="orange">ひらがな | Hiragana</h2>
+                <div class="levelpanel" id="hiragana">
+                    <h2>日本語 | Japanese</h2>
+                    <p>Japanese is one of these most spoken languages in East Asia, with around 130 million speakers. However, it is also one of the hardest to learn to read. In fact, there are three different writing systems used together to write Japanese- this will teach you the syllable-based system for native Japanese words called Hiragana. Katakana will be on this website later, but I do not know if we will ever have the third system (Kanji).</p>
+                    <div class="levelbox" id="hiragana-levels"></div>
+                </div>
+            </div>
             <div class="script" id="armenian-script">
-                <h2>Հայոց այբուբեն | Armenian Alphabet</h2>
+                <h2 class="cyan">Հայոց այբուբեն | Armenian Alphabet</h2>
                 <div class="levelpanel" id="armenian">
                     <h2>հայերեն | Armenian</h2>
                     <p>The Armenian language has a literary tradition that began in 405 CE after the priest Mesrop Mashtots invented its alphabet. In present times, Armenian is spoken by nearly seven million people. In addition to being the national language of the Republic of Armenia, you can find many speakers across the Armenian diaspora in Georgia, Russia, the USA, Lebanon, and other countries. Come learn how to read this beautiful language!</p>
@@ -250,57 +290,16 @@
                     <!-- <div class="levelbox" id="westernarmenian-levels"></div> -->
                 </div>
             </div>
-            <div class="script" id="tifinagh-script">
-                <h2>ⵜⵉⴼⵉⵏⴰⵖ | Tifinagh Script</h2>
-                <div class="levelpanel" id="tamazight">
-                    <h2>ⵜⴰⵎⴰⵣⵉⵖⵜ | Central Atlas Tamazight</h2>
-                    <p>The Amazigh languages are spoken by tens of millions of people across North Africa and the Sahel. Central Atlas Tamazight is the second-most spoken Amazigh language (with around 5 million speakers), spoken entirely in Morocco in the Atlas mountains. A modern variation of the ancient Tifinagh alphabet is principly used to write this language, with encourage from the government. A minority of people use Latin or Arabic but this is increasingly rare, so I suggest you start learning now.</p>
-                    <div class="levelbox" id="tamazight-levels"></div>
-                </div>
-            </div>
-            <div class="script" id="georgian-script">
-                <h2>ქართული დამწერლობა | Georgian Alphabet</h2>
-                <div class="levelpanel" id="georgian">
-                    <h2>ქართული | Georgian</h2>
-                    <p>The mountaineous republic of Georgia is situated in the southern Caucausus, where the Georgian people have maintained their language and culture for thousands of years, surviving centuries of foreign occupation. The Georgian language has an easy alphabet, with no capital/lowercase letter distinction. Doesn't sound so hard right? If you want to communicate with the ~3.7 million Georgians in the world, consider completing this course's levels.</p>
-                    <div class="levelbox" id="georgian-levels"></div>
-                </div>
-            </div>
-            <div class="script" id="adlam-script">
-                <h2><span class="adlamFont">𞤀𞤣𞤤𞤢𞤥</span> | Adlam</h2>
-                <div class="levelpanel" id="fulani">
-                    <h2><span class="adlamFont">𞤊𞤵𞤤𞤬𞤵𞤤𞤣𞤫</span> | Fulani</h2>
-                    <p>The Fulani language is one of the most spoken in Africa. There are approximately 35 million first language speakers and another 30 million second language speakers. Fula people live across Western and Central Africa in countries as far apart as Mauritania, Ethiopia, and Cameroon. Historically, Fulani has been written in various forms of the Latin or Arabic script, but in the 1980s an indigenous alphabet known as Adlam was created by Abdoulaye and Ibrahima Barry in Guinea. Adlam is growing to be the primary alphabet of the Fulani language in modern times.</p>
-                    <div class="levelbox" id="fulani-levels"></div>
-                </div>
-            </div>
-            <div class="script" id="osage-script">
-                <h2>𐓏𐒰𐓓𐒰𐓓𐒷 | Osage</h2>
-                <div class="levelpanel" id="osage">
-                    <h2>𐓏𐒰𐓓𐒰𐓓𐒷 𐒻𐒷 | Osage</h2>
-                    <p>Osage is a highly endangered language which was historically spoken around the American Midwest but is now mostly taught in the Osage Nation (in northeastern Oklahoma). In 2006, a new script was created for the Osage language, which accurately represents all of the sounds which exist in the language. This makes Osage, alongside Cherokee, one of only two Native American alphabets to use an indigenous script.</p>
-                    <div class="levelbox" id="osage-levels"></div>
-                </div>
-            </div>
-            <div class="script" id="hiragana-script">
-                <h2>ひらがな | Hiragana</h2>
-                <div class="levelpanel" id="hiragana">
-                    <h2>日本語 | Japanese</h2>
-                    <p>Japanese is one of these most spoken languages in East Asia, with around 130 million speakers. However, it is also one of the hardest to learn to read. In fact, there are three different writing systems used together to write Japanese- this will teach you the syllable-based system for native Japanese words called Hiragana. Katakana will be on this website later, but I do not know if we will ever have the third system (Kanji).</p>
-                    <div class="levelbox" id="hiragana-levels"></div>
-                </div>
-            </div>
-            <div class="script" id="hangul-script">
-                <h2>한글 | Hangul</h2>
-                <div class="levelpanel" id="korean">
-                    <h2>한국어 | Korean</h2>
-                    <p>King Sejong the Great developed the Korean alphabet, known as Hangul, to write his country's language. Previously, Chinese characters were used to write Korean words. Presently, Korean is spoken in South Korea, North Korea, and two autonomous counties in China. North Korea has a slightly simplified form of alphabet but it will not be taught here as it is not useful given the current political situation.</p>
-                    <p>Coming Soon!</p>
-                    <!-- <div class="levelbox" id="korean-levels"></div> -->
+            <div class="script" id="devanagari-script">
+                <h2 class="orange">देवनागरी | Devanagari</h2>
+                <div class="levelpanel" id="hindi">
+                    <h2>हिन्दी | Hindi</h2>
+                    <p>Alongside English, Hindi is one of India's official languages. Though only a little over half of the population of India speaks Hindi as a first, second, or third language, that is still a lot of people (~700 million)! Indeed, Hindi is the fourth most spoken language in the world. Outside of South Asia, Hindi is actually an official language in the Polynesian nation of Fiji.</p>
+                    <p>Coming soon!</p>
                 </div>
             </div>
             <div class="script" id="easternnagari-script">
-                <h2>পূর্ব নাগরী লিপি | Eastern Nagari</h2>
+                <h2 class="green">পূর্ব নাগরী লিপি | Eastern Nagari</h2>
                 <div class="levelpanel" id="bengali">
                     <h2>বাংলা | Bengali</h2>
                     <p>While most people do not think of Bengali when thinking of widely-spoken languages, but Bengali is the fifth-most widely spoken native language in the world. Not only do nearly all of Bangladesh's ~160 million citizens speak Bengali natively, but so do the majority of people in the Indian states of West Bengal and Tripura. Across India and Bangladesh, there are many dialects of Bengali, some of which are considered separate languages, varying by geography and religious community.</p>
@@ -308,12 +307,13 @@
                     <!-- <div class="levelbox" id="bengali-levels"></div> -->
                 </div>
             </div>
-            <div class="script" id="devanagari-script">
-                <h2>देवनागरी | Devanagari</h2>
-                <div class="levelpanel" id="hindi">
-                    <h2>हिन्दी | Hindi</h2>
-                    <p>Alongside English, Hindi is one of India's official languages. Though only a little over half of the population of India speaks Hindi as a first, second, or third language, that is still a lot of people (~700 million)! Indeed, Hindi is the fourth most spoken language in the world. Outside of South Asia, Hindi is actually an official language in the Polynesian nation of Fiji.</p>
-                    <p>Coming soon!</p>
+            <div class="script" id="hangul-script">
+                <h2 class="yellow">한글 | Hangul</h2>
+                <div class="levelpanel" id="korean">
+                    <h2>한국어 | Korean</h2>
+                    <p>King Sejong the Great developed the Korean alphabet, known as Hangul, to write his country's language. Previously, Chinese characters were used to write Korean words. Presently, Korean is spoken in South Korea, North Korea, and two autonomous counties in China. North Korea has a slightly simplified form of alphabet but it will not be taught here as it is not useful given the current political situation.</p>
+                    <p>Coming Soon!</p>
+                    <!-- <div class="levelbox" id="korean-levels"></div> -->
                 </div>
             </div>
             <!--
@@ -332,10 +332,12 @@
                 </div>
             </div>
             -->
-            <div class="script" id="changelog">
+            <div class="script metadiv" id="changelog">
                 <h2><a href="changelog.html" target="_blank">Changelog</a></h2>
                 <div class="levelpanel" id="change">
-                    <p><b>13 May 2021 <small>2 Sivan 5781 | 1 Shawwal 1442 | 17 Jamál 178 | 30 Vaisakh 553</small></b></p>
+                    <p class="calendar">14 May 2021 <span class="cyan">3 Sivan 5781</span> | <span class="green">2 Shawwal 1442</span> | <span class="red">18 Jamál 178</span> | <span class="orange">31 Vaisakh 553</span></p>
+                    <p>I changed how the site looks a lot! The table of contents is now alphabetized.</p>
+                    <p class="calendar">13 May 2021 <span class="cyan">2 Sivan 5781</span> | <span class="green">1 Shawwal 1442</span> | <span class="red">17 Jamál 178</span> | <span class="orange">30 Vaisakh 553</span></p>
                     <p>Added Mongolian! There is now a welcome section. Worked on some backend improvements.</p>
                     <p><b>6 May 2021 <small>24 Iyar 5781 | 24 Ramadan 1442 | 10 Jamál 178 | 23 Vaisakh 553</small></b></p>
                     <p>Completely redid the table of contents on the top. Fixed a glitch in the Hebrew and Arabic courses. Beginning to add support for new fonts (Adlam uses a new one now). Issues with the delete button fixed- there is now a delete button on number-related exercises.</p>
@@ -357,7 +359,7 @@
                     <p>Released first version of website. There may be some bugs or badly explained parts, sorry in advance. If you want to help improve the existing courses or make new ones, contact me.</p>
                 </div>
             </div>
-            <div class="script" id="about">
+            <div class="script metadiv" id="about">
                 <h2>About/Contact</h2>
                 <div class="levelpanel">
                     <p>This website was coded by Harris Mowbray with the goal of providing a free resource to allow anyone to learn the different writing systems of the world. You can contact me at <a href="mailto:harrismowbray@yahoo.com?subject=Letterly%20Mail&body=Peace%20be%20upon%20you%20Harris">harrismowbray@yahoo.com</a> with any questions or comments on the site. The underlying code behind the website is just plain HTML, CSS, and JavaScript- no outside frameworks were used.</p>
