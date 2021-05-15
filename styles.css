@@ -305,7 +305,6 @@ input::placeholder{
     background-color: #221A0F;
     border: #e4c6a5 2px solid;
     color: #e4c6a5;
-    width: calc(98.4% - 4px);
 }
 .script h2{
     color: #e4c6a5;
@@ -324,7 +323,6 @@ input::placeholder{
 }
 .metadiv{
     background-color: #e4c6a5;
-    width: 98.4%;
     color: #221a0f;
     border: none;
 }
