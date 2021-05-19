@@ -1,4 +1,4 @@
-[language, lesson, exercise, questiontype, keyboardNum, L, S] = ["", 1, 1, "", 1, {}, {}]
+[language, answer, lesson, exercise, questiontype, keyboardNum, L, S] = ["", "", 1, 1, "", 1, {}, {}]
 switchAround = (a, b) => [menu.style.display, root.style.display] = [a, b]
 function preformat(la, le){
     exercise = 1
@@ -35,7 +35,7 @@ function format(){
     for(var t of typelist) document.getElementById(t).style.display = questiontypes[questiontype].includes(t) ? "" : "none"
     switch(questiontype){
         case "n": //number
-            buttonmoral("Interesting! ;)")
+            buttonmoral("Okay!")
             sentence.textContent = "New digit"
             letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #D3AF86'> (${S.numerals.indexOf(otherdata)})</span>`
             break
@@ -51,12 +51,12 @@ function format(){
             for(g of [0,1,2]) document.getElementById("b" + (g+1)).innerHTML = fontWrap(answers[g])
             break
         case "i":
-            buttonmoral("Interesting! ;)")
+            buttonmoral("Okay!")
             sentence.textContent = "Some helpful information ;)"
             words.innerHTML = otherdata
             break
         case "l":
-            buttonmoral("Interesting! ;)")
+            buttonmoral("Okay!")
             sentence.textContent = "New letter"
             letter.innerHTML = `${presentation(otherdata)}<span style='color: #D3AF86'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata]: "silent"})</span>`
             if(language == "hiragana" && lesson >= 3) [listen.innerHTML, pronunciation.innerHTML] = ["", ""]
@@ -95,10 +95,15 @@ function format(){
 multchoice = (answer) => buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :)" : "Incorrect! :(")
 next = () => ++exercise > L.plan[lesson-1].length ? switchAround("block", "none") : format()
 fontWrap = (text) => L.font ? `<span class="${L.font}">${text}</span>` : text
-function buttonmoral(p,q){
+function buttonmoral(p){
     [multiplechoice.style.display, continuebutton.style.display] = ["none", ""]
-    continuebutton.textContent = p + " Continue..."
-    continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0]
+    leanswer = ""
+    if(p.startsWith("I")){
+        if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ""
+        else if(questiontype == "d") leanswer = ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
+    }
+    continuebutton.textContent = p + leanswer + " Continue..."
+    continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
 }
 function enter(){
     enterbutton.style.display = "none"
@@ -136,21 +141,15 @@ document.addEventListener('mouseup', (e) => {
 delet = () => input.value = input.value.slice(0, input.value.length - (input.value.charCodeAt(input.value.length-2) == 55354 ? 2 : 1))
 function entertext(code){
     document.getElementById(code).style.backgroundColor = "#DC3958"
-    switch(code){
-        case "Backspace":
-            delet()
-            break
-        case "Enter":
-            if(continuebutton.style.display != "none") next()
-            else if(enterbutton.style.display != "none") enter()
-            break
-        case "ShiftLeft":
-        case "ShiftRight":
-            if(S.keyboardDimensions > 1 && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
-            break
-        default:
-            input.value += document.getElementById(code).textContent
+    if(code == "Backspace") delet()
+    else if(code == "Enter"){
+        if(continuebutton.style.display != "none") next()
+        else if(enterbutton.style.display != "none") enter()
     }
+    else if(code == "ShiftLeft" || code == "ShiftRight"){
+        if(S.keyboardDimensions > 1 && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
+    }
+    else input.value += document.getElementById(code).textContent
 }
 window.addEventListener("load", function(){
     for(r in languageData) for(t in languageData[r].plan) document.getElementById(r + "-levels").innerHTML += `<div onclick="preformat('${r}', ${+t+1})">Level<br /><span>${+t+1}</span></div>`

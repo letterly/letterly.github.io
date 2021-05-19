@@ -46,6 +46,7 @@ light: #e4c6a5;
 }
 ::selection{
     background-color: #d33682;
+    color: #e4c6a5;
 }
 DOM, body{
     background-color: #221A0F;
@@ -116,10 +117,10 @@ h2{
 .incorrect:hover{
     background-color: #dc322f;
 }
-.interesting{
+.okay{
     background-color: #839496;
 }
-.interesting:hover{
+.okay:hover{
     background-color: #586e75;
 }
 
