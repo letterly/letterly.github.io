@@ -2053,4 +2053,60 @@ scriptData = {
         keyboardDimensions: 1,
         direction: "ltr",
     },
+    bengali: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "০১২৩৪৫৬৭৮৯",
+    },
+    gujarati: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "૦૧૨૩૪૫૬૭૮૯",
+    },
+    gurmukhi: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "੦੧੨੩੪੫੬੭੮੯",
+    },
+    tibetan: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "༠༡༢༣༤༥༦༧༨༩"
+    },
+    kannada: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "೦೧೨೩೪೫೬೭೮೯", //???
+    },
+    khmer: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "០១២៣៤៥៦៧៨៩",
+    },
+    telugu: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "౦౧౨౩౪౫౬౭౮౯",
+    },
+    oriya: {
+        cameral: false,
+        plane: false,
+        keyboardDimensions: 1,
+        direction: "ltr",
+        numerals: "୦୧୨୩୪୫୬୭୮୯",
+    }
 }

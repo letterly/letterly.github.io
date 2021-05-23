@@ -37,7 +37,7 @@ function format(){
         case "n": //number
             buttonmoral("Okay!")
             sentence.textContent = "New digit"
-            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #D3AF86'> (${S.numerals.indexOf(otherdata)})</span>`
+            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #e4c6a5'> (${S.numerals.indexOf(otherdata)})</span>`
             break
         case "m": //math
             [input.value, sentence.textContent] = ["", "Convert this to Western numerals"]
@@ -58,7 +58,7 @@ function format(){
         case "l":
             buttonmoral("Okay!")
             sentence.textContent = "New letter"
-            letter.innerHTML = `${presentation(otherdata)}<span style='color: #D3AF86'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata]: "silent"})</span>`
+            letter.innerHTML = `${presentation(otherdata)}<span style='color: #e4c6a5'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata]: "silent"})</span>`
             if(language == "hiragana" && lesson >= 3) [listen.innerHTML, pronunciation.innerHTML] = ["", ""]
             else{
                 listen.innerHTML = "<b>[Listen here]</b>"
@@ -81,14 +81,14 @@ function format(){
                 letter.innerHTML = otherdata
                 for(letr of Object.entries(L.nativeKeyboard)) document.getElementById(letr[0]).innerHTML = fontWrap(letr[1])
             }
-            for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#D3AF86"
+            for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#e4c6a5"
             break
         case "d":
             [input.value, sentence.textContent] = ["", `What is the English translation of this word?`]
             for(b of document.getElementsByClassName("key")) b.textContent = ""
             for(ltr of "QWERTYUIOPASDFGHJKLZXCVBNM".split("")) document.getElementById("Key" + ltr).textContent = ltr.toLowerCase()
             letter.textContent = otherdata.split(">")[0]
-            for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#D3AF86"
+            for(b of document.getElementsByClassName("key")) b.style.backgroundColor = b.textContent == "" ? "#6c71c4" : "#e4c6a5"
             break
     }
 }
@@ -101,6 +101,7 @@ function buttonmoral(p){
     if(p.startsWith("I")){
         if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ""
         else if(questiontype == "d") leanswer = ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
+        else if(questiontype == "m") leanswer = ` The answer is ${letter.textContent.split("").map(x => S.numerals.indexOf(x)).join("")}. `
     }
     continuebutton.textContent = p + leanswer + " Continue..."
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
@@ -129,14 +130,17 @@ document.addEventListener('keyup', (e) => {
     if(document.getElementById(e).className.includes("blue")) document.getElementById(e).style.backgroundColor = "#268bd2"
     else if(document.getElementById(e).className.includes("orange")) document.getElementById(e).style.backgroundColor = "#F06431"
     else if(document.getElementById(e).textContent == "") document.getElementById(e).style.backgroundColor = "#6c71c4"
-    else document.getElementById(e).style.backgroundColor = "#D3AF86"
+    else document.getElementById(e).style.backgroundColor = "#e4c6a5"
 })
 document.addEventListener('mousedown', (e) => {
-    if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#DC3958" 
+    if(e.srcElement.className == "key" && e.srcElement.textContent != ""){
+        e.srcElement.style.backgroundColor = "#DC3958"
+        entertext(e.srcElement.id)
+    }
     else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen") new Audio(`sounds/${soundify(L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0])}.m4a`).play()
 })
 document.addEventListener('mouseup', (e) => {
-    if(e.srcElement.className == "key" && e.srcElement.textContent != "") e.srcElement.style.backgroundColor = "#D3AF86" 
+    if(e.srcElement.className == "key" && e.srcElement.textContent != "") document.getElementById(e.srcElement.id).style.backgroundColor = "#e4c6a5"
 })
 delet = () => input.value = input.value.slice(0, input.value.length - (input.value.charCodeAt(input.value.length-2) == 55354 ? 2 : 1))
 function entertext(code){

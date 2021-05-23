@@ -51,6 +51,9 @@ light: #e4c6a5;
 DOM, body{
     background-color: #221A0F;
 }
+#welcome h2{
+    font-size: 48px;
+}
 
 /*1. letterly title*/
 
@@ -70,6 +73,13 @@ h2{
     text-align: center;
     margin-top: 12px;
     margin-bottom: 12px;
+}
+#sentence{
+    font-size: 48px;
+}
+.levelpanel h2 span{
+    color: #221A0F;
+    background-color: #e4c6a5;
 }
 
 
@@ -346,7 +356,7 @@ input::placeholder{
     text-decoration: underline;
 }
 .levelbox{
-    height: 90px;
+    height: 70px;
     width: 98%;
     margin-left: 2%;
 }
@@ -414,4 +424,15 @@ input::placeholder{
 }
 .adlamFont{
     font-family: adlamFont;
+}
+hr{
+    border: none;
+    height: 2px;
+    width: 96%;
+    background-color: #e4c6a5;
+    margin-bottom: 20px;
+}
+#changelog hr{
+    background-color: #221a0f;
+    margin-bottom: 10px;
 }
