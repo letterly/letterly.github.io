@@ -92,31 +92,38 @@ function format(){
             break
     }
 }
-multchoice = (answer) => buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :)" : "Incorrect! :(")
+multchoice = (answer) => buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :) " : "Incorrect! :(")
 next = () => ++exercise > L.plan[lesson-1].length ? switchAround("block", "none") : format()
 fontWrap = (text) => L.font ? `<span class="${L.font}">${text}</span>` : text
 function buttonmoral(p){
     [multiplechoice.style.display, continuebutton.style.display] = ["none", ""]
     leanswer = ""
     if(p.startsWith("I")){
-        if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ""
-        else if(questiontype == "d") leanswer = ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
+        if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
+        else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
+        else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
         else if(questiontype == "m") leanswer = ` The answer is ${letter.textContent.split("").map(x => S.numerals.indexOf(x)).join("")}. `
     }
-    continuebutton.textContent = p + leanswer + " Continue..."
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
+    if(p == "Okay!") p = ""
+    continuebutton.innerHTML = p + leanswer + "Continue..."
 }
 function enter(){
     enterbutton.style.display = "none"
     ans = input.value
-    if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :)" : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :)" : "Incorrect! :(")
-    else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :)" : "Incorrect! :(")
-    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => S.numerals[x]).join("") == letter.textContent ? "Correct! :)" : "Incorrect! :(")
+    if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
+    else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :) " : "Incorrect! :(")
+    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => S.numerals[x]).join("") == letter.textContent ? "Correct! :) " : "Incorrect! :(")
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
     if(L.alphabet[word.slice(0, 1 + S.plane)]?.includes(",")) word = L.alphabet[word.slice(0, 1 + S.plane)].split(",")[0] + word.slice(1)
     for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
+    return word
+}
+function detlit(word){
+    if(S.cameral) word = word.toLowerCase()
+    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[1], "g"), f[0])
     return word
 }
 soundify = (d) => L.toIPA[L.alphabet[d]] ?? L.alphabet[d]

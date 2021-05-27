@@ -160,7 +160,7 @@ h2{
     width: 49%;
     float: left;
     text-align: center;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 #pronunciation{
@@ -367,7 +367,7 @@ input::placeholder{
 }
 .levelpanel h2{
     text-align: left;
-    font-size: 28px;
+    font-size: 32px;
     margin-left: 2%;
 }
 .levelpanel p{
@@ -404,7 +404,7 @@ input::placeholder{
     font-weight: 700;
 }
 .calendar span{
-    font-size: 85%;
+    font-size: 80%;
 }
 
 /* */

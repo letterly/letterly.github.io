@@ -1,5 +1,7 @@
 ipa = {
     "": "silent",
+    "ʔ": "[i] in uh[-]oh",
+    "ɘ": "between [i] in b[i]t and [u] in [u]nder",
     "ɤ": "[oo] in f[oo]t",
     "ɨ": "[i] in [i]ll",
     "ju": "[u] in h[u]ge",
