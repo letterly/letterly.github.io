@@ -89,17 +89,17 @@
             <!-- #6.5 Number Keyboard-->
 
             <div id="numberkeyboard" class="keyboard">
-                <div id="D1" class="key">1</div>
-                <div id="D2" class="key">2</div>
-                <div id="D3" class="key">3</div>
-                <div id="D4" class="key">4</div>
-                <div id="D5" class="key">5</div>
-                <div id="D6" class="key">6</div>
-                <div id="D7" class="key">7</div>
-                <div id="D8" class="key">8</div>
-                <div id="D9" class="key">9</div>
-                <div id="D0" class="key">0</div>
-                <div id="numberdelete" class="key" onclick="delet()">del</div>
+                <div id="D1" class="pseudokey">1</div>
+                <div id="D2" class="pseudokey">2</div>
+                <div id="D3" class="pseudokey">3</div>
+                <div id="D4" class="pseudokey">4</div>
+                <div id="D5" class="pseudokey">5</div>
+                <div id="D6" class="pseudokey">6</div>
+                <div id="D7" class="pseudokey">7</div>
+                <div id="D8" class="pseudokey">8</div>
+                <div id="D9" class="pseudokey">9</div>
+                <div id="D0" class="pseudokey">0</div>
+                <div id="numberdelete" class="pseudokey" onclick="delet()">del</div>
             </div>
                         
             <!-- #7 Pronunciation Line -->
@@ -129,6 +129,7 @@
                 <p>
                     <span><a class="black" href="#arabic">Arabic</a></span> |
                     <span><a class="black" href="#armenian">Armenian</a></span> |
+                    <span><a class="black" href="#belarusian">Belarusian</a></span> |
                     <span><a class="black" href="#bengali">Bengali</a></span> |
                     <span><a class="black" href="#bulgarian">Bulgarian</a></span> |
                     <span><a class="black" href="#tamazight">Central Atlas Tamazight</a></span> |
@@ -153,11 +154,18 @@
                     <span><a class="black" href="#westernarmenian">Western Armenian</a></span> |
                     <span><a class="black" href="#yiddish">Yiddish</a></span> |
                     <span><a style="background-color: #221A0F; color: #fbebd4" href="#changelog">Changelog</a></span> |
-                    <span><a style="background-color: #221A0F; color: #fbebd4" href="#about">About/Contact</a></span>
+                    <span><a style="background-color: #221A0F; color: #fbebd4" href="#about">About/Contact</a></span> |
+                    <span><a style="background-color: #221A0F; color: #fbebd4" href="#about">Information</a></span>
                 </p>
             </div>
             <div class="script" id="cyrillic-script">
                 <h2 class="orange">Кириллица | Cyrillic Alphabet</h2>
+                <hr>
+                <div class="levelpanel" id="belarusian">
+                    <h2><span>Беларуская | Belarusian</span></h2>
+                    <p>Belarusian is an East Slavic language spoken in Belarus by around 7 million people. Under the Soviet Union and later under the Lukashenko regime, the Belarusian language was pushed aside in favor of the Russian language, which is used more than Belarusian in most parts of the country. This course will teach you the official Belarusian orthography, instead of Taraškievica, an older system sometimes used in the Belarusian diaspora.</p>
+                    <div class="levelbox" id="belarusian-levels"></div>
+                </div>
                 <hr>
                 <div class="levelpanel" id="bulgarian">
                     <h2><span>Български | Bulgarian</span></h2>
@@ -369,6 +377,8 @@
                 <div class="levelpanel" id="change">
                     <p>Gregorian Calendar | <span class="cyan">Jewish</span> | <span class="green">Islamic</span> | <span class="red">Bahá'í</span> | <span class="orange">Sikh</span> | <span class="purple">Solar Hijri</span></p>
                     <hr />
+                    <p class="calendar">29 May 2021 | <span class="cyan">18 Sivan 5781</span> | <span class="green">17 Shawwal 1442</span> | <span class="red">14 Azamat 178</span> | <span class="orange">15 Jeth 553</span> | <span class="purple">8 Khordad 1400</span></p>
+                    <p>There is now an information section on the bottom of the page, which can inform you about the writing systems of the world and how they work. The Belarusian language was added, the 20th language so far! An elusive glitch involving the number keyboard was fixed and a separate smaller glitch with Adlam numerals was fixed.</p>
                     <p class="calendar">27 May 2021 | <span class="cyan">16 Sivan 5781</span> | <span class="green">15 Shawwal 1442</span> | <span class="red">12 Azamat 178</span> | <span class="orange">13 Jeth 553</span> | <span class="purple">6 Khordad 1400</span></p>
                     <p>Now, every type of question will give you the answer if you are wrong. I made some minor stylistic changes. The Tajik language was added!</p>
                     <p class="calendar">23 May 2021 | <span class="cyan">12 Sivan 5781</span> | <span class="green">11 Shawwal 1442</span> | <span class="red">8 Azamat 178</span> | <span class="orange">9 Jeth 553</span></p>
@@ -398,6 +408,14 @@
                 <div class="levelpanel">
                     <p>This website was coded by Harris Mowbray with the goal of providing a free resource to allow anyone to learn the different writing systems of the world. You can contact me at <a href="mailto:harrismowbray@yahoo.com?subject=Letterly%20Mail&body=Peace%20be%20upon%20you%20Harris">harrismowbray@yahoo.com</a> with any questions or comments on the site. The underlying code behind the website is just plain HTML, CSS, and JavaScript - no outside frameworks were used. If you're wondering, the mid-tier quality voice recordings were made by me in my room.</p>
                     <p>Feel free to check out my <a target="_blank" href="https://harrismowbray.com">personal website</a>, where you can read news articles about my linguistic work.</p>
+                </div>
+            </div>
+            <div class="script metadiv" id="about">
+                <h2>Information</h2>
+                <div class="levelpanel">
+                    <p>There are around fifty <a href="https://en.wikipedia.org/wiki/List_of_writing_systems" target="_blank">writing systems</a> around the world that are used in some official capacity. The majority are written from <a href="https://en.wikipedia.org/wiki/Writing_system#Directionality" target="_blank">left-to-right</a>, but others such as <a href="https://en.wikipedia.org/wiki/Hebrew_alphabet" target="_blank">Hebrew</a> and <a href="https://en.wikipedia.org/wiki/Arabic_script" target="_blank">Arabic</a> are <a href="https://en.wikipedia.org/wiki/Right-to-left_script" target="_blank">right-to-left</a>. The <a href="https://en.wikipedia.org/wiki/Mongolian_script" target="_blank">traditional Mongolian script</a> is even written top-to-bottom. Most writing systems do not differentiate between <a href="https://en.wikipedia.org/wiki/Letter_case" target="_blank">capital and lowercase letters</a>.</p>
+                    <p>While you would think most <a href="https://en.wikipedia.org/wiki/Writing_system" target="_blank">writing systems</a> are <a href="https://en.wikipedia.org/wiki/Alphabet" target="_blank">alphabets</a>, that is systems with one symbol per sound, the most common system is actually the abugida. In an <a href="https://en.wikipedia.org/wiki/Abugida" target="_blank">abugida</a>, consonants are the letters, and the way in which they are modified indicates a vowel. The <a href="https://en.wikipedia.org/wiki/Chinese_family_of_scripts" target="_blank">Chinese script</a> is well-known for being a <a href="https://en.wikipedia.org/wiki/Logogram" target="_blank">logographic system</a>; each symbol represents a word. <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Japanese</a> and <a href="https://en.wikipedia.org/wiki/Cherokee_syllabary" target="_blank">Cherokee's</a> writing systems are <a href="https://en.wikipedia.org/wiki/Syllabary" target="_blank">syllabaries</a>, or systems in which each letters represents a syllable. The <a href="https://en.wikipedia.org/wiki/Arabic_script" target="_blank">Arabic</a>, <a href="https://en.wikipedia.org/wiki/Hebrew_alphabet" target="_blank">Hebrew</a>, and <a href="https://en.wikipedia.org/wiki/Syriac_alphabet" target="_blank">Syriac</a> scripts are <a href="https://en.wikipedia.org/wiki/Abjad" target="_blank">abjads</a>; systems where all letters are consonants and vowels are optional/unwritten.</p>
+                    <p>The most widespread writing system in the world by far is the <a href="https://en.wikipedia.org/wiki/Latin_script" target="_blank">Latin script</a> (the one you are reading now) while the next <a href="https://en.wikipedia.org/wiki/List_of_writing_systems#List_of_writing_scripts_by_adoption" target="_blank">most popular</a> would be the <a href="https://en.wikipedia.org/wiki/Chinese_family_of_scripts" target="_blank">Chinese script</a>, <a href="https://en.wikipedia.org/wiki/Cyrillic_script" target="_blank">Cyrillic script</a>, <a href="https://en.wikipedia.org/wiki/Devanagari" target="_blank">Devanagari</a>, <a href="https://en.wikipedia.org/wiki/Arabic_script" target="_blank">Arabic script</a>, and the <a href="https://en.wikipedia.org/wiki/Bengali%E2%80%93Assamese_script" target="_blank">Bengali-Assamese script</a>.</p>
                 </div>
             </div>
         </div>

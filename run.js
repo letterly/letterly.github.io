@@ -10,7 +10,7 @@ function preformat(la, le){
     format()
 }
 function presentation(letterino){
-    if(!S.plane && letterino.length > 1 && S.cameral) return letterino
+    if(Array.from(letterino) > 1 && S.cameral) return letterino
     else if(letterino == "և") return "և"
     else if(letterino == "σ") return "Σσς"
     else if(L.script == "hebrew") return {"פ": "פף","צ": "צץ","מ": "מם","נ": "נן","כ": "כך",}[letterino] ?? letterino
@@ -102,11 +102,10 @@ function buttonmoral(p){
         if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
         else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
         else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
-        else if(questiontype == "m") leanswer = ` The answer is ${letter.textContent.split("").map(x => S.numerals.indexOf(x)).join("")}. `
+        else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => S.numerals.indexOf(x)).join("")}. `
     }
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
-    if(p == "Okay!") p = ""
-    continuebutton.innerHTML = p + leanswer + "Continue..."
+    continuebutton.innerHTML = (p == "Okay!" ? "" : p) + leanswer + "Continue..."
 }
 function enter(){
     enterbutton.style.display = "none"
@@ -117,7 +116,7 @@ function enter(){
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
-    if(L.alphabet[word.slice(0, 1 + S.plane)]?.includes(",")) word = L.alphabet[word.slice(0, 1 + S.plane)].split(",")[0] + word.slice(1)
+    if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)].split(",")[0] + word.slice(1)
     for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
@@ -140,14 +139,11 @@ document.addEventListener('keyup', (e) => {
     else document.getElementById(e).style.backgroundColor = "#e4c6a5"
 })
 document.addEventListener('mousedown', (e) => {
-    if(e.srcElement.className == "key" && e.srcElement.textContent != ""){
-        e.srcElement.style.backgroundColor = "#DC3958"
-        entertext(e.srcElement.id)
-    }
+    if(e.srcElement.className.endsWith("key") && e.srcElement.textContent != "") entertext(e.srcElement.id)
     else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen") new Audio(`sounds/${soundify(L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0])}.m4a`).play()
 })
 document.addEventListener('mouseup', (e) => {
-    if(e.srcElement.className == "key" && e.srcElement.textContent != "") document.getElementById(e.srcElement.id).style.backgroundColor = "#e4c6a5"
+    if(e.srcElement.className.endsWith("key") && e.srcElement.textContent != "") document.getElementById(e.srcElement.id).style.backgroundColor = "#e4c6a5"
 })
 delet = () => input.value = input.value.slice(0, input.value.length - (input.value.charCodeAt(input.value.length-2) == 55354 ? 2 : 1))
 function entertext(code){
@@ -157,7 +153,7 @@ function entertext(code){
         if(continuebutton.style.display != "none") next()
         else if(enterbutton.style.display != "none") enter()
     }
-    else if(code == "ShiftLeft" || code == "ShiftRight"){
+    else if(code.startsWith("Shift")){
         if(S.keyboardDimensions > 1 && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
     }
     else input.value += document.getElementById(code).textContent

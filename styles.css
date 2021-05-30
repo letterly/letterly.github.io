@@ -219,7 +219,7 @@ input::placeholder{
     width: 7%;
 }
 
-.key{
+.key, .pseudokey{
     background-color: #e4c6a5;
     height: 30px;
     width: 5.4%;
@@ -234,7 +234,7 @@ input::placeholder{
     border-radius: 5px;
 }
 
-.key:active{
+.key:active, .pseudokey:active{
     background-color: #DC3958;
 }
 
