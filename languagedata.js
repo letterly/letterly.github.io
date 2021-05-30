@@ -2281,7 +2281,7 @@ languageData = {
         "i:Some vowels attach to consonants, like the one on the next page.",
         "l:া", "l:ন", "t:কান"],
         ["i:Bengali-speakers use a separate set of digits from the international digits (0123456789). These are not only used by Bengali speakers, but other languages using the same alphabet (most notably Assamese).",
-        "n:০", "n:১০", "m:১", "n:২", "n:৩", "m:২০২১", "n:৪", "m:৪০৪"],
+        "n:০", "n:১", "m:১০", "n:২", "n:৩", "m:২০২১", "n:৪", "m:৪০৪"],
         ["n:৫", "n:৬", "m:২৫০৬", "n:৭", "n:৮", "m:৮৭৪৭৮", "n:৯", "m:৯৭৬৫৪৩১০"],
     ],
   },
@@ -2357,7 +2357,7 @@ scriptData = {
         keyboardDimensions: 1,
         direction: "ltr",
     },
-    bengali: {
+    easternnagari: {
         cameral: false,
         keyboardDimensions: 1,
         direction: "ltr",
