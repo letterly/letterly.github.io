@@ -18,7 +18,7 @@ function presentation(letterino){
     else if(S.cameral) return fontWrap(letterino.toUpperCase() + letterino)
     else return letterino
 }
-pronunciationhandler = (data) => data.includes(",") ? (`${language == "korean" ? "syllable" : "word"}-initially ${pronunciationhandler(data.split(",")[0])}, otherwise ${pronunciationhandler(data.split(",")[1])}`) : (ipa[L.toIPA[data]] ?? ipa[data]).replace(/\[/g, "<span>").replace(/\]/g, "</span>")
+pronunciationhandler = (data) => data.includes(",") ? (`${language == "korean" ? "syllable" : "word"}-initially ${pronunciationhandler(data.split(",")[0])}, otherwise ${pronunciationhandler(data.split(",")[1])}`) : (ipa[L.toIPA[data.replace("Y", "")]] ?? ipa[data.replace("Y", "")]).replace(/\[/g, "<span>").replace(/\]/g, "</span>")
 function format(){
     questiontypes = {
         "i": ["sentence", "words", "continuebutton"], //info
@@ -26,6 +26,7 @@ function format(){
         "d": ["sentence", "letter", "input", "keyboard", "enterbutton"], //definition
         "t": ["sentence", "letter", "input", "keyboard", "enterbutton"], //translit
         "c": ["sentence", "letter", "multiplechoice"], //capital
+        "o": ["sentence", "letter", "multiplechoice"], //options
         "n": ["sentence", "letter", "continuebutton"], //number
         "m": ["sentence", "letter", "input", "numberkeyboard", "enterbutton"], //number
     }
@@ -43,9 +44,16 @@ function format(){
             [input.value, sentence.textContent] = ["", "Convert this to Western numerals"]
             letter.innerHTML = fontWrap(otherdata)
             break
+        case "o": //options (math)
+            target = otherdata.split(">")[0]
+            answers = Array.from(otherdata.split(">")[1])
+            sentence.textContent = `Find the ${language.charAt(0).toUpperCase() + language.slice(1)} version of this number:`
+            letter.innerHTML = fontWrap(target)
+            for(g of [0,1,2]) document.getElementById("b" + (g+1)).innerHTML = fontWrap(answers[g])
+            break
         case "c":
             target = otherdata.split(">")[0]
-            answers = otherdata.split(">")[1].split(" ")
+            answers = Array.from(otherdata.split(">")[1])
             sentence.textContent = (L.script != "arabic") ? `Find the ${target.toUpperCase() != target ? "uppercase" : "lowercase"} version of this letter:` : `Find the isolated version of this letter:`
             letter.innerHTML = fontWrap(target)
             for(g of [0,1,2]) document.getElementById("b" + (g+1)).innerHTML = fontWrap(answers[g])
@@ -58,7 +66,7 @@ function format(){
         case "l":
             buttonmoral("Okay!")
             sentence.textContent = "New letter"
-            letter.innerHTML = `${presentation(otherdata)}<span style='color: #e4c6a5'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata]: "silent"})</span>`
+            letter.innerHTML = `${presentation(otherdata)}<span style='color: #e4c6a5'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata].replace("Y", ""): "silent"})</span>`
             if(language == "hiragana" && lesson >= 3) [listen.innerHTML, pronunciation.innerHTML] = ["", ""]
             else{
                 listen.innerHTML = "<b>[Listen here]</b>"
@@ -92,7 +100,13 @@ function format(){
             break
     }
 }
-multchoice = (answer) => buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :) " : "Incorrect! :(")
+function multchoice(answer){
+    console.log(answer)
+    console.log(S.numerals[+letter.textContent])
+    console.log(answer == S.numerals[+letter.textContent])
+    if(isNaN(letter.textContent)) buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :) " : "Incorrect! :(")
+    else buttonmoral(answer == S.numerals[+letter.textContent] ? "Correct! :) " : "Incorrect! :(")
+}
 next = () => ++exercise > L.plan[lesson-1].length ? switchAround("block", "none") : format()
 fontWrap = (text) => L.font ? `<span class="${L.font}">${text}</span>` : text
 function buttonmoral(p){
@@ -103,6 +117,7 @@ function buttonmoral(p){
         else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
         else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
         else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => S.numerals.indexOf(x)).join("")}. `
+        else if(questiontype == "o") leanswer = ` The answer is ${S.numerals[+letter.textContent]}. `, console.log(S.numerals)
     }
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
     continuebutton.innerHTML = (p == "Okay!" ? "" : p) + leanswer + "Continue..."
@@ -117,7 +132,7 @@ function enter(){
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
     if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)].split(",")[0] + word.slice(1)
-    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
+    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("[XY]", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
 function detlit(word){

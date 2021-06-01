@@ -377,6 +377,7 @@ input::placeholder{
     padding-right: 2%;
 }
 .levelbox div{
+    line-height: 155%;
     font-weight: 700;
     text-align: center;
     border: 2px solid #e4c6a5;
