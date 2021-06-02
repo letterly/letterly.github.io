@@ -2159,12 +2159,13 @@ languageData = {
     alphabet: {
         "ਖ਼": "xY",
         "ਤ": "tY",
+        "ਅ": "a",
         "Y$": "",
         "Y": "a"
     },
     toIPA: {
         "x": "χ",
-        "a": "ɑ",
+        "a": "ə",
         "e": "ɛ",
     },
     latinKeyboard: [],
@@ -2359,9 +2360,9 @@ languageData = {
         "Slash": "য়",
     },
     plan: [
-        ["l:খ", "l:আ", "t:আখ", "l:অ",
-        "i:Actually, if no vowel comes after a consonant, it is followed with the vowel 'ô' by default. Don't forget this! ;)",
-        "l:ক", "l:ত", "t:কত"],
+        ["l:খ", "l:ই",
+        "i:Actually, if no attaching vowel (not introduced yet) comes after a consonant, it is followed with the vowel 'ô' by default. Don't forget this! ;)",
+        "t:কই", "l:অ", "l:ক", "l:ত", "t:কত"],
         /*["l:ই", "l:ট", "t:আট্", "t:ইট",
         "i:Some vowels attach to consonants, like the one on the next page.",
         "l:া", "l:ন", "t:কান"],

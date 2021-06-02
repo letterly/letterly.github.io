@@ -133,7 +133,7 @@ function tlit(word){
     if(S.cameral) word = word.toLowerCase()
     if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)].split(",")[0] + word.slice(1)
     console.log(word)
-    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", "").replace("Y", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
+    for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
 function detlit(word){
