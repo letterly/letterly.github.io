@@ -1,102 +1,131 @@
 <html>
     <head>
-        <style>
-            h1,h2{
-                text-align: center;
-            }
-            textarea{
-                margin-left: 10%;
-                margin-right: 10%;
-                width: 29%;
-                font-size: 24px;
-                height: 200px;
-                resize: none;
-            }
-            *{
-                font-family: 'Verdana';
-            }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){ 
-                var typingTimer
-                var doneTypingInterval = 1000
-                var $inuk = document.getElementById("inuk")
-                var $braille = document.getElementById("braille")
-                $inuk.addEventListener('keyup', inukFunction)
-                function inukFunction () {
-                    inuk = $inuk.value
-
-                    for(e of Object.keys(inukKey)){
-                        var myRegExp = new RegExp(e, 'g')
-                        inuk = inuk.replace(myRegExp, inukKey[e])
-                    }
-                    $braille.value = "‎" + inuk
-                }
-
-                inukKey = {
-                    "𐓘͘": "⠾",
-                    "𐓣͘": "⠷",
-                    "𐓪͘": "⠽",
-                    "𐓘": "⠁",
-                    "𐓟": "⠑",
-                    "𐓣": "⠊",
-                    "𐓪": "⠕",
-                    "𐓶": "⠥",
-                    "𐓙": "⠯",
-                    "𐓚": "⠻",
-                    "𐓫": "⠿",
-                    "𐓜": "⠃",
-                    "𐓲": "⠉",
-                    "𐓝": "⠡",
-                    "𐓵": "⠹",
-                    "𐓡": "⠥",
-                    "𐓤": "⠅",
-                    "𐓧": "⠇",
-                    "𐓨": "⠍",
-                    "𐓩": "⠝",
-                    "𐓬": "⠏",
-                    "𐓮": "⠎",
-                    "𐓯": "⠱",
-                    "𐓰": "⠞",
-                    "𐓷": "⠺",
-                    "𐓸": "⠭",
-                    "𐓺": "⠵",
-                    "𐓻": "⠮",
-                    "'": "⠄",
-                    "\\.": "⠲",
-                    "\\,": "⠂",
-                    "\\:": "⠆",
-                    "\\?": "⠦",
-                    "\\!": "⠖",
-                    "\\*": "⠐⠔",
-                    " 1": "⠀⠼⠁",
-                    " 2": "⠀⠼⠃",
-                    " 3": "⠀⠼⠉",
-                    " 4": "⠀⠼⠙",
-                    " 5": "⠀⠼⠑",
-                    " 6": "⠀⠼⠋",
-                    " 7": "⠀⠼⠛",
-                    " 8": "⠀⠼⠓",
-                    " 9": "⠀⠼⠊",
-                    " 0": "⠀⠼⠚",
-                    "1": "⠁",
-                    "2": "⠃",
-                    "3": "⠉",
-                    "4": "⠙",
-                    "5": "⠑",
-                    "6": "⠋",
-                    "7": "⠛",
-                    "8": "⠓",
-                    "9": "⠊",
-                    "0": "⠚",
-                    " ": "⠀",
-                }
-            }, false);
-        </script>
+        <title>osage project</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="osage.css">
+        <script src="osage.js"></script>
+        <script src="dictionary.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Osage to Braille</h1>
-        <textarea id="inuk" placeholder="enter Osage text"></textarea>
-        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+        <h2>"United Plaform" Project</h2>
+        <h3><a href="https://letterly.github.io/dictionary.html" target="_blank">Dictionary</a></h3>
+        <h3><a href="https://letterly.github.io/thesaurus.html" target="_blank">Thesaurus</a></h3>
+        <h3><a href="https://letterly.github.io/enTOosage.html" target="_blank">English=>Osage</a></h3>
+        <h1>Syntax Analysis Program</h1>
+        <div id="keyboard">
+            <div id="row1" class="row">
+                <div class="key" id="KeyQ">
+                    <p class="main">𐓫</p>
+                    <p class="latin">q</p>
+                </div>
+                <div class="key" id="KeyW">
+                    <p class="main">𐓷</p>
+                    <p class="latin">w</p>
+                </div>
+                <div class="key" id="KeyE">
+                    <p class="main">𐓟</p>
+                    <p class="latin">e</p>
+                </div>
+                <div class="key" id="KeyR">
+                    <p class="main">𐓲</p>
+                    <p class="latin">r</p>
+                </div>
+                <div class="key" id="KeyT">
+                    <p class="main">𐓵</p>
+                    <p class="latin">t</p>
+                </div>
+                <div class="key" id="KeyY">
+                    <p class="main">𐓻</p>
+                    <p class="latin">y</p>
+                </div>
+                <div class="key" id="KeyU">
+                    <p class="main">𐓶</p>
+                    <p class="latin">u</p>
+                </div>
+                <div class="key" id="KeyI">
+                    <p class="main">𐓣</p>
+                    <p class="latin">i</p>
+                </div>
+                <div class="key" id="KeyO">
+                    <p class="main">𐓪</p>
+                    <p class="latin">o</p>
+                </div>
+                <div class="key" id="KeyP">
+                    <p class="main">𐓬</p>
+                    <p class="latin">p</p>
+                </div>
+            </div>
+            <div id="row2" class="row">
+                <div class="key" id="KeyA">
+                    <p class="main">𐓘</p>
+                    <p class="latin">a</p>
+                </div>
+                <div class="key" id="KeyS">
+                    <p class="main">𐓮</p>
+                    <p class="latin">s</p>
+                </div>
+                <div class="key" id="KeyD">
+                    <p class="main">𐓰</p>
+                    <p class="latin">d</p>
+                </div>
+                <div class="key" id="KeyF">
+                    <p class="main">͘</p>
+                    <p class="latin">f</p>
+                </div>
+                <div class="key" id="KeyG">
+                  <p class="main">𐓚</p>
+                  <p class="latin">g</p>
+                </div>
+                <div class="key" id="KeyH">
+                    <p class="main">𐓡</p>
+                    <p class="latin">h</p>
+                </div>
+                <div class="key" id="KeyJ">
+                    <p class="main">𐓙</p>
+                    <p class="latin">j</p>
+                </div>
+                <div class="key" id="KeyK">
+                    <p class="main">𐓤</p>
+                    <p class="latin">k</p>
+                </div>
+                <div class="key" id="KeyL">
+                    <p class="main">𐓧</p>
+                    <p class="latin">l</p>
+                </div>
+            </div>
+            <div id="row3" class="row">
+                <div class="key" id="KeyZ">
+                    <p class="main">𐓺</p>
+                    <p class="latin">z</p>
+                </div>
+                <div class="key" id="KeyX">
+                    <p class="main">𐓸</p>
+                    <p class="latin">x</p>
+                </div>
+                <div class="key" id="KeyC">
+                    <p class="main">𐓝</p>
+                    <p class="latin">c</p>
+                </div>
+                <div class="key" id="KeyV">
+                    <p class="main">𐓯</p>
+                    <p class="latin">v</p>
+                </div>
+                <div class="key" id="KeyB">
+                    <p class="main">𐓜</p>
+                    <p class="latin">b</p>
+                </div>
+                <div class="key" id="KeyN">
+                    <p class="main">𐓩</p>
+                    <p class="latin">n</p>
+                </div>
+                <div class="key" id="KeyM">
+                    <p class="main">𐓨</p>
+                    <p class="latin">m</p>
+                </div>
+            </div>
+        </div>
+        <textarea placeholder="Write here"></textarea>
+        <div id="result"></div>
     </body>
 </html>

@@ -1,0 +1,117 @@
+.verb{
+    color: #dc322f
+}
+.adjective{
+    color: #cb4b16;
+}
+.idk{
+    color: #b58900;
+}
+.noun{
+    color: #859900
+}
+.idk{
+    color: #2aa198;
+}
+.positional{
+    color: #268bd2;
+}
+.idk{
+    color: #6c71c4;
+}
+.idk{
+    color: #d33682;
+}
+
+
+
+body{
+    background-color: #fdf6e3;
+}
+
+*{
+    font-family: 'Noto Sans';
+}
+/**/
+#keyboard{
+    width: 80%;
+    margin-left: 15%;
+    margin-right: 5%;
+    height: calc((66px + 2%) * 3);
+}
+.key{
+    background-color: #002b36;
+    height: 66px;
+    width: 45px;
+    float: left;
+    margin: 1%;
+    border: none;
+}
+.key:hover{
+    background-color: #2aa198;
+}
+.main, .latin{
+    line-height: 0%;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 900;
+}
+.main{
+    color: #dc322f;
+    font-size: 28px;
+}
+.latin{
+    font-size: 14px;
+    color: #cb4b16;
+}
+.row{
+    width: 80%;
+    float: left;
+}
+#row2{
+    margin-left: 15px;
+}
+#row3{
+    margin-left: 30px;
+}
+#entry{
+  background-color: #002b36;
+}
+textarea{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    resize: none;
+    background-color: #002b36;
+    color: #a57a4c;
+    font-size: 36px;
+    height: 48px;
+}
+div{
+    color: #002b36
+}
+#result div{
+    font-size: 48px;
+    border: 1px #002b36 solid;
+    padding: 2px;
+    float: left;
+    min-width: 200px;
+    max-width: 250px;
+    height: 300px;
+    text-align: center;
+}
+span{
+    font-size: 22px;
+}
+#result{
+    width: 100%;
+    min-height: 200px;
+}
+h2, h3 a{
+    color: #002b36;
+}
+h1{
+    color: #002b36;
+    text-align: center;
+    font-size: 64px;
+}
