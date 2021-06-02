@@ -2164,6 +2164,8 @@ languageData = {
     },
     toIPA: {
         "x": "χ",
+        "a": "ɑ",
+        "e": "ɛ",
     },
     latinKeyboard: [],
     plan: [
@@ -2172,6 +2174,50 @@ languageData = {
         "t:ਤਖ਼ਤ"],
         ["n:੦","n:੧", "n:੨", "m:੧੨","n:੩","n:੪", "m:੩੪੦੧"],
         ["n:੫","n:੬", "m:੨੩੬੨੪", "n:੭","n:੮", "o:4>੪੧੭", "n:੯", "m:੫੭੯੩੮"],
+    ],
+  },
+  hindi: {
+    script: "devanagari",
+    alphabet: {
+        "न": "nY",
+        "इ": "i",
+        "ह": "hY",
+        "Y$": "",
+        "Y": "a"
+    },
+    toIPA: {
+        "x": "χ",
+        "a": "ɑ",
+        "e": "ɛ",
+    },
+    latinKeyboard: [], 
+    plan: [
+        ["l:न", "l:इ", "l:ह",
+        "i:Unless at the end of the word or specified with another vowel, all consonants have an inherent 'a' sound after them.",
+        "t:इन", "t:इह",],
+        ["n:०","n:१", "n:२", "m:१२","n:३","n:४", "m:३४०१"],
+        ["n:५","n:६", "m:२३६१४", "n:७", "n:८", "o:4>४१७", "n:९", "m:९५१२७८"],
+    ],
+  },
+  korean: {
+    script: "hangul",
+    alphabet: {
+        "ㄱ": "g",
+        "ㅏ": "a",
+        "ㅁ": "m",
+        "감": "gam",
+        "마": "ma",
+    },
+    toIPA: {
+        "x": "χ",
+        "a": "ɑ",
+        "e": "ɛ",
+    },
+    latinKeyboard: [], 
+    plan: [
+        ["l:ㅁ", "l:ㅏ", "l:ㄱ",
+        "i:Korean letters are grouped into blocks.",
+        "t:마", "t:감", "t:감마",],
     ],
   },
   bangla: {
@@ -2325,6 +2371,15 @@ languageData = {
         ["n:৫", "n:৬", "m:২৫০৬", "n:৭", "n:৮", "m:৮৭৪৭৮", "n:৯", "o:8>৪৮৭", "m:৯৭৬৫৪৩১০"],
     ],
   },
+  /*
+  urdu: {
+    script: "arabic",
+
+  },
+  persian: {
+    script: "arabic",
+
+  },*/
 }
 
 scriptData = {
