@@ -2132,28 +2132,7 @@ languageData = {
         "i:ぢゃ/ぢゅ/ぢょ and じゃ/じゅ/じょ both represent ja/ju/jo.",
         "t:きじゅん", "t:とうじょう", "t:たいしゃ", "t:ちょんぎれる"] //ya part1
     ],
-  },
-  /*
-  korean: {
-    script: "hangul",
-    alphabet: {
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-    },
-    toIPA: {},
-    latinKeyboard: [], //
-    nativeKeyboard: {},
-    plan: [
-        [],
-        [],
-        [],
-    ],
-  },
-  */
+},
   punjabi: {
     script: "gurmukhi",
     alphabet: {
@@ -2372,15 +2351,59 @@ languageData = {
         ["n:৫", "n:৬", "m:২৫০৬", "n:৭", "n:৮", "m:৮৭৪৭৮", "n:৯", "o:8>৪৮৭", "m:৯৭৬৫৪৩১০"],
     ],
   },
-  /*
   urdu: {
     script: "arabic",
-
+    alphabet: {
+        "ا": "a",
+        "پ": "p",
+        "ن": "n",
+        "ف": "f",
+        "آ": "a",
+        "ز": "z",
+        "د": "d",
+        "ر": "r",
+        "ب": "b",
+    },
+    toIPA: {
+        "a": "ɑ",
+        "e": "ɛ",
+    },
+    latinKeyboard: [],
+    plan: [
+        ["l:پ", "l:ا", "l:ن", "t:پان", "l:ف", "t:ناف"],
+        ["l:د", "l:ز", "l:آ", "t:آزاد", "l:ب", "l:ر", "t:پ", "t:ابری"]
+    ]
   },
   persian: {
     script: "arabic",
-
-  },*/
+    alphabet: {
+        "ا": "a",
+        "پ": "p",
+        "ن": "n",
+        "ف": "f",
+        "آ": "a",
+        "ز": "z",
+        "د": "d",
+        "ر": "r",
+        "ب": "b",
+        "ش": "sh",
+        "س": "s",
+        "ت": "t",
+        "م": "m",
+    },
+    toIPA: {
+        "a": "ɑ",
+        "e": "ɛ",
+    },
+    latinKeyboard: [],
+    plan: [
+        ["l:آ", "l:د", "l:ز", "t:آزاد", "l:ش", "t:ز", "t:آش"],
+        ["l:س", "l:ت", "l:ا", "t:ساستا", "l:ب", "l:م", "t:تاب", "t:مات"],
+        /*["i:In Iran, they use a separate set of digits instead of the Western ones. The next two lessons will teach you these numbers. IMPORTANT NOTE - Unlike Persian, these numbers are written from LEFT TO RIGHT.",
+        "n:٠", "n:١", "m:١٠", "n:٢", "n:٣", "m:٢٠٢١", "n:٤", "m:٤٠٤"],
+        ["n:٥", "n:٦", "m:٢٥٠٦", "n:٧", "n:٨", "m:٨٧٤٧٨", "n:٩", "m:٩٧٦٥٤٣١٠"],*/
+    ]
+  },
 }
 
 scriptData = {
@@ -2409,7 +2432,7 @@ scriptData = {
     adlam: {
         cameral: true,
         keyboardDimensions: 1,
-        numerals: ["𞥐", "𞥑", "𞥒", "𞥓", "𞥔", "𞥕", "𞥖", "𞥗", "𞥘", "𞥙"],
+        numerals: "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
         direction: "rtl",
     },
     tifinagh: {

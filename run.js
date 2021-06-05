@@ -38,7 +38,7 @@ function format(){
         case "n": //number
             buttonmoral("Okay!")
             sentence.textContent = "New digit"
-            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #e4c6a5'> (${S.numerals.indexOf(otherdata)})</span>`
+            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #e4c6a5'> (${Array.from(S.numerals).indexOf(otherdata)})</span>`
             break
         case "m": //math
             [input.value, sentence.textContent] = ["", "Convert this to Western numerals"]
@@ -67,11 +67,9 @@ function format(){
             buttonmoral("Okay!")
             sentence.textContent = "New letter"
             letter.innerHTML = `${presentation(otherdata)}<span style='color: #e4c6a5'> (${L.alphabet[otherdata] != "" ? L.alphabet[otherdata].replace("Y", ""): "silent"})</span>`
+            listen.innerHTML = "<b>[Listen here]</b>"
             if(language == "hiragana" && lesson >= 3) [listen.innerHTML, pronunciation.innerHTML] = ["", ""]
-            else{
-                listen.innerHTML = "<b>[Listen here]</b>"
-                pronunciation.innerHTML = pronunciationhandler(soundify(otherdata))
-            }
+            else pronunciation.innerHTML = pronunciationhandler(soundify(otherdata))
             break
         case "t":
             input.value = ""
@@ -100,13 +98,7 @@ function format(){
             break
     }
 }
-function multchoice(answer){
-    console.log(answer)
-    console.log(S.numerals[+letter.textContent])
-    console.log(answer == S.numerals[+letter.textContent])
-    if(isNaN(letter.textContent)) buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :) " : "Incorrect! :(")
-    else buttonmoral(answer == S.numerals[+letter.textContent] ? "Correct! :) " : "Incorrect! :(")
-}
+multchoice = (answer) => {isNaN(letter.textContent) ? buttonmoral(answer.toUpperCase() == letter.textContent.toUpperCase() || answer == letter.textContent.replace(/ـ/g, "") ? "Correct! :) " : "Incorrect! :(") : buttonmoral(answer == Array.from(S.numerals)[+letter.textContent] ? "Correct! :) " : "Incorrect! :(")}
 next = () => ++exercise > L.plan[lesson-1].length ? switchAround("block", "none") : format()
 fontWrap = (text) => L.font ? `<span class="${L.font}">${text}</span>` : text
 function buttonmoral(p){
@@ -116,8 +108,8 @@ function buttonmoral(p){
         if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
         else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
         else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
-        else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => S.numerals.indexOf(x)).join("")}. `
-        else if(questiontype == "o") leanswer = ` The answer is ${S.numerals[+letter.textContent]}. `, console.log(S.numerals)
+        else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => Array.from(S.numerals).indexOf(x)).join("")}. `
+        else if(questiontype == "o") leanswer = ` The answer is ${Array.from(S.numerals)[+letter.textContent]}. `
     }
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
     continuebutton.innerHTML = (p == "Okay!" ? "" : p) + leanswer + "Continue..."
@@ -127,12 +119,11 @@ function enter(){
     ans = input.value
     if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
     else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :) " : "Incorrect! :(")
-    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => S.numerals[x]).join("") == letter.textContent ? "Correct! :) " : "Incorrect! :(")
+    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => Array.from(S.numerals)[x]).join("") == letter.textContent ? "Correct! :) " : "Incorrect! :(")
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
     if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)].split(",")[0] + word.slice(1)
-    console.log(word)
     for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
@@ -156,7 +147,7 @@ document.addEventListener('keyup', (e) => {
 })
 document.addEventListener('mousedown', (e) => {
     if(e.srcElement.className.endsWith("key") && e.srcElement.textContent != "") entertext(e.srcElement.id)
-    else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen") new Audio(`sounds/${soundify(L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0])}.m4a`).play()
+    else if(e.srcElement.id == "listen" || e.srcElement.parentElement.id == "listen") new Audio(`sounds/${soundify(L.plan[lesson-1][exercise-1].split(":")[1].split(",")[0].replace("Y", ""))}.m4a`).play()
 })
 document.addEventListener('mouseup', (e) => {
     if(e.srcElement.className.endsWith("key") && e.srcElement.textContent != "") document.getElementById(e.srcElement.id).style.backgroundColor = "#e4c6a5"
