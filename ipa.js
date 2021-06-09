@@ -15,6 +15,9 @@ ipa = {
     "pʰ": "[p] in [p]lay, with a small release of air",
     "kʰ": "[k] in [k]id, with a small release of air",
     "dʒʰ": "[j] in [j]am, with a small release of air", //SOUND
+    "ɒ": "[ough] in th[ough]", //SOUND
+    "ɭ": "[l] with the tip of your tongue curling back", //SOUND
+    "ʋ": "in between [v] and [w]", //SOUND
     "ʈ": "[t] but farther back in the mouth",
     "ʈʰ": "[t] but farther back in the mouth, and with a small release of air",
     "vo": "[vo] in [vo]te",

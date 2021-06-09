@@ -314,7 +314,7 @@ input::placeholder{
     padding: 10px;
     border-radius: 50px;
     background-color: #221A0F;
-    border: #e4c6a5 2px solid;
+    border: #e4c6a5 4px solid;
     color: #e4c6a5;
 }
 .script h2{
@@ -380,10 +380,10 @@ input::placeholder{
     line-height: 155%;
     font-weight: 700;
     text-align: center;
-    border: 2px solid #e4c6a5;
+    border: 3px solid #e4c6a5;
     float: left;
     height: 55px;
-    width: 55px;
+    width: 50px;
     margin-right: 5px;
     border-radius: 15px;
 }
@@ -428,7 +428,7 @@ input::placeholder{
 }
 hr{
     border: none;
-    height: 2px;
+    height: 4px;
     width: 96%;
     background-color: #e4c6a5;
     margin-bottom: 20px;

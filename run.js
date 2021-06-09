@@ -38,7 +38,7 @@ function format(){
         case "n": //number
             buttonmoral("Okay!")
             sentence.textContent = "New digit"
-            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #e4c6a5'> (${Array.from(S.numerals).indexOf(otherdata)})</span>`
+            letter.innerHTML = `${fontWrap(otherdata)}<span style='color: #e4c6a5'> (${Array.from(S.numerals).indexOf(otherdata) % 10})</span>`
             break
         case "m": //math
             [input.value, sentence.textContent] = ["", "Convert this to Western numerals"]
@@ -108,7 +108,7 @@ function buttonmoral(p){
         if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
         else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
         else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
-        else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => Array.from(S.numerals).indexOf(x)).join("")}. `
+        else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => Array.from(S.numerals).indexOf(x) % 10).join("")}. `
         else if(questiontype == "o") leanswer = ` The answer is ${Array.from(S.numerals)[+letter.textContent]}. `
     }
     continuebutton.className = "widebutton " + p.toLowerCase().split("!")[0].toLowerCase()
@@ -119,7 +119,7 @@ function enter(){
     ans = input.value
     if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
     else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :) " : "Incorrect! :(")
-    else if(questiontype == "m") buttonmoral(("" + ans).split("").map(x => Array.from(S.numerals)[x]).join("") == letter.textContent ? "Correct! :) " : "Incorrect! :(")
+    else if(questiontype == "m") buttonmoral(Array.from(letter.textContent).map(x => (S.numerals.indexOf(x) % 10)).join("") == ans ? "Correct! :) " : "Incorrect! :(")
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
@@ -161,7 +161,7 @@ function entertext(code){
         else if(enterbutton.style.display != "none") enter()
     }
     else if(code.startsWith("Shift")){
-        if(S.keyboardDimensions > 1 && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
+        if(L.secondaryKeyboard != undefined && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
     }
     else input.value += document.getElementById(code).textContent
 }
