@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="codestyles.css">
+        <meta charset="utf-8">
+        <script src="coderun.js"></script>
+        <title>codecode</title>
+    </head>
+    <body>
+        <h1 id="h">codecode [alpha release]</h1>
+        <div id="languageselect">
+            <p><span id="languageTEXT">Languages:</span>
+                <span onclick="langswitch('en')" class="lang">English</span>
+                <span onclick="langswitch('es')" class="lang">Español</span>
+            </p>
+        </div>
+        <div id="levelselects">
+            <div class="levelselect">
+                <p class="language">JavaScript</p>
+                <p class="level" onclick="levelset(0, 'js')"><span class="levelL">Level</span> 0: <span class="mathL">Math</span></p>
+                <p class="level" onclick="levelset(1, 'js')"><span class="levelL">Level</span> 1: <span class="variablesL">Variables</span></p>
+                <p class="level" onclick="levelset(2, 'js')"><span class="levelL">Level</span> 2: <span class="comparisonL">Comparison Operators</span></p>
+                <p class="level" onclick="levelset(3, 'js')"><span class="levelL">Level</span> 3: <span class="conditionalL">Conditional Statements</span> 1</p>
+            </div>
+            <div class="levelselect">
+                <p class="language">Python</p>
+                <p class="level" onclick="levelset(0, 'py')"><span class="levelL">Level</span> 0: <span class="mathL">Math</span></p>
+                <p class="level" onclick="levelset(1, 'py')"><span class="levelL">Level</span> 1: <span class="variablesL">Variables</span></p>
+                <p class="level" onclick="levelset(2, 'py')"><span class="levelL">Level</span> 2: <span class="comparisonL">Comparison Operators</span></p>
+                <p class="level" onclick="levelset(3, 'py')"><span class="levelL">Level</span> 3: <span class="conditionalL">Conditional Statements</span> 1</p>
+            </div>
+        </div>
+        <div id="game">
+            <p id="text"><span class="number">2</span> <span class="operator">+</span> <span class="number">5</span></p>
+            <input id="input" placeholder="Answer here..."></input>
+            <div id="buttons">
+                <button type="button" onclick="buttonize(this.textContent)" id="b0">1</button><button type="button" onclick="buttonize(this.textContent)" id="b1">2</button><button type="button" onclick="buttonize(this.textContent)" id="b2">3</button>
+            </div>
+            <div id="booleanbuttons">
+                <button type="button" onclick="boolbuttonize(this.textContent)" id="bt">true</button><button type="boolbutton" onclick="boolbuttonize(this.textContent)" id="bf">false</button>
+            </div>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th class="tableop" id="operator">Operator</th>
+                        <th class="tablefn" id="functionality">Functionality</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <p id="trueP"></p>
+            <p id="falseP"></p>
+            <p onclick="next()" id="ent"></p>
+        </div>
+    </body>
+</html>

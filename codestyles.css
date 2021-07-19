@@ -1,0 +1,142 @@
+body{
+    background-color: #eee8d5;
+}
+h1, .levelselect p, #languageselect p{
+    color: #073642;
+    text-align: center;
+    font-family: Verdana;
+}
+.levelselect{
+    border: #073642 4px solid;
+    border-radius: 260px;
+    margin-bottom: 10px;
+}
+#languageselect{
+    font-size: 28px;
+}
+.lang{
+    color: #dc322f;
+    text-decoration: underline;
+}
+h1{
+    font-size: 48px;
+}
+.language{
+    font-size: 36px;
+}
+.level:hover{
+    text-decoration: underline;
+}
+.level{
+    font-size: 30px;
+    line-height: 50%;
+}
+#text{
+    text-align: center;
+    font-size: 36px;
+    font-family: Verdana;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#ent, #info{
+    text-align: center;
+    font-size: 36px;
+    font-family: Verdana;
+    color: #002b36;
+}
+#ent{
+    font-weight: 700;
+}
+#ent:hover{
+    text-decoration: underline;
+}
+.number{
+    color: #cb4b16;
+}
+.operator{
+    color: #002b36;
+}
+.variable{
+    color: #d33682;
+    font-weight: 700;
+}
+.keyword{
+    color: #2aa198;
+}
+.reserveword{
+    color: #268bd2;
+}
+.space{
+    color: #eee8d5;
+}
+.quote{
+    color: #859900;
+}
+input{
+    width: 40%;
+    margin-left: 30%;
+    font-size: 36px;
+    font-family: Verdana;
+    background-color: #fdf6e3;
+    border: #002b36 2px solid;
+    border-radius: 8px;
+    outline: none;
+    color: #002b36;
+}
+input::placeholder{
+    color: #839496;
+}
+#trueP, #falseP{
+    text-align: center;
+    font-size: 36px;
+    font-family: Verdana;
+}
+#trueP{
+    color: #859900;
+}
+#falseP{
+    color: #dc322f;
+}
+#buttons button, #booleanbuttons button{
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #fdf6e3;
+    color: #002b36;
+    font-size: 32px;
+    border: #002b36 2px solid;
+    border-radius: 5px;
+    outline: none;
+}
+#booleanbuttons button{
+    width: 44%;
+}
+#buttons button{
+    width: 26%;
+}
+#buttons, #booleanbuttons, #table{
+    display: none;
+}
+
+#game{
+    display: none;
+}
+table{
+    font-family: Verdana;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+td{
+    border: #002b36 2px solid;
+    font-size: 24px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.tablefn{
+    width: 80%;
+}
+.tableop{
+    width: 10%;
+}
