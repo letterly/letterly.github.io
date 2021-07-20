@@ -213,7 +213,7 @@ list = {
         ],
         [
             "i@EXPif-statement",
-            "c@x = 5,if(x > 5){,$console.log(x+1),}~6",
+            "c@x = 5,if(x > 2){,$console.log(x+1),}~6",
             "c@age = 21,if(f >= 21){,$console.log('You can buy beer'),},if(age < 21){,$console.log('You cannot buy beer'),}~You can buy beer",
             "c@c = 5, t = 3,if(t > 0){,$if(c <= 8-4){,$$console.log(c),$},$if(c > 4.5){,$$console.log(t),$},}~3",
         ],
@@ -232,7 +232,7 @@ list = {
         ],
         [   
             "i@EXPvariables",
-            "i@EXPjavascript-print",
+            "i@EXPpython-print",
             "c@x = 5,x = x + 1,print(x)~6",
             "c@y = 2,z = 2 * y,print(z / 4)~1",
             "c@n = 4 * 4,l = (n - 1) % 3,print(l)~0",
@@ -247,9 +247,29 @@ list = {
         ],
         [
             "i@EXPif-statement",
-            "c@x = 5,if(x > 5):,$print(x+1)~6",
+            "c@x = 5,if(x <= 5):,$print(x+1)~6",
             "c@age = 21,if(f >= 21):,$print('You can buy beer'),if(age < 21):,$print('You cannot buy beer')~You can buy beer",
             "c@c = 5, t = 3,if(t > 0):,$if(c <= 8-4):,$$print(c),$if(c > 4.5):,$$print(t),}~3",
+        ],
+    ],
+rb: [
+        [
+            "m@9 + 5",
+            "m@4 - 6",
+            "i@EXPorder-of-operations",
+            "o@+,-,*,/,%",
+            "m@5 - 2 * 3",
+            "m@10 % 3",
+            "m@56 % 7",
+            "m@2 % 9",
+            "m@4 * (2 + 3 / (1 + 2)) + (4 % 2)",
+        ],
+        [   
+            "i@EXPvariables",
+            "i@EXPjavascript-print",
+            "c@x = 5,x = x + 1,print(x)~6",
+            "c@y = 2,z = 2 * y,print(z / 4)~1",
+            "c@n = 4 * 4,l = (n - 1) % 3,print(l)~0",
         ],
     ]
 }
@@ -276,7 +296,7 @@ languageData = {
         "EXPorder-of-operations": "Programming uses the order of operations just like normal math. One new symbol is the modulo (a percent sign %) which returns the remainder of two numbers dividing.",
         "EXPvariables": "Variables are used as placeholders in programming to make code easier to write and understand. Variables can have almost any name.",
         "EXPjavascript-print": "The console.log() function is used to print things in JavaScript",
-        "EXPjavascript-print": "The print() function is used to print things in Python",
+        "EXPpython-print": "The print() function is used to print things in Python",
         "EXPcomparison-operators": "You can use comparison operators to compare two values. These operators come after doing math, and will return 'true' if the statement is correct and 'false' if incorrect. For example '4 > 3' would return as 'true' because it is correct that 4 is larger than 3.",
         "EXPif-statement": "For code only to be executed if a certain condition is fulfilled, you need to use what is called an 'if statement'. If the code inside an if statement is true, the code is executed, otherwise it is skipped over. Let's see an example...",
         "operator": "Operator",
@@ -308,7 +328,7 @@ languageData = {
         "EXPorder-of-operations": "La programación usa el orden de las operaciones al igual que las matemáticas normales. Un nuevo símbolo es el módulo (un signo de porcentaje%) que regresa el resto de dos números divididos.",
         "EXPvariables": "Las variables se utilizan como marcadores de posición en la programación para facilitar la escritura y la comprensión del código. Las variables pueden tener casi cualquier nombre.",
         "EXPjavascript-print": "La funcción console.log() se usa para imprimir cosas en JavaScript",
-        "EXPjavascript-print": "La funcción print() se usa para imprimir cosas en Python",
+        "EXPpython-print": "La funcción print() se usa para imprimir cosas en Python",
         "EXPcomparison-operators": "Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán 'true' si la declaración es correcta y 'false' si es incorrecta. Por ejemplo, '4> 3' se devolvería como 'verdadero' porque es correcto que 4 sea mayor que 3.",
         "EXPif-statement": "Para que el código solo se ejecute si se cumple una determinada condición, debe usar lo que se llama una 'instrucción if'. Si el código dentro de una declaración if es verdadero, el código se ejecuta; de lo contrario, se omite. Aquí está un ejemplo...",
         "incorrect": "Incorrecto, la respuesta es ",
