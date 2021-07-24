@@ -29,7 +29,7 @@ h1{
 }
 .level{
     font-size: 30px;
-    line-height: 50%;
+    line-height: 68%;
 }
 #text{
     text-align: center;
@@ -63,8 +63,8 @@ h1{
 .keyword{
     color: #2aa198;
 }
-.reserveword{
-    color: #268bd2;
+.boolean{
+    color: #6c71c4;
 }
 .space{
     color: #eee8d5;
