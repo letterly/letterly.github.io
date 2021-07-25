@@ -214,7 +214,7 @@ list = {
         [
             "i@EXPif-statement",
             "c@x = 5,if(x > 2){,$console.log(x+1),}~6",
-            "c@age = 21,if(f >= 21){,$console.log('You can buy beer'),},if(age < 21){,$console.log('You cannot buy beer'),}~You can buy beer",
+            "c@age = 21,if(age >= 21){,$console.log('You can buy beer'),},if(age < 21){,$console.log('You cannot buy beer'),}~You can buy beer",
             "c@c = 5, t = 3,if(t > 0){,$if(c <= 8-4){,$$console.log(c),$},$if(c > 4.5){,$$console.log(t),$},}~3",
         ],
         [
