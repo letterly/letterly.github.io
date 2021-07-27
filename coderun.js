@@ -1,7 +1,7 @@
 function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
-    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\: ]/g, "~$&~")
-    h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||").replace("length", "length~")
+    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:]/g, "~$&~")
+    h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||").replace("length", "length~").replace("puts", "puts~")
     h = h.split("~")
     return h
 }
@@ -12,12 +12,12 @@ function color(arr){
     str = ""
     for(x of arr){
         cl = ""
-        if("+-*/%><!=^&|.(){}:".includes(x.charAt(0))) cl = "operator"
-        else if(!isNaN(x)) cl = "number"
-        else if(["if", "console", "log", "length", "print", "puts", "var"].includes(x)) cl = "keyword"
-        else if(x == "$") cl = "space"
-        else if(x.startsWith("'")) cl = "quote"
-        else if(["true", "false"].includes(x)) cl = "boolean"
+        if("+-*/%><!=^&|.(){}:".includes(x.trim().charAt(0))) cl = "operator"
+        else if(!isNaN(x.trim())) cl = "number"
+        else if(["if", "console", "log", "length", "print", "puts", "var"].includes(x.trim())) cl = "keyword"
+        else if(x.trim() == "$") cl = "space"
+        else if(x.trim().startsWith("'") || x.trim().startsWith(`"`)) cl = "quote"
+        else if(["true", "false"].includes(x.trim())) cl = "boolean"
         else cl = "variable"
         str += "<span class='" + cl + "'>" + x + "</span>"
     }
@@ -35,6 +35,8 @@ javaScriptOperatorPrecedence = [
 ]
 
 function operation(symbol, first, second){
+    first = first.trim()
+    second = second.trim()
     switch(symbol){
         case "+":
             return first.startsWith("'") ? (first.slice(0,-1) + second.slice(1)) : (+first + +second)
@@ -85,7 +87,7 @@ function solve(h){
 }
 
 document.addEventListener('keydown', (e) => {
-    if(e.code == "Enter") next()
+    if(e.code == "Enter" && game.style.display == "block") next()
 })
 function buttonize(t){
     if(buttons.style.display != "none"){
@@ -132,7 +134,7 @@ function next(){
             languageselect.style.display = "block"
         }
         item = list[codelang][lesson][count]
-        content = item.split("@")[1]
+        content = item?.split("@")[1]
         type = item.split("@")[0]
         h.textContent = transl(type + "Question")
         ent.textContent = transl("cm".includes(type) ? "enter" : "continue")
@@ -257,7 +259,7 @@ list = {
         [
             "i@EXPif-statement",
             "c@x = 5,if(x <= 5):,$print(x+1)~6",
-            "c@age = 21,if(f >= 21):,$print('You can buy beer'),if(age < 21):,$print('You cannot buy beer')~You can buy beer",
+            `c@age = 21,if(age >= 21):,$print('You can buy beer'),if(age < 21):,$print('You cannot buy beer')~You can buy beer`,
             "c@c = 5, t = 3,if(t > 0):,$if(c <= 8-4):,$$print(c),$if(c > 4.5):,$$print(t),}~3",
         ],
     ],
@@ -352,7 +354,7 @@ languageData = {
         "EXPprint": `La funcción ${color(programmingData[codelang].print)} se usa para imprimir cosas en ${codelang}`,
         "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+).`,
         "EXPstringlengthjs": `In JavaScript, the ${color(".length")} attribute returns the number of characters in a string.`,
-        "EXPcomparison-operators": "Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán 'true' si la declaración es correcta y 'false' si es incorrecta. Por ejemplo, '4> 3' se devolvería como 'verdadero' porque es correcto que 4 sea mayor que 3.",
+        "EXPcomparison-operators": "Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán 'true' si la declaración es correcta y 'false' si es incorrecta. Por ejemplo, '4 > 3' se devolvería como 'verdadero' porque es correcto que 4 sea mayor que 3.",
         "EXPif-statement": "Para que el código solo se ejecute si se cumple una determinada condición, debe usar lo que se llama una 'instrucción if'. Si el código dentro de una declaración if es verdadero, el código se ejecuta; de lo contrario, se omite. Aquí está un ejemplo...",
         "incorrect": "Incorrecto, la respuesta es ",
         "click": "[Haz click para continuar]",

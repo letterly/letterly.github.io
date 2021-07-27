@@ -33,10 +33,11 @@ h1{
 }
 #text{
     text-align: center;
-    font-size: 36px;
+    font-size: 42px;
     font-family: Verdana;
     margin-left: 10%;
     margin-right: 10%;
+    line-height: 85%;
 }
 #ent, #info{
     text-align: center;
@@ -73,8 +74,8 @@ h1{
     color: #859900;
 }
 input{
-    width: 40%;
-    margin-left: 30%;
+    width: 60%;
+    margin-left: 20%;
     font-size: 36px;
     font-family: Verdana;
     background-color: #fdf6e3;
