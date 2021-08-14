@@ -1,7 +1,7 @@
 function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
     h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:]/g, "~$&~")
-    h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||").replace("length", "length~").replace("puts", "puts~")
+    h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||").replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~")
     h = h.split("~")
     return h
 }
@@ -14,7 +14,7 @@ function color(arr){
         cl = ""
         if("+-*/%><!=^&|.(){}:".includes(x.trim().charAt(0))) cl = "operator"
         else if(!isNaN(x.trim())) cl = "number"
-        else if(["if", "console", "log", "length", "print", "puts", "var"].includes(x.trim())) cl = "keyword"
+        else if(["if", "console", "log", "length", "print", "puts", "var", "len"].includes(x.trim())) cl = "keyword"
         else if(x.trim() == "$") cl = "space"
         else if(x.trim().startsWith("'") || x.trim().startsWith(`"`)) cl = "quote"
         else if(["true", "false"].includes(x.trim())) cl = "boolean"
@@ -24,11 +24,8 @@ function color(arr){
     return str
 }
 
-javaScriptUnaryOperatorPrecedence = [
-    ["!"],
-],
-javaScriptOperatorPrecedence = [
-    ["."],
+OperatorPrecedence = [
+    [".", "len"],
     ["%", "*", "/"],
     ["+", "-"],
     ["==", "!=", "<=", ">=", "<", ">"],
@@ -36,7 +33,7 @@ javaScriptOperatorPrecedence = [
 
 function operation(symbol, first, second){
     first = first.trim()
-    second = second.trim()
+    second = second?.trim()
     switch(symbol){
         case "+":
             return first.startsWith("'") ? (first.slice(0,-1) + second.slice(1)) : (+first + +second)
@@ -63,24 +60,17 @@ function operation(symbol, first, second){
         case ".":
             if(second == "length") return first.length - 2
             else return first[second]
-    }
-}
-function unary(symbol, first){
-    switch(symbol){
-        case "^": //////
-            return -first
+        case "len":
+            console.log(first)
+            return first.length - 2
     }
 }
 function solve(h){
     h = parsejs(h)
     h = h.filter(word => word.trim() !== "")
     while(h.includes("(")) for(i in h) if(h[i] == "(" && (h.indexOf("(", +i+1) > h.indexOf(")", i) || h.indexOf("(", +i+1) == -1)) h = h.slice(0, i).concat([solve(h.slice(i, h.indexOf(")", i) + 1).slice(1, -1).join(""))],h.slice(h.indexOf(")", +i+1)+1))
-    for(o of javaScriptUnaryOperatorPrecedence){
-        for(x in h) if(o.includes(h[x])) h.splice(+x-1, 2, "", String(unary(h[x], h[+x-1])))
-        h = h.filter(word => word !== "")
-    }
-    for(o of javaScriptOperatorPrecedence){
-        for(x in h) if(o.includes(h[x])) h.splice(+x-1, 3, "", "", String(operation(h[x], h[+x-1], h[+x+1])))
+    for(o of OperatorPrecedence){
+        for(x in h) if(o.includes(h[x])) h[x].toUpperCase() != h[x].toLowerCase() ? h.splice(+x, 2, "", String(operation(h[x], h[+x+1]))) : h.splice(+x-1, 3, "", "", String(operation(h[x], h[+x-1], h[+x+1])))
         h = h.filter(word => word !== "")
     }
     return h[0]
@@ -178,6 +168,7 @@ codelang = "JavaScript"
 lesson = 0
 count = 0
 language = "en"
+bruh = (num) => Math.floor(Math.random() * num)
 
 //code
 //line
@@ -228,18 +219,27 @@ list = {
             "c@str = 'java' + 'script',f = str.length - 1,console.log(f)~9",
             "m@'23' + '42'",
         ],
+        [
+            "i@Boolean",
+            "m@'h'+'n'",
+            "m@'harris'.length",
+            "m@''.length",
+            "m@'string'.length % 4",
+            "c@str = 'java' + 'script',f = str.length - 1,console.log(f)~9",
+            "m@'23' + '42'",
+        ],
     ],
     Python: [
         [
-            "m@2 + 3",
-            "m@4 - 6",
-            "i@EXPorder-of-operations",
-            "o@+,-,*,/,%",
-            "m@5 - 2 * 3",
-            "m@7 % 3",
-            "m@56 % 7",
-            "m@2 % 9",
-            "m@4 * (2 + 3 / (1 + 2)) + (4 % 2)",
+            `m@2 + ${bruh(10)}`,
+            `m@${bruh(10)} - ${bruh(10)}`,
+            `i@EXPorder-of-operations`,
+            `o@+,-,*,/,%`,
+            `m@5 - 2 * ${bruh(5)}`,
+            `m@${bruh(10)} % 3`,
+            `m@56 % 7`,
+            `m@2 % ${bruh(10)}`,
+            `m@${bruh(10)} * (2 + 3 / (1 + 2)) + (4 % 2)`,
         ],
         [   
             "i@EXPvariables",
@@ -251,9 +251,9 @@ list = {
         [
             "i@EXPcomparison-operators",
             "o@==,!=,<,>,<=,>=",
-            "m@3 == 5",
+            `m@3 == ${bruh(10)}`,
             "m@4 != 8 % 2",
-            "m@5 >= 16 - 17",
+            `m@5 >= 16 - ${bruh(20)}`,
             `c@x = 9, y = 1 + x * 2, print(x > 18)~false`,
         ],
         [
@@ -262,18 +262,36 @@ list = {
             `c@age = 21,if(age >= 21):,$print('You can buy beer'),if(age < 21):,$print('You cannot buy beer')~You can buy beer`,
             "c@c = 5, t = 3,if(t > 0):,$if(c <= 8-4):,$$print(c),$if(c > 4.5):,$$print(t),}~3",
         ],
+        [
+            "i@EXPstrings",
+            "m@'h'+'n'",
+            "m@len('harris')",
+            "m@''.length",
+            "m@'string'.length % 4",
+            "c@str = 'pyt' + 'hon',f = str.length + 1,console.log(f)~7",
+            "m@'23' + '42'",
+        ],
+        [
+            "i@EXPstrings",
+            "m@'h'+'n'",
+            "m@len('harris')",
+            "m@''.length",
+            "m@'string'.length % 4",
+            "c@str = 'pyt' + 'hon',f = str.length + 1,console.log(f)~7",
+            "m@'23' + '42'",
+        ],
     ],
     Ruby: [
         [
-            "m@9 + 5",
-            "m@4 - 6",
-            "i@EXPorder-of-operations",
-            "o@+,-,*,/,%",
-            "m@5 - 2 * 3",
-            "m@10 % 3",
-            "m@56 % 7",
-            "m@2 % 9",
-            "m@4 * (2 + 3 / (1 + 2)) + (4 % 2)",
+            `m@8 + ${bruh(10)}`,
+            `m@${bruh(10)} - ${bruh(10)}`,
+            `i@EXPorder-of-operations`,
+            `o@+,-,*,/,%`,
+            `m@5 - 2 * ${bruh(5)}`,
+            `m@${bruh(10)} % 3`,
+            `m@56 % 7`,
+            `m@2 % ${bruh(10)}`,
+            `m@${bruh(10)} * (2 + 3 / (1 + 2)) + (4 % 2)`,
         ],
         [   
             "i@EXPvariables",
@@ -282,17 +300,28 @@ list = {
             "c@y = 2,z = 2 * y,puts (z/4)~1",
             "c@n = 4 * 4,l = (n - 1) % 3,puts l~0",
         ],
+        [
+            "i@EXPcomparison-operators",
+            "o@==,!=,<,>,<=,>=",
+            `m@${bruh(10)} == ${bruh(10)}`,
+            `m@4 != 8 % ${bruh(3)}`,
+            `m@5 >= 16 - ${bruh(20)}`,
+            `c@x = 8, y = 1 + x * 2, print(x > 17)~false`,
+        ],
     ]
 }
 programmingData = {
     JavaScript: {
         print: "console.log()",
+        length: ".length",
     },
     Python: {
         print: "print()",
+        length: "len()",
     },
     Ruby: {
         print: "puts",
+        length: "len",
     },
 }
 languageData = {
@@ -318,10 +347,9 @@ languageData = {
         "EXPorder-of-operations": "Programming uses the order of operations just like normal math. One new symbol is the modulo (a percent sign %) which returns the remainder of two numbers dividing.",
         "EXPvariables": `${color("Variables")} are used as placeholders in programming to make code easier to write and understand. Variables can have almost any name.`,
         "EXPprint": `The ${color(programmingData[codelang].print)} function is used to print things in ${codelang}`,
-        "EXPcomparison-operators": "You can use comparison operators to compare two values. These operators come after doing math, and will return 'true' if the statement is correct and 'false' if incorrect. For example '4 > 3' would return as 'true' because it is correct that 4 is larger than 3.",
+        "EXPcomparison-operators": `You can use comparison operators to compare two values. These operators come after doing math, and will return ${color('true')} if the statement is correct and ${color('false')} if incorrect. For example ${color('4 > 3')} would return as ${color('true')} because it is correct that ${color('4')} is larger than ${color('3')}.`,
         "EXPif-statement": "For code only to be executed if a certain condition is fulfilled, you need to use what is called an 'if statement'. If the code inside an if statement is true, the code is executed, otherwise it is skipped over. Let's see an example...",
-        "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+).`,
-        "EXPstringlengthjs": `In JavaScript, the ${color(".length")} attribute returns the number of characters in a string.`,
+        "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+). You can get the number of characters in a string in ${codelang} with the ${color(programmingData[codelang].length)} ${programmingData[codelang].length.startsWith(".") ? "attribute" : "function"}`,
         "operator": "Operator",
         "+": "Adds numbers together",
         "-": "Subtracts numbers",
@@ -352,9 +380,8 @@ languageData = {
         "EXPorder-of-operations": "La programación usa el orden de las operaciones al igual que las matemáticas normales. Un nuevo símbolo es el módulo (un signo de porcentaje %) que regresa el resto de dos números divididos.",
         "EXPvariables": `Las ${color("variables")} se utilizan como marcadores de posición en la programación para facilitar la escritura y la comprensión del código. Las variables pueden tener casi cualquier nombre.`,
         "EXPprint": `La funcción ${color(programmingData[codelang].print)} se usa para imprimir cosas en ${codelang}`,
-        "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+).`,
-        "EXPstringlengthjs": `In JavaScript, the ${color(".length")} attribute returns the number of characters in a string.`,
-        "EXPcomparison-operators": "Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán 'true' si la declaración es correcta y 'false' si es incorrecta. Por ejemplo, '4 > 3' se devolvería como 'verdadero' porque es correcto que 4 sea mayor que 3.",
+        "EXPstrings": `En la programación, una cadena es un series de caráctares con ${color("'quotes'")}. You can add them together with an addition operator (+).`, // FIX
+        "EXPcomparison-operators": `Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán ${color('true')} (verdad) si la declaración es correcta y ${color('false')} (falso) si es incorrecta. Por ejemplo, ${color('4 > 3')} se devolvería como ${color('true')} porque es correcto que ${color('4')} sea mayor que ${color('3')}.`,
         "EXPif-statement": "Para que el código solo se ejecute si se cumple una determinada condición, debe usar lo que se llama una 'instrucción if'. Si el código dentro de una declaración if es verdadero, el código se ejecuta; de lo contrario, se omite. Aquí está un ejemplo...",
         "incorrect": "Incorrecto, la respuesta es ",
         "click": "[Haz click para continuar]",
