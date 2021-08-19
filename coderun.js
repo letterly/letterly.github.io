@@ -1,3 +1,81 @@
+programmingData = {
+    JavaScript: {
+        blockStart: "{",
+        blockEnd: "}",
+        ifBlockEnd: "}",
+        print: function(str){ return `console.log(${str})`},
+        length: function(str){return `${str}.length`}, 
+    },
+    Python: {
+        blockStart: ":",
+        blockEnd: "",
+        ifBlockEnd: "",
+        print: function(str){ return `print(${str})`},
+        length: function(str){return `len(${str})`}, 
+    },
+    Ruby: {
+        blockStart: "",
+        blockEnd: "",
+        ifBlockEnd: "end",
+        print: function(str){ return `puts ${str}`},
+        length: function(str){return `${str}.length`}, 
+    },
+}
+list = []
+bruh = (num) => Math.floor(Math.random() * num)
+type = "" //global
+codelang = "JavaScript"
+lesson = 0
+count = 0
+language = "en"
+p = programmingData[codelang]
+function listInitialize(lang){
+    p = programmingData[lang]
+    list = [
+        [
+            `m@2 + ${bruh(10)}`,
+            `m@${bruh(10)} - ${bruh(10)}`,
+            `i@EXPorder-of-operations`,
+            `o@+,-,*,/,%`,
+            `m@5 - 2 * ${bruh(5)}`,
+            `m@${bruh(10)} % 3`,
+            `m@56 % 7`,
+            `m@2 % ${bruh(10)}`,
+            `m@${bruh(10)} * (2 + 3 / (1 + 2)) + (4 % 2)`,
+        ],
+        [   
+            `i@EXPvariables`,
+            `i@EXPprint`,
+            `c@x = 5,x = x + 1,${p.print("x")}~6`,
+            `c@y = 2,z = 2 * y,${p.print("z / 4")}~1`,
+            `c@n = 4 * 4,l = (n - 1) % 3,${p.print("l")}~0`,
+        ],
+        [
+            "i@EXPcomparison-operators",
+            "o@==,!=,<,>,<=,>=",
+            `m@3 == ${bruh(10)}`,
+            "m@4 != 8 % 2",
+            `m@5 >= 16 - ${bruh(20)}`,
+            `c@x = 9, y = 1 + x * 2, ${p.print("x > 18")}~false`,
+        ],
+        [
+            "i@EXPif-statement",
+            `c@x = 5,if(x <= 5)${p.blockStart},$${p.print("x+1")}, ${p.ifBlockEnd}~6`,
+            `c@age = 21,if(age >= 21)${p.blockStart},$${p.print("'You can buy beer'")},${p.ifBlockEnd},if(age < 21)${p.blockStart},$${p.print("'You cannot buy beer'")}, ${p.ifBlockEnd}~You can buy beer`,
+            `c@c = 5, t = 3,if(t > 0)${p.blockStart},$if(c <= 8 - 4)${p.blockStart},$$${p.print('c')},${p.ifBlockEnd},$if(c > 4.5)${p.blockStart},$$${p.print('t')},$${p.ifBlockEnd},${p.ifBlockEnd}~3`,
+        ],
+        [
+            "i@EXPstrings",
+            "m@'h'+'n'",
+            `m@${p.length("'harris'")}`,
+            `m@${p.length("''")}`,
+            `m@${p.length("'string'")} % ${bruh(5)}`,
+            `c@str = 'pyt' + 'hon',f = ${p.length('str')} + 1,${p.print('f')}~7`,
+            "m@'23' + '42'",
+        ],
+    ]
+}
+
 function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
     h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:]/g, "~$&~")
@@ -81,24 +159,26 @@ document.addEventListener('keydown', (e) => {
 })
 function buttonize(t){
     if(buttons.style.display != "none"){
-        list[codelang][lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = transl('correct') : falseP.textContent = transl('incorrect') + list[codelang][lesson][count]?.split(">")[1]?.split(",")[0]
+        list[lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = transl('correct') : falseP.textContent = transl('incorrect') + list[lesson][count]?.split(">")[1]?.split(",")[0]
         ent.textContent = transl('click')
     }
 }
 function boolbuttonize(t){
     if(booleanbuttons.style.display != "none"){
-        list[codelang][lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = "Correct!" : falseP.textContent = "Incorrect, the answer is " + list[codelang][lesson][count]?.split(">")[1]?.split(",")[0]
+        list[lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = "Correct!" : falseP.textContent = "Incorrect, the answer is " + list[lesson][count]?.split(">")[1]?.split(",")[0]
         ent.textContent = transl('click')
     }
 }
 
-function levelset(num, l){
+function levelset(num){
     game.style.display = 'block'
     levelselects.style.display = "none"
     languageselect.style.display = "none"
+    codingselect.style.display = "none"
+    message.style.display = "none"
     lesson = num
-    codelang = l
     count = -1
+    listInitialize(codelang)
     next()
 }
 
@@ -106,7 +186,7 @@ function next(){
     trueP.textContent = ""
     falseP.textContent = ""
     if(ent.textContent == transl('enter')){
-        ans = type == "m" ? solve(text.textContent) : list[codelang][lesson][count].split("@")[1].split("~")[1]
+        ans = type == "m" ? solve(text.textContent) : list[lesson][count].split("@")[1].split("~")[1]
         ans == input.value ? trueP.textContent = "Correct!" : falseP.textContent = transl('incorrect') + ans
         ent.textContent = transl('click')
     }
@@ -117,13 +197,15 @@ function next(){
         booleanbuttons.style.display = "none"
         table.style.display = "none"
         count++
-        if(count == list[codelang][lesson].length){
+        if(count == list[lesson].length){
             h.textContent = "codecode project"
             game.style.display = 'none'
             levelselects.style.display = "block"
             languageselect.style.display = "block"
+            codingselect.style.display = "block"
+            message.style.display = "block"
         }
-        item = list[codelang][lesson][count]
+        item = list[lesson][count]
         content = item?.split("@")[1]
         type = item.split("@")[0]
         h.textContent = transl(type + "Question")
@@ -131,7 +213,7 @@ function next(){
         switch(type){
             case "c": //code block
                 input.style.display = "block"
-                text.innerHTML = content.split("~")[0].split(",").map(x => `<p>${color(x)}</p>`).join("")
+                text.innerHTML = content.split("~")[0].split(",").filter(item => item.trim()).map(x => `<p>${color(x)}</p>`).join("")
                 text.style.textAlign = "left"
                 break
             case "i": //information
@@ -155,6 +237,8 @@ function next(){
 }
 
 function langswitch(ISOcode){
+    for (x of Array.from(document.getElementsByClassName("lang"))) x.style.fontWeight = 400
+    document.getElementById(ISOcode).style.fontWeight = 700
     if(language != ISOcode){
         language = ISOcode
         for(x of Object.entries(languageData[language])) if(x[0].endsWith("TEXT")) document.getElementById(x[0]).textContent = x[1]
@@ -162,168 +246,18 @@ function langswitch(ISOcode){
         input.placeholder = transl('placeholder')
     }
 }
-
-type = "" //global
-codelang = "JavaScript"
-lesson = 0
-count = 0
-language = "en"
-bruh = (num) => Math.floor(Math.random() * num)
-
+function codingswitch(name){
+    for (x of Array.from(document.getElementsByClassName("codelang"))) x.style.fontWeight = 400
+    document.getElementById(name).style.fontWeight = 700
+    codelang = name
+    document.getElementById("language").textContent = name
+}
 //code
 //line
 //multiple choice
 //true/false
 //info
 //operators
-list = {
-    JavaScript: [
-        [
-            "m@2 + 3",
-            "m@4 - 6",
-            "i@EXPorder-of-operations",
-            "o@+,-,*,/,%",
-            "m@5 - 2 * 3",
-            "m@7 % 3",
-            "m@56 % 7",
-            "m@2 % 9",
-            "m@4 * (2 + 3 / (1 + 2)) + (4 % 2)",
-        ],
-        [   
-            "i@EXPvariables",
-            "i@EXPprint",
-            "c@x = 5,x = x + 1,console.log(x)~6",
-            "c@y = 2,z = 2 * y,console.log(z / 4)~1",
-            "c@n = 4 * 4,l = (n - 1) % 3,console.log(l)~0",
-        ],
-        [
-            "i@EXPcomparison-operators",
-            "o@==,!=,<,>,<=,>=",
-            "m@3 == 5",
-            "m@4 != 8 % 2",
-            "m@5 >= 16 - 17",
-            `c@x = 9, y = 1 + x * 2, console.log(x > 18)~false`,
-        ],
-        [
-            "i@EXPif-statement",
-            "c@x = 5,if(x > 2){,$console.log(x+1),}~6",
-            "c@age = 21,if(age >= 21){,$console.log('You can buy beer'),},if(age < 21){,$console.log('You cannot buy beer'),}~You can buy beer",
-            "c@c = 5, t = 3,if(t > 0){,$if(c <= 8-4){,$$console.log(c),$},$if(c > 4.5){,$$console.log(t),$},}~3",
-        ],
-        [
-            "i@EXPstrings",
-            "m@'h'+'n'",
-            "m@'harris'.length",
-            "m@''.length",
-            "m@'string'.length % 4",
-            "c@str = 'java' + 'script',f = str.length - 1,console.log(f)~9",
-            "m@'23' + '42'",
-        ],
-        [
-            "i@Boolean",
-            "m@'h'+'n'",
-            "m@'harris'.length",
-            "m@''.length",
-            "m@'string'.length % 4",
-            "c@str = 'java' + 'script',f = str.length - 1,console.log(f)~9",
-            "m@'23' + '42'",
-        ],
-    ],
-    Python: [
-        [
-            `m@2 + ${bruh(10)}`,
-            `m@${bruh(10)} - ${bruh(10)}`,
-            `i@EXPorder-of-operations`,
-            `o@+,-,*,/,%`,
-            `m@5 - 2 * ${bruh(5)}`,
-            `m@${bruh(10)} % 3`,
-            `m@56 % 7`,
-            `m@2 % ${bruh(10)}`,
-            `m@${bruh(10)} * (2 + 3 / (1 + 2)) + (4 % 2)`,
-        ],
-        [   
-            "i@EXPvariables",
-            "i@EXPprint",
-            "c@x = 5,x = x + 1,print(x)~6",
-            "c@y = 2,z = 2 * y,print(z / 4)~1",
-            "c@n = 4 * 4,l = (n - 1) % 3,print(l)~0",
-        ],
-        [
-            "i@EXPcomparison-operators",
-            "o@==,!=,<,>,<=,>=",
-            `m@3 == ${bruh(10)}`,
-            "m@4 != 8 % 2",
-            `m@5 >= 16 - ${bruh(20)}`,
-            `c@x = 9, y = 1 + x * 2, print(x > 18)~false`,
-        ],
-        [
-            "i@EXPif-statement",
-            "c@x = 5,if(x <= 5):,$print(x+1)~6",
-            `c@age = 21,if(age >= 21):,$print('You can buy beer'),if(age < 21):,$print('You cannot buy beer')~You can buy beer`,
-            "c@c = 5, t = 3,if(t > 0):,$if(c <= 8-4):,$$print(c),$if(c > 4.5):,$$print(t),}~3",
-        ],
-        [
-            "i@EXPstrings",
-            "m@'h'+'n'",
-            "m@len('harris')",
-            "m@''.length",
-            "m@'string'.length % 4",
-            "c@str = 'pyt' + 'hon',f = str.length + 1,console.log(f)~7",
-            "m@'23' + '42'",
-        ],
-        [
-            "i@EXPstrings",
-            "m@'h'+'n'",
-            "m@len('harris')",
-            "m@''.length",
-            "m@'string'.length % 4",
-            "c@str = 'pyt' + 'hon',f = str.length + 1,console.log(f)~7",
-            "m@'23' + '42'",
-        ],
-    ],
-    Ruby: [
-        [
-            `m@8 + ${bruh(10)}`,
-            `m@${bruh(10)} - ${bruh(10)}`,
-            `i@EXPorder-of-operations`,
-            `o@+,-,*,/,%`,
-            `m@5 - 2 * ${bruh(5)}`,
-            `m@${bruh(10)} % 3`,
-            `m@56 % 7`,
-            `m@2 % ${bruh(10)}`,
-            `m@${bruh(10)} * (2 + 3 / (1 + 2)) + (4 % 2)`,
-        ],
-        [   
-            "i@EXPvariables",
-            "i@EXPprint",
-            "c@x = 5,x = x + 1,puts x~6",
-            "c@y = 2,z = 2 * y,puts (z/4)~1",
-            "c@n = 4 * 4,l = (n - 1) % 3,puts l~0",
-        ],
-        [
-            "i@EXPcomparison-operators",
-            "o@==,!=,<,>,<=,>=",
-            `m@${bruh(10)} == ${bruh(10)}`,
-            `m@4 != 8 % ${bruh(3)}`,
-            `m@5 >= 16 - ${bruh(20)}`,
-            `c@x = 8, y = 1 + x * 2, print(x > 17)~false`,
-        ],
-    ]
-}
-programmingData = {
-    JavaScript: {
-        print: "console.log()",
-        length: ".length",
-    },
-    Python: {
-        print: "print()",
-        length: "len()",
-    },
-    Ruby: {
-        print: "puts",
-        length: "len",
-    },
-}
 languageData = {
     en: {
         "languageTEXT": "Languages:",
@@ -346,10 +280,10 @@ languageData = {
         "continue": "[Continue]",
         "EXPorder-of-operations": "Programming uses the order of operations just like normal math. One new symbol is the modulo (a percent sign %) which returns the remainder of two numbers dividing.",
         "EXPvariables": `${color("Variables")} are used as placeholders in programming to make code easier to write and understand. Variables can have almost any name.`,
-        "EXPprint": `The ${color(programmingData[codelang].print)} function is used to print things in ${codelang}`,
+        "EXPprint": `The ${color(programmingData[codelang].print(""))} function is used to print things in ${codelang}`,
         "EXPcomparison-operators": `You can use comparison operators to compare two values. These operators come after doing math, and will return ${color('true')} if the statement is correct and ${color('false')} if incorrect. For example ${color('4 > 3')} would return as ${color('true')} because it is correct that ${color('4')} is larger than ${color('3')}.`,
         "EXPif-statement": "For code only to be executed if a certain condition is fulfilled, you need to use what is called an 'if statement'. If the code inside an if statement is true, the code is executed, otherwise it is skipped over. Let's see an example...",
-        "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+). You can get the number of characters in a string in ${codelang} with the ${color(programmingData[codelang].length)} ${programmingData[codelang].length.startsWith(".") ? "attribute" : "function"}`,
+        "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+). You can get the number of characters in a string in ${codelang} with the ${color(programmingData[codelang].length(""))} ${programmingData[codelang].length("").startsWith(".") ? "attribute" : "function"}`,
         "operator": "Operator",
         "+": "Adds numbers together",
         "-": "Subtracts numbers",
@@ -377,12 +311,12 @@ languageData = {
         "mQuestion": "¿A qué evaluará esto?",
         "oQuestion": "Algunos operadores útiles:",
         "correct": "¡Correcto!",
-        "EXPorder-of-operations": "La programación usa el orden de las operaciones al igual que las matemáticas normales. Un nuevo símbolo es el módulo (un signo de porcentaje %) que regresa el resto de dos números divididos.",
-        "EXPvariables": `Las ${color("variables")} se utilizan como marcadores de posición en la programación para facilitar la escritura y la comprensión del código. Las variables pueden tener casi cualquier nombre.`,
-        "EXPprint": `La funcción ${color(programmingData[codelang].print)} se usa para imprimir cosas en ${codelang}`,
-        "EXPstrings": `En la programación, una cadena es un series de caráctares con ${color("'quotes'")}. You can add them together with an addition operator (+).`, // FIX
-        "EXPcomparison-operators": `Puede utilizar operadores de comparación para comparar dos valores. Estos operadores se evalúan después de los operadores matemáticos y devolverán ${color('true')} (verdad) si la declaración es correcta y ${color('false')} (falso) si es incorrecta. Por ejemplo, ${color('4 > 3')} se devolvería como ${color('true')} porque es correcto que ${color('4')} sea mayor que ${color('3')}.`,
-        "EXPif-statement": "Para que el código solo se ejecute si se cumple una determinada condición, debe usar lo que se llama una 'instrucción if'. Si el código dentro de una declaración if es verdadero, el código se ejecuta; de lo contrario, se omite. Aquí está un ejemplo...",
+        "EXPorder-of-operations": "La programación usa el orden de las operaciones al igual que las matemáticas normales. Un nuevo símbolo es el modulo (un signo de porcentaje %) que devuelve el resto de dos números enteros divididos.",
+        "EXPvariables": `Las ${color("variables")} se utilizan como marcadores de posición en la programación, para facilitar la escritura y la comprensión del código. Las variables pueden tener casi cualquier nombre.`,
+        "EXPprint": `La función ${color(programmingData[codelang].print(""))} se usa para imprimir cosas en ${codelang}`,
+        "EXPstrings": `En programación, una cadena es una serie de caracteres entre comillas. Puedes agregarlos junto con un operador de suma (+). Puedes obtener el número de caracteres en una cadena en '${codelang}' con el atributo 'length'.`,
+        "EXPcomparison-operators": `Puede utilizar operadores de comparación para comparar dos valores. Estos operadores vienen después de hacer operaciones y aparecerá ${color('true')} si la declaración es correcta y ${color('false')} si es incorrecta.`,
+        "EXPif-statement": "Para que el código sólo se ejecute si se cumple una determinada condición, debe usar lo que se llama un 'operador condicional'. Si el código dentro de un 'operador condicional' es verdadero, el código se ejecuta; de lo contrario, se omite. Veamos un ejemplo...",
         "incorrect": "Incorrecto, la respuesta es ",
         "click": "[Haz click para continuar]",
         "placeholder": "Responder aquí...",
@@ -390,16 +324,55 @@ languageData = {
         "continue": "[Continuar]",
         "operator": "Operador",
         "functionality": "Funcionalidad",
-        "+": "Suma números juntos",
-        "-": "Subtracta números",
-        "*": "Multiplica números juntos",
+        "+": "Suma números",
+        "-": "Resta números",
+        "*": "Multiplica números",
         "/": "Divide números",
         "%": "Encuentra el resto después de la división",
-        "==": `Devuelve ${color("true")} si dos cosas son iguales, sino ${color("false")}`,
-        "!=": `Devuelve ${color("true")} si dos cosas no son iguales, sino ${color("false")}`,
-        "<": `Devuelve ${color("true")} si un número es más pequeño que el próximo, sino ${color("false")}`,
-        ">": `Devuelve ${color("true")} si un número es más grande que el próximo, sino ${color("false")}`,
-        "<=": `Devuelve ${color("true")} si un número es más pequeño que o igual al próximo, sino ${color("false")}`,
-        ">=": `Devuelve ${color("true")} si un número es más grande que o igual al próximo, sino ${color("false")}`,
+        "==": `Se vuelve ${color("true")} si dos cosas son iguales, de lo contrario se convierte en ${color("false")}`,
+        "!=": `Se vuelve ${color("true")} si dos cosas no son iguales, de lo contrario se convierte en ${color("false")}`,
+        "<": `Se vuelve ${color("true")} si un número es menor que el siguiente, de lo contrario se convierte en ${color("false")}`,
+        ">": `Se vuelve ${color("true")} si un número es es mayor que el siguiente, de lo contrario se convierte en ${color("false")}`,
+        "<=": `Devuelve ${color("true")} si un número es menor o igual que el siguiente, de lo contrario se convierte en ${color("false")}`,
+        ">=": `Devuelve ${color("true")} si un número es mayor o igual que el siguiente, de lo contrario se convierte en ${color("false")}`,
+    },
+    pt: {
+        "languageTEXT": "Idiomas:",
+        "levelL": "Nível",
+        "mathL": "Matemática",
+        "variablesL": "Variáveis",
+        "comparisonL": "Operadores Comparativos",
+        "booleanL": "Operadores Lógicos",
+        "conditionalL": "Sentenças Condicionais",
+        "stringsL": "Cadeias",
+        "cQuestion": "O que o código irá imprimir?",
+        "iQuestion": "Informações importantes:",
+        "mQuestion": "O que isso irá avaliar?",
+        "oQuestion": "Alguns operadores úteis:",
+        "correct": "Correto!",
+        "EXPorder-of-operations": "Programação utiliza ordens de operação assim como na matemática. Um dos símbolos é o módulo (o sinal de porcentagem %) que retorna o resto da divisão entre dois números.",
+        "EXPvariables": `${color("Variáveis")} são utilizadas como marcadores na programação, para tornar o código fácil de se escrever e entender. Variáveis podem receber qualquer nome (com algumas exceções).`,
+        "EXPprint": `A função ${color(programmingData[codelang].print(""))} é utilizada para imprimir coisas no ${codelang}.`,
+        "EXPif-statement": `Se você deseja que um código seja executado somente se certas condições forem satisfeitas, use o que é chamado de "declaração if". Se o código dentro de um condicional if é verdadeiro, o código será executado, senão, é pulado. Vejamos um exemplo...`,
+        "EXPstrings": `Na programação, uma cadeia é uma série de caracteres misturados em uma frase. Você pode juntar duas cadeias com o operador de soma ( + ). Você pode também pode saber a quantidade de caracteres em uma cadeia no ${codelang} com o atributo 'length'.`,
+        "EXPcomparison-operators": `Você pode utilizar operadores comparativos para comparar dois valores. Estes operadores vem após operações matemáticas, e retornam "verdadeiro" se a sentença for correta ou "falso" se for incorreta. Por exemplo, ${color("4 > 3")} irá retornar ${color("true")} já que 4 é maior que 3. `,
+        "incorrect": "Incorreto, a resposta é ",
+        "click": "[Clique para continuar]",
+        "placeholder": "Responda aqui...",
+        "enter": "[Entrar]",
+        "continue": "[Continuar]",
+        "operator": "Operador",
+        "functionality": "Funcionalidade",
+        "+": "Suma dois números",
+        "-": "Subtrai dois números",
+        "*": "Multiplica dois números",
+        "/": "Divide dois números",
+        "%": "Pega o resto da divisão",
+        "==": `(==) Retorna ${color("true")} se duas coisas ao serem comparadas forem iguais, senão retorna ${color("false")}`,
+        "!=": `(!=) Retorna ${color("true")} se duas coisas forem diferentes ao serem comparadas, senão retorna ${color("false")}`,
+        "<": `(<) Retorna ${color("true")} se um número é menor que o outro, senão retorna ${color("false")}`,
+        ">": `(>) Retorna ${color("true")} se um número é maior que o outro, senão retorna ${color("false")}`,
+        "<=": `(<=) Retorna ${color("true")} se um número é menor ou igual ao outro, senão retorna ${color("false")}`,
+        ">=": `(<=) Retorna ${color("true")} se um número é maior ou igual ao outro, senão retorna ${color("false")}`,
     },
 }

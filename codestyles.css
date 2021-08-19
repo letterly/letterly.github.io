@@ -5,10 +5,13 @@
 body{
     background-color: #eee8d5;
 }
-h1, .levelselect p, #languageselect p{
+h1, .levelselect p, #languageselect p, #codingselect p, #message{
     color: #073642;
     text-align: center;
     font-family: Verdana;
+}
+#message{
+    margin-top: 100px;
 }
 .levelselect{
     border: #073642 4px solid;
@@ -18,17 +21,21 @@ h1, .levelselect p, #languageselect p{
     width: 98%;
     margin: calc(1% - 2px)
 }
-#languageselect{
+#languageselect, #codingselect{
     font-size: 24px;
 }
 .lang{
     color: #2aa198;
     text-decoration: underline;
 }
+.codelang{
+    color: #859900;
+    text-decoration: underline;
+}
 h1{
     font-size: 48px;
 }
-.language{
+#language{
     font-size: 36px;
     margin-bottom: 0px;
     margin-top: 5px;
@@ -56,6 +63,9 @@ h1{
     margin-left: 10%;
     margin-right: 10%;
     line-height: 85%;
+}
+#text p{
+    margin: 10px;
 }
 #ent, #info{
     text-align: center;

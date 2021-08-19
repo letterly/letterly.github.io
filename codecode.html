@@ -3,40 +3,36 @@
         <link rel="stylesheet" href="codestyles.css">
         <meta charset="utf-8">
         <script src="coderun.js"></script>
+        <link rel="shortcut icon" href="favicon.ico?">
         <title>codecode</title>
     </head>
     <body>
-        <h1 id="h">codecode [alpha release 1.2]</h1>
+        <h1 id="h">codecode [alpha release 1.3]</h1>
         <div id="languageselect">
             <p><span id="languageTEXT">Languages:</span>
-                <span onclick="langswitch('en')" class="lang">English</span>
-                <span onclick="langswitch('es')" class="lang">Español</span>
+                <span onclick="langswitch(this.id)" class="lang" id="en" style="font-weight:700">English</span>
+                <span onclick="langswitch(this.id)" class="lang" id="es">Español</span>
+                <span onclick="langswitch(this.id)" class="lang" id="pt">Português</span>
+            </p>
+        </div>
+        <div id="codingselect">
+            <p>
+                <span onclick="codingswitch('JavaScript')" class="codelang" id="JavaScript" style="font-weight:700">JavaScript</span>
+                <span onclick="codingswitch('Python')" class="codelang" id="Python">Python</span>
+                <span onclick="codingswitch('Ruby')" class="codelang" id="Ruby">Ruby</span>
             </p>
         </div>
         <div id="levelselects">
             <div class="levelselect">
-                <p class="language" style="color:#cb4b16">JavaScript</p>
-                <p class="level" onclick="levelset(0, 'JavaScript')"><small><span class="levelL">Level</span> 0</small><br><span class="mathL">Math</span></p>
+                <p id="language" style="color:#cb4b16">JavaScript</p>
+                <p class="level" onclick="levelset(0)"><small><span class="levelL">Level</span> 0</small><br><span class="mathL">Math</span></p>
                 <p class="level" onclick="levelset(1, 'JavaScript')"><small><span class="levelL">Level</span> 1</small><br><span class="variablesL">Variables</span></p>
                 <p class="level" onclick="levelset(2, 'JavaScript')"><small><span class="levelL">Level</span> 2</small><br><span class="comparisonL">Comparison Operators</span></p>
                 <p class="level" onclick="levelset(3, 'JavaScript')"><small><span class="levelL">Level</span> 3</small><br><span class="conditionalL">Conditional Statements</span> 1</p>
                 <p class="level" onclick="levelset(4, 'JavaScript')"><small><span class="levelL">Level</span> 4</small><br><span class="stringsL">Strings</span> 1</p>
             </div>
-            <div class="levelselect">
-                <p class="language" style="color:#859900">Python</p>
-                <p class="level" onclick="levelset(0, 'Python')"><small><span class="levelL">Level</span> 0</small><br><span class="mathL">Math</span></p>
-                <p class="level" onclick="levelset(1, 'Python')"><small><span class="levelL">Level</span> 1</small><br><span class="variablesL">Variables</span></p>
-                <p class="level" onclick="levelset(2, 'Python')"><small><span class="levelL">Level</span> 2</small><br><span class="comparisonL">Comparison Operators</span></p>
-                <p class="level" onclick="levelset(3, 'Python')"><small><span class="levelL">Level</span> 3</small><br><span class="conditionalL">Conditional Statements</span> 1</p>
-                <p class="level" onclick="levelset(4, 'Python')"><small><span class="levelL">Level</span> 4</small><br><span class="stringsL">Strings</span> 1</p>
-            </div>
-            <div class="levelselect">
-                <p class="language" style="color:#dc322f">Ruby</p>
-                <p class="level" onclick="levelset(0, 'Ruby')"><small><span class="levelL">Level</span> 0</small><br><span class="mathL">Math</span></p>
-                <p class="level" onclick="levelset(1, 'Ruby')"><small><span class="levelL">Level</span> 1</small><br><span class="variablesL">Variables</span></p>
-                <p class="level" onclick="levelset(2, 'Ruby')"><small><span class="levelL">Level</span> 2</small><br><span class="comparisonL">Comparison Operators</span></p>
-            </div>
         </div>
+        <p id="message">Want to help write/improve/translate content? Contribute to our community document <a style="color:#d33682;font-weight:700" href="https://docs.google.com/spreadsheets/d/1idYojbGEkokyIW1DIwPTPPa-cx_JWHnhRSIdqsj5sFw/" target="_blank">here</a> :)</p>
         <div id="game">
             <p id="text"><span class="number">2</span> <span class="operator">+</span> <span class="number">5</span></p>
             <input id="input" placeholder="Answer here..."></input>
