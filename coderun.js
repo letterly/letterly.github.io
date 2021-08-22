@@ -6,12 +6,13 @@ programmingData = {
         length: function(str){return `${str}.length`}, 
         variable: function(str){return `${str}`}, 
         if: function(str){return `if(${str}){`}, 
+        elseif: function(str){return `else if(${str}){`}, 
+        else: function(str){return `else(${str}){`}, 
         true: "true",
         false: "false",
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
-        elseIf: "else if",
     },
     Python: {
         blockEnd: "",
@@ -21,12 +22,13 @@ programmingData = {
         length: function(str){return `strlen(${str})`}, 
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str}:`}, 
+        elseif: function(str){return `elif ${str}:`}, 
+        else: function(str){return `else ${str}:`}, 
         true: "True",
         false: "False",
         andOperator: "and",
         orOperator: "or",
         notOperator: "not ",
-        elseIf: "elif",
     },
     Ruby: {
         blockEnd: "",
@@ -35,12 +37,13 @@ programmingData = {
         length: function(str){return `${str}.length`}, 
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str}`}, 
+        elseif: function(str){return `elsif ${str}`}, 
+        else: function(str){return `else ${str}`}, 
         true: "true",
         false: "false",
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
-        elseIf: "elsif",
     },
     PHP: {
         blockEnd: "}",//
@@ -49,12 +52,13 @@ programmingData = {
         length: function(str){return `strlen(${str})`},
         variable: function(str){return `$${str}`}, 
         if: function(str){return `if (${str}) {`},
+        elseif: function(str){return `elseif (${str}) {`},
+        else: function(str){return `else (${str}) {`},
         true: "true",
         false: "false",
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
-        elseIf: "elseif",
     },
     Lua: {
         blockEnd: "}",//
@@ -62,13 +66,14 @@ programmingData = {
         print: function(str){ return `print(${str})`},//
         length: function(str){return `#${str}`},
         variable: function(str){return `${str}`}, 
-        if: function(str){return `if ${str} then`}, 
+        if: function(str){return `if ${str} then`},
+        elseif: function(str){return `elseif ${str} then`}, 
+        else: function(str){return `else ${str} then`}, 
         true: "true",
         false: "false",
         andOperator: "and",
         orOperator: "or",
         notOperator: "not ",
-        elseIf: "elseif",
     },
 }
 list = []
@@ -111,9 +116,9 @@ function listInitialize(lang){
         ],
         [
             "i@EXPif-statement",
-            `c@${p.variable("x")} = 5,if(${p.variable("x")} <= 5)${p.blockStart},÷${p.print(`${p.variable("x")}+1`)}, ${p.ifBlockEnd}~6`,
-            `c@${p.variable("age")} = 21,if(${p.variable("age")} >= 21)${p.blockStart},÷${p.print("'You can buy beer'")},${p.ifBlockEnd},if(${p.variable("age")} < 21)${p.blockStart},÷${p.print("'You cannot buy beer'")}, ${p.ifBlockEnd}~You can buy beer`,
-            `c@${p.variable("c")} = 5, ${p.variable("t")} = 3,if(${p.variable("t")} > 0)${p.blockStart},÷if(${p.variable("c")} <= 8 - 4)${p.blockStart},÷÷${p.print('c')},÷${p.ifBlockEnd},÷if(${p.variable("c")} > 4.5)${p.blockStart},÷÷${p.print(p.variable("t"))},÷${p.ifBlockEnd},${p.ifBlockEnd}~3`,
+            `c@${p.variable("x")} = 5,${p.if(`${p.variable("x")} <= 5`)},÷${p.print(`${p.variable("x")}+1`)}, ${p.ifBlockEnd}~6`,
+            `c@${p.variable("age")} = 21,${p.if(`${p.variable("age")} >= 21`)},÷${p.print("'You can buy beer'")},${p.ifBlockEnd},${p.if(`${p.variable("age")} < 21`)},÷${p.print("'You can't buy beer'")}, ${p.ifBlockEnd}~You can buy beer`,
+            `c@${p.variable("c")} = 5, ${p.variable("t")} = 3,${p.if(`${p.variable("t")} > 0`)},÷${p.if(`${p.variable("c")} <= 8 - 4`)},÷÷${p.print('c')},÷${p.ifBlockEnd},${p.if(`${p.variable("c")} > 4.5`)},÷÷${p.print(p.variable("t"))},÷${p.ifBlockEnd},${p.ifBlockEnd}~3`,
         ],
         [
             "i@EXPstrings",
@@ -126,6 +131,14 @@ function listInitialize(lang){
         ],
         [
             "i@EXPboolean",
+            `o@${p.notOperator},${p.orOperator},${p.andOperator}`,
+            `m@${p.true} ${p.andOperator} ${p.false}`,
+            `m@${p.notOperator}${p.true}`,
+            `c@${p.variable("a")} = 19 % 2 == 1, ${p.variable("b")} =  ${p.notOperator}(${p.false} ${p.orOperator} ${p.variable("a")}),${p.print(p.variable("b"))}~${p.false}`,
+            `m@(${p.false} ${p.andOperator} ${p.true}) ${p.orOperator} (${p.true} ${p.andOperator} ${p.false})`
+        ],
+        [
+            "i@EXPifelse",
             `o@${p.notOperator},${p.orOperator},${p.andOperator}`,
             `m@${p.true} ${p.andOperator} ${p.false}`,
             `m@${p.notOperator}${p.true}`,
@@ -161,6 +174,7 @@ function listInitialize(lang){
             "EXPif-statement": "For code only to be executed if a certain condition is fulfilled, you need to use what is called an 'if statement'. If the code inside an if statement is true, the code is executed, otherwise it is skipped over. Let's see an example...",
             "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+). You can get the number of characters in a string in ${codelang} with the ${color(p.length(""))} ${p.length("").startsWith("#") ? (p.length("").startsWith(".") ? "attribute" : "function") : "operator"}`,
             "EXPboolean": `Certain operators, called boolean operators, are combined with boolean values (${p.true} and ${p.false}) to return a new value. This can help you write statements with complex logic in programming.`,
+            "EXPifelse": `If an [if statement] doesn't evaluate to be '${p.true}, `,
             "operator": "Operator",
             "+": "Adds numbers together",
             "-": "Subtracts numbers",
@@ -277,9 +291,9 @@ function listInitialize(lang){
 
 function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
-    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#]/g, "~$&~")
+    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#÷]/g, "~$&~")
     h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||")
-    h = h.replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~")
+    h = h.replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~")
     h = h.split("~")
     console.log(h)
     return h
@@ -379,13 +393,7 @@ document.addEventListener('keydown', (e) => {
 })
 function buttonize(t){
     if(buttons.style.display != "none"){
-        list[lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = transl('correct') : falseP.textContent = transl('incorrect') + list[lesson][count]?.split(">")[1]?.split(",")[0]
-        ent.textContent = transl('click')
-    }
-}
-function boolbuttonize(t){
-    if(booleanbuttons.style.display != "none"){
-        list[lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.textContent = "Correct!" : falseP.textContent = "Incorrect, the answer is " + list[lesson][count]?.split(">")[1]?.split(",")[0]
+        list[lesson][count]?.split(">")[1]?.startsWith(t) ? trueP.innerHTML = transl('correct') : falseP.innerHTML = transl('incorrect') + "<span id='wronganswer'>" + list[lesson][count]?.split(">")[1]?.split(",")[0] + "</span>"
         ent.textContent = transl('click')
     }
 }
@@ -407,14 +415,13 @@ function next(){
     falseP.textContent = ""
     if(ent.textContent == transl('enter')){
         ans = type == "m" ? solve(text.textContent) : list[lesson][count].split("@")[1].split("~")[1]
-        ans == input.value ? trueP.textContent = "Correct!" : falseP.textContent = transl('incorrect') + ans
+        ans == input.value ? trueP.textContent = "Correct!" : falseP.innerHTML = transl('incorrect') + "<span id='wronganswer'>" + ans + "</span>"
         ent.textContent = transl('click')
     }
     else{
         input.value = ""
         ent.textContent = ""
         buttons.style.display = "none"
-        booleanbuttons.style.display = "none"
         table.style.display = "none"
         count++
         if(count == list[lesson].length){

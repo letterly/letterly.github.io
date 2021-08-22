@@ -126,6 +126,10 @@ input::placeholder{
 #falseP{
     color: #dc322f;
 }
+#wronganswer{
+    background-color: #dc322f;
+    color: #fdf6e3;
+}
 #buttons button, #booleanbuttons button{
     margin-left: 3%;
     margin-right: 3%;
