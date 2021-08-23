@@ -8,6 +8,7 @@ programmingData = {
         if: function(str){return `if(${str}){`}, 
         elseif: function(str){return `else if(${str}){`}, 
         else: function(str){return `else(${str}){`}, 
+        func: function(str, vars){return `function ${str}(${vars}){`},
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -23,7 +24,8 @@ programmingData = {
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str}:`}, 
         elseif: function(str){return `elif ${str}:`}, 
-        else: function(str){return `else ${str}:`}, 
+        else: function(str){return `else ${str}:`},
+        func: function(str, vars){return `def ${str}(${vars}):`},
         true: "True",
         false: "False",
         andOperator: "and",
@@ -39,6 +41,7 @@ programmingData = {
         if: function(str){return `if ${str}`}, 
         elseif: function(str){return `elsif ${str}`}, 
         else: function(str){return `else ${str}`}, 
+        func: function(str, vars){return `def ${str}(${vars})`},
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -54,6 +57,7 @@ programmingData = {
         if: function(str){return `if (${str}) {`},
         elseif: function(str){return `elseif (${str}) {`},
         else: function(str){return `else (${str}) {`},
+        func: function(str, vars){return `function ${str}(${vars}) {`},
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -61,14 +65,15 @@ programmingData = {
         notOperator: "!",
     },
     Lua: {
-        blockEnd: "}",//
-        ifBlockEnd: "}",//
+        blockEnd: "end",//
+        ifBlockEnd: "end",//
         print: function(str){ return `print(${str})`},//
         length: function(str){return `#${str}`},
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str} then`},
         elseif: function(str){return `elseif ${str} then`}, 
         else: function(str){return `else ${str} then`}, 
+        func: function(str, vars){return `function ${str}(${vars}){`},
         true: "true",
         false: "false",
         andOperator: "and",
@@ -293,7 +298,7 @@ function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
     h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#÷]/g, "~$&~")
     h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||")
-    h = h.replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~")
+    h = h.replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~").replace("then", "~then")
     h = h.split("~")
     console.log(h)
     return h
@@ -308,7 +313,7 @@ function color(arr){
         if("+-*/%><!=^&|.(){}:#".includes(x.trim().charAt(0))) cl = "operator"
         else if(["and", "or", "not", "then"].includes(x.trim())) cl = "operator"
         else if(!isNaN(x.trim())) cl = "number"
-        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo"].includes(x.trim())) cl = "keyword"
+        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo", "then", "end"].includes(x.trim())) cl = "keyword"
         else if(x.trim() == "÷") cl = "space"
         else if(x.trim().startsWith("'") || x.trim().startsWith(`"`)) cl = "quote"
         else if(["true", "false"].includes(x.trim().toLowerCase())) cl = "boolean"
