@@ -5,10 +5,12 @@ programmingData = {
         print: function(str){ return `console.log(${str})`},
         length: function(str){return `${str}.length`}, 
         variable: function(str){return `${str}`}, 
+        func: function(str, vars){return `function ${str}(${vars}){`},
         if: function(str){return `if(${str}){`}, 
         elseif: function(str){return `else if(${str}){`}, 
-        else: function(str){return `else(${str}){`}, 
-        func: function(str, vars){return `function ${str}(${vars}){`},
+        else: `else{`,
+        while: function(str){return `while(${str}){`},
+        elseifword: "else if",
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -24,7 +26,9 @@ programmingData = {
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str}:`}, 
         elseif: function(str){return `elif ${str}:`}, 
-        else: function(str){return `else ${str}:`},
+        else: `else:`,
+        while: function(str){return `while ${str}:`},
+        elseifword: "elif",
         func: function(str, vars){return `def ${str}(${vars}):`},
         true: "True",
         false: "False",
@@ -40,8 +44,10 @@ programmingData = {
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str}`}, 
         elseif: function(str){return `elsif ${str}`}, 
-        else: function(str){return `else ${str}`}, 
+        else: `else`,
+        elseifword: "elsif",
         func: function(str, vars){return `def ${str}(${vars})`},
+        while: function(str){return `while ${str}`},
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -56,8 +62,10 @@ programmingData = {
         variable: function(str){return `$${str}`}, 
         if: function(str){return `if (${str}) {`},
         elseif: function(str){return `elseif (${str}) {`},
-        else: function(str){return `else (${str}) {`},
+        else: `else {`,
+        elseifword: "elseif",
         func: function(str, vars){return `function ${str}(${vars}) {`},
+        while: function(str){return `while (${str}) {`},
         true: "true",
         false: "false",
         andOperator: "&&",
@@ -72,8 +80,10 @@ programmingData = {
         variable: function(str){return `${str}`}, 
         if: function(str){return `if ${str} then`},
         elseif: function(str){return `elseif ${str} then`}, 
-        else: function(str){return `else ${str} then`}, 
-        func: function(str, vars){return `function ${str}(${vars}){`},
+        elseifword: "elseif",
+        else: `else then`, 
+        func: function(str, vars){return `function ${str} (${vars})`},
+        while: function(str){return `while ${str} do`},
         true: "true",
         false: "false",
         andOperator: "and",
@@ -144,11 +154,24 @@ function listInitialize(lang){
         ],
         [
             "i@EXPifelse",
-            `o@${p.notOperator},${p.orOperator},${p.andOperator}`,
-            `m@${p.true} ${p.andOperator} ${p.false}`,
-            `m@${p.notOperator}${p.true}`,
-            `c@${p.variable("a")} = 19 % 2 == 1, ${p.variable("b")} =  ${p.notOperator}(${p.false} ${p.orOperator} ${p.variable("a")}),${p.print(p.variable("b"))}~${p.false}`,
-            `m@(${p.false} ${p.andOperator} ${p.true}) ${p.orOperator} (${p.true} ${p.andOperator} ${p.false})`
+            `c@${p.variable("x")} = 10,${p.if(`${p.variable("x")} < 10`)},÷${p.print(`x+1`)},${p.blockEnd},${p.elseif(p.variable("x") + ` % 4 == 2`)},÷${p.print(p.variable("x") + `-1`)},${p.ifBlockEnd}~9`,
+            `c@${p.variable("str")} = 'card',${p.if(`${p.length(p.variable("str"))} == 3`)},÷${p.print("'hi'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} == 14 % 5`)},÷${p.print("'bye'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} > 0`)},÷${p.print("'sigh'")},${p.ifBlockEnd}~'bye'`,
+            `c@${p.if("19 > 32")},÷${p.print("4")},${p.blockEnd},${p.else},÷${p.print("18")},${p.ifBlockEnd}~18`,
+            `c@${p.if(`${p.length("''")} % ${bruh(10)} == 0`)},÷${p.print("'32'")},${p.blockEnd},${p.elseif(`42 >= 6 * 6 + 6`)},÷${p.print('32')},${p.blockEnd},${p.else},÷${p.print("'3 2'")},${p.ifBlockEnd}~'32'`,
+        ],
+        [
+            "i@EXPwhile",
+            `c@${p.variable("x")} = 8,${p.while("x < 20")},÷${p.variable("x")} = x * 2,${p.blockEnd}~32`,
+            `c@${p.variable("fruit")} = 'ba',${p.while(`${p.length(p.variable("fruit"))} <= 7`)},÷${p.variable("fruit")} = ${p.variable("fruit")} + 'na',${p.blockEnd},${p.print(p.variable("fruit"))}~'bananana'`,
+            `c@${p.variable("number")} = 12,${p.while(`${p.variable("number")} % 7 != 0`)},÷${p.variable("number")} = ${p.variable("number")} + 3,${p.blockEnd},${p.print(`${p.variable("number")} + 2`)}~23`,
+            `c@${p.variable("c")} = 5,${p.while(`${p.variable("c")} < 30`)},÷${p.if(`${p.variable("c")} % 2 == 1`)},÷÷${p.variable("c")} = ${p.variable("c")} * 5,÷${p.blockEnd},÷${p.else},÷÷${p.variable("c")} = ${p.variable("c")} + 4,÷${p.ifBlockEnd},${p.ifBlockEnd},${p.print(p.variable("c"))}~33`,
+        ],
+        [
+            "i@EXPfunction",
+            `c@${p.func("square", p.variable("num"))},÷return ${p.variable("num")} * ${p.variable("num")},${p.blockEnd},${p.print(`square(5)`)}~25`,
+            `c@${p.variable("h")} = 0,${p.func("add","")},÷${p.variable("h")} = ${p.variable("h")} + 3,${p.blockEnd},add(),add(),${p.print(p.variable("h"))}~6`,
+            `c@${p.func("stringadd", "str")},÷${p.if(`${p.length(p.variable("str"))} >= 3`)},÷÷return 'this',÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i",÷${p.ifBlockEnd},${p.blockEnd},${p.print(`stringadd("hi")`)}~'hii'`,
+            `c@${p.func("stringadd", "str")},÷${p.if(`${p.length(p.variable("str"))} > 3`)},÷÷return 'this',÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i",÷${p.ifBlockEnd},${p.blockEnd},${p.variable('n')} = stringadd("hey"),${p.print(`stringadd(${p.variable('n')})`)}~'this'`,
         ],
     ]
     console.log(`${p.notOperator},${p.orOperator},${p.andOperator}`)
@@ -162,6 +185,8 @@ function listInitialize(lang){
             "booleanL": "Boolean Operators",
             "conditionalL": "Conditional Statements",
             "stringsL": "Strings",
+            "whileL": "While Loops",
+            "functionL": "Functions",
             "cQuestion": "What will the code print?",
             "iQuestion": "Important information:",
             "mQuestion": "What will this evaluate to?",
@@ -179,7 +204,9 @@ function listInitialize(lang){
             "EXPif-statement": "For code only to be executed if a certain condition is fulfilled, you need to use what is called an 'if statement'. If the code inside an if statement is true, the code is executed, otherwise it is skipped over. Let's see an example...",
             "EXPstrings": `In programming, a string is a series of characters that is wrapped with ${color("'quotes'")}. You can add them together with an addition operator (+). You can get the number of characters in a string in ${codelang} with the ${color(p.length(""))} ${p.length("").startsWith("#") ? (p.length("").startsWith(".") ? "attribute" : "function") : "operator"}`,
             "EXPboolean": `Certain operators, called boolean operators, are combined with boolean values (${p.true} and ${p.false}) to return a new value. This can help you write statements with complex logic in programming.`,
-            "EXPifelse": `If an [if statement] doesn't evaluate to be '${p.true}, `,
+            "EXPifelse": `If an [if statement] doesn't evaluate to be ${color(p.true)}, then the program will move to the next [${color(p.elseif("").startsWith("else ") ? "else if" : p.elseif("").split(" ")[0])}] statement to run if it's ${color(p.true)}. Finally, if neither the if statement nor ${color(p.true)} statement, then an 'else statement' can run by default. Confusing? Let's see an example.`,
+            "EXPwhile": `A ${color("while")} loop is a block of code that keeps going until the statement within the ${color("while")} loop becomes ${color("false")}.`,
+            "EXPfunction": `A function in programming is a certain set of instructions in a block that can be activated multiple times. This makes code writing a lot faster. Most functions take one variable (or more) as an input return one output (with the 'return' keyword). It's not that complicated so just figure it out from the following exercises.`,
             "operator": "Operator",
             "+": "Adds numbers together",
             "-": "Subtracts numbers",
@@ -298,9 +325,10 @@ function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
     h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#÷]/g, "~$&~")
     h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||")
-    h = h.replace("puts", "puts~").replace("len", "len~").replace("len~gth", "length~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~").replace("then", "~then")
+    replaceArray = ["puts", "len", "true", "false", "True", "False", "and", "not", "or", "echo", "then", "while", "function", "def", "do", "if", "else"]
+    h = h.replace("puts", "puts~").replace("len", "len~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~").replace("then", "~then").replace("while", "while~").replace("function", "function~").replace("def", "def~").replace("do", "~do").replace("if", "if~").replace("else", "else~").replace("return", "return~")
+    h = h.replace("len~gth", "length~").replace("else~if", "elseif").replace("el~if", "elif").replace("els~if", "elsif")
     h = h.split("~")
-    console.log(h)
     return h
 }
 transl = (w) => languageData[language][w]
@@ -313,7 +341,7 @@ function color(arr){
         if("+-*/%><!=^&|.(){}:#".includes(x.trim().charAt(0))) cl = "operator"
         else if(["and", "or", "not", "then"].includes(x.trim())) cl = "operator"
         else if(!isNaN(x.trim())) cl = "number"
-        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo", "then", "end"].includes(x.trim())) cl = "keyword"
+        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo", "then", "end", "while", "function", "def", "do", "return"].includes(x.trim())) cl = "keyword"
         else if(x.trim() == "÷") cl = "space"
         else if(x.trim().startsWith("'") || x.trim().startsWith(`"`)) cl = "quote"
         else if(["true", "false"].includes(x.trim().toLowerCase())) cl = "boolean"
@@ -334,7 +362,6 @@ OperatorPrecedence = [
 ]
 
 function operation(symbol, first, second){
-    console.log('bruh')
     first = first.trim()
     second = second?.trim()
     switch(symbol){
@@ -362,7 +389,6 @@ function operation(symbol, first, second){
             return +first > +second
         case "&&":
         case "and":
-            console.log('bruh')
             return first.toLowerCase() == "true" && second.toLowerCase() == "true" ? p.true : p.false
         case "||":
         case "or":
@@ -376,19 +402,16 @@ function operation(symbol, first, second){
             return first.length - 2
         case "!":
         case "not":
-            console.log('bruhh')
             return first.toLowerCase() == "true" ? p.false : p.true
     }
 }
 function solve(h){
     h = parsejs(h)
     h = h.filter(word => word.trim() !== "")
-    console.log((h))
     while(h.includes("(")) for(i in h) if(h[i] == "(" && (h.indexOf("(", +i+1) > h.indexOf(")", i) || h.indexOf("(", +i+1) == -1)) h = h.slice(0, i).concat([solve(h.slice(i, h.indexOf(")", i) + 1).slice(1, -1).join(""))],h.slice(h.indexOf(")", +i+1)+1))
     for(o of OperatorPrecedence){
         for(x in h) if(o.includes(h[x])) ["!", "not", "len", "strlen", "#"].includes(h[x]) ? h.splice(+x, 2, "", String(operation(h[x], h[+x+1]))) : h.splice(+x-1, 3, "", "", String(operation(h[x], h[+x-1], h[+x+1])))
         h = h.filter(word => word !== "")
-        console.log((h))
     }
     return h[0]
 }
@@ -469,6 +492,7 @@ function next(){
 }
 
 function langswitch(ISOcode){
+    for(x of Array.from(document.getElementsByClassName("newlevel"))) x.style.display = (ISOcode == "en" ? "block" : "none")
     listInitialize(codelang)
     for (x of Array.from(document.getElementsByClassName("lang"))) x.style.fontWeight = 400
     document.getElementById(ISOcode).style.fontWeight = 700
