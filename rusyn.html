@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <title>Rusyn Transliterator</title>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 200px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $cyrillic = document.getElementById("cyrillic")
+                var $latin = document.getElementById("latin")
+                $cyrillic.addEventListener('keyup', cyrillicFunction)
+                $latin.addEventListener('keyup', latinFunction)
+                function cyrillicFunction () {
+                    cyrillic = $cyrillic.value
+
+                    for(e of Object.keys(cyrillicKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        cyrillic = cyrillic.replace(myRegExp, cyrillicKey[e])
+                    }
+                    $latin.value = cyrillic
+                }
+
+                function latinFunction () {
+                    latinText = $latin.value
+                    for(e of Object.keys(latinKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        latinText = latinText.replace(myRegExp, latinKey[e])
+                    }
+                    
+                    $cyrillic.value = latinText
+                }
+
+                latinKey = { 
+                    šč: "щ",
+                    'ui': "уй",
+                    ch: "х",
+                    ya: "я",
+                    ye: "є",
+                    yi: "ї",
+                    yo: "ë",
+                    yu: "ю",
+                    "\\'": "ь",
+                    a: "а",
+                    b: "б",
+                    d: "д",
+                    e: "е",
+                    f: "ф",
+                    g: "ґ",
+                    h: "г",
+                    i: "і",
+                    k: "к",
+                    l: "л",
+                    m: "м",
+                    n: "н",
+                    o: "о",
+                    p: "п",
+                    r: "р",
+                    s: "с",
+                    t: "т",
+                    c: "ц",
+                    u: "у",
+                    v: "в",
+                    y: "и",
+                    z: "з",
+                    č: "ч",
+                    š: "ш",
+                    ŷ: "ы",
+                    ž: "ж",
+                }
+                cyrillicKey = {
+                    "а": "a",
+                    "б": "b",
+                    "в": "v",
+                    "г": "h",
+                    "ґ": "g",
+                    "д": "d",
+                    "е": "e",
+                    "є": "ye",
+                    "ë": "yo",
+                    "ж": "ž",
+                    "з": "z",
+                    "і": "i",
+                    "ї": "yi",
+                    "и": "y",
+                    "к": "k",
+                    "л": "l",
+                    "м": "m",
+                    "н": "n",
+                    "о": "o",
+                    "п": "p",
+                    "р": "r",
+                    "с": "s",
+                    "т": "t",
+                    "у": "u",
+                    "ф": "f",
+                    "х": "ch",
+                    "ц": "c",
+                    "ч": "č",
+                    "ш": "š",
+                    "щ": "šč",
+                    "й": "i",
+                    "ы": "ŷ",
+                    "ю": "yu",
+                    "я": "ya",
+                    "ь": "'",
+                }
+                for(f of Object.entries(latinKey)) latinKey[f[0].charAt(0).toUpperCase() + f[0].slice(1)] = f[1].charAt(0).toUpperCase() + f[1].slice(1)
+                for(f of Object.entries(cyrillicKey)) cyrillicKey[f[0].charAt(0).toUpperCase() + f[0].slice(1)] = f[1].charAt(0).toUpperCase() + f[1].slice(1)
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Rusyn Transliterator</h1>
+        <textarea id="cyrillic" placeholder="enter Rusyn Cyrillic text"></textarea>
+        <textarea id="latin" placeholder="or enter Rusyn in Latin letters here"></textarea>
+    </body>
+</html>
