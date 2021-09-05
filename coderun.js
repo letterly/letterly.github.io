@@ -5,36 +5,37 @@ programmingData = {
         print: function(str){ return `console.log(${str})`},
         length: function(str){return `${str}.length`}, 
         variable: function(str){return `${str}`}, 
+        newvariable: function(str, type){return `${str}`}, 
         func: function(str, vars){return `function ${str}(${vars}){`},
         if: function(str){return `if(${str}){`}, 
         elseif: function(str){return `else if(${str}){`}, 
         else: `else{`,
         while: function(str){return `while(${str}){`},
-        elseifword: "else if",
         true: "true",
         false: "false",
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
+        s: "",
     },
     Python: {
         blockEnd: "",
         ifBlockEnd: "",
         print: function(str){ return `print(${str})`},
         length: function(str){return `len(${str})`}, 
-        length: function(str){return `strlen(${str})`}, 
         variable: function(str){return `${str}`}, 
+        newvariable: function(str, type){return `${str}`}, 
         if: function(str){return `if ${str}:`}, 
         elseif: function(str){return `elif ${str}:`}, 
         else: `else:`,
         while: function(str){return `while ${str}:`},
-        elseifword: "elif",
         func: function(str, vars){return `def ${str}(${vars}):`},
         true: "True",
         false: "False",
         andOperator: "and",
         orOperator: "or",
         notOperator: "not ",
+        s: "",
     },
     Ruby: {
         blockEnd: "",
@@ -42,10 +43,10 @@ programmingData = {
         print: function(str){ return `puts ${str}`},
         length: function(str){return `${str}.length`}, 
         variable: function(str){return `${str}`}, 
+        newvariable: function(str, type){return `${str}`}, 
         if: function(str){return `if ${str}`}, 
         elseif: function(str){return `elsif ${str}`}, 
         else: `else`,
-        elseifword: "elsif",
         func: function(str, vars){return `def ${str}(${vars})`},
         while: function(str){return `while ${str}`},
         true: "true",
@@ -53,17 +54,18 @@ programmingData = {
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
+        s: "",
     },
     PHP: {
         blockEnd: "}",//
         ifBlockEnd: "}",//
         print: function(str){ return `echo ${str}`},//
         length: function(str){return `strlen(${str})`},
-        variable: function(str){return `$${str}`}, 
+        variable: function(str){return `$${str}`},
+        newvariable: function(str, type){return `$${str}`}, 
         if: function(str){return `if (${str}) {`},
         elseif: function(str){return `elseif (${str}) {`},
         else: `else {`,
-        elseifword: "elseif",
         func: function(str, vars){return `function ${str}(${vars}) {`},
         while: function(str){return `while (${str}) {`},
         true: "true",
@@ -71,6 +73,7 @@ programmingData = {
         andOperator: "&&",
         orOperator: "||",
         notOperator: "!",
+        s: "",
     },
     Lua: {
         blockEnd: "end",//
@@ -78,9 +81,9 @@ programmingData = {
         print: function(str){ return `print(${str})`},//
         length: function(str){return `#${str}`},
         variable: function(str){return `${str}`}, 
+        newvariable: function(str, type){return `${str}`}, 
         if: function(str){return `if ${str} then`},
         elseif: function(str){return `elseif ${str} then`}, 
-        elseifword: "elseif",
         else: `else then`, 
         func: function(str, vars){return `function ${str} (${vars})`},
         while: function(str){return `while ${str} do`},
@@ -89,11 +92,31 @@ programmingData = {
         andOperator: "and",
         orOperator: "or",
         notOperator: "not ",
+        s: "",
+    },
+    Java: {
+        blockEnd: "}",//
+        ifBlockEnd: "}",//
+        print: function(str){ return `System.out.print(${str});`},//
+        length: function(str){return `${str}.length()`},
+        variable: function(str){return `${str}`}, 
+        newvariable: function(str, type){return `${type} ${str}`}, 
+        if: function(str){return `if (${str}) {`},
+        elseif: function(str){return `else if (${str}) {`}, 
+        else: `else {`, 
+        func: function(str, vars){return `static void ${str}(${vars}) {`},
+        while: function(str){return `while (${str}) {`},
+        true: "true",
+        false: "false",
+        andOperator: "&&",
+        orOperator: "||",
+        notOperator: "!",
+        s: ";",
     },
 }
 list = []
 languageData = {}
-bruh = (num) => Math.floor(Math.random() * num)
+bruh = (num) => Math.floor(Math.random() * num + 1)
 type = "" //global
 codelang = "JavaScript"
 lesson = 0
@@ -117,9 +140,9 @@ function listInitialize(lang){
         [   
             `i@EXPvariables`,
             `i@EXPprint`,
-            `c@${p.variable("x")} = 5,${p.variable("x")} = ${p.variable("x")} + 1,${p.print(p.variable("x"))}~6`,
-            `c@${p.variable("y")} = 2,${p.variable("z")} = 2 * ${p.variable("y")},${p.print(`${p.variable("z")} / 4`)}~1`,
-            `c@${p.variable("n")} = 4 * 4,${p.variable("l")} = (${p.variable("n")} - 1) % 3,${p.print(p.variable("l"))}~0`,
+            `c@${p.newvariable("x", "int")} = 5${p.s},${p.variable("x")} = ${p.variable("x")} + 1${p.s},${p.print(p.variable("x"))}${p.s}~6`,
+            `c@${p.newvariable("y", "int")} = 2${p.s},${p.newvariable("z", "int")} = 2 * ${p.variable("y")}${p.s},${p.print(`${p.variable("z")} / 4`)}~1`,
+            `c@${p.newvariable("n", "int")} = 4 * 4${p.s},${p.newvariable("l", "int")} = (${p.variable("n")} - 1) % 3${p.s},${p.print(p.variable("l"))}~0`,
         ],
         [
             "i@EXPcomparison-operators",
@@ -127,13 +150,13 @@ function listInitialize(lang){
             `m@3 == ${bruh(10)}`,
             "m@4 != 8 % 2",
             `m@5 >= 16 - ${bruh(20)}`,
-            `c@${p.variable("x")} = 9, ${p.variable("y")} = 1 + ${p.variable("x")} * 2, ${p.print(`${p.variable("x")} > 18`)}~false`,
+            `c@${p.newvariable("x", "int")} = 9${p.s},${p.newvariable("y", "int")} = 1 + ${p.variable("x")} * 2${p.s},${p.print(`${p.variable("x")} > 18`)}${p.s}~false`,
         ],
         [
             "i@EXPif-statement",
-            `c@${p.variable("x")} = 5,${p.if(`${p.variable("x")} <= 5`)},÷${p.print(`${p.variable("x")}+1`)}, ${p.ifBlockEnd}~6`,
-            `c@${p.variable("age")} = 21,${p.if(`${p.variable("age")} >= 21`)},÷${p.print("'You can buy beer'")},${p.ifBlockEnd},${p.if(`${p.variable("age")} < 21`)},÷${p.print("'You can't buy beer'")}, ${p.ifBlockEnd}~You can buy beer`,
-            `c@${p.variable("c")} = 5, ${p.variable("t")} = 3,${p.if(`${p.variable("t")} > 0`)},÷${p.if(`${p.variable("c")} <= 8 - 4`)},÷÷${p.print('c')},÷${p.ifBlockEnd},${p.if(`${p.variable("c")} > 4.5`)},÷÷${p.print(p.variable("t"))},÷${p.ifBlockEnd},${p.ifBlockEnd}~3`,
+            `c@${p.newvariable("x", "int")} = 5${p.s},${p.if(`${p.variable("x")} <= 5`)},÷${p.print(`${p.variable("x")}+1`)}${p.s},${p.ifBlockEnd}~6`,
+            `c@${p.newvariable("age", "int")} = 21${p.s},${p.if(`${p.variable("age")} >= 21`)},÷${p.print("'You can buy beer'")}${p.s},${p.ifBlockEnd},${p.if(`${p.variable("age")} < 21`)},÷${p.print("'You can't buy beer'")}${p.s}, ${p.ifBlockEnd}~'You can buy beer'`,
+            `c@${p.newvariable("c", "int")} = 5${p.s},${p.newvariable("t", "int")} = 3${p.s},${p.if(`${p.variable("t")} > 0`)},÷${p.if(`${p.variable("c")} <= 8 - 4`)},÷÷${p.print('c')},÷${p.ifBlockEnd},${p.if(`${p.variable("c")} > 4.5`)},÷÷${p.print(p.variable("t"))},÷${p.ifBlockEnd},${p.ifBlockEnd}~3`,
         ],
         [
             "i@EXPstrings",
@@ -141,40 +164,39 @@ function listInitialize(lang){
             `m@${p.length("'harris'")}`,
             `m@${p.length("''")}`,
             `m@${p.length("'string'")} % ${bruh(5)}`,
-            `c@${p.variable("str")} = 'pyt' + 'hon',${p.variable("f")} = ${p.length(p.variable("str"))} + 1,${p.print(p.variable("f"))}~7`,
-            `m@'${bruh(30)}' + '42'`,
+            `c@${p.variable("str")} = 'pyt' + 'hon'${p.s},${p.variable("f")} = ${p.length(p.variable("str"))} + 1${p.s},${p.print(p.variable("f"))}~7`,
+            `m@'${bruh(30)}' + '${bruh(30)}'`,
         ],
         [
             "i@EXPboolean",
             `o@${p.notOperator},${p.orOperator},${p.andOperator}`,
             `m@${p.true} ${p.andOperator} ${p.false}`,
             `m@${p.notOperator}${p.true}`,
-            `c@${p.variable("a")} = 19 % 2 == 1, ${p.variable("b")} =  ${p.notOperator}(${p.false} ${p.orOperator} ${p.variable("a")}),${p.print(p.variable("b"))}~${p.false}`,
+            `c@${p.newvariable("a", "boolean")} = 19 % 2 == 1${p.s}, ${p.newvariable("b", "boolean")} =  ${p.notOperator}(${p.false} ${p.orOperator} ${p.variable("a")})${p.s},${p.print(p.variable("b"))}~${p.false}`,
             `m@(${p.false} ${p.andOperator} ${p.true}) ${p.orOperator} (${p.true} ${p.andOperator} ${p.false})`
         ],
         [
             "i@EXPifelse",
-            `c@${p.variable("x")} = 10,${p.if(`${p.variable("x")} < 10`)},÷${p.print(`x+1`)},${p.blockEnd},${p.elseif(p.variable("x") + ` % 4 == 2`)},÷${p.print(p.variable("x") + `-1`)},${p.ifBlockEnd}~9`,
-            `c@${p.variable("str")} = 'card',${p.if(`${p.length(p.variable("str"))} == 3`)},÷${p.print("'hi'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} == 14 % 5`)},÷${p.print("'bye'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} > 0`)},÷${p.print("'sigh'")},${p.ifBlockEnd}~'bye'`,
+            `c@${p.newvariable("x", "int")} = 10${p.s},${p.if(`${p.variable("x")} < 10`)},÷${p.print(`x+1`)},${p.blockEnd},${p.elseif(p.variable("x") + ` % 4 == 2`)},÷${p.print(p.variable("x") + `-1`)},${p.ifBlockEnd}~9`,
+            `c@${p.newvariable("str", "String")} = 'card'${p.s},${p.if(`${p.length(p.variable("str"))} == 3`)},÷${p.print("'hi'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} == 14 % 5`)},÷${p.print("'bye'")},${p.blockEnd},${p.elseif(`${p.length(p.variable("str"))} > 0`)},÷${p.print("'sigh'")},${p.ifBlockEnd}~'bye'`,
             `c@${p.if("19 > 32")},÷${p.print("4")},${p.blockEnd},${p.else},÷${p.print("18")},${p.ifBlockEnd}~18`,
             `c@${p.if(`${p.length("''")} % ${bruh(10)} == 0`)},÷${p.print("'32'")},${p.blockEnd},${p.elseif(`42 >= 6 * 6 + 6`)},÷${p.print('32')},${p.blockEnd},${p.else},÷${p.print("'3 2'")},${p.ifBlockEnd}~'32'`,
         ],
         [
             "i@EXPwhile",
-            `c@${p.variable("x")} = 8,${p.while("x < 20")},÷${p.variable("x")} = x * 2,${p.blockEnd}~32`,
-            `c@${p.variable("fruit")} = 'ba',${p.while(`${p.length(p.variable("fruit"))} <= 7`)},÷${p.variable("fruit")} = ${p.variable("fruit")} + 'na',${p.blockEnd},${p.print(p.variable("fruit"))}~'bananana'`,
-            `c@${p.variable("number")} = 12,${p.while(`${p.variable("number")} % 7 != 0`)},÷${p.variable("number")} = ${p.variable("number")} + 3,${p.blockEnd},${p.print(`${p.variable("number")} + 2`)}~23`,
-            `c@${p.variable("c")} = 5,${p.while(`${p.variable("c")} < 30`)},÷${p.if(`${p.variable("c")} % 2 == 1`)},÷÷${p.variable("c")} = ${p.variable("c")} * 5,÷${p.blockEnd},÷${p.else},÷÷${p.variable("c")} = ${p.variable("c")} + 4,÷${p.ifBlockEnd},${p.ifBlockEnd},${p.print(p.variable("c"))}~33`,
+            `c@${p.newvariable("x", "int")} = 8${p.s},${p.while(`${p.variable("x")} < 20`)},÷${p.variable("x")} = ${p.variable("x")} * 2${p.s},${p.blockEnd}~32`,
+            `c@${p.newvariable("fruit", "String")} = 'ba'${p.s},${p.while(`${p.length(p.variable("fruit"))} <= 7`)},÷${p.variable("fruit")} = ${p.variable("fruit")} + 'na',${p.blockEnd},${p.print(p.variable("fruit"))}~'bananana'`,
+            `c@${p.newvariable("number", "int")} = 12${p.s},${p.while(`${p.variable("number")} % 7 != 0`)},÷${p.variable("number")} = ${p.variable("number")} + 3${p.s},${p.blockEnd},${p.print(`${p.variable("number")} + 2`)}~23`,
+            `c@${p.newvariable("c", "int")} = 5${p.s},${p.while(`${p.variable("c")} < 30`)},÷${p.if(`${p.variable("c")} % 2 == 1`)},÷÷${p.variable("c")} = ${p.variable("c")} * 5${p.s},÷${p.blockEnd},÷${p.else},÷÷${p.variable("c")} = ${p.variable("c")} + 4${p.s},÷${p.ifBlockEnd},${p.ifBlockEnd},${p.print(p.variable("c"))}~33`,
         ],
         [
             "i@EXPfunction",
             `c@${p.func("square", p.variable("num"))},÷return ${p.variable("num")} * ${p.variable("num")},${p.blockEnd},${p.print(`square(5)`)}~25`,
-            `c@${p.variable("h")} = 0,${p.func("add","")},÷${p.variable("h")} = ${p.variable("h")} + 3,${p.blockEnd},add(),add(),${p.print(p.variable("h"))}~6`,
-            `c@${p.func("stringadd", "str")},÷${p.if(`${p.length(p.variable("str"))} >= 3`)},÷÷return 'this',÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i",÷${p.ifBlockEnd},${p.blockEnd},${p.print(`stringadd("hi")`)}~'hii'`,
-            `c@${p.func("stringadd", "str")},÷${p.if(`${p.length(p.variable("str"))} > 3`)},÷÷return 'this',÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i",÷${p.ifBlockEnd},${p.blockEnd},${p.variable('n')} = stringadd("hey"),${p.print(`stringadd(${p.variable('n')})`)}~'this'`,
+            `c@${p.variable("h")} = 0,${p.func("add","")}${p.s},÷${p.variable("h")} = ${p.variable("h")} + 3${p.s},${p.blockEnd},add()${p.s},add()${p.s},${p.print(p.variable("h"))}~6`,
+            `c@${p.func("stringadd", p.newvariable("str","String"))},÷${p.if(`${p.length(p.variable("str"))} >= 3`)},÷÷return 'this'${p.s},÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i"${p.s},÷${p.ifBlockEnd},${p.blockEnd},${p.print(`stringadd("hi")`)}~'hii'`,
+            `c@${p.func("stringadd", p.newvariable("str","String"))},÷${p.if(`${p.length(p.variable("str"))} > 3`)},÷÷return 'this'${p.s},÷${p.blockEnd},÷${p.else},÷÷return ${p.variable("str")} + "i"${p.s},÷${p.ifBlockEnd},${p.blockEnd},${p.variable('n')} = stringadd("hey"),${p.print(`stringadd(${p.variable('n')})`)}~'this'`,
         ],
     ]
-    console.log(`${p.notOperator},${p.orOperator},${p.andOperator}`)
     languageData = {
         en: {
             "languageTEXT": "Languages:",
@@ -206,7 +228,7 @@ function listInitialize(lang){
             "EXPboolean": `Certain operators, called boolean operators, are combined with boolean values (${p.true} and ${p.false}) to return a new value. This can help you write statements with complex logic in programming.`,
             "EXPifelse": `If an [if statement] doesn't evaluate to be ${color(p.true)}, then the program will move to the next [${color(p.elseif("").startsWith("else ") ? "else if" : p.elseif("").split(" ")[0])}] statement to run if it's ${color(p.true)}. Finally, if neither the if statement nor ${color(p.true)} statement, then an 'else statement' can run by default. Confusing? Let's see an example.`,
             "EXPwhile": `A ${color("while")} loop is a block of code that keeps going until the statement within the ${color("while")} loop becomes ${color("false")}.`,
-            "EXPfunction": `A function in programming is a certain set of instructions in a block that can be activated multiple times. This makes code writing a lot faster. Most functions take one variable (or more) as an input return one output (with the 'return' keyword). It's not that complicated so just figure it out from the following exercises.`,
+            "EXPfunction": `A function in programming is a certain set of instructions in a block that can be activated multiple times. This makes code writing a lot faster. Most functions take one variable (or more) as an input return one output (with the ${color('return')} keyword). It's not that complicated so just figure it out from the following exercises.`,
             "operator": "Operator",
             "+": "Adds numbers together",
             "-": "Subtracts numbers",
@@ -323,11 +345,11 @@ function listInitialize(lang){
 
 function parsejs(h){
     h = h.match(/(?:[^\s"]+|"[^"]*")+/g).join(" ")
-    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#÷]/g, "~$&~")
+    h = h.replace(/[\+\-\*\/\%\(\)\=\!\<\>\^\&\|\.\{\}\$\:\#\;÷]/g, "~$&~")
     h = h.replace(/=~~=/g, "==").replace(/!~~=/g, "!=").replace(/<~~=/g, "<=").replace(/>~~=/g, ">=").replace(/&~~&/g, "&&").replace(/\|~~\|/g, "||")
     replaceArray = ["puts", "len", "true", "false", "True", "False", "and", "not", "or", "echo", "then", "while", "function", "def", "do", "if", "else"]
-    h = h.replace("puts", "puts~").replace("len", "len~").replace("true", "~true~").replace("false", "~false~").replace("True", "~True~").replace("False", "~False~").replace("and", "~and~").replace("not", "~not~").replace("or", "~or~").replace("echo", "echo~").replace("then", "~then").replace("while", "while~").replace("function", "function~").replace("def", "def~").replace("do", "~do").replace("if", "if~").replace("else", "else~").replace("return", "return~")
-    h = h.replace("len~gth", "length~").replace("else~if", "elseif").replace("el~if", "elif").replace("els~if", "elsif")
+    h = h.replace("puts", "puts~").replace("len", "len~").replace("true", "~true~").replace("false", "~false~").replace(/True/g, "~True~").replace(/False/g, "~False~").replace(/and/g, "~and~").replace(/not/g, "~not~").replace(/or/g, "~or~").replace("echo", "echo~").replace("then", "~then").replace("while", "while~").replace("function", "function~").replace("def", "def~").replace("do", "~do").replace("if", "if~").replace("else", "else~").replace("return", "return~").replace("System", "System~").replace("out", "out~").replace(/void/g, "~void~").replace(/static/g, "~static~").replace(/int/g, "~int~").replace(/boolean/g, "~boolean~").replace(/String/g, "~String~")
+    h = h.replace("len~gth", "length~").replace("else~if", "elseif").replace("el~if", "elif").replace("els~if", "elsif").replace("pr~int", "print")
     h = h.split("~")
     return h
 }
@@ -338,10 +360,10 @@ function color(arr){
     str = ""
     for(x of arr){
         cl = ""
-        if("+-*/%><!=^&|.(){}:#".includes(x.trim().charAt(0))) cl = "operator"
+        if("+-*/%><!=^&|.(){}:#;".includes(x.trim().charAt(0))) cl = "operator"
         else if(["and", "or", "not", "then"].includes(x.trim())) cl = "operator"
         else if(!isNaN(x.trim())) cl = "number"
-        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo", "then", "end", "while", "function", "def", "do", "return"].includes(x.trim())) cl = "keyword"
+        else if(["if", "console", "log", "length", "print", "puts", "var", "len", "else", "elsif", "elif", "elseif", "strlen", "echo", "then", "end", "while", "function", "def", "do", "return", "System", "out", "static", "void", "int", "boolean", "String"].includes(x.trim())) cl = "keyword"
         else if(x.trim() == "÷") cl = "space"
         else if(x.trim().startsWith("'") || x.trim().startsWith(`"`)) cl = "quote"
         else if(["true", "false"].includes(x.trim().toLowerCase())) cl = "boolean"
@@ -408,6 +430,7 @@ function operation(symbol, first, second){
 function solve(h){
     h = parsejs(h)
     h = h.filter(word => word.trim() !== "")
+    h = h.join("€").replace(/\(€\)/, "").split("€")
     while(h.includes("(")) for(i in h) if(h[i] == "(" && (h.indexOf("(", +i+1) > h.indexOf(")", i) || h.indexOf("(", +i+1) == -1)) h = h.slice(0, i).concat([solve(h.slice(i, h.indexOf(")", i) + 1).slice(1, -1).join(""))],h.slice(h.indexOf(")", +i+1)+1))
     for(o of OperatorPrecedence){
         for(x in h) if(o.includes(h[x])) ["!", "not", "len", "strlen", "#"].includes(h[x]) ? h.splice(+x, 2, "", String(operation(h[x], h[+x+1]))) : h.splice(+x-1, 3, "", "", String(operation(h[x], h[+x-1], h[+x+1])))
