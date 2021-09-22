@@ -1,0 +1,106 @@
+body{
+    background-color: #002b36;
+}
+h1, h2, h3, p{
+    color: #eee8d5;
+    /*font-family: 'Courier New';*/
+    font-family: 'IBM Plex Mono';
+    font-weight: 100;
+    text-align: center;
+}
+p{
+    font-size: 24px;
+}
+#lesson{
+    display: none;
+}
+#word{
+    font-size: 98px;
+    font-weight: 700;
+    color: #859900;
+}
+#definition{
+    font-size: 64px;
+}
+#info{
+    color: #93a1a1;
+    font-size: 48px;
+}
+#answer{
+    color: #586e75;
+    font-size: 36px;
+}
+::selection{
+    background-color: #2aa198;
+    color: #002b36;
+}
+input{
+    width: 90%;
+    margin-left: 5%;
+    height: 50px;
+    font-size: 42px;
+    font-family: 'IBM Plex Mono';
+    outline: 0;
+    background-color: #eee8d5;
+    border: 0;
+    border-radius: 10px;
+}
+input::placeholder{
+    color: #839496;
+}
+.angryinput::placeholder{
+    color: #b58900;
+}
+#enter{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+    height: 50px;
+    font-size: 42px;
+    font-family: 'IBM Plex Mono';
+    outline: 0;
+    background-color: #cb4b16;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+    color: #eee8d5;
+}
+#verb{
+    border: 1px solid white;
+    width: 90%;
+    margin: 5%;
+    text-align: center;
+    color: white;
+    font-family: 'IBM Plex Mono';
+    font-size: 28px;
+    display: none;
+}
+th{
+    border-bottom: white solid 2px;
+}
+td{
+    width: 1000px; /*spaghetti code lol*/
+}
+tbody{
+    width: 100%;
+}
+.selector button{
+    font-family: "IBM Plex Mono";
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 30px;
+    margin: 2px;
+    background-color: #fdf6e3;
+    color: #002b36;
+}
+.selector{
+    margin-bottom: 20px;
+}
+#es{
+    background-color: #d33682;
+}
+#levelselector button:hover{
+    background-color: #d33682;
+}

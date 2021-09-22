@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="language.css">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>Romance Languages</title>
+    </head>
+    <body>
+        <div id="home">
+            <h1>romance language site {under construction}</h1>
+            <br>
+            <h1>What language will you learn?</h1>
+            <div class="selector">
+                <button id="ct" onclick="langSelect(this.id)">catalan</button>
+                <button id="fr" onclick="langSelect(this.id)">french</button>
+                <button id="gl" onclick="langSelect(this.id)">galician</button>
+                <button id="it" onclick="langSelect(this.id)">italian</button>
+                <button id="pt" onclick="langSelect(this.id)">portuguese</button>
+                <button id="es" onclick="langSelect(this.id)">spanish</button>
+            </div>
+            <h1>select a level</h1>
+            <div class="selector" id="levelselector">
+                <button onclick="levelSelect(0)">lvl 1: introduction</button>
+                <button onclick="levelSelect(1)">lvl 2: plurals</button>
+                <button onclick="levelSelect(2)">lvl 3: to have</button>
+                <button onclick="levelSelect(3)">lvl 4: food/colors 1</button>
+                <!-- <button onclick="levelSelect(4)">lvl 5: numbers</button> -->
+            </div>
+        </div>
+        <div id="lesson">
+            <h1 id="word"></h1>
+            <h2 id="definition"></h2>
+            <h3 id="info"></h3>
+            <table id="verb">
+                <thead>
+                    <tr>
+                        <th id="infinitivenative">ser [present]</th>
+                        <th id="infinitiveenglish">(to be)</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="verb1s">yo soy</td>
+                        <td id="verb1p">nosotros somos</td>
+                    </tr>
+                    <tr>
+                        <td id="verb2s">tú eres</td>
+                        <td id="verb2p">vosotros sois</td>
+                    </tr>
+                    <tr>
+                        <td id="verb3s">él/ella es</td>
+                        <td id="verb3p">ellos/ellas son</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- BREAK -->
+            <input id="input" placeholder="write here"/>
+            <button id="enter" onclick="enterFunction()">submit</button>
+        </div>
+    </body>
+    <script src="language.js"></script>
+</html>
