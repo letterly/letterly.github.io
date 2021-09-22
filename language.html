@@ -4,27 +4,38 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="language.css">
         <link rel="shortcut icon" href="favicon.ico?">
-        <title>Romance Languages</title>
+        <title>Languages</title>
     </head>
     <body>
         <div id="home">
-            <h1>romance language site {under construction}</h1>
+            <h1 style="font-size: 48px">triolango</h1>
             <br>
-            <h1>What language will you learn?</h1>
-            <div class="selector">
-                <button id="ct" onclick="langSelect(this.id)">catalan</button>
-                <button id="fr" onclick="langSelect(this.id)">french</button>
-                <button id="gl" onclick="langSelect(this.id)">galician</button>
-                <button id="it" onclick="langSelect(this.id)">italian</button>
-                <button id="pt" onclick="langSelect(this.id)">portuguese</button>
-                <button id="es" onclick="langSelect(this.id)">spanish</button>
+            <h1 id="lang1">you speak:</h1>
+            <div id="selector1" class="selector">
+                <button id="ct1" onclick="firstLangSelect('ct')">catalan</button>
+                <button id="en1" onclick="firstLangSelect('en')">english</button>
+                <button id="fr1" onclick="firstLangSelect('fr')">french</button>
+                <button id="gl1" onclick="firstLangSelect('gl')">galician</button>
+                <button id="it1" onclick="firstLangSelect('it')">italian</button>
+                <button id="pt1" onclick="firstLangSelect('pt')">portuguese</button>
+                <button id="es1" onclick="firstLangSelect('es')">spanish</button>
             </div>
-            <h1>select a level</h1>
+            <h1 id="lang2">you want to learn:</h1>
+            <div id="selector2" class="selector">
+                <button id="ct2" onclick="secondLangSelect('ct')">catalan</button>
+                <button id="en2" onclick="secondLangSelect('en')">english</button>
+                <button id="fr2" onclick="secondLangSelect('fr')">french</button>
+                <button id="gl2" onclick="secondLangSelect('gl')">galician</button>
+                <button id="it2" onclick="secondLangSelect('it')">italian</button>
+                <button id="pt2" onclick="secondLangSelect('pt')">portuguese</button>
+                <button id="es2" onclick="secondLangSelect('es')">spanish</button>
+            </div>
+            <h1 id="lev">select a level</h1>
             <div class="selector" id="levelselector">
-                <button onclick="levelSelect(0)">lvl 1: introduction</button>
-                <button onclick="levelSelect(1)">lvl 2: plurals</button>
-                <button onclick="levelSelect(2)">lvl 3: to have</button>
-                <button onclick="levelSelect(3)">lvl 4: food/colors 1</button>
+                <button id="b0" onclick="levelSelect(0)">lvl 1: introduction</button>
+                <button id="b1" onclick="levelSelect(1)">lvl 2: plurals</button>
+                <button id="b2" onclick="levelSelect(2)">lvl 3: to have</button>
+                <button id="b3" onclick="levelSelect(3)">lvl 4: food/colors 1</button>
                 <!-- <button onclick="levelSelect(4)">lvl 5: numbers</button> -->
             </div>
         </div>

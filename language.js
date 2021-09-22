@@ -1,15 +1,6 @@
-specialDefinition = {
-    asgm: "(singular and masculine)",
-    asgf: "(singular and feminine)",
-    aplm: "(plural and masculine)",
-    aplf: "(plural and feminine)",
-    thesgm: "(singular and masculine)",
-    thesgf: "(singular and feminine)",
-    theplm: "(plural and masculine)",
-    theplf: "(plural and feminine)",
-}
 languages = {
     en: {
+        name: "english",
         i: "i",
         yousg: "you",
         yousgfm: "you",
@@ -21,6 +12,7 @@ languages = {
         youpl: "you",
         theym: "they",
         theyf: "they",
+        in: "in",
         thesgm: "the",
         thesgf: "the",
         theplm: "the",
@@ -64,13 +56,54 @@ languages = {
         whatq: "what",
         favorite: "favorite",
         //languages
-        english: "english",
-        spanish: "spanish",
-        portuguese: "portuguese",
-        italian: "italian",
-        french: "french",
-        galician: "galician",
-        catalan: "catalan",
+        en: "english",
+        es: "spanish",
+        pt: "portuguese",
+        it: "italian",
+        fr: "french",
+        gl: "galician",
+        ct: "catalan",
+        //text
+        form: "form",
+        verb: "verb",
+        of: "of",
+        determined: "determined",
+        by: "by",
+        its: "its",
+        subject: "subject",
+        number: "number",
+        gen: "gender",
+        adj: "adjective",
+        sustantive: "noun",
+        usually: "usually",
+        add: "add",
+        feminine: "feminine",
+        masculine: "masculine",
+        plu: "plural",
+        that: "that",
+        signifies: "signifies",
+        but: "but",
+        only: "only",
+        used: "used",
+        location: "location",
+        emotion: "emotion",
+        para: "for",
+        parato: "to",
+        select: "select",
+        level: "level",
+        introduction: "introduction",
+        food: "food",
+        to: "to",
+        translate: "translate",
+        correct: "correct",
+        incorrect: "incorrect",
+        please: "please",
+        write: "write",
+        here: "here",
+        submit: "submit",
+        singular: "singular",
+        enter: "enter",
+        continue: "continue",
         //
         beest: {
             infinitive: "to be",
@@ -84,6 +117,17 @@ languages = {
             infinitive: "to have",
             present: ["have", "have", "has", "have", "have", "have"],
         },
+        speak: {
+            infinitive: "to speak",
+            present: ["speak", "speak", "speaks", "speak", "speak", "speak"],
+        },
+        want: {
+            infinitive: "to want",
+            present: ["want", "want", "wants", "want", "want", "want"],
+        },
+        learn: {
+            infinitive: "to learn",
+        },
         contractions: {"do not": "don't", "i am": "i'm", "you are": "you're", "we are": "we're", "he is": "he's", "she is": "she's", "it is": "it's", "they are": "they're", "i will": "i'll", "you will": "you'll", "he will": "he'll", "she will": "she'll", "it will": "it'll", "we will": "we'll", "they will": "they'll"}, //incomplete
         plural: function(word){ 
             if(word == "man") return "men"
@@ -96,10 +140,12 @@ languages = {
         noun: function(article, noun, adjective){
             d = (adjective ?? "") + " "
             if(article == "asg") return ("aeiou".includes(noun.charAt(0)) ? "an" : "a") + d + noun
-            else if(article == "apl") return d + l.plural(noun)
+            else if(article == "apl") return d + languages["en"].plural(noun)
             else if(article == "thesg") return "the" + d + noun
-            else return "the" + d + l.plural(noun)
+            else return "the" + d + languages["en"].plural(noun)
         },
+        //settings
+        grammaticalGender: false,
     },
     es: {
         name: "spanish",
@@ -157,13 +203,54 @@ languages = {
         whatq: "qué",
         favorite: "favorito",
         //languages
-        english: "inglés",
-        spanish: "español",
-        portuguese: "portugués",
-        italian: "italiano",
-        french: "francés",
-        galician: "galego",
-        catalan: "catalán",
+        en: "inglés",
+        es: "español",
+        pt: "portugués",
+        it: "italiano",
+        fr: "francés",
+        gl: "galego",
+        ct: "catalán",
+        //text
+        form: "forma",
+        verb: "verbo",
+        of: "de",
+        determined: "determinado",
+        by: "por",
+        its: "su",
+        subject: "subjecto",
+        number: "número",
+        gen: "género",
+        adj: "adjetivo",
+        sustantive: "sustantivo",
+        usually: "generalmente",
+        add: "agregue",
+        feminine: "feminino",
+        masculine: "masculino",
+        plu: "plural",
+        that: "que",
+        signifies: "significa",
+        but: "pero",
+        only: "solamente",
+        used: "utilizado",
+        location: "ubicación",
+        emotion: "emoción",
+        para: "para",
+        parato: "para",
+        select: "seleccione",
+        level: "nivel",
+        introduction: "introducción",
+        food: "comida",
+        to: "a",
+        translate: "traduce",
+        correct: "correcto",
+        incorrect: "incorrecto",
+        please: "por favor",
+        write: "escriba",
+        here: "aquí",
+        submit: "entregar",
+        singular: "singular",
+        enter: "entrar",
+        continue: "continuar",
         //
         beser: {
             infinitive: "ser",
@@ -177,16 +264,29 @@ languages = {
             infinitive: "tener",
             present: ["tengo", "tienes", "tiene", "tenemos", "tenéis", "tienen"],
         },
+        speak: {
+            infinitive: "hablar",
+            present: ["hablo", "hablas", "habla", "hablamos", "habláis", "hablan"],
+        },
+        want: {
+            infinitive: "querer",
+            present: ["quiero", "quieres", "quiere", "queremos", "queréis", "quieren"],
+        },
+        learn: {
+            infinitive: "aprender",
+        },
         contractions: {"de el": "del", "a el": "al"}, //complete
         plural: function(word){  //complete
-            if(word.endsWith("s")) return word
+            if(word.endsWith("s") || word.endsWith("x")) return word
             else if("aeiou".includes(word.slice(-1))) return word + "s"
+            else if("ón".includes(word.slice(-1))) return word.replace("ó", "o") + "es"
+            else if(word.endsWith("z")) return word.slice(0, -1) + "ces"
             else return word + "es"
         },
         adjective: function(word, type){ //[basically] complete
-            if(type.endsWith("plf")) return (word.endsWith("o") ? word.slice(0, -1) + "as" : word + "es")
-            else if(type.endsWith("sgf")) return word.endsWith("o") ? word.slice(0, -1) + "a" : word
-            else if(type.endsWith("plm")) return (word.endsWith("o") ? word + "s" : word + "es")
+            if(type.endsWith("fp")) return (word.endsWith("o") ? word.slice(0, -1) + "as" : word + "es")
+            else if(type.endsWith("fs")) return word.endsWith("o") ? word.slice(0, -1) + "a" : word
+            else if(type.endsWith("mp")) return (word.endsWith("o") ? word + "s" : word + "es")
             else return word
         },
         negativeVerb: function(verb){return `no ${verb}`},
@@ -195,9 +295,11 @@ languages = {
             else return "f"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["es"][article + languages["es"].gender(noun)] + " " + (article.endsWith("pl") ? languages["es"].plural(noun) : noun) + " " + languages["es"].adjective(adjective, article)
+            else return languages["es"][article + languages["es"].gender(noun)] + " " + (article.endsWith("pl") ? languages["es"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
     pt: {
         name: "portuguese",
@@ -255,13 +357,55 @@ languages = {
         whatq: "que",
         favorite: "favorito",
         //languages
-        english: "inglês",
-        spanish: "espanhol",
-        portuguese: "português",
-        italian: "italiano",
-        french: "francês",
-        galician: "galego",
-        catalan: "catalão",
+        en: "inglês",
+        es: "espanhol",
+        pt: "português",
+        it: "italiano",
+        fr: "francês",
+        gl: "galego",
+        ct: "catalão",
+        //
+        //text
+        form: "forma",
+        verb: "verbo",
+        of: "de",
+        determined: "determinado",
+        by: "por",
+        its: "o seu",
+        subject: "assunto",
+        number: "número",
+        gen: "gênero",
+        adj: "adjetivo",
+        sustantive: "substantivo",
+        usually: "usualmente",
+        add: "adicione",
+        feminine: "feminino",
+        masculine: "masculino",
+        plu: "plural",
+        that: "que",
+        signifies: "significa",
+        but: "mas",
+        only: "só",
+        used: "usado",
+        location: "localização",
+        emotion: "emoção",
+        para: "para",
+        parato: "para",
+        select: "selecione",
+        level: "nível",
+        introduction: "introdução",
+        food: "comida",
+        to: "a",
+        translate: "traduza",
+        correct: "correcto",
+        incorrect: "incorreta",
+        please: "por favor",
+        write: "escreva",
+        here: "aqui",
+        submit: "submeter",
+        singular: "singular",
+        enter: "entrar",
+        continue: "continuar",
         //
         contractions: {"em o": "no","em a": "na","em os": "nos", "em as": "nas", "de o": "do", "de a": "da", "de os": "dos", "de as": "das"}, //incomplete
         beser: {
@@ -276,22 +420,35 @@ languages = {
             infinitive: "ter",
             present: ["tenho", "estás", "tem", "temos", "estais", "têm"],
         },
+        speak: {
+            infinitive: "falar",
+            present: ["falo", "falas", "fala", "falamos", "falais", "falam"],
+        },
+        want: {
+            infinitive: "querer",
+            present: ["quero", "queres", "quer", "queremos", "quereis", "querem"],
+        },
+        learn: {
+            infinitive: "aprender",
+        },
         plural: function(word){ 
             if(word.endsWith("s")) return word
             else if(word.endsWith("al")) return word.slice(0, -1) + "is"
-            else return word + "s"
+            else if(word.endsWith("ão")) return word.slice(0, -2) + "ões"
+            else if("aeiou".includes(word.slice(-1))) return word + "s"
+            else return word + "es"
         },
         adjective: function(word, type, noun){ 
-            if(noun != undefined) type += l.gender(noun)
-            if(type.endsWith("plf")){
+            if(noun != undefined) type += languages["pt"].gender(noun)
+            if(type.endsWith("fp")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "as"
                 else return word + "as"
             }
-            else if(type.endsWith("sgf")){
+            else if(type.endsWith("fs")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "a"
                 else return word + "a"
             }
-            else if(type.endsWith("plm")) return word + "s"
+            else if(type.endsWith("mp")) return word + "s"
             else return word
         },
         nA: function(noun, adj){
@@ -306,9 +463,11 @@ languages = {
             else return "f"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["pt"][article + languages["pt"].gender(noun)] + " " + (article.endsWith("pl") ? languages["pt"].plural(noun) : noun) + " " + languages["pt"].adjective(adjective, article)
+            else return languages["pt"][article + languages["pt"].gender(noun)] + " " + (article.endsWith("pl") ? languages["pt"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
     gl: {
         name: "galician",
@@ -366,15 +525,56 @@ languages = {
         whatq: "que",
         favorite: "favorito",
         //languages
-        english: "inglés",
-        spanish: "español",
-        portuguese: "portugués",
-        italian: "italiano",
-        french: "francés",
-        galician: "galego",
-        catalan: "catalán",
-        //
-        contractions: {"a o": "ao","a os": "aos","a a": "á", "a as": "ás", "de o": "do", "de a": "da", "de os": "dos", "de as": "das", "en o": "no", "en a": "na", "en os": "nos", "en as": "nas"}, //incomplete
+        en: "inglés",
+        es: "español",
+        pt: "portugués",
+        it: "italiano",
+        fr: "francés",
+        gl: "galego",
+        ct: "catalán",
+        //text
+        form: "forma",
+        verb: "verbo",
+        of: "de",
+        determined: "determinado",
+        by: "por",
+        its: "o seu",
+        subject: "suxeito",
+        number: "número",
+        gen: "xénero",
+        adj: "adxectivo",
+        sustantive: "substantivo",
+        usually: "normalmente",
+        add: "engade",
+        feminine: "feminino",
+        masculine: "masculino",
+        plu: "plural",
+        that: "que",
+        signifies: "significa",
+        but: "mas",
+        only: "só",
+        used: "usado",
+        location: "localización",
+        emotion: "emoción",
+        para: "para",
+        parato: "para",
+        select: "seleccione",
+        level: "nivel",
+        introduction: "introdución",
+        food: "comida",
+        to: "a",
+        translate: "traduce",
+        correct: "correcto",
+        incorrect: "incorrecto",
+        please: "por favor",
+        write: "escribe",
+        here: "aquí",
+        submit: "enviar",
+        singular: "singular",
+        enter: "entrar",
+        continue: "continuar",
+        //verbs/contractions
+        contractions: {"a o": "ao","a os": "aos","a a": "á", "a as": "ás", "de o": "do", "de a": "da", "de os": "dos", "de as": "das", "en o": "no", "en a": "na", "en os": "nos", "en as": "nas", "de un": "dun", "de unha": "dunha", "de unhas": "dunhas", "de uns": "duns", "por o": "polo", "por a": "pola", "por as": "polas", "por os": "polos"}, //incomplete
         beser: {
             infinitive: "ser",
             present: ["son", "es", "é", "somos", "sodes", "son"],
@@ -387,6 +587,17 @@ languages = {
             infinitive: "ter",
             present: ["tezo", "teces", "tece", "tecemos", "tecedes", "tecen"],
         },
+        speak: {
+            infinitive: "falar",
+            present: ["falo", "falas", "fala", "falamos", "falades", "falan"],
+        },
+        want: {
+            infinitive: "querer",
+            present: ["quero", "queres", "quere", "queremos", "queredes", "queren"],
+        },
+        learn: {
+            infinitive: "aprender",
+        },
         plural: function(word){ 
             if(word.endsWith("s")) return word
             else if("aeiou".includes(word.slice(-1))) return word + "s"
@@ -394,16 +605,16 @@ languages = {
             else return word + "es"
         },
         adjective: function(word, type, noun){
-            if(noun != undefined) type += l.gender(noun)
-            if(type.endsWith("plf")){
+            if(noun != undefined) type += languages["gl"].gender(noun)
+            if(type.endsWith("fp")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "as"
                 else return word + "as"
             }
-            else if(type.endsWith("sgf")){
+            else if(type.endsWith("fs")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "a"
                 else return word + "a"
             }
-            else if(type.endsWith("plm")) return word + "s"
+            else if(type.endsWith("mp")) return word + "s"
             else return word
         },
         nA: function(noun, adj){
@@ -418,9 +629,11 @@ languages = {
             else return "f"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["gl"][article + languages["gl"].gender(noun)] + " " + (article.endsWith("pl") ? languages["gl"].plural(noun) : noun) + " " + languages["gl"].adjective(adjective, article)
+            else return languages["gl"][article + languages["gl"].gender(noun)] + " " + (article.endsWith("pl") ? languages["gl"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
     it: {
         name: "italian",
@@ -478,13 +691,54 @@ languages = {
         whatq: "che",
         favorite: "preferito",
         //languages
-        english: "inglese",
-        spanish: "spagnolo",
-        portuguese: "portoghese",
-        italian: "italiano",
-        french: "francese",
-        galician: "galiziano",
-        catalan: "catalano",
+        en: "inglese",
+        es: "spagnolo",
+        pt: "portoghese",
+        it: "italiano",
+        fr: "francese",
+        gl: "galiziano",
+        ct: "catalano",
+        //text
+        form: "forma",
+        verb: "verbo",
+        of: "di",
+        determined: "determinato",
+        by: "per",
+        its: "il suo",
+        subject: "soggetto",
+        number: "numero",
+        gen: "genere",
+        adj: "aggettivo",
+        sustantive: "sostantivo",
+        usually: "generalmente",
+        add: "aggiungi",
+        feminine: "femminile",
+        masculine: "maschile",
+        plu: "plurale",
+        that: "che",
+        signifies: "significa",
+        but: "ma",
+        only: "soltanto",
+        used: "usato",
+        location: "posizione",
+        emotion: "emozione",
+        para: "per",
+        parato: "per",
+        select: "seleziona",
+        level: "livello",
+        introduction: "introduzione",
+        food: "cibo",
+        to: "a",
+        translate: "traduci",
+        correct: "correcto",
+        incorrect: "errato",
+        please: "per favore",
+        write: "scrivi",
+        here: "qui",
+        submit: "inviare",
+        singular: "singolare",
+        enter: "entrare",
+        continue: "continuare",
         //
         beser: {
             infinitive: "essere",
@@ -498,6 +752,17 @@ languages = {
             infinitive: "avere",
             present: ["ho", "hai", "ha", "abbiamo", "avete", "hanno"],
         },
+        speak: {
+            infinitive: "parlare",
+            present: ["parlo", "parli", "parla", "parliamo", "parlate", "parlano"],
+        },
+        want: {
+            infinitive: "volere",
+            present: ["voglio", "vuoi", "vuole", "vogliamo", "volete", "vogliono"],
+        },
+        learn: {
+            infinitive: "imparare",
+        },
         contractions: {"il u": "l'u"}, //incomplete
         plural: function(word){ 
             if(word.endsWith("o")) return word.slice(0, -1) + "i"
@@ -505,16 +770,16 @@ languages = {
             else return word.slice(0, -1) + "e"
         },
         adjective: function(word, type, noun){ 
-            if(noun != undefined) type += l.gender(noun)
-            if(type.endsWith("plf")){
+            if(noun != undefined) type += languages["it"].gender(noun)
+            if(type.endsWith("fp")){
                 if(word.endsWith("e")) return word.slice(0, -1) + "i"
                 else return word.slice(0, -1) + "e"
             }
-            else if(type.endsWith("sgf")){
+            else if(type.endsWith("fs")){
                 if(word.endsWith("e")) return word
                 else return word.slice(0, -1) + "a"
             }
-            else if(type.endsWith("plm")) return word.slice(0, -1) + "i"
+            else if(type.endsWith("mp")) return word.slice(0, -1) + "i"
             else return word
         },
         nA: function(noun, adj){
@@ -528,9 +793,11 @@ languages = {
             else return "f"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["it"][article + languages["it"].gender(noun)] + " " + (article.endsWith("pl") ? languages["it"].plural(noun) : noun) + " " + languages["it"].adjective(adjective, article)
+            else return languages["it"][article + languages["it"].gender(noun)] + " " + (article.endsWith("pl") ? languages["it"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
     fr: {
         name: "french",
@@ -588,13 +855,54 @@ languages = {
         whatq: "quoi",
         favorite: "favori",
         //languages
-        english: "anglais",
-        spanish: "espanol",
-        portuguese: "portugais",
-        italian: "italien",
-        french: "français",
-        galician: "galicien",
-        catalan: "catalan",
+        en: "anglais",
+        es: "espanol",
+        pt: "portugais",
+        it: "italien",
+        fr: "français",
+        gl: "galicien",
+        ct: "catalan",
+        //text
+        form: "forme",
+        verb: "verbe",
+        of: "de",
+        determined: "déterminé",
+        by: "par",
+        its: "son",
+        subject: "sujet",
+        number: "numéro",
+        gen: "genre",
+        adj: "adjectif",
+        sustantive: "nom",
+        usually: "d'habitude",
+        add: "ajoutez",
+        feminine: "féminin",
+        masculine: "masculin",
+        plu: "pluriel",
+        that: "que",
+        signifies: "signifie",
+        but: "mais",
+        only: "seul",
+        used: "utilisé",
+        location: "emplacement",
+        emotion: "émocion",
+        para: "pour",
+        parato: "pour",
+        select: "sélectionnez",
+        level: "niveau",
+        introduction: "introduction",
+        food: "nourriture",
+        to: "à",
+        translate: "traduis",
+        correct: "correct",
+        incorrect: "incorrect",
+        please: "s'il te plaît",
+        write: "ecrire",
+        here: "ici",
+        submit: "envoyer",
+        singular: "singulier",
+        enter: "entrer",
+        continue: "continuer",
         //
         beser: {
             infinitive: "être",
@@ -608,27 +916,40 @@ languages = {
             infinitive: "avoir",
             present: ["ai", "as", "a", "avons", "avez", "ont"],
         },
-        contractions: {"je a": "j'a", "le h": "l'h", "à le": "au"}, //incomplete
+        speak: {
+            infinitive: "parler",
+            present: ["parle", "parles", "parle", "parlons", "parlez", "parlent"],
+        },
+        want: {
+            infinitive: "vouloir",
+            present: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
+        },
+        learn: {
+            infinitive: "apprendre",
+        },
+        contractions: {"je a": "j'a", "le h": "l'h", "à le": "au", "de un": "d'un"}, //incomplete
         plural: function(word){ 
             if(word.endsWith("eu")) return word + "x"
             else if("sxz".includes(word.slice(-1))) return word
             else return word + "s"
         },
         adjective: function(word, type, noun){
-            if(noun != undefined) type += l.gender(noun)
+            if(noun != undefined) type += languages["fr"].gender(noun)
             return word + {"fp": "es", "fs": "e", "mp": "s", "ms": ""}[type]
         },
         nA: function(noun, adj){return `${noun} ${adj}`},
         negativeVerb: function(verb){return `ne ${verb} pas`},
         gender: function(noun){
-            if("homme" == noun) return "m"
+            if(["homme", "verbe"].includes(noun)) return "m"
             else if(noun.endsWith("e")) return "f"
             else return "m"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["fr"][article + languages["fr"].gender(noun)] + " " + (article.endsWith("pl") ? languages["fr"].plural(noun) : noun) + " " + languages["fr"].adjective(adjective, article)
+            else return languages["fr"][article + languages["fr"].gender(noun)] + " " + (article.endsWith("pl") ? languages["fr"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
     ct: {
         name: "catalan",
@@ -686,13 +1007,54 @@ languages = {
         whatq: "què",
         favorite: "favorit",
         //languages
-        english: "anglès",
-        spanish: "espanyol",
-        portuguese: "portuguès",
-        italian: "italià",
-        french: "francès",
-        galician: "gallec",
-        catalan: "català",
+        en: "anglès",
+        es: "espanyol",
+        pt: "portuguès",
+        it: "italià",
+        fr: "francès",
+        gl: "gallec",
+        ct: "català",
+        //text
+        form: "forma",
+        verb: "verb",
+        of: "de",
+        determined: "determinat",
+        by: "pel",
+        its: "seu",
+        subject: "subjecte",
+        number: "número",
+        gen: "gènere",
+        adj: "adjectiu",
+        sustantive: "substantiu",
+        usually: "generalment",
+        add: "afegiu",
+        feminine: "feminí",
+        masculine: "masculí",
+        plu: "plural",
+        that: "que",
+        signifies: "significa",
+        but: "però",
+        only: "només",
+        used: "utilitzat",
+        location: "ubicació",
+        emotion: "emoció",
+        para: "per",
+        parato: "per",
+        select: "seleccioneu",
+        level: "nivell",
+        introduction: "introducció",
+        food: "menjar",
+        to: "a",
+        translate: "tradueix",
+        correct: "correcte",
+        incorrect: "incorrecte",
+        please: "si us plau",
+        write: "escriu",
+        here: "aquí",
+        submit: "enviar",
+        singular: "singular",
+        enter: "entrar",
+        continue: "continuar",
         //
         beser: {
             infinitive: "ser",
@@ -706,15 +1068,29 @@ languages = {
             infinitive: "tiner",
             present: ["tinc", "tens", "té", "tenim", "teniu", "tenen"],
         },
+        speak: {
+            infinitive: "parlar",
+            present: ["parlo", "parles", "parla", "parlem", "parleu", "parlen"],
+        },
+        want: {
+            infinitive: "voler",
+            present: ["vull", "vols", "vol", "volem", "voleu", "volen"],
+        },
+        learn: {
+            infinitive: "aprendre",
+        },
         //
         contractions: {"a el": "al","de el": "del","per el": "pel"}, //incomplete
         //
-        plural: function(word){return `${word}s`},
+        plural: function(word){
+            if("ó" == word.slice(-1)) return word.slice(0,-1) + "ons"
+            else return `${word}s`
+        },
         adjective: function(word, type, noun){ 
-            if(noun != undefined) type += l.gender(noun)
-            if(type.endsWith("plf")) return word + "es"
-            else if(type.endsWith("sgf")) return word + "a"
-            else if(type.endsWith("plm")) return word + "s"
+            if(noun != undefined) type += languages["ct"].gender(noun)
+            if(type.endsWith("fp")) return word + "es"
+            else if(type.endsWith("fs")) return word + "a"
+            else if(type.endsWith("mp")) return word + "s"
             else return word
         },
         nA: function(noun, adj){return `${noun} ${adj}`},
@@ -724,52 +1100,63 @@ languages = {
             else return "m"
         },
         noun: function(article, noun, adjective){
-            if(adjective != undefined) return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun) + " " + l.adjective(adjective, article)
-            else return l[article + l.gender(noun)] + " " + (article.endsWith("pl") ? l.plural(noun) : noun)
+            if(adjective != undefined) return languages["ct"][article + languages["ct"].gender(noun)] + " " + (article.endsWith("pl") ? languages["ct"].plural(noun) : noun) + " " + languages["ct"].adjective(adjective, article)
+            else return languages["ct"][article + languages["ct"].gender(noun)] + " " + (article.endsWith("ct") ? languages["ct"].plural(noun) : noun)
         },
+        //settings
+        grammaticalGender: true,
     },
 }
 
 firstLanguage = "en"
 secondLanguage = "es"
 type = ""
+f = languages[firstLanguage]
 l = languages[secondLanguage]
 nounlist = ["woman", "beer", "city", "man", "cat", "park", "apple", "banana", "car", "dog", "bear", "cat", "sauce", "wine"]
 lessonNumber = 0
 partNumber = 0
+specialDefinition = {}
+
 function returnLesson(lNumber, pNumber, theLanguage){
     l = languages[theLanguage]
+    f = languages[firstLanguage]
+    specialDefinition = {
+        asgm: "(singular and masculine)",
+        asgf: "(singular and feminine)",
+        aplm: "(plural and masculine)",
+        aplf: "(plural and feminine)",
+        thesgm: "(singular and masculine)",
+        thesgf: "(singular and feminine)",
+        theplm: "(plural and masculine)",
+        theplf: "(plural and feminine)",
+    }
     lessons = [
         [ //Introduction
             "vocab@I",
             "vocab@Man",
             "vocab@beser~present~0",
             `sentence@${l.i}`,
-            "vocab@ASgM",
+            "vocab@asgm",
             `sentence@${l.i} ${l.beser.present[0]} ${l.noun("asg", l.man)}`,
-            "vocab@Woman",
-            "vocab@ASgF",
+            "vocab@woman",
+            "vocab@asgf",
             `sentence@${l.woman}`,
             `sentence@${l.i} ${l.beser.present[0]} ${l.noun("asg", l.woman)}`,
             "vocab@He",
             "vocab@beser~present~2",
             `sentence@${l.he} ${l.beser.present[2]} ${l.noun("asg", l.man)}`,
-            "vocab@She",
+            "vocab@she",
             `translate@${l.she} ${l.beser.present[2]} ${l.noun("asg", l.woman)}`,
-            "vocab@And",
-            "vocab@Or",
-            "vocab@YouSg",
+            "vocab@and",
+            "vocab@or",
+            "vocab@yousg",
             `translate@${l.noun("asg", l.woman)} ${l.and} ${l.noun("asg", l.man)}`,
             `sentence@${l.yousg} ${l.or} ${l.i}`,
         ],
         [ //Adjectives
             "vocab@park",
-            `text@in ${l.name}, the form of a verb is determined by its subject`,
-            //
-            //
-            //
-            //
-            //
+            `text@${f.in} ${f[theLanguage]}, ${f.noun("thesg", f.form)} ${f.of} ${f.noun("asg", f.verb)} ${f.beest.present[2]} ${f.determined} ${f.by} ${f.its} ${f.subject}`,
             "verb@beser~present",
             "vocab@small",
             "vocab@tall",
@@ -779,8 +1166,8 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `vocab@theplf`,
             `vocab@theplm`,
             `sentence@${l.noun("thepl", l.woman)}`,
-            `translate@${l.i} ${l.beser.present[0]} ${l.noun("thepl", l.man)}`,
-            `text@adjectives change according to the subject's gender and number`,
+            `translate@${l.we} ${l.beser.present[3]} ${l.noun("thepl", l.man)}`,
+            `text@${f.noun("thepl", f.adj)} ${f.have.present[5]} ${f.noun("thesg", f.gen)} ${f.and} ${f.noun("thesg", f.number)} ${f.of} ${f.noun("thesg", f.subject)}`,
             `sentence@${l.noun("asg", l.park, l.small)}`,
             `vocab@city`,
             `translate@${l.noun("asg", l.woman)} ${l.in} ${l.noun("asg",l.city, l.small)}`,
@@ -790,14 +1177,14 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${l.noun("thesg", l.man)} ${l.beser.present[5]} ${l.adjective(l.small, "sg", l.man)}`,
         ],
         [ //to have
-            `text@usually just add -s or -es to make something plural`,
+            `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? `-s ${f.or} -es` : `-e ${f.to} ${f.noun("thepl", f.sustantive, f.feminine)} ${f.and} -i ${f.to} ${l.noun("thepl", f.sustantive, f.masculine)}`} ${f.para} ${l.noun("asg", f.sustantive, f.plu)} ${f.or} ${f.noun("asg", f.adj, f.plu)}`,
             `sentence@${l.plural(l.man)}`,
             "vocab@apple",
             `translate@${l.plural(l.woman)}`,
             "vocab@car",
             "verb@have~present",
             `sentence@${l.she} ${l.have.present[2]} ${l.noun("asg", l.car)}`,
-            ((secondLanguage != "fr" || ["fr", "en"].includes(firstLanguage)) ? "text@the verb 'estar' is verb that signifies 'to be' but it is only used for locations and emotions" : ""),
+            ((secondLanguage != "fr" || ["fr", "en"].includes(firstLanguage)) ? `text@${f.noun('thesg', f.verb)} 'estar' ${f.beser.present[2]} ${f.noun('asg', f.verb)} ${f.that} ${f.signifies} '${f.beser.infinitive}' ${f.but} ${f.noun('thesg', f.verb)} ${f.only} ${f.beest.present[2]} ${f.used} ${f.para} ${f.plural(f.location)} ${f.and} ${f.plural(f.emotion)}` : ""),
             (secondLanguage != "fr" ? "verb@beest~present" : ""),
             `translate@${l.plural(l.apple)}`,
             `translate@${l.q}${l.whereq} ${l.beest.present[2]} ${l.noun("thesg", l.car)}?`,
@@ -857,20 +1244,17 @@ function render(){
         input.style.color = "#002b36"
         input.readOnly = true
         input.style.textAlign = "center"
-        input.value = "[enter] to continue"
+        input.value = `[${f.enter}] ${f.parato} ${f.continue}`
         if(content.includes("~")){
             word.textContent = languages[secondLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
-            definition.textContent = languages.en[content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
+            definition.textContent = languages[firstLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
             info.textContent = ""
         }
         else{
             word.textContent = languages[secondLanguage][content]
-            definition.textContent = languages.en[content]
+            definition.textContent = languages[firstLanguage][content]
             info.textContent = specialDefinition[content] ?? ""
-            console.log(content)
-            console.log(nounlist.includes(content))
-            if(l.gender(l[content]) == "f" && nounlist.includes(content)) info.textContent = "(feminine)"
-            else if(l.gender(l[content]) == "m" && nounlist.includes(content)) info.textContent = "(masculine)"
+            if(nounlist.includes(content) && l.grammaticalGender) info.textContent = `(${l.gender(l[content]) == "f" ? f.feminine : f.masculine})`
         }
     }
     else if(type == "sentence" || type == "translate"){
@@ -878,13 +1262,16 @@ function render(){
         verb.style.display = "none"
         input.value = ""
         input.style.textAlign = "left"
+        input.placeholder = `${f.write} ${f.here}`
         input.readOnly = false
+        enter.textContent = f.submit
+        verb.style.display = "none"
         word.textContent = type == "sentence" ? content : returnLesson(lessonNumber, partNumber, firstLanguage).split("@")[1]
-        definition.textContent = "translate this to " + (type == "sentence" ? "english" : languages[secondLanguage].name)
+        definition.textContent = `${f.translate} ${f.to} ` + (type == "sentence" ? languages[firstLanguage][firstLanguage] : languages[firstLanguage][secondLanguage])
         info.textContent = ""
     }
     else if(type == "verb"){
-        input.value = "[enter] to continue"
+        input.value = `[${f.enter}] ${f.parato} ${f.continue}`
         verb.style.display = "block"
         word.style.display = "none"
         definition.style.display = "none"
@@ -911,7 +1298,7 @@ function render(){
 document.addEventListener('keydown', (e) => {if(e.code == "Enter") enterFunction()})
 
 function enterFunction(){
-    if(["vocab", "verb"].includes(type) || input.value.includes("[enter]")){
+    if(["vocab", "verb"].includes(type) || input.value.includes(f.enter)){
         input.value = ""
         partNumber++
         if(partNumber == lessons[lessonNumber].length){
@@ -924,31 +1311,52 @@ function enterFunction(){
     else if(type == "sentence" || type == "translate"){
         if(input.value == ""){
             input.classList.add("angryinput")
-            input.placeholder = "please write here..."
+            input.placeholder = `${f.please} ${f.write} ${f.here}...`
         }
         else{
             input.classList.remove("angryinput")
-            input.placeholder = "write here, [enter] to submit"
+            input.placeholder = `${f.write} ${f.here}`
             input.readOnly = true
             enter.style.display = "none"
             z = input.value.toLowerCase()
             for(y of Object.entries(languages[firstLanguage].contractions)) z = z.replace(`${y[0]}`, `${y[1]}`)
-            if(z == returnLesson(lessonNumber, partNumber, (type == "sentence" ? firstLanguage : secondLanguage)).split("@")[1].toLowerCase()){
+            answer = returnLesson(lessonNumber, partNumber, (type == "sentence" ? firstLanguage : secondLanguage)).split("@")[1].toLowerCase()
+            prodropanswer = firstLanguage == "en" ? "" : answer.replace(f.i, "").replace(f.yousg, "").replace(f.we, "").trim()
+            if(z == answer || z == prodropanswer){
                 input.style.color = "#268bd2"
-                input.value = "correct, [enter] to continue"
+                input.value = `${f.correct}, [${f.enter}] ${f.parato} ${f.continue}`
             }
             else{
                 input.style.color = "#dc322f"
-                input.value = "incorrect, [enter] to continue"
+                input.value = `${f.incorrect}, [${f.enter}] ${f.parato} ${f.continue}`
                 definition.textContent = returnLesson(lessonNumber, partNumber, (type == "sentence" ? firstLanguage : secondLanguage)).split("@")[1].toLowerCase()
             }
         }
     }
 }
-function langSelect(ln){
-    document.getElementById(secondLanguage).style.backgroundColor = "#fdf6e3"
+function firstLangSelect(ln){
+    document.getElementById(firstLanguage + "1").style.backgroundColor = "#fdf6e3"
+    document.getElementById(firstLanguage + "2").style.display = "inline"
+    firstLanguage = ln
+    f = languages[firstLanguage]
+    if(firstLanguage == secondLanguage){
+        secondLanguage = (firstLanguage == "es") ? "en" : "es"
+        document.getElementById(firstLanguage + "2").style.backgroundColor = "#fdf6e3"
+        document.getElementById(secondLanguage + "2").style.backgroundColor = "#d33682"
+    }
+    lang1.textContent = `${f.yousg} ${f.speak.present[1]}:`,
+    lang2.textContent = `${f.yousg} ${f.want.present[1]} ${f.learn.infinitive}:`,
+    lev.textContent = `${f.select} ${f.noun("asg", f.level)}`
+    for(v in Array.from(document.getElementById('levelselector').children)) document.getElementById("b" + v).textContent = "lvl " + (+v + 1) + ": " + [`${f.introduction}`, `${f.adjective('plural', 'mp')}`, `${f.have.infinitive}`, `${f.food}/${f.plural(f.color)} 1`][v]
+    for(v of Array.from(document.getElementById('selector1').children)) v.textContent = f[v.id.slice(0, -1)]
+    for(v of Array.from(document.getElementById('selector2').children)) v.textContent = f[v.id.slice(0, -1)]
+    document.getElementById(ln + "1").style.backgroundColor = "#d33682"
+    document.getElementById(ln + "2").style.display = "none"
+}
+function secondLangSelect(ln){
+    document.getElementById(secondLanguage + "2").style.backgroundColor = "#fdf6e3"
     secondLanguage = ln
-    document.getElementById(ln).style.backgroundColor = "#d33682"
+    document.getElementById(ln + "2").style.backgroundColor = "#d33682"
 }
 function levelSelect(nm){
     home.style.display = "none"

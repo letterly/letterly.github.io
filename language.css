@@ -98,8 +98,11 @@ tbody{
 .selector{
     margin-bottom: 20px;
 }
-#es{
+#en1, #es2{
     background-color: #d33682;
+}
+#en2{
+    display: none;
 }
 #levelselector button:hover{
     background-color: #d33682;
