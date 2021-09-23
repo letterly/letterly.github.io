@@ -104,6 +104,7 @@ languages = {
         singular: "singular",
         enter: "enter",
         continue: "continue",
+        present: "",
         //
         beest: {
             infinitive: "to be",
@@ -156,6 +157,7 @@ languages = {
         she: "ella",
         wem: "nosotros",
         wef: "nosotras",
+        youplinf: "vosotros",
         youpl: "ustedes",
         theym: "ellos",
         theyf: "ellas",
@@ -251,6 +253,7 @@ languages = {
         singular: "singular",
         enter: "entrar",
         continue: "continuar",
+        present: "",
         //
         beser: {
             infinitive: "ser",
@@ -406,6 +409,7 @@ languages = {
         singular: "singular",
         enter: "entrar",
         continue: "continuar",
+        present: "",
         //
         contractions: {"em o": "no","em a": "na","em os": "nos", "em as": "nas", "de o": "do", "de a": "da", "de os": "dos", "de as": "das"}, //incomplete
         beser: {
@@ -573,6 +577,7 @@ languages = {
         singular: "singular",
         enter: "entrar",
         continue: "continuar",
+        present: "",
         //verbs/contractions
         contractions: {"a o": "ao","a os": "aos","a a": "á", "a as": "ás", "de o": "do", "de a": "da", "de os": "dos", "de as": "das", "en o": "no", "en a": "na", "en os": "nos", "en as": "nas", "de un": "dun", "de unha": "dunha", "de unhas": "dunhas", "de uns": "duns", "por o": "polo", "por a": "pola", "por as": "polas", "por os": "polos"}, //incomplete
         beser: {
@@ -739,6 +744,7 @@ languages = {
         singular: "singolare",
         enter: "entrare",
         continue: "continuare",
+        present: "",
         //
         beser: {
             infinitive: "essere",
@@ -903,6 +909,7 @@ languages = {
         singular: "singulier",
         enter: "entrer",
         continue: "continuer",
+        present: "",
         //
         beser: {
             infinitive: "être",
@@ -1055,6 +1062,7 @@ languages = {
         singular: "singular",
         enter: "entrar",
         continue: "continuar",
+        present: "",
         //
         beser: {
             infinitive: "ser",
@@ -1298,7 +1306,9 @@ function render(){
 document.addEventListener('keydown', (e) => {if(e.code == "Enter") enterFunction()})
 
 function enterFunction(){
-    if(["vocab", "verb"].includes(type) || input.value.includes(f.enter)){
+    console.log('bruh')
+    if(["vocab", "verb", "text"].includes(type) || input.value.includes(f.enter)){
+        console.log('h')
         input.value = ""
         partNumber++
         if(partNumber == lessons[lessonNumber].length){
