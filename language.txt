@@ -1,2 +1,9 @@
-23 Sept 2021
-Finally got up my website's first version up online
+24 Sep 2021
+The buttons to select site language are now in their native words (french=>français, spanish=>español etc.)
+I experimentally added Yiddish and Macedonian [both in latin alphabet]
+Redid the internal verb handling code
+Added 5th lesson, it doesn't have any grammar explanation in it yet though 
+Many random bugs were fixed!
+
+22 Sep 2021
+Finally got up my website's first version up online :)

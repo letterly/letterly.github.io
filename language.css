@@ -107,3 +107,10 @@ tbody{
 #levelselector button:hover{
     background-color: #d33682;
 }
+a{
+    color: #fdf6e3;
+    font-family: 'IBM Plex Mono';
+}
+button:hover{
+    cursor: pointer;
+}
