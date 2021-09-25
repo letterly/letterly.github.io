@@ -109,6 +109,7 @@ languages = {
         continue: "continue",
         present: "present",
         language: "language",
+        click: "click",
         //
         beest: {
             infinitive: "to be",
@@ -168,6 +169,7 @@ languages = {
         //settings
         grammaticalGender: false,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     es: {
         i: "yo",
@@ -279,6 +281,7 @@ languages = {
         continue: "continuar",
         present: "presente",
         language: "lenguaje",
+        click: "haz click",
         //
         beser: {
             infinitive: "ser",
@@ -338,6 +341,7 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     pt: { //EUROPEAN not brazilian
         i: "eu",
@@ -449,6 +453,7 @@ languages = {
         continue: "continuar",
         present: "presente",
         language: "linguagem",
+        click: "clique",
         //
         contractions: {"em o": "no","em a": "na","em os": "nos", "em as": "nas", "de o": "do", "de a": "da", "de os": "dos", "de as": "das"}, //incomplete
         beser: {
@@ -517,6 +522,7 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     gl: {
         i: "eu",
@@ -627,6 +633,7 @@ languages = {
         continue: "continuar",
         present: "presente",
         language: "linguaxe",
+        click: "fai clic",
         //verbs/contractions
         contractions: {"a o": "ao","a os": "aos","a a": "á", "a as": "ás", "de o": "do", "de a": "da", "de os": "dos", "de as": "das", "en o": "no", "en a": "na", "en os": "nos", "en as": "nas", "de un": "dun", "de unha": "dunha", "de unhas": "dunhas", "de uns": "duns", "por o": "polo", "por a": "pola", "por as": "polas", "por os": "polos"}, //incomplete
         beser: {
@@ -694,6 +701,7 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     it: {
         i: "io",
@@ -804,6 +812,7 @@ languages = {
         continue: "continuare",
         present: "presente",
         language: "linguaggio",
+        click: "clicca",
         //
         beser: {
             infinitive: "essere",
@@ -872,6 +881,7 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     fr: {
         i: "je",
@@ -982,6 +992,7 @@ languages = {
         continue: "continuer",
         present: "instant",
         language: "langage",
+        click: "cliquez",
         //
         beser: {
             infinitive: "être",
@@ -1037,6 +1048,7 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     ct: {
         i: "jo",
@@ -1147,6 +1159,7 @@ languages = {
         continue: "continuar",
         present: "present",
         language: "llenguatge",
+        click: "feu clic",
         //
         beser: {
             infinitive: "ser",
@@ -1205,161 +1218,164 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "latin",
     },
     yi: {
-        i: "ikh",
-        yousg: "du",
-        yousgfm: "ir",
-        he: "er",
-        she: "zi",
-        wem: "mir",
-        wef: "mir",
-        youplinf: "ets",
-        theym: "zey",
-        theyf: "zey",
-        in: "in",
-        thesgm: "der",
-        thesgf: "di",
-        theplm: "di", //
-        theplf: "di",
-        asgm: "a",
-        asgf: "a",
+        i: "יך",
+        yousg: "דו",
+        yousgfm: "יר",
+        he: "ער",
+        she: "זי",
+        wem: "מיר",
+        wef: "מיר",
+        youplinf: "עץ",
+        theym: "זיי",
+        theyf: "זיי",
+        in: "ין",
+        thesgm: "דער",
+        thesgf: "די",
+        theplm: "די", //
+        theplf: "די",
+        asgm: "אַ",
+        asgf: "אַ",
         aplm: "",
         aplf: "",
-        with: "mit",
-        park: "park",
-        cat: "kats",
-        beer: "bir",
-        man: "man",
-        woman: "froy",
-        white: "vays",
-        howq: "vi",
-        whereq: "vau",
-        and: "aun",
-        or: "oder",
+        with: "מית",
+        park: "פאַרק",
+        cat: "קאַץ",
+        beer: "ביר",
+        man: "מאַן",
+        woman: "פֿרוי",
+        white: "וײַס",
+        howq: "ווי",
+        whereq: "וואַו",
+        and: "אַון",
+        or: "ָא",
         q: "",
-        small: "kleyn",
-        tall: "hoykh",
-        city: "shtot",
-        now: "itst",
-        car: "mashin",
-        apple: "epl",
-        dog: "hunt",
-        bear: "ber",
-        slow: "pamelekh",
-        fast: "shnel",
-        house: "hoys",
-        red: "royt",
-        green: "grin",
-        blue: "bloy",
-        yellow: "gel",
-        orange: "marants",
-        sauce: "sous",
-        banana: "banane",
-        wine: "veyn",
-        color: "kolir",
-        whatq: "vas",
-        favorite: "balibt",
-        yes: "yo",
-        no: "neyn",
+        small: "קליין",
+        tall: "הויך",
+        city: "שטאָט",
+        now: "יצט",
+        car: "מאשין",
+        apple: "עפל",
+        dog: "הונט",
+        bear: "בער",
+        slow: "פאַמעלעך",
+        fast: "שנעל",
+        house: "הויס",
+        red: "רויט",
+        green: "גרין",
+        blue: "בלוי",
+        yellow: "געל",
+        orange: "מאַראַנץ",
+        sauce: "סאָוס",
+        banana: "באַנאַנע",
+        wine: "וויין",
+        color: "קוליר",
+        whatq: "וואס",
+        favorite: "באילבט",
+        yes: "יאָ",
+        no: "ניין",
         //languages
-        en: "english",
-        es: "shpanish",
-        pt: "portugezish",
-        it: "italyenish",
-        fr: "frantsoyzish",
-        gl: "galitsyanish",
-        ct: "katalanish",
-        yi: "yidish",
-        mk: "makedonish",
+        en: "ענגליש",
+        es: "שפאַניש",
+        pt: "פורטוגעזיש",
+        it: "יטאַליעניש",
+        fr: "פֿראַנצויזיש",
+        gl: "גאַליציאניש",
+        ct: "קאַטאַלאַניש",
+        yi: "ייִדיש",
+        mk: "מאַקעדוניש",
         //text
-        form: "forem",
-        vrb: "verb",
-        of: "fun",
-        determined: "bashlasn",
-        by: "durkh",
-        its: "zeyn",
-        subject: "teme",
-        number: "numer",
-        gen: "min",
-        adj: "adyektiv",
-        sustantive: "substantiv",
-        usually: "oft",
-        add: "leygn",
-        feminine: "vayblekh",
-        masculine: "menlekh",
-        plu: "mertsol",
-        that: "az",
-        signifies: "mitl",
-        but: "ober",
-        only: "bloyz",
-        used: "genitst",
-        location: "ort",
-        emotion: "emotsye",
-        para: "far",
-        parato: "tsu",
-        select: "selektirn",
-        level: "madreyge",
-        introduction: "hakdama",
-        food: "esnvarg",
-        to: "tsu",
-        translate: "iberzetsn",
-        correct: "rikhtik",
-        incorrect: "falsh",
-        please: "bite",
-        write: "shreyb",
-        here: "do",
-        submit: "forleygn",
-        singular: "meshunedik",
-        enter: "arayn",
-        continue: "forzetsn",
-        present: "krant",
-        language: "shprakh",
+        form: "פֿאָרעם",
+        vrb: "ווערב",
+        of: "פֿון",
+        determined: "באַשלאַן",
+        by: "דורך",
+        its: "זיין",
+        subject: "טעמע",
+        number: "נומער",
+        gen: "מין",
+        adj: "אדיעקתיפֿ",
+        sustantive: "סובסטאַנטיוו",
+        usually: "אַפֿט",
+        add: "לייגן",
+        feminine: "ווײַבלעך",
+        masculine: "מענלעך",
+        plu: "מערצאָל",
+        that: "אַז",
+        signifies: "מיתל",
+        but: "אָבער",
+        only: "בלויז",
+        used: "געניצט",
+        location: "אָרט",
+        emotion: "עמוציע",
+        para: "פֿאַר",
+        parato: "צו",
+        select: "סעלעקטירן",
+        level: "מאדרייגע",
+        introduction: "הקדמה",
+        food: "עסנוואַרג",
+        to: "צו",
+        translate: "יבערזעצען",
+        correct: "ריכתיק",
+        incorrect: "פֿאלש",
+        please: "ביטע",
+        write: "שרייב",
+        here: "דאָ",
+        submit: "פֿורלייגן",
+        singular: "מעשונעדיק",
+        enter: "ארײַן",
+        continue: "פאָרזעצן",
+        present: "קראַנט",
+        language: "שפראַך",
+        click: "גיט",
         //
         beser: {
-            infinitive: "zayn",
-            present: ["bin", "bist", "iz", "zenen", "zents", "zenen"],
+            infinitive: "זײַן",
+            present: ["בין", "ביסט", "יז", "זענען", "זענץ", "זענען"],
         },
         beest: {
-            infinitive: "zayn",
-            present: ["bin", "bist", "iz", "zenen", "zents", "zenen"],
+            infinitive: "זײַן",
+            present: ["בין", "ביסט", "יז", "זענען", "זענץ", "זענען"],
         },
         have: {
-            infinitive: "hobn",
-            present: ["hobn", "host", "hot", "hobn", "hots", "hobn"],
+            infinitive: "האָבן",
+            present: ["האָבן", "האָסט", "האָבן", "האָט", "האָץ", "האָבן"],
         },
         speak: {
-            infinitive: "redn",
-            present: ["red", "redst", "redt", "redn", "redts", "redn"],
+            infinitive: "רעדן",
+            present: ["רעד", "רעדסט", "רעדט", "רעדן", "רעדץ", "רעדן"],
         },
         want: {
-            infinitive: "veln",
-            present: ["vil", "vilst", "vil", "viln", "vilts", "viln"],
+            infinitive: "וועלן",
+            present: ["וויל", "ווילסט", "וויל", "ווילן", "ווילץ", "ווילן"],
         },
         learn: {
-            infinitive: "lernen",
+            infinitive: "לערנען",
         },
         eat: {
-            infinitive: "esn",
-            present: ["es", "est", "est", "esn", "ests", "esn"]
+            infinitive: "עסן",
+            present: ["עס", "עסט", "עסט", "עסן", "עסץ", "עסן"]
         },
         //
         contractions: {}, //incomplete?
         //
         plural: function(word){
-            if("aeiou".includes(word.slice(-1))) return `${word}s`
-            else if(word == "man") return "maner"
-            else if(word.endsWith("y")) return `${word}en`
-            else return `${word}n`
+            if("עוַָ".includes(word.slice(-1))) return `${word}ס`
+            else if(word == "מאַן") return "מאַנער"
+            else if(word.endsWith("י")) return `${word}ען`
+            else if(word.endsWith("ך")) return word.slice(0, -1) + "כן"
+            else return `${word}ן`
         },
         adjective: function(word, type, naun){ 
             return word
         },
         negativeVerb: function(verb){
-            return `${verb} nisht`
+            return `${verb} נישט`
         },
         gender: function(naun){
-            yiddishFemale = ["verb", "froy"]
+            yiddishFemale = ["ווערב", "פֿרוי"]
             if(yiddishFemale.includes(naun)) return "f"
             else return "m"
         },
@@ -1374,19 +1390,20 @@ languages = {
         //settings
         grammaticalGender: true,
         definitiveSuffixes: false,
+        writingSystem: "hebrew",
     },
     mk: {
-        i: "jas",
-        yousg: "ti",
-        yousgfm: "vie",
-        he: "toj",
-        she: "taa",
-        wem: "nie",
-        wef: "nie",
-        youplinf: "vie",
-        theym: "tie",
-        theyf: "tie",
-        in: "vo",
+        i: "јас",
+        yousg: "ти",
+        yousgfm: "вие",
+        he: "тој",
+        she: "таа",
+        wem: "ние",
+        wef: "ние",
+        youplinf: "вие",
+        theym: "тие",
+        theyf: "тие",
+        in: "во",
         thesgm: "",
         thesgf: "",
         theplm: "", //
@@ -1395,175 +1412,176 @@ languages = {
         asgf: "",
         aplm: "",
         aplf: "",
-        with: "so",
-        park: "park",
-        cat: "mačka",
-        beer: "pivo",
-        man: "maž",
-        woman: "žena",
-        white: "bel",
-        howq: "kako",
-        whereq: "kade",
-        and: "i",
-        or: "ili",
+        with: "со",
+        park: "парк",
+        cat: "мачка",
+        beer: "пиво",
+        man: "маж",
+        woman: "жена",
+        white: "бел",
+        howq: "како",
+        whereq: "каде",
+        and: "и",
+        or: "или",
         q: "",
-        small: "mal",
-        tall: "visok",
-        city: "grad",
-        now: "sega",
-        car: "avtomobil",
-        apple: "jabolko",
-        dog: "kuče",
-        bear: "mečka",
-        slow: "baven",
-        fast: "brz",
-        house: "kukja",
-        red: "crven",
-        orange: "portokalov",
-        yellow: "žolt",
-        green: "zelen",
-        blue: "sin",
-        sauce: "sos",
-        banana: "banana",
-        wine: "vino",
-        color: "boja",
-        whatq: "što",
-        favorite: "omilen",
-        yes: "da",
-        no: "ne",
+        small: "мал",
+        tall: "висок",
+        city: "град",
+        now: "сега",
+        car: "автомобил",
+        apple: "јаболко",
+        dog: "куче",
+        bear: "мечка",
+        slow: "бавен",
+        fast: "брз",
+        house: "куќа",
+        red: "црвен",
+        orange: "портокалов",
+        yellow: "жолт",
+        green: "зелен",
+        blue: "син",
+        sauce: "сос",
+        banana: "банана",
+        wine: "вино",
+        color: "боја",
+        whatq: "што",
+        favorite: "омилен",
+        yes: "да",
+        no: "не",
         //languages
-        en: "angliski",
-        es: "španski",
-        pt: "portugalski",
-        it: "italijanski",
-        fr: "francuski",
-        gl: "galiciski",
-        ct: "katalonski",
-        yi: "jidski",
-        mk: "makedonski",
+        en: "англиски",
+        es: "шпански",
+        pt: "португалски",
+        it: "италијански",
+        fr: "француски",
+        gl: "галициски",
+        ct: "каталонски",
+        yi: "јидски",
+        mk: "македонски",
         //text
-        form: "forma",
-        vrb: "glagol",
-        of: "na",
-        determined: "predodreden",
-        by: "od",
-        its: "svoj",
-        subject: "podmet",
-        number: "broj",
-        gen: "pol",
-        adj: "pridavka",
-        sustantive: "imenka",
-        usually: "obično",
-        add: "dodadete",
-        feminine: "ženski",
-        masculine: "maški",
-        plu: "množinski",
-        that: "deka",
-        signifies: "znači",
-        but: "no",
-        only: "samo",
-        used: "koristi",
-        location: "lokacija",
-        emotion: "emocija",
-        para: "za",
-        parato: "za",
-        select: "izberete",
-        level: "nivo",
-        introduction: "voved",
-        food: "hrana",
-        to: "vo",
-        translate: "prevedete",
-        correct: "pravilno",
-        incorrect: "pogrešno",
-        please: "ve molam",
-        write: "piši",
-        here: "ovde",
-        submit: "dostavi",
-        singular: "ednina",
-        enter: "vnesete",
-        continue: "da prodolžite",
-        present: "segašnosta",
-        language: "jezik",
+        form: "форма",
+        vrb: "глагол",
+        of: "на",
+        determined: "предодреден",
+        by: "од",
+        its: "свој",
+        subject: "подмет",
+        number: "број",
+        gen: "пол",
+        adj: "придавка",
+        sustantive: "именка",
+        usually: "обично",
+        add: "додадете",
+        feminine: "женски",
+        masculine: "мажски",
+        plu: "множински",
+        that: "дека",
+        signifies: "значи",
+        but: "но",
+        only: "само",
+        used: "користи",
+        location: "локација",
+        emotion: "емоција",
+        para: "за",
+        parato: "за",
+        select: "изберете",
+        level: "ниво",
+        introduction: "вовед",
+        food: "храна",
+        to: "во",
+        translate: "преведете",
+        correct: "правилно",
+        incorrect: "погрешно",
+        please: "ве молам",
+        write: "пиши",
+        here: "овде",
+        submit: "достави",
+        singular: "еднина",
+        enter: "внесете",
+        continue: "да продолжите",
+        present: "сегашноста",
+        language: "језик",
+        click: "кликнете",
         //
         beser: {
-            infinitive: ["bidam", "bideš", "bide", "bideme", "bidete", "bidat"],
-            present: ["sum", "si", "e", "sme", "ste", "se"],
+            infinitive: ["бидам", "бидеш", "биде", "бидеме", "бидете", "бидат"],
+            present: ["сум", "си", "е", "сме", "сте", "се"],
         },
         beest: {
-            present: ["sum", "si", "e", "sme", "ste", "se"],
+            present: ["сум", "си", "е", "сме", "сте", "се"],
         },
         have: {
-            present: ["imam", "imaš", "imam", "imame", "imate", "imaat"],
+            present: ["имам", "имаш", "имам", "имаме", "имате", "имаат"],
         },
         speak: {
-            present: ["zboruvam", "zboruvaš", "zboruva", "zboruvame", "zboruvate", "zboruvaat"],
+            present: ["зборувам", "зборуваш", "зборува", "зборуваме", "зборувате", "зборуваат"],
         },
         want: {
-            present: ["sakam", "sakaš", "saka", "sakame", "sakate", "sakaat"],
+            present: ["сакам", "сакаш", "сака", "сакаме", "сакате", "сакаат"],
         },
         learn: {
-            present: ["učam", "učiš", "uči", "učime", "učite", "učat"],
+            present: ["учам", "учиш", "учи", "учиме", "учите", "учат"],
         },
         eat: {
-            present: ["jadam", "jadesh", "jade", "jademe", "jadete", "jadat"]
+            present: ["јадам", "јадеш", "јаде", "јадеме", "јадете", "јадат"]
         },
         //
         contractions: {}, //incomplete?
         //
         plural: function(word){ //todo
-            if("aeiou".includes(word.slice(-1))) word = word.slice(0, -1)
-            if(languages.mk.gender(word) == "m") return word
-            else if(languages.mk.gender(word) == "f") return word
-            else if(languages.mk.gender(word) == "n") return word
+            if("аеиоу".includes(word.slice(-1))) word = word.slice(0, -1)
+            if(word.endsWith("к")) return word.slice(0,-1) + "ци"
+            else if(languages.mk.gender(word) == "m") return word + "и"
+            else if(languages.mk.gender(word) == "f") return word + "и"
+            else if(languages.mk.gender(word) == "n") return word + "е"
         },
         adjective: function(word, type, naun){ //done
             if(naun != undefined) type = languages.mk.gender(naun) + type
-            if(type.endsWith("fp")) return word + "es"
-            else if(type.endsWith("p")) return word + "i"
-            else if(type.startsWith("n")) return word + "o"
-            else if(type.startsWith("f")) return word + "a"
+            if(type.endsWith("p")) return word + "и"
+            else if(type.startsWith("n")) return word + "о"
+            else if(type.startsWith("f")) return word + "а"
             else return word
         },
         negativeVerb: function(verb){ //done
-            return `ne ${verb}`
+            return `не ${verb}`
         },
         gender: function(naun){ //done (?)
-            if(naun.endsWith("a")) return "f"
-            else if(naun.endsWith("e")) return "n"
+            if(naun.endsWith("а")) return "f"
+            else if(naun.endsWith("е")) return "n"
             else return "m"
         },
         noun: function(article, naun, adjective){ //done
             if(article.startsWith("the")){
                 if(article.endsWith("pl")){
-                    if(languages.mk.gender(naun) == "m") naun += "te"
-                    else if(languages.mk.gender(naun) == "f") naun += "te"
-                    else if(languages.mk.gender(naun) == "n") naun += "ta"
+                    if(languages.mk.gender(naun) == "m") naun += "те"
+                    else if(languages.mk.gender(naun) == "f") naun += "те"
+                    else if(languages.mk.gender(naun) == "n") naun += "та"
                 }
                 else if(article.endsWith("sg")){
-                    if(languages.mk.gender(naun) == "m") naun += "ot"
-                    else if(languages.mk.gender(naun) == "f") naun += "ta"
-                    else if(languages.mk.gender(naun) == "n") naun += "to"
+                    if(languages.mk.gender(naun) == "m") naun += "от"
+                    else if(languages.mk.gender(naun) == "f") naun += "та"
+                    else if(languages.mk.gender(naun) == "n") naun += "то"
                 }
             }
             else if(article.endsWith("pl")) naun = languages.mk.plural(naun)
             if(adjective != undefined){
                 adjective = languages.mk.adjective(adjective, article.endsWith("pl") ? "p" : "s", naun)
                 return adjective + " " + naun
-                //if adjective
             }
             return naun
         },
         verb: function(verb, tense, person){ //done
             if(tense == "infinitive"){
-                if(person == undefined) return "da " + languages.mk[verb].present[2]
-                else if(verb.startsWith("be")) return languages.mk.beser.infinitive[person]
-                else return languages["mk"][verb].present[person]
+                if(person == undefined) return "да " + languages.mk[verb].present[2]
+                else if(verb.startsWith("be")) return "да " + languages.mk.beser.infinitive[person]
+                else return "да " + languages["mk"][verb].present[person]
             }    
             else return languages["mk"][verb][tense][person]
         },
         //settings
         grammaticalGender: true,
         definitiveSuffixes: true,
+        writingSystem: "cyrillic",
     },
 }
 
@@ -1700,6 +1718,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${l.no}, ${l.i} ${l.negativeVerb(l.verb("want", "present", 2))} ${l.noun("thesg", l.house, l.blue)}`,
         ],
     ].map(q => q.filter(w => w))
+
     x = lessons[lNumber][pNumber].toLowerCase()
     for(y of Object.entries(l.contractions)) x = x.replace(`${y[0]}`, `${y[1]}`)
     for(y of Object.entries(languages[firstLanguage].contractions)) x = x.replace(`${y[0]}`, `${y[1]}`)
@@ -1711,15 +1730,16 @@ function render(){
     type = material.split("@")[0]
     content = material.split("@")[1]
     if(type == "vocab"){
+        enter.style.display = "block"
         word.style.display = "block"
         definition.style.display = "block"
         info.style.display = "block"
-        enter.style.display = "none"
         verb.style.display = "none"
-        input.style.color = "#002b36"
-        input.readOnly = true
-        input.style.textAlign = "center"
-        input.value = `[${f.enter}] ${f.parato} ${f.continue}`
+        input.style.display = "none"
+        //input.style.color = "#002b36"
+        //input.readOnly = true
+        //input.style.textAlign = "center"
+        enter.textContent = `[${f.click}] ${f.parato} ${f.continue}`
         if(content.includes("~")){
             word.textContent = languages[secondLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
             definition.textContent = languages[firstLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
@@ -1746,7 +1766,8 @@ function render(){
         info.textContent = ""
     }
     else if(type == "verb"){
-        input.value = `[${f.enter}] ${f.parato} ${f.continue}`
+        enter.textContent = `[${f.click}] ${f.parato} ${f.continue}`
+        enter.style.display = "block"
         verb.style.display = "block"
         for(block of ["word", "definition", "info"]) document.getElementById(block).style.display = "none"
         infinitivenative.textContent = l.verb(content.split("~")[0], "infinitive") + " [" + f[content.split("~")[1]] + "]"
@@ -1812,6 +1833,7 @@ function firstLangSelect(ln){
     document.getElementById(firstLanguage + "2").style.display = "inline"
     firstLanguage = ln
     f = languages[firstLanguage]
+    console.log(f.language)
     document.title = f.plural(f.language).charAt(0).toUpperCase() + f.plural(f.language).slice(1)
     if(firstLanguage == secondLanguage){
         secondLanguage = (firstLanguage == "es") ? "en" : "es"
@@ -1819,7 +1841,7 @@ function firstLangSelect(ln){
         document.getElementById(secondLanguage + "2").style.backgroundColor = "#d33682"
     }
     lang1.textContent = `${f.yousg} ${f.verb("speak", "present", 1)}:`,
-    lang2.textContent = `${f.yousg} ${f.verb("want", "present", 1)} ${f.verb("learn", "infinitive", 0)}:`,
+    lang2.textContent = `${f.yousg} ${f.verb("want", "present", 1)} ${f.verb("learn", "infinitive", 1)}:`,
     lev.textContent = `${f.select} ${f.noun("asg", f.level)}`
     for(v in Array.from(document.getElementById('levelselector').children)) document.getElementById("b" + v).textContent = "lvl " + (+v + 1) + ": " + [`${f.introduction}`, `${f.adjective(f.plu, 'mp')}`, `${f.verb("have", "infinitive")}`, `${f.food}/${f.plural(f.color)} 1`, `${f.no}`][v]
     for(v of Array.from(document.getElementById('selector2').children)) v.textContent = f[v.id.slice(0, -1)]

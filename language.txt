@@ -1,3 +1,7 @@
+25 Sep 2021
+Yiddish is now in the Hebrew alphabet, Macedonian is now in the Cyrillic alphabet
+Now all buttons can be clicked, allowing phone users to take use the website without a keyboard
+
 24 Sep 2021
 The buttons to select site language are now in their native words (french=>français, spanish=>español etc.)
 I experimentally added Yiddish and Macedonian [both in latin alphabet]
