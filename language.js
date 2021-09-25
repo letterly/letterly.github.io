@@ -1654,7 +1654,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${l.noun("thesg", l.man)} ${l.verb("beser", "present", 5)} ${l.adjective(l.small, "s", l.man)}`,
         ],
         [ //to have
-            `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", f.sustantive, f.feminine)} ${f.and} -i ${f.to} ${l.noun("thepl", f.sustantive, f.masculine)}`} ${f.para} ${l.noun("asg", f.sustantive, f.plu)} ${f.or} ${f.noun("asg", f.adj, f.plu)}`,
+            `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", f.sustantive, f.feminine)} ${f.and} -i ${f.to} ${f.noun("thepl", f.sustantive, f.masculine)}`} ${f.para} ${f.noun("asg", f.sustantive, f.plu)} ${f.or} ${f.noun("asg", f.adj, f.plu)}`,
             (secondLanguage == "it" ? "text@beest~present" : ""),
             `sentence@${l.plural(l.man)}`,
             "vocab@apple",
@@ -1699,7 +1699,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `sentence@${l.green}`,
             `vocab@color`,
             `vocab@whatq`,
-            `sentence@${l.q}${l.whatq} ${l.color} ${l.verb("beser", "present", 2)} ${l.noun("the", l.car, l.small)}?`,
+            `sentence@${l.q}${l.whatq} ${l.color} ${l.verb("beser", "present", 2)} ${l.noun("thesg", l.car, l.small)}?`,
             `translate@${l.blue}`,
         ],
         [ //Negative verbs
@@ -1739,7 +1739,7 @@ function render(){
         //input.style.color = "#002b36"
         //input.readOnly = true
         //input.style.textAlign = "center"
-        enter.textContent = `[${f.click}] ${f.parato} ${f.continue}`
+        enter.textContent = `${f.click} ${f.parato} ${f.continue}`
         if(content.includes("~")){
             word.textContent = languages[secondLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
             definition.textContent = languages[firstLanguage][content.split("~")[0]][content.split("~")[1]][+content.split("~")[2]]
@@ -1766,7 +1766,7 @@ function render(){
         info.textContent = ""
     }
     else if(type == "verb"){
-        enter.textContent = `[${f.click}] ${f.parato} ${f.continue}`
+        enter.textContent = `${f.click} ${f.parato} ${f.continue}`
         enter.style.display = "block"
         verb.style.display = "block"
         for(block of ["word", "definition", "info"]) document.getElementById(block).style.display = "none"
@@ -1792,7 +1792,7 @@ function render(){
 document.addEventListener('keydown', (e) => {if(e.code == "Enter") enterFunction()})
 
 function enterFunction(){
-    if(["vocab", "verb", "text"].includes(type) || input.value.includes(f.enter)){
+    if(["vocab", "verb", "text"].includes(type) || input.value.includes(f.click)){
         input.value = ""
         partNumber++
         if(partNumber == lessons[lessonNumber].length){
@@ -1818,11 +1818,11 @@ function enterFunction(){
             prodropanswer = firstLanguage == "en" ? "" : answer.replace(f.i, "").replace(f.yousg, "").replace(f.we, "").trim()
             if(z == answer || z == prodropanswer){
                 input.style.color = "#268bd2"
-                input.value = `${f.correct}, [${f.enter}] ${f.parato} ${f.continue}`
+                input.value = `${f.correct}, ${f.click} ${f.parato} ${f.continue}`
             }
             else{
                 input.style.color = "#dc322f"
-                input.value = `${f.incorrect}, [${f.enter}] ${f.parato} ${f.continue}`
+                input.value = `${f.incorrect}, ${f.click} ${f.parato} ${f.continue}`
                 definition.textContent = returnLesson(lessonNumber, partNumber, (type == "sentence" ? firstLanguage : secondLanguage)).split("@")[1].toLowerCase()
             }
         }
