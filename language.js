@@ -163,6 +163,7 @@ languages = {
                     else if(person == 2) return "is"
                     else return "are"
                 }
+                else if(verb == "have" && person == 2) return "has"
                 else return verb + (person == 2 ? "s" : "")
             }
         },
@@ -1245,7 +1246,7 @@ languages = {
         asgf: "אַ",
         aplm: "",
         aplf: "",
-        with: "מית",
+        with: "מיט",
         park: "פאַרק",
         cat: "קאַץ",
         beer: "ביר",
@@ -1253,7 +1254,7 @@ languages = {
         woman: "פֿרוי",
         white: "וײַס",
         howq: "ווי",
-        whereq: "וואַו",
+        whereq: "וואו",
         and: "אַון",
         or: "ָא",
         q: "",
@@ -1267,7 +1268,7 @@ languages = {
         bear: "בער",
         slow: "פאַמעלעך",
         fast: "שנעל",
-        house: "הויס",
+        house: "הויז",
         red: "רויט",
         green: "גרין",
         blue: "בלוי",
@@ -1322,7 +1323,7 @@ languages = {
         introduction: "הקדמה",
         food: "עסנוואַרג",
         to: "צו",
-        translate: "יבערזעצען",
+        translate: "איבערזעצן",
         correct: "ריכתיק",
         incorrect: "פֿאלש",
         please: "ביטע",
@@ -1338,15 +1339,15 @@ languages = {
         //
         beser: {
             infinitive: "זײַן",
-            present: ["בין", "ביסט", "יז", "זענען", "זענטס", "זענען"],
+            present: ["בין", "ביסט", "איז", "זענען", "זענטס", "זענען"],
         },
         beest: {
             infinitive: "זײַן",
-            present: ["בין", "ביסט", "יז", "זענען", "זענטס", "זענען"],
+            present: ["בין", "ביסט", "איז", "זענען", "זענטס", "זענען"],
         },
         have: {
             infinitive: "האָבן",
-            present: ["האָבן", "האָסט", "האָבן", "האָט", "האָטס", "האָבן"],
+            present: ["האָבן", "האָסט", "האָבן", "האָט", "האָטס", "האָב"],
         },
         speak: {
             infinitive: "רעדן",
@@ -1364,11 +1365,13 @@ languages = {
             present: ["עס", "עסט", "עסט", "עסן", "עסץ", "עסן"]
         },
         //
-        contractions: {}, //incomplete?
+        contractions: {
+            "": "",
+        }, //incomplete?
         //
         plural: function(word){
             if("אָעואַ".includes(word.slice(-1))) return `${word}ס`
-            else if(word == "מאַן") return "מאַנער"
+            else if(word == "מאַן") return "מענער‎"
             else if(word.endsWith("י")) return `${word}ען`
             else if(word.endsWith("ך")) return word.slice(0, -1) + "כן"
             else return `${word}ן`
@@ -1637,7 +1640,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${l.noun("asg", l.woman)} ${l.and} ${l.noun("asg", l.man)}`,
             `sentence@${l.yousg} ${l.or} ${l.i}`,
         ],
-        [ //Adjectives
+        [ //plurals
             "vocab@park",
             `text@${f.in} ${f[theLanguage]}, ${f.noun("thesg", f.form)} ${f.of} ${f.noun("asg", f.vrb)} ${f.verb("beser", "present", 2)} ${f.determined} ${f.by} ${f.its} ${f.subject}`,
             "verb@beser~present",
@@ -1655,9 +1658,9 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `vocab@city`,
             `translate@${l.noun("asg", l.woman)} ${l.in} ${l.noun("asg",l.city, l.small)}`,
             `vocab@now`,
-            `sentence@${l.now} ${l.he} ${l.verb("beser", "present", 2)} ${l.noun("asgm", l.man)}`,
+            `sentence@${l.now} ${l.he} ${l.verb("beser", "present", 2)} ${l.noun("asg", l.man)}`,
             `sentence@${l.noun("thepl", l.woman)} ${l.verb("beser", "present", 5)} ${l.adjective(l.tall, "p", l.woman)}`,
-            `translate@${l.noun("thesg", l.man)} ${l.verb("beser", "present", 5)} ${l.adjective(l.small, "s", l.man)}`,
+            `translate@${l.noun("thesg", l.man)} ${l.verb("beser", "present", 2)} ${l.adjective(l.small, "s", l.man)}`,
         ],
         [ //to have
             `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", f.sustantive, f.feminine)} ${f.and} -i ${f.to} ${f.noun("thepl", f.sustantive, f.masculine)}`} ${f.para} ${f.noun("asg", f.sustantive, f.plu)} ${f.or} ${f.noun("asg", f.adj, f.plu)}`,
@@ -1719,7 +1722,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `vocab@no`,
             `sentence@${l.i} ${l.verb("want", "present", 0)} ${l.verb("eat", "infinitive", 0)} ${l.in} ${l.noun("the", l.house)} ${l.with} Gabriel`,
             `translate@${l.wem} ${l.verb("eat", "present", 3)}`,
-            `sentence@${l.they} ${l.negativeVerb(l.verb("want", "present", 5))} ${l.verb("eat", "infinitive", 5)} ${l.noun("thesg", l.banana)}`,
+            `sentence@${l.theym} ${l.negativeVerb(l.verb("want", "present", 5))} ${l.verb("eat", "infinitive", 5)} ${l.noun("thesg", l.banana)}`,
             `translate@${l.yes}, ${l.she} ${l.verb("want", "present", 2)} ${l.noun("thesg", l.house, l.blue)}`,
             `translate@${l.no}, ${l.i} ${l.negativeVerb(l.verb("want", "present", 2))} ${l.noun("thesg", l.house, l.blue)}`,
         ],
