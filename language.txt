@@ -1,3 +1,6 @@
+30 Sep 2021
+Fixing some glitches
+
 25 Sep 2021
 Yiddish is now in the Hebrew alphabet, Macedonian is now in the Cyrillic alphabet
 Now all buttons can be clicked, allowing phone users to take use the website without a keyboard

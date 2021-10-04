@@ -114,3 +114,6 @@ a{
 button:hover{
     cursor: pointer;
 }
+*{
+    font-weight: 700;
+}
