@@ -1,10 +1,10 @@
 body{
-    background-color: #002b36;
+    background-color: #418292;
 }
 h1, h2, h3, p{
     color: #eee8d5;
     /*font-family: 'Courier New';*/
-    font-family: 'IBM Plex Mono';
+    font-family: 'Rubik';
     font-weight: 100;
     text-align: center;
 }
@@ -17,7 +17,7 @@ p{
 #word{
     font-size: 98px;
     font-weight: 700;
-    color: #859900;
+    color: #F79A32;
 }
 #definition{
     font-size: 64px;
@@ -39,17 +39,17 @@ input{
     margin-left: 5%;
     height: 50px;
     font-size: 42px;
-    font-family: 'IBM Plex Mono';
+    font-family: 'Rubik';
     outline: 0;
-    background-color: #eee8d5;
+    background-color: #4C96A8;
     border: 0;
     border-radius: 10px;
 }
 input::placeholder{
-    color: #839496;
+    color: #FCAC51;
 }
 .angryinput::placeholder{
-    color: #b58900;
+    color: #F79A32;
 }
 #enter{
     width: 90%;
@@ -57,9 +57,9 @@ input::placeholder{
     margin-top: 3%;
     height: 50px;
     font-size: 42px;
-    font-family: 'IBM Plex Mono';
+    font-family: 'Rubik';
     outline: 0;
-    background-color: #cb4b16;
+    background-color: #F79A32;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
@@ -72,7 +72,7 @@ input::placeholder{
     margin: 5%;
     text-align: center;
     color: white;
-    font-family: 'IBM Plex Mono';
+    font-family: 'Rubik';
     font-size: 28px;
     display: none;
 }
@@ -86,30 +86,30 @@ tbody{
     width: 100%;
 }
 .selector button{
-    font-family: "IBM Plex Mono";
+    font-family: "Rubik";
     border: 0;
     outline: 0;
     border-radius: 5px;
     font-size: 30px;
     margin: 2px;
-    background-color: #fdf6e3;
+    background-color: #FCAC51;
     color: #002b36;
 }
 .selector{
     margin-bottom: 20px;
 }
 #en1, #es2{
-    background-color: #d33682;
+    background-color: #F14A68;
 }
 #en2{
     display: none;
 }
 #levelselector button:hover{
-    background-color: #d33682;
+    background-color: #F14A68;
 }
 a{
     color: #fdf6e3;
-    font-family: 'IBM Plex Mono';
+    font-family: 'Rubik';
 }
 button:hover{
     cursor: pointer;

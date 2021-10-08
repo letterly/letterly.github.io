@@ -1,5 +1,6 @@
-30 Sep 2021
-Fixing some glitches
+8 Oct 2021
+Fixed a large amount of glitches
+Changed the color scheme and font
 
 25 Sep 2021
 Yiddish is now in the Hebrew alphabet, Macedonian is now in the Cyrillic alphabet
