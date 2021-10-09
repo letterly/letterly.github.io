@@ -1,5 +1,6 @@
 8 Oct 2021
 Fixed a large amount of glitches
+Now can be used on phone lol
 Changed the color scheme and font
 
 25 Sep 2021

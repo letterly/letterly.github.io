@@ -3,10 +3,12 @@ body{
 }
 h1, h2, h3, p{
     color: #eee8d5;
-    /*font-family: 'Courier New';*/
     font-family: 'Rubik';
     font-weight: 100;
     text-align: center;
+}
+h1{
+    font-size: 42px;
 }
 p{
     font-size: 24px;
@@ -90,7 +92,7 @@ tbody{
     border: 0;
     outline: 0;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 42px;
     margin: 2px;
     background-color: #FCAC51;
     color: #002b36;

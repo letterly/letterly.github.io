@@ -149,7 +149,10 @@ languages = {
             else if(word.endsWith("x")) return word + "es"
             else return word + "s"
         },
-        adjective: function(word, type, naun){return languages["en"].word},
+        adjective: function(word, type, naun){
+            console.log(languages.en[word])
+            return languages.en[word]
+        },
         negativeVerb: function(verb, tense, person){return (verb == "be" ? languages.en.verb(verb, tense, person) + " not" : (person == 2 ? "does" : "do") + " not " + languages.en[verb].present[0])},
         noun: function(article, naun, adjective){
             noin = languages["en"][naun]
@@ -507,6 +510,7 @@ languages = {
             word = languages["pt"][word]
             if(word.endsWith("s")) return word
             else if(word.endsWith("al")) return word.slice(0, -1) + "is"
+            else if(word.endsWith("m")) return word.slice(0, -1) + "ns"
             else if(word.endsWith("ão")) return word.slice(0, -2) + "ões"
             else if("aeiou".includes(word.slice(-1))) return word + "s"
             else return word + "es"
@@ -1240,7 +1244,7 @@ languages = {
             present: ["menjo", "menges", "menja", "mengem", "mengeu", "mengen"]
         },
         //
-        contractions: {"a el": "al","de el": "del","per el": "pel"}, //incomplete
+        contractions: {"a el": "al","de el": "del","per el": "pel", "el h": "l'h"}, //incomplete
         //
         plural: function(word){
             word = languages.ct[word]
@@ -1666,6 +1670,7 @@ specialDefinition = {}
 
 function parse(txt, shprak){
     q = shprak ? languages[shprak] : l
+    txt = txt.replace("%", f[secondLanguage])
     txt = txt.replace(/\[/g, " [ ").replace(/\]/g, " ]").split(" ")
     for(ind = 0; ind < txt.length; ind++){
         t = txt[ind]
@@ -1719,7 +1724,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
         ],
         [ //plurals
             "vocab@park",
-            `text@${parse("in %%% #noun[thesg form] of #noun[asg vrb] #verb[beser present 2] determined by its subject", firstLanguage)}`,
+            `text@${parse("in % #noun[thesg form] of #noun[asg vrb] #verb[beser present 2] determined by its subject", firstLanguage)}`,
             "verb@beser~present",
             "vocab@small",
             "vocab@tall",
@@ -1730,7 +1735,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             (!l.definitiveSuffixes ? "vocab@theplm" : ""),
             `sentence@${parse("#noun[thepl woman]")}`,
             `translate@${parse("wem #verb[beser present 3] #noun[thepl man]")}`,
-            `text@#noun[thepl adj] #verb[have present 5] #noun[thesg gen] and #noun[thesg number] of #noun[thesg subject]`,
+            `text@${parse("#noun[thepl adj] #verb[have present 5] #noun[thesg gen] and #noun[thesg number] of #noun[thesg subject]")}`,
             `sentence@${parse("#noun[asg park small]")}`,
             `vocab@city`,
             `translate@${parse("#noun[asg woman] in #noun[asg city small]")}`,
@@ -1741,14 +1746,14 @@ function returnLesson(lNumber, pNumber, theLanguage){
         ],
         [ //to have
             `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", "sustantive", "feminine")} ${f.and} -i ${f.to} ${f.noun("thepl", "sustantive", "masculine")}`} ${f.para} ${f.noun("asg", "sustantive", "plu")} ${f.or} ${f.noun("asg", "adj", "plu")}`,
-            (secondLanguage == "it" ? "verb@beest~present" : ""),
+            //(secondLanguage == "it" ? "verb@beest~present" : ""),
             `sentence@${parse("#plural[man]")}`,
             "vocab@apple",
             `translate@${parse("plural[woman]")}`,
             "vocab@car",
             "verb@have~present",
             `sentence@${parse("she #verb[have present 2] #noun[asg car]")}`,
-            ((!["fr", "en", "yi", "mk"].includes(secondLanguage) && ["fr", "en", "mk", "yi"].includes(firstLanguage)) ? `text@${parse("#noun[thesg vrb] 'estar' #verb[beser present 2] #noun[asg vrb] that signifies #verb[beser infinitive] but #noun[thesg vrb] only #verb[beest present 2] used para #plural[location] and #plural[emotion]")}` : ""),
+            ((!["fr", "en", "yi", "mk"].includes(secondLanguage) && ["fr", "en", "mk", "yi"].includes(firstLanguage)) ? `text@${parse("#noun[thesg vrb] 'estar' #verb[beser present 2] #noun[asg vrb] that signifies #verb[beser infinitive] but #noun[thesg vrb] only #verb[beest present 2] used para #plural[location] and #plural[emotion]", firstLanguage)}` : ""),
             (secondLanguage != "fr" ? "verb@beest~present" : ""),
             `translate@${parse("#plural[apple]")}`,
             `translate@${parse("q whereq #verb[beest present 2] #noun[thesg car]")}`,
@@ -1859,9 +1864,7 @@ function render(){
         }
         else if(type == "text"){
             enter.textContent = `${f.click} ${f.parato} ${f.continue}`
-            verb.style.display = "none"
-            info.style.display = "none"
-            word.style.display = "none"
+            for(block of ["verb", "input", "info", "word"]) document.getElementById(block).style.display = "none"
             definition.textContent = content
         }
     }
