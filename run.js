@@ -119,7 +119,7 @@ function enter(){
     ans = input.value
     if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
     else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :) " : "Incorrect! :(")
-    else if(questiontype == "m") buttonmoral(Array.from(letter.textContent).map(x => (S.numerals.indexOf(x) % 10)).join("") == ans ? "Correct! :) " : "Incorrect! :(")
+    else if(questiontype == "m") buttonmoral(Array.from(letter.textContent).map(x => (Array.from(S.numerals).indexOf(x) % 10)).join("") == ans ? "Correct! :) " : "Incorrect! :(")
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
