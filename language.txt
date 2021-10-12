@@ -1,3 +1,7 @@
+11 Oct 2021
+Fixed assorted bugs
+Added a new language (Swedish)
+
 8 Oct 2021
 Fixed a large amount of glitches
 Now can be used on phone lol
