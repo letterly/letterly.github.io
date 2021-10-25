@@ -253,7 +253,7 @@ function render(){
 document.addEventListener('keydown', (e) => {if(e.code == "Enter") enterFunction()})
 
 function enterFunction(){
-    if(["vocab", "verbTable", "text"].includes(type) || input.value.includes(f.click)){
+    if(["vocab", "verb", "text"].includes(type) || input.value.includes(f.click)){
         input.value = ""
         partNumber++
         if(partNumber == lessons[lessonNumber].length){
