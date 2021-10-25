@@ -1,3 +1,8 @@
+24 Oct 2021
+Added a new language (Esperanto)
+Fixed a few glitches
+Website now shows plurals of vocabulary words
+
 11 Oct 2021
 Fixed assorted bugs
 Added a new language (Swedish)

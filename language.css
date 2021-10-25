@@ -68,7 +68,7 @@ input::placeholder{
     display: none;
     color: #eee8d5;
 }
-#verb{
+#verbTable{
     border: 1px solid white;
     width: 90%;
     margin: 5%;

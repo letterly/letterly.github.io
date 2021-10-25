@@ -7,6 +7,12 @@ naunlist = ["woman", "beer", "city", "man", "cat", "park", "apple", "banana", "c
 lessonNumber = 0
 partNumber = 0
 specialDefinition = {}
+function pronounToPerson(sub){
+    conv = {"i": 0, "yousginf": 1, "he": 2, "she": 2, "wem": 3, "wef": 3, "youplinf": 4, "theym": 5, "theyf": 5}
+    if(conv[sub] != undefined) return conv[sub]
+    else if(sub.includes("pl=")) return 5
+    else return 2
+}
 
 function parse(txt, shprak){
     q = shprak ? languages[shprak] : l
@@ -53,22 +59,24 @@ function returnLesson(lNumber, pNumber, theLanguage){
     lessons = [
         [ //Introduction
             "vocab@i",
+            //
+            //
             "vocab@man",
             "vocab@am",
             `sentence@${parse("i")}`,
             (!l.definitiveSuffixes ? "vocab@asgm" : ""),
             (secondLanguage == "sw" ? "vocab@asgc" : ""),
             (secondLanguage == "sw" ? "vocab@asgn" : ""),
-            `sentence@${parse("i #verb[beser present 0] #noun[asg man]")}`,
+            `sentence@${parse("#svo[i beser=present asg=man]")}`,
             "vocab@woman",
             (!l.definitiveSuffixes ? "vocab@asgf" : ""),
             `sentence@${parse("woman")}`,
-            `sentence@${parse("i #verb[beser present 0] #noun[asg woman]")}`,
+            `sentence@${parse("#svo[i beser=present asg=woman]")}`,
             "vocab@He",
             "vocab@is",
-            `sentence@${parse("he #verb[beser present 2] #noun[asg man]")}`,
+            `sentence@${parse("#svo[he beser=present asg=man]")}`,
             "vocab@she",
-            `translate@${parse("she #verb[beser present 2] #noun[asg woman]")}`,
+            `translate@${parse("#svo[she beser=present asg=woman]")}`,
             "vocab@and",
             "vocab@or",
             "vocab@yousg",
@@ -87,13 +95,13 @@ function returnLesson(lNumber, pNumber, theLanguage){
             (!l.definitiveSuffixes ? "vocab@theplf" : ""),
             (!l.definitiveSuffixes ? "vocab@theplm" : ""),
             `sentence@${parse("#noun[thepl woman]")}`,
-            `translate@${parse("wem #verb[beser present 3] #noun[thepl man]")}`,
-            `text@${parse("#noun[thepl adj] #verb[have present 5] #noun[thesg gen] and #noun[thesg number] of #noun[thesg subject]")}`,
+            `translate@${parse("#svo[wem beser=present thepl=man]")}`,
+            `text@${parse("#svo[thepl=adj have=present thesg=gen] and #noun[thesg number] of #noun[thesg subject]")}`,
             `sentence@${parse("#noun[asg park small]")}`,
             `vocab@city`,
             `translate@${parse("#noun[asg woman] in #noun[asg city small]")}`,
             `vocab@now`,
-            `sentence@${parse("now he #verb[beser present 2] #noun[asg man]")}`,
+            `sentence@${parse("now #svo[he beser=present asg=man]")}`,
             `sentence@${parse("#noun[thepl woman] #verb[beser present 5] #adjective[tall p woman]")}`,
             `translate@${parse("#noun[thesg man] #verb[beser present 2] #adjective[small s man]")}`,
         ],
@@ -105,7 +113,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${parse("#plural[woman]")}`,
             "vocab@car",
             "verb@have~present",
-            `sentence@${parse("she #verb[have present 2] #noun[asg car]")}`,
+            `sentence@${parse("#svo[she have=present asg=car]")}`,
             ((!["fr", "en", "yi", "mk"].includes(secondLanguage) && ["fr", "en", "mk", "yi"].includes(firstLanguage)) ? `text@${parse("#noun[thesg vrb] 'estar' #verb[beser present 2] #noun[asg vrb] that signifies #verb[beser infinitive] but #noun[thesg vrb] only #verb[beest present 2] used para #plural[location] and #plural[emotion]", firstLanguage)}` : ""),
             (!["fr", "sv", "en"].includes(secondLanguage) ? "verb@beest~present" : ""),
             `translate@${parse("#plural[apple]")}`,
@@ -124,7 +132,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `vocab@house`,
             `translate@${parse("bear")}`,
             `sentence@${parse("#noun[thesg man] #verb[beest present 2] in #noun[thesg park]")}`,
-            `sentence@${parse("wem #verb[have present 3] #noun[asg cat small] and he #verb[beest present 2] in #noun[thesg house]")}`,
+            `sentence@${parse("wem #verb[have present 3] #noun[asg cat small accusative] and he #verb[beest present 2] in #noun[thesg house]")}`,
         ],
         [ //Food/Colors 1
             `vocab@red`,
@@ -147,6 +155,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${parse("blue")}`,
         ],
         [ //Negative verbs
+            `translate@${parse("yes she #verb[want present 2] #noun[thesg house blue accusative]")}`,
             `verb@want~present`,
             `sentence@${parse("wem #verb[want present 3]")}`,
             `translate@${parse("she #verb[want present 2]")}`,
@@ -157,9 +166,9 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `vocab@no`,
             `sentence@${parse("i #verb[want present 0] #verb[eat infinitive 0] in #noun[thesg house] with Harris")}`,
             `translate@${parse("wem #verb[eat present 3]")}`,
-            `sentence@${parse("theym #negativeVerb[want present 5] #verb[eat infinitive 5] #noun[thesg banana green]")}`,
-            `translate@${parse("yes she #verb[want present 2] #noun[thesg house blue]")}`,
-            `translate@${parse("no i #negativeVerb[want present 0] #noun[thesg house blue]")}`,
+            `sentence@${parse("theym #negativeVerb[want present 5] #verb[eat infinitive 5] #noun[thesg banana green accusative]")}`,
+            `translate@${parse("yes she #verb[want present 2] #noun[thesg house blue accusative]")}`,
+            `translate@${parse("no i #negativeVerb[want present 0] #noun[thesg house blue accusative]")}`,
         ],
         [ //Food/Colors 2
             `verb@drink~present`,
@@ -181,6 +190,7 @@ function returnLesson(lNumber, pNumber, theLanguage){
 
 function render(){
     material = returnLesson(lessonNumber, partNumber, secondLanguage)
+    console.log(secondLanguage)
     if(material == ""){
         partNumber++
         render()
@@ -190,30 +200,37 @@ function render(){
         content = material.split("@")[1]
         if(type == "vocab"){
             for(block of ["word", "definition", "info", "enter"]) document.getElementById(block).style.display = "block"
-            for(block of ["input", "verb"]) document.getElementById(block).style.display = "none"
+            for(block of ["input", "verbTable"]) document.getElementById(block).style.display = "none"
             enter.textContent = `${f.click} ${f.parato} ${f.continue}`
             enter.style.backgroundColor = "#F79A32"
             word.textContent = languages[secondLanguage][content]
             definition.textContent = languages[firstLanguage][content]
             info.textContent = specialDefinition[content] ?? ""
-            if(naunlist.includes(content) && l.genderNum >= 2) info.textContent = `(${f[{"f": "feminine", "m": "masculine", "n": "neutral", "c": "common"}[l.gender(l[content])]]})`
+            if(naunlist.includes(content) && l.genderList.length >= 2) info.textContent = `(${f[{"f": "feminine", "m": "masculine", "n": "neutral", "c": "common"}[l.gender(l[content])]]})`
+            if(naunlist.includes(content)) info.innerHTML += "<br>" + f.plu + ": " + f.plural(content)
         }
         else if(type == "sentence" || type == "translate"){
+            console.log(firstLanguage)
+            console.log(secondLanguage)
+            console.log(input.style.textAlign)
+            if(type == "translate") input.style.textAlign = secondLanguage == "yi" ? "right" : "left"
+            else input.style.textAlign = firstLanguage == "yi" ? "right" : "left"
+            console.log(input.style.textAlign)
             for(block of ["word", "definition", "info", "enter", "input"]) document.getElementById(block).style.display = "block"
-            verb.style.display = "none"
+            verbTable.style.display = "none"
             input.value = ""
-            input.style.textAlign = "left"
+            //input.style.textAlign = "left"
             input.placeholder = `${f.write} ${f.here}`
             enter.style.backgroundColor = "#F79A32"
             enter.textContent = f.submit
-            verb.style.display = "none"
+            verbTable.style.display = "none"
             word.textContent = type == "sentence" ? content : returnLesson(lessonNumber, partNumber, firstLanguage).split("@")[1]
             definition.textContent = `${f.translate} ${f.to} ` + (type == "sentence" ? languages[firstLanguage][firstLanguage] : languages[firstLanguage][secondLanguage])
             info.textContent = ""
         }
         else if(type == "verb"){
             enter.textContent = `${f.click} ${f.parato} ${f.continue}`
-            for(block of ["enter", "verb"]) document.getElementById(block).style.display = "block"
+            for(block of ["enter", "verbTable"]) document.getElementById(block).style.display = "block"
             for(block of ["word", "definition", "info", "input"]) document.getElementById(block).style.display = "none"
             infinitivenative.textContent = l.verb(content.split("~")[0], "infinitive") + " [" + f[content.split("~")[1]] + "]"
             infinitiveenglish.textContent = `(${f.verb(content.split("~")[0], "infinitive")})`
@@ -227,7 +244,7 @@ function render(){
         else if(type == "text"){
             enter.textContent = `${f.click} ${f.parato} ${f.continue}`
             enter.style.display = "block"
-            for(block of ["verb", "input", "info", "word"]) document.getElementById(block).style.display = "none"
+            for(block of ["verbTable", "input", "info", "word"]) document.getElementById(block).style.display = "none"
             definition.textContent = content
         }
     }
@@ -236,7 +253,7 @@ function render(){
 document.addEventListener('keydown', (e) => {if(e.code == "Enter") enterFunction()})
 
 function enterFunction(){
-    if(["vocab", "verb", "text"].includes(type) || input.value.includes(f.click)){
+    if(["vocab", "verbTable", "text"].includes(type) || input.value.includes(f.click)){
         input.value = ""
         partNumber++
         if(partNumber == lessons[lessonNumber].length){
