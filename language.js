@@ -107,7 +107,6 @@ function returnLesson(lNumber, pNumber, theLanguage){
         ],
         [ //to have
             `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", "sustantive", "feminine")} ${f.and} -i ${f.to} ${f.noun("thepl", "sustantive", "masculine")}`} ${f.para} ${f.noun("asg", "sustantive", "plu")} ${f.or} ${f.noun("asg", "adj", "plu")}`,
-            //(secondLanguage == "it" ? "verb@beest~present" : ""),
             `sentence@${parse("#plural[man]")}`,
             "vocab@apple",
             `translate@${parse("#plural[woman]")}`,
@@ -190,7 +189,6 @@ function returnLesson(lNumber, pNumber, theLanguage){
 
 function render(){
     material = returnLesson(lessonNumber, partNumber, secondLanguage)
-    console.log(secondLanguage)
     if(material == ""){
         partNumber++
         render()
@@ -210,12 +208,8 @@ function render(){
             if(naunlist.includes(content)) info.innerHTML += "<br>" + f.plu + ": " + f.plural(content)
         }
         else if(type == "sentence" || type == "translate"){
-            console.log(firstLanguage)
-            console.log(secondLanguage)
-            console.log(input.style.textAlign)
             if(type == "translate") input.style.textAlign = secondLanguage == "yi" ? "right" : "left"
             else input.style.textAlign = firstLanguage == "yi" ? "right" : "left"
-            console.log(input.style.textAlign)
             for(block of ["word", "definition", "info", "enter", "input"]) document.getElementById(block).style.display = "block"
             verbTable.style.display = "none"
             input.value = ""
