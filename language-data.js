@@ -1113,16 +1113,17 @@ languages = {
             else return word + "s"
         },
         adjective: function(word, type, naun){
+            console.log(word, type, naun)
             word = languages["fr"][word]
             naun = languages["fr"][naun]
             type = type.replace("asg", "sg").replace("thesg", "sg").replace("apl", "pl").replace("thepl", "pl")
             if(naun != undefined) type = type + languages["fr"].gender(naun)
             if(word.endsWith("e")) return word
-            else return word + {"plf": "es", "sgf": "e", "plm": "s", "ms": ""}[type]
+            else return word + {"plf": "es", "sgf": "e", "plm": "s", "sm": ""}[type]
         },
         gender: function(naun){
             if(["homme", "verbe"].includes(naun)) return "m"
-            else if(naun.endsWith("e")) return "f"
+            else if(naun.endsWith("e") || naun.endsWith("n")) return "f"
             else return "m"
         },
         noun: function(article, naun, adjective){

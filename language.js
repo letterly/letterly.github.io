@@ -3,7 +3,7 @@ secondLanguage = "es"
 type = ""
 f = languages[firstLanguage]
 l = languages[secondLanguage]
-naunlist = ["woman", "beer", "city", "man", "cat", "park", "apple", "banana", "car", "dog", "bear", "cat", "sauce", "wine"]
+naunlist = ["woman", "beer", "city", "man", "cat", "park", "apple", "banana", "car", "dog", "bear", "cat", "sauce", "wine", "house"]
 lessonNumber = 0
 partNumber = 0
 specialDefinition = {}
@@ -205,7 +205,7 @@ function render(){
             definition.textContent = languages[firstLanguage][content]
             info.textContent = specialDefinition[content] ?? ""
             if(naunlist.includes(content) && l.genderList.length >= 2) info.textContent = `(${f[{"f": "feminine", "m": "masculine", "n": "neutral", "c": "common"}[l.gender(l[content])]]})`
-            if(naunlist.includes(content)) info.innerHTML += "<br>" + f.plu + ": " + f.plural(content)
+            if(naunlist.includes(content)) info.innerHTML += "<br>" + f.plu + ": " + l.plural(content)
         }
         else if(type == "sentence" || type == "translate"){
             if(type == "translate") input.style.textAlign = secondLanguage == "yi" ? "right" : "left"
