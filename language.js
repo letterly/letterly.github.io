@@ -106,7 +106,6 @@ function returnLesson(lNumber, pNumber, theLanguage){
             `translate@${parse("#noun[thesg man] #verb[beser present 2] #adjective[small s man]")}`,
         ],
         [ //to have
-            `text@${f.usually}, ${f.add} ${secondLanguage != "it" ? (secondLanguage != "yi" ? `'-s' ${f.or} '-es'` : `'-s' ${f.or} '-en'`) : `-e ${f.to} ${f.noun("thepl", "sustantive", "feminine")} ${f.and} -i ${f.to} ${f.noun("thepl", "sustantive", "masculine")}`} ${f.para} ${f.noun("asg", "sustantive", "plu")} ${f.or} ${f.noun("asg", "adj", "plu")}`,
             `sentence@${parse("#plural[man]")}`,
             "vocab@apple",
             `translate@${parse("#plural[woman]")}`,

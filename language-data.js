@@ -1114,10 +1114,10 @@ languages = {
         },
         adjective: function(word, type, naun){
             console.log(word, type, naun)
-            word = languages["fr"][word]
-            naun = languages["fr"][naun]
+            word = languages.fr[word]
+            naun = languages.fr[naun]
             type = type.replace("asg", "sg").replace("thesg", "sg").replace("apl", "pl").replace("thepl", "pl")
-            if(naun != undefined) type = type + languages["fr"].gender(naun)
+            if(naun != undefined) type = type + languages.fr.gender(naun)
             if(word.endsWith("e")) return word
             else return word + {"plf": "es", "sgf": "e", "plm": "s", "sm": ""}[type]
         },
@@ -1128,7 +1128,7 @@ languages = {
         },
         noun: function(article, naun, adjective){
             noin = languages.fr[naun]
-            if(adjective != undefined) return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages["fr"].plural(naun) : noin) + " " + languages["fr"].adjective(adjective, article, naun)
+            if(adjective != undefined) return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages.fr.plural(naun) : noin) + " " + languages["fr"].adjective(adjective, article, naun)
             else return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages["fr"].plural(naun) : noin)
         },
         verb: function(verb, tense, person){
