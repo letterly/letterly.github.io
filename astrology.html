@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="astrology.css">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>Astrologia</title>
+    </head>
+    <body>
+        <h1 id="header">astrologia</h1>
+        <div id="enterDIV">
+            <input id="year" placeholder="Enter Birth Year"></input>
+            <select id='month'>
+                <option selected value=''>Select Birth Month</option>
+                <option value='1'>January</option>
+                <option value='2'>February</option>
+                <option value='3'>March</option>
+                <option value='4'>April</option>
+                <option value='5'>May</option>
+                <option value='6'>June</option>
+                <option value='7'>July</option>
+                <option value='8'>August</option>
+                <option value='9'>September</option>
+                <option value='10'>October</option>
+                <option value='11'>November</option>
+                <option value='12'>December</option>
+            </select>
+            <input id="day" placeholder="Enter Birth Day"></input>
+        <button onclick="enter()">Enter</button>
+    </div>
+    <div id="resultDIV">
+        <div class="results">
+            <p class="head">Your Star Sign</p>
+            <p id="starSign" class="class">Libra ♎</p>
+            <p id="starSignInfo" class="descriptor"></p>
+        </div>
+        <div class="results">
+            <p class="head">Your Element</p>
+            <p id="element" class="class">Air</p>
+            <p id="elementInfo" class="descriptor"></p>
+            <p class="about">Elements reflect one's personality, needs, and desires.</p>
+        </div>
+        <div class="results">
+            <p class="head">Your Modality</p>
+            <p id="modality" class="class">Cardinal</p>
+            <p id="modalityInfo" class="descriptor">Libras are known for uhhh idk</p>
+            <p class="about">Modalities express one's behavior toward the world.</p>
+        </div>
+        <div class="results">
+            <p class="head">Your Polarity</p>
+            <p id="polarity" class="class">Positive</p>
+            <p class="about">Those with a positive sign tend to be more self-expressive and extroverted while those with a negative sign tend to be more introverted and receptive.</p>
+        </div>
+        <div class="results">
+            <p class="head">Most Compatible Sign</p>
+            <p id="compatibleInfo" class="descriptor">Libra ♎ is the most compatible sign with Virgo :)</p>
+        </div>
+    </div>
+    </body>
+    <script src="astrology.js"></script>
+</html>
