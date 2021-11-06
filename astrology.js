@@ -20,10 +20,16 @@ function enter(){
     myInfo.polarity = polarities[signs.indexOf(myInfo.sign) % 2]
     myInfo.bestSign = getSign(+theMonth + 1 % 12, theDay)
     myInfo.unixBirthTime = new Date(`${theYear}-${theMonth}-${theDay}`).getTime() / 1000
-    myInfo.unixBirthTimeWithHour = new Date(`${theYear}-${theMonth}-${theDay}T11:00:00`).getTime() / 1000
+    theHour = hour.value % 12
+    theMinute = minute.value
+    if(ampm.value == "PM") theHour+=12
+    if(theHour < 10) theHour = "0" + theHour
+    if(theMinute < 10) theMinute = "0" + theMinute
+    myInfo.time = `${theYear}-${theMonth}-${theDay}T${theHour}:${theMinute}`
+    myInfo.zonedTime = `${theHour + timezone.value}:${theMinute}`
+    myInfo.unixBirthTimeWithHour = new Date(`${myInfo.time}:00`).getTime() / 1000
     console.log(myInfo)
     //
-    console.log(theMonth)
     starSign.textContent = myInfo.sign + " " + signSymbols[+theMonth]
     starSignInfo.textContent = signDescriptors[theMonth]
     element.textContent = myInfo.element
@@ -31,7 +37,7 @@ function enter(){
     modality.textContent = myInfo.modality
     modalityInfo.textContent = "Keywords for this modality: " + modalityDescriptors[modalities.indexOf(myInfo.modality)]
     polarity.textContent = myInfo.polarity
-    compatibleInfo.textContent = myInfo.bestSign + " " + signSymbols[+theMonth + 1 % 12] + " " + "is the best sign for " + myInfo.sign + " " + signSymbols[theMonth] + " :)"
+    compatibleInfo.textContent = myInfo.bestSign + " " + signSymbols[+theMonth + 1 % 12] + " " + "is the best sign for " + myInfo.sign + " :)"
     if(myInfo.starSign == "Libra") compatibleInfo.textContent = "Virgo ♍︎ is the best sign for Libra :)"
     //
     enterDIV.style.display = "none"

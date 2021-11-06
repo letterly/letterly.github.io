@@ -4,6 +4,10 @@
 h1{
     color: white;
 }
+#time{
+    margin-left: 20%;
+    margin-top: 5%;
+}
 #header{
     text-align: center;
     font-size: 64px;
@@ -52,6 +56,14 @@ body {
         font-size: 42px;
         height: 50px;
     }
+    #hour, #minute, #ampm{
+        width: 25%;
+        margin: 0;
+    }
+    #time{
+        margin-left: 5%;
+        margin-top: 5%;
+    }
 }
 @media (max-device-width: 600px){
     input, select, button{
@@ -60,6 +72,14 @@ body {
         margin-right: 5%;
         font-size: 42px;
         height: 70px;
+    }
+    #hour, #minute, #ampm{
+        width: 25%;
+        margin: 0;
+    }
+    #time{
+        margin-left: 5%;
+        margin-top: 5%;
     }
 }
 
@@ -94,4 +114,9 @@ button:active{
 }
 .about{
     color: #1e1e1e;
+}
+
+#hour, #minute, #ampm{
+    width: 25%;
+    margin: 0;
 }
