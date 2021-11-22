@@ -73,9 +73,10 @@ function format(){
             break
         case "t":
             input.value = ""
-            sentence.textContent = `Transliterate this ${otherdata.length > 1 ? "word": "letter"} to ${otherdata.charCodeAt(0) > 1000 ? "Latin" : language.charAt(0).toUpperCase() + language.slice(1)}`
+            console.log(otherdata.charCodeAt(0))
+            sentence.textContent = `Transliterate this ${otherdata.length > 1 ? "word": "letter"} to ${otherdata.charCodeAt(0) > 800 ? "Latin" : language.charAt(0).toUpperCase() + language.slice(1)}`
             for(b of document.getElementsByClassName("key")) b.textContent = ""
-            if(otherdata.charCodeAt(0) > 1000){
+            if(otherdata.charCodeAt(0) > 800){
                 letter.innerHTML = fontWrap(otherdata)
                 for(ltr of "QWERTYUIOPASDFGHJKLZXCVBNM".split("")) document.getElementById("Key" + ltr).textContent = ltr.toLowerCase()
                 for(letr in L.latinKeyboard) document.getElementById("Digit" + (+letr + 1)).textContent = L.latinKeyboard[letr]
@@ -105,7 +106,7 @@ function buttonmoral(p){
     [multiplechoice.style.display, continuebutton.style.display] = ["none", ""]
     leanswer = ""
     if(p.startsWith("I")){
-        if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 1000) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
+        if(questiontype == "t") leanswer = (letter.textContent.charCodeAt(0) > 800) ? ` The answer is ${tlit(L.plan[lesson-1][exercise-1].split(":")[1])}. ` : ` The answer is ${fontWrap(detlit(L.plan[lesson-1][exercise-1].split(":")[1]))}. `
         else if(questiontype == "d") leanswer = ` The answer is ${fontWrap(L.plan[lesson-1][exercise-1].split(":")[1].split(">")[1])}. `
         else if(questiontype == "c") leanswer = ` The answer is ${fontWrap(letter.textContent.toLowerCase() != letter.textContent ? letter.textContent.toLowerCase() : letter.textContent.toUpperCase())}. `
         else if(questiontype == "m") leanswer = ` The answer is ${Array.from(letter.textContent).map(x => Array.from(S.numerals).indexOf(x) % 10).join("")}. `
@@ -117,7 +118,7 @@ function buttonmoral(p){
 function enter(){
     enterbutton.style.display = "none"
     ans = input.value
-    if(questiontype == "t") letter.textContent.charCodeAt(0) > 1000 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
+    if(questiontype == "t") letter.textContent.charCodeAt(0) > 800 ? buttonmoral(tlit(letter.textContent) == ans ? "Correct! :) " : "Incorrect! :(") : buttonmoral(tlit(ans) == letter.textContent ?  "Correct! :) " : "Incorrect! :(")
     else if(questiontype == "d") buttonmoral(ans.toLowerCase() == L.plan[lesson-1][exercise-1].split(">")[1].toLowerCase() ? "Correct! :) " : "Incorrect! :(")
     else if(questiontype == "m") buttonmoral(Array.from(letter.textContent).map(x => (Array.from(S.numerals).indexOf(x) % 10)).join("") == ans ? "Correct! :) " : "Incorrect! :(")
 }
@@ -161,7 +162,7 @@ function entertext(code){
         else if(enterbutton.style.display != "none") enter()
     }
     else if(code.startsWith("Shift")){
-        if(L.secondaryKeyboard != undefined && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 1000) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
+        if(L.secondaryKeyboard != undefined && keyboard.style.display != "none" && letter.textContent.charCodeAt(0) < 800) for(letr of Object.entries(L[keyboard.textContent.includes(Object.values(L.secondaryKeyboard)[0]) ? "nativeKeyboard": "secondaryKeyboard"])) document.getElementById(letr[0]).textContent = letr[1]
     }
     else input.value += document.getElementById(code).textContent
 }
