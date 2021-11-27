@@ -2252,8 +2252,8 @@ languages = {
             word = languages.nor[word]
             if(ge == "n") return word
             else{ //m|f
-                if("aeiou".includes(word.slice(0,-1))) return word.slice(0, -1) + "er"
-                else return word + "r"
+                if("aeiou".includes(word.slice(0,-1))) return word.slice(0, -1) + "r"
+                else return word + "er"
             }
         },
         adjective: function(word, type, naun){ 
