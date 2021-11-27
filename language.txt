@@ -1,3 +1,8 @@
+26 Nov 2021
+Added a new language (Norwegian [Bokmål])
+Fixed a small issue
+Two new lessons (now 7 in total)
+
 24 Oct 2021
 Added a new language (Esperanto)
 Fixed a few glitches

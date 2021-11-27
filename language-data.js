@@ -25,8 +25,6 @@ languages = {
         with: "with",
         park: "park",
         cat: "cat",
-        white: "white",
-        beer: "beer",
         man: "man",
         woman: "woman",
         howq: "how",
@@ -70,6 +68,8 @@ languages = {
         mk: "macedonian",
         sv: "swedish",
         eo: "esperanto",
+        nor: "norwegian",
+        ovd: "elfdalian",
         //text
         form: "form",
         vrb: "verb",
@@ -112,8 +112,46 @@ languages = {
         enter: "enter",
         continue: "continue",
         present: "present",
+        future: "future",
         language: "language",
         click: "click",
+        //LESSON 6
+        drink: {
+            infinitive: "to drink",
+            present: ["drink", "drink", "drinks", "drink", "drink", "drink"],
+        },
+        can: {
+            infinitive: "can", //?
+            present: ["can", "can", "can", "can", "can", "can"],
+        },
+        water: "water",
+        lemonade: "lemonade",
+        purple: "purple",
+        pink: "pink",
+        white: "white",
+        gray: "gray",
+        black: "black",
+        beer: "beer",
+        school: "school",
+        vodka: "vodka",
+        funny: "funny",
+        //
+        //LESSON 7
+        movie: "movie",
+        will: {
+            infinitive: "will",
+            present: ["will","will","will","will","will","will"],
+        },
+        see: {
+            infinitive: "see",
+            present: ["see", "see", "sees", "see", "see", "see"],
+        },
+        tomorrow: "tomorrow",
+        poland: "poland",
+        canada: "canada",
+        france: "france",
+        dialect: "dialect",
+        from: "from",
         //
         beest: {
             infinitive: "to be",
@@ -153,7 +191,6 @@ languages = {
         adjective: function(word, type, naun){
             return languages.en[word]
         },
-        negativeVerb: function(verb, tense, person){return (verb == "be" ? languages.en.verb(verb, tense, person) + " not" : (person == 2 ? "does" : "do") + " not " + languages.en[verb].present[0])},
         noun: function(article, naun, adjective){
             noin = languages.en[naun]
             adjective = languages.en[adjective]
@@ -164,8 +201,10 @@ languages = {
             else return "the" + d + languages.en.plural(naun)
         },
         verb: function(verb, tense, person){
+            if(typeof verb == "object") verb = verb[0]
             if(verb.startsWith("be")) verb = "be"
             if(tense == "infinitive") return "to " + verb
+            else if(tense == "future") return "will " + verb
             else{
                 if(verb == "be"){
                     if(person == 0) return "am"
@@ -173,6 +212,7 @@ languages = {
                     else return "are"
                 }
                 else if(verb == "have" && person == 2) return "has"
+                else if(verb == "will" && person == 2) return "will"
                 else if(verb.endsWith("o")) return verb + (person == 2 ? "es" : "")
                 else return verb + (person == 2 ? "s" : "")
             }
@@ -183,12 +223,25 @@ languages = {
             object = languages.en.noun(o.split("=")[0], o.split("=")[1])
             return `${subject} ${verb} ${object}`
         },
+        negativesvo: function(s, v, o){
+            subject = s.includes("=") ? languages.en.noun(o.split("=")[0], o.split("=")[1]) : languages.en[s]
+            if(v == "can") verb = "cannot"
+            else verb = languages.en.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
+            object = languages.en.noun(o.split("=")[0], o.split("=")[1])
+            if(v.startsWith("be")) return `${subject} ${verb} not ${object}`
+            else return `${subject} do${(["he", "she"].includes(s) || s.includes("sg")) ? "es": ""} not ${verb} ${object}`
+        },
+        negativeverb: function(verb, tense, person){
+            if(verb == "can") return "cannot"
+            else return (verb == "be" ? languages.en.verb(verb, tense, person) + " not" : (person == 2 ? "does" : "do") + " not " + languages.en[verb].present[0])
+        },
         //settings
         genderList: ["n"],
         definitiveSuffixes: false,
         writingSystem: "latin",
         specialLetters: [],
         direction: "ltr",
+        twoCopula: false,
     },
     es: {
         i: "yo",
@@ -216,10 +269,8 @@ languages = {
         with: "con",
         park: "parque",
         cat: "gato",
-        beer: "cerveza",
         man: "hombre",
         woman: "mujer",
-        white: "blanco",
         howq: "cómo",
         whereq: "dónde",
         and: "y",
@@ -261,6 +312,8 @@ languages = {
         mk: "macedonio",
         sv: "sueco",
         eo: "esperanto",
+        nor: "noruego",
+        ovd: "elfdaliano",
         //text
         form: "forma",
         vrb: "verbo",
@@ -303,8 +356,42 @@ languages = {
         enter: "entrar",
         continue: "continuar",
         present: "presente",
+        future: "futuro",
         language: "lenguaje",
         click: "haz click",
+        //LESSON 6
+        drink: {
+            infinitive: "beber",
+            present: ["bebo", "bebes", "bebe", "bebemos", "bebéis", "beben"],
+        },
+        can: {
+            infinitive: "poder",
+            present: ["puedo", "puedes", "puede", "podemos", "podéis", "pueden"],
+        },
+        water: "agua",
+        lemonade: "limonada",
+        purple: "púrpuro",
+        pink: "rosado",
+        white: "blanco",
+        gray: "gris",
+        black: "negro",
+        beer: "cerveza",
+        school: "escuela",
+        vodka: "vodka",
+        funny: "cómico",
+        //
+        //LESSON 7
+        movie: "película",
+        see: {
+            infinitive: "ver",
+            present: ["veo", "ves", "ve", "vemos", "véis", "ven"],
+        },
+        tomorrow: "mañana",
+        poland: "polonia",
+        canada: "canadá",
+        france: "francia",
+        dialect: "dialecto",
+        from: "de",
         //
         beser: {
             infinitive: "ser",
@@ -333,9 +420,9 @@ languages = {
             infinitive: "comer",
             present: ["como", "comes", "come", "comemos", "coméis", "comen"]
         },
-        contractions: {"de el": "del", "a el": "al"}, //complete
+        contractions: {"la a": "el a", "de el": "del", "a el": "al"}, //complete
         plural: function(word){  //complete
-            word = languages["es"][word]
+            word = languages.es[word]
             if(word.endsWith("s") || word.endsWith("x")) return word
             else if("aeiou".includes(word.slice(-1))) return word + "s"
             else if("ón".includes(word.slice(-1))) return word.replace("ó", "o") + "es"
@@ -352,21 +439,19 @@ languages = {
             else return word
         },
         gender: function(naun){
-            if("oel".includes(naun.slice(-1))) return "m"
-            else return "f"
+            return ("oel".includes(naun.slice(-1))) ? "m" : "f"
         },
         noun: function(article, naun, adjective){
-            noin = languages["es"][naun]
-            if(adjective != undefined){
-                return languages["es"][article + languages["es"].gender(noin)] + " " + (article.endsWith("pl") ? languages["es"].plural(naun) : noin) + " " + languages.es.adjective(adjective, article, naun)
-            } 
-            else return languages["es"][article + languages["es"].gender(noin)] + " " + (article.endsWith("pl") ? languages["es"].plural(naun) : noin)
+            noin = languages.es[naun]
+            if(adjective != undefined) return languages.es[article + languages.es.gender(noin)] + " " + (article.endsWith("pl") ? languages.es.plural(naun) : noin) + " " + languages.es.adjective(adjective, article, naun)
+            else return languages.es[article + languages.es.gender(noin)] + " " + (article.endsWith("pl") ? languages.es.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["es"][verb].infinitive
-            else return languages["es"][verb][tense][person]
+            if(tense == "infinitive") return languages.es[verb].infinitive
+            else if(tense == "future") return languages.es[verb].infinitive + ["é", "ás", "á", "emos", "éis", "án"][person]
+            else return languages.es[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `no ${languages.es.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `no ${languages.es.verb(verb, tense, person)}`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.es.noun(o.split("=")[0], o.split("=")[1]) : languages.es[s]
             verb = languages.es.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -379,7 +464,9 @@ languages = {
         writingSystem: "latin",
         specialLetters: ["á", "é", "í", "ñ", "ó", "ú", "ü", "¿"],
         direction: "ltr",
+        twoCopula: true,
     },
+
     pt: { 
         i: "eu",
         yousg: "tu",
@@ -406,10 +493,8 @@ languages = {
         with: "com",
         park: "parque",
         cat: "gato",
-        beer: "cerveja",
         man: "homem",
         woman: "mulher",
-        white: "branco",
         howq: "como",
         whereq: "onde",
         and: "e",
@@ -451,6 +536,8 @@ languages = {
         mk: "macedónio",
         sv: "sueco",
         eo: "esperanto",
+        nor: "norueguês",
+        ovd: "elfdaliano",
         //text
         form: "forma",
         vrb: "verbo",
@@ -493,8 +580,43 @@ languages = {
         enter: "entrar",
         continue: "continuar",
         present: "presente",
+        future: "futuro",
         language: "língua",
         click: "clique",
+        //LESSON 6
+        drink: {
+            infinitive: "beber",
+            present: ["bebo", "bebes", "bebe", "bebemos", "bebeis", "bebem"],
+        },
+        can: {
+            infinitive: "poder",
+            present: ["posso", "podes", "pode", "podemos", "podeis", "podem"],
+        },
+        water: "água",
+        lemonade: "limonada",
+        purple: "roxo",
+        pink: "vermelho",
+        white: "branco",
+        gray: "cinz",
+        black: "preto",
+        beer: "cerveja",
+        school: "escola",
+        vodka: "vodka",
+        funny: "engraçado",
+        //
+        //LESSON 7
+        movie: "filme",
+        see: {
+            infinitive: "ver",
+            present: ["vejo", "vês", "vê", "vemos", "vedes", "veem"],
+        },
+        tomorrow: "amanhã",
+        poland: "polônia",
+        canada: "canadá",
+        france: "frança",
+        dialect: "dialeto",
+        from: "de",
+        //
         //
         contractions: {"em o": "no","em a": "na","em os": "nos", "em as": "nas", "de o": "do", "de a": "da", "de os": "dos", "de as": "das"}, //incomplete
         beser: {
@@ -525,7 +647,7 @@ languages = {
             present: ["como", "comes", "come", "comemos", "comeis", "comem"]
         },
         plural: function(word){ 
-            word = languages["pt"][word]
+            word = languages.pt[word]
             if(word.endsWith("s")) return word
             else if(word.endsWith("al")) return word.slice(0, -1) + "is"
             else if(word.endsWith("m")) return word.slice(0, -1) + "ns"
@@ -534,13 +656,10 @@ languages = {
             else return word + "es"
         },
         adjective: function(word, type, naun){ 
-            word = languages["pt"][word]
-            naun = languages["pt"][naun]
-            if(naun != undefined) type = type + languages["pt"].gender(naun)
-            if(type.endsWith("plf")){
-                if(word.endsWith("o")) return word.slice(0, -1) + "as"
-                else return word + "as"
-            }
+            word = languages.pt[word]
+            naun = languages.pt[naun]
+            if(naun != undefined) type = type + languages.pt.gender(naun)
+            if(type.endsWith("plf")) return ((word.endsWith("o")) ? word.slice(0, -1) : word) + "as"
             else if(type.endsWith("sgf")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "a"
                 else return word + "a"
@@ -554,15 +673,16 @@ languages = {
             else return "f"
         },
         noun: function(article, naun, adjective){
-            noin = languages["pt"][naun]
-            if(adjective != undefined) return languages["pt"][article + languages["pt"].gender(noin)] + " " + (article.endsWith("pl") ? languages["pt"].plural(naun) : noin) + " " + languages["pt"].adjective(adjective, article, naun)
-            else return languages["pt"][article + languages["pt"].gender(noin)] + " " + (article.endsWith("pl") ? languages["pt"].plural(naun) : noin)
+            noin = languages.pt[naun]
+            if(adjective != undefined) return languages.pt[article + languages.pt.gender(noin)] + " " + (article.endsWith("pl") ? languages.pt.plural(naun) : noin) + " " + languages.pt.adjective(adjective, article, naun)
+            else return languages.pt[article + languages.pt.gender(noin)] + " " + (article.endsWith("pl") ? languages.pt.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["pt"][verb].infinitive
-            else return languages["pt"][verb][tense][person]
+            if(tense == "infinitive") return languages.pt[verb].infinitive
+            else if(tense == "future") return languages.pt[verb].infinitive + ["ei", "ás", "á", "emos", "eis", "ão"][person]
+            else return languages.pt[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `não ${languages.pt.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `não ${languages.pt.verb(verb, tense, person)}`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.pt.noun(o.split("=")[0], o.split("=")[1]) : languages.pt[s]
             verb = languages.pt.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -575,6 +695,7 @@ languages = {
         writingSystem: "latin",
         specialLetters: ["á", "â", "ã", "à", "ç", "é", "ê", "í", "ó", "ô", "õ", "ú"],
         direction: "ltr",
+        twoCopula: true,
     },
     gl: {
         i: "eu",
@@ -601,10 +722,8 @@ languages = {
         with: "con",
         park: "parque",
         cat: "gato",
-        beer: "cervexa",
         man: "home",
         woman: "muller",
-        white: "branco",
         howq: "como",
         whereq: "onde",
         and: "e",
@@ -646,6 +765,8 @@ languages = {
         mk: "macedonio",
         sv: "sueco",
         eo: "esperanto",
+        nor: "noruegués",
+        ovd: "elfdaliano",
         //text
         form: "forma",
         vrb: "verbo",
@@ -688,8 +809,43 @@ languages = {
         enter: "entrar",
         continue: "continuar",
         present: "presente",
+        future: "futuro",
         language: "linguaxe",
         click: "fai clic",
+        //LESSON 6
+        drink: {
+            infinitive: "beber",
+            present: ["bebo", "bebes", "bebe", "bebemos", "bebedes", "beben"],
+        },
+        can: {
+            infinitive: "poder",
+            present: ["podo", "podes", "pode", "podemos", "podedes", "poden"],
+        },
+        water: "auga",
+        lemonade: "limonada",
+        purple: "roxo",
+        pink: "rosado",
+        white: "branco",
+        gray: "gris",
+        black: "negro",
+        beer: "cervexa",
+        school: "escola",
+        vodka: "vodka",
+        funny: "divertido",
+        //
+        //LESSON 7
+        movie: "película",
+        see: {
+            infinitive: "ver",
+            present: ["vexo", "ves", "ve", "vemos", "vedes", "ven"],
+        },
+        tomorrow: "mañá",
+        poland: "polonia",
+        canada: "canadá",
+        france: "francia",
+        dialect: "dialecto",
+        from: "de",
+        //
         //verbs/contractions
         contractions: {"a o": "ao","a os": "aos","a a": "á", "a as": "ás", "de o": "do", "de a": "da", "de os": "dos", "de as": "das", "en o": "no", "en a": "na", "en os": "nos", "en as": "nas", "de un": "dun", "de unha": "dunha", "de unhas": "dunhas", "de uns": "duns", "por o": "polo", "por a": "pola", "por as": "polas", "por os": "polos"}, //incomplete
         beser: {
@@ -720,16 +876,16 @@ languages = {
             present: ["como", "comes", "come", "comemos", "comedes", "comen"]
         },
         plural: function(word){ 
-            word = languages["gl"][word]
+            word = languages.gl[word]
             if(word.endsWith("s")) return word
             else if("aeiou".includes(word.slice(-1))) return word + "s"
             else if(word.endsWith("al")) return word.slice(0, -1) + "is"
             else return word + "es"
         },
         adjective: function(word, type, naun){
-            word = languages["gl"][word]
-            naun = languages["gl"][naun]
-            if(naun != undefined) type = type + languages["gl"].gender(naun)
+            word = languages.gl[word]
+            naun = languages.gl[naun]
+            if(naun != undefined) type = type + languages.gl.gender(naun)
             if(type.endsWith("plf")){
                 if(word.endsWith("o")) return word.slice(0, -1) + "as"
                 else return word + "as"
@@ -741,20 +897,21 @@ languages = {
             else if(type.endsWith("plm")) return word + "s"
             else return word
         },
-        negativeVerb: function(verb, tense, person){return `non ${languages.gl.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `non ${languages.gl.verb(verb, tense, person)}`},
         gender: function(naun){
             if(naun.endsWith("dade")) return "f"
             else if("oen".includes(naun.slice(-1))) return "m"
             else return "f"
         },
         noun: function(article, naun, adjective){
-            noin = languages["gl"][naun]
-            if(adjective != undefined) return languages["gl"][article + languages["gl"].gender(noin)] + " " + (article.endsWith("pl") ? languages["gl"].plural(naun) : noin) + " " + languages["gl"].adjective(adjective, article)
-            else return languages["gl"][article + languages["gl"].gender(noin)] + " " + (article.endsWith("pl") ? languages["gl"].plural(naun) : noin)
+            noin = languages.gl[naun]
+            if(adjective != undefined) return languages.gl[article + languages.gl.gender(noin)] + " " + (article.endsWith("pl") ? languages.gl.plural(naun) : noin) + " " + languages.gl.adjective(adjective, article)
+            else return languages.gl[article + languages.gl.gender(noin)] + " " + (article.endsWith("pl") ? languages.gl.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["gl"][verb].infinitive
-            else return languages["gl"][verb][tense][person]
+            if(tense == "infinitive") return languages.gl[verb].infinitive
+            else if(tense == "future") return languages.gl[verb].infinitive + ["ei", "ás", "á", "emos", "edes", "án"][person]
+            else return languages.gl[verb][tense][person]
         },
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.gl.noun(o.split("=")[0], o.split("=")[1]) : languages.gl[s]
@@ -768,6 +925,7 @@ languages = {
         writingSystem: "latin",
         specialLetters: ["á", "é", "í", "ñ", "ó", "ú", "ü", "¿"],
         direction: "ltr",
+        twoCopula: true,
     },
     it: {
         i: "io",
@@ -794,10 +952,8 @@ languages = {
         with: "con",
         park: "parco",
         cat: "gatto",
-        beer: "birra",
         man: "uomo",
         woman: "donna",
-        white: "bianco",
         howq: "come",
         whereq: "dove",
         and: "e",
@@ -839,6 +995,8 @@ languages = {
         mk: "macedone",
         sv: "svedese",
         eo: "esperanto",
+        nor: "norvegese",
+        ovd: "elfdaliano",
         //text
         form: "forma",
         vrb: "verbo",
@@ -881,8 +1039,44 @@ languages = {
         enter: "entrare",
         continue: "continuare",
         present: "presente",
+        future: "futuro",
         language: "lingua",
         click: "clicca",
+        //LESSON 6
+        drink: {
+            infinitive: "bere",
+            present: ["bevo", "bevi", "beve", "beviamo", "bevete", "bevono"],
+        },
+        can: {
+            infinitive: "potere",
+            present: ["posso", "puoi", "può", "possiamo", "potete", "possono"],
+        },
+        water: "acqua",
+        lemonade: "limonata",
+        purple: "viola",
+        pink: "rosa",
+        white: "bianco",
+        gray: "grigio",
+        black: "nero",
+        beer: "birra",
+        school: "scuola",
+        vodka: "vodka",
+        funny: "divertente",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "vedere",
+            present: ["vedo", "vedi", "vede", "vediamo", "vedete", "vedono"],
+        },
+        tomorrow: "domani",
+        poland: "polonia",
+        canada: "canada",
+        france: "francia",
+        dialect: "dialetto",
+        from: "di",
+        //
+
         //
         beser: {
             infinitive: "essere",
@@ -913,15 +1107,15 @@ languages = {
         },
         contractions: {"il u": "l'u"}, //incomplete
         plural: function(word){ 
-            word = languages["it"][word]
+            word = languages.it[word]
             if(word.endsWith("o")) return word.slice(0, -1) + "i"
             else if(word == "uomo") return "uomini"
             else return word.slice(0, -1) + "e"
         },
         adjective: function(word, type, naun){ 
-            word = languages["it"][word]
-            naun = languages["it"][naun]
-            if(naun != undefined) type = type + languages["it"].gender(naun)
+            word = languages.it[word]
+            naun = languages.it[naun]
+            if(naun != undefined) type = type + languages.it.gender(naun)
             if(type.endsWith("plf")){
                 if(word.endsWith("e")) return word.slice(0, -1) + "i"
                 else return word.slice(0, -1) + "e"
@@ -941,15 +1135,16 @@ languages = {
             else return "f"
         },
         noun: function(article, naun, adjective){
-            noin = languages["it"][naun]
-            if(adjective != undefined) return languages["it"][article + languages["it"].gender(noin)] + " " + (article.endsWith("pl") ? languages["it"].plural(naun) : noin) + " " + languages["it"].adjective(adjective, article)
-            else return languages["it"][article + languages["it"].gender(noin)] + " " + (article.endsWith("pl") ? languages["it"].plural(naun) : noin)
+            noin = languages.it[naun]
+            if(adjective != undefined) return languages.it[article + languages.it.gender(noin)] + " " + (article.endsWith("pl") ? languages.it.plural(naun) : noin) + " " + languages.it.adjective(adjective, article)
+            else return languages.it[article + languages.it.gender(noin)] + " " + (article.endsWith("pl") ? languages.it.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
             if(tense == "infinitive") return languages.it[verb].infinitive
+            else if(tense == "future") return languages.it[verb].infinitive.substring(0, languages.it[verb].infinitive.length-3) + "r" + ["ò", "ai", "à", "emo", "ete", "anno"][person]
             else return languages.it[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `non ${languages.it.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `non ${languages.it.verb(verb, tense, person)}`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.it.noun(o.split("=")[0], o.split("=")[1]) : languages.it[s]
             verb = languages.it.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -962,6 +1157,7 @@ languages = {
         writingSystem: "latin",
         direction: "ltr",
         specialLetters: ["à","é","ì","ó","ò","ù"],
+        twoCopula: true,
     },
     fr: {
         i: "je",
@@ -988,10 +1184,8 @@ languages = {
         with: "avec",
         park: "parc",
         cat: "chat",
-        beer: "bière",
         man: "homme",
         woman: "femme",
-        white: "blanc",
         howq: "comment",
         whereq: "où",
         and: "et",
@@ -1033,6 +1227,8 @@ languages = {
         mk: "macedónien",
         sv: "suédois",
         eo: "esperanto",
+        nor: "norvégien",
+        ovd: "elfdalien",
         //text
         form: "forme",
         vrb: "verbe",
@@ -1074,9 +1270,43 @@ languages = {
         singular: "singulier",
         enter: "entrer",
         continue: "continuer",
+        future: "avenir",
         present: "instant",
         language: "langage",
         click: "cliquez",
+        //LESSON 6
+        drink: {
+            infinitive: "boire",
+            present: ["bois", "bois", "boit", "buvons", "buvez", "boivent"],
+        },
+        can: {
+            infinitive: "pouvoir",
+            present: ["peux", "peux", "peut", "peuvons", "peuvez", "peuvent"],
+        },
+        water: "eau",
+        lemonade: "limonade",
+        purple: "violet",
+        pink: "rose",
+        white: "blanc",
+        gray: "gris",
+        black: "noir",
+        beer: "bière",
+        school: "école",
+        vodka: "vodka",
+        funny: "drôle",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "voir",
+            present: ["vois", "vois", "voit", "voyons", "voyez", "voient"],
+        },
+        tomorrow: "demain",
+        poland: "pologne",
+        canada: "canada",
+        france: "france",
+        dialect: "dialecte",
+        from: "de",
         //
         beser: {
             infinitive: "être",
@@ -1113,7 +1343,6 @@ languages = {
             else return word + "s"
         },
         adjective: function(word, type, naun){
-            console.log(word, type, naun)
             word = languages.fr[word]
             naun = languages.fr[naun]
             type = type.replace("asg", "sg").replace("thesg", "sg").replace("apl", "pl").replace("thepl", "pl")
@@ -1128,13 +1357,14 @@ languages = {
         },
         noun: function(article, naun, adjective){
             noin = languages.fr[naun]
-            if(adjective != undefined) return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages.fr.plural(naun) : noin) + " " + languages["fr"].adjective(adjective, article, naun)
-            else return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages["fr"].plural(naun) : noin)
+            if(adjective != undefined) return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages.fr.plural(naun) : noin) + " " + languages.fr.adjective(adjective, article, naun)
+            else return languages.fr[article + languages.fr.gender(noin)] + " " + (article.endsWith("pl") ? languages.fr.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            return tense == "infinitive" ? languages.fr[verb].infinitive : languages.fr[verb][tense][person]
+            if(tense == "future") return languages.fr[verb].infinitive + ["ai", "as", "a", "ons", "ez", "ont"][person]
+            else return tense == "infinitive" ? languages.fr[verb].infinitive : languages.fr[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `ne ${languages.fr.verb(verb, tense, person)} pas`},
+        negativeverb: function(verb, tense, person){return `ne ${languages.fr.verb(verb, tense, person)} pas`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.fr.noun(o.split("=")[0], o.split("=")[1]) : languages.fr[s]
             verb = languages.fr.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -1147,6 +1377,7 @@ languages = {
         writingSystem: "latin",
         direction: "ltr",
         specialLetters: ["à","â","ç","é","è","ê","ë","î","ï","œ","ö","ù","ü"],
+        twoCopula: false,
     },
     ct: {
         i: "jo",
@@ -1173,10 +1404,8 @@ languages = {
         with: "amb",
         park: "parc",
         cat: "gat",
-        beer: "cervesa",
         man: "home",
         woman: "dona",
-        white: "blanc",
         howq: "com",
         whereq: "on",
         and: "i",
@@ -1218,6 +1447,8 @@ languages = {
         mk: "macedònic",
         sv: "suec",
         eo: "esperanto",
+        nor: "noruec",
+        ovd: "elfdalià",
         //text
         form: "forma",
         vrb: "verb",
@@ -1260,8 +1491,43 @@ languages = {
         enter: "entrar",
         continue: "continuar",
         present: "present",
+        future: "futur",
         language: "llengüe",
         click: "feu clic",
+        //LESSON 6
+        drink: {
+            infinitive: "beure",
+            present: ["bec", "beus", "beu", "bevem", "beveu", "beuen"],
+        },
+        can: {
+            infinitive: "poder",
+            present: ["puc", "pots", "pot", "podem", "podeu", "poden"],
+        },
+        water: "aigua",
+        lemonade: "llimonada",
+        purple: "morat",
+        pink: "rosa",
+        white: "blanc",
+        gray: "gris",
+        black: "negre",
+        beer: "cervesa",
+        school: "escola",
+        vodka: "vodka",
+        funny: "divertit",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "veure",
+            present: ["veig", "veus", "veu", "veiem", "veieu", "veuen"],
+        },
+        tomorrow: "demà",
+        poland: "polònia",
+        canada: "canadà",
+        france: "frança",
+        dialect: "dialecte",
+        from: "de",
+        //
         //
         beser: {
             infinitive: "ser",
@@ -1299,9 +1565,9 @@ languages = {
             else return `${word}s`
         },
         adjective: function(word, type, naun){ 
-            word = languages["ct"][word]
-            naun = languages["ct"][naun]
-            if(naun != undefined) type = type + languages["ct"].gender(naun)
+            word = languages.ct[word]
+            naun = languages.ct[naun]
+            if(naun != undefined) type = type + languages.ct.gender(naun)
             if(type.endsWith("plf")) return word + "es"
             else if(type.endsWith("sgf")) return word + "a"
             else if(type.endsWith("plm")) return word + "s"
@@ -1312,15 +1578,16 @@ languages = {
             else return "m"
         },
         noun: function(article, naun, adjective){
-            noin = languages["ct"][naun]
-            if(adjective != undefined) return languages["ct"][article + languages["ct"].gender(noin)] + " " + (article.endsWith("pl") ? languages["ct"].plural(naun) : noin) + " " + languages["ct"].adjective(adjective, article)
-            else return languages["ct"][article + languages["ct"].gender(noin)] + " " + (article.endsWith("pl") ? languages["ct"].plural(naun) : noin)
+            noin = languages.ct[naun]
+            if(adjective != undefined) return languages.ct[article + languages.ct.gender(noin)] + " " + (article.endsWith("pl") ? languages.ct.plural(naun) : noin) + " " + languages.ct.adjective(adjective, article)
+            else return languages.ct[article + languages.ct.gender(noin)] + " " + (article.endsWith("pl") ? languages.ct.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["ct"][verb].infinitive
-            else return languages["ct"][verb][tense][person]
+            if(tense == "infinitive") return languages.ct[verb].infinitive
+            else if(tense == "future") return languages.ct[verb].infinitive + ["é", "às", "à", "em", "eu", "an"][person]
+            else return languages.ct[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `no ${languages.ct.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `no ${languages.ct.verb(verb, tense, person)}`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.ct.noun(o.split("=")[0], o.split("=")[1]) : languages.ct[s]
             verb = languages.ct.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -1333,6 +1600,7 @@ languages = {
         writingSystem: "latin",
         direction: "ltr",
         specialLetters: ["à","ç","é","è","í","ï","ó","ò","ú","ü","¿"],
+        twoCopula: true,
     },
     yi: {
         i: "איך",
@@ -1360,12 +1628,10 @@ languages = {
         with: "מיט",
         park: "פאַרק",
         cat: "קאַץ",
-        beer: "ביר",
         man: "מאַן",
         woman: "פֿרוי",
-        white: "וײַס",
         howq: "ווי",
-        whereq: "וואו",
+        whereq: "וווּ‎",
         and: "אַון",
         or: "אָדער",
         q: "",
@@ -1405,6 +1671,8 @@ languages = {
         mk: "מאַקעדוניש",
         sv: "שוועדיש",
         eo: "עספעראַנטאָ",
+        nor: "נאָרוועגיש",
+        ovd: "עלפֿדאַליש",
         //text
         form: "פֿאָרעם",
         vrb: "ווערב",
@@ -1447,8 +1715,46 @@ languages = {
         enter: "ארײַן",
         continue: "פאָרזעצן",
         present: "קראַנט",
+        future: "צוקונפֿט",
         language: "שפראַך",
         click: "גיט",
+        //LESSON 6
+        drink: {
+            infinitive: "טרינקען",
+            present: ["טרינק", "טרינקסט", "טרינקט", "טרינקען", "טרינקט", "טרינקען"],
+        },
+        can: {
+            infinitive: "קענען", //?
+            present: ["קען", "קענסט", "קען", "קענען", "קענט", "קענען"],
+        },
+        water: "וואַסער",
+        lemonade: "לימענאַד",
+        purple: "לילאַ",
+        pink: "ראָזעווע",
+        white: "ווייַס",
+        gray: "גרוי",
+        black: "שוואַרץ",
+        beer: "ביר",
+        school: "שולע",
+        vodka: "מאַשקע",
+        funny: "מאָדנע",
+        //
+        //LESSON 7
+        movie: "פֿילם",
+        will: {
+            infinitive: "וועל",
+            present: ["וועל", "וועסט", "וועט", "וועלן", "וועט", "וועלן"],
+        },
+        see: {
+            infinitive: "זען",
+            present: ["זע", "זעסט", "זעט", "זעען", "זעט", "זעען"],
+        },
+        tomorrow: "מאָרגן",
+        poland: "פוילן",
+        canada: "קאַנאַדע",
+        france: "פֿראַנקרייַך",
+        dialect: "דיאַלעקט",
+        from: "פֿון",
         //
         beser: {
             infinitive: "זײַן",
@@ -1482,8 +1788,10 @@ languages = {
         //
         plural: function(word){
             word = languages.yi[word]
-            if("אָעואַ".includes(word.slice(-1))) return `${word}ס`
+            if("אָעואַר".includes(word.slice(-1))) return `${word}ס`
             else if(word == "מאַן") return "מענער‎"
+            else if(word.endsWith("ם")) return word.slice(0, -1) + "מען"
+            else if(word.endsWith("ד") || word.endsWith("ק")) return `${word}עס`
             else if(word.endsWith("י")) return `${word}ען`
             else if(word.endsWith("ך")) return word.slice(0, -1) + "כן"
             else return `${word}ן`
@@ -1492,22 +1800,25 @@ languages = {
             return languages.yi[word]
         },
         gender: function(naun){
-            yiddishFemale = ["ווערב", "פֿרוי"]
+            yiddishFemale = ["ווערב", "פֿרוי", "וואַסער", "לימענאַד", "שולע", "מאַשקע", "ביר", "פֿילם"]
             yiddishNeutral = ["הויז"]
             if(yiddishFemale.includes(naun)) return "f"
             else if(yiddishNeutral.includes(naun)) return "n"
             else return "m"
         },
         noun: function(article, naun, adjective){
-            noin = languages["yi"][naun]
-            if(adjective != undefined) return languages["yi"][article + languages["yi"].gender(noin)] + " " + languages["yi"].adjective(adjective, article) + " " + (article.endsWith("pl") ? languages["yi"].plural(naun) : noin)
-            else return languages["yi"][article + languages["yi"].gender(noin)] + " " + (article.endsWith("pl") ? languages["yi"].plural(naun) : noin)
+            noin = languages.yi[naun]
+            if(adjective != undefined) return languages.yi[article + languages.yi.gender(noin)] + " " + languages.yi.adjective(adjective, article) + " " + (article.endsWith("pl") ? languages.yi.plural(naun) : noin)
+            else return languages.yi[article + languages.yi.gender(noin)] + " " + (article.endsWith("pl") ? languages.yi.plural(naun) : noin)
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["yi"][verb].infinitive
-            else return languages["yi"][verb][tense][person]
+            if(tense == "infinitive") return languages.yi[verb].infinitive
+            if(tense == "future") return languages.yi.will.present[person] + " " + languages.yi[verb].infinitive
+            else return languages.yi[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `${languages.yi.verb(verb, tense, person)} נישט`},
+        negativeverb: function(verb, tense, person){
+            return `${languages.yi.verb(verb, tense, person)} נישט`
+        },
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.yi.noun(o.split("=")[0], o.split("=")[1]) : languages.yi[s]
             verb = languages.yi.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -1520,6 +1831,7 @@ languages = {
         writingSystem: "hebrew",
         direction: "rtl",
         specialLetters: [], //make a new keyboard lol
+        twoCopula: false,
     },
     sv: {
         i: "jag",
@@ -1533,10 +1845,10 @@ languages = {
         theym: "de",
         theyf: "de",
         in: "i",
-        thesgc: "det",
-        thesgn: "den",
-        theplm: "de", //
-        theplf: "de",
+        thesgc: "den",
+        thesgn: "det",
+        theplc: "de", //
+        thepln: "de",
         asgc: "en",
         asgn: "ett",
         aplm: "",
@@ -1546,10 +1858,8 @@ languages = {
         with: "med",
         park: "park",
         cat: "katt",
-        beer: "öl",
         man: "man",
         woman: "kvinna",
-        white: "vit",
         howq: "hur",
         whereq: "var",
         and: "och",
@@ -1591,6 +1901,8 @@ languages = {
         mk: "makedonska",
         sv: "svenska",
         eo: "esperanto",
+        nor: "norska",
+        ovd: "älvdalska",
         //text
         form: "form",
         vrb: "verb", //ett
@@ -1632,35 +1944,70 @@ languages = {
         singular: "singuljär",
         continue: "att fortsätta",
         present: "presens",
+        future: "framtida",
         language: "språk", //ett
         click: "klicka",
+        //LESSON 6
+        drink: {
+            infinitive: "dricka",
+            present: "dricker",
+        },
+        can: {
+            infinitive: "kunna",
+            present: "kan",
+        },
+        water: "vatten",
+        lemonade: "lemonad",
+        purple: "lila",
+        pink: "rosa",
+        white: "vit",
+        gray: "grå",
+        black: "svart",
+        beer: "öl",
+        school: "skol",
+        vodka: "vodka",
+        funny: "rolig",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "se",
+            present: "ser",
+        },
+        tomorrow: "i morgen",
+        poland: "polen",
+        canada: "kanada",
+        france: "frankrike",
+        dialect: "dialekt",
+        from: "från",
+        //
         //
         beser: {
-            infinitive: "att vara",
-            present: ["är", "är", "är", "är", "är", "är"],
+            infinitive: "vara",
+            present: "är",
         },
         beest: {
-            infinitive: "att vara",
-            present: ["är", "är", "är", "är", "är", "är"],
+            infinitive: "vara",
+            present: "är",
         },
         have: {
-            infinitive: "att ha",
-            present: ["har", "har", "har", "har", "har", "har"],
+            infinitive: "ha",
+            present: "har",
         },
         speak: {
-            infinitive: "att tala",
-            present: ["talar", "talar", "talar", "talar", "talar", "talar"],
+            infinitive: "tala",
+            present: "talar",
         },
         want: {
-            infinitive: "att vilja",
-            present: ["vill", "vill", "vill", "vill", "vill", "vill"],
+            infinitive: "vilja",
+            present: "vill",
         },
         learn: {
-            infinitive: "att lära",
+            infinitive: "lära",
         },
         eat: {
             infinitive: "äta",
-            present: ["äter", "äter", "äter", "äter", "äter", "äter"]
+            present: "äter",
         },
         //
         contractions: {}, //incomplete?
@@ -1678,13 +2025,13 @@ languages = {
             return languages.sv[word]
         },
         gender: function(naun){ //done
-            return ["äpple", "hus", "språk", "verb", "nummer", "ämne", "kön", "substantiv", "adjektiv"].includes(languages.sv[naun]) ? "n" : "c"
+            return ["äpple", "hus", "språk", "verb", "nummer", "ämne", "kjønn", "substantiv", "adjektiv", "vatten"].includes(languages.sv[naun]) ? "n" : "c"
         },
         noun: function(article, naun, adjective){ //done
-            noin = languages["sv"][naun]
+            noin = languages.sv[naun]
             g = languages.sv.gender(naun)
-            c = (article.endsWith("pl") ? languages["sv"].plural(naun) : noin)
-            if(adjective != undefined) c = `${languages.sv[adjective]} ${c}`
+            c = (article.endsWith("pl") ? languages.sv.plural(naun) : noin)
+            if(adjective != undefined) c = `${languages.sv[article + g]} ${languages.sv[adjective]} ${c}`
             if(article.startsWith("the")){
                 if(g == "c"){
                     if(article.endsWith("pl")) c += "na"
@@ -1699,10 +2046,11 @@ languages = {
             return c
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages["sv"][verb].infinitive
-            else return languages["sv"][verb][tense][person]
+            if(tense == "infinitive") return languages.sv[verb].infinitive
+            else if(tense == "future") return "ska " + languages.sv[verb].infinitive
+            else return languages.sv[verb][tense]
         },
-        negativeVerb: function(verb, tense, person){return `${languages.sv.verb(verb, tense, person)} inte`},
+        negativeverb: function(verb, tense, person){return `${languages.sv.verb(verb, tense, person)} inte`},
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.sv.noun(o.split("=")[0], o.split("=")[1]) : languages.sv[s]
             verb = languages.sv.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
@@ -1715,6 +2063,249 @@ languages = {
         writingSystem: "latin",
         direction: "ltr",
         specialLetters: ["å","ä","ö"],
+        twoCopula: false,
+    },
+    nor: {
+        i: "jeg",
+        yousg: "du",
+        //yousgfm: "ni",
+        he: "han",
+        she: "hun",
+        wem: "vi",
+        wef: "vi",
+        youplinf: "dere",
+        theym: "de",
+        theyf: "de",
+        in: "i",
+        thesgm: "den",
+        thesgf: "den",
+        thesgn: "det",
+        theplm: "de", //
+        theplf: "de",
+        thepln: "de",
+        asgc: "en",
+        asgn: "et",
+        aplm: "",
+        aplf: "",
+        am: "er",
+        is: "er",
+        with: "med",
+        park: "park", //m
+        cat: "katt", //m
+        man: "mann",
+        woman: "kvinne", //f
+        howq: "hvordan",
+        whereq: "hvor",
+        and: "og",
+        or: "eller",
+        q: "",
+        small: "liten",
+        tall: "høy",
+        city: "by",
+        now: "nå",
+        car: "bil",
+        apple: "eple", //ett
+        dog: "hund",
+        bear: "bjørn",
+        slow: "langsom",
+        fast: "fort",
+        house: "hus", //ett
+        red: "rød",
+        orange: "oransje",
+        yellow: "gul",
+        green: "grønn",
+        blue: "blå",
+        sauce: "saus",
+        banana: "banan",
+        wine: "vin",
+        color: "farge",
+        whatq: "hva",
+        favorite: "favoritt",
+        yes: "ja",
+        no: "nei",
+        //languages
+        en: "engelsk",
+        es: "spanska",
+        pt: "portugisisk",
+        it: "italiensk",
+        fr: "fransk",
+        gl: "galisisk",
+        ct: "katalansk",
+        yi: "jiddisch",
+        mk: "makedonsk",
+        sv: "svensk",
+        eo: "esperanto",
+        nor: "norsk",
+        ovd: "älvdalsk",
+        //text
+        form: "form",
+        vrb: "verb", //ett
+        of: "til",
+        determined: "bestemmes",
+        by: "av",
+        its: "",
+        subject: "emne", //ett
+        number: "nummer", //ett
+        gen: "kön", //ett
+        adj: "adjektiv", //ett
+        sustantive: "substantiv", //ett
+        feminine: "feminin",
+        masculine: "maskulin",
+        neutral: "neutral",
+        common: "felleskjønn",
+        plu: "plural",
+        that: "at",
+        signifies: "betyr",
+        but: "men",
+        only: "eneste",
+        used: "brukes",
+        location: "plassering",
+        emotion: "følelse",
+        para: "til",
+        parato: "til",
+        select: "velge",
+        level: "nivå",
+        introduction: "introduksjon",
+        food: "mat",
+        to: "for",
+        translate: "oversette",
+        correct: "korrekt",
+        incorrect: "uriktig",
+        please: "vennligst",
+        write: "skriv",
+        here: "her",
+        submit: "sende inn",
+        singular: "entall",
+        continue: "å fortsette",
+        present: "nåtid",
+        future: "framtid",
+        language: "språk", //ett
+        click: "klikk",
+        //LESSON 6
+        drink: {
+            infinitive: "drikke",
+            present: "drikker",
+        },
+        can: {
+            infinitive: "kunne",
+            present: "kan",
+        },
+        water: "vann", //et
+        lemonade: "limonade",
+        purple: "lilla",
+        pink: "rosa",
+        white: "hvit",
+        gray: "grå",
+        black: "svart",
+        beer: "øl",
+        school: "skole",
+        vodka: "vodka",
+        funny: "morsom",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "se",
+            present: "ser",
+        },
+        tomorrow: "i morgen",
+        poland: "polen",
+        canada: "kanada",
+        france: "frankrike",
+        dialect: "dialekt",
+        from: "fra",
+        //
+        //
+        beser: {
+            infinitive: "være",
+            present: "er",
+        },
+        beest: {
+            infinitive: "være",
+            present: "er",
+        },
+        have: {
+            infinitive: "ha",
+            present: "har",
+        },
+        speak: {
+            infinitive: "snakke",
+            present: "snakker",
+        },
+        want: {
+            infinitive: "ville",
+            present: "vil",
+        },
+        learn: {
+            infinitive: "lære",
+            present: "lærer"
+        },
+        eat: {
+            infinitive: "spise",
+            present: "spiser",
+        },
+        //
+        contractions: {}, //incomplete?
+        //
+        plural: function(word){ //done
+            ge = languages.nor.gender(word)
+            word = languages.nor[word]
+            if(ge == "n") return word
+            else{ //m|f
+                if("aeiou".includes(word.slice(0,-1))) return word.slice(0, -1) + "er"
+                else return word + "r"
+            }
+        },
+        adjective: function(word, type, naun){ 
+            return languages.nor[word]
+        },
+        gender: function(naun){ //done
+            if(["eple", "hus", "språk", "verb", "nummer", "emne", "kön", "substantiv", "adjektiv", "vann"].includes(languages.nor[naun])) return "n"
+            else if(["kvinne"].includes(languages.nor[naun])) return "f"
+            else return "m"
+        },
+        noun: function(article, naun, adjective){
+            noin = languages.nor[naun]
+            if("aeiou".includes(noin.slice(-1)) && article != "asg") noin = noin.slice(0, -1)
+            g = languages.nor.gender(naun)
+            c = article == "apl" ? languages.nor.plural(noin) : noin
+            if(adjective != undefined) c = `${languages.nor[article + g]} ${languages.nor[adjective]} ${c}`
+            if(article.startsWith("the")){
+                if(g == "m"){
+                    if(article.endsWith("pl")) c += "ene"
+                    else c += "en"
+                }
+                else if(g == "f"){
+                    if(article.endsWith("pl")) c += "ene"
+                    else c += "a"
+                }
+                else{ //neutral
+                    if(article.endsWith("pl")) c += "ene"
+                    else c += "et"
+                }
+            }
+            else if(article == ("asg")) c = (g == "c" ? "en " : "et ") + c
+            return c
+        },
+        verb: function(verb, tense, person){
+            if(tense == "infinitive") return languages.nor[verb].infinitive
+            else if(tense == "future") return "vil " + languages.nor[verb].infinitive
+            else return languages.nor[verb][tense]
+        },
+        negativeverb: function(verb, tense, person){return `${languages.nor.verb(verb, tense, person)} ikke`},
+        svo: function(s, v, o){
+            subject = s.includes("=") ? languages.nor.noun(o.split("=")[0], o.split("=")[1]) : languages.nor[s]
+            verb = languages.nor.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
+            object = languages.nor.noun(o.split("=")[0], o.split("=")[1])
+            return `${subject} ${verb} ${object}`
+        },
+        //settings
+        genderList: ["m", "f", "n"],
+        definitiveSuffixes: true,
+        writingSystem: "latin",
+        direction: "ltr",
+        specialLetters: ["å","æ","ø"],
+        twoCopula: false,
     },
     eo: {
         i: "mi",
@@ -1741,10 +2332,8 @@ languages = {
         with: "kun",
         park: "parko",
         cat: "kato",
-        beer: "biero",
         man: "viro",
         woman: "virino",
-        white: "blanka",
         howq: "kiel",
         whereq: "kie",
         and: "kaj",
@@ -1786,6 +2375,8 @@ languages = {
         mk: "makedona",
         sv: "sveda",
         eo: "esperanto",
+        nor: "norvega",
+        ovd: "elvedala",
         //text
         form: "formo",
         vrb: "verbo",
@@ -1827,48 +2418,70 @@ languages = {
         singular: "unuopa",
         continue: "daŭrigi",
         present: "prezenta",
+        future: "estonteco",
         language: "lingvo",
         click: "alklaku",
+        //LESSON 6
+        drink: {
+            stem: "trink",
+        },
+        can: {
+            stem: "pov",
+        },
+        water: "akvo",
+        lemonade: "limonado",
+        purple: "purpura",
+        pink: "rozkolora",
+        white: "blanka",
+        gray: "griza",
+        black: "nigra",
+        beer: "biero",
+        school: "lernejo",
+        vodka: "vodko",
+        funny: "amuza",
+        //
+        //LESSON 7
+        movie: "filmo",
+        see: {
+            stem: "vid",
+        },
+        tomorrow: "morgaŭ",
+        poland: "pollando",
+        canada: "kanado",
+        france: "francio",
+        dialect: "dialekto",
+        from: "el",
+        //
         //
         beser: {
-            infinitive: "esti",
-            present: ["estas", "estas", "estas", "estas", "estas", "estas"],
+            stem: "est",
         },
         beest: {
-            infinitive: "esti",
-            present: ["estas", "estas", "estas", "estas", "estas", "estas"],
+            stem: "est",
         },
         have: {
-            infinitive: "havi",
-            present: ["havas", "havas", "havas", "havas", "havas", "havas"],
+            stem: "hav",
         },
         speak: {
-            infinitive: "paroli",
-            present: ["parolas", "parolas", "parolas", "parolas", "parolas", "parolas"],
+            stem: "parol",
         },
         want: {
-            infinitive: "voli",
-            present: ["volas", "volas", "volas", "volas", "volas", "volas"],
+            stem: "vol",
         },
         learn: {
-            infinitive: "lerni",
+            stem: "lern",
         },
         eat: {
-            infinitive: "manĝi",
-            present: ["manĝas", "manĝas", "manĝas", "manĝas", "manĝas", "manĝas"]
+            stem: "manĝ",
         },
         //
         contractions: {}, //incomplete?
         //
         plural: function(word){ //done
-            word = languages.eo[word]
-            return word + "j"
+            return languages.eo[word] + "j"
         },
         adjective: function(word, type, naun){ 
             return type == "p" ? (languages.eo[word] + "j") : languages.eo[word]
-        },
-        gender: function(naun){ //done
-            return "n"
         },
         noun: function(article, naun, adjective, gCase){ //done
             c = languages.eo[naun]
@@ -1878,22 +2491,22 @@ languages = {
             return (gCase != undefined && gCase == "accusative") ? c + "n" : c
         },
         verb: function(verb, tense, person){
-            if(tense == "infinitive") return languages.eo[verb].infinitive
-            else return languages.eo[verb][tense][person]
+            return languages.eo[verb].stem + {"infinitive": "i", "future": "os", "present": "as"}[tense]
         },
-        negativeVerb: function(verb, tense, person){return `ne ${languages.eo.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `ne ${languages.eo.verb(verb, tense, person)}`},
         //settings
         svo: function(s, v, o){
             subject = s.includes("=") ? languages.eo.noun(o.split("=")[0], o.split("=")[1]) : languages.eo[s]
             verb = languages.eo.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
             object = languages.eo.noun(o.split("=")[0], o.split("=")[1])
-            return `${subject} ${verb} ${object}${verb.startsWith("be") ? "" : "n"}`
+            return `${subject} ${verb} ${object}${v.startsWith("be") ? "" : "n"}`
         },
         genderList: ["n"],
         definitiveSuffixes: false,
         writingSystem: "latin",
         direction: "ltr",
         specialLetters: ["ĉ","ĝ","ĥ","ĵ","ŝ","ŭ"],
+        twoCopula: false,
     },
     mk: {
         i: "јас",
@@ -1920,10 +2533,8 @@ languages = {
         with: "со",
         park: "парк",
         cat: "мачка",
-        beer: "пиво",
         man: "маж",
         woman: "жена",
-        white: "бел",
         howq: "како",
         whereq: "каде",
         and: "и",
@@ -1965,6 +2576,8 @@ languages = {
         mk: "македонски",
         sv: "шведски",
         eo: "есперанто",
+        nor: "норвешки",
+        ovd: "елвдалски",
         //text
         form: "форма",
         vrb: "глагол",
@@ -2007,9 +2620,45 @@ languages = {
         enter: "внесете",
         continue: "да продолжите",
         present: "сегашноста",
+        future: "иднина",
         language: "језик",
         click: "кликнете",
+        //LESSON 6
+        drink: {
+            infinitive: "пие",
+            present: ["пијам", "пиеш", "пие", "пиеме", "пиете", "пијат"],
+        },
+        can: {
+            infinitive: "може",
+            present: ["можам", "можеш", "може", "можеме", "можете", "можат"],
+        },
+        water: "вода",
+        lemonade: "лимонада",
+        purple: "пурпурен",
+        pink: "розов",
+        white: "бел",
+        gray: "сив",
+        black: "црн",
+        beer: "пиво",
+        school: "училиште",
+        vodka: "вотка",
+        funny: "смешен",
         //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "гледа",
+            present: ["гледам", "гледаш", "гледа", "гледаме", "гледате", "гледаат"],
+        },
+        tomorrow: "утре",
+        poland: "полска",
+        canada: "канада",
+        france: "франција",
+        dialect: "дијалект",
+        from: "од",
+        //
+        //
+        
         beser: {
             infinitive: ["бидам", "бидеш", "биде", "бидеме", "бидете", "бидат"],
             present: ["сум", "си", "е", "сме", "сте", "се"],
@@ -2058,7 +2707,7 @@ languages = {
             else return "m"
         },
         noun: function(article, naun, adjective){ //done
-            noin = languages["mk"][naun]
+            noin = languages.mk[naun]
             if(article.startsWith("the")){
                 if(article.endsWith("pl")){
                     if(languages.mk.gender(noin) == "m") noin += "те"
@@ -2082,15 +2731,18 @@ languages = {
             if(tense == "infinitive"){
                 if(!person) return "да " + languages.mk[verb].present[2]
                 else if(verb.startsWith("be")) return "да " + languages.mk.beser.infinitive[person]
-                else return "да " + languages["mk"][verb].present[person]
-            }    
-            else return languages["mk"][verb][tense][person]
+                else return "да " + languages.mk[verb].present[person]
+            } 
+            else if(tense == "future") return "ќе " + languages.mk[verb].present[person]
+            else return languages.mk[verb][tense][person]
         },
-        negativeVerb: function(verb, tense, person){return `не ${languages.mk.verb(verb, tense, person)}`},
+        negativeverb: function(verb, tense, person){return `не ${languages.mk.verb(verb, tense, person)}`},
         //settings
         genderList: ["f", "m", "n"],
         definitiveSuffixes: true,
         writingSystem: "cyrillic",
         direction: "ltr",
+        specialLetters: [], //needs whole keyboard
+        twoCopula: false,
     },
 }
