@@ -2015,8 +2015,8 @@ languages = {
         plural: function(word){ //done
             ge = languages.sv.gender(word)
             word = languages.sv[word]
-            if(ge == "c" && word.endsWith("a")) return word.slice(0, -1) + "or"
-            else if(ge == "c" && "eiou".includes(word.slice(0,-1))) return word.slice(0,1) + "r"
+            if(ge == "c" && word.endsWith("a")) return word + "or"
+            else if(ge == "c" && "eiou".includes(word.slice(0,-1))) return word + "r"
             else if(ge == "c") return word + "ar"
             else if(ge == "n" && "aeiou".includes(word.slice(0,-1))) return word + "t"
             else return word 
@@ -2064,6 +2064,245 @@ languages = {
         direction: "ltr",
         specialLetters: ["å","ä","ö"],
         twoCopula: false,
+        nordic: true,
+    },
+    ovd: {
+        //Lesson 1
+        i: "ig",
+        yousg: "du",
+        and: "och",
+        //yousgfm: "ni",
+        he: "an",
+        she: "ą̊",
+        wem: "vi",
+        wef: "vi",
+        youplinf: "ni",
+        theym: "de",
+        theyf: "de",
+        in: "i",
+        //thesgc: "den",
+        //thesgn: "det",
+        //theplc: "de", //
+        //thepln: "de",
+        asgf: "įe",
+        asgm: "ien",
+        asgn: "iet",
+                //
+        aplm: "",
+        aplf: "",
+        apln: "",
+        am: "ir",
+        is: "ir",
+        man: "mannfuok",
+        with: "min",
+        park: "park",
+        cat: "katt",
+        woman: "kwinnfuok",
+        howq: "hur",
+        whereq: "var",
+        or: "eld",
+        q: "",
+        small: "små",
+        tall: "lång",
+        city: "stad",
+        now: "nu",
+        car: "bil",
+        apple: "äpple", //ett
+        dog: "hund",
+        bear: "björn",
+        slow: "långsam",
+        fast: "snabb",
+        house: "hus", //ett
+        red: "röd",
+        green: "grön",
+        blue: "blå",
+        yellow: "gul",
+        orange: "orange",
+        sauce: "sås",
+        banana: "banan",
+        wine: "vin",
+        color: "färg",
+        whatq: "vad",
+        favorite: "favorit",
+        yes: "ja",
+        no: "nej",
+        //languages
+        en: "engelska",
+        es: "spanska",
+        pt: "portugisiska",
+        it: "italienska",
+        fr: "franska",
+        gl: "galiciska",
+        ct: "katalanska",
+        yi: "jiddisch",
+        mk: "makedonska",
+        sv: "svenska",
+        eo: "esperanto",
+        nor: "norska",
+        ovd: "älvdalska",
+        //text
+        form: "form",
+        vrb: "verb", //ett
+        of: "av",
+        determined: "bestäms",
+        by: "av",
+        its: "dess",
+        subject: "ämne", //ett
+        number: "nummer", //ett
+        gen: "kön", //ett
+        adj: "adjektiv", //ett
+        sustantive: "substantiv", //ett
+        feminine: "feminin",
+        masculine: "maskulin",
+        neutral: "neutral",
+        common: "utrum",
+        plu: "plural",
+        that: "som",
+        signifies: "betyder",
+        but: "men",
+        only: "endast",
+        used: "används",
+        location: "plats",
+        emotion: "känslor",
+        para: "för",
+        parato: "för",
+        select: "välj",
+        level: "nivå",
+        introduction: "introduktion",
+        food: "mat",
+        to: "till",
+        translate: "översätta",
+        correct: "korrekt",
+        incorrect: "inkorrekt",
+        please: "snälla",
+        write: "skriv",
+        here: "här",
+        submit: "skicka in",
+        singular: "singuljär",
+        continue: "att fortsätta",
+        present: "presens",
+        future: "framtida",
+        language: "språk", //ett
+        click: "klicka",
+        //LESSON 6
+        drink: {
+            infinitive: "dricka",
+            present: "dricker",
+        },
+        can: {
+            infinitive: "kunna",
+            present: "kan",
+        },
+        water: "vatten",
+        lemonade: "lemonad",
+        purple: "lila",
+        pink: "rosa",
+        white: "vit",
+        gray: "grå",
+        black: "svart",
+        beer: "öl",
+        school: "skol",
+        vodka: "vodka",
+        funny: "rolig",
+        //
+        //LESSON 7
+        movie: "film",
+        see: {
+            infinitive: "se",
+            present: "ser",
+        },
+        tomorrow: "i morgen",
+        poland: "polen",
+        canada: "kanada",
+        france: "frankrike",
+        dialect: "dialekt",
+        from: "från",
+        //
+        //
+        beser: {
+            infinitive: "wårå",
+            present: ["ir", "ir", "ir", "irum", "irið", "irå"],
+        },
+        beest: {
+            infinitive: "wårå",
+            present: ["ir", "ir", "ir", "irum", "irið", "irå"],
+        },
+        have: {
+            infinitive: "ha",
+            present: "har",
+        },
+        speak: {
+            infinitive: "tala",
+            present: "talar",
+        },
+        want: {
+            infinitive: "vilja",
+            present: "vill",
+        },
+        learn: {
+            infinitive: "lära",
+        },
+        eat: {
+            infinitive: "äta",
+            present: "äter",
+        },
+        //
+        contractions: {}, //incomplete?
+        //
+        plural: function(word){ //done
+            ge = languages.ovd.gender(word)
+            word = languages.ovd[word]
+            if(ge == "m") return word + "er"
+            else if(g == "f") return "aeiou".includes(word.slice(-1)) ? (word.slice(0, -1)) : word + "ur"
+            else return word 
+        },
+        adjective: function(word, type, naun){ 
+            return languages.ovd[word]
+        },
+        gender: function(naun){ //done
+            if(["mannfuok"].includes(languages.ovd[naun])) return "m"
+            else if(["kwinnfuok"].includes(languages.ovd[naun])) return "f"
+            else return "n"
+
+        },
+        noun: function(article, naun, adjective){ //done
+            noin = languages.ovd[naun]
+            g = languages.ovd.gender(naun)
+            c = (article.endsWith("pl") ? languages.ovd.plural(naun) : noin)
+            if(adjective != undefined) c = `${languages.ovd[article + g]} ${languages.ovd[adjective]} ${c}`
+            if(article.startsWith("the")){
+                if(g == "c"){
+                    if(article.endsWith("pl")) c += "na"
+                    else c += "aeiou".includes(noin.slice(-1)) ? "n" : "en"
+                }
+                else{ //neutral
+                    if(article.endsWith("pl")) c += "aeiou".includes(noin.slice(-1)) ? "a" : "en"
+                    else c += "aeiou".includes(noin.slice(-1)) ? "t" : "et"
+                }
+            }
+            else if(article == "asg") c = languages.ovd["asg" + g] + " " + c
+            return c
+        },
+        verb: function(verb, tense, person){
+            if(tense == "infinitive") return languages.ovd[verb].infinitive
+            else if(tense == "future") return "ska " + languages.ovd[verb].infinitive
+            else return languages.ovd[verb][tense][person]
+        },
+        negativeverb: function(verb, tense, person){return `${languages.ovd.verb(verb, tense, person)} inte`},
+        svo: function(s, v, o){
+            subject = s.includes("=") ? languages.ovd.noun(o.split("=")[0], o.split("=")[1]) : languages.ovd[s]
+            verb = languages.ovd.verb(v.split("=")[0], v.split("=")[1], pronounToPerson(s))
+            object = languages.ovd.noun(o.split("=")[0], o.split("=")[1])
+            return `${subject} ${verb} ${object}`
+        },
+        //settings
+        genderList: ["n", "m", "f"],
+        definitiveSuffixes: true,
+        writingSystem: "latin",
+        direction: "ltr",
+        specialLetters: ["ą", "å", "ą̊", "ä", "ð", "ę", "ö", "ų", "y̨"],
+        twoCopula: false,
+        nordic: true,
     },
     nor: {
         i: "jeg",
@@ -2252,7 +2491,9 @@ languages = {
             word = languages.nor[word]
             if(ge == "n") return word
             else{ //m|f
-                if("aeiou".includes(word.slice(0,-1))) return word.slice(0, -1) + "r"
+                console.log(word)
+                console.log(word.slice(-1))
+                if("aeiou".includes(word.slice(-1))) return word + "r"
                 else return word + "er"
             }
         },
@@ -2260,8 +2501,9 @@ languages = {
             return languages.nor[word]
         },
         gender: function(naun){ //done
-            if(["eple", "hus", "språk", "verb", "nummer", "emne", "kön", "substantiv", "adjektiv", "vann"].includes(languages.nor[naun])) return "n"
-            else if(["kvinne"].includes(languages.nor[naun])) return "f"
+            console.log(naun)
+            if(["eple", "hus", "språk", "verb", "nummer", "emne", "kön", "substantiv", "adjektiv", "vann"].includes(naun)) return "n"
+            else if(["kvinne"].includes(naun)) return "f"
             else return "m"
         },
         noun: function(article, naun, adjective){
@@ -2306,6 +2548,7 @@ languages = {
         direction: "ltr",
         specialLetters: ["å","æ","ø"],
         twoCopula: false,
+        nordic: true,
     },
     eo: {
         i: "mi",

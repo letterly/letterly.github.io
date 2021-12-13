@@ -11,18 +11,18 @@ specialDefinition = {
     asgf: `singular and feminine`,
     asgn: `singular and neutral`,
     asgc: `singular and common`,
-    aplm: `plural and masculine`,
-    aplf: `plural and feminine`,
-    apln: `plural and neutral`,
-    aplc: `plural and common`,
+    aplm: `plu and masculine`,
+    aplf: `plu and feminine`,
+    apln: `plu and neutral`,
+    aplc: `plu and common`,
     thesgm: `singular and masculine`,
     thesgf: `singular and feminine`,
     thesgn: `singular and neutral`,
     thesgc: `singular and common`,
-    theplm: `plural and masculine`,
-    theplf: `plural and feminine`,
-    thepln: `plural and neutral`,
-    theplc: `plural and common`,
+    theplm: `plu and masculine`,
+    theplf: `plu and feminine`,
+    thepln: `plu and neutral`,
+    theplc: `plu and common`,
 }
 function pronounToPerson(sub){
     conv = {"i": 0, "yousginf": 1, "he": 2, "she": 2, "wem": 3, "wef": 3, "youplinf": 4, "theym": 5, "theyf": 5}
@@ -49,179 +49,173 @@ function parse(txt, shprak){
 }
 
 
-function returnLesson(lNumber, pNumber, theLanguage){
-    l = languages[theLanguage]
-    f = languages[firstLanguage]
-    lessons = [
-        [ //Introduction
-            "vocab@i",
-            "vocab@man",
-            "vocab@am",
-            `sentence@i`,
-            "vocab@asgm", //l == "sv" 0-4
-            "vocab@asgc", //l != "sv" 0-5
-            "vocab@asgn", //l != "sv" 0-6
-            `sentence@#svo[i beser=present asg=man]`,
-            "vocab@woman",
-            "vocab@asgf", //l == "sv" 0-9
-            `sentence@woman`,
-            `sentence@#svo[i beser=present asg=woman]`,
-            "vocab@He",
-            "vocab@is",
-            `sentence@#svo[he beser=present asg=man]`,
-            "vocab@she",
-            `translate@#svo[she beser=present asg=woman]`,
-            "vocab@and",
-            "vocab@or",
-            "vocab@yousg",
-            `translate@#noun[asg woman] and #noun[asg man]`,
-            `sentence@yousg or i`,
-        ],
-        [ //plurals
-            "vocab@park",
-            `text@in % #noun[thesg form] of #noun[asg vrb] #verb[beser present 2] determined by its subject`,
-            "verb@beser~present",
-            "vocab@small",
-            "vocab@tall",
-            "vocab@thesgm", //l.definitiveSuffixes 1-5
-            "vocab@thesgf", //l.definitiveSuffixes 1-6
-            `translate@#noun[thesg man]`,
-            "vocab@theplf", //l.definitiveSuffixes 1-8
-            "vocab@theplm", //l.definitiveSuffixes 1-9
-            `sentence@#noun[thepl woman]`,
-            `translate@#svo[wem beser=present thepl=man]`,
-            `text@#svo[thepl=adj have=present thesg=gen] and #noun[thesg number] of #noun[thesg subject]`,
-            `sentence@#noun[asg park small]`,
-            `vocab@city`,
-            `translate@#noun[asg woman] in #noun[asg city small]`,
-            `vocab@now`,
-            `sentence@now #svo[he beser=present asg=man]`,
-            `sentence@#noun[thepl woman] #verb[beser present 5] #adjective[tall p woman]`,
-            `translate@#noun[thesg man] #verb[beser present 2] #adjective[small s man]`,
-        ],
-        [ //to have
-            `sentence@#plural[man]`,
-            "vocab@apple",
-            `translate@#plural[woman]`,
-            "vocab@car",
-            "verb@have~present",
-            `sentence@#svo[she have=present asg=car]`,
-            `text@#noun[thesg vrb] 'estar' #verb[beser present 2] #noun[asg vrb] that signifies #verb[beser infinitive] but #noun[thesg vrb] only #verb[beest present 2] used para #plural[location] and #plural[emotion]`, //!l.twoCopula || f.twoCopula 2-6
-            "verb@beest~present", //!l.twoCopula 2-7
-            `translate@#plural[apple]`,
-            `translate@q whereq #verb[beest present 2] #noun[thesg car] ?`,
-            "vocab@dog",
-            "vocab@cat",
-            "vocab@bear",
-            `translate@bear`,
-            `sentence@#noun[thepl cat]`,
-            `sentence@#noun[thepl dog small]`,
-            `vocab@slow`,
-            `vocab@fast`,
-            `translate@theyf #verb[have present 5] #noun[asg car slow]`,
-            `translate@he #verb[beser present 2] #noun[asg cat fast]`,
-            `vocab@in`,
-            `vocab@house`,
-            `translate@bear`,
-            `sentence@#noun[thesg man] #verb[beest present 2] in #noun[thesg park]`,
-            `sentence@wem #verb[have present 3] #noun[asg cat small accusative] and he #verb[beest present 2] in #noun[thesg house]`,
-        ],
-        [ //Food/Colors 1
-            `vocab@red`,
-            `vocab@orange`,
-            `sentence@red`,
-            `vocab@yellow`,
-            `vocab@banana`,
-            `sentence@#noun[thesg banana] #verb[beser present 2] #adjective[yellow s banana]`,
-            `vocab@sauce`,
-            `sentence@q whereq #verb[beest present 2] #noun[thesg sauce red] ?`,
-            `translate@banana`,
-            `vocab@orange`,
-            `vocab@wine`,
-            `vocab@blue`,
-            `sentence@#noun[thesg wine] #verb[beser present 2] #adjective[yellow s wine] or #adjective[orange s wine]`,
-            `sentence@green`,
-            `vocab@color`,
-            `vocab@whatq`,
-            `sentence@q whatq color #verb[beser present 2] #noun[thesg car small] ?`,
-            `translate@blue`,
-        ],
-        [ //Negative verbs [LESSON 5]
-            `translate@yes she #verb[want present 2] #noun[thesg house blue accusative]`,
-            `verb@want~present`,
-            `sentence@wem #verb[want present 3]`,
-            `translate@she #verb[want present 2]`,
-            `verb@eat~present`,
-            `translate@#verb[eat infinitive]`, //4-5
-            `vocab@with`,
-            `vocab@yes`,
-            `vocab@no`,
-            `sentence@i #verb[want present 0] #verb[eat infinitive 0] in #noun[thesg house] with Harris`,
-            `translate@wem #verb[eat present 3]`,
-            `sentence@#negativesvo[theym want present] #verb[eat infinitive 5] #noun[thesg banana green accusative]`,
-            `translate@yes she #verb[want present 2] #noun[thesg house blue accusative]`,
-            `translate@no #negativesvo[i want present] #noun[thesg house blue accusative]`,
-        ],
-        [ //Food/Colors 2 [LESSON 6]
-            `translate@q whereq #verb[beest present 2] #noun[thesg lemonade pink] ?`, //
-            `verb@drink~present`,
-            `vocab@water`,
-            `vocab@lemonade`,
-            `vocab@purple`,
-            `vocab@pink`,
-            `vocab@white`,
-            `vocab@gray`,
-            `sentence@white`,
-            `vocab@black`,
-            `translate@q whereq #verb[beest present 2] #noun[thesg lemonade pink] ?`,
-            `sentence@gray`,
-            `vocab@beer`,
-            `vocab@school`,
-            `vocab@vodka`,
-            `translate@#negativesvo[wem can present] #verb[drink infinitive 3] #noun[thesg vodka purple accusative] in #noun[thesg school]`,
-            `vocab@funny`,
-            `sentence@#noun[thesg dog funny] #verb[beser present 2] #adjective[black s dog] and #adjective[white s dog]`,
-            `translate@#negativesvo[i want present 0] #verb[drink infinitive 0] or #verb[eat infinitive 0] with #noun[thesg bear]`,
-        ],
-        [ //Future [LESSON 7]
-            `vocab@movie`,
-            `verb@will~present`, //6-1
-            `verb@see~present`,
-            `translate@movie`,
-            `sentence@yousg #verb[see present 1]`,
-            `translate@she #verb[see present 2]`,
-            `verb@see~future`, //6-6
-            `vocab@tomorrow`,
-            `sentence@wem #verb[see future 3] #noun[thesg movie] tomorrow`,
-            `verb@beest~future`, //6-9
-            `vocab@poland`,
-            `vocab@canada`,
-            `vocab@france`,
-            `sentence@i #verb[beest future 0] in france`,
-            `vocab@fr`,
-            `vocab@en`,
-            `vocab@yi`,
-            `verb@speak~future`, //6-17
-            `vocab@dialect`,
-            `vocab@from`,
-            `sentence@in canada theym #verb[speak present 5] fr and en`,
-            `translate@#svo[wef speak=present thepl=dialect] from poland`,
-            `translate@canada #verb[speak future 2] yi in 2025`,
-        ],
-    ]
-
-    x = lessons[lNumber][pNumber].toLowerCase()
-    return x
-}
+lessons = [
+    [ //Introduction
+        "vocab@i",
+        "vocab@man",
+        "vocab@am",
+        `sentence@i`,
+        "vocab@asgm", //l == "sv" 0-4
+        "vocab@asgc", //l != "sv" 0-5
+        "vocab@asgn", //l != "sv" 0-6
+        `sentence@#svo[i beser=present asg=man]`,
+        "vocab@woman",
+        "vocab@asgf", //l == "sv" 0-9
+        `sentence@woman`,
+        `sentence@#svo[i beser=present asg=woman]`,
+        "vocab@he",
+        "vocab@is", // l.nordic && f.nordic
+        `sentence@#svo[he beser=present asg=man]`,
+        "vocab@she",
+        `translate@#svo[she beser=present asg=woman]`,
+        "vocab@and",
+        "vocab@or",
+        "vocab@yousg",
+        `translate@#noun[asg woman] and #noun[asg man]`,
+        `sentence@yousg or i`,
+    ],
+    [ //plurals
+        "vocab@park",
+        `text@in % #noun[thesg form] of #noun[asg vrb] #verb[beser present 2] determined by its subject`,
+        "verb@beser~present",
+        "vocab@small",
+        "vocab@tall",
+        "vocab@thesgm", //l.definitiveSuffixes 1-5
+        "vocab@thesgf", //l.definitiveSuffixes 1-6
+        `translate@#noun[thesg man]`,
+        "vocab@theplf", //l.definitiveSuffixes 1-8
+        "vocab@theplm", //l.definitiveSuffixes 1-9
+        `sentence@#noun[thepl woman]`,
+        `translate@#svo[wem beser=present thepl=man]`,
+        `text@#svo[thepl=adj have=present thesg=gen] and #noun[thesg number] of #noun[thesg subject]`,
+        `sentence@#noun[asg park small]`,
+        `vocab@city`,
+        `translate@#noun[asg woman] in #noun[asg city small]`,
+        `vocab@now`,
+        `sentence@now #svo[he beser=present asg=man]`,
+        `sentence@#noun[thepl woman] #verb[beser present 5] #adjective[tall p woman]`,
+        `translate@#noun[thesg man] #verb[beser present 2] #adjective[small s man]`,
+    ],
+    [ //to have
+        `sentence@#plural[man]`,
+        "vocab@apple",
+        `translate@#plural[woman]`,
+        "vocab@car",
+        "verb@have~present",
+        `sentence@#svo[she have=present asg=car]`,
+        `text@#noun[thesg vrb] 'estar' #verb[beser present 2] #noun[asg vrb] that signifies #verb[beser infinitive] but #noun[thesg vrb] only #verb[beest present 2] used para #plural[location] and #plural[emotion]`, //!l.twoCopula || f.twoCopula 2-6
+        "verb@beest~present", //!l.twoCopula 2-7
+        `translate@#plural[apple]`,
+        `translate@q whereq #verb[beest present 2] #noun[thesg car] ?`,
+        "vocab@dog",
+        "vocab@cat",
+        "vocab@bear",
+        `translate@bear`,
+        `sentence@#noun[thepl cat]`,
+        `sentence@#noun[thepl dog small]`,
+        `vocab@slow`,
+        `vocab@fast`,
+        `translate@theyf #verb[have present 5] #noun[asg car slow]`,
+        `translate@he #verb[beser present 2] #noun[asg cat fast]`,
+        `vocab@in`,
+        `vocab@house`,
+        `translate@bear`,
+        `sentence@#noun[thesg man] #verb[beest present 2] in #noun[thesg park]`,
+        `sentence@wem #verb[have present 3] #noun[asg cat small accusative] and he #verb[beest present 2] in #noun[thesg house]`,
+    ],
+    [ //Food/Colors 1
+        `vocab@red`,
+        `vocab@orange`,
+        `sentence@red`,
+        `vocab@yellow`,
+        `vocab@banana`,
+        `sentence@#noun[thesg banana] #verb[beser present 2] #adjective[yellow s banana]`,
+        `vocab@sauce`,
+        `sentence@q whereq #verb[beest present 2] #noun[thesg sauce red] ?`,
+        `translate@banana`,
+        `vocab@orange`,
+        `vocab@wine`,
+        `vocab@blue`,
+        `sentence@#noun[thesg wine] #verb[beser present 2] #adjective[yellow s wine] or #adjective[orange s wine]`,
+        `sentence@green`,
+        `vocab@color`,
+        `vocab@whatq`,
+        `sentence@q whatq color #verb[beser present 2] #noun[thesg car small] ?`,
+        `translate@blue`,
+    ],
+    [ //Negative verbs [LESSON 5]
+        `translate@yes she #verb[want present 2] #noun[thesg house blue accusative]`,
+        `verb@want~present`,
+        `sentence@wem #verb[want present 3]`,
+        `translate@she #verb[want present 2]`,
+        `verb@eat~present`,
+        `translate@#verb[eat infinitive]`, //4-5
+        `vocab@with`,
+        `vocab@yes`,
+        `vocab@no`,
+        `sentence@i #verb[want present 0] #verb[eat infinitive 0] in #noun[thesg house] with Harris`,
+        `translate@wem #verb[eat present 3]`,
+        `sentence@#negativesvo[theym want present] #verb[eat infinitive 5] #noun[thesg banana green accusative]`,
+        `translate@yes she #verb[want present 2] #noun[thesg house blue accusative]`,
+        `translate@no #negativesvo[i want present] #noun[thesg house blue accusative]`,
+    ],
+    [ //Food/Colors 2 [LESSON 6]
+        `translate@q whereq #verb[beest present 2] #noun[thesg lemonade pink] ?`, //
+        `verb@drink~present`,
+        `vocab@water`,
+        `vocab@lemonade`,
+        `vocab@purple`,
+        `vocab@pink`,
+        `vocab@white`,
+        `vocab@gray`,
+        `sentence@white`,
+        `vocab@black`,
+        `translate@q whereq #verb[beest present 2] #noun[thesg lemonade pink] ?`,
+        `sentence@gray`,
+        `vocab@beer`,
+        `vocab@school`,
+        `vocab@vodka`,
+        `translate@#negativesvo[wem can present] #verb[drink infinitive 3] #noun[thesg vodka purple accusative] in #noun[thesg school]`,
+        `vocab@funny`,
+        `sentence@#noun[thesg dog funny] #verb[beser present 2] #adjective[black s dog] and #adjective[white s dog]`,
+        `translate@#negativesvo[i want present 0] #verb[drink infinitive 0] or #verb[eat infinitive 0] with #noun[thesg bear]`,
+    ],
+    [ //Future [LESSON 7]
+        `vocab@movie`,
+        `verb@will~present`, //6-1
+        `verb@see~present`,
+        `translate@movie`,
+        `sentence@yousg #verb[see present 1]`,
+        `translate@she #verb[see present 2]`,
+        `verb@see~future`, //6-6
+        `vocab@tomorrow`,
+        `sentence@wem #verb[see future 3] #noun[thesg movie] tomorrow`,
+        `verb@beest~future`, //6-9
+        `vocab@poland`,
+        `vocab@canada`,
+        `vocab@france`,
+        `sentence@i #verb[beest future 0] in france`,
+        `vocab@fr`,
+        `vocab@en`,
+        `vocab@yi`,
+        `verb@speak~future`, //6-17
+        `vocab@dialect`,
+        `vocab@from`,
+        `sentence@in canada theym #verb[speak present 5] fr and en`,
+        `translate@#svo[wef speak=present thepl=dialect] from poland`,
+        `translate@canada #verb[speak future 2] yi in 2025`,
+    ],
+]
 
 function render(){
-    material = returnLesson(lessonNumber, partNumber, secondLanguage)
+    material = lessons[lessonNumber][partNumber]
     l = languages[secondLanguage]
     lessonNon = { //to skip
         "0-4": secondLanguage == "sv",
         "0-5": secondLanguage != "sv",
         "0-6": secondLanguage != "sv",
         "0-9": secondLanguage == "sv",
+        "0-13": f.nordic && l.nordic,
         "1-5": l.definitiveSuffixes,
         "1-6": l.definitiveSuffixes,
         "1-8": l.definitiveSuffixes,
@@ -360,6 +354,8 @@ function firstLangSelect(ln){
     document.getElementById(ln + "2").style.display = "none"
 }
 function secondLangSelect(ln){
+    if(ln == "ovd") for(q = 1; q < 7; q++) document.getElementById("b" + q).style.display = "none"
+    else for(q = 4; q < 7; q++) document.getElementById("b" + q).style.display = ""
     document.getElementById(secondLanguage + "2").style.backgroundColor = "#FCAC51"
     secondLanguage = ln
     document.getElementById(ln + "2").style.backgroundColor = "#F14A68"

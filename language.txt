@@ -1,3 +1,8 @@
+13 December 2021
+New font
+Added an introduction to the Elfdalian language
+Refactored the code a bit
+
 26 Nov 2021
 Added a new language (Norwegian [Bokmål])
 Fixed a small issue

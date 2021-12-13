@@ -3,7 +3,7 @@ body{
 }
 h1, h2, h3, p{
     color: #eee8d5;
-    font-family: 'Rubik';
+    font-family: 'Source Sans 3';
     font-weight: 100;
     text-align: center;
 }
@@ -41,7 +41,7 @@ input{
     margin-left: 5%;
     height: 50px;
     font-size: 42px;
-    font-family: 'Rubik';
+    font-family: 'Source Sans 3';
     outline: 0;
     background-color: #4C96A8;
     border: 0;
@@ -59,7 +59,7 @@ input::placeholder{
     margin-top: 3%;
     height: 50px;
     font-size: 42px;
-    font-family: 'Rubik';
+    font-family: 'Source Sans 3';
     outline: 0;
     background-color: #F79A32;
     border: 0;
@@ -74,7 +74,7 @@ input::placeholder{
     margin: 5%;
     text-align: center;
     color: white;
-    font-family: 'Rubik';
+    font-family: 'Source Sans 3';
     font-size: 28px;
     display: none;
 }
@@ -88,7 +88,7 @@ tbody{
     width: 100%;
 }
 .selector button{
-    font-family: "Rubik";
+    font-family: "Source Sans 3";
     border: 0;
     outline: 0;
     border-radius: 5px;
@@ -111,11 +111,8 @@ tbody{
 }
 a{
     color: #fdf6e3;
-    font-family: 'Rubik';
+    font-family: 'Source Sans 3';
 }
 button:hover{
     cursor: pointer;
-}
-*{
-    font-weight: 700;
 }
