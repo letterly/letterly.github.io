@@ -355,7 +355,7 @@ function firstLangSelect(ln){
 }
 function secondLangSelect(ln){
     if(ln == "ovd") for(q = 1; q < 7; q++) document.getElementById("b" + q).style.display = "none"
-    else for(q = 4; q < 7; q++) document.getElementById("b" + q).style.display = ""
+    else for(q = 1; q < 7; q++) document.getElementById("b" + q).style.display = ""
     document.getElementById(secondLanguage + "2").style.backgroundColor = "#FCAC51"
     secondLanguage = ln
     document.getElementById(ln + "2").style.backgroundColor = "#F14A68"
