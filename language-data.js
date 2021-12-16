@@ -2093,11 +2093,11 @@ languages = {
         apln: "",
         am: "ir",
         is: "ir",
-        man: "mannfuok",
+        man: "mann",
         with: "min",
         park: "park",
         cat: "katt",
-        woman: "kwinnfuok",
+        woman: "kelingg",
         howq: "hur",
         whereq: "var",
         or: "eld",
@@ -2260,8 +2260,8 @@ languages = {
             return languages.ovd[word]
         },
         gender: function(naun){ //done
-            if(["mannfuok"].includes(languages.ovd[naun])) return "m"
-            else if(["kwinnfuok"].includes(languages.ovd[naun])) return "f"
+            if(["mann"].includes(languages.ovd[naun])) return "m"
+            else if(["kelingg"].includes(languages.ovd[naun])) return "f"
             else return "n"
 
         },
