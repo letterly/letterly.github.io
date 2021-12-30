@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Vlach Transliterator</title>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 200px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $cyrillic = document.getElementById("cyrillic")
+                var $latin = document.getElementById("latin")
+                $cyrillic.addEventListener('keyup', cyrillicFunction)
+                $latin.addEventListener('keyup', latinFunction)
+                function cyrillicFunction () {
+                    cyrillic = $cyrillic.value
+
+                    for(e of Object.keys(cyrillicKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        cyrillic = cyrillic.replace(myRegExp, cyrillicKey[e])
+                    }
+                    $latin.value = cyrillic
+                }
+
+                function latinFunction () {
+                    latinText = $latin.value
+                    for(e of Object.keys(latinKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        latinText = latinText.replace(myRegExp, latinKey[e])
+                    }
+                    
+                    $cyrillic.value = latinText
+                }
+
+                latinKey = { 
+                    "nj": "њ",
+                    "dž": "џ",//12456
+                    "lj": "љ",//126
+                    "ă": "ӑ",
+                    "a": "а",
+                    "b": "б",
+                    "ć": "ћ",//146
+                    "č": "ч",//16
+                    "c": "ц",
+                    "d": "д",
+                    "đ": "ђ",//1456
+                    "e": "е",
+                    "f": "ф",
+                    "g": "г",
+                    "h": "х",
+                    "î": "й",//???
+                    "i": "и",
+                    "j": "ј",
+                    "k": "к",
+                    "l": "л",
+                    "m": "м",
+                    "n": "н",
+                    "o": "о",
+                    "p": "п",
+                    "r": "р",
+                    "ś": "ш́",//345
+                    "š": "ш",//156
+                    "s": "c",
+                    "t": "т",
+                    "u": "у",
+                    "v": "в",
+                    "ź": "ж́",//???
+                    "ž": "ж",//2346
+                    "z": "з",
+                }
+                cyrillicKey = {
+                    "њ": "nj",
+"џ": "dž",
+"љ": "lj",
+"ӑ": "ă",
+"а": "a",
+"б": "b",
+"ћ": "ć",
+"ч": "č",
+"ц": "c",
+"д": "d",
+"ђ": "đ",
+"е": "e",
+"ф": "f",
+"г": "g",
+"х": "h",
+"й": "î",
+"и": "i",
+"ј": "j",
+"к": "k",
+"л": "l",
+"м": "m",
+"н": "n",
+"о": "o",
+"п": "p",
+"р": "r",
+"ш́": "ś",
+"ш": "š",
+"c": "s",
+"т": "t",
+"у": "u",
+"в": "v",
+"ж́": "ź",
+"ж": "ž",
+"з": "z",
+                }
+                for(f of Object.entries(latinKey)) latinKey[f[0].charAt(0).toUpperCase() + f[0].slice(1)] = f[1].charAt(0).toUpperCase() + f[1].slice(1)
+                for(f of Object.entries(cyrillicKey)) cyrillicKey[f[0].charAt(0).toUpperCase() + f[0].slice(1)] = f[1].charAt(0).toUpperCase() + f[1].slice(1)
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Vlach Transliterator</h1>
+        <textarea id="cyrillic" placeholder="enter Vlach Cyrillic text"></textarea>
+        <textarea id="latin" placeholder="or enter Vlach in Latin letters here"></textarea>
+    </body>
+</html>
