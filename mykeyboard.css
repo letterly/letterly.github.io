@@ -59,3 +59,18 @@ body{
     color: #fdf6e3;
     font-size: 3vw;
 }
+h2{
+    float: left;
+    color: #fdf6e3;
+    margin: 5vw;
+    font-size: 3vw;
+    width: 90vw;
+}
+span{
+    text-decoration: underline;
+    color: #dc322f;
+}
+span:hover{
+    color: #fdf6e3;
+    text-decoration: none;
+}

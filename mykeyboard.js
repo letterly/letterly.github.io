@@ -118,6 +118,67 @@ keyboards = {
         Slash: "/",
         //
     },
+    Goral: {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        Backquote: "~",
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        Minus: "ô", //é
+        Equal: "ó",
+        //
+        KeyQ: "q",
+        KeyW: "w",
+        KeyE: "e",
+        KeyR: "r",
+        KeyT: "t",
+        KeyY: "y",
+        KeyU: "u",
+        KeyI: "i",
+        KeyO: "o",
+        KeyP: "p",
+        BracketLeft: "ź",
+        BracketRight: "é",
+        Backslash: "\\",
+        //
+        KeyA: "a",
+        KeyS: "s",
+        KeyD: "d",
+        KeyF: "f",
+        KeyG: "g",
+        KeyH: "h",
+        KeyJ: "j",
+        KeyK: "k",
+        KeyL: "l",
+        Semicolon: "ý",
+        Quote: ",",
+        //
+        KeyZ: "z",
+        KeyX: "x",
+        KeyC: "c",
+        KeyV: "v",
+        KeyB: "b",
+        KeyN: "n",
+        KeyM: "m",
+        Comma: "ś",//
+        Period: "ć",
+        Slash: ".",
+        //
+    },
     Elfdalian: {
         //
         Backspace: "del",
@@ -242,6 +303,8 @@ keyboards = {
     },
 }
 
-for(n of Object.entries(keyboards.Elfdalian)) document.getElementById(n[0]).textContent = n[1]
-
+function keySet(lang){
+    for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
+}
+keySet("Goral")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
