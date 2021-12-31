@@ -1,0 +1,61 @@
+body{
+    font-family: 'Roboto';
+    background-color: #221a0f;
+    font-weight: 700;
+}
+#text{
+    font-family: 'Roboto';
+}
+.row{
+    width: 84vw;
+    margin-left: 7vw;
+    margin-right: 5vw;
+    background-color: #fdf6e3;
+    height: 6vw;
+}
+.key{
+    float: left;
+    height: 5vw;
+    width: 5vw;
+    margin: 0.5%;
+    background-color: #cb4b16;
+    text-align: center;
+    color: #fdf6e3;
+    font-size: 3vw;
+}
+#Tab, #Backspace{
+    width: 7vw;
+}
+#Tab{
+    background-color: #657b83;
+}
+#CapsLock, #ShiftLeft, #ShiftRight{
+    background-color: #b58900;
+    text-decoration: underline;
+}
+#CapsLock{
+    width: 8vw;
+}
+#Enter{
+    width: 10vw;
+}
+#Enter, #Backspace{
+    background-color: #d33682;
+    font-style: italic;
+}
+#ShiftLeft, #ShiftRight{
+    width: 11.9vw;
+}
+#text{
+    background-color: #2aa198;
+    width: 84vw;
+    margin-left: 7vw;
+    margin-right: 5vw;
+    resize: none;
+    height: 15vw;
+    margin-top: 2vw;
+    border: none;
+    outline: none;
+    color: #fdf6e3;
+    font-size: 3vw;
+}
