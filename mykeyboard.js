@@ -240,6 +240,67 @@ keyboards = {
         Slash: "/",
         //
     },
+    Vlach: {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        Backquote: "ӑ", //
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        Minus: "ш́", //
+        Equal: "ж́", //
+        //
+        KeyQ: "љ",
+        KeyW: "њ",
+        KeyE: "е",
+        KeyR: "р",
+        KeyT: "т",
+        KeyY: "з",
+        KeyU: "у",
+        KeyI: "и",
+        KeyO: "о",
+        KeyP: "п",
+        BracketLeft: "ш",
+        BracketRight: "ђ",
+        Backslash: "ж",
+        //
+        KeyA: "а",
+        KeyS: "с",
+        KeyD: "д",
+        KeyF: "ф",
+        KeyG: "г",
+        KeyH: "х",
+        KeyJ: "ј",
+        KeyK: "к",
+        KeyL: "л",
+        Semicolon: "ч",
+        Quote: "ћ",
+        //
+        KeyZ: "ѕ",
+        KeyX: "џ",
+        KeyC: "ц",
+        KeyV: "в",
+        KeyB: "б",
+        KeyN: "н",
+        KeyM: "м",
+        Comma: ",",
+        Period: ".",
+        Slash: "й", //
+        //
+    },
     "Judeo-Arabic": {
         //
         Backspace: "del",
