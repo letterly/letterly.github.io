@@ -21,24 +21,29 @@ document.addEventListener('keyup', function(e){
         leShift(e.code)
     }
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
-    else if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = "#cb4b16"
+    else if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
 });
 document.body.onmousedown = function(e){
     if(e.path[0].id == "CapsLock") theShift("CapsLock")
     else if(e.path[0].id == "Enter") text.value += "\r"
-    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Backspace"].includes(e.path[0].id))){
+    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.path[0].id))){
         pressKey(e.srcElement.id)
     }
 }
 document.body.onmouseup = function(e){
     if(e.path[0].id == "CapsLock") leShift("CapsLock")
-    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Backspace"].includes(e.path[0].id))) e.path[0].style.backgroundColor = "#cb4b16"
+    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.path[0].id))) e.path[0].style.backgroundColor = e.path[0].id != "Backspace" ? "#cb4b16" : "#d33682"
 }
 
 function pressKey(k){
-    n = text.selectionStart + 1
+    n = text.selectionStart + document.getElementById(k).textContent.length
     if(k != "Space") document.getElementById(k).style.backgroundColor = "#859900"
-    text.value += document.getElementById(k).textContent
+    if(k != "Backspace"){
+        text.value += document.getElementById(k).textContent
+    }
+    else{
+        text.value = text.value.slice(0,-1)
+    }
     text.selectionStart = n
     text.value = text.value.replace("ą", "ą")
 }
@@ -321,11 +326,11 @@ keyboards = {
         Digit8: "8",
         Digit9: "9",
         Digit0: "0",
-        Minus: "גׄ",
-        Equal: "דׄ",
+        Minus: "-",
+        Equal: "=",
         //
-        KeyQ: "טׄ",
-        KeyW: "תׄ",
+        KeyQ: "/",
+        KeyW: "׳",
         KeyE: "ק",
         KeyR: "ר",
         KeyT: "א",
@@ -334,9 +339,9 @@ keyboards = {
         KeyI: "ן",
         KeyO: "ם",
         KeyP: "פ",
-        BracketLeft: "כׄ",
-        BracketRight: "ךׄ",
-        Backslash: "צׄ",
+        BracketLeft: "]",
+        BracketRight: "[",
+        Backslash: "ֿ",
         //
         KeyA: "ש",
         KeyS: "ד",
@@ -348,7 +353,7 @@ keyboards = {
         KeyK: "ל",
         KeyL: "ך",
         Semicolon: "ף",
-        Quote: "ץׄ",
+        Quote: "גִ",
         //
         KeyZ: "ז",
         KeyX: "ס",
@@ -359,13 +364,14 @@ keyboards = {
         KeyM: "צ",
         Comma: "ת",
         Period: "ץ",
-        Slash: ".",
+        Slash: "ׄ",
         //
     },
 }
 
 function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
+    text.style.direction = lang == "Judeo-Arabic" ? "rtl" : "ltr"
 }
-keySet("Goral")
+keySet("Judeo-Arabic")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
