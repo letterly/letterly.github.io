@@ -326,7 +326,7 @@ keyboards = {
         Digit8: "8",
         Digit9: "9",
         Digit0: "0",
-        Minus: "-",
+        Minus: "ה̈",
         Equal: "=",
         //
         KeyQ: "/",
