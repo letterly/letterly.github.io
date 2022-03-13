@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Dungan => Latin</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    а: "a",
+                б: "b",
+                в: "v",
+                г: "g",
+                д: "d",
+                е: "ie",
+                ё:	"io",
+                ж:	"ź",
+                җ: "ž",
+                з:	"z",
+                и:	"i",
+                й:	"y",
+                к:	"k",
+                л:	"l",
+                м:	"m",
+                н:	"n",
+                ң: "ñ",
+                ә: "ă",
+                о:	"o",
+                п:	"p",
+                р:	"r",
+                с:	"s",
+                т:	"t",
+                у:	"u",
+                ў: "w",
+                ү: "ö",
+                ф:	"f",
+                х:	"h",
+                ц:	"c",
+                ч:	"č",
+                ш:	"ś",
+                щ:	"š",
+                ы:	"ŷ",
+                э:	"e",
+                ю:	"iu",
+                я:	"ia",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Dungan Cyrillic => Latin</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Dungan Cyrillic text"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Judeo-Arabic Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "א": "ا",
+                    "ב": "ب",
+                    "גׄ": "ج",
+                    "ג": "غ",
+                    "דׄ": "ذ",
+                    "ד": "د",
+                    "ה": "ه",
+                    "ו": "و",
+                    "ז": "ز",
+                    "חׄ": "خ",
+                    "ח": "ح",
+                    "טׄ": "ظ",
+                    "ט": "ط",
+                    "י": "ي",
+                    "כ": "ك",
+                    "ך": "ك",
+                    "ל": "ل",
+                    "מ": "م",
+                    "ם‎": "م",
+                    "נ‎": "ن",
+                    "ן‎": "ن",
+                    "ס": "س",
+                    "ע": "ع",
+                    "פ‎": "ف",
+                    "ף‎": "ف",
+                    "צׄ‎": "ض",
+                    "ץׄ": "ض",
+                    "צ‎": "ص",
+                    "ץ": "ص",
+                    "ק": "ق",
+                    "ר": "ر",
+                    "ש": "ش",
+                    "תׄ": "ث",
+                    "ת": "ت",
+                    "ﭏ": "ال",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Judeo-Arabic Hebrew => Arabic</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Hebrew script Judeo-Arabic text" style="direction:rtl"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here" style="direction:rtl"></textarea>
+    </body>
+</html>
