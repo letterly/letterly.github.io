@@ -4,6 +4,7 @@ category = "plurals"
 lessonNow = []
 
 function start(section){
+    button.textContent = "Enter"
     main.style.display = "none"
     lesson.style.display = "block"
     category = section
