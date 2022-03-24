@@ -151,8 +151,8 @@ lessons = {
         {
             "forbid": "forbidden",
             "tread": "trodden",
-            "tore": "torn",
-            "undertaken": "undertaken",
+            "tear": "torn",
+            "undertake": "undertaken",
             "drink": "drunk",
             "forswear": "forsworn",
             "strive": "striven",
