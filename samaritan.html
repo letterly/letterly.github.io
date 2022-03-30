@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Samaritan Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "א": "ࠀ",
+                    "ב": "ࠁ",
+                    "ג": "ࠂ",
+                    "ד": "ࠃ",
+                    "ה": "ࠄ",
+                    "ו": "ࠅ",
+                    "ז": "ࠆ",
+                    "ח": "ࠇ",
+                    "ט": "ࠈ",
+                    "י": "ࠉ",
+                    "כ": "ࠊ",
+                    "ך": "ࠊ",
+                    "ל": "ࠋ",
+                    "מ": "ࠌ",
+                    "ם": "ࠌ",
+                    "נ": "ࠍ",
+                    "ן": "ࠍ",
+                    "ס": "ࠎ",
+                    "ע": "ࠏ",
+                    "פ": "ࠐ",
+                    "ף": "ࠐ",
+                    "צ": "ࠑ",
+                    "ץ": "ࠑ",
+                    "ק": "ࠒ",
+                    "ר": "ࠓ",
+                    "ש": "ࠔ",
+                    "ת": "ࠕ",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Hebrew => Samaritan</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Hebrew script text" style="direction:rtl"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here" style="direction:rtl"></textarea>
+    </body>
+</html>
