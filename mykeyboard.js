@@ -339,8 +339,8 @@ keyboards = {
         KeyI: "ן",
         KeyO: "ם",
         KeyP: "פ",
-        BracketLeft: "]",
-        BracketRight: "[",
+        BracketLeft: ",",
+        BracketRight: ".",
         Backslash: "ֿ",
         //
         KeyA: "ש",
@@ -367,11 +367,68 @@ keyboards = {
         Slash: "ׄ",
         //
     },
+    "Dungan": {
+                //
+                Backspace: "del",
+                CapsLock: "caps",
+                Enter: "return",
+                ShiftLeft: "shift",
+                ShiftRight: "shift",
+                Tab: "tab",
+                //
+        "Backquote": "ё",
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        "Minus": "ў",
+        "Equal": "ү",
+        "KeyQ": "й",
+        "KeyW": "ц",
+        "KeyE": "у",
+        "KeyR": "к",
+        "KeyT": "е",
+        "KeyY": "н",
+        "KeyU": "г",
+        "KeyI": "ш",
+        "KeyO": "ә",
+        "KeyP": "з",
+        "BracketLeft": "х",
+        "BracketRight": "ң",
+        "Backslash": "җ",
+        "KeyA": "ф",
+        "KeyS": "ы", 
+        "KeyD": "в",
+        "KeyF": "а",
+        "KeyG": "п",
+        "KeyH": "р",
+        "KeyJ": "о",
+        "KeyK": "л",
+        "KeyL": "д",
+        "Semicolon": "ж",
+        "Quote": "э",
+        "KeyZ": "я",
+        "KeyX": "ч",
+        "KeyC": "с",
+        "KeyV": "м",
+        "KeyB": "и",
+        "KeyN": "т",
+        "KeyM": "щ",
+        "Comma": "б",
+        "Period": "ю",
+        Slash: ".",
+    },
 }
 
 function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
     text.style.direction = lang == "Judeo-Arabic" ? "rtl" : "ltr"
 }
-keySet("Judeo-Arabic")
+keySet("Dungan")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
