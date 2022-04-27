@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.replace(/I/g, "ı").replace(/İ/g, "i").toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    //hetunikodfiksen
+                    "ױ": "וי",
+                    "װ": "וו",
+                    "ײ": "יי",
+                    "אַ": "אַ",
+                    "אָ": "אָ",
+                    "וּ": "וּ",
+                    "יִ": "יִ",
+                    "ײַ": "ײַ",
+                    "פּ": "פּ",
+                    "פֿ": "פֿ",
+                    //
+                    "זש": "zh",
+                    "אַ": "a",
+                    "אָ": "o",
+                    "א": "",
+                    "ב": "b",
+                    "ג": "g",
+                    "ד": "d",
+                    "ה": "h",
+                    "וי": "oy",
+                    "וו": "v",
+                    "וּ": "u",
+                    "ו": "u",
+                    "ז": "z",
+                    //"ח": "kh",
+                    "ט": "t",
+                    "ײַ": "ay",
+                    "יי": "ey",
+                    "יאַ": "ya",
+                    "יע": "ye",
+                    "ייִ": "yi",
+                    "יאָ": "yo",
+                    "י": "i",
+                    "כ": "kh",
+                    "ך": "kh",
+                    "ל": "l",
+                    "מ": "m",
+                    "ם": "m",
+                    "נ": "n",
+                    "ן": "n",
+                    "ס": "s",
+                    "ע": "e",
+                    "פּ": "p",
+                    "פֿ": "f",
+                    "ף": "f",
+                    "צ": "ts",
+                    "ץ": "ts",
+                    "ק": "k",
+                    "ר": "r",
+                    "ש": "sh",
+                }
+            }, false);
+        </script>
+        <title>Yiddish->Latin</title>
+    </head>
+    <body>
+        <h1>Yiddish to Latin</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter yiddish text" direction="rtl"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+    </body>
+</html>
