@@ -1,0 +1,350 @@
+<html>
+    <head>
+        <style>
+            h1,h2{ text-align: center }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none
+            }
+            *{
+                font-family: 'Verdana';
+                color: white
+            }
+            body{ background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)) }
+            button{
+                border: none;
+                background-color: black;
+                border-radius: 5px;
+                font-size: 24px;
+                margin: 2px
+            }
+            #textareas{ display: none }
+            textarea{
+                border: none;
+                background-color: #ffffff33;
+                outline: none;
+                border-radius: 10px
+            }
+            textarea::placeholder{ color: #333 }
+        </style>
+        <title>Alphabet Converter</title>
+    </head>
+    <body>
+        <h1>Alphabet Converter</h1>
+        <p>Hi! Please select a language to convert:</p>
+        <button onclick="align(this.textContent)"><b>Gagauz</b> Cyrillic=>Latin</button>
+        <button onclick="align(this.textContent)"><b>Gagauz</b> Latin=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Juhuri</b> Cyrillic=>Latin</button>
+        <button onclick="align(this.textContent)"><b>Uyghur</b> Cyrillic=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Yiddish</b> Hebrew=>Latin</button>
+        <br>
+        <br>
+        <div id="textareas">
+            <textarea spellcheck="false" id="input" placeholder="enter text :)" direction="rtl"></textarea>
+            <textarea readonly id="output" placeholder="output here"></textarea>
+            <p>By Harris Mowbray :)</p>
+        </div>
+    </body>
+    <script>
+        var typingTimer
+        var chartID
+        var doneTypingInterval = 1000
+        input.addEventListener('keyup', translateFunction)
+        function align(chart){
+            chartID = chart
+            input.placeholder = "enter " + chart.split(" ")[0] + " [" + chart.split(" ")[1].split("=>")[0] + "] text" 
+            output.placeholder = "[" + chart.split(" ")[1].split("=>")[1] + "] output here"
+            textareas.style.display = "block"
+        }
+        function translateFunction () {
+            inp = input.value
+            if(chartID == "Gagauz Latin=>Braille") inp = inp.replace(/I/g, "ı")
+            if(chartID.includes("Braille")) inp = inp.toLowerCase()
+            for(e of Object.entries(languages[chartID])) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
+            output.value = inp
+        }
+        languages = {
+            "Yiddish Hebrew=>Latin": {
+                //unicode normalization
+                "ױ": "וי",
+                "װ": "וו",
+                "ײ": "יי",
+                "אַ": "אַ",
+                "אָ": "אָ",
+                "וּ": "וּ",
+                "יִ": "יִ",
+                "ײַ": "ײַ",
+                "פּ": "פּ",
+                "פֿ": "פֿ",
+                //transcription
+                "זש": "zh",
+                "אַ": "a",
+                "אָ": "o",
+                "א": "",
+                "ב": "b",
+                "ג": "g",
+                "ד": "d",
+                "ה": "h",
+                "וי": "oy",
+                "וו": "v",
+                "וּ": "u",
+                "ו": "u",
+                "ז": "z",
+                "ט": "t",
+                "ייִ": "yi",
+                "ײַ": "ay",
+                "יי": "ey",
+                "יאַ": "ya",
+                "יע": "ye",
+                "יאָ": "yo",
+                "י": "i",
+                "כ": "kh",
+                "ך": "kh",
+                "ל": "l",
+                "מ": "m",
+                "ם": "m",
+                "נ": "n",
+                "ן": "n",
+                "ס": "s",
+                "ע": "e",
+                "פּ": "p",
+                "פֿ": "f",
+                "ף": "f",
+                "צ": "ts",
+                "ץ": "ts",
+                "ק": "k",
+                "ר": "r",
+                "ש": "sh",
+            },
+            "Gagauz Cyrillic=>Latin": {
+                "А": "A",
+                "а": "a",
+                "Ӓ": "Ä",
+                "ӓ": "ä",
+                "Б": "B",
+                "б": "b",
+                "В": "V",
+                "в": "v",
+                "Г": "G",
+                "г": "g",
+                "Д": "D",
+                "д": "d",
+                "Е": "E",
+                "е": "e",
+                "Ё": "Yo",
+                "ё": "yo",
+                "Ж": "J",
+                "ж": "j",
+                "Ӂ": "C",
+                "ӂ": "c",
+                "З": "Z",
+                "з": "z",
+                "И": "İ",
+                "и": "i",
+                "Й": "Y",
+                "й": "y",
+                "К": "K",
+                "к": "k",
+                "Л": "L",
+                "л": "l",
+                "М": "M",
+                "м": "m",
+                "Н": "N",
+                "н": "n",
+                "О": "O",
+                "о": "o",
+                "Ӧ": "Ö",
+                "ӧ": "ö",
+                "П": "P",
+                "п": "p",
+                "Р": "R",
+                "р": "r",
+                "С": "S",
+                "с": "s",
+                "Т": "T",
+                "т": "t",
+                "У": "U",
+                "у": "u",
+                "Ӱ": "Ü",
+                "ӱ": "ü",
+                "Ф": "F",
+                "ф": "f",
+                "Х": "H",
+                "х": "h",
+                "Ц": "Ţ",
+                "ц": "ţ",
+                "Ч": "Ç",
+                "ч": "ç",
+                "Ш": "Şç",
+                "ш": "şç",
+                "Щ": "Ş",
+                "щ": "ş",
+                "Ъ": "",
+                "ъ": "",
+                "Ы": "I",
+                "ы": "ı",
+                "Ь": "",
+                "ь": "",
+                "Э": "Ê",
+                "э": "ê",
+                "Ю": "Yu",
+                "ю": "yu",
+                "Я": "Ya",
+                "я": "ya",
+            },
+            "Gagauz Latin=>Braille": {
+                "a": "⠁",
+                "b": "⠃",
+                "c": "⠉",
+                "ç": "⠡",
+                "d": "⠙",
+                "e": "⠑",
+                "ê": "⠈",
+                "f": "⠋",
+                "g": "⠛",
+                "h": "⠓",
+                "ı": "⠔",
+                "i": "⠊",
+                "j": "⠚",
+                "k": "⠅",
+                "l": "⠇",
+                "m": "⠍",
+                "n": "⠝",
+                "o": "⠕",
+                "ö": "⠌",
+                "p": "⠏",
+                "q": "⠟",
+                "r": "⠗",
+                "s": "⠎",
+                "ş": "⠩",
+                "t": "⠞",
+                "ţ": "⠾",
+                "u": "⠥",
+                "ü": "⠳",
+                "v": "⠧",
+                "w": "⠺",
+                "x": "⠭",
+                "y": "⠽",
+                "z": "⠵",
+                "\\'": "⠄",
+                "\\.": "⠲",
+                "\\,": "⠂",
+                "\\:": "⠒",
+                "\\;": "⠆",
+                "\\!": "⠖",
+                "\\?": "⠢",
+            },
+            "Uyghur Cyrillic=>Braille": {
+                "a": "⠁",
+                "ə": "⠌",
+                "б": "⠃",
+                "в": "⠧",
+                "г": "⠛",
+                "ғ": "⠣",
+                "д": "⠙",
+                "е": "⠑",
+                "ж": "⠮",
+                "җ": "⠚",
+                "з": "⠵",
+                "и": "⠕",
+                "й": "⠊",
+                "к": "⠅",
+                "қ": "⠟",
+                "л": "⠇",
+                "м": "⠍",
+                "н": "⠝",
+                "ң": "⠫",
+                "о": "⠺",
+                "ө": "⠪",
+                "п": "⠏",
+                "р": "⠗",
+                "с": "⠎",
+                "т": "⠞",
+                "у": "⠥",
+                "ү": "⠯",
+                "ф": "⠋",
+                "х": "⠭",
+                "һ": "⠓",
+                "ч": "⠡",
+                "ш": "⠩",
+                "ю": "⠊⠥",
+                "я": "⠊⠁",
+                "\\'": "⠄",
+                "\\.": "⠲",
+                "\\,": "⠂",
+                "\\:": "⠒",
+                "\\;": "⠆",
+                "\\!": "⠖",
+                "\\?": "⠢",
+            },
+            "Juhuri Cyrillic=>Latin": {
+                А: "A",
+                Б: "B",
+                В: "V",
+                Г: "G",
+                Гъ: "Q",
+                Гь: "H",
+                ГӀ: "Ḩ",
+                Д: "D",
+                Е: "Ə",
+                Ж: "Ç",
+                З: "Z",
+                И: "I",
+                Й: "J",
+                К: "K",
+                Л: "L",
+                М: "M",
+                Н: "N",
+                О: "O",
+                П: "P",
+                Р: "R",
+                С: "S",
+                Т: "T",
+                У: "U",
+                Уь: "Y",
+                Ф: "F",
+                Х: "X",
+                Хь: "Ћ",
+                Ч: "C",
+                Ш: "Ş",
+                Э: "E",
+                Я: "Ja",
+                а: "a",
+                б: "b",
+                в: "v",
+                г: "g",
+                гъ: "q",
+                гь: "h",
+                гӀ: "ḩ",
+                д: "d",
+                е: "ə",
+                ж: "ç,",
+                з: "z",
+                и: "i",
+                й: "j",
+                к: "k",
+                л: "l",
+                м: "m",
+                н: "n",
+                о: "o",
+                п: "p",
+                р: "r",
+                с: "s",
+                т: "t",
+                у: "u",
+                уь: "y",
+                ф: "f",
+                х: "x",
+                хь: "ћ",
+                ч: "c",
+                ш: "ş",
+                э: "e",
+                я: "ja",
+            },
+        }
+    </script>
+</html>
