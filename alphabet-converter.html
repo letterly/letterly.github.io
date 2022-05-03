@@ -45,7 +45,7 @@
         <br>
         <br>
         <div id="textareas">
-            <textarea spellcheck="false" id="input" placeholder="enter text :)" direction="rtl"></textarea>
+            <textarea spellcheck="false" id="input" placeholder="enter text :)"></textarea>
             <textarea readonly id="output" placeholder="output here"></textarea>
             <p>By Harris Mowbray :)</p>
         </div>
@@ -57,6 +57,7 @@
         input.addEventListener('keyup', translateFunction)
         function align(chart){
             chartID = chart
+            input.dir = chartID.split(" ")[1].startsWith("Hebrew") ? "rtl" : "ltr"
             input.placeholder = "enter " + chart.split(" ")[0] + " [" + chart.split(" ")[1].split("=>")[0] + "] text" 
             output.placeholder = "[" + chart.split(" ")[1].split("=>")[1] + "] output here"
             textareas.style.display = "block"
