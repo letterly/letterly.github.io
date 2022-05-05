@@ -2,13 +2,14 @@
     <head>
         <style>
             h1,h2{ text-align: center }
-            textarea{
+            textarea, #output{
                 margin-left: 5%;
                 margin-right: 5%;
                 width: 39%;
                 font-size: 24px;
                 height: 600px;
-                resize: none
+                resize: none;
+                float: left;
             }
             *{
                 font-family: 'Verdana';
@@ -23,11 +24,14 @@
                 margin: 2px
             }
             #textareas{ display: none }
-            textarea{
+            textarea, #output{
                 border: none;
                 background-color: #ffffff33;
                 outline: none;
                 border-radius: 10px
+            }
+            #outputtext{
+                margin-top: 0px;
             }
             textarea::placeholder{ color: #333 }
         </style>
@@ -36,9 +40,11 @@
     <body>
         <h1>Alphabet Converter</h1>
         <p>Hi! Please select a language to convert:</p>
+        <button onclick="align(this.textContent)"><b>Aragonese</b> SLA=>'87</button>
         <button onclick="align(this.textContent)"><b>Extramaduran</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Latin=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Judeo-German</b> Hebrew=>Latin</button>
         <button onclick="align(this.textContent)"><b>Juhuri</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Uyghur</b> Cyrillic=>Braille</button>
         <button onclick="align(this.textContent)"><b>Yiddish</b> Hebrew=>Latin</button>
@@ -46,9 +52,11 @@
         <br>
         <div id="textareas">
             <textarea spellcheck="false" id="input" placeholder="enter text :)"></textarea>
-            <div id="output" placeholder="output here"></div>
-            <p>By Harris Mowbray :)</p>
+            <div id="output" placeholder="output here">
+                <p id="outputtext"></p>
+            </div>
         </div>
+        <p>By Harris Mowbray :)</p>
     </body>
     <script>
         var typingTimer
@@ -67,7 +75,7 @@
             if(chartID == "Gagauz Latin=>Braille") inp = inp.replace(/I/g, "ı")
             if(chartID.includes("Braille")) inp = inp.toLowerCase()
             for(e of Object.entries(languages[chartID])) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
-            output.value = inp
+            outputtext.textContent = inp
         }
         languages = {
             "Yiddish Hebrew=>Latin": {
@@ -121,6 +129,87 @@
                 "ק": "k",
                 "ר": "r",
                 "ש": "sh",
+            },
+            "Judeo-German Hebrew=>Latin": {
+                //unicode normalization
+                "ױ": "וי",
+                "װ": "וו",
+                "ײ": "יי",
+                "אַ": "אַ",
+                "אָ": "אָ",
+                "וּ": "וּ",
+                "יִ": "יִ",
+                "ײַ": "ײַ",
+                "פּ": "פּ",
+                "פֿ": "פֿ",
+                "כֿ": "כֿ",
+                //punctionation
+                "⸗": ".",
+                //transcription
+                "דאס": "das",
+                "ויאו": "auu",
+                "כֿ": "ch",
+                "זש": "zh",
+                "אַ": "a",
+                "אָ": "o",
+                "א": "",
+                "ב": "b",
+                "ג": "g",
+                "ד": "d",
+                "ה": "h",
+                "וי": "oy",
+                "וו": "v",
+                "וּ": "u",
+                "ו": "u",
+                "ז": "s",
+                "ט": "t",
+                "ייִ": "yi",
+                "ײַ": "ay",
+                "יי": "ei",
+                "יאַ": "ya",
+                "יע": "ye",
+                "יאָ": "yo",
+                "י": "i",
+                "כ": "kh",
+                "ך": "kh",
+                "ל": "l",
+                "מ": "m",
+                "ם": "m",
+                "נ": "n",
+                "ן": "n",
+                "ס": "s",
+                "ע": "e",
+                "פּ": "p",
+                "פֿ": "f",
+                "ף": "f",
+                "צ": "z",
+                "ץ": "z",
+                "ק": "k",
+                "ר": "r",
+                "ש": "sch",
+            },
+            "Aragonese SLA=>'87": {
+                "cion": "zión",
+                "més": "mes",
+                " e ": " y ",
+                "ect": "eut",
+                "exi": "ecsi",
+                "v": "b",
+                "qü": "cu",
+                "qua": "cua",
+                "quo": "cuo",
+                "ch": "∫",
+                "ge": "∫e",
+                "gi": "∫i",
+                "j": "∫",
+                "ny": "ñ",
+                "h": "",
+                "∫": "ch",
+                "t ": " ",
+                "ix": "x",
+                "ç": "z",
+                "ci": "zi",
+                "ce": "ze",
             },
             "Gagauz Cyrillic=>Latin": {
                 "А": "A",
