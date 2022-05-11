@@ -444,8 +444,8 @@ keyboards = {
         Digit8: "8",
         Digit9: "9",
         Digit0: "0",
-        "Minus": ".",
-        "Equal": ",",
+        "Minus": "-",
+        "Equal": "!",
         "KeyQ": "й",
         "KeyW": "ц",
         "KeyE": "у",
@@ -457,8 +457,8 @@ keyboards = {
         "KeyO": "щ",
         "KeyP": "з",
         "BracketLeft": "х",
-        "BracketRight": "ъ",
-        "Backslash": "ё",
+        "BracketRight": ".",
+        "Backslash": ",",
         "KeyA": "ф",
         "KeyS": "ы", 
         "KeyD": "в",
@@ -476,10 +476,10 @@ keyboards = {
         "KeyV": "м",
         "KeyB": "и",
         "KeyN": "т",
-        "KeyM": "ь",
+        "KeyM": "ӏ",
         "Comma": "б",
         "Period": "ю",
-        Slash: "ӏ",
+        "Slash": "?",
     },
 }
 
@@ -487,5 +487,5 @@ function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
     text.style.direction = lang == "Judeo-Arabic" ? "rtl" : "ltr"
 }
-keySet("Dungan")
+keySet("Circassian")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
