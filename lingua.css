@@ -1,0 +1,104 @@
+h1{
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 48px;
+    background-color: #00000066;
+}
+h2{
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 36px;
+    background-color: #00000066;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+p{
+    color: white;
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 24px;
+    background-color: #00000066;
+    margin: 16px;
+    padding: 4px;
+}
+#background{
+    background-image: url('images/forest.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#workspace{
+    display: none;
+    background-color: #fdf6e3;
+    height: 100%;
+}
+#problemheader, #problem{
+    background-color: #fdf6e3;
+    color: black;
+    text-align: center;
+}
+body{
+    margin: 0;
+}
+#problemInput{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 32px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #073642;
+    color: white;
+}
+#problemInput::placeholder{
+    color: #657b83;
+}
+#problemButton{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 32px;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-color: #268bd2;
+    color: white;
+}
+#submitButton{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 32px;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-color: #cb4b16;
+    color: white;
+    display: none;
+}
+#table{
+    display: none;
+    font-family: Arial;
+    font-size: 24px;
+    width: 20%;
+    margin-left: 42%;
+    margin-right: 40%;
+}
+td{
+    border: 2px black solid;
+}
+.wrong{
+    background-color: #fdf6e3;
+    color: #dc322f;
+}
+.right{
+    background-color: #fdf6e3;
+    color: #859900;
+}

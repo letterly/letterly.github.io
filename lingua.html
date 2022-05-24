@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Elfdalian</title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <link rel="stylesheet" href="lingua.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <script src="lingua.js"></script>
+    </head>
+    <body>
+        <div id="background">
+            <h1>Övdalską</h1>
+            <p>Our Elfdalian language has survived for a thousand years, but now outside modern influences threaten to assimilate our river valley into the mainstream Swedish language. The situation of Elfdalian is dire compared to most languages in the world, but not all hope is lost! With the use of technology, our new generation can redeem the Elfdalian language and bring it to new heights. Come, learn the tongue of your ancestors, and help preserve it for the future.</p>
+            <h2 onclick="lessonStart(0)">Lesson 1: Introduction</h2>
+            <h2 onclick="lessonStart(1)">Lesson 2: Food</h2>
+            <h2 onclick="lessonStart(2)">Lesson 3: Questions</h2>
+            <h2 onclick="lessonStart(3)">Lesson 4: Places</h2>
+        </div>
+        <div id="workspace">
+            <h1 id="problemHeader">Kall [m]</h1>
+            <p id="problem">Meaning: mann</p>
+            <table id="table">
+                <tr>
+                    <td id="table1s">ig ir</td>
+                    <td id="table1p">wįð irum</td>
+                </tr>
+                <tr>
+                    <td id="table2s">du ir</td>
+                    <td id="table2p">ið irið</td>
+                </tr>
+                <tr>
+                    <td id="table3s">an/ą̊ ir</td>
+                    <td id="table3p">dier irå</td>
+                </tr>
+            </table>
+            <input id="problemInput" placeholder="type here..." spellcheck="false"/>
+            <br>
+            <br>
+            <button id="submitButton" onclick="submit()">Submit</button>
+            <br>
+            <br>
+            <button id="problemButton" onclick="nextProblem()">Continue</button>
+        </div>
+    </body>
+</html>
