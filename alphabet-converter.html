@@ -39,8 +39,8 @@
     </head>
     <body>
         <h1>Alphabet Converter</h1>
-        <p>By Harris Mowbray :)</p>
         <p>Hi! Please select a language to convert:</p>
+        <p>By Harris Mowbray :)</p>
         <button onclick="align(this.textContent)"><b>Aragonese</b> SLA=>'87</button>
         <button onclick="align(this.textContent)"><b>Extramaduran</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Cyrillic=>Latin</button>
@@ -48,6 +48,8 @@
         <button onclick="align(this.textContent)"><b>Judeo-German</b> Hebrew=>Latin</button>
         <button onclick="align(this.textContent)"><b>Juhuri</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Khoekhoe</b> Latin=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Ossetian</b> Cyrillic=>Georgian</button>
+        <button onclick="align(this.textContent)"><b>Portuguese</b> Brazil=>Portugal</button>
         <button onclick="align(this.textContent)"><b>Uyghur</b> Cyrillic=>Braille</button>
         <button onclick="align(this.textContent)"><b>Yiddish</b> Hebrew=>Latin</button>
         <br>
@@ -74,11 +76,60 @@
         function translateFunction () {
             inp = input.value
             if(chartID == "Gagauz Latin=>Braille") inp = inp.replace(/I/g, "ı")
-            if(chartID.includes("Braille")) inp = inp.toLowerCase()
+            if(chartID.includes("Braille") || chartID.includes("Georgian")) inp = inp.toLowerCase()
             for(e of Object.entries(languages[chartID])) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
             outputtext.textContent = inp
         }
         languages = {
+            "Portuguese Brazil=>Portugal": {
+                "jogando": "a jogar",
+                "estudando": "a estudar",
+                "Macedônia": "Macedónia",
+                "rúgbi": "râguebi",
+                "comprando": "a comprar",
+                "cânabis": "cánabis",
+                "Irã": "Irão",
+                "Islã": "Islão",
+            },
+            "Ossetian Cyrillic=>Georgian": {
+                "а": "ა",
+                "ӕ": "ჽ",
+                "æ": "ჽ",
+                "б": "ბ",
+                "в": "ვ",
+                "гъ": "ღ",
+                "г": "გ",
+                "дз": "ძ",
+                "дж": "ჯ",
+                "д": "დ",
+                "е": "ე",
+                "ж": "ჟ",
+                "з": "ზ",
+                "и": "ი",
+                "й": "ჲ",
+                "къ": "კ",
+                "к": "ქ",
+                "л": "ლ",
+                "м": "მ",
+                "н": "ნ",
+                "о": "ო",
+                "пъ": "პ",
+                "п": "ფ",
+                "р": "რ",
+                "с": "ს",
+                "тъ": "ტ",
+                "т": "თ",
+                "у": "უ",
+                "ф": "ჶ",
+                "хъ": "ყ",
+                "х": "ხ",
+                "цъ": "წ",
+                "ц": "ც",
+                "чъ": "ჭ",
+                "ч": "ჩ",
+                "ш": "შ",
+                "ы": "ჷ",
+            },
             "Yiddish Hebrew=>Latin": {
                 //unicode normalization
                 "ױ": "וי",
