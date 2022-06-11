@@ -8,13 +8,21 @@
         <script src="lingua.js"></script>
     </head>
     <body>
+        <div id="langselect">
+            <h1>Welcome to my language learning platform</h1>
+            <p>Choose your course</p>
+            <div class="course" onclick="langreveal('sv=>ovd')">Elfdalian for Swedish speakers</div>
+            <div class="course" onclick="langreveal('es=>an')">Aragonese for Spanish speakers</div>
+        </div>
         <div id="background">
-            <h1>Övdalską</h1>
-            <p>Our Elfdalian language has survived for a thousand years, but now outside modern influences threaten to assimilate our river valley into the mainstream Swedish language. The situation of Elfdalian is dire compared to most languages in the world, but not all hope is lost! With the use of technology, our new generation can redeem the Elfdalian language and bring it to new heights. Come, learn the tongue of your ancestors, and help preserve it for the future.</p>
-            <h2 onclick="lessonStart(0)">Lesson 1: Introduction</h2>
-            <h2 onclick="lessonStart(1)">Lesson 2: Food</h2>
-            <h2 onclick="lessonStart(2)">Lesson 3: Questions</h2>
-            <h2 onclick="lessonStart(3)">Lesson 4: Places</h2>
+            <h1 id="languagename">Övdalską</h1>
+            <p id="sum">Our Elfdalian language has survived for a thousand years, but now outside modern influences threaten to assimilate our river valley into the mainstream Swedish language. The situation of Elfdalian is dire compared to most languages in the world, but not all hope is lost! With the use of technology, our new generation can redeem the Elfdalian language and bring it to new heights. Come, learn the tongue of your ancestors, and help preserve it for the future.</p>
+            <div id="lessonlist">
+                <h2 onclick="lessonStart(0)">1) Introduction</h2>
+                <h2 onclick="lessonStart(1)">2) Food</h2>
+                <h2 onclick="lessonStart(2)">3) Questions</h2>
+                <h2 onclick="lessonStart(3)">4) Places</h2>
+            </div>
         </div>
         <div id="workspace">
             <h1 id="problemHeader">Kall [m]</h1>
