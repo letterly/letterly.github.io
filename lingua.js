@@ -76,7 +76,7 @@ lessons = {
             "Word = a = la",
             "TranslateH = la mujer = a muller",
             "Verb = estar = estar/ser",
-            "Explanation = no hay distinctión entre ser y estar en aragonés, 'estar' tiene los dos significados",
+            "Explanation = no hay distinción entre ser y estar en aragonés, 'estar' tiene los dos significados",
             "TranslateH = estás = yes",
             "TranslateH = soy = soi",
             "Word = o = el",
@@ -101,8 +101,8 @@ lessons = {
 verbs = {
     wårå: ["ir", "irum", "irið", "irå"],
     åvå: ["ar", "amm", "amið", "åvå"],
-    estar: ["soy", "yes", "ye", "semos", "soz", "son"],
-    tener: ["tiengo", "tiens", "tien", "tenemos", "tenez", "tienen"],
+    estar: ["soy", "yes", "ye", "semos", "sotz", "son"],
+    tener: ["tiengo", "tiens", "tien", "tenemos", "tenetz", "tienen"],
 }
 
 pronouns = {
