@@ -2,6 +2,7 @@ Lnum = 0 //lesson number
 Pnum = 1 //problem number
 material = ""
 course = ""
+courseLanguage = ""
 courseTarget = ""
 
 function lessonStart(num){
@@ -33,13 +34,13 @@ function runProblem(){
                 problem.innerHTML += `definitive: ${material.split(" = ")[1].split("|")[1]}<br>`
                 problem.innerHTML += `gender: ${material.split(" = ")[1].split("|")[2]}<br>`
             }
-            problem.innerHTML += "definition: " + material.split(" = ")[2]
+            problem.innerHTML += definitionTranslations[courseLanguage] + ": " + material.split(" = ")[2]
             break
         case "Verb":
             table.style.display = "block"
             problemInput.style.display = "none"
             problemHeader.textContent = material.split(" = ")[1]
-            problem.textContent = "definition: " + material.split(" = ")[2]
+            problem.textContent = definitionTranslations[courseLanguage] + ": " + material.split(" = ")[2]
             table1s.textContent = pronouns[courseTarget][0] + " " + verbs[courseTarget][material.split(" = ")[1]][0]
             table2s.textContent = pronouns[courseTarget][1] + " " + verbs[courseTarget][material.split(" = ")[1]][1]
             table3s.textContent = pronouns[courseTarget][2] + " " + verbs[courseTarget][material.split(" = ")[1]][2]
@@ -95,12 +96,16 @@ function submit(){
 
 function langreveal(cors){
     course = cors
+    courseLanguage = cors.split("=>")[0]
     courseTarget = cors.split("=>")[1]
     langselect.style.display = "none"
     background.style.display = "block"
     background.style.backgroundImage = `url('images/${courseTarget}.jpg')`
     languagename.textContent = autonym[courseTarget]
     lessonlist.innerHTML = ""
+    submitButton.textContent = submitButtonTranslations[courseLanguage]
+    problemButton.textContent = continueTranslations[courseLanguage]
+    problemInput.placeholder = typeHereTranslations[courseLanguage] + "..."
     sum.textContent = summary[courseTarget]
     for(g in lessons[course]) lessonlist.innerHTML += `<h2 onclick="lessonStart(${g})">${+g + 1}) ${lessons[course][g][0]}</h2>`
 }

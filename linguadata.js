@@ -162,3 +162,26 @@ summary = {
     mwl: "Muitas línguas têm orgulho dos seus pergaminhos antigos, da literatura escrita há centenas de anos e de escritores muito famosos, hoje bandeiras dessas línguas. Mas há outras que não podem ter orgulho de nada disso, como é o caso da língua mirandesa. Você é o futuro da nossa língua.",
     ovd: "Our Elfdalian language has survived for a thousand years, but now outside modern influences threaten to assimilate our river valley into the mainstream Swedish language. The situation of Elfdalian is dire compared to most languages in the world, but not all hope is lost! With the use of technology, our new generation can redeem the Elfdalian language and bring it to new heights. Come, learn the tongue of your ancestors, and help preserve it for the future.",
 }
+
+submitButtonTranslations = {
+    es: "enviar",
+    pt: "enviar",
+    sv: "överlämna",
+}
+typeHereTranslations = {
+    es: "escribe aquí",
+    pt: "escreve aquí",
+    sv: "skriv här",
+}
+
+continueTranslations = {
+    es: "continuar",
+    pt: "prosseguir",
+    sv: "fortsätta",
+}
+
+definitionTranslations = {
+    es: "definición",
+    pt: "definição",
+    sv: "definition",
+}
