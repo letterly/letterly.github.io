@@ -90,14 +90,14 @@ lessons = {
             "Frutas",
             "Verb = tener = tener",
             `Explanation = la palabra "o" se convierte en "l'" antes de un vocal`,
-            "Word = ombre = hombre",
-            "TranslateE = l'ombre = el hombre",
+            "Word = hombre = hombre",
+            "TranslateE = l'hombre = el hombre",
             "Word = mazana = manzana",
             "TranslateH = la mujer tiene la manzana = a muller tien a mazana",
             "Word = uga = uva",
             "TranslateE = as ugas son en a mía casa = las uvas están en mi casa",
             "Word = ocián = océano",
-            "TranslateE = estoy en el océano = soi en l'ocián",
+            "TranslateE = estoy en el océano = soi en l'oceano",
         ],
     ],
     "pt=>mwl": [
@@ -131,7 +131,7 @@ lessons = {
 }
 verbs = {
     an: {
-        estar: ["soy", "yes", "ye", "semos", "sotz", "son"],
+        estar: ["soi", "yes", "ye", "somos", "sotz", "son"],
         tener: ["tiengo", "tiens", "tien", "tenemos", "tenetz", "tienen"],
     },
     mwl: {
@@ -146,7 +146,7 @@ verbs = {
 }
 
 pronouns = {
-    an: ["yo", "tú", "él/ella", "nusatros/as", "busatros/as", "ellos/as"],
+    an: ["yo", "tú", "él/ella", "nusatros/as", "vusatros/as", "éls/ellas"],
     mwl: ["you", "tu", "el/eilha", "nós", "bós", "eilhes/as"],
     ovd: ["ig", "du", "an/ą̊", "wįð", "ið", "dier"],
 }
