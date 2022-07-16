@@ -108,7 +108,7 @@ lessons = {
             "TranslateE = sou um home = sou um homem",
             "Verb = ser = ser",
             "Word = Pertual = Portugal",
-            "TranslateE = semos de Pertual = somos de Portugal",
+            "TranslateE = somos de Pertual = somos de Portugal",
             `Explanation = "de" torna-se "d'" na frente de uma vogal`,
             "Word = adonde = ónde",
             "TranslateH = De ónde es? = D'adonde sós?",
@@ -121,7 +121,7 @@ lessons = {
             "Word = = ",
             "Verb = tener = ter",
             "Explanation = 'com' + 'o' è cul",
-            "TranslateE = Eilha está cul home = Ela está com o homem",
+            "TranslateE = Eilha está cul home = Ela stá com o homem",
             "Word = maçana = maçã",
             "Word = burmeilho = vermelho",
             "TranslateE = Tengo ua fruta burmeilha = Tenho uma fruta vermelha",
@@ -137,7 +137,7 @@ verbs = {
     mwl: {
         ser: ["sou", "sós", "ye", "somos", "sodes", "son"],
         star: ["stou", "stás", "stá", "stamos", "stais", "stan"],
-        tener: ["tengos", "tenes", "ten", "tenemos", "teneis", "ténen"],
+        tener: ["tengo", "tenes", "ten", "tenemos", "teneis", "ténen"],
     },
     ovd: {
         wårå: ["ir", "ir", "ir", "irum", "irið", "irå"],
