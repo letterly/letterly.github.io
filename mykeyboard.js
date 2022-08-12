@@ -6,19 +6,19 @@ document.addEventListener('keypress', function(e){
 });
 document.addEventListener('keydown', function(e){
     if(e.code.startsWith("Shift")){
-        theShift(e.code)
+        if(lang != "Osage") theShift(e.code)
     }
     else if(e.code == "CapsLock"){
-        theShift(e.code)
+        if(lang != "Osage") theShift(e.code)
     }
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
 });
 document.addEventListener('keyup', function(e){
     if(e.code.startsWith("Shift")){
-        leShift(e.code)
+        if(lang != "Osage") leShift(e.code)
     }
     else if(e.code == "CapsLock"){
-        leShift(e.code)
+        if(lang != "Osage") leShift(e.code)
     }
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
     else if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
@@ -245,6 +245,68 @@ keyboards = {
         Slash: "/",
         //
     },
+    Osage: {
+                //
+                Backquote: "~",
+                Digit1: "1",
+                Digit2: "2",
+                Digit3: "3",
+                Digit4: "4",
+                Digit5: "5",
+                Digit6: "6",
+                Digit7: "7",
+                Digit8: "8",
+                Digit9: "9",
+                Digit0: "0",
+                Minus: "-",
+                Equal: "=",
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        //
+        KeyQ: "𐓃",
+        KeyW: "𐓏",
+        KeyE: "𐒷",
+        KeyR: "𐓊",
+        KeyT: "𐓍",
+        KeyY: "𐓓",
+        KeyU: "𐓎",
+        KeyI: "𐒻",
+        KeyO: "𐓂",
+        KeyP: "𐓄",
+        BracketLeft: "𐓅",
+        BracketRight: "𐓉",
+        Backslash: "𐒽",
+        //
+        KeyA: "𐒰",
+        KeyS: "𐓆",
+        KeyD: "𐓈",
+        KeyF: "͘",
+        KeyG: "𐒲",
+        KeyH: "𐒹",
+        KeyJ: "𐒱",
+        KeyK: "𐒼",
+        KeyL: "𐒿",
+        Semicolon: "𐓋",
+        Quote: "𐓌",
+        //
+        KeyZ: "𐓒",
+        KeyX: "𐓐",
+        KeyC: "𐒵",
+        KeyV: "𐓇",
+        KeyB: "𐒴",
+        KeyN: "𐓁",
+        KeyM: "𐓀",
+        Comma: ",",
+        Period: ".",
+        Slash: "𐒾", //
+        //
+    },
     Vlach: {
         //
         Backspace: "del",
@@ -444,8 +506,8 @@ keyboards = {
         Digit8: "8",
         Digit9: "9",
         Digit0: "0",
-        "Minus": "-",
-        "Equal": "!",
+        "Minus": ".",
+        "Equal": ",",
         "KeyQ": "й",
         "KeyW": "ц",
         "KeyE": "у",
@@ -457,8 +519,8 @@ keyboards = {
         "KeyO": "щ",
         "KeyP": "з",
         "BracketLeft": "х",
-        "BracketRight": ".",
-        "Backslash": ",",
+        "BracketRight": "ъ",
+        "Backslash": "ё",
         "KeyA": "ф",
         "KeyS": "ы", 
         "KeyD": "в",
@@ -476,10 +538,10 @@ keyboards = {
         "KeyV": "м",
         "KeyB": "и",
         "KeyN": "т",
-        "KeyM": "ӏ",
+        "KeyM": "ь",
         "Comma": "б",
         "Period": "ю",
-        "Slash": "?",
+        Slash: "ӏ",
     },
 }
 
@@ -487,5 +549,5 @@ function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
     text.style.direction = lang == "Judeo-Arabic" ? "rtl" : "ltr"
 }
-keySet("Circassian")
+keySet("Osage")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
