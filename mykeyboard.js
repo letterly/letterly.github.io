@@ -14,6 +14,7 @@ document.addEventListener('keydown', function(e){
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
 });
 document.addEventListener('keyup', function(e){
+    console.log(e.code)
     if(e.code.startsWith("Shift")){
         if(lang != "Osage") leShift(e.code)
     }
@@ -21,10 +22,10 @@ document.addEventListener('keyup', function(e){
         if(lang != "Osage") leShift(e.code)
     }
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
-    else if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
+    else if(e.code.startsWith("Key") || e.code.startsWith("Digit")) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
 });
 document.body.onmousedown = function(e){
-    if(e.path[0].id == "CapsLock") theShift("CapsLock")
+    if(e.path[0].id == "CapsLock" && lang != "Osage") theShift("CapsLock")
     else if(e.path[0].id == "Enter") text.value += "\r"
     else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.path[0].id))){
         pressKey(e.srcElement.id)
@@ -551,3 +552,16 @@ function keySet(lang){
 }
 keySet("Osage")
 console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
+
+function customize(){
+    custom.style.display = "block"
+    custom.value = ""
+    for(h of Object.entries(keyboards.Osage)){
+        custom.value += `${h[0]}:${h[1]}` + "\r"
+    }
+}
+
+function customKeySet(){
+    console.log(custom.value.split("\n"))
+    for(g of custom.value.split("\n")) document.getElementById(g.split(":")[0]).textContent = g.split(":")[1]
+}

@@ -45,7 +45,7 @@ body{
 #ShiftLeft, #ShiftRight{
     width: 11.9vw;
 }
-#text{
+#text, #custom{
     background-color: #2aa198;
     width: 84vw;
     margin-left: 7vw;
@@ -57,6 +57,10 @@ body{
     outline: none;
     color: #fdf6e3;
     font-size: 3vw;
+}
+#custom{
+    height: 25vw;
+    background-color: #dc322f;
 }
 h2{
     float: left;
