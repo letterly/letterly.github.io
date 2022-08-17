@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <style>
+            h1,h2{ text-align: center }
+            textarea, #output{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+                float: left;
+            }
+            *{
+                font-family: 'Verdana';
+                color: white
+            }
+            body{ background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)) }
+            button{
+                border: none;
+                background-color: black;
+                border-radius: 5px;
+                font-size: 24px;
+                margin: 2px
+            }
+            textarea, #output{
+                border: none;
+                background-color: #ffffff33;
+                outline: none;
+                border-radius: 10px
+            }
+            #outputtext{
+                margin-top: 0px;
+            }
+            #encoding{
+                margin-top: 10px;
+                margin-left: 30%;
+                background-color: #00000033;
+            }
+            textarea::placeholder{ color: #333 }
+        </style>
+        <title>Dhegihan Platform</title>
+    </head>
+    <body>
+        <h1>Dhegihan Platform</h1>
+        <br>
+        <br>
+        <div id="textareas">
+            <textarea spellcheck="false" id="input" placeholder="enter text :)"></textarea>
+            <div id="output" placeholder="output here">
+                <p id="outputtext">output will appear here :)</p>
+            </div>
+        </div>
+        <textarea id="encoding" spellcheck="false">míⁿxci wínⁿxi,táⁿmaⁿ táⁿwaⁿ,blúmiⁿ blúwiⁿ,hnúmiⁿ hnúwiⁿ,yumíⁿ yuwíⁿ,yúmiⁿ yúwiⁿ,yumiⁿ yuwiⁿ,wahnúmiⁿ wahnúwiⁿ,à a,è e,ì i,ò o,ù u,á 𐒰́,é 𐒷̄,í 𐒻́,ó 𐓂́,ú 𐓎́,hniⁿ 𐓁𐒻͘,hnaⁿ 𐓁𐒰͘,hnoⁿ 𐓇𐓈𐓂͘,hna 𐓇𐓈𐒰,hn 𐓇𐓊,pho 𐓄𐓐𐓂,phaⁿ 𐓄𐓐𐒰͘,ph 𐓄𐓇,th 𐓈𐓐,kho 𐒼𐓐𐓂,khaⁿ 𐒼𐓐𐒰͘,kha 𐒼𐓐𐒰,kh 𐒼𐓇,aiⁿ 𐒲,oiⁿ 𐓃,ⁿ ͘,ai 𐒱,a 𐒰,bl 𐒴,j 𐓊,ch 𐓋,c 𐓌,e 𐒷,i 𐒻,l 𐒿,m 𐓀,n 𐓁,o 𐓂,p 𐓅,b 𐓄,sh 𐓇,ts 𐓊,s 𐓆,d 𐓈,ð 𐓍,u 𐓎,w 𐓏,gh 𐓑,k 𐒽,g 𐒼,zh 𐓓,z 𐓒,h 𐒹,t 𐓉,y 𐓍,x 𐓐</textarea>
+        <!-- Enter your desired algorithm above :) -->
+    </body>
+    <script>
+        defaultkey = "á a,é e,í i,ó o,ú u,ai 𐒱,aį 𐒲,a 𐒰,ə 𐒳,br 𐒴,hč 𐒶,č 𐒵,e 𐒷,i 𐒻,kü 𐒾𐓎,hk 𐒽,k 𐒼,l 𐒿,m 𐓀,n 𐓁,oį 𐓃,o 𐓂,hp 𐓅,p 𐓄,s 𐓆,š 𐓇,ht 𐓉,t 𐓈,hc 𐓋,ch 𐓌,c 𐓊,ð 𐓍,u 𐓎,w 𐓏,ɣ 𐓑,x 𐓐,z 𐓒,ž 𐓓,hü 𐒺𐓎,h 𐒹,ą 𐒰͘,ǫ 𐓂͘,į 𐒻͘"
+        kanzaKey = "míⁿxci wínⁿxi,táⁿmaⁿ táⁿwaⁿ,blúmiⁿ blúwiⁿ,hnúmiⁿ hnúwiⁿ,yumíⁿ yuwíⁿ,yúmiⁿ yúwiⁿ,yumiⁿ yuwiⁿ,wahnúmiⁿ wahnúwiⁿ,à a,è e,ì i,ò o,ù u,á 𐒰́,é 𐒷̄,í 𐒻́,ó 𐓂́,ú 𐓎́,hniⁿ 𐓁𐒻͘,hnaⁿ 𐓁𐒰͘,hnoⁿ 𐓇𐓈𐓂͘,hna 𐓇𐓈𐒰,hn 𐓇𐓊,pho 𐓄𐓐𐓂,phaⁿ 𐓄𐓐𐒰͘,ph 𐓄𐓇,th 𐓈𐓐,kho 𐒼𐓐𐓂,khaⁿ 𐒼𐓐𐒰͘,kha 𐒼𐓐𐒰,kh 𐒼𐓇,aiⁿ 𐒲,oiⁿ 𐓃,ⁿ ͘,ai 𐒱,a 𐒰,bl 𐒴,j 𐓊,ch 𐓋,c 𐓌,e 𐒷,i 𐒻,l 𐒿,m 𐓀,n 𐓁,o 𐓂,p 𐓅,b 𐓄,sh 𐓇,ts 𐓊,s 𐓆,d 𐓈,ð 𐓍,u 𐓎,w 𐓏,gh 𐓑,k 𐒽,g 𐒼,zh 𐓓,z 𐓒,h 𐒹,t 𐓉,y 𐓍,x 𐓐"
+        poncaOmahaKey = "ʰ :,th 𐓍,á a,é e,í i,ó o,ú u,aiⁿ 𐒲,oiⁿ 𐓃,aⁿ 𐒰͘,oⁿ 𐓂͘,iⁿ 𐒻͘,ai 𐒱,a 𐒰,ə 𐒳,br 𐒴,ch 𐒵,e 𐒷,i 𐒻,l 𐒿,m 𐓀,n 𐓁,o 𐓂,p 𐓅,b 𐓄,sh 𐓇,s 𐓆,t 𐓉,d 𐓈,hc 𐓋,j 𐓊,ð 𐓍,uⁿ 𐓎,u 𐓎,w 𐓏,kh 𐓐,g 𐒼,zh 𐓓,z 𐓒,h 𐒹,c 𐒶,k 𐒽,y 𐒻"
+        quapawKey = "á a,é e,í i,ó o,ú u,ai 𐒱,aį 𐒲,a 𐒰,ə 𐒳,br 𐒴,čʰ 𐒶,č 𐒵,e 𐒷,i 𐒻,kʰ 𐒽,k 𐒼,l 𐒿,m 𐓀,n 𐓁,oį 𐓃,o 𐓂,pʰ 𐓅,p 𐓄,s 𐓆,š 𐓇,ht 𐓉,t 𐓈,hc 𐓋,ch 𐓌,c 𐓊,ð 𐓍,u 𐓎,w 𐓏,ɣ 𐓑,x 𐓐,z 𐓒,ž 𐓓,hü 𐒺𐓎,h 𐒹,ą 𐒰͘,ǫ 𐓂͘,į 𐒻͘"
+        var typingTimer
+        var chartID
+        doneTypingInterval = 1000
+        input.addEventListener('keyup', translateFunction)
+        function translateFunction () {
+            key = encoding.value.split(",").map(x => [...x.split(" ")])
+            console.log(key)
+            inp = input.value
+            for(e of key) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
+            outputtext.textContent = inp
+        }
+    </script>
+</html>
