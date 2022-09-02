@@ -1,0 +1,265 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            body{
+                font-family: 'Roboto';
+                background-color: #221a0f;
+            }
+            #text{
+                font-family: 'Roboto';
+            }
+            .row{
+                width: 84vw;
+                margin-left: 7vw;
+                margin-right: 5vw;
+                background-color: #fdf6e3;
+                height: 6vw;
+            }
+            .key{
+                float: left;
+                height: 5vw;
+                width: 5vw;
+                margin: 0.5%;
+                background-color: #cb4b16;
+                text-align: center;
+                color: #fdf6e3;
+                font-size: 3vw;
+            }
+            .key:active{
+                background-color: #859900;
+            }
+            #Tab, #Backspace{
+                width: 7vw;
+            }
+            #Tab{
+                background-color: #657b83;
+            }
+            #CapsLock, #ShiftLeft, #ShiftRight{
+                background-color: #657b83;
+                text-decoration: underline;
+            }
+            #CapsLock{
+                width: 8vw;
+            }
+            #Enter{
+                width: 10vw;
+            }
+            #Enter, #Backspace{
+                background-color: #d33682;
+                font-style: italic;
+            }
+            #ShiftLeft, #ShiftRight{
+                width: 11.9vw;
+            }
+            #text, #custom{
+                background-color: #2aa198;
+                width: 84vw;
+                margin-left: 7vw;
+                margin-right: 5vw;
+                resize: none;
+                height: 15vw;
+                margin-top: 2vw;
+                border: none;
+                outline: none;
+                color: #fdf6e3;
+                font-size: 3vw;
+            }
+            #custom{
+                height: 25vw;
+                background-color: #dc322f;
+            }
+            h2{
+                float: left;
+                color: #fdf6e3;
+                margin: 5vw;
+                font-size: 3vw;
+                width: 90vw;
+            }
+            span{
+                text-decoration: underline;
+                color: #dc322f;
+            }
+            span:hover{
+                color: #fdf6e3;
+                text-decoration: none;
+            }
+        </style>
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>My Keyboard</title>
+    </head>
+    <body>
+        <div id="keyboard">
+            <div class="row" id="row0">
+                <div class="key" id="Backquote" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit1" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit2" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit3" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit4" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit5" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit6" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit7" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit8" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit9" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Digit0" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Minus" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Equal" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Backspace" onclick="pressKey(this.id)"></div>
+            </div>
+            <div class="row" id="row1">
+                <div class="key" id="Tab"></div>
+                <div class="key" id="KeyQ" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyW" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyE" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyR" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyT" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyY" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyU" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyI" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyO" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyP" onclick="pressKey(this.id)"></div>
+                <div class="key" id="BracketLeft" onclick="pressKey(this.id)"></div>
+                <div class="key" id="BracketRight" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Backslash" onclick="pressKey(this.id)"></div>
+            </div>
+            <div class="row" id="row2">
+                <div class="key" id="CapsLock"></div>
+                <div class="key" id="KeyA" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyS" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyD" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyF" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyG" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyH" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyJ" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyK" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyL" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Semicolon" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Quote" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Enter"></div>
+            </div>
+            <div class="row" id="row3">
+                <div class="key" id="ShiftLeft"></div>
+                <div class="key" id="KeyZ" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyX" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyC" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyV" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyB" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyN" onclick="pressKey(this.id)"></div>
+                <div class="key" id="KeyM" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Comma" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Period" onclick="pressKey(this.id)"></div>
+                <div class="key" id="Slash" onclick="pressKey(this.id)"></div>
+                <div class="key" id="ShiftRight"></div>
+            </div>
+        </div>
+        <textarea id="text" spellcheck="false"></textarea>
+        <textarea id="custom" style="display:none" onkeypress="customKeySet()"></textarea>
+    <script>
+document.addEventListener('keypress', function(e){
+    if(e.code != "Space" && e.code != "Enter"){
+        event.preventDefault()
+        pressKey(e.code)
+    }
+});
+document.addEventListener('keydown', function(e){
+    if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = "#859900"
+    if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
+});
+document.addEventListener('keyup', function(e){
+    console.log(e.code)
+    if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
+    else if(e.code.startsWith("Key") || e.code.startsWith("Digit") || ["Backquote", "Minus", "Equal", "Comma", "Period", "Slash", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote"].includes(e.code)) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
+});
+/*document.body.onmousedown = function(e){
+    if(e.path[0].id == "Enter") text.value += "\r"
+    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "CapsLock"].includes(e.path[0].id))){
+        pressKey(e.srcElement.id)
+    }
+}
+document.body.onmouseup = function(e){
+    if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "CapsLock"].includes(e.path[0].id))){
+        document.getElementById(e.path[0].id).style.backgroundColor = e.path[0].id != "Backspace" ? "#cb4b16" : "#d33682"
+        //e.path[0].style.backgroundColor = "black"
+        //e.path[0].style.backgroundColor = e.path[0].id != "Backspace" ? "#cb4b16" : "#d33682"
+    }
+}*/
+
+function pressKey(k){
+    n = text.selectionStart + document.getElementById(k).textContent.length
+    if(k != "Backspace"){
+        text.value += document.getElementById(k).textContent
+    }
+    else{
+        text.value = Array.from(text.value).slice(0,-1).join("")
+    }
+    text.selectionStart = n
+    text.value = text.value.replace("ą", "ą")
+}
+
+
+keyboards = {
+    Osage: {
+        Backquote:"!",
+        Digit1:1,
+        Digit2:2,
+        Digit3:3,
+        Digit4:4,
+        Digit5:5,
+        Digit6:6,
+        Digit7:7,
+        Digit8:8,
+        Digit9:9,
+        Digit0:0,
+        Minus:"?",
+        Equal:",",
+        Backspace:"del",
+        CapsLock:"caps",
+        Enter:"return",
+        ShiftLeft:"shift",
+        ShiftRight:"shift",
+        Tab:"tab",
+        KeyQ:"𐒾",
+        KeyW:"𐓏",
+        KeyE:"𐒷",
+        KeyR:"𐓊",
+        KeyT:"𐓍",
+        KeyY:"𐓓",
+        KeyU:"𐓎",
+        KeyI:"𐒻",
+        KeyO:"𐓂",
+        KeyP:"𐓄",
+        BracketLeft:"𐓅",
+        BracketRight:"𐒲",
+        Backslash:"𐒱",
+        KeyA:"𐒰",
+        KeyS:"𐓆",
+        KeyD:"𐓈",
+        KeyF:"𐓉",
+        KeyJ:"͘",
+        KeyH:"𐒹",
+        KeyG:"𐒼",
+        KeyK:"𐒽",
+        KeyL:"𐒿",
+        Semicolon:"𐓋",
+        Quote:"𐓌",
+        KeyZ:"𐓒",
+        KeyX:"𐓐",
+        KeyC:"𐒵",
+        KeyV:"𐓇",
+        KeyB:"𐒴",
+        KeyN:"𐓁",
+        KeyM:"𐓀",
+        Comma:"𐓑",
+        Period:".",
+        Slash:"𐓃",
+    },
+}
+
+function keySet(lang){
+    for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
+}
+keySet("Osage")
+console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
+    </script>
+</html>
