@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.replace(/I/g, "ı").replace(/İ/g, "i").toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                "ა": "⠁",
+                "ბ": "⠃",
+                "გ": "⠛",
+                "დ": "⠙",
+                "ე": "⠑",
+                "ვ": "⠺",
+                "ზ": "⠵",
+                "თ": "⠋",
+                "ი": "⠊",
+                "კ": "⠅",
+                "ლ": "⠇",
+                "მ": "⠍",
+                "ნ": "⠝",
+                "ო": "⠕",
+                "პ": "⠏",
+                "ჟ": "⠚",
+                "რ": "⠗",
+                "ს": "⠎",
+                "ტ": "⠞",
+                "უ": "⠥",
+                "ფ": "⠧",
+                "ქ": "⠻",
+                "ღ": "⠫",
+                "ყ": "⠮",
+                "შ": "⠱",
+                "ჩ": "⠟",
+                "ც": "⠉",
+                "ძ": "⠽",
+                "წ": "⠹",
+                "ჭ": "⠭",
+                "ხ": "⠓",
+                "ჯ": "⠪",
+                "ჰ": "⠯",
+                "\\'": "⠄",
+                "\\.": "⠲",
+                "\\,": "⠂",
+                "\\:": "⠒",
+                "\\;": "⠆",
+                "\\!": "⠖",
+                "\\?": "⠢",
+                "\\(": "⠶",
+                "\\)": "⠶",
+                "\\[": "⠣",
+                "\\]": "⠜",
+                "\\{": "⠷",
+                "\\}": "⠾",
+                "\\/": "⠌",
+                "\\\\": "⠡",
+                "\\$": "⠲",
+                "\\*": "⠔",
+                "\\#": "⠜",
+                "º": "⠤",
+                "₾": "⠬",
+                "„": "⠦",
+                "“": "⠴",
+                    "-": "⠤",
+                    "=": "⠶",
+                    "@": "⠈",
+                    "<": "⠪",
+                    ">": "⠕",
+                    "\\+": "⠖",
+                    "&": "⠿",
+                    "%": "⠳",
+                    " 0": " ⠼⠚",
+                    " 1": " ⠼⠁",
+                    " 2": " ⠼⠃",
+                    " 3": " ⠼⠉",
+                    " 4": " ⠼⠙",
+                    " 5": " ⠼⠑",
+                    " 6": " ⠼⠋",
+                    " 7": " ⠼⠛",
+                    " 8": " ⠼⠓",
+                    " 9": " ⠼⠊",
+                    "0": "⠚",
+                    "1": "⠁",
+                    "2": "⠃",
+                    "3": "⠉",
+                    "4": "⠙",
+                    "5": "⠑",
+                    "6": "⠋",
+                    "7": "⠛",
+                    "8": "⠓",
+                    "9": "⠊",
+                    " ": "⠀",
+                }
+            }, false);
+        </script>
+        <title>Georgian->Braille</title>
+    </head>
+    <body>
+        <h1>Georgian to Braille</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Georgian text"></textarea>
+        <textarea readonly id="braille" placeholder="output here"></textarea>
+    </body>
+</html>
