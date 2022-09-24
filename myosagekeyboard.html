@@ -36,7 +36,7 @@
             #Tab{
                 background-color: #657b83;
             }
-            #CapsLock, #ShiftLeft, #ShiftRight{
+            #CapsLock, #ShiftLeft, #ShiftRight, #Tab{
                 background-color: #657b83;
                 text-decoration: underline;
             }
@@ -163,7 +163,7 @@ document.addEventListener('keypress', function(e){
     }
 });
 document.addEventListener('keydown', function(e){
-    if(e.code != "Space") document.getElementById(e.code).style.backgroundColor = "#859900"
+    if(!["Space", "CapsLock", "ShiftLeft", "ShiftRight", "Tab"].includes(e.code)) document.getElementById(e.code).style.backgroundColor = "#859900"
     if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
 });
 document.addEventListener('keyup', function(e){
