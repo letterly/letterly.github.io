@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Macedonian Braille Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "А": "⠨⠁",
+                    "Б": "⠨⠃",
+                    "Ц": "⠨⠉",
+                    "Ч": "⠨⠡",
+                    "Д": "⠨⠙",
+                    "Џ": "⠨⠻",
+                    "Ѕ": "⠨⠳",
+                    "Е": "⠨⠑",
+                    "Ф": "⠨⠋",
+                    "Г": "⠨⠛",
+                    "Ѓ": "⠨⠜",
+                    "Х": "⠨⠓",
+                    "И": "⠨⠊",
+                    "Ј": "⠨⠚",
+                    "К": "⠨⠅",
+                    "Ќ": "⠨⠌",
+                    "Л": "⠨⠇",
+                    "Љ": "⠨⠣",
+                    "М": "⠨⠍",
+                    "Н": "⠨⠝",
+                    "Њ": "⠨⠫",
+                    "О": "⠨⠕",
+                    "П": "⠨⠏",
+                    "Р": "⠨⠗",
+                    "С": "⠨⠎",
+                    "Ш": "⠨⠱",
+                    "Т": "⠨⠞",
+                    "У": "⠨⠥",
+                    "В": "⠨⠧",
+                    "З": "⠨⠵",
+                    "Ж": "⠨⠮",
+                    //
+                    "а": "⠁",
+                    "б": "⠃",
+                    "ц": "⠉",
+                    "ч": "⠡",
+                    "д": "⠙",
+                    "џ": "⠻",
+                    "ѕ": "⠳",
+                    "е": "⠑",
+                    "ф": "⠋",
+                    "г": "⠛",
+                    "ѓ": "⠜",
+                    "х": "⠓",
+                    "и": "⠊",
+                    "ј": "⠚",
+                    "к": "⠅",
+                    "ќ": "⠌",
+                    "л": "⠇",
+                    "љ": "⠣",
+                    "м": "⠍",
+                    "н": "⠝",
+                    "њ": "⠫",
+                    "о": "⠕",
+                    "п": "⠏",
+                    "р": "⠗",
+                    "с": "⠎",
+                    "ш": "⠱",
+                    "т": "⠞",
+                    "у": "⠥",
+                    "в": "⠧",
+                    "з": "⠵",
+                    "ж": "⠮",
+                    "'": "⠄",
+                    "\\.": "⠲",
+                    ",": "⠂",
+                    "\\;": "⠆",
+                    "\\?": "⠢",
+                    "\\!": "⠖",
+                    " ": "⠀",
+                    "0": "⠼⠚",
+                    "1": "⠼⠁",
+                    "2": "⠼⠃",
+                    "3": "⠼⠉",
+                    "4": "⠼⠙",
+                    "5": "⠼⠑",
+                    "6": "⠼⠋",
+                    "7": "⠼⠛",
+                    "8": "⠼⠓",
+                    "9": "⠼⠊",
+                    "⠊⠼": "⠊",
+                    "⠓⠼": "⠓",
+                    "⠛⠼": "⠛",
+                    "⠋⠼": "⠋",
+                    "⠑⠼": "⠑",
+                    "⠙⠼": "⠙",
+                    "⠉⠼": "⠉",
+                    "⠃⠼": "⠃",
+                    "⠁⠼": "⠁",
+                    "⠚⠼": "⠚",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Macedonian Braille Converter</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Macedonian text" style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="Braille output here" style="direction:ltr"></textarea>
+    </body>
+</html>
