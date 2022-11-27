@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Elfdalian Number Machine</title>
+        <style>
+            p{
+                text-align: center;
+                font-size: 24px;
+            }
+            input{
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <input onkeyup="elfdalian(this.value)" placeholder="Enter a number in Elfdalian"></input>
+        <p id="elf"></p>
+    </body>
+    <script>
+        function elfdalian(num){
+            console.log(num)
+            num = +(("" + num).replace(/ /g, "").replace(/\./g, ""))
+            console.log(num)
+            if(num == 0){
+                elf.textContent = ""
+                return 0
+            }
+            else if(isNaN(num)){
+                elf.textContent = "Enter a number"
+                return 0
+            }
+            else if(num >= 1000000){
+                elf.textContent = "Choose a smaller number please"
+                return 0
+            }
+            else if(num % 1000 == 0){
+                num = threedigit(Math.floor(num / 1000)) + " tusn"
+            }
+            else if(num >= 1000){
+                num = threedigit(Math.floor(num / 1000)) + "tusn" + threedigit(num % 1000)
+            }
+            else{
+                num = threedigit(num)
+            }
+            num = "" + num
+            num = num.replace("ttt", "tt")
+            num = num.replace("fyra ", "fyr ")
+            num = num.replace("åtta ", "ått ")
+            num = num.replace("niu ", "ni ")
+            num = num.replace("tiu ", "ti ")
+            console.log(num)
+            elf.textContent = num
+        }
+
+        function threedigit(n){
+            digits = ["", "iett", "twå", "tri", "fyra", "fem", "sjäks", "sju", "åtta", "niu", "tiu", "ellåv", "tolv", "trettą̊", "fiuortą̊", "femtą̊", "sjäkstą̊", "sjuttją̊", "åttją̊", "nittją̊"]
+            tens = ["", "", "tiugu", "tretti", "fyrti", "femti", "sjäksti", "sjutti", "åtti", "nitti"]
+            if(n < 20) return digits[n]
+            else if(n < 100) return tens[Math.floor(n / 10)] + digits[n % 10]
+            else if(n % 100 == 0) return digits[n / 100] + " undrað"
+            else if(n < 200) return "undrað" + threedigit(n - 100)
+            else return digits[Math.floor(n / 100)] + "undrað" + threedigit(n % 100)
+        }
+    </script>
+</html>
