@@ -2,19 +2,24 @@
     <head>
         <title>Elfdalian Number Machine</title>
         <style>
+            *{
+                font-family: "Verdana";
+                text-align: center;
+            }
             p{
                 text-align: center;
-                font-size: 48px;
+                font-size: 64px;
             }
             input{
-                width: 60%;
-                margin-left: 20%;
-                margin-right: 20%;
-                font-size: 48px;
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+                font-size: 64px;
             }
         </style>
     </head>
     <body>
+        <p>Elfdalian Numbers</p>
         <input onkeyup="elfdalian(this.value)" placeholder="Enter a number"></input>
         <p id="elf"></p>
     </body>
