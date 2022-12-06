@@ -5,6 +5,9 @@ body{
 #text{
     font-family: 'Roboto';
 }
+#Space{
+    width: 83vw;
+}
 .row{
     width: 84vw;
     margin-left: 7vw;

@@ -1,3 +1,4 @@
+lang = "S'Klallam"
 document.addEventListener('keypress', function(e){
     if(e.code != "Space" && e.code != "Enter"){
         event.preventDefault()
@@ -14,7 +15,6 @@ document.addEventListener('keydown', function(e){
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
 });
 document.addEventListener('keyup', function(e){
-    console.log(e.code)
     if(e.code.startsWith("Shift")){
         if(lang != "Osage") leShift(e.code)
     }
@@ -22,12 +22,12 @@ document.addEventListener('keyup', function(e){
         if(lang != "Osage") leShift(e.code)
     }
     else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
-    else if(e.code.startsWith("Key") || e.code.startsWith("Digit")) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
+    else if(e.code.startsWith("Key") || e.code.startsWith("Digit") || ["Backquote", "Minus", "Equal", "Comma", "Period", "Slash", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote"].includes(e.code)) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
 });
 document.body.onmousedown = function(e){
     if(e.path[0].id == "CapsLock" && lang != "Osage") theShift("CapsLock")
     else if(e.path[0].id == "Enter") text.value += "\r"
-    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.path[0].id))){
+    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Space"].includes(e.path[0].id))){
         pressKey(e.srcElement.id)
     }
 }
@@ -51,18 +51,84 @@ function pressKey(k){
 
 function theShift(c){
     document.getElementById(c).style.backgroundColor = "#859900"
-    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"])){
-        console.log(x)
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8"])){
         document.getElementById(x).textContent = document.getElementById(x).textContent.toUpperCase()
     }
 }
 
+function space(){
+    text.value += " "
+}
+
 function leShift(c){
     document.getElementById(c).style.backgroundColor = "#b58900"
-    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"])) document.getElementById(x).textContent = document.getElementById(x).textContent.toLowerCase()
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8"])){
+        document.getElementById(x).textContent = document.getElementById(x).textContent.toLowerCase()
+    }
 }
 
 keyboards = {
+    "S'Klallam": {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        Backquote: "~",
+        Digit1: "č",
+        Digit2: "ə",
+        Digit3: "ɬ",
+        Digit4: "ƛ",
+        Digit5: "ŋ",
+        Digit6: "š",
+        Digit7: "x̣",
+        Digit8: "ʔ",
+        Digit9: "!",
+        Digit0: "?",
+        Minus: "-",
+        Equal: "=",
+        //
+        KeyQ: "q",
+        KeyW: "w",
+        KeyE: "e",
+        KeyR: "r",
+        KeyT: "t",
+        KeyY: "y",
+        KeyU: "u",
+        KeyI: "i",
+        KeyO: "o",
+        KeyP: "p",
+        BracketLeft: "ʷ",
+        BracketRight: "̕",
+        Backslash: "́",
+        //
+        KeyA: "a",
+        KeyS: "s",
+        KeyD: "d",
+        KeyF: "f",
+        KeyG: "g",
+        KeyH: "h",
+        KeyJ: "j",
+        KeyK: "k",
+        KeyL: "l",
+        Semicolon: ";",
+        Quote: "'",
+        //
+        KeyZ: "z",
+        KeyX: "x",
+        KeyC: "c",
+        KeyV: "v",
+        KeyB: "b",
+        KeyN: "n",
+        KeyM: "m",
+        Comma: ",",
+        Period: ".",
+        Slash: "/",
+        //
+    },
     English: {
         //
         Backspace: "del",
@@ -259,7 +325,7 @@ keyboards = {
         Digit9:9,
         Digit0:0,
         Minus:"?",
-        Equal:"=",
+        Equal:",",
         Backspace:"del",
         CapsLock:"caps",
         Enter:"return",
@@ -543,8 +609,7 @@ function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
     text.style.direction = lang == "Judeo-Arabic" ? "rtl" : "ltr"
 }
-keySet("Osage")
-console.log("QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash"]))
+keySet("S'Klallam")
 
 function customize(){
     custom.style.display = "block"
@@ -555,6 +620,5 @@ function customize(){
 }
 
 function customKeySet(){
-    console.log(custom.value.split("\n"))
     for(g of custom.value.split("\n")) document.getElementById(g.split(":")[0]).textContent = g.split(":")[1]
 }
