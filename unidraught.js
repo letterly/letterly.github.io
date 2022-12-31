@@ -16,8 +16,8 @@ function findMoves(){
         }
     }
     
-    for(sol of army) movePlan(sol)
-    for(sol of army) attackPlan([{number: sol, kill: "", direction: "", destination: sol}], world)
+    for(sol of army) movePlan(sol, world)
+    for(sol of army) attackPlan([{number: sol, mypiece: textOn(sol), kill: "", direction: "", destination: sol}], world)
     
     if(attackplans.length == 0){
         myplans = moveplans
@@ -35,34 +35,196 @@ function findMoves(){
     if(myplans.length == 0){
         if(turn == "black") alert("white wins")
         else alert("black wins")
+        ren(choice)
     }
 }
 
 
-function movePlan(l){
+function movePlan(l, wrld){
+
+
+    /*
+
+    ::Palestinian::
+    
+    =Men
+
+    Move:
+    (single)
+    -Forward
+    -Side
+
+    Attack:
+    (single)
+    -Forward
+    -Sideways
+
+    =King
+
+    Move:
+    (single)
+    -Forward
+    -Sideway
+    -Backward
+
+    Attack:
+    (single)
+    -Forward
+    -Sideway
+    -Backward
+
+
+
+    ::Turkish::
+
+    =Men
+
+    Move:
+    (single)
+    -Forward
+    -Side
+
+    Attack:
+    (single)
+    -Forward
+    -Sideways
+
+    =King
+
+    Move:
+    (fly)
+    -Forward
+    -Sideway
+    -Backward
+
+    Attack:
+    (fly)
+    -Forward
+    -Sideway
+    -Backward
+
+
+
+
+    */
+
+
+
+
+    //
+
+    pieceType = pieces[turn].indexOf[textOn(l)] == 1 ? "king" : "man"
     multiplier = turn == "white" ? -1 : 1
-    if(pieces[turn].indexOf(textOn(l)) == "1" && ((turn == "white" && width * height - width >= l) || (turn == "black" && l >= width))  && textOn(+l - (multiplier * width)) == ""){
-        moveplans.push([l, +l - (width * multiplier)])
+
+    left = (l % width)
+    right = width - (l % width) - 1
+    if(turn == "white"){
+        backward = Math.floor((width * height - 1 - l) / width)
+        forward = Math.floor(l / width)
     }
-    if(((turn == "white" && l >= width) || (turn == "black" && width * height - width >= l)) && textOn(+l + (multiplier * width)) == ""){
+    else{ //black
+        forward = Math.floor((width * height - 1 - l) / width)
+        backward = Math.floor(l / width)
+    }
+
+
+    forwardArr = []
+    leftArr = []
+    rightArr = []
+    backwardArr = []
+
+    directionList = {
+        forward: {
+            keynum: turn == "white" ? Math.floor(l / width) : Math.floor((width * height - 1 - l) / width),
+        },
+        backward: {
+            keynum: turn == "black" ? Math.floor(l / width) : Math.floor((width * height - 1 - l) / width),
+        },
+        leftward: {
+            keynum: l % width,
+        },
+        rightward: {
+            keynum: width - (l % width) - 1,
+        },
+    }
+
+    for(g of Object.entries(directionList)){
+        dir = g[0]
+        g[1].arr = []
+        while(g[1].keynum > 0){
+            if(["leftward", "rightward"].includes(dir)){
+                g[1].arr.push([wrld[+l + g[1].keynum], +l + g[1].keynum])
+                g[1].keynum--
+            }
+            else if(dir == "forward"){
+                g[1].arr.push([wrld[+l + g[1].keynum * width * multiplier], +l + g[1].keynum * width * multiplier])
+                g[1].keynum--
+            }
+            else if(dir == "backward"){
+                if(pieceType == "king"){
+                    g[1].arr.push([wrld[l - g[1].keynum * width * multiplier], l - g[1].keynum * width * multiplier])
+                }
+                g[1].keynum--
+            }
+        }
+        directionList[dir].arr = directionList[dir].arr.reverse()
+    }
+
+    console.log(directionList)
+
+
+    while(left > 0){
+        leftArr.push(wrld[l - left])
+        left--
+    }
+    while(right > 0){
+        rightArr.push(wrld[+l + right])
+        right--
+    }
+    while(forward > 0){
+        forwardArr.push(wrld[+l + forward * width * multiplier])
+        forward--
+    }
+    while(backward > 0 && pieces[turn][1] == textOn(l)){
+        backwardArr.push(wrld[l - backward * width * multiplier])
+        backward--
+    }
+
+
+    console.log(forwardArr.reverse())
+    console.log(backwardArr.reverse())
+    console.log(leftArr.reverse())
+    console.log(rightArr.reverse())
+
+
+    if(leftArr[0] == ""){
+        moveplans.push([l, +l - 1])
+    }
+    if(rightArr[0] == ""){
+        moveplans.push([l, +l + 1])
+    }
+    if(forwardArr[0] == ""){
         moveplans.push([l, +l + (width * multiplier)])
     }
-    if(l % width != 0 && textOn(l - 1) == ""){
-        moveplans.push([l, l - 1])
+    if(pieces[turn][0] == textOn(l) && backwardArr[0] == ""){
+        moveplans.push([l, +l - (width * multiplier)])
     }
-    if(width - (l % width) > 1 && textOn(+l + 1) == ""){
-        moveplans.push([l, +l + 1])
-    }   
 }
 
 function attackPlan(lll, w){
     harhar = []
     ll = lll[lll.length - 1].destination
+    pp = lll[lll.length - 1].mypiece
+
+    
     multiplier = turn == "white" ? -1 : 1
     canattack1 = (turn == "white" && ll >= (width * 2) || (turn == "black" && ll < ((height - 2) * width))) && w[ll + (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll + (width * multiplier)])
     canattack2 = ll % width > 1 && w[ll - 2] == "" && pieces[opponent].includes(w[ll - 1])
     canattack3 = width - (ll % width) > 2 && w[+ll + 2] == "" && pieces[opponent].includes(w[+ll + 1])
-    canattack4 = pieces[turn].indexOf(w[ll]) == "1" && ((turn == "white" && ll < (height - 2) * width) || (turn == "black" && ll >= 2 * width)) && w[ll - (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll - (multiplier * width)])
+    canattack4 = pieces[turn].indexOf(pp) == "1" && ((turn == "white" && ll < (height - 2) * width) || (turn == "black" && ll >= 2 * width)) && w[ll - (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll - (multiplier * width)])
+
+    //fix?
+
     if(!canattack1 && !canattack2 && !canattack3 && !canattack4){
         if(lll.length > 1){
             attackplans.push([...lll])
@@ -70,20 +232,28 @@ function attackPlan(lll, w){
     }
     else{
         if(canattack1){
+            w[ll] = ""
             w[ll - width] = ""
-            harhar.push({number: ll, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
+            w[ll - width * 2] = pp
+            harhar.push({number: ll, mypiece: pp, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
         }
         if(canattack2){
+            w[ll] = ""
             w[ll - 1] = ""
-            harhar.push({number: ll, direction: "west", kill: ll - 1, destination: ll - 2})
+            w[ll - 2] = pp
+            harhar.push({number: ll, mypiece: pp, direction: "west", kill: ll - 1, destination: ll - 2})
         }
         if(canattack3){
+            w[ll] = ""
             w[+ll + 1] = ""
-            harhar.push({number: ll, direction: "east", kill: +ll + 1, destination: ll + 2})
+            w[+ll + 2] = pp
+            harhar.push({number: ll, mypiece: pp, direction: "east", kill: +ll + 1, destination: ll + 2})
         }
         if(canattack4){
-            w[+ll + 1] = ""
-            harhar.push({number: ll, direction: "south", kill: ll - (width * multiplier), destination: ll - (multiplier * width * 2)})
+            w[ll] = ""
+            w[+ll + width] = ""
+            w[+ll + (2 * width)] = pp
+            harhar.push({number: ll, mypiece: pp, direction: "south", kill: ll - (width * multiplier), destination: ll - (multiplier * width * 2)})
         }
         for(hhh of harhar) attackPlan([...lll, hhh], w)
     }
@@ -96,8 +266,9 @@ function textOn(h){
 }
 
 function square(q){
+    console.log(myplans)
     isARedTile = redtiles.includes(+q)
-    if((pieces[turn].includes(textOn(q)) && redtiles.length == 0 || isARedTile) && choice == "Palestinian"){ //appropriate pieces to click
+    if((pieces[turn].includes(textOn(q)) && redtiles.length == 0 || isARedTile) && workingVariants.includes(choice)){ //appropriate pieces to click
         justMoving = !isNaN(myplans[0][0])
         if(redtiles.includes(+q) && !isNaN(myplans[0][0])){
             document.getElementById(q).textContent = textOn(myplans[0][0])

@@ -20,7 +20,7 @@ function ren(type){
     infobox.innerHTML += `<p>${{
         "jumper": "The king can move both forwards and backwards",
         "flyer": "The king can fly past any number of squares in any direction",
-    }[d.king]}<p>`
+    }[d.kings]}<p>`
     infobox.innerHTML += `<p>${{
         "quantity": "When you have a choice of different capturing moves, it's mandatory to do the path which captures the most pieces",
         "none": "Your choice of path doesn't matter as long as you capture all pieces on that path",
@@ -91,6 +91,6 @@ function ren(type){
 
 
     //NECESSARY FUNCTION DONT DELETE :)
-    if(choice == "Palestinian") findMoves()
+    if(workingVariants.includes(choice)) findMoves()
 }
 
