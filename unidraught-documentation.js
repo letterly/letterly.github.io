@@ -77,6 +77,19 @@ draughtVariants = {
         precedence: "quantity",
         wincondition: "regular",
     },
+    "Ivorian/Paraguayan": {
+        type: "diagonal",
+        leftcorner: "white",
+        firstteam: "white",
+        dimensions: "10x10",
+        rows: 4,
+        kings: "flyer",
+        men: "forward/backward",
+        removeafter: true,
+        huffing: false,
+        precedence: "quantity",
+        wincondition: "regular",
+    },
     "Palestinian": {
         type: "orthogonal",
         leftcorner: "none",
@@ -232,12 +245,13 @@ pieces = {
 }
 
 option = []
+newplans = []
 moveplans = []
 attackplans = []
 myplans = []
 redtiles = []
 harhar = []
 
-workingVariants = ["Palestinian", "Turkopali"]
+workingVariants = ["Palestinian", "Turkish"]
 
 choice = workingVariants[0]

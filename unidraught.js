@@ -113,26 +113,15 @@ function movePlan(l, wrld){
 
     //
 
-    pieceType = pieces[turn].indexOf[textOn(l)] == 1 ? "king" : "man"
+    pieceType = pieces[turn].indexOf(textOn(l)) == 1 ? "king" : "man"
     multiplier = turn == "white" ? -1 : 1
 
-    left = (l % width)
-    right = width - (l % width) - 1
-    if(turn == "white"){
-        backward = Math.floor((width * height - 1 - l) / width)
-        forward = Math.floor(l / width)
-    }
-    else{ //black
-        forward = Math.floor((width * height - 1 - l) / width)
-        backward = Math.floor(l / width)
-    }
 
 
     forwardArr = []
     leftArr = []
     rightArr = []
     backwardArr = []
-
     directionList = {
         forward: {
             keynum: turn == "white" ? Math.floor(l / width) : Math.floor((width * height - 1 - l) / width),
@@ -148,66 +137,48 @@ function movePlan(l, wrld){
         },
     }
 
+
+
+
     for(g of Object.entries(directionList)){
         dir = g[0]
-        g[1].arr = []
-        while(g[1].keynum > 0){
-            if(["leftward", "rightward"].includes(dir)){
-                g[1].arr.push([wrld[+l + g[1].keynum], +l + g[1].keynum])
-                g[1].keynum--
+        m = []
+        yy = g[1].keynum
+        while(yy > 0){
+            if(dir == "rightward"){
+                m.push([wrld[+l + yy], +l + yy])
+            }
+            else if(dir == "leftward"){
+                m.push([wrld[+l - yy], +l - yy])
             }
             else if(dir == "forward"){
-                g[1].arr.push([wrld[+l + g[1].keynum * width * multiplier], +l + g[1].keynum * width * multiplier])
-                g[1].keynum--
+                m.push([wrld[+l + yy * width * multiplier], +l + yy * width * multiplier])
             }
             else if(dir == "backward"){
                 if(pieceType == "king"){
-                    g[1].arr.push([wrld[l - g[1].keynum * width * multiplier], l - g[1].keynum * width * multiplier])
+                    m.push([wrld[l - yy * width * multiplier], l - yy * width * multiplier])
                 }
-                g[1].keynum--
+            }
+            yy--
+        }
+
+        m = m.reverse()
+
+        if(m.length > 0 && m[0][0] == ""){
+            if(dir == "leftward"){
+                moveplans.push([l, +l - 1])
+            }
+            else if(dir == "rightward"){
+                moveplans.push([l, +l + 1])
+            }
+            else if(dir == "forward"){
+                moveplans.push([l, +l + width * multiplier])
+            }
+            else if(dir == "backward" && pieces[turn][1] == textOn(l)){
+                console.log("!!!")
+                moveplans.push([l, +l - width * multiplier])
             }
         }
-        directionList[dir].arr = directionList[dir].arr.reverse()
-    }
-
-    console.log(directionList)
-
-
-    while(left > 0){
-        leftArr.push(wrld[l - left])
-        left--
-    }
-    while(right > 0){
-        rightArr.push(wrld[+l + right])
-        right--
-    }
-    while(forward > 0){
-        forwardArr.push(wrld[+l + forward * width * multiplier])
-        forward--
-    }
-    while(backward > 0 && pieces[turn][1] == textOn(l)){
-        backwardArr.push(wrld[l - backward * width * multiplier])
-        backward--
-    }
-
-
-    console.log(forwardArr.reverse())
-    console.log(backwardArr.reverse())
-    console.log(leftArr.reverse())
-    console.log(rightArr.reverse())
-
-
-    if(leftArr[0] == ""){
-        moveplans.push([l, +l - 1])
-    }
-    if(rightArr[0] == ""){
-        moveplans.push([l, +l + 1])
-    }
-    if(forwardArr[0] == ""){
-        moveplans.push([l, +l + (width * multiplier)])
-    }
-    if(pieces[turn][0] == textOn(l) && backwardArr[0] == ""){
-        moveplans.push([l, +l - (width * multiplier)])
     }
 }
 
@@ -233,8 +204,8 @@ function attackPlan(lll, w){
     else{
         if(canattack1){
             w[ll] = ""
-            w[ll - width] = ""
-            w[ll - width * 2] = pp
+            w[ll + width * multiplier] = ""
+            w[ll + width * 2 * multiplier] = pp
             harhar.push({number: ll, mypiece: pp, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
         }
         if(canattack2){
@@ -251,11 +222,13 @@ function attackPlan(lll, w){
         }
         if(canattack4){
             w[ll] = ""
-            w[+ll + width] = ""
-            w[+ll + (2 * width)] = pp
+            w[+ll - width * multiplier] = ""
+            w[+ll - (multiplier * 2 * width)] = pp
             harhar.push({number: ll, mypiece: pp, direction: "south", kill: ll - (width * multiplier), destination: ll - (multiplier * width * 2)})
         }
-        for(hhh of harhar) attackPlan([...lll, hhh], w)
+        for(hhh of harhar){
+            attackPlan([...lll, hhh], w)
+        }
     }
 
 }
@@ -266,11 +239,10 @@ function textOn(h){
 }
 
 function square(q){
-    console.log(myplans)
     isARedTile = redtiles.includes(+q)
     if((pieces[turn].includes(textOn(q)) && redtiles.length == 0 || isARedTile) && workingVariants.includes(choice)){ //appropriate pieces to click
         justMoving = !isNaN(myplans[0][0])
-        if(redtiles.includes(+q) && !isNaN(myplans[0][0])){
+        if(redtiles.includes(+q) && justMoving){
             document.getElementById(q).textContent = textOn(myplans[0][0])
             document.getElementById(myplans[0][0]).textContent = ""
             turn = turn == "white" ? "black" : "white"
@@ -304,9 +276,10 @@ function square(q){
             }
             
         }
-        else if(!isNaN(myplans[0][0])){ //for movers
+        else if(justMoving && myplans.map(c => +c[0]).includes(+q)){ //for movers
             myplans = myplans.filter(c => +c[0] == +q)
             redtiles = myplans.map(c => +c[1])
+            console.log(myplans)
             for(r of redtiles) document.getElementById(r).style.backgroundColor = "red"
         }
         else if(myplans.map(c => c[0].number).includes(+q)){
