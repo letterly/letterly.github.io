@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input id="a" placeholder="text" />
+        <input id="b" placeholder="letters to remove" />
+        <input id="c" placeholder="more letters to remove" />
+        <button onclick="go()">Let's Go!</button>
+        <p id="p"></p>
+    </body>
+    <script>
+        function go(){
+            aa = a.value.toUpperCase()
+            bb = b.value.toUpperCase().split("")
+            cc = c.value.toUpperCase().split("")
+            for(bbb of bb){
+                aa = aa.replace(new RegExp(bbb,"g"), "")            
+            }
+            for(ccc of cc){
+                aa = aa.replace(new RegExp(ccc,"g"), "")            
+            }
+            p.textContent = aa
+        }
+    </script>
+</html>
