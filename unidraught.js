@@ -41,82 +41,8 @@ function findMoves(){
 
 
 function movePlan(l, wrld){
-
-
-    /*
-
-    ::Palestinian::
-    
-    =Men
-
-    Move:
-    (single)
-    -Forward
-    -Side
-
-    Attack:
-    (single)
-    -Forward
-    -Sideways
-
-    =King
-
-    Move:
-    (single)
-    -Forward
-    -Sideway
-    -Backward
-
-    Attack:
-    (single)
-    -Forward
-    -Sideway
-    -Backward
-
-
-
-    ::Turkish::
-
-    =Men
-
-    Move:
-    (single)
-    -Forward
-    -Side
-
-    Attack:
-    (single)
-    -Forward
-    -Sideways
-
-    =King
-
-    Move:
-    (fly)
-    -Forward
-    -Sideway
-    -Backward
-
-    Attack:
-    (fly)
-    -Forward
-    -Sideway
-    -Backward
-
-
-
-
-    */
-
-
-
-
-    //
-
     pieceType = pieces[turn].indexOf(textOn(l)) == 1 ? "king" : "man"
     multiplier = turn == "white" ? -1 : 1
-
-
 
     forwardArr = []
     leftArr = []
@@ -137,13 +63,12 @@ function movePlan(l, wrld){
         },
     }
 
-
-
-
     for(g of Object.entries(directionList)){
         dir = g[0]
         m = []
         yy = g[1].keynum
+        console.log(d[pieceType].move.type)
+        console.log(d[pieceType].move.movements)
         while(yy > 0){
             if(dir == "rightward"){
                 m.push([wrld[+l + yy], +l + yy])
@@ -175,7 +100,6 @@ function movePlan(l, wrld){
                 moveplans.push([l, +l + width * multiplier])
             }
             else if(dir == "backward" && pieces[turn][1] == textOn(l)){
-                console.log("!!!")
                 moveplans.push([l, +l - width * multiplier])
             }
         }
@@ -184,48 +108,140 @@ function movePlan(l, wrld){
 
 function attackPlan(lll, w){
     harhar = []
+    lehar = []
     ll = lll[lll.length - 1].destination
     pp = lll[lll.length - 1].mypiece
 
     
+    //
+
+
     multiplier = turn == "white" ? -1 : 1
-    canattack1 = (turn == "white" && ll >= (width * 2) || (turn == "black" && ll < ((height - 2) * width))) && w[ll + (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll + (width * multiplier)])
+
+    /*
+    attackDirectionList = {
+        forward: turn == "white" ? Math.floor(ll / width) : Math.floor((width * height - 1 - ll) / width),
+        backward: turn == "black" ? Math.floor(ll / width) : Math.floor((width * height - 1 - ll) / width),
+        leftward: ll % width,
+        rightward: width - (ll % width) - 1,
+    }
+
+    for(g of Object.entries(attackDirectionList)){
+        truth = false
+        dir = g[0]
+        m = []
+        yy = g[1]
+        
+        while(yy > 0){
+            if(dir == "rightward"){
+                m.push([w[+ll + yy], +ll + yy])
+            }
+            else if(dir == "leftward"){
+                m.push([w[+ll - yy], +ll - yy])
+            }
+            else if(dir == "forward"){
+                m.push([w[+ll + yy * width * multiplier], +ll + yy * width * multiplier])
+            }
+            else if(dir == "backward"){
+                if(pieceType == "king"){
+                    m.push([w[ll - yy * width * multiplier], ll - yy * width * multiplier])
+                }
+            }
+            yy--
+        }
+        m = m.reverse()
+        console.log(m)
+        if(m.length > 0 && pieces[opponent].includes(w[m[0][1]]) && m[1][0] == ""){
+            console.log("AAA")
+            truth = true
+            w[ll] = ""
+            w[ll + width * multiplier] = ""
+            w[ll + width * 2 * multiplier] = pp
+            lehar.push({number: ll, mypiece: pp, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
+        }
+    }
+    if(!truth){
+        if(lll.length > 1){
+            newplans.push([...lll])
+        }
+    }
+    else{
+        for(hhh of lehar){
+            //attackPlan([...lll, hhh], w)
+        }
+    }
+    console.log(newplans)
+    console.log(lehar)
+    */
+
+
+    //write more
+    canAttackArray = [
+        {
+            direction: "north",
+            incro: width * multiplier,
+        },
+        {
+            direction: "west",
+            incro: -1,
+        },
+        {
+            direction: "east",
+            incro: 1,
+        },
+        {
+            direction: "south",
+            incro: width * multiplier * -1,
+        },
+    ]
+
+
+
+
+    northattack = (turn == "white" && ll >= (width * 2) || (turn == "black" && ll < ((height - 2) * width))) && w[ll + (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll + (width * multiplier)])
     canattack2 = ll % width > 1 && w[ll - 2] == "" && pieces[opponent].includes(w[ll - 1])
     canattack3 = width - (ll % width) > 2 && w[+ll + 2] == "" && pieces[opponent].includes(w[+ll + 1])
     canattack4 = pieces[turn].indexOf(pp) == "1" && ((turn == "white" && ll < (height - 2) * width) || (turn == "black" && ll >= 2 * width)) && w[ll - (multiplier * width * 2)] == "" && pieces[opponent].includes(w[ll - (multiplier * width)])
 
     //fix?
 
-    if(!canattack1 && !canattack2 && !canattack3 && !canattack4){
+    truthhaver = false
+
+    if(northattack){
+        truthhaver = true
+        w[ll] = ""
+        w[ll + width * multiplier] = ""
+        w[ll + width * 2 * multiplier] = pp
+        harhar.push({number: ll, mypiece: pp, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
+    }
+    if(canattack2){
+        truthhaver = true
+        w[ll] = ""
+        w[ll - 1] = ""
+        w[ll - 2] = pp
+        harhar.push({number: ll, mypiece: pp, direction: "west", kill: ll - 1, destination: ll - 2})
+    }
+    if(canattack3){
+        truthhaver = true
+        w[ll] = ""
+        w[+ll + 1] = ""
+        w[+ll + 2] = pp
+        harhar.push({number: ll, mypiece: pp, direction: "east", kill: +ll + 1, destination: ll + 2})
+    }
+    if(canattack4){
+        truthhaver = true
+        w[ll] = ""
+        w[+ll - width * multiplier] = ""
+        w[+ll - (multiplier * 2 * width)] = pp
+        harhar.push({number: ll, mypiece: pp, direction: "south", kill: ll - (width * multiplier), destination: ll - (multiplier * width * 2)})
+    }
+
+    if(!truthhaver){
         if(lll.length > 1){
             attackplans.push([...lll])
         }
     }
     else{
-        if(canattack1){
-            w[ll] = ""
-            w[ll + width * multiplier] = ""
-            w[ll + width * 2 * multiplier] = pp
-            harhar.push({number: ll, mypiece: pp, direction: "north", kill: ll + (width * multiplier), destination: ll + (multiplier * width * 2)})
-        }
-        if(canattack2){
-            w[ll] = ""
-            w[ll - 1] = ""
-            w[ll - 2] = pp
-            harhar.push({number: ll, mypiece: pp, direction: "west", kill: ll - 1, destination: ll - 2})
-        }
-        if(canattack3){
-            w[ll] = ""
-            w[+ll + 1] = ""
-            w[+ll + 2] = pp
-            harhar.push({number: ll, mypiece: pp, direction: "east", kill: +ll + 1, destination: ll + 2})
-        }
-        if(canattack4){
-            w[ll] = ""
-            w[+ll - width * multiplier] = ""
-            w[+ll - (multiplier * 2 * width)] = pp
-            harhar.push({number: ll, mypiece: pp, direction: "south", kill: ll - (width * multiplier), destination: ll - (multiplier * width * 2)})
-        }
         for(hhh of harhar){
             attackPlan([...lll, hhh], w)
         }
@@ -279,7 +295,6 @@ function square(q){
         else if(justMoving && myplans.map(c => +c[0]).includes(+q)){ //for movers
             myplans = myplans.filter(c => +c[0] == +q)
             redtiles = myplans.map(c => +c[1])
-            console.log(myplans)
             for(r of redtiles) document.getElementById(r).style.backgroundColor = "red"
         }
         else if(myplans.map(c => c[0].number).includes(+q)){
