@@ -17,10 +17,10 @@
             bb = b.value.toUpperCase().split("")
             cc = c.value.toUpperCase().split("")
             for(bbb of bb){
-                aa = aa.replace(new RegExp(bbb,"g"), "")            
+                aa = aa.replace(bbb, "")            
             }
             for(ccc of cc){
-                aa = aa.replace(new RegExp(ccc,"g"), "")            
+                aa = aa.replace(ccc,"")            
             }
             p.textContent = aa
         }
