@@ -1,0 +1,53 @@
+*{
+    font-family: 'Verdana';
+}
+body{
+    background-color: #e1e1e1;
+}
+input{
+    border: 1px black solid;
+}
+select{
+    color: gray
+}
+input::placeholder{
+    color: gray
+}
+
+
+#thecalendar{
+    color: black
+}
+input, select{
+    font-size: 48px;
+}
+
+input{
+    width: 30%;
+}
+
+p{
+    font-size: 48px;
+}
+.cal{
+    font-size: 32px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    margin: 5px;
+}
+.gregorian{
+    background-color: goldenrod;
+}
+.armenian{
+    background-color: purple;
+}
+.berber{
+    background-color: lightblue;
+}
+.indian{
+    background-color: red;
+}
+.mandaean{
+    background-color: beige;
+}
