@@ -64,7 +64,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2300],
+        bounds: [1900, 2172],
     },
     Armenian: {
         months: [
@@ -129,7 +129,7 @@ calendars = {
             monthcount: 4,
             year: 1349, //445393
         },
-        bounds: [1350, 1559]
+        bounds: [1350, 1623]
     },
     Berber: {
         months: [
@@ -194,7 +194,7 @@ calendars = {
             monthcount: 11,
             year: 2850,
         },
-        bounds: [2851, 3100],
+        bounds: [2851, 3124],
     },
     Indian: {
         months: [
@@ -260,7 +260,72 @@ calendars = {
             monthcount: 9,
             year: 1821,
         },
-        bounds: [1822, 2100]
+        bounds: [1822, 2095]
+    },
+    Iranian: {
+        months: [
+            {
+                name: "Farvardin",
+                days: 31,
+            },
+            {
+                name: "Ordibehesht",
+                days: 31,
+            },
+            {
+                name: "Khordad",
+                days: 31,
+            },
+            {
+                name: "Tir",
+                days: 31,
+            },
+            {
+                name: "Mordad",
+                days: 31,
+            },
+            {
+                name: "Shahrivar",
+                days: 31,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dey",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Esfand",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return ([1,5,9,13,17,21,25,30].includes(x % 33))
+            }
+        },
+        startDay: {
+            dayinmonth: 11,
+            monthcount: 9,
+            year: 1278, //445393
+        },
+        bounds: [1279, 1551]
     },
     Mandaean: {
         months: [
@@ -325,8 +390,9 @@ calendars = {
             monthcount: 4,
             year: 445269, //445393
         },
-        bounds: [445149, 445339]
+        bounds: [445270, 445542]
     },
+    //2 Sharaf 56 Bahai
 }
 
 
@@ -337,13 +403,14 @@ interCal = {}
 
 for(c of Object.entries(calendars)){
     if(c[1].intercalary.type == "day"){
-        yearObject[c[0]] = c[1].months
         interCal[c[0]] = c[1].months[c[1].intercalary.month].days
+        yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
     }
     else{
         yearObject[c[0]] = c[1].months
     }
 }
+
 
 
 for(d = 0; d < 100000; d++){
@@ -441,7 +508,6 @@ function generateYear(y, n){
     yO = calendars[n].months
     if(calendars[n].intercalary.type == "day"){
         if(calendars[n].intercalary.method(y)){
-            console.log('momento de bruh')
             yO[calendars[n].intercalary.month].days = interCal[n].split("/")[1]
         }
         else{
