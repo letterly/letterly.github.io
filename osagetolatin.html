@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Osage Script Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "͘": "ⁿ",
+                    "̋": "̄́",
+                    "𐒰": "a",
+                    "𐒱": "ai",
+                    "𐒲": "aiⁿ",
+                    "𐒴": "br",
+                    "𐒵": "č",
+                    "𐒷": "e",
+                    "𐒹": "h",
+                    "𐒻": "i",
+                    "𐒼": "k",
+                    "𐒽": "hk",
+                    "𐒾": "ky",
+                    "𐒿": "l",
+                    "𐓀": "m",
+                    "𐓁": "n",
+                    "𐓂": "o",
+                    "𐓃": "oiⁿ",
+                    "𐓄": "p",
+                    "𐓅": "hp",
+                    "𐓆": "s",
+                    "𐓇": "š",
+                    "𐓈": "t",
+                    "𐓉": "ht",
+                    "𐓊": "c",
+                    "𐓋": "hc",
+                    "𐓌": "ch",
+                    "𐓍": "th",
+                    "𐓎": "u",
+                    "𐓏": "w",
+                    "𐓐": "x",
+                    "𐓑": "gh",
+                    "𐓒": "z",
+                    "𐓓": "ž",
+                    "𐒳": "ə",
+                    "𐒸": "eiⁿ",
+                    "𐒺": "hy",
+                    "𐒶": "hč",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Osage Script Converter</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Osage orthography text" style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="Latin script output here" style="direction:ltr"></textarea>
+    </body>
+</html>
