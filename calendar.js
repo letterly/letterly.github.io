@@ -196,6 +196,144 @@ calendars = {
         },
         bounds: [2851, 3124],
     },
+    Coptic: {
+        months: [
+            {
+                name: "Thout",
+                days: 30,
+            },
+            {
+                name: "Paopi",
+                days: 30,
+            },
+            {
+                name: "Hathor",
+                days: 30,
+            },
+            {
+                name: "Koiak",
+                days: 30,
+            },
+            {
+                name: "Tobi",
+                days: 30,
+            },
+            {
+                name: "Meshir",
+                days: 30,
+            },
+            {
+                name: "Paremhat",
+                days: 30,
+            },
+            {
+                name: "Parmouti",
+                days: 30,
+            },
+            {
+                name: "Pashons",
+                days: 30,
+            },
+            {
+                name: "Paoni",
+                days: 30,
+            },
+            {
+                name: "Epip",
+                days: 30,
+            },
+            {
+                name: "Mesori",
+                days: 30,
+            },
+            {
+                name: "Ipagomenai",
+                days: "5/6",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 12,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 24,
+            monthcount: 3,
+            year: 1616, //445393
+        },
+        bounds: [1621, 1880]
+    },
+    Ethiopian: {
+        months: [
+            {
+                name: "Meskerem",
+                days: 30,
+            },
+            {
+                name: "Tikimt",
+                days: 30,
+            },
+            {
+                name: "Hidar",
+                days: 30,
+            },
+            {
+                name: "Tahsas",
+                days: 30,
+            },
+            {
+                name: "Tir",
+                days: 30,
+            },
+            {
+                name: "Yakatit",
+                days: 30,
+            },
+            {
+                name: "Maggabit",
+                days: 30,
+            },
+            {
+                name: "Miyazya",
+                days: 30,
+            },
+            {
+                name: "Ginbot",
+                days: 30,
+            },
+            {
+                name: "Sene",
+                days: 30,
+            },
+            {
+                name: "Hamle",
+                days: 30,
+            },
+            {
+                name: "Nehasa",
+                days: 30,
+            },
+            {
+                name: "Pagume",
+                days: "5/6",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 12,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 24,
+            monthcount: 3,
+            year: 1892, //445393
+        },
+        bounds: [1893, 2165]
+    },
     Indian: {
         months: [
             {
