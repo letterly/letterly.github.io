@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Cyrillic=>Latin Yezidi Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "ий": "iy",
+                    "Е": "ê",
+                    "е": "ê",
+                    "А": "A",
+                    "а": "a",
+                    "Б": "B",
+                    "б": "b",
+                    "Щ": "C",
+                    "щ": "c",
+                    "Ч": "Ç",
+                    "ч": "ç",
+                    "Д": "D",
+                    "д": "d",
+                    "Ә": "E",
+                    "ә": "e",
+                    "Э": "Ê",
+                    "э": "ê",
+                    "Ф": "F",
+                    "ф": "f",
+                    "Г": "G",
+                    "г": "g",
+                    "Һ": "H",
+                    "һ": "h",
+                    "Ь": "I",
+                    "ь": "i",
+                    "И": "Î",
+                    "и": "î",
+                    "Ж": "J",
+                    "ж": "j",
+                    "К": "K",
+                    "к": "k",
+                    "Л": "L",
+                    "л": "l",
+                    "М": "M",
+                    "м": "m",
+                    "Н": "N",
+                    "н": "n",
+                    "O": "O",
+                    "o": "o",
+                    "П": "P",
+                    "п": "p",
+                    "Ԛ": "Q",
+                    "ԛ": "q",
+                    "Р": "R",
+                    "р": "r",
+                    "С": "S",
+                    "с": "s",
+                    "Ш": "Ş",
+                    "ш": "ş",
+                    "Т": "T",
+                    "т": "t",
+                    "Ӧ": "U",
+                    "ӧ": "u",
+                    "У": "Û",
+                    "у": "û",
+                    "В": "V",
+                    "в": "v",
+                    "Ԝ": "W",
+                    "ԝ": "w",
+                    "Х": "X",
+                    "х": "x",
+                    "Й": "Y",
+                    "й": "y",
+                    "З": "Z",
+                    "з": "z",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Yezidi Cyrillic=>Latin</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Cyrillic text" style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="Yezidi Latin output here" style="direction:ltr"></textarea>
+    </body>
+</html>

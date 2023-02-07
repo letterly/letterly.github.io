@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Yezidi Transliterator</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    " ê": " 𐺀𐺩",
+                    "a'": "𐺗𐺀",
+                    "ye": "𐺩",
+                    "we": "𐺣",
+                    "a": "𐺀",
+                    "b": "𐺁",
+                    "c": "𐺆",
+                    "ç'": "𐺈",
+                    "ç": "𐺇",
+                    "d": "𐺋",
+                    "e": "𐺦",
+                    "ê": "𐺩",
+                    "f": "𐺙",
+                    "g": "𐺟",
+                    "h'": "𐺉",
+                    "h": "𐺧",
+                    "i": "",
+                    "î": "𐺨",
+                    "j": "𐺐",
+                    "k": "𐺝",
+                    "l": "𐺠",
+                    "m": "𐺡",
+                    "n": "𐺢",
+                    "o": "𐺥",
+                    "p'": "𐺃",
+                    "p": "𐺂",
+                    "q": "𐺜",
+                    "r": "𐺍",
+                    "s": "𐺑",
+                    "ş": "𐺒",
+                    "t": "𐺕",
+                    "u": "𐺣",
+                    "û": "𐺣𐺣",
+                    "v": "𐺛", //?
+                    "w": "𐺤",
+                    "x": "𐺊",
+                    "y": "𐺨",
+                    "z": "𐺏",
+                    "'": "𐺗",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Yezidi Script Converter</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Latin text" style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="Yezidi script output here" style="direction:rtl"></textarea>
+    </body>
+</html>
