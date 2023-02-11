@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Warang Citi Clock</title>
+        <style>
+            text{
+                font-size: 24px;
+            }
+            p{
+                font-size: 80px;
+                text-align: center;
+            }
+        </style>
+        <script>
+            setInterval(function(){
+                center = 200
+                a = new Date();
+                second = a.getSeconds()
+                minute = a.getMinutes()
+                hour = a.getHours() + (a.getMinutes() / 60)
+                thehour = (""+a.getHours()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
+                theminute = (""+a.getMinutes()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
+                thesecond = (""+a.getSeconds()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
+                document.getElementById("thesecond").textContent = thesecond
+                document.getElementById("theminute").textContent = theminute
+                document.getElementById("thehour").textContent = thehour
+                document.getElementById("second").setAttribute("x2", center + (90 * Math.sin(second * Math.PI / 30)));
+                document.getElementById("second").setAttribute("y2", center - (90 * Math.cos(second * Math.PI / 30)));
+                document.getElementById("minute").setAttribute("x2", center + (80 * Math.sin(minute * Math.PI / 30)));
+                document.getElementById("minute").setAttribute("y2", center - (80 * Math.cos(minute * Math.PI / 30)));
+                document.getElementById("hour").setAttribute("x2", center + (70 * Math.sin((hour % 12) * Math.PI / 6)));
+                document.getElementById("hour").setAttribute("y2", center - (70 * Math.cos((hour % 12) * Math.PI / 6)));
+            }, 1000);
+        </script>
+    </head>
+    <body>
+        <svg width="400" height="400">
+            <circle cx="200" cy="200" r="100" fill="white" stroke="black"></circle>
+            <text x="192" y="92">𑣡𑣢</text>
+            <text x="251" y="111">𑣡</text>
+            <text x="290" y="150">𑣢</text>
+            <text x="308" y="208">𑣣</text>
+            <text x="290" y="266">𑣤</text>
+            <text x="251" y="305">𑣥</text>
+            <text x="192" y="328">𑣦</text>
+            <text x="133" y="305">𑣧</text>
+            <text x="84" y="266">𑣨</text>
+            <text x="78" y="208">𑣩</text>
+            <text x="84" y="150">𑣡𑣠</text>
+            <text x="133" y="111">𑣡𑣡</text>
+
+            <line id="second" x1="200" y1="200" x2="200" y2="110" stroke="red"></line>
+            <line id="minute" x1="200" y1="200" x2="200" y2="120" stroke="black"></line>
+            <line id="hour" x1="200" y1="200" x2="200" y2="130" stroke="black" stroke-width="5"></line>
+        </svg>
+        <p><span id="thehour"></span>:<span id="theminute"></span>:<span id="thesecond"></span></p>
+    </body>
+</html>
