@@ -15,6 +15,13 @@
             *{
                 font-family: 'Verdana';
             }
+            @font-face {
+                font-family: YZIDI;
+                src: url(YZIDI.ttf);
+            }
+            #braille{
+                font-family: YZIDI, Verdana;
+            }
         </style>
         <title>Yezidi Transliterator</title>
         <script>
@@ -25,7 +32,7 @@
                 var $braille = document.getElementById("braille")
                 $inuk.addEventListener('keyup', inukFunction)
                 function inukFunction () {
-                    inuk = $inuk.value.toLowerCase()
+                    inuk = $inuk.value.replace(/E/g, "𐺀").toLowerCase()
 
                     for(e of Object.keys(inukKey)){
                         var myRegExp = new RegExp(e, 'g')
@@ -35,10 +42,12 @@
                 }
 
                 inukKey = {
+                    " e": " 𐺀",
                     " ê": " 𐺀𐺩",
                     "a'": "𐺗𐺀",
                     "ye": "𐺩",
                     "we": "𐺣",
+                    "t'": "𐺄",
                     "a": "𐺀",
                     "b": "𐺁",
                     "c": "𐺆",
