@@ -14,12 +14,12 @@
             setInterval(function(){
                 center = 200
                 a = new Date();
-                second = a.getSeconds()
-                minute = a.getMinutes()
+                second = a.getSeconds() > 9 ? a.getSeconds() : "0" + a.getSeconds()
+                minute = a.getMinutes() > 9 ? a.getMinutes() : "0" + a.getMinutes()
                 hour = a.getHours() + (a.getMinutes() / 60)
                 thehour = (""+a.getHours()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
-                theminute = (""+a.getMinutes()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
-                thesecond = (""+a.getSeconds()).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
+                theminute = (""+minute).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
+                thesecond = (""+second).replace(/0/g, "𑣠").replace(/1/g, "𑣡").replace(/2/g, "𑣢").replace(/3/g, "𑣣").replace(/4/g, "𑣤").replace(/5/g, "𑣥").replace(/6/g, "𑣦").replace(/7/g, "𑣧").replace(/8/g, "𑣨").replace(/9/g, "𑣩")
                 document.getElementById("thesecond").textContent = thesecond
                 document.getElementById("theminute").textContent = theminute
                 document.getElementById("thehour").textContent = thehour
