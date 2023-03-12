@@ -24,7 +24,7 @@
                 var $braille = document.getElementById("braille")
                 $inuk.addEventListener('keyup', inukFunction)
                 function inukFunction () {
-                    inuk = $inuk.value.replace(/I/g, "ı").replace(/İ/g, "i").toLowerCase()
+                    inuk = $inuk.value
 
                     for(e of Object.keys(inukKey)){
                         var myRegExp = new RegExp(e, 'g')
@@ -89,7 +89,9 @@
                 "₾": "⠬",
                 "„": "⠦",
                 "“": "⠴",
+                "—": "⠤",
                     "-": "⠤",
+                    "_": "⠤",
                     "=": "⠶",
                     "@": "⠈",
                     "<": "⠪",
@@ -121,11 +123,11 @@
                 }
             }, false);
         </script>
-        <title>Georgian->Braille</title>
+        <title>ქართული → ბრაილი</title>
     </head>
     <body>
-        <h1>Georgian to Braille</h1>
-        <textarea spellcheck="false" id="inuk" placeholder="enter Georgian text"></textarea>
-        <textarea readonly id="braille" placeholder="output here"></textarea>
+        <h1>ქართული → ბრაილი</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="ტექსტი..."></textarea>
+        <textarea readonly id="braille" placeholder="⠞⠑⠻⠎⠞⠊⠲⠲⠲"></textarea>
     </body>
 </html>
