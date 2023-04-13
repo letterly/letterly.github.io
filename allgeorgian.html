@@ -1,0 +1,420 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+                color: #e4c6a5;
+            }
+            body{
+                background-color: #221A0F;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 32px;
+                height: 600px;
+                resize: none;
+                border: 5px #e4c6a5 solid;
+                outline: none;
+                background-color: #221A0F;
+            }
+            #inuk{
+                color: #d33682;
+            }
+            #braille{
+                color: #F79A32;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+            button{
+                border: none;
+                font-size: 36px;
+                border-radius: 5px;
+            }
+            #buttonlist{
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            #inuk::selection{
+                background-color: #8ab1b0;
+            }
+            #braille::selection{
+                background-color: #6c71c4;
+            }
+            #georgian{
+                background-color: green;
+            }
+        </style>
+        <script>
+            lang = "georgian"
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.replace(/I/g, "ı").replace(/İ/g, "i").toLowerCase()
+
+                    for(e of Object.keys(inukKey[currentLang])){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[currentLang][e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "georgian": {
+                        "ა": "⠁",
+                        "ბ": "⠃",
+                        "გ": "⠛",
+                        "დ": "⠙",
+                        "ე": "⠑",
+                        "ვ": "⠺",
+                        "ზ": "⠵",
+                        "თ": "⠋",
+                        "ი": "⠊",
+                        "კ": "⠅",
+                        "ლ": "⠇",
+                        "მ": "⠍",
+                        "ნ": "⠝",
+                        "ო": "⠕",
+                        "პ": "⠏",
+                        "ჟ": "⠚",
+                        "რ": "⠗",
+                        "ს": "⠎",
+                        "ტ": "⠞",
+                        "უ": "⠥",
+                        "ფ": "⠧",
+                        "ქ": "⠻",
+                        "ღ": "⠫",
+                        "ყ": "⠮",
+                        "შ": "⠱",
+                        "ჩ": "⠟",
+                        "ც": "⠉",
+                        "ძ": "⠽",
+                        "წ": "⠹",
+                        "ჭ": "⠭",
+                        "ხ": "⠓",
+                        "ჯ": "⠪",
+                        "ჰ": "⠯",
+                        "\\'": "⠄",
+                        "\\.": "⠲",
+                        "\\,": "⠂",
+                        "\\:": "⠒",
+                        "\\;": "⠆",
+                        "\\!": "⠖",
+                        "\\?": "⠢",
+                        "\\(": "⠶",
+                        "\\)": "⠶",
+                        "\\[": "⠣",
+                        "\\]": "⠜",
+                        "\\{": "⠷",
+                        "\\}": "⠾",
+                        "\\/": "⠌",
+                        "\\\\": "⠡",
+                        "\\$": "⠲",
+                        "\\*": "⠔",
+                        "\\#": "⠜",
+                        "º": "⠤",
+                        "₾": "⠬",
+                        "„": "⠦",
+                        "“": "⠴",
+                        "-": "⠤",
+                        "=": "⠶",
+                        "@": "⠈",
+                        "<": "⠪",
+                        ">": "⠕",
+                        "\\+": "⠖",
+                        "&": "⠿",
+                        "%": "⠳",
+                        " 0": " ⠼⠚",
+                        " 1": " ⠼⠁",
+                        " 2": " ⠼⠃",
+                        " 3": " ⠼⠉",
+                        " 4": " ⠼⠙",
+                        " 5": " ⠼⠑",
+                        " 6": " ⠼⠋",
+                        " 7": " ⠼⠛",
+                        " 8": " ⠼⠓",
+                        " 9": " ⠼⠊",
+                        "0": "⠚",
+                        "1": "⠁",
+                        "2": "⠃",
+                        "3": "⠉",
+                        "4": "⠙",
+                        "5": "⠑",
+                        "6": "⠋",
+                        "7": "⠛",
+                        "8": "⠓",
+                        "9": "⠊",
+                        " ": "⠀",
+                    },
+                    "svan": {
+                        "ა": "⠁",
+                        "ბ": "⠃",
+                        "გ": "⠛",
+                        "დ": "⠙",
+                        "ე": "⠑",
+                        "ვ": "⠺",
+                        "ზ": "⠵",
+                        "თ": "⠋",
+                        "ი": "⠊",
+                        "კ": "⠅",
+                        "ლ": "⠇",
+                        "მ": "⠍",
+                        "ნ": "⠝",
+                        "ო": "⠕",
+                        "პ": "⠏",
+                        "ჟ": "⠚",
+                        "რ": "⠗",
+                        "ს": "⠎",
+                        "ტ": "⠞",
+                        "უ": "⠥",
+                        "ფ": "⠧",
+                        "ქ": "⠻",
+                        "ღ": "⠫",
+                        "ყ": "⠮",
+                        "შ": "⠱",
+                        "ჩ": "⠟",
+                        "ც": "⠉",
+                        "ძ": "⠽",
+                        "წ": "⠹",
+                        "ჭ": "⠭",
+                        "ხ": "⠓",
+                        "ჯ": "⠪",
+                        "ჰ": "⠯",
+                        "ჶ": "⠶",
+                        "ჴ": "⠾",
+                        "ჸ": "⠿",
+                        "ჲ": "⠷",
+                        "ჳ": "⠨",
+                        "ჷ": "⠜",
+                        "ჱ": "⠌",
+                        "\\'": "⠄",
+                        "\\.": "⠲",
+                        "\\,": "⠂",
+                        "\\:": "⠒",
+                        "\\;": "⠆",
+                        "\\!": "⠖",
+                        "\\?": "⠢",
+                        "\\(": "⠶",
+                        "\\)": "⠶",
+                        "\\[": "⠣",
+                        "\\]": "⠜",
+                        "\\{": "⠷",
+                        "\\}": "⠾",
+                        "\\/": "⠌",
+                        "\\\\": "⠡",
+                        "\\$": "⠲",
+                        "\\*": "⠔",
+                        "\\#": "⠜",
+                        "º": "⠤",
+                        "₾": "⠬",
+                        "„": "⠦",
+                        "“": "⠴",
+                        "-": "⠤",
+                        "=": "⠶",
+                        "@": "⠈",
+                        "<": "⠪",
+                        ">": "⠕",
+                        "\\+": "⠖",
+                        "&": "⠿",
+                        "%": "⠳",
+                        " 0": " ⠼⠚",
+                        " 1": " ⠼⠁",
+                        " 2": " ⠼⠃",
+                        " 3": " ⠼⠉",
+                        " 4": " ⠼⠙",
+                        " 5": " ⠼⠑",
+                        " 6": " ⠼⠋",
+                        " 7": " ⠼⠛",
+                        " 8": " ⠼⠓",
+                        " 9": " ⠼⠊",
+                        "0": "⠚",
+                        "1": "⠁",
+                        "2": "⠃",
+                        "3": "⠉",
+                        "4": "⠙",
+                        "5": "⠑",
+                        "6": "⠋",
+                        "7": "⠛",
+                        "8": "⠓",
+                        "9": "⠊",
+                        " ": "⠀",
+                    },
+                    "abkhaz": {
+                        а: "⠁",
+                        б: "⠃",
+                        в: "⠺",
+                        г: "⠛",
+                        ӷ: "⠫",
+                        д: "⠙",
+                        е: "⠑",
+                        ж:	"⠚",
+                        з:	"⠵",
+                        ӡ: "⠽",
+                        и:	"⠊",
+                        к:	"⠅",
+                        қ: "⠻",
+                        ҟ: "⠯",
+                        л:	"⠇",
+                        м:	"⠍",
+                        н:	"⠝",
+                        о:	"⠕",
+                        п:	"⠏",
+                        ԥ: "⠧",
+                        р:	"⠗",
+                        с:	"⠎",
+                        т:	"⠞",
+                        ҭ: "⠳",
+                        у:	"⠥",
+                        ф:	"⠋",
+                        х:	"⠓",
+                        ҳ: "⠿",
+                        ц:	"⠉",
+                        ҵ: "⠹",
+                        ч:	"⠟",
+                        ҷ: "⠭",
+                        ҽ: "⠡",
+                        ҿ: "⠩",
+                        ш:	"⠱",
+                        ы:	"⠮",
+                        ҩ: "⠬",
+                        џ: "⠪",
+                        ь:	"⠾",
+                        ә: "⠣",
+                        "\\.": "⠲",
+                        "\\,": "⠂",
+                        "\\:": "⠒",
+                        "\\;": "⠆",
+                        "\\!": "⠖",
+                        "\\?": "⠢",
+                        " 0": " ⠼⠚",
+                        " 1": " ⠼⠁",
+                        " 2": " ⠼⠃",
+                        " 3": " ⠼⠉",
+                        " 4": " ⠼⠙",
+                        " 5": " ⠼⠑",
+                        " 6": " ⠼⠋",
+                        " 7": " ⠼⠛",
+                        " 8": " ⠼⠓",
+                        " 9": " ⠼⠊",
+                        "0": "⠚",
+                        "1": "⠁",
+                        "2": "⠃",
+                        "3": "⠉",
+                        "4": "⠙",
+                        "5": "⠑",
+                        "6": "⠋",
+                        "7": "⠛",
+                        "8": "⠓",
+                        "9": "⠊",
+                        " ": "⠀",
+                    },
+                    "ossetian": {
+                        а: "⠁",
+                        æ: "⠜",
+                        ӕ: "⠜",
+                        б: "⠃",
+                        в: "⠺",
+                        гъ: "⠶",
+                        г: "⠛",
+                        дж: "⠴", 
+                        дз: "⠽", 
+                        д: "⠙",
+                        е: "⠑",
+                        ё:	"⠡",
+                        ж:	"⠚",
+                        з:	"⠵", 
+                        и:	"⠊",
+                        й:	"⠯",
+                        къ: "⠻",
+                        к:	"⠅",
+                        л:	"⠇",
+                        м:	"⠍",
+                        н:	"⠝",
+                        о:	"⠕",
+                        пъ: "⠧",
+                        п:	"⠏",
+                        р:	"⠗",
+                        с:	"⠎", 
+                        тъ: "⠿",
+                        т:	"⠞",
+                        у:	"⠥",
+                        ф:	"⠋",
+                        хъ: "⠣",
+                        х:	"⠓",
+                        цъ: "⠹",
+                        ц:	"⠉",
+                        чъ: "⠩",
+                        ч:	"⠟",
+                        ш:	"⠱",
+                        щ:	"⠭",
+                        ъ:	"⠷",
+                        ы:	"⠮",
+                        ь:	"⠾",
+                        э:	"⠪",
+                        ю:	"⠳",
+                        я:	"⠫",
+                        "\\.": "⠲",
+                        "\\,": "⠂",
+                        "\\:": "⠒",
+                        "\\;": "⠆",
+                        "\\!": "⠖",
+                        "\\?": "⠢",
+                        " 0": " ⠼⠚",
+                        " 1": " ⠼⠁",
+                        " 2": " ⠼⠃",
+                        " 3": " ⠼⠉",
+                        " 4": " ⠼⠙",
+                        " 5": " ⠼⠑",
+                        " 6": " ⠼⠋",
+                        " 7": " ⠼⠛",
+                        " 8": " ⠼⠓",
+                        " 9": " ⠼⠊",
+                        "0": "⠚",
+                        "1": "⠁",
+                        "2": "⠃",
+                        "3": "⠉",
+                        "4": "⠙",
+                        "5": "⠑",
+                        "6": "⠋",
+                        "7": "⠛",
+                        "8": "⠓",
+                        "9": "⠊",
+                        " ": "⠀",
+                    },
+                }
+            }, false);
+
+            currentLang = "georgian"
+
+            function selectify(lang){
+                lang = lang.toLowerCase()
+                document.getElementById(currentLang).style.backgroundColor = "white"
+                currentLang = lang
+                document.getElementById(currentLang).style.backgroundColor = "green"
+                inuk.placeholder = "enter " + lang.charAt(0).toUpperCase() + lang.slice(1) + " text"
+            }
+        </script>
+        <title>Text to Braille</title>
+    </head>
+    <body>
+        <h1>Text to Braille</h1>
+        <h2>Select a language:</h2>
+        <div id="buttonlist">
+            <button id="abkhaz" onclick="selectify(this.textContent)">Abkhaz</button>
+            <button id="georgian" onclick="selectify(this.textContent)">Georgian</button>
+            <button id="laz" onclick="selectify(this.textContent)">Laz</button>
+            <button id="mingrelian" onclick="selectify(this.textContent)">Mingrelian</button>
+            <button id="ossetian" onclick="selectify(this.textContent)">Ossetian</button>
+            <button id="svan" onclick="selectify(this.textContent)">Svan</button>
+        </div>
+        <br></br>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Georgian text"></textarea>
+        <textarea readonly id="braille" placeholder="output here"></textarea>
+    </body>
+</html>
