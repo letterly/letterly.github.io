@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            input{
+                width: 90%;
+                margin: 5%;
+                font-size: 24px;
+                outline: none;
+            }
+            button{
+                background-color: red;
+                color: white;
+                border: none;
+                font-size: 24px;
+            }
+            #macedonian{
+                background-color: green; /* selected */
+                font-weight: 700;
+            }
+            #buttondiv{
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+            h1{
+                font-size: 48px;
+                font-family: "Verdana";
+                text-align: center;
+            }
+            @font-face {
+                font-family: "Noto Serif";
+                src: url(NotoSerif-Regular.ttf);
+            }
+            #rez{
+                font-family: "Noto Serif";
+                font-size: 24px;
+                text-align: center;
+            }
+        </style>
+       <!-- <script src="ipa.js"></script> -->
+       <script src="newipa.js"></script>
+        <title>IPA Project</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <!--    <h1>Select a Language:</h1>
+        <div id="buttondiv">
+            <button id="extramaduran" onclick="selectLang(this.id)">Extramaduran</button>
+            <button id="macedonian" onclick="selectLang(this.id)">Macedonian</button>
+            <button id="spanish" onclick="selectLang(this.id)">Spanish</button>
+        </div> -->
+        <br>
+        <br>
+        <input id="inp" placeholder="write text here..." onkeyup="traducir()" spellcheck="false" />
+        <br>
+        <br>
+        <p id="rez"></p>
+    </body>
+</html>
