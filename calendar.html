@@ -7,15 +7,18 @@
     </head>
     <body>
         <h1>Date Converter</h1>
+        <p><small>Any day between 1900 and 2060 CE</small></p>
         <select id="thecalendar" onchange="reset()">
             <option value="Gregorian">Gregorian</option>
             <option value="Armenian">Armenian</option>
+            <option value="Badi">Badi</option>
             <option value="Berber">Berber</option>
             <option value="Coptic">Coptic</option>
             <option value="Ethiopian">Ethiopian</option>
-            <option value="Indian">Indian</option>
-            <option value="Iranian">Iranian</option>
+            <option value="Indian National">Indian National</option>
             <option value="Mandaean">Mandaean</option>
+            <option value="Nanakshahi">Mool Nanakshahi</option>
+            <option value="Solar Hijri">Solar Hijri</option>
         </select>
         <input id="theyear" placeholder="2023" onkeyup="openMonth()" contenteditable="false"/>
         <select id="themonth" onchange="openDay()"></select>

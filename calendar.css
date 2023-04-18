@@ -25,7 +25,13 @@ input, select{
 input{
     width: 30%;
 }
-
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
 p{
     font-size: 48px;
 }
@@ -36,21 +42,13 @@ p{
     text-align: center;
     margin: 5px;
 }
-.gregorian{
-    background-color: goldenrod;
-}
-.armenian{
-    background-color: purple;
-}
-.berber{
-    background-color: lightblue;
-}
-.indian{
-    background-color: red;
-}
-.mandaean{
-    background-color: beige;
-}
-.iranian{ background-color: green; }
-.ethiopian{ background-color: yellow }
+.gregorian{ background-color: goldenrod }
+.armenian{ background-color: purple }
+.badi{ background-color: aqua }
+.berber{ background-color: lightblue }
 .coptic{ background-color: blue }
+.ethiopian{ background-color: rgb(163, 163, 68) }
+.indian_national{ background-color: red }
+.mandaean{ background-color: #D2691E }
+.nanakshahi{ background-color: orange }
+.solar_hijri{ background-color: green }

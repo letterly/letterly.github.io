@@ -64,7 +64,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2172],
+        bounds: [1900, 2061],
     },
     Armenian: {
         months: [
@@ -129,7 +129,105 @@ calendars = {
             monthcount: 4,
             year: 1349, //445393
         },
-        bounds: [1350, 1623]
+        bounds: [1350, 1511]
+    },
+    Badi: {
+        months: [
+            {
+                name: "Bahá",
+                days: 19,
+            },
+            {
+                name: "Jalál",
+                days: 19,
+            },
+            {
+                name: "Jamál",
+                days: 19,
+            },
+            {
+                name: "ʻAẓamat",
+                days: 19,
+            },
+            {
+                name: "Núr",
+                days: 19,
+            },
+            {
+                name: "Raḥmat",
+                days: 19,
+            },
+            {
+                name: "Kalimát",
+                days: 19,
+            },
+            {
+                name: "Kamál",
+                days: 19,
+            },
+            {
+                name: "Asmáʼ",
+                days: 19,
+            },
+            {
+                name: "ʻIzzat",
+                days: 19,
+            },
+            {
+                name: "Mas͟híyyat",
+                days: 19,
+            },
+            {
+                name: "ʻIlm",
+                days: 19,
+            },
+            {
+                name: "Qudrat",
+                days: 19,
+            },
+            {
+                name: "Qawl",
+                days: 19,
+            },
+            {
+                name: "Masáʼil",
+                days: 19,
+            },
+            {
+                name: "S͟haraf",
+                days: 19,
+            },
+            {
+                name: "Sulṭán",
+                days: 19,
+            },
+            {
+                name: "Mulk",
+                days: 19,
+            },
+            {
+                name: "Ayyám-i-Há",
+                days: "4/5",
+            },
+            {
+                name: "ʻAláʼ",
+                days: 19,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 18,
+            method: function(x){
+                if(x <= 168 && x > 56) return x % 4 == 0
+                else return [174, 178, 182, 187, 191, 195, 199, 203, 207, 211, 216, 220].includes(x)
+            },
+        },
+        startDay: {
+            dayinmonth: 2,
+            monthcount: 15,
+            year: 56, //445393
+        },
+        bounds: [56, 218],
     },
     Berber: {
         months: [
@@ -194,7 +292,7 @@ calendars = {
             monthcount: 11,
             year: 2850,
         },
-        bounds: [2851, 3124],
+        bounds: [2851, 3012],
     },
     Coptic: {
         months: [
@@ -263,7 +361,7 @@ calendars = {
             monthcount: 3,
             year: 1616, //445393
         },
-        bounds: [1621, 1880]
+        bounds: [1621, 1777]
     },
     Ethiopian: {
         months: [
@@ -334,7 +432,7 @@ calendars = {
         },
         bounds: [1893, 2165]
     },
-    Indian: {
+    "Indian National": {
         months: [
             {
                 name: "Chaitra",
@@ -399,71 +497,6 @@ calendars = {
             year: 1821,
         },
         bounds: [1822, 2095]
-    },
-    Iranian: {
-        months: [
-            {
-                name: "Farvardin",
-                days: 31,
-            },
-            {
-                name: "Ordibehesht",
-                days: 31,
-            },
-            {
-                name: "Khordad",
-                days: 31,
-            },
-            {
-                name: "Tir",
-                days: 31,
-            },
-            {
-                name: "Mordad",
-                days: 31,
-            },
-            {
-                name: "Shahrivar",
-                days: 31,
-            },
-            {
-                name: "Mehr",
-                days: 30,
-            },
-            {
-                name: "Aban",
-                days: 30,
-            },
-            {
-                name: "Azar",
-                days: 30,
-            },
-            {
-                name: "Dey",
-                days: 30,
-            },
-            {
-                name: "Bahman",
-                days: 30,
-            },
-            {
-                name: "Esfand",
-                days: "29/30",
-            },
-        ],
-        intercalary: {
-            type: "day",
-            month: 11,
-            method: function(x){
-                return ([1,5,9,13,17,21,25,30].includes(x % 33))
-            }
-        },
-        startDay: {
-            dayinmonth: 11,
-            monthcount: 9,
-            year: 1278, //445393
-        },
-        bounds: [1279, 1551]
     },
     Mandaean: {
         months: [
@@ -530,7 +563,136 @@ calendars = {
         },
         bounds: [445270, 445542]
     },
-    //2 Sharaf 56 Bahai
+    Nanakshahi: {
+        months: [
+            {
+                name: "Chet",
+                days: 31,
+            },
+            {
+                name: "Vaisakh",
+                days: 31,
+            },
+            {
+                name: "Jeth",
+                days: 31,
+            },
+            {
+                name: "Harh",
+                days: 31,
+            },
+            {
+                name: "Sawan",
+                days: 31,
+            },
+            {
+                name: "Bhadon",
+                days: 30,
+            },
+            {
+                name: "Assu",
+                days: 31,
+            },
+            {
+                name: "Kattak",
+                days: 31,
+            },
+            {
+                name: "Maghar",
+                days: 31,
+            },
+            {
+                name: "Poh",
+                days: 31,
+            },
+            {
+                name: "Magh",
+                days: 31,
+            },
+            {
+                name: "Phaggan",
+                days: "30/31",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 19,
+            monthcount: 4,
+            year: 433,
+        },
+        bounds: [433, 703],
+    },
+    "Solar Hijri": {
+        months: [
+            {
+                name: "Farvardin",
+                days: 31,
+            },
+            {
+                name: "Ordibehesht",
+                days: 31,
+            },
+            {
+                name: "Khordad",
+                days: 31,
+            },
+            {
+                name: "Tir",
+                days: 31,
+            },
+            {
+                name: "Mordad",
+                days: 31,
+            },
+            {
+                name: "Shahrivar",
+                days: 31,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dey",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Esfand",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return ([1,5,9,13,17,21,25,30].includes(x % 33))
+            }
+        },
+        startDay: {
+            dayinmonth: 11,
+            monthcount: 9,
+            year: 1278, //445393
+        },
+        bounds: [1279, 1551]
+    },
 }
 
 
@@ -551,7 +713,7 @@ for(c of Object.entries(calendars)){
 
 
 
-for(d = 0; d < 100000; d++){
+for(d = 0; d < 59000; d++){
 
     day = week[d % 7]
 
@@ -629,10 +791,10 @@ function convert(){
     for(zz of Object.keys(z)){
         if(zz != calen){
             if(zz == "Day"){
-                answer.innerHTML += "<p>" + z[zz] + "</p>"
+                answer.innerHTML += "<div class = 'cal'>" + z[zz] + "</div>"
             }
             else{
-                answer.innerHTML += "<div class='cal " + zz.toLowerCase() + "'><span>" + zz + ": " + z[zz] + "</span></div>"
+                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='https://en.wikipedia.org/wiki/" + zz + "_calendar'>" + zz + "</a>: " + z[zz] + "</span></div>"
             }
         }
     }
@@ -643,7 +805,7 @@ function convert(){
 
 function generateYear(y, n){
     yO = {}
-    yO = calendars[n].months
+    yO = calendars[n].months //here do something for the thai solar calendar exception
     if(calendars[n].intercalary.type == "day"){
         if(calendars[n].intercalary.method(y)){
             yO[calendars[n].intercalary.month].days = interCal[n].split("/")[1]
