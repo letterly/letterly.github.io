@@ -1079,39 +1079,66 @@ for(d = 0; d < 59000; d++){
 console.log(alltimearray)
 
 function reset(){
-    answer.innerHTML = ""
-    themonth.style.color = "gray"
-    themonth.innerHTML = ""
-    theday.style.color = "gray"
-    theday.innerHTML = ""
-    theyear.value = ""
+    //
+    currentDay = ("" + new Date()).split(" ").slice(1, 4)
+    calen = thecalendar.value
+    abbreviations = {
+        "Jan": "January",
+        "Feb": "February",
+        "Mar": "March",
+        "Apr": "April",
+        "May": "May",
+        "Jun": "June",
+        "Jul": "July",
+        "Aug": "August",
+        "Sep": "September",
+        "Oct": "October",
+        "Nov": "November",
+        "Dec": "December",
+    }
+    currentDay[0] = abbreviations[currentDay[0]]
+    currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
+    console.log(currentDay)
+    thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
+    console.log(thecurrentday)
+    theyear.value = thecurrentday[2]
+    themonth.innerHTML = generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
+    themonth.value = 0
+    themonth.value = calendars[calen].months.map(x => x.name).indexOf(thecurrentday[1])
+    for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
+        theday.innerHTML += `<option value="${x}">${x}</option>`
+    }
+    theday.value = thecurrentday[0]
+    //
+    convert()
 }
 
 function openMonth(){
     answer.innerHTML = ""
     calen = thecalendar.value
-    themonth.style.color = "gray"
-    theday.style.color = "gray"
-    theday.innerHTML = ""
+    //theday.innerHTML = ""
     if(!isNaN(theyear.value) && theyear.value >= calendars[calen].bounds[0] && theyear.value <= calendars[calen].bounds[1]){
         themonth.innerHTML = generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
+        themonth.value = 0
+        openDay()
     }
 }
 
 function openDay(){
     answer.innerHTML = ""
     calen = thecalendar.value
-    themonth.style.color = "black"
-    theday.style.color = "gray"
     theday.innerHTML = ""
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
+    theday.value = 1
+    convert()
 }
 
 function convert(){
     calen = thecalendar.value
     q = generateYear(theyear.value, calen)
+    themonth.style.color = "black"
     theday.style.color = "black"
     result = `${theday.value} ${q[themonth.value].name} ${theyear.value}`
     z = alltimearray.filter(x => x[calen] == result)[0]
@@ -1146,3 +1173,5 @@ function generateYear(y, n){
     return yO
 }
 
+
+reset()
