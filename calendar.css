@@ -44,11 +44,16 @@ p{
 }
 .gregorian{ background-color: goldenrod }
 .armenian{ background-color: purple }
-.badi{ background-color: aqua }
-.berber{ background-color: lightblue }
+.badi{ background-color: dodgerblue }
+.berber{ background-color: saddlebrown }
+.bengali{ background-color: darkolivegreen; }
 .coptic{ background-color: blue }
 .ethiopian{ background-color: rgb(163, 163, 68) }
 .indian_national{ background-color: red }
+.juche{ background-color: darkred; }
+.julian{ background-color: fuchsia;}
 .mandaean{ background-color: #D2691E }
+.minguo{ background-color: blueviolet }
 .nanakshahi{ background-color: orange }
+.revised_julian{ background-color: darkslategray }
 .solar_hijri{ background-color: green }

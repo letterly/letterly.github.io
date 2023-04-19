@@ -229,6 +229,72 @@ calendars = {
         },
         bounds: [56, 218],
     },
+    Bengali: {
+        months: [
+            {
+                name: "Boishakh",
+                days: 31,
+            },
+            {
+                name: "Jyoishţho",
+                days: 31,
+            },
+            {
+                name: "Ashaŗh",
+                days: 31,
+            },
+            {
+                name: "Shrabon",
+                days: 31,
+            },
+            {
+                name: "Bhadro",
+                days: 31,
+            },
+            {
+                name: "Ashshin",
+                days: 30,
+            },
+            {
+                name: "Kartik",
+                days: 30,
+            },
+            {
+                name: "Ôgrohayon",
+                days: 30,
+            },
+            {
+                name: "Poush",
+                days: 30,
+            },
+            {
+                name: "Magh",
+                days: 30,
+            },
+            {
+                name: "Falgun",
+                days: "30/31",
+            },
+            {
+                name: "Choitro",
+                days: 30,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 10,
+            method: function(x){
+                x = x - 1
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 19,
+            monthcount: 8,
+            year: 1307,
+        },
+        bounds: [1307, 1600],
+    },
     Berber: {
         months: [
             {
@@ -498,6 +564,137 @@ calendars = {
         },
         bounds: [1822, 2095]
     },
+    Juche: {
+        months: [
+            {
+                name: "January",
+                days: 31,
+            },
+            {
+                name: "February",
+                days: "28/29",
+            },
+            {
+                name: "March",
+                days: 31,
+            },
+            {
+                name: "April",
+                days: 30,
+            },
+            {
+                name: "May",
+                days: 31,
+            },
+            {
+                name: "June",
+                days: 30,
+            },
+            {
+                name: "July",
+                days: 31,
+            },
+            {
+                name: "August",
+                days: 31,
+            },
+            {
+                name: "September",
+                days: 30,
+            },
+            {
+                name: "October",
+                days: 31,
+            },
+            {
+                name: "November",
+                days: 30,
+            },
+            {
+                name: "December",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                x = x + 1911
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 0,
+            year: -11,
+        },
+        bounds: [1, 150],
+    },
+    Julian: {
+        months: [
+            {
+                name: "January",
+                days: 31,
+            },
+            {
+                name: "February",
+                days: "28/29",
+            },
+            {
+                name: "March",
+                days: 31,
+            },
+            {
+                name: "April",
+                days: 30,
+            },
+            {
+                name: "May",
+                days: 31,
+            },
+            {
+                name: "June",
+                days: 30,
+            },
+            {
+                name: "July",
+                days: 31,
+            },
+            {
+                name: "August",
+                days: 31,
+            },
+            {
+                name: "September",
+                days: 30,
+            },
+            {
+                name: "October",
+                days: 31,
+            },
+            {
+                name: "November",
+                days: 30,
+            },
+            {
+                name: "December",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 20,
+            monthcount: 11,
+            year: 1899,
+        },
+        bounds: [1899, 2061],
+    },
     Mandaean: {
         months: [
             {
@@ -563,6 +760,72 @@ calendars = {
         },
         bounds: [445270, 445542]
     },
+    Minguo: {
+        months: [
+            {
+                name: "January",
+                days: 31,
+            },
+            {
+                name: "February",
+                days: "28/29",
+            },
+            {
+                name: "March",
+                days: 31,
+            },
+            {
+                name: "April",
+                days: 30,
+            },
+            {
+                name: "May",
+                days: 31,
+            },
+            {
+                name: "June",
+                days: 30,
+            },
+            {
+                name: "July",
+                days: 31,
+            },
+            {
+                name: "August",
+                days: 31,
+            },
+            {
+                name: "September",
+                days: 30,
+            },
+            {
+                name: "October",
+                days: 31,
+            },
+            {
+                name: "November",
+                days: 30,
+            },
+            {
+                name: "December",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                x = x + 1911
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 0,
+            year: -11,
+        },
+        bounds: [1, 150],
+    },
     Nanakshahi: {
         months: [
             {
@@ -627,6 +890,71 @@ calendars = {
             year: 433,
         },
         bounds: [433, 703],
+    },
+    "Revised Julian": {
+        months: [
+            {
+                name: "January",
+                days: 31,
+            },
+            {
+                name: "February",
+                days: "28/29",
+            },
+            {
+                name: "March",
+                days: 31,
+            },
+            {
+                name: "April",
+                days: 30,
+            },
+            {
+                name: "May",
+                days: 31,
+            },
+            {
+                name: "June",
+                days: 30,
+            },
+            {
+                name: "July",
+                days: 31,
+            },
+            {
+                name: "August",
+                days: 31,
+            },
+            {
+                name: "September",
+                days: 30,
+            },
+            {
+                name: "October",
+                days: 31,
+            },
+            {
+                name: "November",
+                days: 30,
+            },
+            {
+                name: "December",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                return (x % 4 == 0 && x % 900 != 200 && x % 900 != 600)
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 0,
+            year: 1900,
+        },
+        bounds: [1899, 2061],
     },
     "Solar Hijri": {
         months: [
@@ -793,7 +1121,7 @@ function convert(){
             if(zz == "Day"){
                 answer.innerHTML += "<div class = 'cal'>" + z[zz] + "</div>"
             }
-            else{
+            else if(!"-0".includes((z[zz].split(" ")[2]).charAt(0))){
                 answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='https://en.wikipedia.org/wiki/" + zz + "_calendar'>" + zz + "</a>: " + z[zz] + "</span></div>"
             }
         }
