@@ -1024,6 +1024,71 @@ calendars = {
         },
         bounds: [433, 703],
     },
+    "Nepal Sambat Solar": {
+        months: [
+            {
+                name: "Kachhalā",
+                days: 30,
+            },
+            {
+                name: "Thinlā",
+                days: 30,
+            },
+            {
+                name: "Pwanhelā",
+                days: 30,
+            },
+            {
+                name: "Silā",
+                days: 30,
+            },
+            {
+                name: "Chilā",
+                days: 30,
+            },
+            {
+                name: "Chaulā",
+                days: "29/30",
+            },
+            {
+                name: "Bachhalā",
+                days: 31,
+            },
+            {
+                name: "Tachhalā",
+                days: 31,
+            },
+            {
+                name: "Dilā",
+                days: 31,
+            },
+            {
+                name: "Gunlā",
+                days: 31,
+            },
+            {
+                name: "Yanlā",
+                days: 31,
+            },
+            {
+                name: "Kaulā",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 5,
+            method: function(x){
+                return (x % 4 == 0 && x % 900 != 200 && x % 900 != 600)
+            }
+        },
+        startDay: {
+            dayinmonth: 15,
+            monthcount: 2,
+            year: 1020,
+        },
+        bounds: [1023, 1200],
+    },
     "Revised Julian": {
         months: [
             {
@@ -1079,7 +1144,7 @@ calendars = {
             type: "day",
             month: 1,
             method: function(x){
-                return (x % 4 == 0 && x % 900 != 200 && x % 900 != 600)
+                return (x % 4 == 0 && (x % 100 != 0 || x % 900 == 200 || x % 900 == 600))
             }
         },
         startDay: {
@@ -1154,6 +1219,67 @@ calendars = {
         },
         bounds: [1279, 1551]
     },
+    "Thai Solar": {
+        months: [
+            {
+                name: "Abbbbril",
+                days: 30,
+            },
+            {
+                name: "May",
+                days: 31,
+            },
+            {
+                name: "June",
+                days: 30,
+            },
+            {
+                name: "July",
+                days: 31,
+            },
+            {
+                name: "August",
+                days: 31,
+            },
+            {
+                name: "September",
+                days: 30,
+            },
+            {
+                name: "October",
+                days: 31,
+            },
+            {
+                name: "November",
+                days: 30,
+            },
+            {
+                name: "December",
+                days: 31,
+            },
+            {
+                name: "January",
+                days: 31,
+            },
+            {
+                name: "February",
+                days: 28,
+            },
+            {
+                name: "March",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "thai",
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 9,
+            year: 2442,
+        },
+        bounds: [2443, 2600],
+    },
 }
 
 
@@ -1170,6 +1296,10 @@ for(c of Object.entries(calendars)){
     else if(c[1].intercalary.type == "month"){ //FIX!!
         //interCal[c[0]] = c[1].months[c[1].intercalary.month].days
         yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
+    }
+    else if(c[1].intercalary.type == "thai"){
+        yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
+        console.log(yearObject[c[0]])
     }
     else if(c[1].intercalary.type == "none"){
         yearObject[c[0]] = c[1].months
@@ -1192,7 +1322,7 @@ for(d = 0; d < 59000; d++){
         if(g.startDay.dayinmonth == 1 && g.startDay.monthcount == 0){
             yearObject[n] = generateYear(g.startDay.year, n)
         }
-        obj[n] = (g.startDay.dayinmonth + " " + g.months[g.startDay.monthcount].name + " " + g.startDay.year)
+        obj[n] = (g.startDay.dayinmonth + " " + yearObject[n][g.startDay.monthcount].name + " " + g.startDay.year)
 
         if(g.startDay.dayinmonth >= yearObject[n][g.startDay.monthcount].days){
             g.startDay.dayinmonth = 0
@@ -1203,9 +1333,13 @@ for(d = 0; d < 59000; d++){
             else{
                 g.startDay.monthcount++
                 if(yearObject[n][g.startDay.monthcount].days == 0){
-                    console.log("AHHH")
-                    g.startDay.monthcount++
-                    //g.startDay.year++
+                    while(yearObject[n][g.startDay.monthcount].days == 0){
+                        g.startDay.monthcount++
+                        if(g.startDay.monthcount >= yearObject[n].length - 1){
+                            g.startDay.monthcount = 0
+                            g.startDay.year++
+                        }
+                    }
                 }
             }
         }
@@ -1241,11 +1375,13 @@ function reset(){
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
     theyear.value = thecurrentday[2]
-    console.log(generateYear(theyear.value, calen))
-    console.log(generateYear(theyear.value, calen).filter(y => y.days != 0))
     themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days != 0).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
     themonth.value = 0
-    themonth.value = calendars[calen].months.map(x => x.name).indexOf(thecurrentday[1])
+    themonth.value = generateYear(theyear.value, calen).map(x => x.name).indexOf(thecurrentday[1])
+    console.log(generateYear(theyear.value, calen))
+    console.log(themonth.value)
+    console.log(generateYear(theyear.value, calen)[themonth.value])
+    console.log(generateYear(theyear.value, calen)[themonth.value].days)
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
@@ -1301,7 +1437,7 @@ function convert(){
 
 function generateYear(y, n){
     yO = []
-    yO = calendars[n].months //here do something for the thai solar calendar exception
+    yO = calendars[n].months
     if(calendars[n].intercalary.type == "day"){
         if(calendars[n].intercalary.method(y)){
             yO[calendars[n].intercalary.month].days = interCal[n].split("/")[1]
@@ -1340,6 +1476,156 @@ function generateYear(y, n){
             yO[5].days = 29
             yO[6].days = 0
         }
+    }
+
+    if(n == "Thai Solar"){
+        if(y < 2483){
+            gg = [
+                {
+                    name: "April",
+                    days: 30,
+                },
+                {
+                    name: "May",
+                    days: 31,
+                },
+                {
+                    name: "June",
+                    days: 30,
+                },
+                {
+                    name: "July",
+                    days: 31,
+                },
+                {
+                    name: "August",
+                    days: 31,
+                },
+                {
+                    name: "September",
+                    days: 30,
+                },
+                {
+                    name: "October",
+                    days: 31,
+                },
+                {
+                    name: "November",
+                    days: 30,
+                },
+                {
+                    name: "December",
+                    days: 31,
+                },
+                {
+                    name: "January",
+                    days: 31,
+                },
+                {
+                    name: "February",
+                    days: ((y - 542) % 4 == 0 && !((y - 542) % 100 == 0 && (y - 542) % 400 != 0)) ? 29 : 28,
+                },
+                {
+                    name: "March",
+                    days: 31,
+                },
+            ]
+        }
+        else if(y == 2483){
+            gg = [
+                {
+                    name: "April",
+                    days: 30,
+                },
+                {
+                    name: "May",
+                    days: 31,
+                },
+                {
+                    name: "June",
+                    days: 30,
+                },
+                {
+                    name: "July",
+                    days: 31,
+                },
+                {
+                    name: "August",
+                    days: 31,
+                },
+                {
+                    name: "September",
+                    days: 30,
+                },
+                {
+                    name: "October",
+                    days: 31,
+                },
+                {
+                    name: "November",
+                    days: 30,
+                },
+                {
+                    name: "December",
+                    days: 31,
+                },
+            ]
+        }
+        else if(y > 2483){
+            gg = [
+                {
+                    name: "January",
+                    days: 31,
+                },
+                {
+                    name: "February",
+                    days: ((y - 543) % 4 == 0 && !((y - 543) % 100 == 0 && (y - 543) % 400 != 0)) ? 29 : 28,                
+                },
+                {
+                    name: "March",
+                    days: 31,
+                },
+                {
+                    name: "April",
+                    days: 30,
+                },
+                {
+                    name: "May",
+                    days: 31,
+                },
+                {
+                    name: "June",
+                    days: 30,
+                },
+                {
+                    name: "July",
+                    days: 31,
+                },
+                {
+                    name: "August",
+                    days: 31,
+                },
+                {
+                    name: "September",
+                    days: 30,
+                },
+                {
+                    name: "October",
+                    days: 31,
+                },
+                {
+                    name: "November",
+                    days: 30,
+                },
+                {
+                    name: "December",
+                    days: 31,
+                },
+            ]
+        }
+    }
+    if(n == "Thai Solar"){
+        return gg
     }
     return yO
 }
