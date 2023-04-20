@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Date Converter</h1>
-        <h2>Find any day between 1900 and 2060 CE</h2>
+        <h2 id="findany">Find any day between 1900 and 2060 CE</h2>
         <select id="thecalendar" onchange="reset()">
             <option value="Gregorian">Gregorian</option>
             <option value="Armenian">Armenian</option>
@@ -28,12 +28,14 @@
             <option value="Solar Hijri">Solar Hijri</option>
             <option value="Thai Solar">Thai Solar</option>
         </select>
-        <input id="theyear" placeholder="2023" onkeyup="openMonth()" contenteditable="false"/>
+        <input id="theyear" onkeyup="openMonth()" contenteditable="false"/>
         <select id="themonth" onchange="openDay()"></select>
         <select id="theday" onchange="convert()"></select>
         <div id="answer">
 
         </div>
+        <p>A website by Harris Mowbray</p>
+        <p><a href="calendar-changelog.txt">Changelog</a></p>
     </body>
     <script src="calendar.js"></script>
 </html>

@@ -15,11 +15,9 @@ body{
 input{
     border: 1px black solid;
 }
-select{
-    color: gray
-}
-input::placeholder{
-    color: gray
+
+select, input{
+    outline: none;
 }
 
 
@@ -33,15 +31,22 @@ input, select{
 input{
     width: 30%;
 }
-a{
+span a{
     color: white;
     text-decoration: none;
 }
 a:hover{
     text-decoration: underline;
 }
+a{
+    color: black;
+    text-decoration: underline;
+}
 p{
-    font-size: 48px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 span{
     color: white;
@@ -52,6 +57,7 @@ span{
     width: 100%;
     text-align: center;
     margin: 5px;
+    font-weight: 700;
 }
 .gregorian{ background-color: goldenrod }
 .armenian{ background-color: purple }
@@ -77,8 +83,10 @@ h1{
     text-align: center;
     font-weight: 700;
     font-size: 48px;
+    margin-bottom: 0px;
 }
 h2{
+    margin-top: 0px;
     text-align: center;
     font-weight: 400;
 }

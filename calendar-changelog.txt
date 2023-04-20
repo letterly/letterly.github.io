@@ -1,0 +1,30 @@
+20 Apr 23
+I added my name and a link to the changelog at the bottom
+The upper/lower year limits are now shown for every calendar now, not just Gregorian
+Fixed some of the Wikipedia links
+Added Nepal Sambat Solar and Thai Solar calendars
+Fixed an issue with Revised Julian calendar leap years
+Made the website a little more aesthetic and added the Montserrat font
+Eras are now displayed with most calendars (like CE, AD, AH, SH, BE etc.)
+
+19 Apr 23
+Added Hebrew and Islamic Tabular calendars
+Improved UI:
+The website now automatically loads the current date
+Improved the date selection scheme
+
+18 Apr 23
+Added the Badi, Bengali, Juche, Julian, Minguo, Mool Nanakshahi, and Revised Julian calendars
+Indian is now called Indian National, Iranian is now called Solar Hijri
+Added Wikipedia links to the calendars
+Reduced upper year limit to 2060 CE (sorry, will increase later)
+
+15 Jan 23
+Added the Coptic calendar
+
+14 Jan 23
+Added the Ethiopian calendar
+
+13 Jan 23
+I started the change log today :)
+So far the program converts dates in the Gregorian, Armenian, Berber, Indian, Iranian, and Mandaean calendars from approximately 1901 to 2172 CE

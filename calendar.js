@@ -1425,6 +1425,7 @@ function reset(){
     }
     theday.value = thecurrentday[0]
     //
+    findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era
     convert()
 }
 
