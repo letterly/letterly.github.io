@@ -65,6 +65,7 @@ calendars = {
             year: 1900,
         },
         bounds: [1900, 2061],
+        era: "CE",
     },
     Armenian: {
         months: [
@@ -129,7 +130,8 @@ calendars = {
             monthcount: 4,
             year: 1349, //445393
         },
-        bounds: [1350, 1511]
+        bounds: [1350, 1511],
+        era: "",
     },
     Badi: {
         months: [
@@ -228,6 +230,7 @@ calendars = {
             year: 56, //445393
         },
         bounds: [56, 218],
+        era: "BE",
     },
     Bengali: {
         months: [
@@ -294,6 +297,7 @@ calendars = {
             year: 1307,
         },
         bounds: [1307, 1600],
+        era: "BS",
     },
     Berber: {
         months: [
@@ -359,6 +363,7 @@ calendars = {
             year: 2850,
         },
         bounds: [2851, 3012],
+        era: "",
     },
     Coptic: {
         months: [
@@ -427,7 +432,8 @@ calendars = {
             monthcount: 3,
             year: 1616, //445393
         },
-        bounds: [1621, 1777]
+        bounds: [1621, 1777],
+        era: "AM",
     },
     Ethiopian: {
         months: [
@@ -496,7 +502,8 @@ calendars = {
             monthcount: 3,
             year: 1892, //445393
         },
-        bounds: [1893, 2165]
+        bounds: [1893, 2165],
+        era: "",
     },
     Hebrew: {
         months: [
@@ -564,7 +571,8 @@ calendars = {
             monthcount: 4,
             year: 5660,
         },
-        bounds: [5660, 5821]
+        bounds: [5660, 5821],
+        era: "AM",
     },
     "Indian National": {
         months: [
@@ -630,7 +638,8 @@ calendars = {
             monthcount: 9,
             year: 1821,
         },
-        bounds: [1822, 2095]
+        bounds: [1822, 2095],
+        era: "",
     },
     "Islamic Tabular": {
         months: [
@@ -695,7 +704,8 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1484]
+        bounds: [1317, 1484],
+        era: "AH",
     },
     Juche: {
         months: [
@@ -762,6 +772,7 @@ calendars = {
             year: -11,
         },
         bounds: [1, 150],
+        era: "",
     },
     Julian: {
         months: [
@@ -827,6 +838,7 @@ calendars = {
             year: 1899,
         },
         bounds: [1899, 2061],
+        era: "AD",
     },
     Mandaean: {
         months: [
@@ -891,7 +903,8 @@ calendars = {
             monthcount: 4,
             year: 445269, //445393
         },
-        bounds: [445270, 445542]
+        bounds: [445270, 445542],
+        era: "",
     },
     Minguo: {
         months: [
@@ -958,6 +971,7 @@ calendars = {
             year: -11,
         },
         bounds: [1, 150],
+        era: "ROC",
     },
     Nanakshahi: {
         months: [
@@ -1023,6 +1037,7 @@ calendars = {
             year: 433,
         },
         bounds: [433, 703],
+        era: "",
     },
     "Nepal Sambat Solar": {
         months: [
@@ -1088,6 +1103,7 @@ calendars = {
             year: 1020,
         },
         bounds: [1023, 1181],
+        era: "",
     },
     "Revised Julian": {
         months: [
@@ -1153,6 +1169,7 @@ calendars = {
             year: 1900,
         },
         bounds: [1899, 2061],
+        era: "AD",
     },
     "Solar Hijri": {
         months: [
@@ -1217,7 +1234,8 @@ calendars = {
             monthcount: 9,
             year: 1278, //445393
         },
-        bounds: [1279, 1551]
+        bounds: [1279, 1551],
+        era: "SH",
     },
     "Thai Solar": {
         months: [
@@ -1279,6 +1297,7 @@ calendars = {
             year: 2442,
         },
         bounds: [2443, 2604],
+        era: "BE",
     },
 }
 
@@ -1426,7 +1445,7 @@ function convert(){
                 answer.innerHTML += "<div class = 'cal'>" + z[zz] + "</div>"
             }
             else if(!"-0".includes((z[zz].split(" ")[2]).charAt(0))){
-                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='https://en.wikipedia.org/wiki/" + zz + "_calendar'>" + zz + "</a>: " + z[zz] + "</span></div>"
+                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='https://en.wikipedia.org/wiki/" + zz + "_calendar'>" + zz + "</a>: " + z[zz] + " " + calendars[zz].era + "</span></div>"
             }
         }
     }
