@@ -498,6 +498,74 @@ calendars = {
         },
         bounds: [1893, 2165]
     },
+    Hebrew: {
+        months: [
+            {
+                name: "Tishrei",
+                days: 30,
+            },
+            {
+                name: "Cheshvan",
+                days: 29,
+            },
+            {
+                name: "Kislev",
+                days: 30,
+            },
+            {
+                name: "Tevet",
+                days: 29,
+            },
+            {
+                name: "Shvat",
+                days: 30,
+            },
+            {
+                name: "Adar",
+                days: 29,
+            },
+            {
+                name: "Adar II",
+                days: 29,
+            },
+            {
+                name: "Nisan",
+                days: 30,
+            },
+            {
+                name: "Iyar",
+                days: 29,
+            },
+            {
+                name: "Sivan",
+                days: 30,
+            },
+            {
+                name: "Tammuz",
+                days: 29,
+            },
+            {
+                name: "Av",
+                days: 30,
+            },
+            {
+                name: "Elul",
+                days: 29,
+            },
+        ],
+        intercalary: {
+            type: "month",
+            method: function(x){
+                return x % 3 == 0
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 4,
+            year: 5660,
+        },
+        bounds: [5660, 5823]
+    },
     "Indian National": {
         months: [
             {
@@ -563,6 +631,71 @@ calendars = {
             year: 1821,
         },
         bounds: [1822, 2095]
+    },
+    "Islamic Tabular": {
+        months: [
+            {
+                name: "Muharram",
+                days: 30,
+            },
+            {
+                name: "Safar",
+                days: 29,
+            },
+            {
+                name: "Rabiʽ al-Awwal",
+                days: 30,
+            },
+            {
+                name: "Rabiʽ al-Thani",
+                days: 29,
+            },
+            {
+                name: "Jumada al-Awwal",
+                days: 30,
+            },
+            {
+                name: "Jumada al-Thani",
+                days: 29,
+            },
+            {
+                name: "Rajab",
+                days: 30,
+            },
+            {
+                name: "Sha'ban",
+                days: 29,
+            },
+            {
+                name: "Ramadan",
+                days: 30,
+            },
+            {
+                name: "Shawwal",
+                days: 29,
+            },
+            {
+                name: "Dhu al-Qadah",
+                days: 30,
+            },
+            {
+                name: "Dhu al-Hijjah",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return ([2,5,7,10,13,16,18,21,24,26,29].includes(x % 30))
+            }
+        },
+        startDay: {
+            dayinmonth: 28,
+            monthcount: 7,
+            year: 1317, //445393
+        },
+        bounds: [1317, 1500]
     },
     Juche: {
         months: [
@@ -1034,7 +1167,11 @@ for(c of Object.entries(calendars)){
         interCal[c[0]] = c[1].months[c[1].intercalary.month].days
         yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
     }
-    else{
+    else if(c[1].intercalary.type == "month"){ //FIX!!
+        //interCal[c[0]] = c[1].months[c[1].intercalary.month].days
+        yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
+    }
+    else if(c[1].intercalary.type == "none"){
         yearObject[c[0]] = c[1].months
     }
 }
@@ -1065,6 +1202,11 @@ for(d = 0; d < 59000; d++){
             }
             else{
                 g.startDay.monthcount++
+                if(yearObject[n][g.startDay.monthcount].days == 0){
+                    console.log("AHHH")
+                    g.startDay.monthcount++
+                    //g.startDay.year++
+                }
             }
         }
         g.startDay.dayinmonth++
@@ -1076,7 +1218,6 @@ for(d = 0; d < 59000; d++){
 
 }
 
-console.log(alltimearray)
 
 function reset(){
     //
@@ -1098,11 +1239,11 @@ function reset(){
     }
     currentDay[0] = abbreviations[currentDay[0]]
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
-    console.log(currentDay)
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
-    console.log(thecurrentday)
     theyear.value = thecurrentday[2]
-    themonth.innerHTML = generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
+    console.log(generateYear(theyear.value, calen))
+    console.log(generateYear(theyear.value, calen).filter(y => y.days != 0))
+    themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days != 0).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
     themonth.value = 0
     themonth.value = calendars[calen].months.map(x => x.name).indexOf(thecurrentday[1])
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
@@ -1116,8 +1257,8 @@ function reset(){
 function openMonth(){
     answer.innerHTML = ""
     calen = thecalendar.value
-    //theday.innerHTML = ""
     if(!isNaN(theyear.value) && theyear.value >= calendars[calen].bounds[0] && theyear.value <= calendars[calen].bounds[1]){
+        console.log(generateYear(theyear.value, calen))
         themonth.innerHTML = generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
         themonth.value = 0
         openDay()
@@ -1159,7 +1300,7 @@ function convert(){
 
 
 function generateYear(y, n){
-    yO = {}
+    yO = []
     yO = calendars[n].months //here do something for the thai solar calendar exception
     if(calendars[n].intercalary.type == "day"){
         if(calendars[n].intercalary.method(y)){
@@ -1169,7 +1310,37 @@ function generateYear(y, n){
             yO[calendars[n].intercalary.month].days = interCal[n].split("/")[0]
         }
     }
-
+    else if(n == "Hebrew"){ //FIX
+        yy = (
+            "rcdcrccrdc" + //660
+            "drccrdcrcd" + //670
+            "rccdrccdrc" + //680
+            "drccrdcrcd" + //690
+            "crcdrcdrcc" + //700
+            "drccdrccrd" + //710
+            "crdcrcdcrc" + //720
+            "drcdcrcdrc" + //730
+            "cdrccrdcrd" + //740
+            "crcdcrcdrc" + //750
+            "cdrccdrcdr" + //760
+            "ccrdcrcdrc" + //770
+            "cdrcdcrccr" + //780
+            "dcrdccrdcr" + //790
+            "cdrcdcrcdr" + //800
+            "ccdrccrdcr" + //810
+            "dc" //820 [just to 821]
+        ).charAt([y - 5660])
+        yO[1].days = yy == "c" ? 30 : 29
+        yO[2].days = yy == "d" ? 29 : 30
+        if([3,6,8,11,13,17,0].includes(y % 19)){
+            yO[5].days = 30
+            yO[6].days = 29
+        }
+        else{
+            yO[5].days = 29
+            yO[6].days = 0
+        }
+    }
     return yO
 }
 
