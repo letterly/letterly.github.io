@@ -66,6 +66,7 @@ calendars = {
         },
         bounds: [1900, 2061],
         era: "CE",
+        link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
     },
     Armenian: {
         months: [
@@ -132,6 +133,7 @@ calendars = {
         },
         bounds: [1350, 1511],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Armenian_calendar",
     },
     Badi: {
         months: [
@@ -231,6 +233,7 @@ calendars = {
         },
         bounds: [56, 218],
         era: "BE",
+        link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar",
     },
     Bengali: {
         months: [
@@ -298,6 +301,7 @@ calendars = {
         },
         bounds: [1307, 1600],
         era: "BS",
+        link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
     },
     Berber: {
         months: [
@@ -364,6 +368,7 @@ calendars = {
         },
         bounds: [2851, 3012],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
     },
     Coptic: {
         months: [
@@ -434,6 +439,7 @@ calendars = {
         },
         bounds: [1621, 1777],
         era: "AM",
+        link: "https://en.wikipedia.org/wiki/Coptic_calendar",
     },
     Ethiopian: {
         months: [
@@ -504,6 +510,7 @@ calendars = {
         },
         bounds: [1893, 2165],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
     },
     Hebrew: {
         months: [
@@ -573,6 +580,7 @@ calendars = {
         },
         bounds: [5660, 5821],
         era: "AM",
+        link: "https://en.wikipedia.org/wiki/Hebrew_calendar",
     },
     "Indian National": {
         months: [
@@ -640,6 +648,7 @@ calendars = {
         },
         bounds: [1822, 2095],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Indian_national_calendar",
     },
     "Islamic Tabular": {
         months: [
@@ -706,6 +715,7 @@ calendars = {
         },
         bounds: [1317, 1484],
         era: "AH",
+        link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
     },
     Juche: {
         months: [
@@ -773,6 +783,7 @@ calendars = {
         },
         bounds: [1, 150],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Juche_calendar",
     },
     Julian: {
         months: [
@@ -839,6 +850,7 @@ calendars = {
         },
         bounds: [1899, 2061],
         era: "AD",
+        link: "https://en.wikipedia.org/wiki/Julian_calendar",
     },
     Mandaean: {
         months: [
@@ -905,6 +917,7 @@ calendars = {
         },
         bounds: [445270, 445542],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
     },
     Minguo: {
         months: [
@@ -972,6 +985,7 @@ calendars = {
         },
         bounds: [1, 150],
         era: "ROC",
+        link: "https://en.wikipedia.org/wiki/Republic_of_China_calendar",
     },
     Nanakshahi: {
         months: [
@@ -1038,6 +1052,7 @@ calendars = {
         },
         bounds: [433, 703],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Nanakshahi_calendar#Mool_Nanakshahi_Calendar",
     },
     "Nepal Sambat Solar": {
         months: [
@@ -1104,6 +1119,7 @@ calendars = {
         },
         bounds: [1023, 1181],
         era: "",
+        link: "https://en.wikipedia.org/wiki/Nepal_Sambat#Solar_Calendar",
     },
     "Revised Julian": {
         months: [
@@ -1170,6 +1186,7 @@ calendars = {
         },
         bounds: [1899, 2061],
         era: "AD",
+        link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
     },
     "Solar Hijri": {
         months: [
@@ -1236,6 +1253,7 @@ calendars = {
         },
         bounds: [1279, 1551],
         era: "SH",
+        link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
     },
     "Thai Solar": {
         months: [
@@ -1298,6 +1316,7 @@ calendars = {
         },
         bounds: [2443, 2604],
         era: "BE",
+        link: "https://en.wikipedia.org/wiki/Thai_solar_calendar",
     },
 }
 
@@ -1445,7 +1464,7 @@ function convert(){
                 answer.innerHTML += "<div class = 'cal'>" + z[zz] + "</div>"
             }
             else if(!"-0".includes((z[zz].split(" ")[2]).charAt(0))){
-                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='https://en.wikipedia.org/wiki/" + zz + "_calendar'>" + zz + "</a>: " + z[zz] + " " + calendars[zz].era + "</span></div>"
+                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='" + calendars[zz].link + "'>" + zz + "</a>: " + z[zz] + " " + calendars[zz].era + "</span></div>"
             }
         }
     }
