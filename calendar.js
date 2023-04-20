@@ -564,7 +564,7 @@ calendars = {
             monthcount: 4,
             year: 5660,
         },
-        bounds: [5660, 5823]
+        bounds: [5660, 5821]
     },
     "Indian National": {
         months: [
@@ -695,7 +695,7 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1500]
+        bounds: [1317, 1484]
     },
     Juche: {
         months: [
@@ -1087,7 +1087,7 @@ calendars = {
             monthcount: 2,
             year: 1020,
         },
-        bounds: [1023, 1200],
+        bounds: [1023, 1181],
     },
     "Revised Julian": {
         months: [
@@ -1278,7 +1278,7 @@ calendars = {
             monthcount: 9,
             year: 2442,
         },
-        bounds: [2443, 2600],
+        bounds: [2443, 2604],
     },
 }
 

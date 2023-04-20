@@ -1,8 +1,16 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(Mont.ttf);
+}
 *{
-    font-family: 'Verdana';
+    font-family: 'Montserrat';
 }
 body{
-    background-color: #e1e1e1;
+    background-color: white;
+}
+#answer{
+    padding-left: 25%;
+    padding-right: 25%;
 }
 input{
     border: 1px black solid;
@@ -35,10 +43,13 @@ a:hover{
 p{
     font-size: 48px;
 }
+span{
+    color: white;
+}
 .cal{
     font-size: 32px;
     border-radius: 5px;
-    width: 50%;
+    width: 100%;
     text-align: center;
     margin: 5px;
 }
@@ -61,3 +72,13 @@ p{
 .revised_julian{ background-color: darkslategray }
 .solar_hijri{ background-color: green }
 .thai_solar{ background-color: orangered }
+
+h1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+}
+h2{
+    text-align: center;
+    font-weight: 400;
+}
