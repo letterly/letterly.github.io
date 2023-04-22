@@ -1,6 +1,6 @@
 22 Apr 23
 Fixed upper bound for Tabarian
-Added the Shahanshahi calendar
+Added the Zoroastrian Fasli, Qadimi, and Shahanshahi calendars
 Revised the way months are displayed
 Added my personal website to the contact information
 

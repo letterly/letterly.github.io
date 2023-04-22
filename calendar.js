@@ -1255,89 +1255,6 @@ calendars = {
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
     },
-    "Shahanshahi": {
-        months: [
-            {
-                name: "Farvardin",
-                days: 30,
-            },
-            {
-                name: "Ardibehesht",
-                days: 30,
-            },
-            {
-                name: "Khordad",
-                days: 30,
-            },
-            {
-                name: "Tir",
-                days: 30,
-            },
-            {
-                name: "Amardad",
-                days: 30,
-            },
-            {
-                name: "Shehrevar",
-                days: 30,
-            },
-            {
-                name: "Mehr",
-                days: 30,
-            },
-            {
-                name: "Aban",
-                days: 30,
-            },
-            {
-                name: "Azar",
-                days: 30,
-            },
-            {
-                name: "Dae",
-                days: 30,
-            },
-            {
-                name: "Bahman",
-                days: 30,
-            },
-            {
-                name: "Asfand",
-                days: 30,
-            },
-            {
-                name: "Ahunavaiti",
-                days: 1,
-            },
-            {
-                name: "Ushtavaiti",
-                days: 1,
-            },
-            {
-                name: "Spentamainyu",
-                days: 1,
-            },
-            {
-                name: "Vohuxshathra",
-                days: 1,
-            },
-            {
-                name: "Vahishtoishti",
-                days: 1,
-            },
-        ],
-        intercalary: {
-            type: "none",
-        },
-        startDay: {
-            dayinmonth: 19,
-            monthcount: 3,
-            year: 1269,
-        },
-        bounds: [1269, 1430],
-        era: "YZ",
-        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
-    },
     "Solar Hijri": {
         months: [
             {
@@ -1542,6 +1459,263 @@ calendars = {
         bounds: [2443, 2604],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Thai_solar_calendar",
+    },
+    "Zoroastrian Fasli": {
+        months: [
+            {
+                name: "Farvardin",
+                days: 30,
+            },
+            {
+                name: "Ardibehesht",
+                days: 30,
+            },
+            {
+                name: "Khordad",
+                days: 30,
+            },
+            {
+                name: "Tir",
+                days: 30,
+            },
+            {
+                name: "Amardad",
+                days: 30,
+            },
+            {
+                name: "Shehrevar",
+                days: 30,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dae",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Asfand",
+                days: 30,
+            },
+            {
+                name: "Ahunavaiti",
+                days: 1,
+            },
+            {
+                name: "Ushtavaiti",
+                days: 1,
+            },
+            {
+                name: "Spentamainyu",
+                days: 1,
+            },
+            {
+                name: "Vohuxshathra",
+                days: 1,
+            },
+            {
+                name: "Vahishtoishti",
+                days: 1,
+            },
+            {
+                name: "Avardad-sal-Gah",
+                days: "0/1",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 17,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 17,
+            monthcount: 9,
+            year: 1269,
+        },
+        bounds: [1269, 1430],
+        era: "YZ",
+        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
+    },
+    "Zoroastrian Qadimi": {
+        months: [
+            {
+                name: "Farvardin",
+                days: 30,
+            },
+            {
+                name: "Ardibehesht",
+                days: 30,
+            },
+            {
+                name: "Khordad",
+                days: 30,
+            },
+            {
+                name: "Tir",
+                days: 30,
+            },
+            {
+                name: "Amardad",
+                days: 30,
+            },
+            {
+                name: "Shehrevar",
+                days: 30,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dae",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Asfand",
+                days: 30,
+            },
+            {
+                name: "Ahunavaiti",
+                days: 1,
+            },
+            {
+                name: "Ushtavaiti",
+                days: 1,
+            },
+            {
+                name: "Spentamainyu",
+                days: 1,
+            },
+            {
+                name: "Vohuxshathra",
+                days: 1,
+            },
+            {
+                name: "Vahishtoishti",
+                days: 1,
+            },
+        ],
+        intercalary: {
+            type: "none",
+        },
+        startDay: {
+            dayinmonth: 19,
+            monthcount: 4,
+            year: 1269,
+        },
+        bounds: [1269, 1430],
+        era: "YZ",
+        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
+    },
+    "Zoroastrian Shahanshahi": {
+        months: [
+            {
+                name: "Farvardin",
+                days: 30,
+            },
+            {
+                name: "Ardibehesht",
+                days: 30,
+            },
+            {
+                name: "Khordad",
+                days: 30,
+            },
+            {
+                name: "Tir",
+                days: 30,
+            },
+            {
+                name: "Amardad",
+                days: 30,
+            },
+            {
+                name: "Shehrevar",
+                days: 30,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dae",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Asfand",
+                days: 30,
+            },
+            {
+                name: "Ahunavaiti",
+                days: 1,
+            },
+            {
+                name: "Ushtavaiti",
+                days: 1,
+            },
+            {
+                name: "Spentamainyu",
+                days: 1,
+            },
+            {
+                name: "Vohuxshathra",
+                days: 1,
+            },
+            {
+                name: "Vahishtoishti",
+                days: 1,
+            },
+        ],
+        intercalary: {
+            type: "none",
+        },
+        startDay: {
+            dayinmonth: 19,
+            monthcount: 3,
+            year: 1269,
+        },
+        bounds: [1269, 1430],
+        era: "YZ",
+        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
     },
 }
 
