@@ -297,9 +297,9 @@ calendars = {
         startDay: {
             dayinmonth: 19,
             monthcount: 8,
-            year: 1307,
+            year: 1306,
         },
-        bounds: [1307, 1600],
+        bounds: [1306, 1599],
         era: "BS",
         link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
     },
@@ -706,6 +706,73 @@ calendars = {
             month: 11,
             method: function(x){
                 return ([2,5,7,10,13,16,18,21,24,26,29].includes(x % 30))
+            }
+        },
+        startDay: {
+            dayinmonth: 28,
+            monthcount: 7,
+            year: 1317, //445393
+        },
+        bounds: [1317, 1484],
+        era: "AH",
+        link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
+    },
+    "Islamic Tabular Tayyibi": {
+        months: [
+            {
+                name: "Muharram",
+                days: 30,
+            },
+            {
+                name: "Safar",
+                days: 29,
+            },
+            {
+                name: "Rabiʽ al-Awwal",
+                days: 30,
+            },
+            {
+                name: "Rabiʽ al-Thani",
+                days: 29,
+            },
+            {
+                name: "Jumada al-Awwal",
+                days: 30,
+            },
+            {
+                name: "Jumada al-Thani",
+                days: 29,
+            },
+            {
+                name: "Rajab",
+                days: 30,
+            },
+            {
+                name: "Sha'ban",
+                days: 29,
+            },
+            {
+                name: "Ramadan",
+                days: 30,
+            },
+            {
+                name: "Shawwal",
+                days: 29,
+            },
+            {
+                name: "Dhu al-Qadah",
+                days: 30,
+            },
+            {
+                name: "Dhu al-Hijjah",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return ([2,5,8,10,13,16,19,21,24,27,29].includes(x % 30))
             }
         },
         startDay: {
@@ -1184,9 +1251,92 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1899, 2061],
+        bounds: [1900, 2061],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
+    },
+    "Shahanshahi": {
+        months: [
+            {
+                name: "Farvardin",
+                days: 30,
+            },
+            {
+                name: "Ardibehesht",
+                days: 30,
+            },
+            {
+                name: "Khordad",
+                days: 30,
+            },
+            {
+                name: "Tir",
+                days: 30,
+            },
+            {
+                name: "Amardad",
+                days: 30,
+            },
+            {
+                name: "Shehrevar",
+                days: 30,
+            },
+            {
+                name: "Mehr",
+                days: 30,
+            },
+            {
+                name: "Aban",
+                days: 30,
+            },
+            {
+                name: "Azar",
+                days: 30,
+            },
+            {
+                name: "Dae",
+                days: 30,
+            },
+            {
+                name: "Bahman",
+                days: 30,
+            },
+            {
+                name: "Asfand",
+                days: 30,
+            },
+            {
+                name: "Ahunavaiti",
+                days: 1,
+            },
+            {
+                name: "Ushtavaiti",
+                days: 1,
+            },
+            {
+                name: "Spentamainyu",
+                days: 1,
+            },
+            {
+                name: "Vohuxshathra",
+                days: 1,
+            },
+            {
+                name: "Vahishtoishti",
+                days: 1,
+            },
+        ],
+        intercalary: {
+            type: "none",
+        },
+        startDay: {
+            dayinmonth: 19,
+            monthcount: 3,
+            year: 1269,
+        },
+        bounds: [1269, 1430],
+        era: "YZ",
+        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
     },
     "Solar Hijri": {
         months: [
@@ -1254,6 +1404,81 @@ calendars = {
         bounds: [1279, 1551],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
+    },
+    "Tabarian": {
+        months: [
+            {
+                name: "Une Ma",
+                days: 30,
+            },
+            {
+                name: "Shishak",
+                days: "0/1",
+            },
+            {
+                name: "Pitek",
+                days: 5,
+            },
+            {
+                name: "Arke Ma",
+                days: 30,
+            },
+            {
+                name: "De Ma",
+                days: 30,
+            },
+            {
+                name: "Vahmane Ma",
+                days: 30,
+            },
+            {
+                name: "Nurze Ma",
+                days: 30,
+            },
+            {
+                name: "Fardine Ma",
+                days: 30,
+            },
+            {
+                name: "Kerche Ma",
+                days: 30,
+            },
+            {
+                name: "Hare Ma",
+                days: 30,
+            },
+            {
+                name: "Tire Ma",
+                days: 30,
+            },
+            {
+                name: "Melare Ma",
+                days: 30,
+            },
+            {
+                name: "Shervine Ma",
+                days: 30,
+            },
+            {
+                name: "Mire Ma",
+                days: 30,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                return ([1,5,9,13,17,21,25,30].includes(x % 33))
+            }
+        },
+        startDay: {
+            dayinmonth: 12,
+            monthcount: 12,
+            year: 1411, //445393
+        },
+        bounds: [1401, 1573],
+        era: "SH",
+        link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
     },
     "Thai Solar": {
         months: [
@@ -1337,7 +1562,6 @@ for(c of Object.entries(calendars)){
     }
     else if(c[1].intercalary.type == "thai"){
         yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
-        console.log(yearObject[c[0]])
     }
     else if(c[1].intercalary.type == "none"){
         yearObject[c[0]] = c[1].months
@@ -1396,18 +1620,18 @@ function reset(){
     currentDay = ("" + new Date()).split(" ").slice(1, 4)
     calen = thecalendar.value
     abbreviations = {
-        "Jan": "January",
-        "Feb": "February",
-        "Mar": "March",
-        "Apr": "April",
-        "May": "May",
-        "Jun": "June",
-        "Jul": "July",
-        "Aug": "August",
-        "Sep": "September",
-        "Oct": "October",
-        "Nov": "November",
-        "Dec": "December",
+        Jan: "January",
+        Feb: "February",
+        Mar: "March",
+        Apr: "April",
+        May: "May",
+        Jun: "June",
+        Jul: "July",
+        Aug: "August",
+        Sep: "September",
+        Oct: "October",
+        Nov: "November",
+        Dec: "December",
     }
     currentDay[0] = abbreviations[currentDay[0]]
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
@@ -1416,10 +1640,6 @@ function reset(){
     themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days != 0).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
     themonth.value = 0
     themonth.value = generateYear(theyear.value, calen).map(x => x.name).indexOf(thecurrentday[1])
-    console.log(generateYear(theyear.value, calen))
-    console.log(themonth.value)
-    console.log(generateYear(theyear.value, calen)[themonth.value])
-    console.log(generateYear(theyear.value, calen)[themonth.value].days)
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
@@ -1431,23 +1651,35 @@ function reset(){
 
 function openMonth(){
     answer.innerHTML = ""
+    tm = themonth.value
+    tmname = themonth.options[tm].textContent
     calen = thecalendar.value
     if(!isNaN(theyear.value) && theyear.value >= calendars[calen].bounds[0] && theyear.value <= calendars[calen].bounds[1]){
-        console.log(generateYear(theyear.value, calen))
-        themonth.innerHTML = generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
-        themonth.value = 0
+        console.log(generateYear("5783", "Hebrew"))
+        themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days > 0).map((x, ind) => `<option value='${ind}'>${x.name}</option>`).join("")
+        console.log(generateYear(theyear.value, calen).map((x, ind) => `<option value='${ind}'>${x.name}</option>`).join(""))
+        console.log(themonth.innerHTML)
+        lll = Array.from(themonth.options).map(g => g.textContent).indexOf(tmname)
+        themonth.value = lll == -1 ? 0 : lll
+        console.log(themonth.value)
         openDay()
     }
 }
 
 function openDay(){
+    td = theday.value
     answer.innerHTML = ""
     calen = thecalendar.value
     theday.innerHTML = ""
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
-    theday.value = 1
+    if(td >=  theday.options.length){
+        theday.value = 1
+    }
+    else{
+        theday.value = td
+    }
     convert()
 }
 
@@ -1457,18 +1689,20 @@ function convert(){
     themonth.style.color = "black"
     theday.style.color = "black"
     result = `${theday.value} ${q[themonth.value].name} ${theyear.value}`
-    z = alltimearray.filter(x => x[calen] == result)[0]
+    thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
-    for(zz of Object.keys(z)){
-        if(zz != calen){
-            if(zz == "Day"){
-                answer.innerHTML += "<div class = 'cal'>" + z[zz] + "</div>"
+    console.log(Object.keys(thatspecificday))
+    for(ourcalendar of Object.keys(thatspecificday)){
+        if(ourcalendar != calen){
+            if(ourcalendar == "Day"){
+                answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + thatspecificday[ourcalendar] + "</div>"
             }
-            else if(!"-0".includes((z[zz].split(" ")[2]).charAt(0))){
-                answer.innerHTML += "<div class='cal " + zz.toLowerCase().replace(/ /g, "_") + "'><span><a target='_blank' href='" + calendars[zz].link + "'>" + zz + "</a>: " + z[zz] + " " + calendars[zz].era + "</span></div>"
+            else if(!"-0".includes((thatspecificday[ourcalendar].split(" ")[2]).charAt(0))){
+                answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "</span></div>"
             }
         }
     }
+    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><a></a></div>"
 }
 
 

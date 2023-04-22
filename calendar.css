@@ -8,10 +8,12 @@
 body{
     background-color: white;
 }
+
 #answer{
-    padding-left: 22%;
-    padding-right: 22%;
+    width: 100%;
+    display: block;
 }
+
 input{
     border: 1px black solid;
 }
@@ -54,10 +56,25 @@ span{
 .cal{
     font-size: 32px;
     border-radius: 5px;
-    width: 100%;
+    width: 32%;
     text-align: center;
     margin: 5px;
-    font-weight: 700;
+    font-weight: 600;
+    float: left;
+}
+@media (max-width: 1200px){
+    .cal{
+        width: 47%;
+    }
+}
+@media (max-width: 810px){
+    .cal{
+        width: 97%;
+    }
+}
+#contact{
+    width: 100%;
+    display: block;
 }
 .gregorian{ background-color: goldenrod }
 .armenian{ background-color: purple }
@@ -69,6 +86,7 @@ span{
 .hebrew{ background-color: mediumblue }
 .indian_national{ background-color: red }
 .islamic_tabular{ background-color: seagreen }
+.islamic_tabular_tayyibi{ background-color: seagreen }
 .juche{ background-color: darkred; }
 .julian{ background-color: fuchsia;}
 .mandaean{ background-color: #D2691E }
@@ -76,8 +94,25 @@ span{
 .nanakshahi{ background-color: orange }
 .nepal_sambat_solar{ background-color: maroon }
 .revised_julian{ background-color: darkslategray }
+.shahanshahi{ background-color: indianred }
 .solar_hijri{ background-color: green }
+.tabarian{ background-color: coral }
 .thai_solar{ background-color: orangered }
+.day{
+    background-color: d2d2d2;
+    color: #2d2d2d;
+}
+.harris{
+    background-color: black;
+    color: white;
+}
+.harris a{
+    color: white;
+    text-decoration: dotted underline;
+}
+.harris a:hover{
+    text-decoration: underline;
+}
 
 h1{
     text-align: center;

@@ -1,8 +1,18 @@
+22 Apr 23
+Fixed upper bound for Tabarian
+Added the Shahanshahi calendar
+Revised the way months are displayed
+Added my personal website to the contact information
+
 20 Apr 23
+Made inputting dates easier
+I added another Islamic Tabular calendar, the Islamic Tabular Tayyibi calendar
 I added my name and a link to the changelog at the bottom
 The upper/lower year limits are now shown for every calendar now, not just Gregorian
 Fixed some of the Wikipedia links
 Added Nepal Sambat Solar and Thai Solar calendars
+Added Tabarian, it could have leap year algorithm issues :(
+Fixed Bengali calendar issue
 Fixed an issue with Revised Julian calendar leap years
 Made the website a little more aesthetic and added the Montserrat font
 Eras are now displayed with most calendars (like CE, AD, AH, SH, BE etc.)
