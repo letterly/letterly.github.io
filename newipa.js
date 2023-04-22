@@ -47,20 +47,21 @@ languages = {
             g: {
                 "default": "g",
                 "before:eiéí": "x",
-                "before:üoa": "ɣ̞",
+               // "before:üoa": "g",
                 "after:rz": "ɣ̞",
             },
             gu: {
                 "default": "g",
-                "before:a": "gw",
+                "before:aá": "ɣ̞~w",
                 "after:rz": "ɣ̞",
             },
             h: "",
+            ḥ: "h",
             i: {
                 "default": "i",
                 "consonantbefore:mn": "ĩ",
                 "before:aeouáéóú": "j",
-                "after:ae": "i̯",
+                "after:aeáé": "i̯",
             },
             í: {
                 "default": "í",
@@ -77,12 +78,12 @@ languages = {
             m: "m",
             n: {
                 "default": "n",
-                "before:c": "n̟",
                 "before:m": "m",
                 "before:f": "ɱ",
-                "before:g": "ŋ",
                 "before:dt": "n̪",
-                "before:y": "ɲ", //before m??
+                "before:gc": "ŋ",
+                "before:yx": "ɲ", //before m??
+                "custombefore:c:eiéí": "n̟",
             },
             ñ: "ɲ",
             o: {
@@ -104,11 +105,11 @@ languages = {
                 "initial": "r",
             },
             rr: "r",
-            s: "s",
-            t: {
-                "default": "t̪",
-                "after:x": "t", //check if true
+            s: {
+                "default": "s",
+                "before:t": "s̪",
             },
+            t: "t̪",
             u: {
                 "default": "u",
                 "before:e": "w",
@@ -124,12 +125,15 @@ languages = {
                 //"after:aeioáéíó": "w", ?
             },
             ü: "w",
-            v: "b",
+            v: {
+                "default": "β̞",
+                "after:mn": "b",
+                "initial": "b",
+            },
             w: "w",
             x: {
                 "default": "ɕ",
                 //"initial": "s",
-                //"before:c": "k,s",
             },
             y: {
                 "default": "ʝ",
@@ -165,9 +169,10 @@ languages = {
             },
             gu: {
                 "default": "g",
-                "before:a": "gw",
+                "before:aá": "g~w",
             },
             h: "",
+            ḥ: "h",
             i: {
                 "default": "i",
                 "before:aeouáéóú": "j",
@@ -205,8 +210,6 @@ languages = {
             w: "w",
             x: {
                 "default": "ʃ",
-                //"initial": "s",
-                //"before:c": "k,s",
             },
             y: {
                 "default": "ʝ",
@@ -258,12 +261,12 @@ languages = {
             g: {
                 "default": "g",
                 "before:eiéí": "x",
-                "before:üoa": "ɣ̞",
+                //"before:üoa": "g",
                 "after:rz": "ɣ̞",
             },
             gu: {
                 "default": "g",
-                "before:a": "gw",
+                "before:aá": "ɣ̞~w",
                 "after:rz": "ɣ̞",
             },
             h: "",
@@ -271,7 +274,7 @@ languages = {
                 "default": "i",
                 "consonantbefore:mn": "ĩ",
                 "before:aeouáéóú": "j",
-                "after:ae": "i̯",
+                "after:aeáé": "i̯",
             },
             í: {
                 "default": "í",
@@ -293,9 +296,10 @@ languages = {
                 "default": "n",
                 "before:m": "m",
                 "before:f": "ɱ",
-                "before:g": "ŋ",
                 "before:dt": "n̪",
                 "before:y": "ɲ", //before m??
+                "before:cg": "ŋ",
+                "custombefore:c:eiéí": "n",
             },
             ñ: "ɲ",
             o: {
@@ -318,13 +322,10 @@ languages = {
             },
             rr: "r",
             s: "s",
-            t: {
-                "default": "t̪",
-                "after:x": "t", //check if true
-            },
+            t: "t̪",
             u: {
                 "default": "u",
-                "before:e": "w",
+                "before:ae": "w",
                 "consonantbefore:mn": "ũ",
                 "after:a": "u̯",
                 //"before:aeioáéíó": "w",
@@ -337,19 +338,23 @@ languages = {
                 //"after:aeioáéíó": "w", ?
             },
             ü: "w",
-            v: "b",
+            v: {
+                "default": "β̞",
+                "after:mn": "b",
+                "initial": "b",
+            },
             w: "w",
             x: {
-                "default": "ɣ̞,s",
+                "default": "ɣ̞~s",
                 "initial": "s",
-                //"before:c": "k,s",
+                "before:n": "ɣ̞~z",
             },
             y: {
                 "default": "ʝ",
                 "initial": "ɟ͡ʝ",
                 "alone": "i",
                 "after:n": "ɟ͡ʝ",
-                "after:e": "i̯",
+                "after:aáée": "i̯",
             },
             ý: "í",
             z: {
@@ -373,19 +378,17 @@ languages = {
                     "before:m": "m",
                     "before:c": "n̟",
                     "before:f": "ɱ",
-                    "before:g": "ŋ",
+                    "before:gc": "ŋ",
                     "before:dt": "n̪",
                     "before:y": "ɲ",
+                    "custombefore:c:ei": "n",
                 },
-                /*s: {
-                    //"default": "θ",
-                    "before:kptaeiouéíóú": "s",
-                }, */
                 z: "θ",
             },
             argentina: {
                 y: {
                     "default": "ʃ",
+                    "after:aáée": "i̯",
                     "only": "i",
                 },
                 ll: "ʃ",
@@ -413,7 +416,7 @@ languages = {
             },
             gu: {
                 "default": "g",
-                "before:a": "gw",
+                "before:aá": "g~w",
             },
             h: "",
             i: {
@@ -445,20 +448,19 @@ languages = {
             t: "t",
             u: {
                 "default": "u",
-                "before:e": "w",
+                "before:ae": "w",
             },
             ú: "ú",
             ü: "w",
             v: "b",
             w: "w",
             x: {
-                "default": "g,s",
+                "default": "g~s",
                 "initial": "s",
-                //"before:c": "k,s",
             },
             y: {
                 "default": "ʝ",
-                "after:e": "i",
+                "after:aeáé": "i",
             },
             ý: "í", //investigate!
             z: {
@@ -472,15 +474,12 @@ languages = {
                     "default": "k",
                     "before:eiéí": "θ",
                 },
-               /* s: {
-                    "default": "θ",
-                    "before:kptaeiouéíóú": "s",
-                }, */
                 z: "θ",
             },
             argentina: {
                 y: {
                     "default": "ʃ",
+                    "after:aeáé": "i",
                     "only": "i",
                 },
                 ll: "ʃ",
@@ -491,8 +490,10 @@ languages = {
 
 function traducir(){
     content = ""
-    theinp = inp.value.toLowerCase()
-    if(theinp.trim() != ""){
+    theinp = inp.value.toLowerCase().trim()
+    theinp = theinp.replace(/[\.\,\:\;\!\?\)]/g, " \$\&")
+    theinp = theinp.replace(/[¿¡\(]/g, "\$\& ")
+    if(theinp.length > 1 || ["a", "e", "o", "u"].includes(theinp)){
         for(ccc of Object.entries(resultpreparer(theinp))){
             content += ccc[1] + ": " + ccc[0] + "<br>"
         }
@@ -520,13 +521,12 @@ function resultpreparer(wo){
     }
     return result
 }
-
 function total(w, d){
     dialect = d.toLowerCase()
     ipaphonem = IPAize(unicodeNormalization(w), "phonemic")
     ipaphonet = IPAize(unicodeNormalization(w), "phonetic")
-    syllipaphonem = syllabize(ipaphonem)
-    syllipaphonet = syllabize(ipaphonet)
+    syllipaphonem = syllabize(ipaphonem).filter(x => x !== "")
+    syllipaphonet = syllabize(ipaphonet).filter(x => x !== "")
     newsyllipaphonem = [[]]
     newsyllipaphonet = [[]]
     for(spn of syllipaphonem){
@@ -547,6 +547,11 @@ function total(w, d){
     }
     phonem = newsyllipaphonem.map(phnm => emphasisFinder(phnm).replace(/\./g, "")).join(" ")
     phonet = newsyllipaphonet.map(phnt => emphasisFinder(phnt)).join(" ")
+
+    phonem = phonem.replace(/ (?=[\.\,\:\;\?\!])/g, "")
+    phonem = phonem.replace(/(?<=[¡¿\(]) /g, "")
+    phonet = phonet.replace(/ (?=[\.\,\:\;\?\!])/g, "")
+    phonet = phonet.replace(/(?<=[¡¿\(]) /g, "")
 
     if(language == "asturian"){ //extremely spaghetti code, we'll elaborate later
         phonet = phonet.replaceAll("s ð̞", "z̪ ð̞")
@@ -608,12 +613,15 @@ function IPAize(word, mode){
                     (cond[0].startsWith("before") && n < word.length - 1 && cond[0].split(":")[1].includes(word[n+1])) ||
                     (cond[0].startsWith("after") && n > 0 && cond[0].split(":")[1].includes(word[n-1])) ||
                     (cond[0].startsWith("consonantbefore") && n < word.length - 2 && cond[0].split(":")[1].includes(word[n+1]) && !"aeiouáéíóú".includes(word[n+2])) ||
-                    (cond[0].startsWith("consonantbefore") && n == word.length - 2 && cond[0].split(":")[1].includes(word[n+1]))
+                    (cond[0].startsWith("consonantbefore") && n == word.length - 2 && cond[0].split(":")[1].includes(word[n+1])) ||
+                    (cond[0].startsWith("custombefore") && n < word.length - 2 && cond[0].split(":")[1].includes(word[n+1]) && cond[0].split(":")[2].includes(word[n+2])) ||
+                    (cond[0].startsWith("custombefore") && n == word.length - 2 && cond[0].split(":")[1].includes(word[n+1]))
                 ) h = cond[1]
             }
         }
         else h = stringSet[x]
-        for(hh of h.split(",")) newarr.push(hh)
+        if(".,:;!¡?¿()".includes(x)) h = x
+        for(hh of h.split("~")) newarr.push(hh)
     }
 
     return newarr
@@ -624,47 +632,100 @@ function syllabize(word){
     semivowels = ["j", "w"]
     syllabalizedArray = []
     for(x = 0; x < word.length; x++){
-        function v(num){
-            let = word[x + num].replace("́", "")
-            return vowels.includes(let)
-        }
-        function s(num){
-            let = word[x + num].replace("́", "")
-            return semivowels.includes(let)
-        }
         syllabalizedArray.push(word[x])
+        v = (char) => {
+            if(char >= word.length) return false
+            else return vowels.includes(word[char].replace(/́/g, ""))
+        }
+        i = (lets, char) => {
+            if(char >= word.length) return false
+            else return lets.includes(word[char].replace(/[̞̪]/g, "")) 
+        }
+        q = (reason) => {
+            //console.log(word[x] + " and " + word[x+1])
+            //console.log(reason)
+        }
         if(language == "asturian"){
-            if(
-                (x < word.length - 1 && word[x+1] == " ") ||
-                (word[x] == " ") ||
-                (x < word.length - 4 && x > 0 && !v(0) && (!v(1) && !s(1)) && v(-1) && v(3) && word[x+2] != "θ") ||
-                (x < word.length - 2 && x > 0 && !v(-1) && !v(0) && !v(1) && !v(2)) ||
-                (x < word.length - 3 && x > 0 && !v(0) && !v(1) && (!v(2) && word[x+2] != "θ") && v(3) && v(-1)) ||
-                (x < word.length - 1 && x > 0 && !v(-1) && !v(0) && word[x+1] == "θ") ||
-                (x < word.length - 1 && word[x] == "n" && !v(1)) ||
-                (x < word.length - 2 && v(0) && !v(1) && s(2)) ||
-                (x < word.length - 1 && x > 0 && v(0) && v(1) && !s(-1) && word[x-1] != "") ||
-                (x < word.length - 2 && v(0) && !v(1) && v(2)) ||
-                (x < word.length - 3 && x > 0 && v(0) && (!v(1) && word[x+1] != "n") && !v(2) && v(3) && !v(-1)) ||
-                (x < word.length - 2 && x > 1 && v(-2) && v(-1) && !v(0) && !v(1)) ||
-                (x < word.length - 1 && v(0) && word[x+1].includes("́"))
-            ) syllabalizedArray.push("~")
+            vowels = "aeiouãẽĩõũø"
+            conditions = false
+            if(!v(x) && word[x+2] != undefined && word[x-1] != undefined && (!v(x+1) && word[x+1] != "j" && word[x+1] != "w") && !(i("bcdɣgfpβ", x) && i("lɾ", x+1)) && v(x-1) && !(word[x] == "n" && word[x+1] == "s")){
+                conditions = true
+                q("Split 1: non-linking consonant cluster, not after a consonant")
+            }
+            if(word[x] == "s" && i("t", x+1)){
+                conditions = true
+                q("Split 1.5: the st split")
+            }
+            if(word[x] == " "){
+                q("Split 2: Next is space")
+                conditions = true
+            }
+            if(word[x+1] == " "){
+                q("Split 3: First is space")
+                conditions = true
+            }
+            if(v(x) && word[x+2] != undefined && i("ðxnβpɣgsʃɾlt͡ɕ", x+1) && (v(x+2) || word[x+2] == "j" || word[x+2] == "w")){
+                q("Split 4: Vowel before hard consonant (?)")
+                conditions = true
+            }
+            if(v(x) && word[x+2] != undefined && i("dðɣɾmgɲtʎθβk", x+1) && (v(x+2) || word[x+2] == "j" || word[x+2] == "w")){
+                conditions = true
+                q("Split 6: classic consonant split")
+            }
+            if(v(x) && word[x+3] != undefined && i("bcdɣgfpβ", x+1) && i("lɾ", x+2) && v(x+3)){
+                conditions = true
+                q("Split 7: n after a vowel")
+            }
+            if(word[x+1] != undefined && "oía".includes(word[x]) && "oaʝ".includes(word[x+1])){
+                q("Split 8: double vowel")
+                conditions = true
+            }
+            if(conditions) syllabalizedArray.push("~")
         }
         if(language == "spanish"){
-            if(
-                (x < word.length - 1 && word[x+1] == " ") ||
-                (word[x] == " ") ||
-                (x < word.length - 4 && x > 0 && !v(0) && (!v(1) && !s(1)) && v(-1) && v(3) && word[x+2] != "θ") ||
-                (x < word.length - 2 && x > 0 && !v(-1) && !v(0) && !v(1) && !v(2)) ||
-                (x < word.length - 3 && x > 0 && !v(0) && !v(1) && (!v(2) && word[x+2] != "θ") && v(3) && v(-1)) ||
-                (x < word.length - 1 && x > 0 && !v(-1) && !v(0) && word[x+1] == "θ") ||
-                (x < word.length - 1 && word[x] == "n" && !v(1)) ||
-                (x < word.length - 2 && v(0) && !v(1) && s(2)) ||
-                (x < word.length - 1 && x > 0 && v(0) && v(1) && !s(-1) && word[x-1] != "") ||
-                (x < word.length - 2 && v(0) && !v(1) && v(2)) ||
-                (x < word.length - 3 && v(0) && (!v(1) && word[x+1] != "n") && !v(2) && v(3)) ||
-                (x < word.length - 1 && v(0) && word[x+1].includes("́"))
-            ) syllabalizedArray.push("~")
+            vowels = "aeiouãẽĩõũ"
+            conditions = false
+            if(word[x-1] != undefined && word[x+1] != undefined && (word[x-1] == "ɣ̞" || word[x-1] == "g") && (word[x] == "s" || word[x] == "z") && !(v(x+1) || word[x+1] == "w")){
+                conditions = true
+                q("Split 0: consonant after 'x'-cluster")
+            }
+            if(!v(x) && word[x+2] != undefined && word[x-1] != undefined && (!v(x+1) && word[x+1] != "j" && word[x+1] != "w") && !(i("bcdɣgfpβ", x) && i("lɾ", x+1)) && v(x-1) && !((word[x] == "ɣ̞" || word[x] == "g") && (word[x+1] == "s" || word[x+1] == "z") && (!v(x+2) && word[x+2] != "w")) && !(word[x] == "n" && word[x+1] == "s" && word[x+2] != "j")){
+                conditions = true
+                q("Split 1: non-linking consonant cluster, not after a consonant")
+            }
+            if(word[x] == "s" && i("t", x+1)){
+                conditions = true
+                q("Split 1.5: the st split")
+            }
+            if(word[x] == " "){
+                q("Split 2: Next is space")
+                conditions = true
+            }
+            if(word[x+1] == " "){
+                q("Split 3: First is space")
+                conditions = true
+            }
+            if(v(x) && word[x+2] != undefined && i("ðxnβpgɣsʃɾl", x+1) && (v(x+2) || word[x+2] == "j" || word[x+2] == "w")){
+                q("Split 4: Vowel before hard consonant (?)")
+                conditions = true
+            }
+            if(word[x].startsWith("n") && word[x-1] != undefined && word[x+1] != undefined && v(x-1) && !(v(x+1) || word[x+1] == "s" || word[x+1] == "j")){
+                conditions = true
+                q("Split 5: n after a vowel and not before vowel")
+            }
+            if(v(x) && word[x+2] != undefined && i("dðɣɾmkɲt", x+1) && v(x+2)){
+                conditions = true
+                q("Split 6: classic consonant split")
+            }
+            if(v(x) && word[x+3] != undefined && i("bcdɣgfpβ", x+1) && i("lɾ", x+2) && v(x+3)){
+                conditions = true
+                q("Split 7: n after a vowel")
+            }
+            if(word[x+1] != undefined && "oía".includes(word[x]) && "oaʝ".includes(word[x+1])){
+                q("Split 8: Double vowel split")
+                conditions = true
+            }
+            if(conditions) syllabalizedArray.push("~")
         }
 
     }
@@ -674,12 +735,14 @@ function syllabize(word){
 
 
 function emphasisFinder(syllables){
-    console.log(syllables)
     sylfinal = ""
     if(syllables.length == 1){ //if one syllable
         sylfinal = syllables[0].replace("́", "")
     }
     else if(syllables.join("").includes("́")){ //if has accent
+        if(syllables[0].includes("́")){
+            syllables[0] = "ˈ" + syllables[0].replace("́", "")
+        }
         for(syl = 0; syl < syllables.length; syl++){
             if(syllables.length - 1 == syl){
                 sylfinal += syllables[syl].replace("́", "")
@@ -729,6 +792,58 @@ function emphasisFinder(syllables){
             }
         }
     }
-    console.log(sylfinal)
     return sylfinal
+}
+
+
+test = {
+    spanish: {
+        "lingüística": "[lĩŋˈgwis.t̪i.ka]",
+        "paraguay": "[pa.ɾaˈɣ̞wai̯]",
+        "quinientos": "[kiˈnjẽn̪.t̪os]",
+        "contigo": "[kõn̪ˈt̪i.ɣ̞o]",
+        "andrógino": "[ãn̪ˈd̪ɾo.xi.no]",
+        "alta": "[ˈal̪.t̪a]",
+        "abrir": "[aˈβ̞ɾiɾ]",
+        "examen mañana": "[eɣ̞ˈsa.mẽn maˈɲa.na]",
+        "maltrato": "[mal̪ˈt̪ɾa.t̪o]",
+        "extra": "[ˈeɣ̞s.t̪ɾa]",
+        "experimentar": "[eɣ̞s.pe.ɾi.mẽn̪ˈt̪aɾ]",
+        "exnovio": "[eɣ̞zˈno.β̞jo]",
+        "operación": "[o.pe.ɾaˈsjõn]",
+        "cooperación": "[ko.o.pe.ɾaˈsjõn]",
+        "zanahoria": "[sa.naˈo.ɾja]",
+        "hallar": "[aˈʝaɾ]",
+        "sexual": "[seɣ̞ˈswal]",
+        "circunstancia": "[siɾ.kũnsˈt̪ãn.sja]",
+        "éxito": "[ˈeɣ̞.si.t̪o]",
+    },
+    asturian: {
+        "llingüística": "[ʎĩŋˈɡwis̪.t̪i.ka]",
+        "berenxenal": "[be.ɾẽɲ.ɕeˈnal]",
+        "cenciellu": "[θẽn̟ˈθje.ʎu]",
+        "circunstancia": "[θiɾ.kũnsˈt̪ãn̟.θja]",
+        "cincocientos": "[θĩŋ.koˈθjẽn̪.t̪os]",
+        "duviachu": "[d̪uˈβ̞ja.t͡ɕu]",
+        "paraguái": "[pa.ɾaˈɣ̞wai̯]",
+    }
+}
+for(tt of Object.entries(test)){
+    language = tt[0]
+    for(tst of Object.entries(tt[1])){
+        ddd = total(tst[0], "standard").phonetic
+        if(ddd != tst[1]){
+            console.log("RED ALERT @ " + tt[0] + " language @ " + tst[0])
+            console.log("EXPECTED " + tst[1] + ", RECEIVED " + ddd)
+        }
+    }   
+}
+language = "spanish"
+
+function selectLang(lingua){
+    document.getElementById(language).style.backgroundColor = "red"
+    document.getElementById(language).style.fontWeight = 400
+    language = lingua
+    document.getElementById(language).style.backgroundColor = "green"
+    document.getElementById(language).style.fontWeight = 700
 }

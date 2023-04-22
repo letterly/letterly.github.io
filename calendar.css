@@ -31,7 +31,7 @@ input, select{
 }
 
 input{
-    width: 30%;
+    width: 20%;
 }
 span a{
     color: white;
@@ -54,7 +54,7 @@ span{
     color: white;
 }
 .cal{
-    font-size: 32px;
+    font-size: 30px;
     border-radius: 5px;
     width: 32%;
     text-align: center;
