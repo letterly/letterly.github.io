@@ -1549,7 +1549,7 @@ calendars = {
         },
         bounds: [1269, 1430],
         era: "YZ",
-        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
+        link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
     },
     "Zoroastrian Qadimi": {
         months: [
@@ -1807,11 +1807,12 @@ function reset(){
         Nov: "November",
         Dec: "December",
     }
+    currentDay[1] = +currentDay[1]
     currentDay[0] = abbreviations[currentDay[0]]
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
     theyear.value = thecurrentday[2]
-    themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days != 0).map((x, ind) => `<option value='${ind}'>${x.name}</select>`).join("")
+    themonth.innerHTML = generateYear(theyear.value, calen).filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
     themonth.value = 0
     themonth.value = generateYear(theyear.value, calen).map(x => x.name).indexOf(thecurrentday[1])
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
@@ -1848,7 +1849,7 @@ function openDay(){
     for(x = 1; x <= generateYear(theyear.value, calen)[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
-    if(td >=  theday.options.length){
+    if(td >= theday.options.length){
         theday.value = 1
     }
     else{
@@ -1865,6 +1866,7 @@ function convert(){
     result = `${theday.value} ${q[themonth.value].name} ${theyear.value}`
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
+    console.log(result)
     console.log(Object.keys(thatspecificday))
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar != calen){
