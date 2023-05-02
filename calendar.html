@@ -9,28 +9,37 @@
         <h1>Date Converter</h1>
         <h2 id="findany">Find any day between 1900 and 2060 CE</h2>
         <select id="thecalendar" onchange="reset()">
-            <option value="Gregorian">Gregorian</option>
-            <option value="Armenian">Armenian</option>
-            <option value="Badi">Badi</option>
-            <option value="Bengali">Bengali</option>
-            <option value="Berber">Berber</option>
-            <option value="Coptic">Coptic</option>
-            <option value="Ethiopian">Ethiopian</option>
-            <option value="Hebrew">Hebrew</option>
-            <option value="Indian National">Indian National</option>
-            <option value="Islamic Tabular">Islamic Tabular (IT)</option>
-            <option value="Islamic Tabular Tayyibi">IT Tayyibi</option>
-            <option value="Juche">Juche</option>
-            <option value="Mandaean">Mandaean</option>
-            <option value="Minguo">Minguo</option>
-            <option value="Nanakshahi">Mool Nanakshahi</option>
-            <option value="Nepal Sambat Solar">Nepal Sambat Solar</option>
-            <option value="Revised Julian">Revised Julian</option>
-            <option value="Solar Hijri">Solar Hijri</option>
-            <option value="Thai Solar">Thai Solar</option>
-            <option value="Zoroastrian Fasli">Zoroastrian Fasli</option>
-            <option value="Zoroastrian Qadimi">Zoroastrian Qadimi</option>
-            <option value="Zoroastrian Shahanshahi">Zoroastrian Shahanshahi</option>
+            <optgroup label="Intercalary Solar">
+                <option value="Badi">Badi</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Berber">Berber</option>
+                <option value="Coptic">Coptic</option>
+                <option value="Ethiopian">Ethiopian</option>
+                <option value="Gregorian" selected>Gregorian</option>
+                <option value="Indian National">Indian National</option>
+                <option value="Juche">Juche</option>
+                <option value="Minguo">Minguo</option>
+                <option value="Nanakshahi">Mool Nanakshahi</option>
+                <option value="Nepal Sambat Solar">Nepal Sambat Solar</option>
+                <option value="Revised Julian">Revised Julian</option>
+                <option value="Solar Hijri">Solar Hijri</option>
+                <option value="Thai Solar">Thai Solar</option>
+                <option value="Fasli (Zoroastrian)">Zoroastrian Fasli</option>
+            </optgroup>
+            <optgroup label="365-day Solar">
+                <option value="Armenian">Armenian</option>
+                <option value="Mandaean">Mandaean</option>
+                <option value="Qadimi">Zoroastrian Qadimi</option>
+                <option value="Shahanshahi">Zoroastrian Shahanshahi</option>
+            </optgroup>
+            <optgroup label="Lunisolar">
+                <option value="Burmese">Burmese</option>
+                <option value="Hebrew">Hebrew</option>
+            </optgroup>
+            <optgroup label="Lunar">
+                <option value="Islamic Tabular">Islamic Tabular (IT)</option>
+                <option value="Islamic Tabular Tayyibi">IT Tayyibi</option>
+            </optgroup>
         </select>
         <input id="theyear" onkeyup="openMonth()" contenteditable="false"/>
         <select id="themonth" onchange="openDay()"></select>
@@ -39,5 +48,6 @@
 
         </div>
     </body>
+    <script src="calendar-data.js"></script>
     <script src="calendar.js"></script>
 </html>

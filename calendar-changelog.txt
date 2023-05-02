@@ -1,3 +1,9 @@
+1 May 23
+Simplified the Zoroastrian calendars' names
+Reorganized the 'calendar' selector based on calendar type
+The Hebrew month of Adar is now called Adar I in leap years
+Added the Burmese calendar, there may be some errors as there is very little information about it in English
+
 30 Apr 23
 Issue with selecting Nisan in some Hebrew calendar years solved
 Fixed a critical error which broke the website when the current Gregorian month day was less than 10

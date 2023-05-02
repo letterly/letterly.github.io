@@ -81,6 +81,7 @@ span{
 .badi{ background-color: dodgerblue }
 .berber{ background-color: saddlebrown }
 .bengali{ background-color: darkolivegreen; }
+.burmese{ background-color: fuchsia }
 .coptic{ background-color: blue }
 .ethiopian{ background-color: rgb(163, 163, 68) }
 .gregorian, .julian, .revised_julian{ background-color: darkslategray }
@@ -93,7 +94,7 @@ span{
 .minguo{ background-color: blueviolet }
 .nanakshahi{ background-color: orange }
 .nepal_sambat_solar{ background-color: maroon }
-.zoroastrian_fasli, .zoroastrian_qadimi, .zoroastrian_shahanshahi{ background-color: indianred }
+.fasli_zoroastrian, .qadimi, .shahanshahi{ background-color: indianred }
 .solar_hijri{ background-color: green }
 .tabarian{ background-color: coral }
 .thai_solar{ background-color: orangered }
