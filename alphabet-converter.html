@@ -41,14 +41,17 @@
         <h1>Alphabet Converter</h1>
         <p>Hi! Please select a language to convert:</p>
         <p>By Harris Mowbray :)</p>
+        <button onclick="align(this.textContent)"><b>Abkhaz</b> Cyrillic=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Abkhaz</b> Cyrillic=>Mkhedruli</button>
         <button onclick="align(this.textContent)"><b>Aragonese</b> SLA=>'87</button>
+        <button onclick="align(this.textContent)"><b>Crimean Tatar</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Extramaduran</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Judeo-German</b> Hebrew=>Latin</button>
         <button onclick="align(this.textContent)"><b>Juhuri</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Khoekhoe</b> Latin=>Braille</button>
-        <button onclick="align(this.textContent)"><b>Ossetian</b> Cyrillic=>Georgian</button>
+        <button onclick="align(this.textContent)"><b>Ossetian</b> Cyrillic=>Mkhedruli</button>
         <button onclick="align(this.textContent)"><b>Portuguese</b> Brazil=>Portugal</button>
         <button onclick="align(this.textContent)"><b>Samogitian</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Uyghur</b> Cyrillic=>Braille</button>
@@ -77,7 +80,7 @@
         function translateFunction () {
             inp = input.value
             if(chartID == "Gagauz Latin=>Braille") inp = inp.replace(/I/g, "ı")
-            if(chartID.includes("Braille") || chartID.includes("Georgian")) inp = inp.toLowerCase()
+            if(chartID.includes("Braille") || chartID.includes("Mkhedruli")) inp = inp.toLowerCase()
             for(e of Object.entries(languages[chartID])) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
             outputtext.textContent = inp
         }
@@ -149,7 +152,7 @@
                 "\\!": "⠖",
                 "\\?": "⠢",
             },
-            "Ossetian Cyrillic=>Georgian": {
+            "Ossetian Cyrillic=>Mkhedruli": {
                 "а": "ა",
                 "ӕ": "ჽ",
                 "æ": "ჽ",
@@ -187,6 +190,141 @@
                 "ч": "ჩ",
                 "ш": "შ",
                 "ы": "ჷ",
+            },
+            "Crimean Tatar Latin=>Braille": {
+                "a": "⠁",
+                "â": "⠌",
+                "b": "⠃",
+                "c": "⠉",
+                "ç": "⠡",
+                "d": "⠙",
+                "e": "⠑",
+                "f": "⠋",
+                "g": "⠛",
+                "ğ": "⠣",
+                "h": "⠓",
+                "ı": "⠔",
+                "i": "⠊",
+                "ĭ": "⠾",
+                "j": "⠚",
+                "k": "⠅",
+                "l": "⠇",
+                "m": "⠍",
+                "n": "⠝",
+                "ñ": "⠫",
+                "o": "⠕",
+                "ö": "⠪",
+                "p": "⠏",
+                "q": "⠟",
+                "r": "⠗",
+                "s": "⠎",
+                "ş": "⠩",
+                "t": "⠞",
+                "u": "⠥",
+                "ü": "⠳",
+                "v": "⠧",
+                "w": "⠺",
+                "y": "⠽",
+                "z": "⠵",
+                "\\'": "⠄",
+                "\\.": "⠲",
+                "\\,": "⠂",
+                "\\:": "⠒",
+                "\\;": "⠆",
+                "\\!": "⠖",
+                "\\?": "⠦",
+            },
+            "Abkhaz Cyrillic=>Mkhedruli": {
+                "а": "ა",
+                "б": "ბ",
+                "в": "ვ",
+                "г": "გ",
+                "ӷ": "ღ",
+                "д": "დ",
+                "е": "ე",
+                "ж": "ჟ",
+                "з": "ზ",
+                "ӡ": "ძ",
+                "и": "ი",
+                "к": "ქ",
+                "қ": "კ",
+                "ҟ": "ყ",
+                "л": "ლ",
+                "м": "მ",
+                "н": "ნ",
+                "о": "ო",
+                "п": "პ",
+                "ԥ": "ფ",
+                "р": "რ",
+                "с": "ს",
+                "т": "თ",
+                "ҭ": "ტ",
+                "у": "უ",
+                "ф": "ჶ",
+                "х": "ხ",
+                "ҳ": "ჰ",
+                "ц": "ც",
+                "ҵ": "წ",
+                "ч": "ჩ",
+                "ҷ": "ჭ",
+                "ҽ": "ჩჾ",
+                "ҿ": "ჭჾ",
+                "ы": "ჲ",
+                "ш": "შ",
+                "ы": "ჷ",
+                "ҩ": "ჳ",
+                "џ": "ჯჾ",
+                "џь": "ჯ",
+                "ә": "ჿ",
+                "ь": "ჾ",
+            },
+            "Abkhaz Cyrillic=>Braille": {
+                а: "⠁",
+                б: "⠃",
+                в: "⠺",
+                г: "⠛",
+                ӷ: "⠫",
+                д: "⠙",
+                е: "⠑",
+                ж:	"⠚",
+                з:	"⠵",
+                ӡ: "⠽",
+                и:	"⠊",
+                к:	"⠅",
+                қ: "⠻",
+                ҟ: "⠯",
+                л:	"⠇",
+                м:	"⠍",
+                н:	"⠝",
+                о:	"⠕",
+                п:	"⠏",
+                ԥ: "⠧",
+                р:	"⠗",
+                с:	"⠎",
+                т:	"⠞",
+                ҭ: "⠳",
+                у:	"⠥",
+                ф:	"⠋",
+                х:	"⠓",
+                ҳ: "⠿",
+                ц:	"⠉",
+                ҵ: "⠹",
+                ч:	"⠟",
+                ҷ: "⠭",
+                ҽ: "⠡",
+                ҿ: "⠩",
+                ш:	"⠱",
+                ы:	"⠮",
+                ҩ: "⠬",
+                џ: "⠪",
+                ь:	"⠾",
+                ә: "⠣",
+                ".": "⠲",
+                ",": "⠂",
+                ":": "⠒",
+                ";": "⠆",
+                "!": "⠖",
+                "?": "⠢",
             },
             "Yiddish Hebrew=>Latin": {
                 //unicode normalization
