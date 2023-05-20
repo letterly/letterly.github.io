@@ -1028,7 +1028,7 @@ calendars = {
                 day: "10 Muharram",
                 link: "https://en.wikipedia.org/wiki/Ashura",
             },
-            //
+            /*
             "Birth of the Báb": {
                 day: "1 Muharram",
                 link: "https://en.wikipedia.org/wiki/Twin_Holy_Birthdays",
@@ -1039,6 +1039,7 @@ calendars = {
                 link: "https://en.wikipedia.org/wiki/Birth_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h",
                 religion: "Badi",
             },
+            */
         },
     },
     "Islamic Tabular Tayyibi": {
