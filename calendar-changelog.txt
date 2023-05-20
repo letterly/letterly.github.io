@@ -1,3 +1,12 @@
+20 May 23
+Holidays are now shown for the Jewish, Gregorian, Islamic Tabular, Mandaean, and Badi calendars
+
+6 May 23
+Added Nanakshahi era "KE" and Nepal Sambat Solar era "NE"
+
+4 May 23
+Added Mandaean era "AA" and Indian National era "SE"
+
 1 May 23
 Simplified the Zoroastrian calendars' names
 Reorganized the 'calendar' selector based on calendar type

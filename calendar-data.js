@@ -67,6 +67,13 @@ calendars = {
         bounds: [1900, 2061],
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
+        holidays: {
+            "6 January": "Epiphany",
+            "15 August": "Assumption of Mary",
+            "1 November": "All Saints' Day",
+            "8 December": "Feast of the Immaculate Conception",
+            "25 December": "Christmas",
+        },
     },
     Armenian: {
         months: [
@@ -134,6 +141,7 @@ calendars = {
         bounds: [1350, 1511],
         era: "",
         link: "https://en.wikipedia.org/wiki/Armenian_calendar",
+        holidays: {},
     },
     Badi: {
         months: [
@@ -234,6 +242,17 @@ calendars = {
         bounds: [56, 218],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar",
+        holidays: {
+            "1 Bahá": "Naw-Rúz",
+            "13 Jalál": "1st of Riḍván",
+            "2 Jamál": "9th of Riḍván",
+            "5 Jamál": "12th of Riḍván",
+            "8 ʻAẓamat": "Declaration of the Báb",
+            "13 ʻAẓamat": "Ascension of Baháʼu'lláh",
+            "17 Raḥmat": "Martyrdom of the Báb",
+            "4 Qawl": "Day of the Covenant",
+            "6 Qawl": "Ascension of ʻAbdu'l-Bahá",
+        },
     },
     Bengali: {
         months: [
@@ -302,6 +321,7 @@ calendars = {
         bounds: [1306, 1599],
         era: "BS",
         link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
+        holidays: {},
     },
     Berber: {
         months: [
@@ -369,6 +389,7 @@ calendars = {
         bounds: [2851, 3012],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
+        holidays: {},
     },
     Burmese: {
         months: [
@@ -439,6 +460,7 @@ calendars = {
         bounds: [1261, 1420],
         era: "ME",
         link: "https://en.wikipedia.org/wiki/Burmese_calendar",
+        holidays: {},
     },
     Coptic: {
         months: [
@@ -510,6 +532,7 @@ calendars = {
         bounds: [1621, 1777],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Coptic_calendar",
+        holidays: {},
     },
     Ethiopian: {
         months: [
@@ -581,6 +604,7 @@ calendars = {
         bounds: [1893, 2165],
         era: "",
         link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
+        holidays: {},
     },
     "Fasli (Zoroastrian)": {
         months: [
@@ -672,6 +696,7 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
+        holidays: {},
     },
     Hebrew: {
         months: [
@@ -742,6 +767,16 @@ calendars = {
         bounds: [5660, 5821],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Hebrew_calendar",
+        holidays: {
+            "1 Tishrei": "Rosh Hashanah",
+            "10 Tishrei": "Yom Kippur",
+            "9 Av": "Tisha B'Av",
+            "15 Av": "Tu B'Av",
+            "17 Tammuz": "Seventeenth of Tammuz",
+            "28 Iyar": "Yom Yerushalayim",
+            "15 Shvat": "Tu BiShvat",
+            "29 Cheshvan": "Sigd",
+        },
     },
     "Indian National": {
         months: [
@@ -808,8 +843,9 @@ calendars = {
             year: 1821,
         },
         bounds: [1822, 2095],
-        era: "",
+        era: "SE",
         link: "https://en.wikipedia.org/wiki/Indian_national_calendar",
+        holidays: {},
     },
     "Islamic Tabular": {
         months: [
@@ -877,6 +913,15 @@ calendars = {
         bounds: [1317, 1484],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
+        holidays: {
+            "9 Dhu al-Hijjah": "Day of Arafah",
+            "10 Dhu al-Hijjah": "Eid al-Adha",
+            "15 Sha'ban": "Laylat al-Bara'at",
+            "12 Rabiʽ al-Awwal": "Mawlid an-Nabī",
+            "1 Shawwal": "Eid al-Fitr",
+            "10 Muharram": "Ashura",
+            "1 Muharram": "Islamic New Year",
+        },
     },
     "Islamic Tabular Tayyibi": {
         months: [
@@ -944,6 +989,7 @@ calendars = {
         bounds: [1317, 1484],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
+        holidays: {},
     },
     Juche: {
         months: [
@@ -1012,6 +1058,7 @@ calendars = {
         bounds: [1, 150],
         era: "",
         link: "https://en.wikipedia.org/wiki/Juche_calendar",
+        holidays: {},
     },
     Julian: {
         months: [
@@ -1079,6 +1126,7 @@ calendars = {
         bounds: [1899, 2061],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
+        holidays: {},
     },
     Mandaean: {
         months: [
@@ -1144,8 +1192,15 @@ calendars = {
             year: 445269, //445393
         },
         bounds: [445270, 445542],
-        era: "",
+        era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
+        holidays: {
+            "1 Hiṭia": "Dehwa Daimana",
+            "30 Gadia": "Kanshiy u-Zahly",
+            "1 Daula": "Dehwa Rabba",
+            "6 Daula": "Feast of the Great Shishlam",
+            "18 Taura": "Dehwa Hanina",
+        },
     },
     Minguo: {
         months: [
@@ -1214,6 +1269,7 @@ calendars = {
         bounds: [1, 150],
         era: "ROC",
         link: "https://en.wikipedia.org/wiki/Republic_of_China_calendar",
+        holidays: {},
     },
     Nanakshahi: {
         months: [
@@ -1279,8 +1335,9 @@ calendars = {
             year: 433,
         },
         bounds: [433, 703],
-        era: "",
+        era: "KE",
         link: "https://en.wikipedia.org/wiki/Nanakshahi_calendar#Mool_Nanakshahi_Calendar",
+        holidays: {},
     },
     "Nepal Sambat Solar": {
         months: [
@@ -1346,8 +1403,9 @@ calendars = {
             year: 1020,
         },
         bounds: [1023, 1181],
-        era: "",
+        era: "NE",
         link: "https://en.wikipedia.org/wiki/Nepal_Sambat#Solar_Calendar",
+        holidays: {},
     },
     "Qadimi": {
         months: [
@@ -1431,6 +1489,7 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
+        holidays: {},
     },
     "Revised Julian": {
         months: [
@@ -1498,6 +1557,7 @@ calendars = {
         bounds: [1900, 2061],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
+        holidays: {},
     },
     "Shahanshahi": {
         months: [
@@ -1581,6 +1641,7 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
+        holidays: {},
     },
     "Solar Hijri": {
         months: [
@@ -1648,6 +1709,7 @@ calendars = {
         bounds: [1279, 1551],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
+        holidays: {},
     },
     "Tabarian": {
         months: [
@@ -1723,6 +1785,7 @@ calendars = {
         bounds: [1401, 1573],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
+        holidays: {},
     },
     "Thai Solar": {
         months: [
@@ -1786,5 +1849,6 @@ calendars = {
         bounds: [2443, 2604],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Thai_solar_calendar",
+        holidays: {},
     },
 }

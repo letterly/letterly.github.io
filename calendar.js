@@ -136,7 +136,11 @@ function convert(){
     result = `${theday.value} ${q[themonth.value].name} ${theyear.value}`
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
+    holidays.innerHTML = ""
     for(ourcalendar of Object.keys(thatspecificday)){
+        if(ourcalendar != "Day" && Object.keys(calendars[ourcalendar].holidays).includes(thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" "))){
+            holidays.innerHTML += `<h2 class="${ourcalendar}_day">[${ourcalendar} calendar] ` + calendars[ourcalendar].holidays[thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" ")] + "</h2>"
+        }
         if(ourcalendar != calen){
             if(ourcalendar == "Day"){
                 answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + thatspecificday[ourcalendar] + "</div>"
@@ -364,7 +368,6 @@ function generateYear(y, n){
     if(n == "Thai Solar"){
         return gg
     }
-    console.log(yO)
     return yO
 }
 
