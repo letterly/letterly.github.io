@@ -25,15 +25,15 @@ document.addEventListener('keyup', function(e){
     else if(e.code.startsWith("Key") || e.code.startsWith("Digit") || ["Backquote", "Minus", "Equal", "Comma", "Period", "Slash", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote"].includes(e.code)) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
 });
 document.body.onmousedown = function(e){
-    if(e.path[0].id == "CapsLock" && lang != "Osage") theShift("CapsLock")
-    else if(e.path[0].id == "Enter") text.value += "\r"
-    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Space"].includes(e.path[0].id))){
+    if(e.srcElement.id == "CapsLock" && lang != "Osage") theShift("CapsLock")
+    else if(e.srcElement.id == "Enter") text.value += "\r"
+    else if(e.srcElement.classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Space"].includes(e.srcElement.id))){
         pressKey(e.srcElement.id)
     }
 }
 document.body.onmouseup = function(e){
-    if(e.path[0].id == "CapsLock") leShift("CapsLock")
-    else if(e.path[0].classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.path[0].id))) e.path[0].style.backgroundColor = e.path[0].id != "Backspace" ? "#cb4b16" : "#d33682"
+    if(e.srcElement.id == "CapsLock") leShift("CapsLock")
+    else if(e.srcElement.classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.srcElement.id))) e.srcElement.style.backgroundColor = e.srcElement.id != "Backspace" ? "#cb4b16" : "#d33682"
 }
 
 function pressKey(k){
@@ -427,6 +427,62 @@ keyboards = {
         Comma:"𐓑",
         Period:".",
         Slash:"𐓃",
+    },
+    Ossetian: {
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+                //
+        "Backquote": "ь",
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        "Minus": "ԛ",
+        "Equal": "ӧ",
+        "KeyQ": "й",
+        "KeyW": "ц",
+        "KeyE": "у",
+        "KeyR": "к",
+        "KeyT": "е",
+        "KeyY": "н",
+        "KeyU": "г",
+        "KeyI": "ш",
+        "KeyO": "ә",
+        "KeyP": "з",
+        "BracketLeft": "х",
+        "BracketRight": "'",
+        "Backslash": "ԝ",
+        "KeyA": "ф",
+        "KeyS": "ы", 
+        "KeyD": "в",
+        "KeyF": "а",
+        "KeyG": "п",
+        "KeyH": "р",
+        "KeyJ": "о",
+        "KeyK": "л",
+        "KeyL": "д",
+        "Semicolon": "ж",
+        "Quote": "э",
+        "KeyZ": "ә",
+        "KeyX": "ч",
+        "KeyC": "с",
+        "KeyV": "м",
+        "KeyB": "и",
+        "KeyN": "т",
+        "KeyM": "щ",
+        "Comma": "б",
+        "Period": "һ",
+        Slash: ".",
     },
     Vlach: {
         //
