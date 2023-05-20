@@ -68,11 +68,26 @@ calendars = {
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
         holidays: {
-            "6 January": "Epiphany",
-            "15 August": "Assumption of Mary",
-            "1 November": "All Saints' Day",
-            "8 December": "Feast of the Immaculate Conception",
-            "25 December": "Christmas",
+            "Epiphany": {
+                day: "6 January",
+                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+            },
+            "Assumption of Mary": {
+                day: "15 August",
+                link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+            },
+            "All Saints' Day": {
+                day: "1 November",
+                link: "https://en.wikipedia.org/wiki/All_Saints%27_Day"
+            },
+            "Feast of the Immaculate Conception": {
+                day: "8 December",
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception",
+            },
+            "Christmas": {
+                day: "25 December",
+                link: "https://en.wikipedia.org/wiki/Christmas",
+            },
         },
     },
     Armenian: {
@@ -243,15 +258,42 @@ calendars = {
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar",
         holidays: {
-            "1 Bahá": "Naw-Rúz",
-            "13 Jalál": "1st of Riḍván",
-            "2 Jamál": "9th of Riḍván",
-            "5 Jamál": "12th of Riḍván",
-            "8 ʻAẓamat": "Declaration of the Báb",
-            "13 ʻAẓamat": "Ascension of Baháʼu'lláh",
-            "17 Raḥmat": "Martyrdom of the Báb",
-            "4 Qawl": "Day of the Covenant",
-            "6 Qawl": "Ascension of ʻAbdu'l-Bahá",
+            "Naw-Rúz": {
+                day: "1 Bahá",
+                link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Naw-R%C3%BAz",
+            },
+            "1st of Riḍván": {
+                day: "13 Jalál",
+                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            },
+            "9th of Riḍván": {
+                day: "2 Jamál",
+                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            },
+            "12th of Riḍván": {
+                day: "5 Jamál",
+                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            },
+            "Declaration of the Báb": {
+                day: "8 ʻAẓamat",
+                link: "https://en.wikipedia.org/wiki/B%C3%A1b#Declaration_to_Mull%C3%A1_Husayn",
+            },
+            "Ascension of Baháʼu'lláh": {
+                day: "13 ʻAẓamat",
+                link: "https://www.bpl.org/blogs/post/the-origins-and-practices-of-holidays-ascension-of-bahaullah-ascension-of-jesus/",
+            },
+            "Martyrdom of the Báb": {
+                day: "17 Raḥmat",
+                link: "https://en.wikipedia.org/wiki/Execution_of_the_B%C3%A1b",
+            },
+            "Day of the Covenant": {
+                day: "4 Qawl",
+                link: "https://en.wikipedia.org/wiki/Day_of_the_Covenant_(Bah%C3%A1%CA%BC%C3%AD)",
+            },
+            "Ascension of ʻAbdu'l-Bahá": {
+                day: "6 Qawl",
+                link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
+            },
         },
     },
     Bengali: {
@@ -768,14 +810,66 @@ calendars = {
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Hebrew_calendar",
         holidays: {
-            "1 Tishrei": "Rosh Hashanah",
-            "10 Tishrei": "Yom Kippur",
-            "9 Av": "Tisha B'Av",
-            "15 Av": "Tu B'Av",
-            "17 Tammuz": "Seventeenth of Tammuz",
-            "28 Iyar": "Yom Yerushalayim",
-            "15 Shvat": "Tu BiShvat",
-            "29 Cheshvan": "Sigd",
+            "Rosh Hashanah": {
+                day: "1 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Rosh_Hashanah",
+            },
+            "Yom Kippur": {
+                day: "10 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Yom_Kippur",
+            },
+            "Shemini Atzeret": {
+                day: "22 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Shemini_Atzeret"
+            },
+            "Simchat Torah (outside Israel)": {
+                day: "23 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Simchat_Torah",  
+            },
+            "Tisha B'Av": {
+                day: "9 Av",
+                link: "https://en.wikipedia.org/wiki/Tisha_B%27Av",
+            },
+            "Tu B'Av": {
+                day: "15 Av",
+                link: "https://en.wikipedia.org/wiki/Tu_B%27Av",
+            },
+            "Purim": {
+                day: "14 Adar",
+                link: "https://en.wikipedia.org/wiki/Purim",
+            },
+            "Purim": {
+                day: "14 Adar II",
+                link: "https://en.wikipedia.org/wiki/Purim",
+            },
+            "Seventeenth of Tammuz": {
+                day: "17 Tammuz",
+                link: "https://en.wikipedia.org/wiki/Seventeenth_of_Tammuz",
+            },
+            "Yom Yerushalayim": {
+                day: "28 Iyar",
+                link: "https://en.wikipedia.org/wiki/Jerusalem_Day",
+            },
+            "Tu BiShvat": {
+                day: "15 Shvat",
+                link: "https://en.wikipedia.org/wiki/Tu_BiShvat",
+            },
+            "Sigd": {
+                day: "29 Cheshvan",
+                link: "https://en.wikipedia.org/wiki/Sigd",
+            },
+            "Lag BaOmer": {
+                day: "18 Iyar",
+                link: "https://en.wikipedia.org/wiki/Lag_BaOmer",
+            },
+            "Shavuot": {
+                day: "6 Sivan",
+                link: "https://en.wikipedia.org/wiki/Shavuot",
+            },
+            "Tenth of Tevet": {
+                day: "10 Tevet",
+                link: "https://en.wikipedia.org/wiki/Tenth_of_Tevet",
+            },
         },
     },
     "Indian National": {
@@ -914,13 +1008,37 @@ calendars = {
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {
-            "9 Dhu al-Hijjah": "Day of Arafah",
-            "10 Dhu al-Hijjah": "Eid al-Adha",
-            "15 Sha'ban": "Laylat al-Bara'at",
-            "12 Rabiʽ al-Awwal": "Mawlid an-Nabī",
-            "1 Shawwal": "Eid al-Fitr",
-            "10 Muharram": "Ashura",
-            "1 Muharram": "Islamic New Year",
+            "Day of Arafah": {
+                day: "9 Dhu al-Hijjah",
+                link: "https://en.wikipedia.org/wiki/Day_of_Arafah",
+            },
+            "Eid al-Adha": {
+                day: "10 Dhu al-Hijjah",
+                link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
+            },
+            "Mawlid": {
+                day: "12 Rabiʽ al-Awwal",
+                link: "https://en.wikipedia.org/wiki/Mawlid",
+            },
+            "Eid al-Fitr": {
+                day: "1 Shawwal",
+                link: "https://en.wikipedia.org/wiki/Eid_al-Fitr",
+            },
+            "Ashura": {
+                day: "10 Muharram",
+                link: "https://en.wikipedia.org/wiki/Ashura",
+            },
+            //
+            "Birth of the Báb": {
+                day: "1 Muharram",
+                link: "https://en.wikipedia.org/wiki/Twin_Holy_Birthdays",
+                religion: "Badi",
+            },
+            "Birth of Baháʼu'lláh": {
+                day: "2 Muharram",
+                link: "https://en.wikipedia.org/wiki/Birth_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h",
+                religion: "Badi",
+            },
         },
     },
     "Islamic Tabular Tayyibi": {
@@ -1195,11 +1313,26 @@ calendars = {
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
         holidays: {
-            "1 Hiṭia": "Dehwa Daimana",
-            "30 Gadia": "Kanshiy u-Zahly",
-            "1 Daula": "Dehwa Rabba",
-            "6 Daula": "Feast of the Great Shishlam",
-            "18 Taura": "Dehwa Hanina",
+            "Dehwa Daimana":{
+                day: "1 Hiṭia",
+                link: "https://en.wikipedia.org/wiki/Dehwa_Daimana"
+            },
+            "Kanshiy u-Zahly": {
+                day: "30 Gadia",
+                link: "https://en.wikipedia.org/wiki/Dehwa_Rabba#Kanshiy_u-Zahly",
+            },
+            "Dehwa Rabba": {
+                day: "1 Daula",
+                link: "https://en.wikipedia.org/wiki/Dehwa_Rabba",
+            },
+            "Feast of the Great Shishlam": {
+                day: "6 Daula",
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Great_Shishlam",
+            },
+            "Dehwa Hanina": {
+                day: "18 Taura",
+                link: "https://en.wikipedia.org/wiki/Dehwa_Hanina",
+            }
         },
     },
     Minguo: {
@@ -1790,7 +1923,7 @@ calendars = {
     "Thai Solar": {
         months: [
             {
-                name: "Abbbbril",
+                name: "April",
                 days: 30,
             },
             {

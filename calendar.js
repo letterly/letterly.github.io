@@ -138,8 +138,10 @@ function convert(){
     answer.innerHTML = ""
     holidays.innerHTML = ""
     for(ourcalendar of Object.keys(thatspecificday)){
-        if(ourcalendar != "Day" && Object.keys(calendars[ourcalendar].holidays).includes(thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" "))){
-            holidays.innerHTML += `<h2 class="${ourcalendar}_day">[${ourcalendar} calendar] ` + calendars[ourcalendar].holidays[thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" ")] + "</h2>"
+        if(ourcalendar != "Day" && Object.values(calendars[ourcalendar].holidays).map(g => g.day).includes(thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" "))){
+            bruh = Object.entries(calendars[ourcalendar].holidays).filter(m => m[1].day == thatspecificday[ourcalendar].split(" ").slice(0,-1).join(" "))[0]
+            rel = bruh[1].religion != undefined ? bruh[1].religion : ourcalendar
+            holidays.innerHTML += `<h2 class="${rel}_day">[${rel} calendar] <a target="_blank" style="color:inherit" href="${bruh[1].link}">` + bruh[0] + "</a></h2>"
         }
         if(ourcalendar != calen){
             if(ourcalendar == "Day"){

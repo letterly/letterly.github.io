@@ -1,5 +1,6 @@
 20 May 23
 Holidays are now shown for the Jewish, Gregorian, Islamic Tabular, Mandaean, and Badi calendars
+Each holiday has a link to relevant information
 
 6 May 23
 Added Nanakshahi era "KE" and Nepal Sambat Solar era "NE"
