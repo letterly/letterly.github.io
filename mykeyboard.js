@@ -51,7 +51,7 @@ function pressKey(k){
 
 function theShift(c){
     document.getElementById(c).style.backgroundColor = "#859900"
-    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8"])){
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9"])){
         document.getElementById(x).textContent = document.getElementById(x).textContent.toUpperCase()
     }
 }
@@ -62,12 +62,69 @@ function space(){
 
 function leShift(c){
     document.getElementById(c).style.backgroundColor = "#b58900"
-    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8"])){
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9"])){
         document.getElementById(x).textContent = document.getElementById(x).textContent.toLowerCase()
     }
 }
 
 keyboards = {
+    Abkhaz: {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        "Backquote": "ӷ",
+        Digit1: "ә",
+        Digit2: "ӡ",
+        Digit3: "қ",
+        Digit4: "ҟ",
+        Digit5: "ԥ",
+        Digit6: "ҭ",
+        Digit7: "ҳ",
+        Digit8: "ҵ",
+        Digit9: "ҷ",
+        Digit0: "ҽ",
+        "Minus": "ҿ",
+        "Equal": "ҩ",
+        "KeyQ": "й",
+        "KeyW": "ц",
+        "KeyE": "у",
+        "KeyR": "к",
+        "KeyT": "е",
+        "KeyY": "н",
+        "KeyU": "г",
+        "KeyI": "ш",
+        "KeyO": "щ",
+        "KeyP": "з",
+        "BracketLeft": "х",
+        "BracketRight": "ъ",
+        "Backslash": "ё",
+        "KeyA": "ф",
+        "KeyS": "ы", 
+        "KeyD": "в",
+        "KeyF": "а",
+        "KeyG": "п",
+        "KeyH": "р",
+        "KeyJ": "о",
+        "KeyK": "л",
+        "KeyL": "д",
+        "Semicolon": "ж",
+        "Quote": "э",
+        "KeyZ": "я",
+        "KeyX": "ч",
+        "KeyC": "с",
+        "KeyV": "м",
+        "KeyB": "и",
+        "KeyN": "т",
+        "KeyM": "ь",
+        "Comma": "б",
+        "Period": "ю",
+        "Slash": "џ",
+},
     "S'Klallam": {
         //
         Backspace: "del",
@@ -429,14 +486,15 @@ keyboards = {
         Slash:"𐓃",
     },
     Ossetian: {
-        Backspace: "del",
-        CapsLock: "caps",
-        Enter: "return",
-        ShiftLeft: "shift",
-        ShiftRight: "shift",
-        Tab: "tab",
                 //
-        "Backquote": "ь",
+                Backspace: "del",
+                CapsLock: "caps",
+                Enter: "return",
+                ShiftLeft: "shift",
+                ShiftRight: "shift",
+                Tab: "tab",
+                //
+        "Backquote": "?",
         Digit1: "1",
         Digit2: "2",
         Digit3: "3",
@@ -447,8 +505,8 @@ keyboards = {
         Digit8: "8",
         Digit9: "9",
         Digit0: "0",
-        "Minus": "ԛ",
-        "Equal": "ӧ",
+        "Minus": ".",
+        "Equal": ",",
         "KeyQ": "й",
         "KeyW": "ц",
         "KeyE": "у",
@@ -457,11 +515,11 @@ keyboards = {
         "KeyY": "н",
         "KeyU": "г",
         "KeyI": "ш",
-        "KeyO": "ә",
+        "KeyO": "щ",
         "KeyP": "з",
         "BracketLeft": "х",
-        "BracketRight": "'",
-        "Backslash": "ԝ",
+        "BracketRight": "ъ",
+        "Backslash": "ё",
         "KeyA": "ф",
         "KeyS": "ы", 
         "KeyD": "в",
@@ -473,16 +531,16 @@ keyboards = {
         "KeyL": "д",
         "Semicolon": "ж",
         "Quote": "э",
-        "KeyZ": "ә",
+        "KeyZ": "я",
         "KeyX": "ч",
         "KeyC": "с",
         "KeyV": "м",
         "KeyB": "и",
         "KeyN": "т",
-        "KeyM": "щ",
+        "KeyM": "ь",
         "Comma": "б",
-        "Period": "һ",
-        Slash: ".",
+        "Period": "ю",
+        Slash: "ӕ",
     },
     Vlach: {
         //
