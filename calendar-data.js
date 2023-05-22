@@ -72,6 +72,10 @@ calendars = {
                 day: "6 January",
                 link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
             },
+            "Nativity of John the Baptist": {
+                day: "24 June",
+                link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
+            },
             "Assumption of Mary": {
                 day: "15 August",
                 link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
@@ -87,6 +91,10 @@ calendars = {
             "Christmas": {
                 day: "25 December",
                 link: "https://en.wikipedia.org/wiki/Christmas",
+            },
+            "Christmas (Armenia)": {
+                day: "6 December",
+                link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
             },
         },
     },
@@ -158,7 +166,7 @@ calendars = {
         link: "https://en.wikipedia.org/wiki/Armenian_calendar",
         holidays: {},
     },
-    Badi: {
+    "Bahá'í": {
         months: [
             {
                 name: "Bahá",
@@ -293,6 +301,12 @@ calendars = {
             "Ascension of ʻAbdu'l-Bahá": {
                 day: "6 Qawl",
                 link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
+            },
+            "Birth of the Báb": {
+                link: "https://en.wikipedia.org/wiki/Twin_Holy_Birthdays",
+            },
+            "Birth of Baháʼu'lláh": {
+                link: "https://en.wikipedia.org/wiki/Birth_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h",
             },
         },
     },
@@ -431,8 +445,18 @@ calendars = {
         bounds: [2851, 3012],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
-        holidays: {},
+        holidays: {
+            "Christmas": {
+                day: "December 25",
+                link: "https://en.wikipedia.org/wiki/Christmas#Date_according_to_Julian_calendar",
+            },
+            "Epiphany": {
+                day: "January 6",
+                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+            },
+        },
     },
+    /*
     Burmese: {
         months: [
             {
@@ -504,6 +528,7 @@ calendars = {
         link: "https://en.wikipedia.org/wiki/Burmese_calendar",
         holidays: {},
     },
+    */
     Coptic: {
         months: [
             {
@@ -813,10 +838,16 @@ calendars = {
             "Rosh Hashanah": {
                 day: "1 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Rosh_Hashanah",
+                length: 2,
             },
             "Yom Kippur": {
                 day: "10 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Yom_Kippur",
+            },
+            "Sukkot": {
+                day: "15 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Sukkot",
+                length: 7,
             },
             "Shemini Atzeret": {
                 day: "22 Tishrei",
@@ -865,6 +896,11 @@ calendars = {
             "Shavuot": {
                 day: "6 Sivan",
                 link: "https://en.wikipedia.org/wiki/Shavuot",
+            },
+            "Hanukkah": {
+                day: "25 Kislev",
+                link: "https://en.wikipedia.org/wiki/Hanukkah",
+                length: 8,
             },
             "Tenth of Tevet": {
                 day: "10 Tevet",
@@ -1008,6 +1044,7 @@ calendars = {
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {
+
             "Day of Arafah": {
                 day: "9 Dhu al-Hijjah",
                 link: "https://en.wikipedia.org/wiki/Day_of_Arafah",
@@ -1016,8 +1053,16 @@ calendars = {
                 day: "10 Dhu al-Hijjah",
                 link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
             },
-            "Mawlid": {
+            "Eid al-Ghadir (Shia)": {
+                day: "18 Dhu al-Hijjah",
+                link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
+            },
+            "Mawlid (Sunni)": {
                 day: "12 Rabiʽ al-Awwal",
+                link: "https://en.wikipedia.org/wiki/Mawlid",
+            },
+            "Mawlid (Shia)": {
+                day: "17 Rabiʽ al-Awwal",
                 link: "https://en.wikipedia.org/wiki/Mawlid",
             },
             "Eid al-Fitr": {
@@ -1028,18 +1073,7 @@ calendars = {
                 day: "10 Muharram",
                 link: "https://en.wikipedia.org/wiki/Ashura",
             },
-            /*
-            "Birth of the Báb": {
-                day: "1 Muharram",
-                link: "https://en.wikipedia.org/wiki/Twin_Holy_Birthdays",
-                religion: "Badi",
-            },
-            "Birth of Baháʼu'lláh": {
-                day: "2 Muharram",
-                link: "https://en.wikipedia.org/wiki/Birth_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h",
-                religion: "Badi",
-            },
-            */
+
         },
     },
     "Islamic Tabular Tayyibi": {

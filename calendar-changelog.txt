@@ -1,3 +1,18 @@
+22 May 23
+Added "Julian-based" as a calendar selection category
+Removed the Burmese calendar for technical reasons :(
+Added Armenian Christmas (Jan 6) as a holiday
+Added holidays to the Julian calendar
+Added the day in French :)
+The Bahá'í, Bengali, Indian National, Mandaean, Nanakshahi, Solar Hijri, and Thai Solar calendars are now additionally shown in their native languages
+
+21 May 23
+Added the Shia date for the holiday of Mawlid and added Eid al-Ghadir
+Added Nativity of John the Baptist as a Christian holiday
+Badi calendar renamed to Bahá'í
+Holidays can now be multiday (made Hanukkah 8 days and Rosh Hashanah 2 days)
+Added the Jewish festival of Sukkot (7 days)
+
 20 May 23
 Holidays are now shown for the Jewish, Gregorian, Islamic Tabular, Mandaean, and Badi calendars
 Each holiday has a link to relevant information

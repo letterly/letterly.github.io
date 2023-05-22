@@ -61,6 +61,7 @@ span{
     margin: 5px;
     font-weight: 600;
     float: left;
+    height: 116px;
 }
 @media (max-width: 1200px){
     .cal{
@@ -78,11 +79,11 @@ span{
 }
 /*.gregorian{ background-color: goldenrod }*/
 .armenian{ background-color: purple }
-.badi{ background-color: dodgerblue }
-.badi_day{ color: dodgerblue }
+.baháí{ background-color: dodgerblue }
+.baháí_day{ color: dodgerblue }
 .berber{ background-color: saddlebrown }
 .bengali{ background-color: darkolivegreen; }
-.burmese{ background-color: fuchsia }
+/*.burmese{ background-color: fuchsia }*/
 .coptic{ background-color: blue }
 .ethiopian{ background-color: rgb(163, 163, 68) }
 .gregorian, .julian, .revised_julian{ background-color: darkslategray }
@@ -92,7 +93,6 @@ span{
 .indian_national{ background-color: red }
 .islamic_tabular, .islamic_tabular_tayyibi{ background-color: seagreen }
 .juche{ background-color: darkred; }
-/*.julian{ background-color: fuchsia;}*/
 .mandaean{ background-color: #D2691E }
 .minguo{ background-color: blueviolet }
 .nanakshahi{ background-color: orange }
