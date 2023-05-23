@@ -305,7 +305,7 @@ function internationalize(dy, cl){
     }
     else if(cl == "Nanakshahi"){
         for(x = 0; x <= 9; x++){
-            dy = dy.replace(new RegExp(x, "g"), "੧੨੩੪੫੬੭੮੯੦"[x])
+            dy = dy.replace(new RegExp(x, "g"), "੦੧੨੩੪੫੬੭੮੯"[x])
         }
         dy = dy.split(" ")
         dy = `${dy[0]} ${{"Chet": "ਚੇਤ", "Vaisakh": "ਵੈਸਾਖ", "Jeth": "ਜੇਠ", "Harh": "ਹਾੜ", "Sawan": "ਸਾਵਣ", "Bhadon": "ਭਾਦੋਂ", "Assu": "ਅੱਸੂ", "Kattak": "ਕੱਤਕ", "Maghar": "ਮੱਘਰ", "Poh": "ਪੋਹ", "Magh": "ਮਾਘ", "Phaggan": "ਫੱਗਣ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
@@ -343,7 +343,7 @@ function internationalize(dy, cl){
     }
     else if(cl == "Qadimi" || cl == "Fasli (Zoroastrian)" || cl == "Shahanshahi"){
         for(x = 0; x <= 9; x++){
-            dy = dy.replace(new RegExp(x, "g"), "૧૨૩૪૫૬૭૮૯૦"[x])
+            dy = dy.replace(new RegExp(x, "g"), "૦૧૨૩૪૫૬૭૮૯"[x])
         }
         dy = dy.split(" ")
         dy = `${dy[0]} ${{
