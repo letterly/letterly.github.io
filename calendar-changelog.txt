@@ -1,10 +1,16 @@
+23 May 23
+Renamed Coptic epagomenal month to "Pi Kogi Enavot"
+All calendars are shown in their native languages (and numeral systems)
+Switched the order of Tabarian months to be correct
+Added my email
+
 22 May 23
 Added "Julian-based" as a calendar selection category
 Removed the Burmese calendar for technical reasons :(
 Added Armenian Christmas (Jan 6) as a holiday
 Added holidays to the Julian calendar
 Added the day in French :)
-The Bahá'í, Bengali, Indian National, Mandaean, Nanakshahi, Solar Hijri, and Thai Solar calendars are now additionally shown in their native languages
+Around half the calendars are now additionally shown in their native languages
 
 21 May 23
 Added the Shia date for the holiday of Mawlid and added Eid al-Ghadir

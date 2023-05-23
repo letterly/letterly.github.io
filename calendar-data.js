@@ -580,7 +580,7 @@ calendars = {
                 days: 30,
             },
             {
-                name: "Ipagomenai",
+                name: "Pi Kogi Enavot",
                 days: "5/6",
             },
         ],
@@ -1882,34 +1882,6 @@ calendars = {
     "Tabarian": {
         months: [
             {
-                name: "Une Ma",
-                days: 30,
-            },
-            {
-                name: "Shishak",
-                days: "0/1",
-            },
-            {
-                name: "Pitek",
-                days: 5,
-            },
-            {
-                name: "Arke Ma",
-                days: 30,
-            },
-            {
-                name: "De Ma",
-                days: 30,
-            },
-            {
-                name: "Vahmane Ma",
-                days: 30,
-            },
-            {
-                name: "Nurze Ma",
-                days: 30,
-            },
-            {
                 name: "Fardine Ma",
                 days: 30,
             },
@@ -1937,17 +1909,45 @@ calendars = {
                 name: "Mire Ma",
                 days: 30,
             },
+            {
+                name: "Une Ma",
+                days: 30,
+            },
+            {
+                name: "Shishak",
+                days: "0/1",
+            },
+            {
+                name: "Pitek",
+                days: 5,
+            },
+            {
+                name: "Arke Ma",
+                days: 30,
+            },
+            {
+                name: "De Ma",
+                days: 30,
+            },
+            {
+                name: "Vahmane Ma",
+                days: 30,
+            },
+            {
+                name: "Nurze Ma",
+                days: 30,
+            },
         ],
         intercalary: {
             type: "day",
-            month: 1,
+            month: 8,
             method: function(x){
                 return ([1,5,9,13,17,21,25,30].includes(x % 33))
             }
         },
         startDay: {
-            dayinmonth: 12,
-            monthcount: 12,
+            dayinmonth: 11,
+            monthcount: 5,
             year: 1411, //445393
         },
         bounds: [1401, 1573],
