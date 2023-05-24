@@ -527,8 +527,7 @@ calendars = {
         era: "ME",
         link: "https://en.wikipedia.org/wiki/Burmese_calendar",
         holidays: {},
-    },
-    */
+    },*/
     Coptic: {
         months: [
             {
@@ -592,7 +591,7 @@ calendars = {
             }
         },
         startDay: {
-            dayinmonth: 24,
+            dayinmonth: 23,
             monthcount: 3,
             year: 1616, //445393
         },

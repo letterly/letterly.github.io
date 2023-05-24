@@ -166,10 +166,10 @@ function reset(){
     currentDay[0] = abbreviations[currentDay[0]]
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
-    theyear.value = thecurrentday[2]
+    theyear.value = thecurrentday.slice(-1)[0]
     themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
     themonth.value = 0
-    themonth.value = generateYear(theyear.value, calen).months.map(x => x.name).indexOf(thecurrentday[1])
+    themonth.value = generateYear(theyear.value, calen).months.map(x => x.name).indexOf(thecurrentday.slice(1, -1).join(" "))
     for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
@@ -221,12 +221,64 @@ function convert(){
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
-                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day">[${h.religion} calendar] <a target="_blank" style="color:inherit" href="${h.link}">${h.name}</a></h2>`
+                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><b>${h.religion}</b>: <a target="_blank" style="color:inherit" href="${h.link}">${h.name}</a></h2>`
             }
         }
         if(ourcalendar != calen && ourcalendar != "holidays"){
             if(ourcalendar == "Day"){
-                answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + thatspecificday[ourcalendar] + `<br>${internationalize(thatspecificday[ourcalendar], ourcalendar)}</div>`
+                days = {
+                    "Monday": {
+                        es: "Lunes",
+                        fr: "Lundi",
+                        ru: "Понедельник",
+                        zh: "星期一",
+                        ar: "الاثنين",
+                    },
+                    "Tuesday": {
+                        es: "Martes",
+                        fr: "Mardi",
+                        ru: "Вторник",
+                        zh: "星期二",
+                        ar: "الثلاثاء",
+                    },
+                    "Wednesday": {
+                        es: "Miércoles",
+                        fr: "Mercredi",
+                        ru: "Среда",
+                        zh: "星期三",
+                        ar: "الأربعاء",
+                    },
+                    "Thursday": {
+                        es: "Jueves",
+                        fr: "Jeudi",
+                        ru: "Четверг",
+                        zh: "星期四",
+                        ar: "الخميس",
+                    },
+                    "Friday": {
+                        es: "Viernes",
+                        fr: "Vendredi",
+                        ru: "Пятница",
+                        zh: "星期五",
+                        ar: "الجمعة",
+                    },
+                    "Saturday": {
+                        es: "Sábado",
+                        fr: "Samedi",
+                        ru: "Суббота",
+                        zh: "星期六",
+                        ar: "السبت",
+                    },
+                    "Sunday": {
+                        es: "Domingo",
+                        fr: "Dimanche",
+                        ru: "Воскрешения",
+                        zh: "星期天",
+                        ar: "الأحد",
+                    },
+                }
+                dOw = thatspecificday[ourcalendar]
+                answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
             }
             else if(!"-0".includes((thatspecificday[ourcalendar].split(" ")[2]).charAt(0))){
                 answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
@@ -238,10 +290,7 @@ function convert(){
 
 
 function internationalize(dy, cl){
-    if(cl == "Day"){
-        return {"Monday": "Lundi", "Tuesday": "Mardi", "Wednesday": "Mercredi", "Thursday": "Jeudi", "Friday": "Vendredi", "Saturday": "Samedi", "Sunday": "Dimanche"}[dy]
-    }
-    else if(cl == "Gregorian" || cl.includes("Julian")){
+    if(cl == "Gregorian" || cl.includes("Julian")){
         dy = dy.split(" ")
         dy[0] = numeralize(dy[0], "Roman")
         dy[1] = {"January": "IANVARIVS", "February": "FEBRUARIVS", "March": "MARTIUS", "April": "APRILIS", "May": "MAIVS", "June": "IVNIVS", "July": "QVINTILIS", "August": "SEXTILIS", "September": "SEPTEMBER", "October": "OCTOBER", "November": "NOVEMBER", "December": "DECEMBER"}[dy[1]]
@@ -338,7 +387,7 @@ function internationalize(dy, cl){
     }
     else if(cl == "Ethiopian"){
         dy = dy.split(" ")
-        dy = `${dy[0]} ${{"Meskerem": "መስከረም", "Tikimt": "ጥቅምት", "Hidar": "ኅዳር", "Tahsas": "ታኅሣሥ", "Tir": "ጥር", "Yakatit": "የካቲት", "Maggabit": "መጋቢት", "Miyazya": "ሚያዝያ", "Ginbot": "ግንቦት", "Sene": "ሰኔ", "Hamle": "ሐምሌ", "Nehasa": "ነሐሴ", "Pagume": "ጳጉሜ",}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
+        dy = `${numeralize(dy[0], "Ethiopian")} ${{"Meskerem": "መስከረም", "Tikimt": "ጥቅምት", "Hidar": "ኅዳር", "Tahsas": "ታኅሣሥ", "Tir": "ጥር", "Yakatit": "የካቲት", "Maggabit": "መጋቢት", "Miyazya": "ሚያዝያ", "Ginbot": "ግንቦት", "Sene": "ሰኔ", "Hamle": "ሐምሌ", "Nehasa": "ነሐሴ", "Pagume": "ጳጉሜ",}[dy.slice(1, -1).join(" ")]} ${numeralize(dy[dy.length - 1], "Ethiopian")}`
         return dy
     }
     else if(cl == "Qadimi" || cl == "Fasli (Zoroastrian)" || cl == "Shahanshahi"){
@@ -447,6 +496,38 @@ function numeralize(number, era){
             "Ա": 1,
         }
         for(rA of Object.entries(armenianArray)){
+            if(number >= rA[1]){
+                finalNum += rA[0]
+                number = number - rA[1]
+            }
+        }
+        return finalNum
+    }
+    else if(era == "Ethiopian"){
+        ethiopianArray = {
+            "፳፻": 2000,
+            "፲፱፻": 1900,
+            "፲፰፻": 1800,
+            "፺": 90,
+            "፹": 80,
+            "፸": 70,
+            "፷": 60,
+            "፶": 50,
+            "፵": 40,
+            "፴": 30,
+            "፳": 20,
+            "፲": 10,
+            "፱": 9,
+            "፰": 8,
+            "፯": 7,
+            "፮": 6,
+            "፭": 5,
+            "፬": 4,
+            "፫": 3,
+            "፪": 2,
+            "፩": 1,
+        }
+        for(rA of Object.entries(ethiopianArray)){
             if(number >= rA[1]){
                 finalNum += rA[0]
                 number = number - rA[1]
@@ -578,9 +659,9 @@ function generateYear(y, n){
             yO.months[2].days = 29
         }
         //
-    }
+    }*/
 
-    */
+    
 
     // thai code section
     if(n == "Thai Solar"){

@@ -1,3 +1,9 @@
+24 May 23
+The days of the week are now in all six official UN languages
+Changed the apperance of the inputs and made some minor stylistic edits
+Ethiopian numerals are now used on the Ethiopian calendar
+Fixed a glitch involving Islamic calendars
+
 23 May 23
 Renamed Coptic epagomenal month to "Pi Kogi Enavot"
 All calendars are shown in their native languages (and numeral systems)

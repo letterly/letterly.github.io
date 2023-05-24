@@ -14,22 +14,34 @@ body{
     display: block;
 }
 
-input{
-    border: 1px black solid;
-}
-
-select, input{
-    outline: none;
-}
-
 
 #thecalendar{
-    color: black
+    color: black;
+    border-bottom: blue 2px solid;
+}
+#theday{
+    width: 80px;
+}
+#themonth{
+    width: 300px;
+}
+#theyear{
+    width: 140px;
 }
 input, select{
-    font-size: 44px;
+    border: none; 
+    outline: none;
+    border-bottom: red 2px solid;
+    font-size: 40px;
 }
-
+#selectblockone{
+    margin-left: calc((100% - 458.5px) / 2);
+    margin-right: calc((100% - 458.5px) / 2);
+}
+#selectblocktwo{
+    margin-left: calc((100% - 540px) / 2);
+    margin-right: calc((100% - 540px) / 2);
+}
 input{
     width: 20%;
 }
@@ -54,30 +66,42 @@ span{
     color: white;
 }
 .cal{
-    font-size: 30px;
-    border-radius: 5px;
-    width: 32%;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 24.1%;
     text-align: center;
-    margin: 5px;
+    margin: 3px;
     font-weight: 600;
     float: left;
-    height: 116px;
+    height: 80px;
 }
-@media (max-width: 1200px){
+
+@media (max-width: 1430px){
     .cal{
-        width: 47%;
+        width: 32.6%;
     }
 }
-@media (max-width: 810px){
+@media (max-width: 1100px){
     .cal{
-        width: 97%;
+        width: 49%;
+    }
+}
+@media (max-width: 800px){
+    .cal{
+        width: 98.5%;
+    }
+    #selectblocktwo{
+        margin-left: calc((100% - 440px) / 2);
+        margin-right: calc((100% - 440px) / 2);
+    }
+    #themonth{
+        width: 200px;
     }
 }
 #contact{
     width: 100%;
     display: block;
 }
-/*.gregorian{ background-color: goldenrod }*/
 .armenian{ background-color: purple }
 .baháí{ background-color: dodgerblue }
 .baháí_day{ color: dodgerblue }
@@ -127,4 +151,7 @@ h2{
     margin-top: 0px;
     text-align: center;
     font-weight: 400;
+}
+#selection{
+
 }
