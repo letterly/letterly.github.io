@@ -2,7 +2,8 @@
 The days of the week are now in all six official UN languages
 Changed the apperance of the inputs and made some minor stylistic edits
 Ethiopian numerals are now used on the Ethiopian calendar
-Fixed a glitch involving Islamic calendars
+Fixed a glitch involving months with multiple words in the name
+Show which calendars have days that start on sunrise or sunset (rather than midnight)
 
 23 May 23
 Renamed Coptic epagomenal month to "Pi Kogi Enavot"

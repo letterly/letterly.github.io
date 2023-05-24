@@ -286,6 +286,20 @@ function convert(){
         }
     }
     answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+    answer.innerHTML += `<div class='cal time'>
+    <div class="line" style='text-align:center'>Usually, days start at midnight</div>
+    <div class="line">
+        <div class='icon islamic_tabular'></div>
+        <div class='icon hebrew'></div>
+        <div class='icon baháí'></div>
+        days start at sunset
+    </div>
+    <div class="line">
+        <div class='icon qadimi'></div>
+        <div class='icon mandaean'></div> 
+        days start at sunrise
+    </div>
+    </div>`
 }
 
 
