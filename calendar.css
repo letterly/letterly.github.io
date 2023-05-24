@@ -33,6 +33,7 @@ input, select{
     outline: none;
     border-bottom: red 2px solid;
     font-size: 40px;
+    text-align: center;
 }
 #selectblockone{
     margin-left: calc((100% - 458.5px) / 2);
@@ -103,7 +104,7 @@ span{
     display: block;
 }
 .armenian{ background-color: purple }
-.baháí{ background-color: dodgerblue }
+.baháí{ background-color: dodgerblue } 
 .baháí_day{ color: dodgerblue }
 .berber{ background-color: saddlebrown }
 .bengali{ background-color: darkolivegreen; }
@@ -149,9 +150,7 @@ h1{
 }
 h2{
     margin-top: 0px;
+    margin-bottom: 0;
     text-align: center;
     font-weight: 400;
-}
-#selection{
-
 }
