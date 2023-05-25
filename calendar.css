@@ -20,7 +20,7 @@ body{
     border-bottom: blue 2px solid;
 }
 #theday{
-    width: 80px;
+    width: 120px;
 }
 #themonth{
     width: 300px;
@@ -40,8 +40,8 @@ input, select{
     margin-right: calc((100% - 458.5px) / 2);
 }
 #selectblocktwo{
-    margin-left: calc((100% - 540px) / 2);
-    margin-right: calc((100% - 540px) / 2);
+    margin-left: calc((100% - 580px) / 2);
+    margin-right: calc((100% - 580px) / 2);
 }
 input{
     width: 20%;
@@ -69,7 +69,7 @@ span{
 .cal{
     font-size: 20px;
     border-radius: 20px;
-    width: 24.1%;
+    width: 24.5%;
     text-align: center;
     margin: 3px;
     font-weight: 600;
@@ -79,7 +79,7 @@ span{
 
 @media (max-width: 1430px){
     .cal{
-        width: 32.6%;
+        width: 32.7%;
     }
 }
 @media (max-width: 1100px){
@@ -92,11 +92,14 @@ span{
         width: 98.5%;
     }
     #selectblocktwo{
-        margin-left: calc((100% - 440px) / 2);
-        margin-right: calc((100% - 440px) / 2);
+        margin-left: calc((100% - 480px) / 2);
+        margin-right: calc((100% - 480px) / 2);
     }
     #themonth{
         width: 200px;
+    }
+    h2{
+        font-size: 120%;
     }
 }
 #contact{
@@ -113,9 +116,9 @@ span{
 .baháí_day{ color: dodgerblue }
 .berber{ background-color: saddlebrown }
 .bengali{ background-color: darkolivegreen; }
-/*.burmese{ background-color: fuchsia }*/
 .coptic{ background-color: goldenrod }
 .ethiopian{ background-color: rgb(163, 163, 68) }
+.fasli_zoroastrian, .qadimi, .shahanshahi{ background-color: indianred }
 .gregorian, .julian, .revised_julian{ background-color: darkslategray }
 .gregorian_day{ color: darkslategray }
 .hebrew{ background-color: mediumblue }
@@ -123,11 +126,11 @@ span{
 .indian_national{ background-color: red }
 .islamic_tabular, .islamic_tabular_tayyibi{ background-color: seagreen }
 .juche{ background-color: darkred; }
+.kurdish{ background-color: fuchsia }
 .mandaean{ background-color: #D2691E }
 .minguo{ background-color: blueviolet }
 .nanakshahi{ background-color: orange }
 .nepal_sambat_solar{ background-color: maroon }
-.fasli_zoroastrian, .qadimi, .shahanshahi{ background-color: indianred }
 .solar_hijri{ background-color: green }
 .tabarian{ background-color: coral }
 .thai_solar{ background-color: orangered }

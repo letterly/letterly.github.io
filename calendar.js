@@ -9,7 +9,6 @@ for(c of Object.entries(calendars)){
         yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
     }
     else if(c[1].intercalary.type == "month"){ //FIX!!
-        //interCal[c[0]] = c[1].months[c[1].intercalary.month].days
         yearObject[c[0]] = generateYear(c[1].startDay.year, c[0])
     }
     else if(c[1].intercalary.type == "thai"){
@@ -58,7 +57,8 @@ for(d = 0; d < 59000; d++){
                 }
             }
         }
-        for(hol of Object.entries(yearObject[n].holidays)){            
+        for(hol of Object.entries(yearObject[n].holidays)){ 
+            leday = obj[n].split(" ").slice(0, -1).join(" ")           
             if(n == "Bahá'í" && hol[0].startsWith("Birth") && g.startDay.year >= 172){
                 theTwinBirthdays = [
                         ["10 Qudrat", "11 Qudrat"], //172
@@ -113,19 +113,30 @@ for(d = 0; d < 59000; d++){
                         ["11 ʻIlm", "12 ʻIlm"],
                         ["19 Mas͟híyyat", "1 ʻIlm"], //218
                     ][g.startDay.year - 172]
-                if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == obj[n].split(" ").slice(0, -1).join(" ") || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == obj[n].split(" ").slice(0, -1).join(" ")){
+                if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == leday || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == leday){
                     obj.holidays.push({
                         name: hol[0],
-                        day: hol[1].day,
+                        day: leday,
                         link: hol[1].link,
                         religion: n,
                     })
                 }
             } //twin birthdays
-            else if(obj[n].split(" ").slice(0, -1).join(" ") == hol[1].day){
+            else if(leday == hol[1].day && (hol[1].shabbat == undefined || alltimearray.slice(-1)[0].Day != "Friday")){
+                if(hol[0] == "Seventeenth of Tammuz"){
+                    console.log(g.startDay.year)
+                }
                 obj.holidays.push({
                     name: hol[0],
-                    day: hol[1].day,
+                    day: leday,
+                    link: hol[1].link,
+                    religion: n,
+                })
+            }
+            else if((alltimearray.length > 0 && alltimearray.slice(-1)[0].Day == "Saturday") && leday == hol[1].shabbat){
+                obj.holidays.push({
+                    name: hol[0],
+                    day: leday,
                     link: hol[1].link,
                     religion: n,
                 })
@@ -133,6 +144,7 @@ for(d = 0; d < 59000; d++){
             if(hol[1].length && alltimearray.slice(-1 * hol[1].length + 1).map(x => x[n].split(" ").slice(0, -1).join(" ")).includes(hol[1].day)){ //long holiday
                 obj.holidays.push({
                     name: hol[0],
+                    day: leday,
                     link: hol[1].link,
                     religion: n,
                 })
@@ -214,10 +226,11 @@ function convert(){
     q = generateYear(theyear.value, calen)
     themonth.style.color = "black"
     theday.style.color = "black"
-    result = `${theday.value} ${q.months[themonth.value].name} ${theyear.value}`
+    result = `${theday.value} ${themonth.options[themonth.selectedIndex].text} ${theyear.value}`
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
     holidays.innerHTML = ""
+    console.log(result)
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
@@ -333,13 +346,12 @@ function internationalize(dy, cl){
         dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Bahá'í" ? `` : " هـ ش"}</span>`
         return dy
     }
-    else if(cl.startsWith("Islamic")){
+    else if(cl.startsWith("Islamic") || cl == "Kurdish"){
         for(x = 0; x <= 9; x++){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
         dy = dy.split(" ")
-        console.log(dy)
-        dy = `<span dir="rtl">${dy[0]} ${{"Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}  هـ</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
         return dy
     }
     else if(cl == "Bengali"){

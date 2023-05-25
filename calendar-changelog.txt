@@ -1,3 +1,9 @@
+25 May 23
+Added the Kurdish calendar
+Fixed some issues with how some holidays were displayed
+Added the Jewish holiday of Pesach (Passover)
+Added Hebrew holidays which move to avoid being on Saturday (Shabbat): "Fast of Gedalia" and the "Fast of Esther"
+
 24 May 23
 The days of the week are now in all six official UN languages
 Changed the apperance of the inputs and made some minor stylistic edits

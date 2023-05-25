@@ -848,6 +848,11 @@ calendars = {
                 link: "https://en.wikipedia.org/wiki/Sukkot",
                 length: 7,
             },
+            "Pesach": {
+                day: "15 Nisan",
+                link: "https://en.wikipedia.org/wiki/Passover",
+                length: 7,
+            },
             "Shemini Atzeret": {
                 day: "22 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Shemini_Atzeret"
@@ -904,6 +909,21 @@ calendars = {
             "Tenth of Tevet": {
                 day: "10 Tevet",
                 link: "https://en.wikipedia.org/wiki/Tenth_of_Tevet",
+            },
+            "Fast of Gedalia": {
+                day: "3 Tishrei",
+                link: "https://en.wikipedia.org/wiki/Fast_of_Gedalia",
+                shabbat: "4 Tishrei",
+            },
+            "Fast of Esther": {
+                day: "13 Adar",
+                link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
+                shabbat: "11 Adar",
+            },
+            "Fast of Esther": {
+                day: "13 Adar II",
+                link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
+                shabbat: "11 Adar II",
             },
         },
     },
@@ -1278,6 +1298,74 @@ calendars = {
         bounds: [1899, 2061],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
+        holidays: {},
+    },
+    Kurdish: {
+        months: [
+            {
+                name: "Xakelêwe",
+                days: 31,
+            },
+            {
+                name: "Gullan",
+                days: 31,
+            },
+            {
+                name: "Zerdan",
+                days: 31,
+            },
+            {
+                name: "Puşperr",
+                days: 31,
+            },
+            {
+                name: "Gelawêj",
+                days: 31,
+            },
+            {
+                name: "Xermanan",
+                days: 31,
+            },
+            {
+                name: "Beran",
+                days: 30,
+            },
+            {
+                name: "Xezan",
+                days: 30,
+            },
+            {
+                name: "Saran",
+                days: 30,
+            },
+            {
+                name: "Befran",
+                days: 30,
+            },
+            {
+                name: "Rêbendan",
+                days: 30,
+            },
+            {
+                name: "Reşeme",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return (x % 4 == 0)
+            }
+        },
+        startDay: {
+            dayinmonth: 12,
+            monthcount: 9,
+            year: 2599,
+        },
+        bounds: [2600, 2760],
+        era: "",
+        link: "https://en.wikipedia.org/wiki/Kurdish_calendar",
         holidays: {},
     },
     Mandaean: {
