@@ -21,7 +21,7 @@ for(c of Object.entries(calendars)){
 
 
 
-for(d = 0; d < 59000; d++){
+for(d = 0; d < 80000; d++){
 
     day = week[d % 7]
 
@@ -33,87 +33,97 @@ for(d = 0; d < 59000; d++){
     for(l of Object.entries(calendars)){
         n = l[0]
         g = l[1]
-        if(g.startDay.dayinmonth == 1 && g.startDay.monthcount == 0){
-            yearObject[n] = generateYear(g.startDay.year, n)
-        }
-        obj[n] = (g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + g.startDay.year)
-
-        if(g.startDay.dayinmonth >= yearObject[n].months[g.startDay.monthcount].days){
-            g.startDay.dayinmonth = 0
-            if(g.startDay.monthcount == yearObject[n].months.length - 1){
-                g.startDay.monthcount = 0
-                g.startDay.year++
+        if(g.startDay.year <= g.bounds[1]){
+            if(g.startDay.dayinmonth == 1 && g.startDay.monthcount == 0){
+                yearObject[n] = generateYear(g.startDay.year, n)
             }
-            else{
-                g.startDay.monthcount++
-                if(yearObject[n].months[g.startDay.monthcount].days == 0){
-                    while(yearObject[n].months[g.startDay.monthcount].days == 0){
-                        g.startDay.monthcount++
-                        if(g.startDay.monthcount >= yearObject[n].months.length - 1){
-                            g.startDay.monthcount = 0
-                            g.startDay.year++
+            obj[n] = (g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + g.startDay.year)
+    
+            if(g.startDay.dayinmonth >= yearObject[n].months[g.startDay.monthcount].days){
+                g.startDay.dayinmonth = 0
+                if(g.startDay.monthcount == yearObject[n].months.length - 1){
+                    g.startDay.monthcount = 0
+                    g.startDay.year++
+                }
+                else{
+                    g.startDay.monthcount++
+                    if(yearObject[n].months[g.startDay.monthcount].days == 0){
+                        while(yearObject[n].months[g.startDay.monthcount].days == 0){
+                            g.startDay.monthcount++
+                            if(g.startDay.monthcount >= yearObject[n].months.length - 1){
+                                g.startDay.monthcount = 0
+                                g.startDay.year++
+                            }
                         }
                     }
                 }
             }
-        }
-        for(hol of Object.entries(yearObject[n].holidays)){ 
-            leday = obj[n].split(" ").slice(0, -1).join(" ")           
-            if(n == "Bahá'í" && hol[0].startsWith("Birth") && g.startDay.year >= 172){
-                theTwinBirthdays = [
-                        ["10 Qudrat", "11 Qudrat"], //172
-                        ["18 ʻIlm", "19 ʻIlm"],
-                        ["7 ʻIlm", "8 ʻIlm"],
-                        ["6 Qudrat", "7 Qudrat"],
-                        ["14 ʻIlm", "15 ʻIlm"],
-                        ["4 ʻIlm", "5 ʻIlm"],
-                        ["4 Qudrat", "5 Qudrat"],
-                        ["11 ʻIlm", "12 ʻIlm"],
-
-                        ["1 ʻIlm", "2 ʻIlm"], //180
-                        ["19 ʻIlm", "1 Qudrat"],
-                        ["8 ʻIlm", "9 ʻIlm"],
-                        ["7 Qudrat", "8 Qudrat"],
-                        ["15 ʻIlm", "16 ʻIlm"],
-                        ["5 ʻIlm", "6 ʻIlm"],
-                        ["5 Qudrat", "6 Qudrat"],
-                        ["14 ʻIlm", "15 ʻIlm"],
-                        ["2 ʻIlm", "3 ʻIlm"],
-                        ["2 Qudrat", "3 Qudrat"],
-
-                        ["10 ʻIlm", "11 ʻIlm"], //190
-                        ["10 Qudrat", "11 Qudrat"],
-                        ["17 ʻIlm", "18 ʻIlm"],
-                        ["6 ʻIlm", "7 ʻIlm"],
-                        ["6 Qudrat", "7 Qudrat"],
-                        ["15 ʻIlm", "16 ʻIlm"],
-                        ["4 ʻIlm", "5 ʻIlm"],
-                        ["4 Qudrat", "5 Qudrat"],
-                        ["12 ʻIlm", "13 ʻIlm"],
-                        ["1 ʻIlm", "2 ʻIlm"],
-
-                        ["19 ʻIlm", "1 Qudrat"], //200
-                        ["8 ʻIlm", "9 ʻIlm"],
-                        ["8 Qudrat", "9 Qudrat"],
-                        ["16 ʻIlm", "17 ʻIlm"],
-                        ["5 ʻIlm", "6 ʻIlm"],
-                        ["5 Qudrat", "6 Qudrat"],
-                        ["14 ʻIlm", "15 ʻIlm"],
-                        ["3 ʻIlm", "4 ʻIlm"],
-                        ["2 Qudrat", "3 Qudrat"],
-                        ["10 ʻIlm", "11 ʻIlm"],
-
-                        ["9 Qudrat", "10 Qudrat"], //210
-                        ["18 ʻIlm", "19 ʻIlm"],
-                        ["6 ʻIlm", "7 ʻIlm"],
-                        ["6 Qudrat", "7 Qudrat"],
-                        ["15 ʻIlm", "16 ʻIlm"],
-                        ["4 ʻIlm", "5 ʻIlm"],
-                        ["4 Qudrat", "5 Qudrat"],
-                        ["11 ʻIlm", "12 ʻIlm"],
-                        ["19 Mas͟híyyat", "1 ʻIlm"], //218
-                    ][g.startDay.year - 172]
-                if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == leday || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == leday){
+            for(hol of Object.entries(yearObject[n].holidays)){ 
+                leday = obj[n].split(" ").slice(0, -1).join(" ")           
+                if(n == "Bahá'í" && hol[0].startsWith("Birth") && g.startDay.year >= 172 && g.startDay.year <= 217){
+                    theTwinBirthdays = [
+                            ["10 Qudrat", "11 Qudrat"], //172
+                            ["18 ʻIlm", "19 ʻIlm"],
+                            ["7 ʻIlm", "8 ʻIlm"],
+                            ["6 Qudrat", "7 Qudrat"],
+                            ["14 ʻIlm", "15 ʻIlm"],
+                            ["4 ʻIlm", "5 ʻIlm"],
+                            ["4 Qudrat", "5 Qudrat"],
+                            ["11 ʻIlm", "12 ʻIlm"],
+    
+                            ["1 ʻIlm", "2 ʻIlm"], //180
+                            ["19 ʻIlm", "1 Qudrat"],
+                            ["8 ʻIlm", "9 ʻIlm"],
+                            ["7 Qudrat", "8 Qudrat"],
+                            ["15 ʻIlm", "16 ʻIlm"],
+                            ["5 ʻIlm", "6 ʻIlm"],
+                            ["5 Qudrat", "6 Qudrat"],
+                            ["14 ʻIlm", "15 ʻIlm"],
+                            ["2 ʻIlm", "3 ʻIlm"],
+                            ["2 Qudrat", "3 Qudrat"],
+    
+                            ["10 ʻIlm", "11 ʻIlm"], //190
+                            ["10 Qudrat", "11 Qudrat"],
+                            ["17 ʻIlm", "18 ʻIlm"],
+                            ["6 ʻIlm", "7 ʻIlm"],
+                            ["6 Qudrat", "7 Qudrat"],
+                            ["15 ʻIlm", "16 ʻIlm"],
+                            ["4 ʻIlm", "5 ʻIlm"],
+                            ["4 Qudrat", "5 Qudrat"],
+                            ["12 ʻIlm", "13 ʻIlm"],
+                            ["1 ʻIlm", "2 ʻIlm"],
+    
+                            ["19 ʻIlm", "1 Qudrat"], //200
+                            ["8 ʻIlm", "9 ʻIlm"],
+                            ["8 Qudrat", "9 Qudrat"],
+                            ["16 ʻIlm", "17 ʻIlm"],
+                            ["5 ʻIlm", "6 ʻIlm"],
+                            ["5 Qudrat", "6 Qudrat"],
+                            ["14 ʻIlm", "15 ʻIlm"],
+                            ["3 ʻIlm", "4 ʻIlm"],
+                            ["2 Qudrat", "3 Qudrat"],
+                            ["10 ʻIlm", "11 ʻIlm"],
+    
+                            ["9 Qudrat", "10 Qudrat"], //210
+                            ["18 ʻIlm", "19 ʻIlm"],
+                            ["6 ʻIlm", "7 ʻIlm"],
+                            ["6 Qudrat", "7 Qudrat"],
+                            ["15 ʻIlm", "16 ʻIlm"],
+                            ["4 ʻIlm", "5 ʻIlm"],
+                            ["4 Qudrat", "5 Qudrat"],
+                            ["11 ʻIlm", "12 ʻIlm"],
+                            ["19 Mas͟híyyat", "1 ʻIlm"], //218
+                        ][g.startDay.year - 172]
+                    if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == leday || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == leday){
+                        obj.holidays.push({
+                            name: hol[0],
+                            day: leday,
+                            link: hol[1].link,
+                            religion: n,
+                        })
+                    }
+                } //twin birthdays
+                else if(leday == hol[1].day && (hol[1].shabbat == undefined || alltimearray.slice(-1)[0].Day != "Friday")){
                     obj.holidays.push({
                         name: hol[0],
                         day: leday,
@@ -121,36 +131,25 @@ for(d = 0; d < 59000; d++){
                         religion: n,
                     })
                 }
-            } //twin birthdays
-            else if(leday == hol[1].day && (hol[1].shabbat == undefined || alltimearray.slice(-1)[0].Day != "Friday")){
-                if(hol[0] == "Seventeenth of Tammuz"){
-                    console.log(g.startDay.year)
+                else if((alltimearray.length > 0 && hol[1].shabbat != undefined && hol[1].shabbat.day == alltimearray.slice(-1)[0].Day) && leday == hol[1].shabbat.date){
+                    obj.holidays.push({
+                        name: hol[0],
+                        day: leday,
+                        link: hol[1].link,
+                        religion: n,
+                    })
                 }
-                obj.holidays.push({
-                    name: hol[0],
-                    day: leday,
-                    link: hol[1].link,
-                    religion: n,
-                })
+                if(hol[1].length && alltimearray.slice(-1 * hol[1].length + 1).map(x => x[n].split(" ").slice(0, -1).join(" ")).includes(hol[1].day)){ //long holiday
+                    obj.holidays.push({
+                        name: hol[0],
+                        day: leday,
+                        link: hol[1].link,
+                        religion: n,
+                    })
+                }
             }
-            else if((alltimearray.length > 0 && alltimearray.slice(-1)[0].Day == "Saturday") && leday == hol[1].shabbat){
-                obj.holidays.push({
-                    name: hol[0],
-                    day: leday,
-                    link: hol[1].link,
-                    religion: n,
-                })
-            }
-            if(hol[1].length && alltimearray.slice(-1 * hol[1].length + 1).map(x => x[n].split(" ").slice(0, -1).join(" ")).includes(hol[1].day)){ //long holiday
-                obj.holidays.push({
-                    name: hol[0],
-                    day: leday,
-                    link: hol[1].link,
-                    religion: n,
-                })
-            }
+            g.startDay.dayinmonth++
         }
-        g.startDay.dayinmonth++
     }
     alltimearray.push(obj)
 }
@@ -197,7 +196,7 @@ function openMonth(){
     tmname = themonth.options[tm].textContent
     calen = thecalendar.value
     if(!isNaN(theyear.value) && theyear.value >= calendars[calen].bounds[0] && theyear.value <= calendars[calen].bounds[1]){
-        themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days > 0).map((x, ind) => `<option value='${ind}'>${x.name}</option>`).join("")
+        themonth.innerHTML = generateYear(theyear.value, calen).months.map((x, ind) => x.days > 0 ? `<option value='${ind}'>${x.name}</option>`: ``).join("")
         lll = Array.from(themonth.options).map(g => g.textContent).indexOf(tmname)
         themonth.value = lll == -1 ? 0 : lll
         openDay()
@@ -209,6 +208,7 @@ function openDay(){
     answer.innerHTML = ""
     calen = thecalendar.value
     theday.innerHTML = ""
+    console.log(generateYear(theyear.value, calen).months[themonth.value])
     for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
@@ -230,11 +230,10 @@ function convert(){
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
     holidays.innerHTML = ""
-    console.log(result)
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
-                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><b>${h.religion}</b>: <a target="_blank" style="color:inherit" href="${h.link}">${h.name}</a></h2>`
+                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name}</a></h2>`
             }
         }
         if(ourcalendar != calen && ourcalendar != "holidays"){
@@ -293,24 +292,19 @@ function convert(){
                 dOw = thatspecificday[ourcalendar]
                 answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
             }
-            else if(!"-0".includes((thatspecificday[ourcalendar].split(" ")[2]).charAt(0))){
+            else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
                 answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
             }
         }
     }
     answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
     answer.innerHTML += `<div class='cal time'>
-    <div class="line" style='text-align:center'>Usually, days start at midnight</div>
+    <div class="line">🌕 days start at midnight</div>
     <div class="line">
-        <div class='icon islamic_tabular'></div>
-        <div class='icon hebrew'></div>
-        <div class='icon baháí'></div>
-        days start at sunset
+    🌙 days start at sunset
     </div>
     <div class="line">
-        <div class='icon qadimi'></div>
-        <div class='icon mandaean'></div> 
-        days start at sunrise
+    ☀️ days start at sunrise
     </div>
     </div>`
 }
@@ -360,6 +354,14 @@ function internationalize(dy, cl){
         }
         dy = dy.split(" ")
         dy = `${dy[0]} ${{"Boishakh": "বৈশাখ", "Jyoishţho": "জ্যৈষ্ঠ", "Ashaŗh": "আষাঢ়", "Shrabon": "শ্রাবণ", "Bhadro": "ভাদ্র", "Ashshin": "আশ্বিন", "Kartik": "কার্তিক", "Ôgrohayon": "অগ্রহায়ণ", "Poush": "পৌষ", "Magh": "মাঘ", "Falgun": "ফাল্গুন", "Choitro": "চৈত্র"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
+        return dy
+    }
+    else if(cl == "Javanese"){
+        for(x = 0; x <= 9; x++){
+            dy = dy.replace(new RegExp(x, "g"), "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙"[x])
+        }
+        dy = dy.split(" ")
+        dy = `${dy[0]} ${{"Sura": "ꦱꦸꦫ", "Sapar": "ꦱꦥꦂ", "Mulud": "ꦩꦸꦭꦸꦢ꧀", "Bakda Mulud": "ꦧꦏ꧀ꦢꦩꦸꦭꦸꦢ꧀", "Jumadilawal": "ꦗꦸꦩꦢꦶꦭꦮꦭ꧀", "Jumadilakir": "ꦗꦸꦩꦢꦶꦭꦏꦶꦂ", "Rejeb": "ꦉꦗꦼꦧ꧀", "Ruwah": "ꦫꦸꦮꦃ", "Pasa": "ꦥꦱ", "Sawal": "ꦱꦮꦭ꧀", "Sela": "ꦱꦼꦭ", "Besar": "ꦧꦼꦱꦂ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
         return dy
     }
     else if(cl == "Indian National" || cl == "Nepal Sambat Solar"){

@@ -69,27 +69,43 @@ span{
 .cal{
     font-size: 20px;
     border-radius: 20px;
-    width: 24.5%;
+    width: 23.8%;
     text-align: center;
     margin: 3px;
-    font-weight: 600;
     float: left;
     height: 80px;
+    padding: 3px;
+}
+.cal a{
+    font-weight: 700;
+}
+
+.cal:before{
+    content: "🌕";
+}
+.hebrew:before,  .islamic_tabular:before, .islamic_tabular_tayyibi:before, .baháí:before, .javanese:before{
+    content: '🌙' !important;
+}
+.fasli_zoroastrian:before,  .qadimi:before, .mandaean:before, .shahanshahi:before{
+    content: '☀️' !important;
+}
+.day:before, .harris:before, .time:before{
+    content: "" !important;
 }
 
 @media (max-width: 1430px){
     .cal{
-        width: 32.7%;
+        width: 31.8%;
     }
 }
 @media (max-width: 1100px){
     .cal{
-        width: 49%;
+        width: 47.4%;
     }
 }
 @media (max-width: 680px){
     .cal{
-        width: 98.5%;
+        width: 98.2%;
     }
     #selectblocktwo{
         margin-left: calc((100% - 480px) / 2);
@@ -109,7 +125,10 @@ span{
 .time .line{
     width: 100%;
     float: left;
-    text-align: left;
+    text-align: center;
+}
+.cal{
+    border: 2px black solid;
 }
 .armenian{ background-color: purple }
 .baháí{ background-color: dodgerblue } 
@@ -125,6 +144,7 @@ span{
 .hebrew_day{ color: mediumblue }
 .indian_national{ background-color: red }
 .islamic_tabular, .islamic_tabular_tayyibi{ background-color: seagreen }
+.javanese{ background-color: cadetblue ;}
 .juche{ background-color: darkred; }
 .kurdish{ background-color: fuchsia }
 .mandaean{ background-color: #D2691E }

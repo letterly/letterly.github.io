@@ -64,7 +64,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2061],
+        bounds: [1900, 2118],
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
         holidays: {
@@ -93,9 +93,13 @@ calendars = {
                 link: "https://en.wikipedia.org/wiki/Christmas",
             },
             "Christmas (Armenia)": {
-                day: "6 December",
+                day: "6 January",
                 link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
             },
+            "Feast of the Cross": {
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
+                day: "14 September",
+            }
         },
     },
     Armenian: {
@@ -374,7 +378,7 @@ calendars = {
             monthcount: 8,
             year: 1306,
         },
-        bounds: [1306, 1599],
+        bounds: [1306, 1524],
         era: "BS",
         link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
         holidays: {},
@@ -667,7 +671,7 @@ calendars = {
             monthcount: 3,
             year: 1892, //445393
         },
-        bounds: [1893, 2165],
+        bounds: [1893, 2110],
         era: "",
         link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
         holidays: {},
@@ -762,7 +766,16 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
-        holidays: {},
+        holidays: {
+            "Khordad Sal": {
+                day: "6 Farvadin",
+                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+            },
+            "Zartosht No-Diso": {
+                day: "11 Dae",
+                link: "Zartosht No-Diso",
+            },
+        },
     },
     Hebrew: {
         months: [
@@ -848,6 +861,14 @@ calendars = {
                 link: "https://en.wikipedia.org/wiki/Sukkot",
                 length: 7,
             },
+            "Fast of the Firstborn": {
+                day: "14 Nisan",
+                link: "https://en.wikipedia.org/wiki/Fast_of_the_Firstborn",
+                shabbat: {
+                    date: "12 Nisan",
+                    day: "Wednesday"
+                },
+            },
             "Pesach": {
                 day: "15 Nisan",
                 link: "https://en.wikipedia.org/wiki/Passover",
@@ -913,17 +934,26 @@ calendars = {
             "Fast of Gedalia": {
                 day: "3 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Fast_of_Gedalia",
-                shabbat: "4 Tishrei",
+                shabbat: {
+                    date: "4 Tishrei",
+                    day: "Saturday"
+                },
             },
             "Fast of Esther": {
                 day: "13 Adar",
                 link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
-                shabbat: "11 Adar",
+                shabbat: {
+                    date: "11 Adar",
+                    day: "Wednesday"
+                },
             },
             "Fast of Esther": {
                 day: "13 Adar II",
                 link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
-                shabbat: "11 Adar II",
+                shabbat: {
+                    date: "11 Adar II",
+                    day: "Wednesday"
+                },            
             },
         },
     },
@@ -991,7 +1021,7 @@ calendars = {
             monthcount: 9,
             year: 1821,
         },
-        bounds: [1822, 2095],
+        bounds: [1822, 2039],
         era: "SE",
         link: "https://en.wikipedia.org/wiki/Indian_national_calendar",
         holidays: {},
@@ -1163,6 +1193,74 @@ calendars = {
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {},
     },
+    Javanese: {
+        months: [
+            {
+                name: "Sura",
+                days: 30,
+            },
+            {
+                name: "Sapar",
+                days: 29,
+            },
+            {
+                name: "Mulud",
+                days: 30,
+            },
+            {
+                name: "Bakda Mulud",
+                days: 29,
+            },
+            {
+                name: "Jumadilawal",
+                days: 30,
+            },
+            {
+                name: "Jumadilakir",
+                days: 29,
+            },
+            {
+                name: "Rejeb",
+                days: 30,
+            },
+            {
+                name: "Ruwah",
+                days: 29,
+            },
+            {
+                name: "Pasa",
+                days: 30,
+            },
+            {
+                name: "Sawal",
+                days: 29,
+            },
+            {
+                name: "Sela",
+                days: 30,
+            },
+            {
+                name: "Besar",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                return ([3,5,0].includes(x % 8))
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 8,
+            year: 1829, //445393
+        },
+        bounds: [1830, 1990],
+        era: "AJ",
+        link: "https://en.wikipedia.org/wiki/Javanese_calendar",
+        holidays: {},
+    },
     Juche: {
         months: [
             {
@@ -1298,7 +1396,16 @@ calendars = {
         bounds: [1899, 2061],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
-        holidays: {},
+        holidays: {
+            "Christmas": {
+                day: "25 December",
+                link: "https://en.wikipedia.org/wiki/Christmas",
+            },
+            "Feast of the Cross": {
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
+                day: "14 September",
+            }
+        },
     },
     Kurdish: {
         months: [
@@ -1431,7 +1538,7 @@ calendars = {
             monthcount: 4,
             year: 445269, //445393
         },
-        bounds: [445270, 445542],
+        bounds: [445270, 445487],
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
         holidays: {
@@ -1589,10 +1696,25 @@ calendars = {
             monthcount: 4,
             year: 433,
         },
-        bounds: [433, 703],
+        bounds: [433, 648],
         era: "KE",
         link: "https://en.wikipedia.org/wiki/Nanakshahi_calendar#Mool_Nanakshahi_Calendar",
-        holidays: {},
+        holidays: {
+            "Sikh New Year": {
+                link: "https://en.wikipedia.org/wiki/Punjabi_Culture_Day",
+                day: "1 Chet"
+            },
+            "Hola Mohalla": {
+                link: "https://en.wikipedia.org/wiki/Hola_Mohalla",
+                day: "2 Chet",
+                length: 3,
+            },
+            "Vaisakhi": {
+                link: "https://en.wikipedia.org/wiki/Vaisakhi",
+                day: "1 Vaisakh",
+                length: 2,
+            },
+        },
     },
     "Nepal Sambat Solar": {
         months: [
@@ -1961,7 +2083,7 @@ calendars = {
             monthcount: 9,
             year: 1278, //445393
         },
-        bounds: [1279, 1551],
+        bounds: [1279, 1497],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
         holidays: {},

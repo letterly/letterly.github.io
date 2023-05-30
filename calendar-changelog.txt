@@ -1,8 +1,19 @@
+30 May 23
+Fixed date of Armenian Christmas
+Added three Sikh holidays
+Added Javanese calendar (may need more research)
+The start of the day (midnight, sunrise, or sunset) is visible on all calendars now
+Increasing the reach by over 50 years for half the calendars :)
+
+26 May 23
+Added some Gregorian, Julian and Zoroastrian holidays
+
 25 May 23
 Added the Kurdish calendar
+Fixed a glitch with selecting certain Hebrew months
 Fixed some issues with how some holidays were displayed
 Added the Jewish holiday of Pesach (Passover)
-Added Hebrew holidays which move to avoid being on Saturday (Shabbat): "Fast of Gedalia" and the "Fast of Esther"
+Added Hebrew fasts which move to avoid being on Saturday (Shabbat): "Fast of Gedalia", "Fast of Esther", "Fast of the Firstborn"
 
 24 May 23
 The days of the week are now in all six official UN languages
