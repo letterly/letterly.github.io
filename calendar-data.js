@@ -92,7 +92,7 @@ calendars = {
                 day: "25 December",
                 link: "https://en.wikipedia.org/wiki/Christmas",
             },
-            "Christmas (Armenia)": {
+            "Christmas:Armenian": {
                 day: "6 January",
                 link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
             },
@@ -878,7 +878,7 @@ calendars = {
                 day: "22 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Shemini_Atzeret"
             },
-            "Simchat Torah (outside Israel)": {
+            "Simchat Torah:outside Israel": {
                 day: "23 Tishrei",
                 link: "https://en.wikipedia.org/wiki/Simchat_Torah",  
             },
@@ -1102,15 +1102,15 @@ calendars = {
                 day: "10 Dhu al-Hijjah",
                 link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
             },
-            "Eid al-Ghadir (Shia)": {
+            "Eid al-Ghadir:Shia": {
                 day: "18 Dhu al-Hijjah",
                 link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
             },
-            "Mawlid (Sunni)": {
+            "Mawlid:Sunni": {
                 day: "12 Rabiʽ al-Awwal",
                 link: "https://en.wikipedia.org/wiki/Mawlid",
             },
-            "Mawlid (Shia)": {
+            "Mawlid:Shia": {
                 day: "17 Rabiʽ al-Awwal",
                 link: "https://en.wikipedia.org/wiki/Mawlid",
             },
@@ -1866,7 +1866,16 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
-        holidays: {},
+        holidays: {
+            "Khordad Sal": {
+                day: "6 Farvadin",
+                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+            },
+            "Zartosht No-Diso": {
+                day: "11 Dae",
+                link: "Zartosht No-Diso",
+            },
+        },
     },
     "Revised Julian": {
         months: [
@@ -2018,7 +2027,16 @@ calendars = {
         bounds: [1269, 1430],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
-        holidays: {},
+        holidays: {
+            "Khordad Sal": {
+                day: "6 Farvadin",
+                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+            },
+            "Zartosht No-Diso": {
+                day: "11 Dae",
+                link: "Zartosht No-Diso",
+            },
+        },
     },
     "Solar Hijri": {
         months: [

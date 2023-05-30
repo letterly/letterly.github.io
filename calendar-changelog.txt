@@ -4,6 +4,8 @@ Added three Sikh holidays
 Added Javanese calendar (may need more research)
 The start of the day (midnight, sunrise, or sunset) is visible on all calendars now
 Increasing the reach by over 50 years for half the calendars :)
+There are now additional links further explaining some holidays
+Added Zoroastrian holidays to the Qadimi and Shahanshahi calendars
 
 26 May 23
 Added some Gregorian, Julian and Zoroastrian holidays

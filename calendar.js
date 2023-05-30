@@ -233,7 +233,7 @@ function convert(){
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
-                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name}</a></h2>`
+                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name.split(":")[0]}</a>${h.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church"}[h.name.split(":")[1]]}">(${h.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
         if(ourcalendar != calen && ourcalendar != "holidays"){

@@ -158,6 +158,9 @@ span{
     background-color: d2d2d2;
     color: #2d2d2d;
 }
+.sect{
+    text-decoration: none;
+}
 .harris{
     background-color: black;
     color: white;
