@@ -1,0 +1,571 @@
+<html>
+    <head>
+        <title>Number Converter</title>
+        <style>
+            body{
+                font-family: Verdana;
+            }
+            h1, h3, .numdiv{
+                text-align: center;
+            }
+            input{
+                margin-left: 20%;
+                margin-right: 20%;
+                width: 60%;
+                font-size: 22px;
+                text-align: center;
+                outline: none;
+            }
+            .numdiv{
+                width: 180px;
+                height: 70px;
+                float: left;
+                margin: 3px;
+                border-radius: 5px;
+                display: block;
+                color: white;
+                font-size: 22px;
+            }
+            /*#Western_Arabic, #Gurmukhi, #Santali{ background-color: #859900 }
+            #Adlam, #Javanese, #Shan{ background-color: #2aa198}
+            #Burmese, #Khmer, #Telugu{ background-color: #268bd2 }
+            #Cham, #Lao, #Tibetan{ background-color: #6c71c4;}
+            #Devanagari, #Meitei, #Thai{ background-color: #d33682 }
+            #Eastern_Arabic, #Odia, #Persian{ background-color: #dc322f }
+            #Eastern_Nagari, #Rohingya, #Balinese, #Gujarati{ background-color: #cb4b16 }*/
+            #answers div:nth-child(7n){
+                background-color: #859900;
+            }
+            #answers div:nth-child(7n+1){
+                background-color: #2aa198;
+            }
+            #answers div:nth-child(7n+2){
+                background-color: #268bd2;
+            }
+            #answers div:nth-child(7n+3){
+                background-color: #6c71c4;
+            }
+            #answers div:nth-child(7n+4){
+                background-color: #d33682;
+            }
+            #answers div:nth-child(7n+5){
+                background-color: #dc322f;
+            }
+            #answers div:nth-child(7n+6){
+                background-color: #cb4b16;
+            }
+
+            a{
+                color: white;
+            }
+
+         /*   .hebrew{ background-color: mediumblue }*/
+        </style>
+    </head>
+    <body>
+        <h1>Uninumber</h1>
+        <h3>The universal number converter</h3>
+        <input id="inp" onkeyup="conversion()" />
+        <div id="answers"></div>
+    </body>
+    <script>
+        numberstorage = {
+            "Western Arabic": "0123456789",
+            "Adlam": "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
+            "Aegean": {
+                "𐄳": 90000,
+                "𐄲": 80000,
+                "𐄱": 70000,
+                "𐄰": 60000,
+                "𐄯": 50000,
+                "𐄮": 40000,
+                "𐄭": 30000,
+                "𐄬": 20000,
+                "𐄫": 10000,
+                "𐄪": 9000,
+                "𐄩": 8000,
+                "𐄨": 7000,
+                "𐄧": 6000,
+                "𐄦": 5000,
+                "𐄥": 4000,
+                "𐄤": 3000,
+                "𐄣": 2000,
+                "𐄢": 1000,
+                "𐄡": 900,
+                "𐄠": 800,
+                "𐄟": 700,
+                "𐄞": 600,
+                "𐄝": 500,
+                "𐄜": 400,
+                "𐄛": 300,
+                "𐄚": 200,
+                "𐄙": 100,
+                "𐄘": 90,
+                "𐄗": 80,
+                "𐄖": 70,
+                "𐄕": 60,
+                "𐄔": 50,
+                "𐄓": 40,
+                "𐄒": 30,
+                "𐄑": 20,
+                "𐄐": 10,
+                "𐄏": 9,
+                "𐄎": 8,
+                "𐄍": 7,
+                "𐄌": 6,
+                "𐄋": 5,
+                "𐄊": 4,
+                "𐄉": 3,
+                "𐄈": 2,
+                "𐄇": 1,
+            },
+            "Armenian": {
+                "Ք": 9000,
+                "Փ": 8000,
+                "Ւ": 7000,
+                "Ց": 6000,
+                "Ր": 5000,
+                "Տ": 4000,
+                "Վ": 3000,
+                "Ս": 2000,
+                "Ռ": 1000,
+                "Ջ": 900,
+                "Պ": 800,
+                "Չ": 700,
+                "Ո": 600,
+                "Շ": 500,
+                "Ն": 400,
+                "Յ": 300,
+                "Մ": 200,
+                "Ճ": 100,
+                "Ղ": 90,
+                "Ձ": 80,
+                "Հ": 70,
+                "Կ": 60,
+                "Ծ": 50,
+                "Խ": 40,
+                "Լ": 30,
+                "Ի": 20,
+                "Ժ": 10,
+                "Թ": 9,
+                "Ը": 8,
+                "Է": 7,
+                "Զ": 6,
+                "Ե": 5,
+                "Դ": 4,
+                "Գ": 3,
+                "Բ": 2,
+                "Ա": 1,
+            },
+            "Balinese": "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙",
+            "Braille": "⠚⠁⠃⠉⠙⠑⠋⠛⠓⠊",
+            "Braille (French)": "⠠⠡⠣⠩⠹⠱⠫⠻⠳⠪⠼",
+            "Burmese": "၀၁၂၃၄၅၆၇၈၉",
+            "Chakma": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
+            "Cham": "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙",
+            //"Counting rod": "〇𝍠𝍡𝍢𝍣𝍤𝍥𝍦𝍧𝍨",
+            "Devanagari": "०१२३४५६७८९",
+            "Eastern Arabic": "٠١٢٣٤٥٦٧٨٩",
+            "Eastern Nagari": "০১২৩৪৫৬৭৮৯",
+            "Ethiopic": {
+                "፼": 10000,
+                "፻": 100,
+                "፺": 90,
+                "፹": 80,
+                "፸": 70,
+                "፷": 60,
+                "፶": 50,
+                "፵": 40,
+                "፴": 30,
+                "፳": 20,
+                "፲": 10,
+                "፱": 9,
+                "፰": 8,
+                "፯": 7,
+                "፮": 6,
+                "፭": 5,
+                "፬": 4,
+                "፫": 3,
+                "፪": 2,
+                "፩": 1,            
+            },
+            "Georgian": {
+                "ჵ": 10000,
+                "ჰ": 9000,
+                "ჯ": 8000,
+                "ჴ": 7000,
+                "ხ": 6000,
+                "ჭ": 5000,
+                "წ": 4000,
+                "ძ": 3000,
+                "ც": 2000,
+                "ჩ": 1000,
+                "შ": 900,
+                "ყ": 800,
+                "ღ": 700,
+                "ქ": 600,
+                "ფ": 500,
+                //"უ": 400,
+                "ჳ": 400,
+                "ტ": 300,
+                "ს": 200,
+                "რ": 100,
+                "ჟ": 90,
+                "პ": 80,
+                "ო": 70,
+                "ჲ": 60,
+                "ნ": 50,
+                "მ": 40,
+                "ლ": 30,
+                "კ": 20,
+                "ი": 10,
+                "თ": 9,
+                "ჱ": 8,
+                "ზ": 7,
+                "ვ": 6,
+                "ე": 5,
+                "დ": 4,
+                "გ": 3,
+                "ბ": 2,
+                "ა": 1,
+            },
+            "Gujarati": "૦૧૨૩૪૫૬૭૮૯",
+            "Gurmukhi": "੦੧੨੩੪੫੬੭੮੯",
+            "Hebrew": {
+                "ה׳": 5000,
+                "ד׳": 4000,
+                "ג׳": 3000,
+                "ב׳": 2000,
+                "א׳": 1000,
+                "תתק": 900,
+                "תת": 800,
+                "תש": 700,
+                "תר": 600,
+                "תק": 500,
+                "ת": 400,
+                "ש": 300,
+                "ר": 200,
+                "ק": 100,
+                "צ": 90,
+                "פ": 80,
+                "ע": 70,
+                "ס": 60,
+                "נ": 50,
+                "מ": 40,
+                "ל": 30,
+                "כ": 20,
+                "יט": 19,
+                "יח": 18,
+                "יז": 17,
+                "טז": 16,
+                "טו": 15,
+                "י": 10,
+                "ט": 9,
+                "ח": 8,
+                "ז": 7,
+                "ו": 6,
+                "ה": 5,
+                "ד": 4,
+                "ג": 3,
+                "ב": 2,
+                "א": 1,
+            },
+            "Hmong": "𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉",
+            "Javanese": "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙",
+            "Khmer": "០១២៣៤៥៦៧៨៩",
+            "Lao": "໐໑໒໓໔໕໖໗໘໙",
+            "Meitei": "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹",
+            "Mru": "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩",
+            "N'ko": "߀߁߂߃߄߅߆߇߈߉",
+            "Odia": "୦୧୨୩୪୫୬୭୮୯",
+            "Rohingya": "𐴰𐴱𐴲𐴳𐴴𐴵𐴶𐴷𐴸𐴹",
+            "Roman": {
+                "MMM": 3000,
+                "MM": 2000,
+                "CM": 900,
+                "M": 1000,
+                "DCCC": 800,
+                "DCC": 700,
+                "DC": 600,
+                "CD": 400,
+                "D": 500,
+                "CCC": 300,
+                "CC": 200,
+                "XC": 90,
+                "C": 100,
+                "LXXX": 80,
+                "LXX": 70,
+                "LX": 60,
+                "XL": 40,
+                "L": 50,
+                "XXX": 30,
+                "XX": 20,
+                "IX": 9,
+                "X": 10,
+                "VIII": 8,
+                "VII": 7,
+                "VI": 6,
+                "IV": 4,
+                "V": 5,
+                "III": 3,
+                "II": 2,
+                "I": 1,
+            },
+            "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
+            "Shan": "႐႑႒႓႔႕႖႗႘႙",
+            "Tamil": "௦௧௨௩௪௫௬௭௮௯",
+            "Telugu": "౦౧౨౩౪౫౬౭౮౯", //check
+            "Thai": "๐๑๒๓๔๕๖๗๘๙",
+            "Tibetan": "༠༡༢༣༤༥༦༧༨༩",
+            "Persian": "۰۱۲۳۴۵۶۷۸۹",
+            "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
+            "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹",
+            "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙",
+            "Warang Citi": "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩",
+        }
+
+        limits = {
+            "Aegean": [0, 100000],
+            "Armenian": [0, 10000],
+            "Georgian": [0, 20000],
+            "Hebrew": [0, 6000],
+            "Ethiopic": [0, 1000000],
+            "Roman": [0, 4000],
+        }
+        
+        function conversion(){
+            if(inp.value != ""){
+                //FIND NUMBER SYSTEM
+                numbersystem = ""
+                data = inp.value.replace(".", "").replace("-", "")
+                for(g of Object.entries(numberstorage)){
+                    if(typeof g[1] == "string"){
+                        if(g[1].includes(Array.from(data).slice(-1)[0])) numbersystem = g[0]
+                    }
+                    else if(Object.keys(g[1]).join("").includes(Array.from(data)[0])) numbersystem = g[0]
+                }
+                //CONVERT TO decimal
+                inpval = inp.value.toUpperCase()
+                inpval = inpval.replace("״", "")
+                if(inpval.startsWith("⠠") || inpval.startsWith("⠼")){
+                    inpval = inpval.slice(1)
+                }
+                decimal = undefined
+
+                allacceptablesymbols = "-."
+                for(h of Object.values(numberstorage)){
+                    if(typeof h == "string") allacceptablesymbols += h
+                    else allacceptablesymbols += Array.from(new Set(Object.keys(h).join("").split(""))).toString()
+                }
+                for(inpv of Array.from(inpval)){
+                    if(!allacceptablesymbols.includes(inpv)){
+                        alert("Not a number")
+                        return 0
+                    }
+                }
+                if(["Aegean", "Armenian","Georgian", "Hebrew", "Roman"].includes(numbersystem)){
+                    g = inpval
+                    inpval = 0
+                    for(m of Object.entries(numberstorage[numbersystem])){
+                        if(g.includes(m[0])){
+                            g = g.replace(m[0], "")
+                            inpval += m[1]
+                        }
+                    }
+                }
+                else if(numbersystem == "Ethiopic"){
+                    g = inpval
+                    inpval = 0
+                    g = g.split("")
+                    g = g.map(x => numberstorage[numbersystem][x])
+                    newarr = [0]
+                    for(gg of g){
+                        if([100, 10000].includes(gg)){
+                            newarr.push(gg)
+                            newarr.push(0)
+                        }
+                        else{
+                            newarr[newarr.length - 1] += gg
+                        }
+                    }
+                    if(newarr.length == 5){
+                        inpval = newarr[0] * newarr[1] + newarr[2] * newarr[3] + newarr[4]
+                    }
+                    else if(newarr.length == 3){
+                        inpval = newarr[0] * newarr[1] + newarr[2]
+                    }
+                    else{ //1
+                        inpval = newarr[0]
+                    }
+                }
+                else if(numbersystem != "Western Arabic"){
+                    for(m in Array.from(numberstorage[numbersystem])){
+                        inpval = inpval.replace(new RegExp(Array.from(numberstorage[numbersystem])[m], 'g'), numberstorage["Western Arabic"][m])
+                    }
+                }
+                decimal = +inpval
+
+                //FOREACH convert to new system
+                globalConversionStorage = {}
+                for(g of Object.entries(numberstorage)){
+                    i = ""
+                    ii = "" + decimal
+                    if(g[0] != numbersystem){
+                        i = ii
+                        if(!["Aegean", "Armenian", "Roman", "Hebrew", "Georgian", "Ethiopic"].includes(g[0])){
+                            if(g[0] == "Braille"){
+                                i = "⠼" + i
+                            }
+                            else if(g[0] == "Braille (French)"){
+                                i = "⠠" + i
+                            }
+                            for(x = 0; x < 10; x++){
+                                i = i.replace(new RegExp(x, 'g'), Array.from(numberstorage[g[0]])[x])
+                            }
+                        }
+                        else if(g[0] == "Ethiopic"){
+                            ethnum = {}
+                            newi = decimal
+                            i = ""
+                            if(newi >= 10000){
+                                tenthousands = Math.floor(newi / 10000)
+                                ethnum.tenthousands = tenthousands
+                                newi = Math.floor(newi % 10000)
+                            }
+                            if(newi >= 100){
+                                hundreds = Math.floor(newi / 100)
+                                ethnum.hundreds = hundreds
+                                newi = newi % 100
+                            }
+                            if(newi > 0){ // < 100
+                                ethnum.units = newi
+                            }
+                            //
+                            console.log(ethnum)
+                            //
+                            function getEthNum(nm){
+                                return Object.entries(numberstorage.Ethiopic).filter(q => q[1] == nm)[0][0]
+                            }
+                            if(ethnum.tenthousands > 9){
+                                ethnum.tenthousands = ("" + ethnum.tenthousands).split("")
+                                i += getEthNum(ethnum.tenthousands[0] + "0")
+                                if(numberstorage.Ethiopic[ethnum.tenthousands[1]] != "0"){
+                                    i += getEthNum(ethnum.tenthousands[1])
+                                }
+                                i += "፼"
+                            }
+                            else if(ethnum.tenthousands > 1){
+                                i += getEthNum(ethnum.tenthousands)
+                                i += "፼"
+                            }
+                            else if(ethnum.tenthousands > 0){ //1
+                                i += "፼"
+                            }
+                            //
+                            if(ethnum.hundreds > 9){
+                                ethnum.hundreds = ("" + ethnum.hundreds).split("")
+                                i += getEthNum(ethnum.hundreds[0] + "0")
+                                if(getEthNum(ethnum.hundreds[1]) != "0"){
+                                    i += getEthNum(ethnum.hundreds[1])
+                                }
+                                i += "፻"
+                            }
+                            else if(ethnum.hundreds > 1){
+                                i += getEthNum(ethnum.hundreds)
+                                i += "፻"
+                            }
+                            else if(ethnum.hundreds > 0){ //1
+                                i += "፻"
+                            }
+                            //
+                            if(ethnum.units > 9){
+                                ethnum.units = ("" + ethnum.units).split("")
+                                i += getEthNum(ethnum.units[0] + "0")
+                                if(ethnum.units[1] != "0"){
+                                    i += getEthNum(ethnum.units[1])
+                                }
+                            }
+                            else if(ethnum.units > 0){
+                                i += getEthNum(ethnum.units)
+                            }
+                            //
+                        }
+                        else{
+                            newi = +i
+                            i = ""
+                            f = Object.entries(numberstorage[g[0]]).sort( (t, t2) => {return t2[1] - t[1]; }); 
+                            for(count = 0; count < f.length; count++){
+                                if(f[count][1] <= newi){
+                                    newi = newi - f[count][1]
+                                    i = i + f[count][0]
+                                }
+                            }
+                            if(g[0] == "Hebrew" && i.length > 1){
+                                i = i.slice(0, -1) + "״" + i.slice(-1)
+                            }
+                        }
+                        if(!(limits[g[0]] != undefined && (ii >= limits[g[0]][1] || ii <= limits[g[0]][0]))){ //show when it should NOT be recorded
+                            globalConversionStorage[g[0]] = i
+                        }
+                    }
+                }
+
+                //populate the field
+                links = {
+                    "Western Arabic": "https://en.wikipedia.org/wiki/Arabic_numerals",
+                    "Adlam": "https://en.wikipedia.org/wiki/Adlam_script",
+                    "Aegean": "https://en.wikipedia.org/wiki/Aegean_numerals",
+                    "Armenian": "https://en.wikipedia.org/wiki/Armenian_numerals",
+                    "Balinese": "https://en.wikipedia.org/wiki/Balinese_script",
+                    "Braille": "https://en.wikipedia.org/wiki/Braille",
+                    "Braille (French)": "https://en.wikipedia.org/wiki/French_Braille#Numbers",
+                    "Burmese": "https://en.wikipedia.org/wiki/Burmese_numerals",
+                    "Chakma": "https://en.wikipedia.org/wiki/Chakma_script",
+                    "Cham": "https://en.wikipedia.org/wiki/Cham_script", 
+                    "Devanagari": "https://en.wikipedia.org/wiki/Devanagari_numerals", 
+                    "Eastern Arabic": "https://en.wikipedia.org/wiki/Eastern_Arabic_numerals", 
+                    "Eastern Nagari": "https://en.wikipedia.org/wiki/Bengali_numerals", 
+                    "Ethiopic": "https://en.wikipedia.org/wiki/Ge%CA%BDez_script#Numerals", 
+                    "Georgian": "https://en.wikipedia.org/wiki/Georgian_numerals#Numeric_values_of_letters", 
+                    "Gujarati": "https://en.wikipedia.org/wiki/Gujarati_numerals", 
+                    "Gurmukhi": "https://en.wikipedia.org/wiki/Gurmukhi#Numerals", 
+                    "Hebrew": "https://en.wikipedia.org/wiki/Hebrew_numerals", 
+                    "Hmong": "https://en.wikipedia.org/wiki/Nyiakeng_Puachue_Hmong", 
+                    "Javanese": "https://en.wikipedia.org/wiki/Javanese_numerals", 
+                    "Khmer": "https://en.wikipedia.org/wiki/Khmer_numerals", 
+                    "Lao": "https://en.wikipedia.org/wiki/Lao_script#Numerals", 
+                    "Meitei": "https://en.wikipedia.org/wiki/Meitei_script#Numerals", 
+                    "Mru": "https://en.wikipedia.org/wiki/Mru_language#Script", 
+                    "N'ko": "https://en.wikipedia.org/wiki/N%27Ko_script",
+                    "Odia": "https://en.wikipedia.org/wiki/Odia_numerals", 
+                    "Rohingya": "https://en.wikipedia.org/wiki/Hanifi_Rohingya_script#Numerals", 
+                    "Roman": "https://en.wikipedia.org/wiki/Roman_numerals", 
+                    "Santali": "https://en.wikipedia.org/wiki/Ol_Chiki_script#Digits", 
+                    "Shan": "https://en.wikipedia.org/wiki/Shan_alphabet#Numerals", 
+                    "Tamil": "https://en.wikipedia.org/wiki/Tamil_numerals", 
+                    "Telugu": "https://en.wikipedia.org/wiki/Telugu_script#Numerals", 
+                    "Thai": "https://en.wikipedia.org/wiki/Thai_numerals", 
+                    "Tibetan": "https://en.wikipedia.org/wiki/Tibetan_numerals", 
+                    "Persian": "https://en.wikipedia.org/wiki/Eastern_Arabic_numerals#Numerals", 
+                    "Sora": "https://en.wikipedia.org/wiki/Sorang_Sompeng_script", 
+                    "Sourashtra": "https://en.wikipedia.org/wiki/Saurashtra_script", 
+                    "Warang Citi": "https://en.wikipedia.org/wiki/Warang_Citi",
+                }
+                answers.innerHTML = ""
+                for(o of Object.entries(globalConversionStorage)){
+                    answers.innerHTML += `<div id="${o[0].replace(/ /g, "_")}" class="numdiv"><span><a href="${links[o[0]]}" target="_blank">${o[0]}</a><br>${o[1]}</span></div>`
+                }
+                //adjust space
+                if(Array.from(data).length > 10){
+                    for(c of Array.from(document.getElementsByClassName("numdiv"))){
+                        c.style.width = 180 + (data.length - 10) * 13 + "px"
+                    }
+                }
+            }
+            else{
+                answers.innerHTML = ""
+            }
+        }
+
+    </script>
+</html>
