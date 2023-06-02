@@ -159,7 +159,7 @@
             },
             "Balinese": "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙",
             "Braille": "⠚⠁⠃⠉⠙⠑⠋⠛⠓⠊",
-            "Braille (French)": "⠠⠡⠣⠩⠹⠱⠫⠻⠳⠪⠼",
+            "Braille (French)": "⠼⠡⠣⠩⠹⠱⠫⠻⠳⠪",
             "Burmese": "၀၁၂၃၄၅၆၇၈၉",
             "Chakma": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
             "Cham": "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙",
@@ -272,12 +272,24 @@
             },
             "Hmong": "𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉",
             "Javanese": "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙",
+            "Kannada": "೦೧೨೩೪೫೬೭೮೯",
+            "Kayah Li": "꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉",
             "Khmer": "០១២៣៤៥៦៧៨៩",
+            "Khudabadi": "𑋰𑋱𑋲𑋳𑋴𑋵𑋶𑋷𑋸𑋹",
             "Lao": "໐໑໒໓໔໕໖໗໘໙",
+            "Lepcha": "᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉",
+            "Limbu": "᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏",
+            "Malayalam": "൦൧൨൩൪൫൬൭൮൯",
             "Meitei": "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹",
+            "Mongolian": "᠐᠑᠒᠓᠔᠕᠖᠗᠘᠙",
             "Mru": "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩",
+            "New Tai Lue": "᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙",
+            "Newar": "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙",
             "N'ko": "߀߁߂߃߄߅߆߇߈߉",
             "Odia": "୦୧୨୩୪୫୬୭୮୯",
+            "Osmanya": "𐒠𐒡𐒢𐒣𐒤𐒥𐒦𐒧𐒨𐒩",
+            "Pahawh Hmong": "𖭐𖭑𖭒𖭓𖭔𖭕𖭖𖭗𖭘𖭙",
+            "Persian": "۰۱۲۳۴۵۶۷۸۹",
             "Rohingya": "𐴰𐴱𐴲𐴳𐴴𐴵𐴶𐴷𐴸𐴹",
             "Roman": {
                 "MMM": 3000,
@@ -313,14 +325,18 @@
             },
             "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
             "Shan": "႐႑႒႓႔႕႖႗႘႙",
-            "Tamil": "௦௧௨௩௪௫௬௭௮௯",
-            "Telugu": "౦౧౨౩౪౫౬౭౮౯", //check
-            "Thai": "๐๑๒๓๔๕๖๗๘๙",
-            "Tibetan": "༠༡༢༣༤༥༦༧༨༩",
-            "Persian": "۰۱۲۳۴۵۶۷۸۹",
-            "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
             "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹",
             "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙",
+            "Sundanese": "᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹",
+            "Tai Laing": "꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹",
+            "Tai Tham (1)": "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉",
+            "Tai Tham (2)": "᪐᪑᪒᪓᪔᪕᪖᪗᪘᪙",
+            "Tamil": "௦௧௨௩௪௫௬௭௮௯",
+            "Telugu": "౦౧౨౩౪౫౬౭౮౯",
+            "Thai": "๐๑๒๓๔๕๖๗๘๙",
+            "Tibetan": "༠༡༢༣༤༥༦༧༨༩",
+            "Tirhuta": "𑓐𑓑𑓒𑓓𑓔𑓕𑓖𑓗𑓘𑓙",
+            "Wancho": "𞋰𞋱𞋲𞋳𞋴𞋵𞋶𞋷𞋸𞋹",
             "Warang Citi": "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩",
         }
 
@@ -340,7 +356,7 @@
                 data = inp.value.replace(".", "").replace("-", "")
                 for(g of Object.entries(numberstorage)){
                     if(typeof g[1] == "string"){
-                        if(g[1].includes(Array.from(data).slice(-1)[0])) numbersystem = g[0]
+                        if(g[1].includes(Array.from(data).slice(-1)[0]) || g[1].includes(Array.from(data).slice(-2)[0])) numbersystem = g[0]
                     }
                     else if(Object.keys(g[1]).join("").includes(Array.from(data)[0])) numbersystem = g[0]
                 }
@@ -348,7 +364,10 @@
                 inpval = inp.value.toUpperCase()
                 inpval = inpval.replace("״", "")
                 if(inpval.startsWith("⠠") || inpval.startsWith("⠼")){
-                    inpval = inpval.slice(1)
+                    inpval = inpval.slice(1).replace("⠲", ".")
+                }
+                if(inpval.startsWith("|")){
+                    inpval = inpval.slice(1,-1)
                 }
                 decimal = undefined
 
@@ -414,10 +433,13 @@
                         i = ii
                         if(!["Aegean", "Armenian", "Roman", "Hebrew", "Georgian", "Ethiopic"].includes(g[0])){
                             if(g[0] == "Braille"){
-                                i = "⠼" + i
+                                i = "⠼" + i.replace(".", "⠲")
                             }
                             else if(g[0] == "Braille (French)"){
-                                i = "⠠" + i
+                                i = "⠠" + i.replace(".", "⠲")
+                            }
+                            else if(g[0] == "Sundanese"){
+                                i = "|" + i + "|"
                             }
                             for(x = 0; x < 10; x++){
                                 i = i.replace(new RegExp(x, 'g'), Array.from(numberstorage[g[0]])[x])
@@ -513,15 +535,15 @@
                 //populate the field
                 links = {
                     "Western Arabic": "https://en.wikipedia.org/wiki/Arabic_numerals",
-                    "Adlam": "https://en.wikipedia.org/wiki/Adlam_script",
+                    "Adlam": "https://en.wikipedia.org/wiki/Adlam_script#Digits",
                     "Aegean": "https://en.wikipedia.org/wiki/Aegean_numerals",
                     "Armenian": "https://en.wikipedia.org/wiki/Armenian_numerals",
-                    "Balinese": "https://en.wikipedia.org/wiki/Balinese_script",
-                    "Braille": "https://en.wikipedia.org/wiki/Braille",
+                    "Balinese": "https://en.wikipedia.org/wiki/Balinese_script#Numerals",
+                    "Braille": "https://en.wikipedia.org/wiki/Braille#Formatting",
                     "Braille (French)": "https://en.wikipedia.org/wiki/French_Braille#Numbers",
                     "Burmese": "https://en.wikipedia.org/wiki/Burmese_numerals",
-                    "Chakma": "https://en.wikipedia.org/wiki/Chakma_script",
-                    "Cham": "https://en.wikipedia.org/wiki/Cham_script", 
+                    "Chakma": "https://en.wikipedia.org/wiki/Chakma_script#Numerals",
+                    "Cham": "https://en.wikipedia.org/wiki/Cham_script#Numerals", 
                     "Devanagari": "https://en.wikipedia.org/wiki/Devanagari_numerals", 
                     "Eastern Arabic": "https://en.wikipedia.org/wiki/Eastern_Arabic_numerals", 
                     "Eastern Nagari": "https://en.wikipedia.org/wiki/Bengali_numerals", 
@@ -530,26 +552,41 @@
                     "Gujarati": "https://en.wikipedia.org/wiki/Gujarati_numerals", 
                     "Gurmukhi": "https://en.wikipedia.org/wiki/Gurmukhi#Numerals", 
                     "Hebrew": "https://en.wikipedia.org/wiki/Hebrew_numerals", 
-                    "Hmong": "https://en.wikipedia.org/wiki/Nyiakeng_Puachue_Hmong", 
+                    "Hmong": "https://en.wikipedia.org/wiki/Nyiakeng_Puachue_Hmong#Digits", 
                     "Javanese": "https://en.wikipedia.org/wiki/Javanese_numerals", 
+                    "Kannada": "https://en.wikipedia.org/wiki/Kannada_script#Numerals",
+                    "Kayah Li": "https://en.wikipedia.org/wiki/Kayah_Li_alphabet#Digits",
                     "Khmer": "https://en.wikipedia.org/wiki/Khmer_numerals", 
+                    "Khudabadi": "https://en.wikipedia.org/wiki/Khudabadi_script#Numerals",
                     "Lao": "https://en.wikipedia.org/wiki/Lao_script#Numerals", 
+                    "Lepcha": "https://en.wikipedia.org/wiki/Lepcha_script#Numerals",
+                    "Limbu": "https://en.wikipedia.org/wiki/Limbu_script#Digits",
                     "Meitei": "https://en.wikipedia.org/wiki/Meitei_script#Numerals", 
-                    "Mru": "https://en.wikipedia.org/wiki/Mru_language#Script", 
-                    "N'ko": "https://en.wikipedia.org/wiki/N%27Ko_script",
+                    "Mru": "https://en.wikipedia.org/wiki/Mru_language#Script",
+                    "New Tai Lue": "https://en.wikipedia.org/wiki/New_Tai_Lue_alphabet#Digits",
+                    "Newar": "https://en.wikipedia.org/wiki/Pracalit_script#Numerals",
+                    "N'ko": "https://en.wikipedia.org/wiki/N%27Ko_script#Numbers",
                     "Odia": "https://en.wikipedia.org/wiki/Odia_numerals", 
+                    "Osmanya": "https://en.wikipedia.org/wiki/Osmanya_alphabet#Numbers",
                     "Rohingya": "https://en.wikipedia.org/wiki/Hanifi_Rohingya_script#Numerals", 
                     "Roman": "https://en.wikipedia.org/wiki/Roman_numerals", 
                     "Santali": "https://en.wikipedia.org/wiki/Ol_Chiki_script#Digits", 
                     "Shan": "https://en.wikipedia.org/wiki/Shan_alphabet#Numerals", 
+                    "Sundanese": "https://en.wikipedia.org/wiki/Sundanese_script#Numbers",
+                    "Tai Laing": "https://en.wikipedia.org/wiki/Tai_Laing_language",
+                    "Tai Tham (1)": "https://en.wikipedia.org/wiki/Tai_Tham_script#Numerals",
+                    "Tai Tham (2)": "https://en.wikipedia.org/wiki/Tai_Tham_script#Numerals",
                     "Tamil": "https://en.wikipedia.org/wiki/Tamil_numerals", 
                     "Telugu": "https://en.wikipedia.org/wiki/Telugu_script#Numerals", 
                     "Thai": "https://en.wikipedia.org/wiki/Thai_numerals", 
                     "Tibetan": "https://en.wikipedia.org/wiki/Tibetan_numerals", 
+                    "Tirhuta": "https://en.wikipedia.org/wiki/Tirhuta_script#Numerals",
+                    "Pahawh Hmong": "https://en.wikipedia.org/wiki/Pahawh_Hmong#Numeral_system",
                     "Persian": "https://en.wikipedia.org/wiki/Eastern_Arabic_numerals#Numerals", 
-                    "Sora": "https://en.wikipedia.org/wiki/Sorang_Sompeng_script", 
-                    "Sourashtra": "https://en.wikipedia.org/wiki/Saurashtra_script", 
-                    "Warang Citi": "https://en.wikipedia.org/wiki/Warang_Citi",
+                    "Sora": "https://en.wikipedia.org/wiki/Sorang_Sompeng_script#Digits", 
+                    "Sourashtra": "https://en.wikipedia.org/wiki/Saurashtra_script#Numerals", 
+                    "Wancho": "https://en.wikipedia.org/wiki/Wancho_script",
+                    "Warang Citi": "https://en.wikipedia.org/wiki/Warang_Citi#Characters",
                 }
                 answers.innerHTML = ""
                 for(o of Object.entries(globalConversionStorage)){
