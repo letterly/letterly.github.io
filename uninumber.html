@@ -230,6 +230,7 @@
                 "ა": 1,
             },
             "Gujarati": "૦૧૨૩૪૫૬૭૮૯",
+            "Gunjali Gondi": "𑶠𑶡𑶢𑶣𑶤𑶥𑶦𑶧𑶨𑶩",
             "Gurmukhi": "੦੧੨੩੪੫੬੭੮੯",
             "Hebrew": {
                 "ה׳": 5000,
@@ -280,9 +281,11 @@
             "Lepcha": "᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉",
             "Limbu": "᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏",
             "Malayalam": "൦൧൨൩൪൫൬൭൮൯",
+            "Masaram Gondi": "𑵐𑵑𑵒𑵓𑵔𑵕𑵖𑵗𑵘𑵙",
             "Meitei": "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹",
             "Mongolian": "᠐᠑᠒᠓᠔᠕᠖᠗᠘᠙",
             "Mru": "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩",
+            "Mundari Bani": "𞓰𞓱𞓲𞓳𞓴𞓵𞓶𞓷𞓸𞓹",
             "New Tai Lue": "᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙",
             "Newar": "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙",
             "N'ko": "߀߁߂߃߄߅߆߇߈߉",
@@ -332,6 +335,7 @@
             "Tai Tham (1)": "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉",
             "Tai Tham (2)": "᪐᪑᪒᪓᪔᪕᪖᪗᪘᪙",
             "Tamil": "௦௧௨௩௪௫௬௭௮௯",
+            "Tangsa": "𖫀𖫁𖫂𖫃𖫄𖫅𖫆𖫇𖫈𖫉",
             "Telugu": "౦౧౨౩౪౫౬౭౮౯",
             "Thai": "๐๑๒๓๔๕๖๗๘๙",
             "Tibetan": "༠༡༢༣༤༥༦༧༨༩",
@@ -466,6 +470,7 @@
                             console.log(ethnum)
                             //
                             function getEthNum(nm){
+                                console.log(nm)
                                 return Object.entries(numberstorage.Ethiopic).filter(q => q[1] == nm)[0][0]
                             }
                             if(ethnum.tenthousands > 9){
@@ -487,7 +492,7 @@
                             if(ethnum.hundreds > 9){
                                 ethnum.hundreds = ("" + ethnum.hundreds).split("")
                                 i += getEthNum(ethnum.hundreds[0] + "0")
-                                if(getEthNum(ethnum.hundreds[1]) != "0"){
+                                if(ethnum.hundreds[1] != "0"){
                                     i += getEthNum(ethnum.hundreds[1])
                                 }
                                 i += "፻"
@@ -550,6 +555,7 @@
                     "Ethiopic": "https://en.wikipedia.org/wiki/Ge%CA%BDez_script#Numerals", 
                     "Georgian": "https://en.wikipedia.org/wiki/Georgian_numerals#Numeric_values_of_letters", 
                     "Gujarati": "https://en.wikipedia.org/wiki/Gujarati_numerals", 
+                    "Gunjali Gondi": "https://en.wikipedia.org/wiki/Gunjala_Gondi_script",
                     "Gurmukhi": "https://en.wikipedia.org/wiki/Gurmukhi#Numerals", 
                     "Hebrew": "https://en.wikipedia.org/wiki/Hebrew_numerals", 
                     "Hmong": "https://en.wikipedia.org/wiki/Nyiakeng_Puachue_Hmong#Digits", 
@@ -561,8 +567,12 @@
                     "Lao": "https://en.wikipedia.org/wiki/Lao_script#Numerals", 
                     "Lepcha": "https://en.wikipedia.org/wiki/Lepcha_script#Numerals",
                     "Limbu": "https://en.wikipedia.org/wiki/Limbu_script#Digits",
+                    "Malayalam": "https://en.wikipedia.org/wiki/Malayalam_numerals",
+                    "Masaram Gondi": "https://en.wikipedia.org/wiki/Gondi_writing#Munshi_Mangal_Singh_Masaram_Script",
                     "Meitei": "https://en.wikipedia.org/wiki/Meitei_script#Numerals", 
+                    "Mongolian": "https://en.wikipedia.org/wiki/Mongolian_numerals",
                     "Mru": "https://en.wikipedia.org/wiki/Mru_language#Script",
+                    "Mundari Bani": "https://en.wikipedia.org/wiki/Mundari_Bani",
                     "New Tai Lue": "https://en.wikipedia.org/wiki/New_Tai_Lue_alphabet#Digits",
                     "Newar": "https://en.wikipedia.org/wiki/Pracalit_script#Numerals",
                     "N'ko": "https://en.wikipedia.org/wiki/N%27Ko_script#Numbers",
@@ -577,6 +587,7 @@
                     "Tai Tham (1)": "https://en.wikipedia.org/wiki/Tai_Tham_script#Numerals",
                     "Tai Tham (2)": "https://en.wikipedia.org/wiki/Tai_Tham_script#Numerals",
                     "Tamil": "https://en.wikipedia.org/wiki/Tamil_numerals", 
+                    "Tangsa": "https://en.wikipedia.org/wiki/Tangsa_language#Orthography",
                     "Telugu": "https://en.wikipedia.org/wiki/Telugu_script#Numerals", 
                     "Thai": "https://en.wikipedia.org/wiki/Thai_numerals", 
                     "Tibetan": "https://en.wikipedia.org/wiki/Tibetan_numerals", 
