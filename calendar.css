@@ -80,14 +80,14 @@ span{
     font-weight: 700;
 }
 
-.cal:before{
-    content: "🌕";
+.cal:before, #holidays h2:before{
+    content: "🌕 ";
 }
 .hebrew:before,  .islamic_tabular:before, .islamic_tabular_tayyibi:before, .baháí:before, .javanese:before{
-    content: '🌙' !important;
+    content: '🌙 ' !important;
 }
 .fasli_zoroastrian:before,  .qadimi:before, .mandaean:before, .shahanshahi:before{
-    content: '☀️' !important;
+    content: '☀️ ' !important;
 }
 .day:before, .harris:before, .time:before{
     content: "" !important;
@@ -130,35 +130,96 @@ span{
 .cal{
     border: 2px black solid;
 }
-.armenian{ background-color: purple }
-.baháí{ background-color: dodgerblue } 
-.baháí_day{ color: dodgerblue }
-.berber{ background-color: saddlebrown }
-.bengali{ background-color: darkolivegreen; }
-.coptic{ background-color: goldenrod }
-.ethiopian{ background-color: rgb(163, 163, 68) }
-.fasli_zoroastrian, .qadimi, .shahanshahi{ background-color: indianred }
-.gregorian, .julian, .revised_julian{ background-color: darkslategray }
-.gregorian_day{ color: darkslategray }
-.hebrew{ background-color: mediumblue }
-.hebrew_day{ color: mediumblue }
-.indian_national{ background-color: red }
-.islamic_tabular, .islamic_tabular_tayyibi{ background-color: seagreen }
-.javanese{ background-color: cadetblue ;}
-.juche{ background-color: darkred; }
-.kurdish{ background-color: fuchsia }
-.mandaean{ background-color: #D2691E }
-.minguo{ background-color: blueviolet }
-.nanakshahi{ background-color: orange }
-.nepal_sambat_solar{ background-color: maroon }
-.solar_hijri{ background-color: green }
-.tabarian{ background-color: coral }
-.thai_solar{ background-color: orangered }
+.armenian{ 
+    background-color: purple;
+    color: purple;
+}
+.baháí{
+    background-color: dodgerblue;
+    color: dodgerblue;
+} 
+.berber{
+    background-color: slateblue;
+    color: slateblue;
+}
+.bengali{
+    background-color: darkolivegreen;
+    color: darkolivegreen;
+}
+.coptic{ 
+    background-color: goldenrod;
+    color: goldenrod;
+}
+.ethiopian{
+    background-color: rgb(163, 163, 68);
+    color: rgb(163, 163, 68);
+}
+.fasli_zoroastrian, .qadimi, .shahanshahi{
+    background-color: indianred;
+    color: indianred;
+}
+.gregorian, .julian, .revised_julian{
+    background-color: darkslategray;
+    color: darkslategray;
+}
+.hebrew{
+    background-color: mediumblue;
+    color: mediumblue;
+}
+.indian_national{ 
+    color: red;
+    background-color: red
+}
+.islamic_tabular, .islamic_tabular_tayyibi{
+    background-color: seagreen;
+    color: seagreen;
+}
+.javanese{
+    background-color: cadetblue;
+    color: cadetblue;
+}
+.juche{
+    background-color: darkred;
+    color: darkred;
+}
+.kurdish{
+    background-color: fuchsia;
+    color: fuchsia;
+}
+.mandaean{
+    background-color: #D2691E;
+    color: #D2691E;
+}
+.minguo{
+    background-color: blueviolet;
+    color: blueviolent;
+}
+.nanakshahi{ 
+    background-color: orange;
+    color: orange;
+}
+.nepal_sambat_solar{
+    background-color: maroon;
+    color: maroon;
+}
+.solar_hijri{
+    background-color: green;
+    color: green;
+}
+.tabarian{
+    background-color: coral;
+    color: coral;
+}
+.thai_solar{
+    background-color: orangered;
+    background-color: orangered;
+}
 .day{
     background-color: d2d2d2;
     color: #2d2d2d;
 }
 .sect{
+    color: inherit;
     text-decoration: none;
 }
 .harris{
@@ -184,6 +245,7 @@ h2{
     margin-bottom: 0;
     text-align: center;
     font-weight: 400;
+    background-color: white !important;
 }
 .icon{
     height:18px;

@@ -117,16 +117,103 @@ for(d = 0; d < 80000; d++){
                     if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == leday || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == leday){
                         obj.holidays.push({
                             name: hol[0],
-                            day: leday,
                             link: hol[1].link,
                             religion: n,
                         })
                     }
                 } //twin birthdays
+                else if(n == "Gregorian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost", "Trinity Sunday"].includes(hol[0])){
+                    eY = g.startDay.year
+                    eA = eY % 19
+                    eB = Math.floor(eY / 100)
+                    eC = eY % 100
+                    eD = Math.floor(eB / 4)
+                    eE = eB % 4
+                    eG = Math.floor((8 * eB + 13) / 25)
+                    eH = (19 * eA + eB - eD - eG + 15) % 30
+                    eI = Math.floor(eC / 4)
+                    eK = eC % 4
+                    eL = (32 + 2 * eE + 2 * eI - eH - eK) % 7
+                    eM = Math.floor((eA + 11 * eH + 19 * eL) / 433)
+                    eN = Math.floor((eH + eL - 7 * eM + 90) / 25)
+                    eP = (eH + eL - 7 * eM + 33 * eN + 19) % 32
+                    newv = eH + eL - 7 * eM + 33 * eN + 19
+                    if(hol[0] == "Palm Sunday") newv -= 7
+                    else if(hol[0] == "Maundy Thursday") newv -= 3
+                    else if(hol[0] == "Feast of the Ascension"){
+                        if(newv <= 127){
+                            newv += 33
+                        }
+                        newv += 39
+                    }
+                    else if(hol[0] == "Pentecost"){
+                        if(newv <= 127){
+                            newv += 33
+                        }
+                        newv += 49
+                    }
+                    else if(hol[0] == "Trinity Sunday"){
+                        if(newv <= 127){
+                            newv += 33
+                        }
+                        newv += 56
+                    }
+                    if(g.startDay.year == 2018){
+                        console.log(hol[0] + " " + newv)
+                    }
+                    if(newv >= 222) easterDay = (newv - 221) + " June"
+                    else if(newv >= 191) easterDay = (newv - 190) + " May"
+                    else if(newv >= 161) easterDay = (newv - 160) + " April"
+                    else if(newv <= 160 && newv >= 127) newv -= 33
+                    if(newv <= 127) easterDay = (newv - 96) + " March"
+                    if(leday == easterDay){
+                        obj.holidays.push({
+                            name: hol[0],
+                            link: hol[1].link,
+                            religion: n,
+                        })
+                    }
+                }
+                else if(n == "Julian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost"].includes(hol[0])){
+                    eY = g.startDay.year
+                    eA = eY % 4
+                    eB = eY % 7
+                    eC = eY % 19
+                    eD = (19 * eC + 15) % 30
+                    eE = (2 * eA + 4 * eB - eD + 34) % 7
+                    finalE = eD + eE + 114
+                    if(hol[0] == "Palm Sunday") finalE -= 7
+                    else if(hol[0] == "Maundy Thursday") finalE -= 3
+                    if(hol[0] == "Feast of the Ascension"){
+                        finalE += 39
+                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
+                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+                    }
+                    else if(hol[0] == "Pentecost"){
+                        finalE += 49
+                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
+                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+                    }
+                    else if(hol[0] == "Trinity Sunday"){
+                        finalE += 56
+                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
+                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+                    }
+                    else{
+                        if(finalE <= 123) easterDay = (finalE - 92) + " March"
+                        else easterDay = (finalE - 123) + " April"
+                    }
+                    if(leday == easterDay){
+                        obj.holidays.push({
+                            name: hol[0],
+                            link: hol[1].link,
+                            religion: n,
+                        })
+                    }
+                }
                 else if(leday == hol[1].day && (hol[1].shabbat == undefined || alltimearray.slice(-1)[0].Day != "Friday")){
                     obj.holidays.push({
                         name: hol[0],
-                        day: leday,
                         link: hol[1].link,
                         religion: n,
                     })
@@ -134,7 +221,6 @@ for(d = 0; d < 80000; d++){
                 else if((alltimearray.length > 0 && hol[1].shabbat != undefined && hol[1].shabbat.day == alltimearray.slice(-1)[0].Day) && leday == hol[1].shabbat.date){
                     obj.holidays.push({
                         name: hol[0],
-                        day: leday,
                         link: hol[1].link,
                         religion: n,
                     })
@@ -142,7 +228,6 @@ for(d = 0; d < 80000; d++){
                 if(hol[1].length && alltimearray.slice(-1 * hol[1].length + 1).map(x => x[n].split(" ").slice(0, -1).join(" ")).includes(hol[1].day)){ //long holiday
                     obj.holidays.push({
                         name: hol[0],
-                        day: leday,
                         link: hol[1].link,
                         religion: n,
                     })
@@ -208,7 +293,6 @@ function openDay(){
     answer.innerHTML = ""
     calen = thecalendar.value
     theday.innerHTML = ""
-    console.log(generateYear(theyear.value, calen).months[themonth.value])
     for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
         theday.innerHTML += `<option value="${x}">${x}</option>`
     }
@@ -233,7 +317,7 @@ function convert(){
     for(ourcalendar of Object.keys(thatspecificday)){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
-                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}_day"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name.split(":")[0]}</a>${h.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church"}[h.name.split(":")[1]]}">(${h.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name.split(":")[0]}</a>${h.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[h.name.split(":")[1]]}">(${h.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
         if(ourcalendar != calen && ourcalendar != "holidays"){
@@ -290,14 +374,13 @@ function convert(){
                     },
                 }
                 dOw = thatspecificday[ourcalendar]
-                answer.innerHTML += "<div class='cal day'>Day of the Week<br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
+                answer.innerHTML += "<div class='cal day'><b>Day of the Week</b><br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
             }
             else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
                 answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
             }
         }
     }
-    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
     answer.innerHTML += `<div class='cal time'>
     <div class="line">🌕 days start at midnight</div>
     <div class="line">
@@ -307,6 +390,8 @@ function convert(){
     ☀️ days start at sunrise
     </div>
     </div>`
+    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+
 }
 
 
@@ -592,10 +677,6 @@ function numeralize(number, era){
             "יז": 17,
             "טז": 16,
             "טו": 15,
-            "יד": 14,
-            "יג": 13,
-            "יב": 12,
-            "יא": 11,
             "י": 10,
             "ט": 9,
             "ח": 8,

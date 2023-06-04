@@ -1,3 +1,14 @@
+4 Jun 23
+Made some small stylistic changes
+Added Western and Eastern Easter, which has a complicated algorithm
+Added Christian holidays based on Easter: Palm Sunday, Maundy Thursday, Feast of the Ascension, Pentecost, and Trinity Sunday
+More calendars can go to 2117 CE now
+Fixed issue with selecting Julian calendar
+Added Christmas for the Armenian Patriarchate of Jerusalem (January 19th on the Gregorian calendar)
+
+3 Jun 23
+Fixed Julian calendar holiday issue
+
 30 May 23
 Fixed date of Armenian Christmas
 Added three Sikh holidays

@@ -68,6 +68,24 @@ calendars = {
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
         holidays: {
+            "Easter": {
+                link: "https://en.wikipedia.org/wiki/Easter",
+            },
+            "Palm Sunday": {
+                link: "https://en.wikipedia.org/wiki/Palm_Sunday",
+            },
+            "Maundy Thursday": {
+                link: "https://en.wikipedia.org/wiki/Maundy_Thursday",
+            },
+            "Feast of the Ascension": {
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
+            },
+            "Pentecost": {
+                link: "https://en.wikipedia.org/wiki/Pentecost",
+            },
+            "Trinity Sunday": {
+                link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            },
             "Epiphany": {
                 day: "6 January",
                 link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
@@ -446,19 +464,10 @@ calendars = {
             monthcount: 11,
             year: 2850,
         },
-        bounds: [2851, 3012],
+        bounds: [2851, 3070],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
-        holidays: {
-            "Christmas": {
-                day: "December 25",
-                link: "https://en.wikipedia.org/wiki/Christmas#Date_according_to_Julian_calendar",
-            },
-            "Epiphany": {
-                day: "January 6",
-                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
-            },
-        },
+        holidays: {},
     },
     /*
     Burmese: {
@@ -599,7 +608,7 @@ calendars = {
             monthcount: 3,
             year: 1616, //445393
         },
-        bounds: [1621, 1777],
+        bounds: [1621, 1835],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Coptic_calendar",
         holidays: {},
@@ -671,7 +680,7 @@ calendars = {
             monthcount: 3,
             year: 1892, //445393
         },
-        bounds: [1893, 2110],
+        bounds: [1893, 2168],
         era: "",
         link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
         holidays: {},
@@ -763,7 +772,7 @@ calendars = {
             monthcount: 9,
             year: 1269,
         },
-        bounds: [1269, 1430],
+        bounds: [1269, 1488],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
         holidays: {
@@ -843,7 +852,7 @@ calendars = {
             monthcount: 4,
             year: 5660,
         },
-        bounds: [5660, 5821],
+        bounds: [5660, 5879],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Hebrew_calendar",
         holidays: {
@@ -1089,7 +1098,7 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1484],
+        bounds: [1317, 1544],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {
@@ -1188,7 +1197,7 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1484],
+        bounds: [1317, 1544],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {},
@@ -1397,6 +1406,32 @@ calendars = {
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
         holidays: {
+            "Christmas:Armenian Patriarchate of Jerusalem": {
+                link: "https://en.wikipedia.org/wiki/Christmas",
+                day: "6 January",
+            },
+            "Easter": {
+                link: "https://en.wikipedia.org/wiki/Easter#Eastern_Christianity_2",
+            },
+            "Palm Sunday": {
+                link: "https://en.wikipedia.org/wiki/Palm_Sunday",
+            },
+            "Maundy Thursday": {
+                link: "https://en.wikipedia.org/wiki/Maundy_Thursday",
+            },
+            "Feast of the Ascension": {
+                link: "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
+            },
+            "Pentecost": {
+                link: "https://en.wikipedia.org/wiki/Pentecost",
+            },
+            "Trinity Sunday": {
+                link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            },
+            "Epiphany": {
+                day: "January 6",
+                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+            },
             "Christmas": {
                 day: "25 December",
                 link: "https://en.wikipedia.org/wiki/Christmas",
@@ -1404,7 +1439,7 @@ calendars = {
             "Feast of the Cross": {
                 link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
                 day: "14 September",
-            }
+            },
         },
     },
     Kurdish: {
@@ -1940,7 +1975,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2061],
+        bounds: [1900, 2118],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
         holidays: {},
