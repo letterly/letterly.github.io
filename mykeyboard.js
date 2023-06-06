@@ -664,6 +664,67 @@ keyboards = {
         Slash: "ׄ",
         //
     },
+    "Ladino": {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        // 
+        Backquote: "גﬞ",
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        Minus: "דﬞ",
+        Equal: "=",
+        //
+        KeyQ: "/",
+        KeyW: "׳",
+        KeyE: "ק",
+        KeyR: "ר",
+        KeyT: "א",
+        KeyY: "ט",
+        KeyU: "ו",
+        KeyI: "ן",
+        KeyO: "ם",
+        KeyP: "פ",
+        BracketLeft: ",",
+        BracketRight: ".",
+        Backslash: "בֿﬞ",
+        //
+        KeyA: "ש",
+        KeyS: "ד",
+        KeyD: "ג",
+        KeyF: "כ",
+        KeyG: "ע",
+        KeyH: "י",
+        KeyJ: "ח",
+        KeyK: "ל",
+        KeyL: "ך",
+        Semicolon: "ף",
+        Quote: "פﬞ",
+        //
+        KeyZ: "ז",
+        KeyX: "ס",
+        KeyC: "ב",
+        KeyV: "ה",
+        KeyB: "נ",
+        KeyN: "מ",
+        KeyM: "צ",
+        Comma: "ת",
+        Period: "ץ",
+        Slash: "זﬞ",
+        //
+    },
     "Dungan": {
                 //
             Backspace: "del",
@@ -899,7 +960,7 @@ function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
     text.style.direction = (lang == "Judeo-Arabic" || lang == "Yezidi") ? "rtl" : "ltr"
 }
-keySet("Dorsey")
+keySet("Ladino")
 
 function customize(){
     custom.style.display = "block"

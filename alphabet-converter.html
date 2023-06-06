@@ -1,6 +1,10 @@
 <html>
     <head>
         <style>
+            @font-face {
+                font-family: SBL Hebrew;
+                src: url(fonts/SBL_Hbrw.ttf);
+            }
             h1,h2{ text-align: center }
             textarea, #output{
                 margin-left: 5%;
@@ -12,7 +16,7 @@
                 float: left;
             }
             *{
-                font-family: 'Verdana';
+                font-family: Verdana, SBL Hebrew;
                 color: white
             }
             body{ background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)) }
@@ -44,13 +48,15 @@
         <button onclick="align(this.textContent)"><b>Abkhaz</b> Cyrillic=>Braille</button>
         <button onclick="align(this.textContent)"><b>Abkhaz</b> Cyrillic=>Mkhedruli</button>
         <button onclick="align(this.textContent)"><b>Aragonese</b> SLA=>'87</button>
+        <button onclick="align(this.textContent)"><b>Avestan</b> Latin=>Avestan</button>
         <button onclick="align(this.textContent)"><b>Crimean Tatar</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Extramaduran</b> Latin=>Braille</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Gagauz</b> Latin=>Braille</button>
-        <button onclick="align(this.textContent)"><b>Judeo-German</b> Hebrew=>Latin</button>
+       <!-- <button onclick="align(this.textContent)"><b>Judeo-German</b> Hebrew=>Latin</button> -->
         <button onclick="align(this.textContent)"><b>Juhuri</b> Cyrillic=>Latin</button>
         <button onclick="align(this.textContent)"><b>Khoekhoe</b> Latin=>Braille</button>
+        <button onclick="align(this.textContent)"><b>Ladino</b> Latin=>Hebrew</button>
         <button onclick="align(this.textContent)"><b>Ossetian</b> Cyrillic=>Braille</button>
         <button onclick="align(this.textContent)"><b>Ossetian</b> Cyrillic=>Mkhedruli</button>
         <button onclick="align(this.textContent)"><b>Portuguese</b> Brazil=>Portugal</button>
@@ -74,16 +80,17 @@
         function align(chart){
             chartID = chart
             input.dir = chartID.split(" ")[1].startsWith("Hebrew") ? "rtl" : "ltr"
+            output.dir = chartID.split(" ")[1].endsWith("Hebrew") ? "rtl" : "ltr"
             input.placeholder = "enter " + chart.split(" ")[0] + " [" + chart.split(" ")[1].split("=>")[0] + "] text" 
             output.placeholder = "[" + chart.split(" ")[1].split("=>")[1] + "] output here"
             textareas.style.display = "block"
         }
         function translateFunction () {
-            inp = input.value
+            inp = " " + input.value + " "
             if(chartID == "Gagauz Latin=>Braille") inp = inp.replace(/I/g, "ı")
-            if(chartID.includes("Braille") || chartID.includes("Mkhedruli")) inp = inp.toLowerCase()
+            if(chartID.includes("Braille") || chartID.includes("Mkhedruli") || chartID.includes("Hebrew")) inp = inp.toLowerCase()
             for(e of Object.entries(languages[chartID])) inp = inp.replace(new RegExp(e[0], 'g'), e[1])
-            outputtext.textContent = inp
+            outputtext.textContent = inp //inp.slice(1,-1)
         }
         languages = {
             "Portuguese Brazil=>Portugal": {
@@ -95,6 +102,63 @@
                 "cânabis": "cánabis",
                 "Irã": "Irão",
                 "Islã": "Islão",
+            },
+            "Avestan Latin=>Avestan": {
+                "ā̊": "𐬃",
+                "ą̇": "𐬅",
+                "ą": "𐬄",
+                "å": "𐬂",
+                "ā": "𐬁",
+                "a": "𐬀",
+                "ə̄": "𐬇",
+                "ə": "𐬆",
+                "ē": "𐬉",
+                "e": "𐬈",
+                "ō": "𐬋",
+                "o": "𐬊",
+                "ī": "𐬍",
+                "i": "𐬌",
+                "ū": "𐬏",
+                "u": "𐬎",
+                "β": "𐬡",
+                "b": "𐬠",
+                "c": "𐬗",
+                "δ": "𐬜",
+                "d": "𐬛",
+                "e": "𐬈",
+                "f": "𐬟",
+                "γ": "𐬖",
+                "ġ": "𐬕",
+                "g": "𐬔",
+                "h": "𐬵",
+                "j": "𐬘",
+                "k": "𐬐",
+                "l": "𐬮",
+                "m̨": "𐬩",
+                "m": "𐬨",
+                "ŋ́": "𐬣",
+                "ŋᵛ": "𐬤",
+                "ŋ": "𐬢",
+                'ń': "𐬦",
+                "ṇ": "𐬧",
+                "n": "𐬥",
+                "p": "𐬞",
+                "r": "𐬭",
+                "š́": "𐬳",
+                "ṣ̌": "𐬴",
+                "š": "𐬱",
+                "s": "𐬯",
+                "θ": "𐬚",
+                "t̰": "𐬝",
+                "t": "𐬙",
+                "v": "𐬬",
+                "xᵛ": "𐬓",
+                "x́": "𐬒",
+                "x": "𐬑",
+                "ẏ": "𐬪",
+                "y": "𐬫",
+                "ž": "𐬲",
+                "z": "𐬰",
             },
             "Samogitian Latin=>Braille": {
                 "ā": "⠡",
@@ -283,6 +347,66 @@
                 "\\!": "⠖",
                 "\\?": "⠦",
             },
+            "Ladino Latin=>Hebrew": {
+                " e": " אי",
+                " i": " אי",
+                " y": " אי",
+                " o": " או",
+                " u": " או",
+                "dj": "גﬞ",
+                "ld": "לד",
+                " d": " ד",
+                "nd": "נד",
+                "a": "א",
+                "v": "בﬞ",
+                "b": "ב",
+                "j": "זﬞ",
+                "z": "ז",
+                "g": "ג",
+                "d": "דﬞ",
+               // "h": "ה",
+                "o": "ו",
+                "u": "ו",
+                //"ח": "⠭",
+                "t": "ט",
+                "i": "י",
+                "e": "י",
+                "y": "י",
+                "l": "ל",
+                "m ": "ם ",
+                "m\\,": "ם,",
+                "m\\.": "ם.",
+                "m\\!": "ם!",
+                "m\\?": "ם?",
+                "m": "מ",
+                "n ": "ן ",
+                "n\\,": "ן,",
+                "n\\.": "ן.",
+                "n\\!": "ן!",
+                "n\\?": "ן?",
+                "n": "נ",
+                "f ": "ף ",
+                "f\\,": "ף,",
+                "f\\.": "ף.",
+                "f\\!": "ף!",
+                "f\\?": "ף?",
+                "f": "פﬞ",
+                "ç ": "ץ ",
+                "ç\\,": "ץ,",
+                "ç\\.": "ץ.",
+                "ç\\!": "ץ!",
+                "ç\\?": "ץ?",
+                "ç": "צ",
+                "p": "פ",
+                "sh": "ש",
+                "s": "ס",
+                //"ע": "⠫",
+               // "צץ": "⠮",
+               "h": "ח",
+               "r": "ר",
+                "k": "ק",
+                //
+            },
             "Abkhaz Cyrillic=>Mkhedruli": {
                 "а": "ა",
                 "б": "ბ",
@@ -427,6 +551,7 @@
                 "ר": "r",
                 "ש": "sh",
             },
+            /*
             "Judeo-German Hebrew=>Latin": {
                 //unicode normalization
                 "ױ": "וי",
@@ -485,6 +610,7 @@
                 "ר": "r",
                 "ש": "sch",
             },
+            */
             "Aragonese SLA=>'87": {
                 "xt": "st",
                 "cion": "zión",
