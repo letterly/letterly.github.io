@@ -1,9 +1,13 @@
+@font-face {
+    font-family: SBL Hebrew;
+    src: url(fonts/SBL_Hbrw.ttf);
+}
 body{
-    font-family: 'Roboto';
+    font-family: Roboto, SBL Hebrew;
     background-color: #221a0f;
 }
 #text{
-    font-family: 'Roboto';
+    font-family: Roboto, SBL Hebrew;
 }
 #Space{
     width: 83vw;

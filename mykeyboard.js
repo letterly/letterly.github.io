@@ -699,7 +699,7 @@ keyboards = {
         KeyP: "פ",
         BracketLeft: ",",
         BracketRight: ".",
-        Backslash: "בֿﬞ",
+        Backslash: "בﬞ",
         //
         KeyA: "ש",
         KeyS: "ד",
@@ -958,7 +958,7 @@ keyboards = {
 
 function keySet(lang){
     for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
-    text.style.direction = (lang == "Judeo-Arabic" || lang == "Yezidi") ? "rtl" : "ltr"
+    text.style.direction = (lang == "Judeo-Arabic" || lang == "Yezidi" || lang == "Ladino") ? "rtl" : "ltr"
 }
 keySet("Ladino")
 
