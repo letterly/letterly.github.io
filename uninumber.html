@@ -160,6 +160,7 @@
             "Balinese": "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙",
             "Braille": "⠚⠁⠃⠉⠙⠑⠋⠛⠓⠊",
             "Braille (French)": "⠼⠡⠣⠩⠹⠱⠫⠻⠳⠪",
+            "Braille (Nemeth)": "⠴⠂⠆⠒⠲⠢⠖⠶⠦⠔",
             "Burmese": "၀၁၂၃၄၅၆၇၈၉",
             "Chakma": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
             "Cham": "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙",
@@ -368,7 +369,12 @@
                 inpval = inp.value.toUpperCase()
                 inpval = inpval.replace("״", "")
                 if(inpval.startsWith("⠠") || inpval.startsWith("⠼")){
-                    inpval = inpval.slice(1).replace("⠲", ".")
+                    if(numbersystem.includes("Nemeth")){
+                        inpval = inpval.slice(1).replace("⠨", ".")
+                    }
+                    else{
+                        inpval = inpval.slice(1).replace("⠲", ".")
+                    }
                 }
                 if(inpval.startsWith("|")){
                     inpval = inpval.slice(1,-1)
@@ -441,6 +447,9 @@
                             }
                             else if(g[0] == "Braille (French)"){
                                 i = "⠠" + i.replace(".", "⠲")
+                            }
+                            else if(g[0] == "Braille (Nemeth)"){
+                                i = "⠼" + i.replace(".", "⠨")
                             }
                             else if(g[0] == "Sundanese"){
                                 i = "|" + i + "|"
@@ -546,6 +555,7 @@
                     "Balinese": "https://en.wikipedia.org/wiki/Balinese_script#Numerals",
                     "Braille": "https://en.wikipedia.org/wiki/Braille#Formatting",
                     "Braille (French)": "https://en.wikipedia.org/wiki/French_Braille#Numbers",
+                    "Braille (Nemeth)": "https://en.wikipedia.org/wiki/Nemeth_Braille#Number_signs",
                     "Burmese": "https://en.wikipedia.org/wiki/Burmese_numerals",
                     "Chakma": "https://en.wikipedia.org/wiki/Chakma_script#Numerals",
                     "Cham": "https://en.wikipedia.org/wiki/Cham_script#Numerals", 
