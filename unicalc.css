@@ -1,0 +1,35 @@
+#display{
+    width: 250px;
+    height: 55px;
+    background-color: green;
+    border: 2px solid black;
+    color: white;
+    font-size: 24px;
+    font-family: Verdana;
+    direction: ltr;
+}
+button{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    margin: 5px;
+    border: 2px solid black;
+    font-size: 36px;
+    text-align: center;
+}
+#calculator{
+    background-color: gray;
+    border: 5px solid black;
+    width: 256px;
+    padding: 10px;
+    margin-left: calc((100% - 256px) / 2);
+    margin-right: calc((100% - 256px) / 2);
+}
+select{
+    font-size: 36px;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;    
+}
