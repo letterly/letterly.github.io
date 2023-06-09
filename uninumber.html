@@ -485,7 +485,7 @@
                             if(ethnum.tenthousands > 9){
                                 ethnum.tenthousands = ("" + ethnum.tenthousands).split("")
                                 i += getEthNum(ethnum.tenthousands[0] + "0")
-                                if(numberstorage.Ethiopic[ethnum.tenthousands[1]] != "0"){
+                                if(ethnum.tenthousands[1] != "0"){
                                     i += getEthNum(ethnum.tenthousands[1])
                                 }
                                 i += "፼"
