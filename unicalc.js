@@ -38,6 +38,7 @@ numberstorage = {
     "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹",
     "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙",
     "Sundanese": "᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹",
+    "Syloti": "0123456789", // temporary
     "Tai Laing": "꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹",
     "Tai Tham": "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉",
     //"Tamil": "௦௧௨௩௪௫௬௭௮௯",
@@ -197,6 +198,8 @@ function orderOfOps(equationArray){
 
 function reset(){
     display.dir = ["Adlam", "Eastern Arabic", "N'ko"].includes(numsystem.value) ? "rtl" : "ltr"
+    display.style.fontFamily = numsystem.value == "Syloti" ? "Syloti" : "Verdana"
+    for(r = 0; r < 10; r++) document.getElementById("D" + r).style.fontFamily = numsystem.value == "Syloti" ? "Syloti" : "Verdana"
     for(y = 0; y < 10; y++){
         document.getElementById("D" + y).textContent = Array.from(numberstorage[numsystem.value])[y]
         display.textContent = display.textContent.replace(new RegExp(Array.from(numberstorage[currentSystem])[y], "g"), Array.from(numberstorage[numsystem.value])[y])

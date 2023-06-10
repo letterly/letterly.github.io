@@ -1,10 +1,13 @@
 UNICALC CHANGELOG
 
 10 January
-Added six numeral systems from South Asia and Africa
-The systems are Devanagari, Chakma, Adlam, Warang Citi, N'ko, and Sourashtra
+Added seven numeral systems from South Asia and Africa
+The systems are Devanagari, Chakma, Adlam, Warang Citi, N'ko, Syloti, and Sourashtra
 Fixed a glitch with negative numbers
 Added implicit multiplication, the calculator is now usable without any errors (for now) :D
+Replaced ⋅ with % (percent sign)
+Added the constants π, γ, and e
+Added exponent function ^
 
 9 June 2023
 Order of operations and parentheses are now working!
