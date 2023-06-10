@@ -58,7 +58,13 @@ function refresh(){
 }
 
 function solveMath(){
-    operationList = "+-⋅÷×*"
+    operationList = "+-⋅÷×*^"
+    constants = {
+        "π": 3.14159,
+        "e": 2.71828,
+        "%": 0.01,
+        "γ": 0.57721,
+    }
     equation = display.textContent
 
     if(currentSystem != "Western Arabic"){
@@ -72,7 +78,7 @@ function solveMath(){
 
     //
     equation = equation.replace(/\-\-/g, "+")
-    equation = equation.replace(/[\+\-⋅÷×\(\)]/g, "~$&~")
+    equation = equation.replace(/[\+\-⋅÷×\(\)\^%πeγ]/g, "~$&~")
     equation = equation.replace(/~~/g, "~")
     if(equation.startsWith("~")) equation = equation.slice(1)
     if(equation.endsWith("~")) equation = equation.slice(0,-1)
@@ -81,9 +87,19 @@ function solveMath(){
     firstarray = []
     //add negatives
     for(x of equation.split("~")){
-
+        console.log(x)
         if(firstarray.length == 0){
-            firstarray.push(x)
+            if(Object.keys(constants).includes(x)){
+                firstarray.push(constants[x])
+            }
+            else{
+                firstarray.push(x)
+            }
+        }
+        else if(Object.keys(constants).includes(x)){
+            if(!isNaN(firstarray[firstarray.length-1])) firstarray.push("*")
+            firstarray.push(constants[x])
+            console.log(firstarray)
         }
         else if(isNaN(firstarray.slice(-2)[0]) && firstarray.slice(-1)[0] == "-" && x == "("){ // hanging minus becore parenthesis
             firstarray[firstarray.length-1] += "1"
@@ -122,7 +138,6 @@ function solveMath(){
 }
 
 function orderOfOps(equationArray){
-    console.log(equationArray)
     while(equationArray.includes("(")){
         for(x = 0; x < equationArray.length; x++){
             if(equationArray[x] == "(" && (equationArray.indexOf(")", x + 1) < equationArray.indexOf("(", x + 1) || equationArray.indexOf("(", x + 1) == -1)){
@@ -139,9 +154,21 @@ function orderOfOps(equationArray){
         }
         else originalarray.push(g)
     }
-    console.log(originalarray)
+    
+    exponentarray = []
+    for(g of originalarray.reverse()){
+        if(g == "^") exponentarray[exponentarray.length - 1] += g
+        else if(exponentarray.length > 0 && "^" == ("" + exponentarray[exponentarray.length - 1]).slice(-1)){
+            exponentarray[exponentarray.length - 1] = Math.pow(+g, +exponentarray[exponentarray.length - 1].slice(0,-1))
+        }
+        else exponentarray.push(g)
+    }
+    exponentarray = exponentarray.reverse()
+    
+
+
     secondarray = []
-    for(g of originalarray){
+    for(g of exponentarray){
         if("⋅×÷".includes(g)) secondarray[secondarray.length - 1] += g
         else if(secondarray.length > 0 && "⋅×÷".includes(("" + secondarray[secondarray.length - 1]).slice(-1))){
             secondarray[secondarray.length - 1] = {
@@ -152,7 +179,6 @@ function orderOfOps(equationArray){
         }
         else secondarray.push(g)
     }
-    console.log(secondarray)
 
     thirdarray = []
     for(g of secondarray){
