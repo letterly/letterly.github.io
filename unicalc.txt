@@ -1,5 +1,11 @@
 UNICALC CHANGELOG
 
+10 January
+Added six numeral systems from South Asia and Africa
+The systems are Devanagari, Chakma, Adlam, Warang Citi, N'ko, and Sourashtra
+Fixed a glitch with negative numbers
+Added implicit multiplication, the calculator is now usable without any errors (for now) :D
+
 9 June 2023
 Order of operations and parentheses are now working!
 You can now switch to Eastern Arabic or Hmong numerals with a numeral system selector

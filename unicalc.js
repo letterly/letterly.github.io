@@ -58,7 +58,7 @@ function refresh(){
 }
 
 function solveMath(){
-    operationList = "+-⋅÷×"
+    operationList = "+-⋅÷×*"
     equation = display.textContent
 
     if(currentSystem != "Western Arabic"){
@@ -81,10 +81,24 @@ function solveMath(){
     firstarray = []
     //add negatives
     for(x of equation.split("~")){
+
         if(firstarray.length == 0){
             firstarray.push(x)
         }
-        else if(firstarray.length == 1 && firstarray[0] == "-" && !isNaN(x)){
+        else if(isNaN(firstarray.slice(-2)[0]) && firstarray.slice(-1)[0] == "-" && x == "("){ // hanging minus becore parenthesis
+            firstarray[firstarray.length-1] += "1"
+            firstarray.push("*")
+            firstarray.push(x) // (
+        }
+        //implicit number multiply parentheses
+        else if((!isNaN(firstarray.slice(-1)[0]) || firstarray.slice(-1)[0] == ")") && x == "("){
+            firstarray.push("*")
+            firstarray.push(x) // (
+        }
+        //implicit parentheses multiply parentheses
+
+        
+        else if(((firstarray.length == 1 && firstarray[0] == "-") || (firstarray.slice(-2)[0] == "(" && firstarray.slice(-1)[0] == "-")) && !isNaN(x)){
             firstarray[0] += x
         }
         else if(firstarray.length >= 2 && operationList.includes(firstarray.slice(-2)[0]) && firstarray.slice(-1)[0] == "-"){
@@ -95,7 +109,7 @@ function solveMath(){
         }
     }
     //deal with implicit multiplication ("*" sign maybe)
-
+    //deal with implicit negative
 
     leresult = orderOfOps(firstarray)[0]
     if(currentSystem != "Western Arabic"){
@@ -108,6 +122,7 @@ function solveMath(){
 }
 
 function orderOfOps(equationArray){
+    console.log(equationArray)
     while(equationArray.includes("(")){
         for(x = 0; x < equationArray.length; x++){
             if(equationArray[x] == "(" && (equationArray.indexOf(")", x + 1) < equationArray.indexOf("(", x + 1) || equationArray.indexOf("(", x + 1) == -1)){
@@ -116,8 +131,17 @@ function orderOfOps(equationArray){
             }
         }
     }
-    secondarray = []
+    originalarray = []
     for(g of equationArray){
+        if(g == "*") originalarray[originalarray.length - 1] += g
+        else if(originalarray.length > 0 && "*" == ("" + originalarray[originalarray.length - 1]).slice(-1)){
+            originalarray[originalarray.length - 1] = +originalarray[originalarray.length - 1].slice(0,-1) * +g
+        }
+        else originalarray.push(g)
+    }
+    console.log(originalarray)
+    secondarray = []
+    for(g of originalarray){
         if("⋅×÷".includes(g)) secondarray[secondarray.length - 1] += g
         else if(secondarray.length > 0 && "⋅×÷".includes(("" + secondarray[secondarray.length - 1]).slice(-1))){
             secondarray[secondarray.length - 1] = {
@@ -128,6 +152,7 @@ function orderOfOps(equationArray){
         }
         else secondarray.push(g)
     }
+    console.log(secondarray)
 
     thirdarray = []
     for(g of secondarray){
@@ -145,6 +170,7 @@ function orderOfOps(equationArray){
 
 
 function reset(){
+    display.dir = ["Adlam", "Eastern Arabic", "N'ko"].includes(numsystem.value) ? "rtl" : "ltr"
     for(y = 0; y < 10; y++){
         document.getElementById("D" + y).textContent = Array.from(numberstorage[numsystem.value])[y]
         display.textContent = display.textContent.replace(new RegExp(Array.from(numberstorage[currentSystem])[y], "g"), Array.from(numberstorage[numsystem.value])[y])
