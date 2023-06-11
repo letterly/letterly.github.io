@@ -13,15 +13,23 @@
     <body>
         <select id="numsystem" onchange="reset()">
             <option value="Western Arabic">Western Arabic (0123456789)</option>
-            <option value="Eastern Arabic">Eastern Arabic (٠١٢٣٤٥٦٧٨٩)</option>
-            <option value="Hmong">Hmong [NPH] (𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉)</option>
-            <option value="Devanagari">Devanagari (०१२३४५६७८९)</option>
-            <option value="Sourashtra">Sourashtra (꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙)</option>
-            <option value="Warang Citi">Warang Citi (𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩)</option>
-            <option value="Chakma">Chakma (𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿)</option>
-            <option value="Adlam">Adlam (𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙)</option>
-            <option value="N'ko">N'ko (߀߁߂߃߄߅߆߇߈߉)</option>
-            <option value="Syloti">Syloti</option>
+            <optgroup label="Middle East">
+                <option value="Eastern Arabic">Eastern Arabic (٠١٢٣٤٥٦٧٨٩)</option>
+            </optgroup>
+            <optgroup label="South Asia">
+                <option value="Chakma">Chakma (𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿)</option>
+                <option value="Devanagari">Devanagari (०१२३४५६७८९)</option>
+                <option value="Sourashtra">Sourashtra (꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙)</option>
+                <option value="Syloti">Syloti</option>
+                <option value="Warang Citi">Warang Citi (𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩)</option>
+            </optgroup>
+            <optgroup label="Southeast Asia">
+                <option value="Hmong">Hmong [NPH] (𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉)</option>
+            </optgroup>
+            <optgroup label="West Africa">
+                <option value="Adlam">Adlam (𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙)</option>
+                <option value="N'ko">N'ko (߀߁߂߃߄߅߆߇߈߉)</option>
+            </optgroup>
         </select>
         <br>
         <br>
@@ -49,6 +57,13 @@
                 <button class="h_digit" id="D0" onclick="z(this.textContent)">0</button>
             </div>
             <div class="row">
+                <button class="h_constant" id="PiConstant" onclick="z(this.textContent)">π</button>
+                <button class="h_constant" id="EConstant" onclick="z(this.textContent)">e</button>
+                <button class="h_constant" id="GammaConstant" onclick="z(this.textContent)">γ</button>
+                <button class="h_constant" id="PhiConstant" onclick="z(this.textContent)">φ</button>
+                <button class="h_constant" id="PsiConstant" onclick="z(this.textContent)">ψ</button>
+            </div>
+            <div class="row">
                 <button class="h_operator" id="OperationAdd" onclick="z(this.textContent)">+</button>
                 <button class="h_operator" id="OperationSubtract" onclick="z(this.textContent)">-</button>
                 <button class="h_operator" id="OperationMultiply" onclick="z(this.textContent)">×</button>
@@ -56,10 +71,10 @@
                 <button class="h_operator" id="Exponent" onclick="z(this.textContent)">^</button>
             </div>
             <div class="row">
-                <button class="h_constant" id="Percent" onclick="z(this.textContent)">%</button>
-                <button class="h_constant" id="PiConstant" onclick="z(this.textContent)">π</button>
-                <button class="h_constant" id="EConstant" onclick="z(this.textContent)">e</button>
-                <button class="h_constant" id="GammaConstant" onclick="z(this.textContent)">γ</button>
+                <button class="h_operator" id="SquareRoot" onclick="z(this.textContent)">√</button>
+                <button class="h_percent" id="Percent" onclick="z(this.textContent)">%</button>
+                <button class="h_percent" id="Permille" onclick="z(this.textContent)">‰</button>
+                <button class="h_percent" id="Permyriad" onclick="z(this.textContent)">‱</button>
                 <button class="h_equals" id="Equals" onclick="solveMath()">=</button>
             </div>
         </div>

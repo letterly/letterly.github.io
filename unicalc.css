@@ -1,5 +1,5 @@
 #display{
-    width: 316px;
+    width: 388px;
     height: 55px;
     background-color: green;
     border: 2px solid black;
@@ -12,8 +12,8 @@
     src: url(fonts/SylotiNagri-Regular.ttf);
 }
 button{
-    width: 51px;
-    height: 51px;
+    width: 65px;
+    height: 65px;
     border-radius: 10px;
     background-color: antiquewhite;
     margin: 5px;
@@ -24,10 +24,12 @@ button{
 #calculator{
     background-color: gray;
     border: 5px solid black;
-    width: 322px;
+    width: 394px;
     padding: 10px;
-    margin-left: calc((100% - 306px) / 2);
-    margin-right: calc((100% - 306px) / 2);
+    margin-left: calc((100% - 404px) / 2);
+    margin-right: calc((100% - 404px) / 2);
+    padding: 20px;
+    border-radius: 10px;
 }
 select{
     font-size: 36px;
@@ -35,4 +37,28 @@ select{
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;    
+}
+.h_syntax{
+    background-color: slategray;
+}
+.h_digit{
+    background-color: orange;
+}
+.h_operator{
+    background-color: paleturquoise;
+}
+.h_other{
+    background-color: rebeccapurple;
+}
+.h_delete{
+    background-color: red;
+}
+.h_constant{
+    background-color: coral;
+}
+.h_equals{
+    background-color: cyan;
+}
+.h_percent{
+    background-color: goldenrod;
 }

@@ -1,53 +1,53 @@
 currentSystem = "Western Arabic"
 
 numberstorage = {
-    "Western Arabic": "0123456789",
-    "Adlam": "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
-    "Balinese": "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙",
-    "Burmese": "၀၁၂၃၄၅၆၇၈၉",
-    "Chakma": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
-    "Cham": "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙",
-    "Devanagari": "०१२३४५६७८९",
-    "Eastern Arabic": "٠١٢٣٤٥٦٧٨٩",
-    "Eastern Nagari": "০১২৩৪৫৬৭৮৯",
-    "Gujarati": "૦૧૨૩૪૫૬૭૮૯",
-    "Gunjali Gondi": "𑶠𑶡𑶢𑶣𑶤𑶥𑶦𑶧𑶨𑶩",
-    "Gurmukhi": "੦੧੨੩੪੫੬੭੮੯",
-    "Hmong": "𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉",
-    "Javanese": "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙",
+    "Western Arabic": "0123456789", //??
+    "Adlam": "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙", //WA
+    "Balinese": "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙", //SEA
+    "Burmese": "၀၁၂၃၄၅၆၇၈၉", //SEA
+    "Chakma": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿", //SA
+    "Cham": "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙", //SEA
+    "Devanagari": "०१२३४५६७८९", //SA
+    "Eastern Arabic": "٠١٢٣٤٥٦٧٨٩", //ME
+    "Eastern Nagari": "০১২৩৪৫৬৭৮৯", //SA
+    "Gujarati": "૦૧૨૩૪૫૬૭૮૯", //SA
+    "Gunjali Gondi": "𑶠𑶡𑶢𑶣𑶤𑶥𑶦𑶧𑶨𑶩", //SA
+    "Gurmukhi": "੦੧੨੩੪੫੬੭੮੯", //SA
+    "Hmong": "𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉", //SEA
+    "Javanese": "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙", //SEA
     //"Kannada": "೦೧೨೩೪೫೬೭೮೯",
-    "Kayah Li": "꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉",
-    "Khmer": "០១២៣៤៥៦៧៨៩",
-    "Lao": "໐໑໒໓໔໕໖໗໘໙",
-    "Lepcha": "᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉",
-    "Limbu": "᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏",
+    "Kayah Li": "꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉", //SEA
+    "Khmer": "០១២៣៤៥៦៧៨៩", //SEA
+    "Lao": "໐໑໒໓໔໕໖໗໘໙", //SEA
+    "Lepcha": "᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉", //SA
+    "Limbu": "᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏", //SA
     //"Malayalam": "൦൧൨൩൪൫൬൭൮൯",
-    "Masaram Gondi": "𑵐𑵑𑵒𑵓𑵔𑵕𑵖𑵗𑵘𑵙",
-    "Meitei": "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹",
-    "Mru": "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩",
-    "Mundari Bani": "𞓰𞓱𞓲𞓳𞓴𞓵𞓶𞓷𞓸𞓹",
-    "New Tai Lue": "᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙",
-    "Newar": "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙",
-    "N'ko": "߀߁߂߃߄߅߆߇߈߉",
-    "Odia": "୦୧୨୩୪୫୬୭୮୯",
-    "Pahawh Hmong": "𖭐𖭑𖭒𖭓𖭔𖭕𖭖𖭗𖭘𖭙",
-    "Persian": "۰۱۲۳۴۵۶۷۸۹",
-    "Rohingya": "𐴰𐴱𐴲𐴳𐴴𐴵𐴶𐴷𐴸𐴹",
-    "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
-    "Shan": "႐႑႒႓႔႕႖႗႘႙",
-    "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹",
-    "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙",
-    "Sundanese": "᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹",
-    "Syloti": "0123456789", // temporary
-    "Tai Laing": "꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹",
-    "Tai Tham": "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉",
+    "Masaram Gondi": "𑵐𑵑𑵒𑵓𑵔𑵕𑵖𑵗𑵘𑵙", //SA
+    "Meitei": "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹", //SA
+    "Mru": "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩", //SA
+    "Mundari Bani": "𞓰𞓱𞓲𞓳𞓴𞓵𞓶𞓷𞓸𞓹", //SA
+    "New Tai Lue": "᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙", //SEA
+    "Newar": "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙", //SA
+    "N'ko": "߀߁߂߃߄߅߆߇߈߉", //WA
+    "Odia": "୦୧୨୩୪୫୬୭୮୯", //SA
+    "Pahawh Hmong": "𖭐𖭑𖭒𖭓𖭔𖭕𖭖𖭗𖭘𖭙", //SEA
+    "Persian": "۰۱۲۳۴۵۶۷۸۹", //ME
+    "Rohingya": "𐴰𐴱𐴲𐴳𐴴𐴵𐴶𐴷𐴸𐴹", //SA
+    "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙", //SA
+    "Shan": "႐႑႒႓႔႕႖႗႘႙", //SEA
+    "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹", //SA
+    "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙", //SA
+    "Sundanese": "᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹", //SEA
+    "Syloti": "0123456789", // SA
+    "Tai Laing": "꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹", //SEA
+    "Tai Tham": "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉", //SEA
     //"Tamil": "௦௧௨௩௪௫௬௭௮௯",
-    "Tangsa": "𖫀𖫁𖫂𖫃𖫄𖫅𖫆𖫇𖫈𖫉",
+    "Tangsa": "𖫀𖫁𖫂𖫃𖫄𖫅𖫆𖫇𖫈𖫉", //SA
     //"Telugu": "౦౧౨౩౪౫౬౭౮౯",
-    "Thai": "๐๑๒๓๔๕๖๗๘๙",
-    "Tibetan": "༠༡༢༣༤༥༦༧༨༩",
-    "Wancho": "𞋰𞋱𞋲𞋳𞋴𞋵𞋶𞋷𞋸𞋹",
-    "Warang Citi": "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩",
+    "Thai": "๐๑๒๓๔๕๖๗๘๙", //SEA
+    "Tibetan": "༠༡༢༣༤༥༦༧༨༩", //SA
+    "Wancho": "𞋰𞋱𞋲𞋳𞋴𞋵𞋶𞋷𞋸𞋹", //SA
+    "Warang Citi": "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩", //SA
 }
 
 function z(text){
@@ -69,6 +69,10 @@ function solveMath(){
         "e": 2.71828,
         "%": 0.01,
         "γ": 0.57721,
+        "φ": 1.61803,
+        "ψ": 1.46557,
+        "‰": 0.001,
+        "‱": 0.0001,
     }
     equation = display.textContent
 
@@ -77,13 +81,17 @@ function solveMath(){
             equation = equation.replace(new RegExp(Array.from(numberstorage[currentSystem])[a], "g"), numberstorage["Western Arabic"][a])
         }
     }
-    //parenthesis validator
+    //parenthesis validator WORK ON IT
+    if(equation.includes("()")){
+        alert('ERROR 1: EMPTY PAIR OF PARENTHESES')
+        return 0
+    }
 
-    //no weird shit validator
+    //no weird shit validator WORK ON IT
 
     //
     equation = equation.replace(/\-\-/g, "+")
-    equation = equation.replace(/[\+\-⋅÷×\(\)\^%πeγ]/g, "~$&~")
+    equation = equation.replace(/[\+\-⋅÷×\(\)\^%πeγφψ‰‱√]/g, "~$&~")
     equation = equation.replace(/~~/g, "~")
     if(equation.startsWith("~")) equation = equation.slice(1)
     if(equation.endsWith("~")) equation = equation.slice(0,-1)
@@ -151,29 +159,33 @@ function orderOfOps(equationArray){
             }
         }
     }
+
+    exponentarray = []
+    for(g of equationArray.reverse()){
+        if(g == "^") exponentarray[exponentarray.length - 1] += g
+        else if(exponentarray.length > 0 && "^" == ("" + exponentarray[exponentarray.length - 1]).slice(-1)){
+            exponentarray[exponentarray.length - 1] = Math.pow(+g, +exponentarray[exponentarray.length - 1].slice(0,-1))
+        }
+        else if(g == "√") exponentarray[exponentarray.length - 1] = Math.pow(exponentarray[exponentarray.length - 1], 0.5)
+        else exponentarray.push(g)
+    }
+    exponentarray = exponentarray.reverse()
+
+
     originalarray = []
-    for(g of equationArray){
+    for(g of exponentarray){
         if(g == "*") originalarray[originalarray.length - 1] += g
         else if(originalarray.length > 0 && "*" == ("" + originalarray[originalarray.length - 1]).slice(-1)){
             originalarray[originalarray.length - 1] = +originalarray[originalarray.length - 1].slice(0,-1) * +g
         }
         else originalarray.push(g)
     }
-    
-    exponentarray = []
-    for(g of originalarray.reverse()){
-        if(g == "^") exponentarray[exponentarray.length - 1] += g
-        else if(exponentarray.length > 0 && "^" == ("" + exponentarray[exponentarray.length - 1]).slice(-1)){
-            exponentarray[exponentarray.length - 1] = Math.pow(+g, +exponentarray[exponentarray.length - 1].slice(0,-1))
-        }
-        else exponentarray.push(g)
-    }
-    exponentarray = exponentarray.reverse()
+
     
 
 
     secondarray = []
-    for(g of exponentarray){
+    for(g of originalarray){
         if("⋅×÷".includes(g)) secondarray[secondarray.length - 1] += g
         else if(secondarray.length > 0 && "⋅×÷".includes(("" + secondarray[secondarray.length - 1]).slice(-1))){
             secondarray[secondarray.length - 1] = {
