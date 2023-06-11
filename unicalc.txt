@@ -4,6 +4,7 @@ UNICALC CHANGELOG
 Fixed calculator display on iPhone
 Added the ∛, ∜, !, log, and ln functions / buttons
 Added Balinese, Javanese, Ol Chiki, and Persian numeral systems 
+Fixed a Syloti font issue
 
 10 June 2023
 Added seven numeral systems from South Asia and Africa
