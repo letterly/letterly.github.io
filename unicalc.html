@@ -15,16 +15,20 @@
             <option value="Western Arabic">Western Arabic (0123456789)</option>
             <optgroup label="Middle East">
                 <option value="Eastern Arabic">Eastern Arabic (٠١٢٣٤٥٦٧٨٩)</option>
+                <option value="Persian">Persian (۰۱۲۳۴۵۶۷۸۹)</option>
             </optgroup>
             <optgroup label="South Asia">
                 <option value="Chakma">Chakma (𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿)</option>
                 <option value="Devanagari">Devanagari (०१२३४५६७८९)</option>
+                <option value="Ol Chiki">Ol Chiki (᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙)</option>
                 <option value="Sourashtra">Sourashtra (꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙)</option>
                 <option value="Syloti">Syloti</option>
                 <option value="Warang Citi">Warang Citi (𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩)</option>
             </optgroup>
             <optgroup label="Southeast Asia">
+                <option value="Balinese">Balinese (᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙)</option>
                 <option value="Hmong">Hmong [NPH] (𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉)</option>
+                <option value="Javanese">Javanese (꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙)</option>
             </optgroup>
             <optgroup label="West Africa">
                 <option value="Adlam">Adlam (𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙)</option>
@@ -72,9 +76,16 @@
             </div>
             <div class="row">
                 <button class="h_operator" id="SquareRoot" onclick="z(this.textContent)">√</button>
+                <button class="h_operator" id="CubeRoot" onclick="z(this.textContent)">∛</button>
+                <button class="h_operator" id="FourthRoot" onclick="z(this.textContent)">∜</button>
+                <button class="h_operator" id="Log" onclick="z(this.textContent)">log</button>
+                <button class="h_operator" id="Ln" onclick="z(this.textContent)">ln</button>
+            </div>
+            <div class="row">
                 <button class="h_percent" id="Percent" onclick="z(this.textContent)">%</button>
                 <button class="h_percent" id="Permille" onclick="z(this.textContent)">‰</button>
                 <button class="h_percent" id="Permyriad" onclick="z(this.textContent)">‱</button>
+                <button class="h_operator" id="Factorial" onclick="z(this.textContent)">!</button>
                 <button class="h_equals" id="Equals" onclick="solveMath()">=</button>
             </div>
         </div>

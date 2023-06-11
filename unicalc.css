@@ -18,7 +18,7 @@ button{
     background-color: antiquewhite;
     margin: 5px;
     border: 2px solid black;
-    font-size: 36px;
+    font-size: 32px;
     text-align: center;
     color: black;
     font-weight: 700;
@@ -38,7 +38,8 @@ select{
     text-align: center;
     width: 50%;
     margin-left: 25%;
-    margin-right: 25%;    
+    margin-right: 25%;   
+    color: black; 
 }
 .h_syntax{
     background-color: slategray;

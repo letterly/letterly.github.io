@@ -1,5 +1,10 @@
 UNICALC CHANGELOG
 
+11 June 2023
+Fixed calculator display on iPhone
+Added the ∛, ∜, !, log, and ln functions / buttons
+Added Balinese, Javanese, Ol Chiki, and Persian numeral systems 
+
 10 June 2023
 Added seven numeral systems from South Asia and Africa
 The systems are Devanagari, Chakma, Adlam, Warang Citi, N'ko, Syloti, and Sourashtra

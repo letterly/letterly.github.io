@@ -30,10 +30,10 @@ numberstorage = {
     "Newar": "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙", //SA
     "N'ko": "߀߁߂߃߄߅߆߇߈߉", //WA
     "Odia": "୦୧୨୩୪୫୬୭୮୯", //SA
+    "Ol Chiki": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙", //SA
     "Pahawh Hmong": "𖭐𖭑𖭒𖭓𖭔𖭕𖭖𖭗𖭘𖭙", //SEA
     "Persian": "۰۱۲۳۴۵۶۷۸۹", //ME
     "Rohingya": "𐴰𐴱𐴲𐴳𐴴𐴵𐴶𐴷𐴸𐴹", //SA
-    "Santali": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙", //SA
     "Shan": "႐႑႒႓႔႕႖႗႘႙", //SEA
     "Sora": "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹", //SA
     "Sourashtra": "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙", //SA
@@ -63,7 +63,7 @@ function del(){
 }
 
 function solveMath(){
-    operationList = "+-⋅÷×*^"
+    operationList = "+-⋅÷×*^√∛∜!LN"
     constants = {
         "π": 3.14159,
         "e": 2.71828,
@@ -75,6 +75,7 @@ function solveMath(){
         "‱": 0.0001,
     }
     equation = display.textContent
+    equation = equation.replace(/log/g, "L").replace(/ln/g, "N")
 
     if(currentSystem != "Western Arabic"){
         for(a = 0; a < 10; a++){
@@ -91,7 +92,7 @@ function solveMath(){
 
     //
     equation = equation.replace(/\-\-/g, "+")
-    equation = equation.replace(/[\+\-⋅÷×\(\)\^%πeγφψ‰‱√]/g, "~$&~")
+    equation = equation.replace(/[\+\-⋅÷×\(\)\^%πeγφψ‰‱√∛∜!LN]/g, "~$&~")
     equation = equation.replace(/~~/g, "~")
     if(equation.startsWith("~")) equation = equation.slice(1)
     if(equation.endsWith("~")) equation = equation.slice(0,-1)
@@ -166,7 +167,31 @@ function orderOfOps(equationArray){
         else if(exponentarray.length > 0 && "^" == ("" + exponentarray[exponentarray.length - 1]).slice(-1)){
             exponentarray[exponentarray.length - 1] = Math.pow(+g, +exponentarray[exponentarray.length - 1].slice(0,-1))
         }
+        else if(exponentarray[exponentarray.length - 1] == "!"){
+            if(g % 1 == 0){
+                if(g >= 0){
+                    u = 1
+                    while(g >= 1){
+                        u *= g
+                        g--
+                    }
+                    exponentarray[exponentarray.length - 1] = u
+                }
+                else{
+                    alert('ERROR 3: NEGATIVE FACTORIAL')
+                    return 0
+                }
+            }
+            else{
+                alert('ERROR 2: NON-INTEGER FACTORIAL')
+                return 0
+            }
+        }
         else if(g == "√") exponentarray[exponentarray.length - 1] = Math.pow(exponentarray[exponentarray.length - 1], 0.5)
+        else if(g == "∛") exponentarray[exponentarray.length - 1] = Math.pow(exponentarray[exponentarray.length - 1], (1/3))
+        else if(g == "∜") exponentarray[exponentarray.length - 1] = Math.pow(exponentarray[exponentarray.length - 1], 0.25)
+        else if(g == "L") exponentarray[exponentarray.length - 1] = Math.log10(exponentarray[exponentarray.length - 1])
+        else if(g == "N") exponentarray[exponentarray.length - 1] = Math.log(exponentarray[exponentarray.length - 1])
         else exponentarray.push(g)
     }
     exponentarray = exponentarray.reverse()
@@ -213,7 +238,7 @@ function orderOfOps(equationArray){
 
 
 function reset(){
-    display.dir = ["Adlam", "Eastern Arabic", "N'ko"].includes(numsystem.value) ? "rtl" : "ltr"
+    display.dir = ["Adlam", "Eastern Arabic", "N'ko", "Rohingya", "Persian"].includes(numsystem.value) ? "rtl" : "ltr"
     display.style.fontFamily = numsystem.value == "Syloti" ? "Syloti" : "Verdana"
     for(r = 0; r < 10; r++) document.getElementById("D" + r).style.fontFamily = numsystem.value == "Syloti" ? "Syloti" : "Verdana"
     for(y = 0; y < 10; y++){
