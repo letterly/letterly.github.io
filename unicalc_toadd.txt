@@ -1,0 +1,3 @@
+List of things to add in the future
+
+[10 June 2023] I want to add absolute value, floor, and ceiling functions

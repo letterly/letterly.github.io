@@ -28,40 +28,39 @@
         <div id="calculator">
             <div id="display">5×(1+5)+(7-(7×7))</div>
             <div class="row">
-                <button id="D8" onclick="z(this.textContent)">8</button>
-                <button id="D9" onclick="z(this.textContent)">9</button>
-                <button id="Decimal" onclick="z(this.textContent)">.</button>
-                <button id="Clear" onclick="refresh()">C</button>
+                <button class="h_syntax" id="Decimal" onclick="z(this.textContent)">.</button>
+                <button class="h_syntax" id="OpenPar" onclick="z(this.textContent)">(</button>
+                <button class="h_syntax" id="ClosedPar" onclick="z(this.textContent)">)</button>
+                <button class="h_delete" id="Clear" onclick="refresh()">C</button>
+                <button class="h_delete" id="Clear" onclick="del()">⌫</button>
             </div>
             <div class="row">
-                <button id="D6" onclick="z(this.textContent)">6</button>
-                <button id="D7" onclick="z(this.textContent)">7</button>
-                <button id="OpenPar" onclick="z(this.textContent)">(</button>
-                <button id="ClosedPar" onclick="z(this.textContent)">)</button>
+                <button class="h_digit" id="D9" onclick="z(this.textContent)">9</button>
+                <button class="h_digit" id="D8" onclick="z(this.textContent)">8</button>
+                <button class="h_digit" id="D7" onclick="z(this.textContent)">7</button>
+                <button class="h_digit" id="D6" onclick="z(this.textContent)">6</button>
+                <button class="h_digit" id="D5" onclick="z(this.textContent)">5</button>
             </div>
             <div class="row">
-                <button id="D4" onclick="z(this.textContent)">4</button>
-                <button id="D5" onclick="z(this.textContent)">5</button>
-                <button id="OperationMultiply" onclick="z(this.textContent)">×</button>
-                <button id="OperationDivide" onclick="z(this.textContent)">÷</button>
+                <button class="h_digit" id="D4" onclick="z(this.textContent)">4</button>
+                <button class="h_digit" id="D3" onclick="z(this.textContent)">3</button>
+                <button class="h_digit" id="D2" onclick="z(this.textContent)">2</button>
+                <button class="h_digit" id="D1" onclick="z(this.textContent)">1</button>
+                <button class="h_digit" id="D0" onclick="z(this.textContent)">0</button>
             </div>
             <div class="row">
-                <button id="D2" onclick="z(this.textContent)">2</button>
-                <button id="D3" onclick="z(this.textContent)">3</button>
-                <button id="OperationAdd" onclick="z(this.textContent)">+</button>
-                <button id="OperationSubtract" onclick="z(this.textContent)">-</button>
+                <button class="h_operator" id="OperationAdd" onclick="z(this.textContent)">+</button>
+                <button class="h_operator" id="OperationSubtract" onclick="z(this.textContent)">-</button>
+                <button class="h_operator" id="OperationMultiply" onclick="z(this.textContent)">×</button>
+                <button class="h_operator" id="OperationDivide" onclick="z(this.textContent)">÷</button>
+                <button class="h_operator" id="Exponent" onclick="z(this.textContent)">^</button>
             </div>
             <div class="row">
-                <button id="D0" onclick="z(this.textContent)">0</button>
-                <button id="D1" onclick="z(this.textContent)">1</button>
-                <button id="Exponent" onclick="z(this.textContent)">^</button>
-                <button id="Equals" onclick="solveMath()">=</button>
-            </div>
-            <div class="row">
-                <button id="Percent" onclick="z(this.textContent)">%</button>
-                <button id="PiConstant" onclick="z(this.textContent)">π</button>
-                <button id="EConstant" onclick="z(this.textContent)">e</button>
-                <button id="GammaConstant" onclick="z(this.textContent)">γ</button>
+                <button class="h_constant" id="Percent" onclick="z(this.textContent)">%</button>
+                <button class="h_constant" id="PiConstant" onclick="z(this.textContent)">π</button>
+                <button class="h_constant" id="EConstant" onclick="z(this.textContent)">e</button>
+                <button class="h_constant" id="GammaConstant" onclick="z(this.textContent)">γ</button>
+                <button class="h_equals" id="Equals" onclick="solveMath()">=</button>
             </div>
         </div>
     </body>

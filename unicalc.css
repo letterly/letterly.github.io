@@ -1,5 +1,5 @@
 #display{
-    width: 250px;
+    width: 316px;
     height: 55px;
     background-color: green;
     border: 2px solid black;
@@ -12,8 +12,8 @@
     src: url(fonts/SylotiNagri-Regular.ttf);
 }
 button{
-    width: 50px;
-    height: 50px;
+    width: 51px;
+    height: 51px;
     border-radius: 10px;
     background-color: antiquewhite;
     margin: 5px;
@@ -24,10 +24,10 @@ button{
 #calculator{
     background-color: gray;
     border: 5px solid black;
-    width: 256px;
+    width: 322px;
     padding: 10px;
-    margin-left: calc((100% - 256px) / 2);
-    margin-right: calc((100% - 256px) / 2);
+    margin-left: calc((100% - 306px) / 2);
+    margin-right: calc((100% - 306px) / 2);
 }
 select{
     font-size: 36px;

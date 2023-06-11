@@ -58,6 +58,10 @@ function refresh(){
     display.textContent = ""
 }
 
+function del(){
+    display.textContent = Array.from(display.textContent).slice(0, -1).join("")
+}
+
 function solveMath(){
     operationList = "+-⋅÷×*^"
     constants = {
