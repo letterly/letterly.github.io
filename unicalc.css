@@ -1,10 +1,10 @@
 #display{
-    width: 388px;
+    width: 466px;
     height: 55px;
     background-color: green;
     border: 2px solid black;
     color: white;
-    font-size: 24px;
+    font-size: 32px;
     font-family: Verdana;
 }
 @font-face {
@@ -12,22 +12,24 @@
     src: url(fonts/SylotiNagri-Regular.ttf);
 }
 button{
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
     border-radius: 10px;
     background-color: antiquewhite;
     margin: 5px;
     border: 2px solid black;
     font-size: 36px;
     text-align: center;
+    color: black;
+    font-weight: 700;
 }
 #calculator{
     background-color: gray;
     border: 5px solid black;
-    width: 394px;
+    width: 474px;
     padding: 10px;
-    margin-left: calc((100% - 404px) / 2);
-    margin-right: calc((100% - 404px) / 2);
+    margin-left: calc((100% - 484px) / 2);
+    margin-right: calc((100% - 484px) / 2);
     padding: 20px;
     border-radius: 10px;
 }
