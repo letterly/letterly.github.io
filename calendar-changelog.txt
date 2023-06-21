@@ -1,3 +1,7 @@
+20 Jun 23
+Date now displayed under calendar selector
+French Republican calendar now selectable
+
 19 Jun 23
 Added that the 'day starts at sunset' to Coptic and Ethiopian
 Added information on the first day of the week by calendar
