@@ -419,7 +419,7 @@ function convert(){
 
 
 function internationalize(dy, cl){
-    if(cl == "Gregorian" || cl.includes("Julian")){
+    if(cl == "Gregorian" || cl.includes("Julian") || cl.includes("French")){
         dy = dy.split(" ")
         dy[0] = numeralize(dy[0], "Roman")
         dy[2] = numeralize(dy[2], "Roman")
