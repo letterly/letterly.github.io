@@ -24,9 +24,20 @@ for(c of Object.entries(calendars)){
 for(d = 0; d < 80000; d++){
 
     day = week[d % 7]
+    mayaday = d + 1830738
+    bakatun = Math.floor(mayaday / 144000)
+    mayaday -= bakatun * 144000
+    katun = Math.floor(mayaday / 7200)
+    mayaday -= katun * 7200
+    tun = Math.floor(mayaday / 360)
+    mayaday -= tun * 360
+    winal = Math.floor(mayaday / 20)
+    mayaday -= winal * 20
+    kin = mayaday
 
     obj = {
         Day: day,
+        Mayan: `${bakatun}.${katun}.${tun}.${winal}.${kin}`,
         holidays: [],
     }
 
@@ -157,9 +168,6 @@ for(d = 0; d < 80000; d++){
                             newv += 33
                         }
                         newv += 56
-                    }
-                    if(g.startDay.year == 2018){
-                        console.log(hol[0] + " " + newv)
                     }
                     if(newv >= 222) easterDay = (newv - 221) + " June"
                     else if(newv >= 191) easterDay = (newv - 190) + " May"
@@ -314,7 +322,7 @@ function convert(){
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
     holidays.innerHTML = ""
-    for(ourcalendar of Object.keys(thatspecificday)){
+    for(ourcalendar of Object.keys(thatspecificday).sort()){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
                 holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name.split(":")[0]}</a>${h.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[h.name.split(":")[1]]}">(${h.name.split(":")[1]})</a>` : ``}</h2>`
@@ -374,20 +382,35 @@ function convert(){
                     },
                 }
                 dOw = thatspecificday[ourcalendar]
-                answer.innerHTML += "<div class='cal day'><b>Day of the Week</b><br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
+                // answer.innerHTML += "<div class='cal day'><b>Day of the Week</b><br>" + dOw + ` ${days[dOw].es} ${days[dOw].fr}<br>${days[dOw].ru} ${days[dOw].zh} ${days[dOw].ar}</div>`
+            }
+            else if(ourcalendar == "Mayan"){
+                console.log(thatspecificday[ourcalendar])
+                answer.innerHTML += `<div class='cal mayan'><span><a target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a><br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
             }
             else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
-                answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
+                answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br><small>" + thatspecificday.Day + "</small> " + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
             }
         }
     }
-    answer.innerHTML += `<div class='cal time'>
+    answer.innerHTML += 
+    `<div class='cal time'>
     <div class="line">🌕 days start at midnight</div>
     <div class="line">
     🌙 days start at sunset
     </div>
     <div class="line">
     ☀️ days start at sunrise
+    </div>
+    </div>`
+    answer.innerHTML += 
+    `<div class='cal time'>
+    <div class="line">🟥 weeks start on Saturday</div>
+    <div class="line">
+    🟧 weeks start on Sunday
+    </div>
+    <div class="line">
+    🟨 weeks start on Monday
     </div>
     </div>`
     answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
@@ -399,7 +422,6 @@ function internationalize(dy, cl){
     if(cl == "Gregorian" || cl.includes("Julian")){
         dy = dy.split(" ")
         dy[0] = numeralize(dy[0], "Roman")
-        dy[1] = {"January": "IANVARIVS", "February": "FEBRUARIVS", "March": "MARTIUS", "April": "APRILIS", "May": "MAIVS", "June": "IVNIVS", "July": "QVINTILIS", "August": "SEXTILIS", "September": "SEPTEMBER", "October": "OCTOBER", "November": "NOVEMBER", "December": "DECEMBER"}[dy[1]]
         dy[2] = numeralize(dy[2], "Roman")
         return dy.join(" ")
     }

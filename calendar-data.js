@@ -786,6 +786,78 @@ calendars = {
             },
         },
     },
+    "French Republican": {
+        months: [
+            {
+                name: "Vendémiaire",
+                days: 30,
+            },
+            {
+                name: "Brumaire",
+                days: 30,
+            },
+            {
+                name: "Frimaire",
+                days: 30,
+            },
+            {
+                name: "Nivôse",
+                days: 30,
+            },
+            {
+                name: "Pluviôse",
+                days: 30,
+            },
+            {
+                name: "Ventôse",
+                days: 30,
+            },
+            {
+                name: "Germinal",
+                days: 30,
+            },
+            {
+                name: "Floréal",
+                days: 30,
+            },
+            {
+                name: "Prairial",
+                days: 30,
+            },
+            {
+                name: "Messidor",
+                days: 30,
+            },
+            {
+                name: "Thermidor",
+                days: 30,
+            },
+            {
+                name: "Fructidor",
+                days: 30,
+            },
+            {
+                name: "Sansculottides",
+                days: "5/6",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 12,
+            method: function(x){
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 12,
+            monthcount: 3,
+            year: 108,
+        },
+        bounds: [108, 300],
+        era: "",
+        link: "https://en.wikipedia.org/wiki/French_Republican_calendar",
+        holidays: {},
+    },
     Hebrew: {
         months: [
             {

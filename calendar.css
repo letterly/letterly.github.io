@@ -1,6 +1,10 @@
 @font-face {
     font-family: "Montserrat";
-    src: url(Mont.ttf);
+    src: url(fonts/Mont.ttf);
+}
+@font-face {
+    font-family: "Mayan";
+    src: url(fonts/Mayan.ttf);
 }
 *{
     font-family: 'Montserrat';
@@ -13,7 +17,6 @@ body{
     width: 100%;
     display: block;
 }
-
 
 #thecalendar{
     color: black;
@@ -80,17 +83,37 @@ span{
     font-weight: 700;
 }
 
-.cal:before, #holidays h2:before{
+.cal::before, #holidays h2::before{
     content: "🌕 ";
 }
-.hebrew:before,  .islamic_tabular:before, .islamic_tabular_tayyibi:before, .baháí:before, .javanese:before{
-    content: '🌙 ' !important;
+.cal a::after{
+    content: " 🟨";
 }
-.fasli_zoroastrian:before,  .qadimi:before, .mandaean:before, .shahanshahi:before{
-    content: '☀️ ' !important;
+.gregorian a::after{
+    content: " 🟧/🟨";
 }
-.day:before, .harris:before, .time:before{
-    content: "" !important;
+.hebrew a::after, .minguo a::after, .thai a::after{
+    content: " 🟧"
+}
+.islamic_tabular a::after, .islamic_tabular_tayyibi a::after, .baháí a::after, .solar_hijri a::after, .tabarian a::after{
+    content: " 🟥";
+}
+.mayan a::after, .french_republican a::after, .harris a::after, .javanese a::after{
+    content: "";
+}
+/*temporary*/
+.berber a::after, .kurdish a::after, .thai a::after, .shahanshahi a::after, .qadimi a::after, .nanakshahi a::after, .fasli_zoroastrian a::after, .coptic a::after, .indian_national a::after, .bengali a::after{
+    content: "";
+}
+
+.hebrew::before,  .islamic_tabular::before, .islamic_tabular_tayyibi::before, .baháí::before, .javanese::before, .coptic::before, .ethiopian::before, .mayan::before{
+    content: '🌙 ';
+}
+.fasli_zoroastrian::before,  .qadimi::before, .mandaean::before, .shahanshahi::before{
+    content: '☀️ ';
+}
+.day::before, .harris::before, .time::before{
+    content: "";
 }
 
 @media (max-width: 1430px){
@@ -158,6 +181,10 @@ span{
     background-color: indianred;
     color: indianred;
 }
+.french_republican{ 
+    color: rebeccapurple;
+    background-color: rebeccapurple
+}
 .gregorian, .julian, .revised_julian{
     background-color: darkslategray;
     color: darkslategray;
@@ -212,7 +239,14 @@ span{
 }
 .thai_solar{
     background-color: orangered;
-    background-color: orangered;
+    color: orangered;
+}
+.mayan{
+    background-color: darkgreen;
+    color: darkgreen;
+}
+#mayannumerals{
+    font-family: 'Mayan';
 }
 .day{
     background-color: d2d2d2;

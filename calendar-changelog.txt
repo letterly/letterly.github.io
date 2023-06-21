@@ -1,3 +1,9 @@
+19 Jun 23
+Added that the 'day starts at sunset' to Coptic and Ethiopian
+Added information on the first day of the week by calendar
+Added the Mayan and French Republican calendars
+Removed the panel showing day of the week
+
 4 Jun 23
 Made some small stylistic changes
 Added Western and Eastern Easter, which has a complicated algorithm
