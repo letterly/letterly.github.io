@@ -133,7 +133,7 @@ for(d = 0; d < 80000; d++){
                         })
                     }
                 } //twin birthdays
-                else if(n == "Gregorian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost", "Trinity Sunday"].includes(hol[0])){
+                else if(n == "Gregorian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost", "Trinity Sunday", "Ash Wednesday", "Shrove Tuesday"].includes(hol[0])){
                     eY = g.startDay.year
                     eA = eY % 19
                     eB = Math.floor(eY / 100)
@@ -149,31 +149,38 @@ for(d = 0; d < 80000; d++){
                     eN = Math.floor((eH + eL - 7 * eM + 90) / 25)
                     eP = (eH + eL - 7 * eM + 33 * eN + 19) % 32
                     newv = eH + eL - 7 * eM + 33 * eN + 19
+                    if(newv <= 127) newv += 33
                     if(hol[0] == "Palm Sunday") newv -= 7
                     else if(hol[0] == "Maundy Thursday") newv -= 3
+                    else if(hol[0] == "Ash Wednesday"){
+                        newv -= 46
+                    }
+                    else if(hol[0] == "Shrove Tuesday"){
+                        newv -= 47
+                    }
                     else if(hol[0] == "Feast of the Ascension"){
-                        if(newv <= 127){
-                            newv += 33
-                        }
                         newv += 39
                     }
                     else if(hol[0] == "Pentecost"){
-                        if(newv <= 127){
-                            newv += 33
-                        }
                         newv += 49
                     }
                     else if(hol[0] == "Trinity Sunday"){
-                        if(newv <= 127){
-                            newv += 33
-                        }
                         newv += 56
                     }
                     if(newv >= 222) easterDay = (newv - 221) + " June"
                     else if(newv >= 191) easterDay = (newv - 190) + " May"
                     else if(newv >= 161) easterDay = (newv - 160) + " April"
-                    else if(newv <= 160 && newv >= 127) newv -= 33
-                    if(newv <= 127) easterDay = (newv - 96) + " March"
+                    else if(newv <= 160 && newv >= 130) easterDay = (newv - 129) + " March"
+                    else if(newv <= 129){
+                        if(eY == 2022) console.log(eY + ": " + newv)
+                        if(eY % 4 == 0 && !(eY % 100 == 0 && eY % 400 != 0)){
+                            easterDay = (newv - 100) + " February"
+                        }
+                        else{
+                            easterDay = (newv - 101) + " February"
+                        }
+                        //console.log(eY + ": " + easterDay)
+                    }
                     if(leday == easterDay){
                         obj.holidays.push({
                             name: hol[0],
@@ -385,7 +392,6 @@ function convert(){
                 dayname.innerHTML = "<b>Day of the Week</b> " + dOw + ` | ${days[dOw].es} | ${days[dOw].fr} | ${days[dOw].ru} | ${days[dOw].zh} | ${days[dOw].ar}`
             }
             else if(ourcalendar == "Mayan"){
-                console.log(thatspecificday[ourcalendar])
                 answer.innerHTML += `<div class='cal mayan'><span><a target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a><br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
             }
             else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
@@ -517,6 +523,8 @@ function internationalize(dy, cl){
     }
     else if(cl == "Coptic"){
         dy = dy.split(" ")
+        dy[0] = numeralize(dy[0], "Coptic")
+        dy[2] = numeralize(dy[2], "Coptic")
         dy = `${dy[0]} ${{"Thout": "Ⲑⲱⲟⲩⲧ", "Paopi": "Ⲡⲁⲟⲡⲓ", "Hathor": "Ⲁⲑⲱⲣ", "Koiak": "Ⲭⲟⲓⲁⲕ", "Tobi": "Ⲧⲱⲃⲓ", "Meshir": "Ⲙⲉϣⲓⲣ", "Paremhat": "Ⲡⲁⲣⲉⲙϩⲁⲧ", "Parmouti": "Ⲫⲁⲣⲙⲟⲩⲑⲓ", "Pashons": "Ⲡⲁϣⲟⲛⲥ", "Paoni": "Ⲡⲁⲱⲛⲓ", "Epip": "Ⲉⲡⲓⲡ", "Mesori": "Ⲙⲉⲥⲱⲣⲓ", "Pi Kogi Enavot": "Ⲡⲓⲕⲟⲩϫⲓ ⲛ̀ⲁ̀ⲃⲟⲧ",}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
         return dy
     }
@@ -631,6 +639,45 @@ function numeralize(number, era){
             "Ա": 1,
         }
         for(rA of Object.entries(armenianArray)){
+            if(number >= rA[1]){
+                finalNum += rA[0]
+                number = number - rA[1]
+            }
+        }
+        return finalNum
+    }
+    else if(era == "Coptic"){
+        copticArray = {
+            "𐋡𐋠": 1000,
+            "𐋻": 900,
+            "𐋺": 800,
+            "𐋹": 700,
+            "𐋸": 600,
+            "𐋷": 500,
+            "𐋶": 400,
+            "𐋵": 300,
+            "𐋴": 200,
+            "𐋳": 100,
+            "𐋲": 90,
+            "𐋱": 80,
+            "𐋰": 70,
+            "𐋯": 60,
+            "𐋮": 50,
+            "𐋭": 40,
+            "𐋬": 30,
+            "𐋫": 20,
+            "𐋪": 10,
+            "𐋩": 9,
+            "𐋨": 8,
+            "𐋧": 7,
+            "𐋦": 6,
+            "𐋥": 5,
+            "𐋤": 4,
+            "𐋣": 3,
+            "𐋢": 2,
+            "𐋡": 1,
+        }
+        for(rA of Object.entries(copticArray)){
             if(number >= rA[1]){
                 finalNum += rA[0]
                 number = number - rA[1]

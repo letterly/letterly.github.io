@@ -1,6 +1,13 @@
+24 Jun 23
+First day now shown for Indian National and Kurdish calendars
+Fixed an issue with how first day and day start time was displayed
+Old Coptic numerals were added to the Coptic calendar
+Shrove Tuesday and Ash Wednesday were added to the Gregorian calendar
+
 20 Jun 23
 Date now displayed under calendar selector
 French Republican calendar now selectable
+French Republican calendar now shows Roman numerals
 
 19 Jun 23
 Added that the 'day starts at sunset' to Coptic and Ethiopian

@@ -71,6 +71,12 @@ calendars = {
             "Easter": {
                 link: "https://en.wikipedia.org/wiki/Easter",
             },
+            "Ash Wednesday": {
+                link: "https://en.wikipedia.org/wiki/Ash_Wednesday",
+            },
+            "Shrove Tuesday": {
+                link: "https://en.wikipedia.org/wiki/Shrove_Tuesday",
+            },
             "Palm Sunday": {
                 link: "https://en.wikipedia.org/wiki/Palm_Sunday",
             },

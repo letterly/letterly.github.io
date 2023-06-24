@@ -83,26 +83,29 @@ span{
     font-weight: 700;
 }
 
-.cal::before, #holidays h2::before{
+.cal::before{
     content: "🌕 ";
 }
-.cal a::after{
+#holidays h2::before{
+    content: "";
+}
+#answer .cal a::after{
     content: " 🟨";
 }
-.gregorian a::after{
+#answer .gregorian a::after{
     content: " 🟧/🟨";
 }
-.hebrew a::after, .minguo a::after, .thai a::after{
+#answer .hebrew a::after, #answer .minguo a::after, #answer .thai a::after, #answer .indian_national a::after{
     content: " 🟧"
 }
-.islamic_tabular a::after, .islamic_tabular_tayyibi a::after, .baháí a::after, .solar_hijri a::after, .tabarian a::after{
+#answer .islamic_tabular a::after, #answer .islamic_tabular_tayyibi a::after, #answer .baháí a::after, #answer .solar_hijri a::after, #answer .tabarian a::after, #answer .kurdish a::after{
     content: " 🟥";
 }
-.mayan a::after, .french_republican a::after, .harris a::after, .javanese a::after{
+#answer .mayan a::after, #answer .french_republican a::after, #answer .harris a::after, #answer .javanese a::after{
     content: "";
 }
 /*temporary*/
-.berber a::after, .kurdish a::after, .thai a::after, .shahanshahi a::after, .qadimi a::after, .nanakshahi a::after, .fasli_zoroastrian a::after, .coptic a::after, .indian_national a::after, .bengali a::after{
+#answer .berber a::after, #answer .thai a::after, #answer .shahanshahi a::after, #answer .qadimi a::after, #answer .nanakshahi a::after, #answer .fasli_zoroastrian a::after, #answer .coptic a::after, #answer .bengali a::after{
     content: "";
 }
 
