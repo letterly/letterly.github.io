@@ -1,3 +1,8 @@
+27 Jun 23
+Gregorian, Mandaean, Solar Hijri, French Republican, Islamic, Bengali, and Hebrew months are now underlined and linked to articles
+Shows first day of week for every calendar, "not applicable" symbol added
+Extended reach of Julian and Kurdish calendars
+
 24 Jun 23
 First day now shown for Indian National and Kurdish calendars
 Fixed an issue with how first day and day start time was displayed

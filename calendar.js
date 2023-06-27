@@ -392,10 +392,35 @@ function convert(){
                 dayname.innerHTML = "<b>Day of the Week</b> " + dOw + ` | ${days[dOw].es} | ${days[dOw].fr} | ${days[dOw].ru} | ${days[dOw].zh} | ${days[dOw].ar}`
             }
             else if(ourcalendar == "Mayan"){
-                answer.innerHTML += `<div class='cal mayan'><span><a target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a><br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
+                answer.innerHTML += `<div class='cal mayan'><span><a class="callink" target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a><br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
             }
             else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
-                answer.innerHTML += "<div class='cal " + ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + "'><span><a target='_blank' href='" + calendars[ourcalendar].link + "'>" + ourcalendar + "</a><br>" + thatspecificday[ourcalendar] + " " + calendars[ourcalendar].era + "<br>" + internationalize(thatspecificday[ourcalendar], ourcalendar) + "</span></div>"
+                answer.innerHTML += 
+                "<div class='cal " + 
+                ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + 
+                "'><span><a class='callink' target='_blank' href='" + 
+                calendars[ourcalendar].link + 
+                "'>" + 
+                ourcalendar + 
+                "</a><br>" + 
+                thatspecificday[ourcalendar].split(" ")[0] + 
+                " " + 
+                (
+                    calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" "))[0].link
+                    ? 
+                    `<a class='monthlink' href='${calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" "))[0].link}' target='_blank'>` + 
+                    thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" ") +
+                    "</a>"
+                    :
+                    thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" ")
+                ) + 
+                " " + 
+                thatspecificday[ourcalendar].split(" ").slice(-1)[0] + 
+                " " + 
+                calendars[ourcalendar].era + 
+                "<br>" + 
+                internationalize(thatspecificday[ourcalendar], ourcalendar) + 
+                "</span></div>"
             }
         }
     }
@@ -411,12 +436,12 @@ function convert(){
     </div>`
     answer.innerHTML += 
     `<div class='cal time'>
-    <div class="line">🟥 weeks start on Saturday</div>
+    <div class="line">Weeks start on...</div>
     <div class="line">
-    🟧 weeks start on Sunday
+    🟥 (Saturday) 🟧 (Sunday)
     </div>
     <div class="line">
-    🟨 weeks start on Monday
+    🟨 (Monday) ⬜ (Not applicable)
     </div>
     </div>`
     answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
@@ -849,50 +874,62 @@ function generateYear(y, n){
                     {
                         name: "April",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/April",
                     },
                     {
                         name: "May",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/May",
                     },
                     {
                         name: "June",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/June",
                     },
                     {
                         name: "July",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/July",
                     },
                     {
                         name: "August",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/August",
                     },
                     {
                         name: "September",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/September",
                     },
                     {
                         name: "October",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/October",
                     },
                     {
                         name: "November",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/November",
                     },
                     {
                         name: "December",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/December",
                     },
                     {
                         name: "January",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/January",
                     },
                     {
                         name: "February",
                         days: ((y - 542) % 4 == 0 && !((y - 542) % 100 == 0 && (y - 542) % 400 != 0)) ? 29 : 28,
+                        link: "https://en.wikipedia.org/wiki/February",
                     },
                     {
                         name: "March",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/March",
                     },
                 ],
                 holidays: {},
@@ -904,38 +941,47 @@ function generateYear(y, n){
                     {
                         name: "April",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/April",
                     },
                     {
                         name: "May",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/May",
                     },
                     {
                         name: "June",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/June",
                     },
                     {
                         name: "July",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/July",
                     },
                     {
                         name: "August",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/August",
                     },
                     {
                         name: "September",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/September",
                     },
                     {
                         name: "October",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/October",
                     },
                     {
                         name: "November",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/November",
                     },
                     {
                         name: "December",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/December",
                     },
                 ],
                 holidays: {},
@@ -947,50 +993,62 @@ function generateYear(y, n){
                     {
                         name: "January",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/January",
                     },
                     {
                         name: "February",
-                        days: ((y - 543) % 4 == 0 && !((y - 543) % 100 == 0 && (y - 543) % 400 != 0)) ? 29 : 28,                
+                        days: ((y - 543) % 4 == 0 && !((y - 543) % 100 == 0 && (y - 543) % 400 != 0)) ? 29 : 28,      
+                        link: "https://en.wikipedia.org/wiki/February",          
                     },
                     {
                         name: "March",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/March",
                     },
                     {
                         name: "April",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/April",
                     },
                     {
                         name: "May",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/May",
                     },
                     {
                         name: "June",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/June",
                     },
                     {
                         name: "July",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/July",
                     },
                     {
                         name: "August",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/August",
                     },
                     {
                         name: "September",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/September",
                     },
                     {
                         name: "October",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/October",
                     },
                     {
                         name: "November",
                         days: 30,
+                        link: "https://en.wikipedia.org/wiki/November",
                     },
                     {
                         name: "December",
                         days: 31,
+                        link: "https://en.wikipedia.org/wiki/December",
                     },
                 ],
                 holidays: {},
