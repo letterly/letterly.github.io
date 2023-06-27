@@ -436,50 +436,62 @@ calendars = {
             {
                 name: "Yennayer",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/January",
             },
             {
                 name: "Yebrayer",
                 days: "28/29",
+                link: "https://en.wikipedia.org/wiki/February",
             },
             {
                 name: "Mares",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/March",
             },
             {
                 name: "Yebrir",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/April",
             },
             {
                 name: "May",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/May",
             },
             {
                 name: "Yunyu",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/June",
             },
             {
                 name: "Yulyuz",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/July",
             },
             {
                 name: "Ɣuct",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/August",
             },
             {
                 name: "Cutembir",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/September",
             },
             {
                 name: "Ktuber",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/October",
             },
             {
                 name: "Nwambir",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/November",
             },
             {
                 name: "Dujembir",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/December",
             },
         ],
         intercalary: {
@@ -576,54 +588,67 @@ calendars = {
             {
                 name: "Thout",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Thout",
             },
             {
                 name: "Paopi",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Paopi",
             },
             {
                 name: "Hathor",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Hathor_(month)",
             },
             {
                 name: "Koiak",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Koiak",
             },
             {
                 name: "Tobi",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Tobi_(month)",
             },
             {
                 name: "Meshir",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Meshir",
             },
             {
                 name: "Paremhat",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Paremhat",
             },
             {
                 name: "Parmouti",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Parmouti",
             },
             {
                 name: "Pashons",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Pashons",
             },
             {
                 name: "Paoni",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Paoni",
             },
             {
                 name: "Epip",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Epip",
             },
             {
                 name: "Mesori",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Mesori",
             },
             {
                 name: "Pi Kogi Enavot",
                 days: "5/6",
+                link: "https://en.wikipedia.org/wiki/Intercalary_month_(Egypt)#Coptic",
             },
         ],
         intercalary: {
@@ -901,6 +926,86 @@ calendars = {
         link: "https://en.wikipedia.org/wiki/French_Republican_calendar",
         holidays: {},
     },
+    Japanese: {
+        months: [
+            {
+                name: "January",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/January",
+            },
+            {
+                name: "February",
+                days: "28/29",
+                link: "https://en.wikipedia.org/wiki/February",
+            },
+            {
+                name: "March",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/March",
+            },
+            {
+                name: "April",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/April",
+            },
+            {
+                name: "May",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/May",
+            },
+            {
+                name: "June",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/June",
+            },
+            {
+                name: "July",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/July",
+            },
+            {
+                name: "August",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/August",
+            },
+            {
+                name: "September",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/September",
+            },
+            {
+                name: "October",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/October",
+            },
+            {
+                name: "November",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/November",
+            },
+            {
+                name: "December",
+                days: 31,
+                link: "https://en.wikipedia.org/wiki/December",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 1,
+            method: function(x){
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 1,
+            monthcount: 0,
+            year: 1900,
+        },
+        bounds: [1900, 2024],
+        era: "",
+        link: "https://en.wikipedia.org/wiki/Japanese_calendar",
+        holidays: {},
+    },
     Hebrew: {
         months: [
             {
@@ -1099,50 +1204,62 @@ calendars = {
             {
                 name: "Chaitra",
                 days: "30/31",
+                link: "https://en.wikipedia.org/wiki/Chaitra",
             },
             {
                 name: "Vaisakha",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Vaisakha",
             },
             {
                 name: "Jyaistha",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Jyeshtha_(month)",
             },
             {
                 name: "Asadha",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Ashadha",
             },
             {
                 name: "Sravana",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Shravana_(month)",
             },
             {
                 name: "Bhadra",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Bhadra_(Hindu_calendar)",
             },
             {
                 name: "Asvina",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Ashvin_(month)",
             },
             {
                 name: "Kartika",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/K%C4%81rtika_(month)",
             },
             {
                 name: "Agrahayana",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Agrahayana",
             },
             {
                 name: "Pausa",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Pausha",
             },
             {
                 name: "Magha",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Magha_(month)",
             },
             {
                 name: "Phalguna",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Phalguna",
             },
         ],
         intercalary: {
@@ -1874,50 +1991,62 @@ calendars = {
             {
                 name: "Chet",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Chet_(month)",
             },
             {
                 name: "Vaisakh",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Vaisakh",
             },
             {
                 name: "Jeth",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Jeth",
             },
             {
                 name: "Harh",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Harh",
             },
             {
                 name: "Sawan",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Sawan",
             },
             {
                 name: "Bhadon",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Bhadon",
             },
             {
                 name: "Assu",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Assu",
             },
             {
                 name: "Kattak",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Kattak",
             },
             {
                 name: "Maghar",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Magghar_(month)",
             },
             {
                 name: "Poh",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Poh",
             },
             {
                 name: "Magh",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Magh_(Sikh_calendar)",
             },
             {
                 name: "Phaggan",
                 days: "30/31",
+                link: "https://en.wikipedia.org/wiki/Phaggan",
             },
         ],
         intercalary: {
@@ -1957,50 +2086,62 @@ calendars = {
             {
                 name: "Kachhalā",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Kachhala_(month)",
             },
             {
                 name: "Thinlā",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Thinla_(month)",
             },
             {
                 name: "Pwanhelā",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Pwanhela_(month)",
             },
             {
                 name: "Silā",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Sila_(month)",
             },
             {
                 name: "Chilā",
                 days: 30,
+                link: "https://en.wikipedia.org/wiki/Chila_(month)",
             },
             {
                 name: "Chaulā",
                 days: "29/30",
+                link: "https://en.wikipedia.org/wiki/Chaula_(month)",
             },
             {
                 name: "Bachhalā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Bachhala_(month)",
             },
             {
                 name: "Tachhalā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Tachhala_(month)",
             },
             {
                 name: "Dilā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Dila_(month)",
             },
             {
                 name: "Gunlā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Gunla",
             },
             {
                 name: "Yanlā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Yanla_(month)",
             },
             {
                 name: "Kaulā",
                 days: 31,
+                link: "https://en.wikipedia.org/wiki/Kaula_(month)",
             },
         ],
         intercalary: {

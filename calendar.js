@@ -19,7 +19,10 @@ for(c of Object.entries(calendars)){
     }
 }
 
-
+japanEraCount = 0
+japaneseEraDates = ["30 July 1912", "25 December 1926", "8 January 1989", "1 May 2019"]
+japaneseEras = ["Meiji", "Taishō", "Shōwa", "Heisei", "Reiwa"]
+japaneseSubtract = [1867, 1911, 1925, 1988, 2018]
 
 for(d = 0; d < 80000; d++){
 
@@ -48,7 +51,15 @@ for(d = 0; d < 80000; d++){
             if(g.startDay.dayinmonth == 1 && g.startDay.monthcount == 0){
                 yearObject[n] = generateYear(g.startDay.year, n)
             }
-            obj[n] = (g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + g.startDay.year)
+            if(n == "Japanese"){
+                if(japanEraCount != 4 && japaneseEraDates[japanEraCount] == g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + g.startDay.year){
+                    japanEraCount++
+                }
+                obj[n] = (g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + japaneseEras[japanEraCount] + " " + (g.startDay.year - japaneseSubtract[japanEraCount]))
+            }
+            else{
+                obj[n] = (g.startDay.dayinmonth + " " + yearObject[n].months[g.startDay.monthcount].name + " " + g.startDay.year)
+            }
     
             if(g.startDay.dayinmonth >= yearObject[n].months[g.startDay.monthcount].days){
                 g.startDay.dayinmonth = 0
@@ -395,6 +406,7 @@ function convert(){
                 answer.innerHTML += `<div class='cal mayan'><span><a class="callink" target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a><br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
             }
             else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
+                zzz = ourcalendar == "Japanese" ? -2 : -1
                 answer.innerHTML += 
                 "<div class='cal " + 
                 ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + 
@@ -406,16 +418,16 @@ function convert(){
                 thatspecificday[ourcalendar].split(" ")[0] + 
                 " " + 
                 (
-                    calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" "))[0].link
+                    calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, zzz).join(" "))[0].link
                     ? 
-                    `<a class='monthlink' href='${calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" "))[0].link}' target='_blank'>` + 
-                    thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" ") +
+                    `<a class='monthlink' href='${calendars[ourcalendar].months.filter(x => x.name == thatspecificday[ourcalendar].split(" ").slice(1, zzz).join(" "))[0].link}' target='_blank'>` + 
+                    thatspecificday[ourcalendar].split(" ").slice(1, zzz).join(" ") +
                     "</a>"
                     :
-                    thatspecificday[ourcalendar].split(" ").slice(1, -1).join(" ")
+                    thatspecificday[ourcalendar].split(" ").slice(1, zzz).join(" ")
                 ) + 
                 " " + 
-                thatspecificday[ourcalendar].split(" ").slice(-1)[0] + 
+                thatspecificday[ourcalendar].split(" ").slice(zzz).map(x => isNaN(x) ? `<a target='_blank' class='monthlink' href='https://en.wikipedia.org/wiki/` + x + "_era'>" + [x] + "</a>" : x).join(" ") + 
                 " " + 
                 calendars[ourcalendar].era + 
                 "<br>" + 
@@ -500,6 +512,11 @@ function internationalize(dy, cl){
         }
         dy = dy.split(" ")
         dy = `${dy[0]} ${{"Sura": "ꦱꦸꦫ", "Sapar": "ꦱꦥꦂ", "Mulud": "ꦩꦸꦭꦸꦢ꧀", "Bakda Mulud": "ꦧꦏ꧀ꦢꦩꦸꦭꦸꦢ꧀", "Jumadilawal": "ꦗꦸꦩꦢꦶꦭꦮꦭ꧀", "Jumadilakir": "ꦗꦸꦩꦢꦶꦭꦏꦶꦂ", "Rejeb": "ꦉꦗꦼꦧ꧀", "Ruwah": "ꦫꦸꦮꦃ", "Pasa": "ꦥꦱ", "Sawal": "ꦱꦮꦭ꧀", "Sela": "ꦱꦼꦭ", "Besar": "ꦧꦼꦱꦂ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
+        return dy
+    }
+    else if(cl == "Japanese"){
+        dy = dy.split(" ")
+        dy = `${{"Heisei": "平成", "Shōwa": "昭和", "Taishō": "大正", "Meiji": "明治", "Reiwa": "令和"}[dy[2]]}${dy[3]}年${{"January": "1月", "February": "2月", "March": "3月", "April": "4月", "May": "5月", "June": "6月", "July": "7月", "August": "8月", "September": "9月", "October": "10月", "November": "11月", "December": "12月"}[dy[1]]}${dy[0]}日`
         return dy
     }
     else if(cl == "Indian National" || cl == "Nepal Sambat Solar"){
@@ -1055,9 +1072,7 @@ function generateYear(y, n){
             }
         }
     }
-    if(n == "Thai Solar"){
-        return gg
-    }
+    if(n == "Thai Solar") return gg
 
     //add holidays
     yO.holidays = calendars[n].holidays

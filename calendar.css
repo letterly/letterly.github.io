@@ -95,7 +95,7 @@ span{
 .gregorian .callink::after{
     content: " 🟧/🟨";
 }
-.armenian .callink::after, .bengali .callink::after, .mandaean .callink::after, .nepal_sambat_solar .callink::after, .ethiopian .callink::after, .coptic .callink::after, .juche .callink::after, .hebrew .callink::after, .minguo .callink::after, .thai .callink::after, .indian_national .callink::after, .nanakshahi .callink::after{
+.japanese .callink::after, .armenian .callink::after, .bengali .callink::after, .mandaean .callink::after, .nepal_sambat_solar .callink::after, .ethiopian .callink::after, .coptic .callink::after, .juche .callink::after, .hebrew .callink::after, .minguo .callink::after, .thai .callink::after, .indian_national .callink::after, .nanakshahi .callink::after{
     content: " 🟧"
 }
 .islamic_tabular .callink::after, .islamic_tabular_tayyibi .callink::after, .baháí .callink::after, .solar_hijri .callink::after, .tabarian .callink::after, .kurdish .callink::after{
@@ -250,6 +250,10 @@ span{
 .mayan{
     background-color: darkgreen;
     color: darkgreen;
+}
+.japanese{
+    background-color: tomato;
+    color: tomato;
 }
 #mayannumerals{
     font-family: 'Mayan';
