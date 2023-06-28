@@ -32,11 +32,14 @@
                         <option value="Nepal Sambat Solar">Nepal Sambat Solar</option>
                         <option value="Solar Hijri">Solar Hijri</option>
                     </optgroup>
-                    <optgroup label="365-day Solar">
+                    <optgroup label="Invariant Solar (365)">
                         <option value="Armenian">Armenian</option>
                         <option value="Mandaean">Mandaean</option>
                         <option value="Qadimi">Qadimi</option>
                         <option value="Shahanshahi">Shahanshahi</option>
+                    </optgroup>
+                    <optgroup label="Long Count">
+                        <option value="Mayan">Mayan</option>
                     </optgroup>
                     <optgroup label="Lunar">
                         <option value="Islamic Tabular">Islamic Tabular (IT)</option>
@@ -55,6 +58,16 @@
                 <input id="theyear" onkeyup="openMonth()" contenteditable="false"/>
                 <select id="themonth" onchange="openDay()"></select>
                 <select id="theday" onchange="convert()"></select>
+            </div>
+            <div class="selectblock" id="selectblockthree">
+                <select id="maya1" onchange="openMaya1()">
+                    <option value="12">𝋬 12</option>
+                    <option value="13">𝋭 13</option>
+                </select>
+                <select id="maya2" onchange="openMaya2()"></select>
+                <select id="maya3" onchange="openMaya3()"></select>
+                <select id="maya4" onchange="openMaya4()"></select>
+                <select id="maya5" onchange="openMaya5()"></select>
             </div>
         </div>
         <div id="dayname"></div>

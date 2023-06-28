@@ -288,16 +288,23 @@ function reset(){
     currentDay[0] = abbreviations[currentDay[0]]
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
-    theyear.value = thecurrentday.slice(-1)[0]
-    themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
-    themonth.value = 0
-    themonth.value = generateYear(theyear.value, calen).months.map(x => x.name).indexOf(thecurrentday.slice(1, -1).join(" "))
-    for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
-        theday.innerHTML += `<option value="${x}">${x}</option>`
+    
+    if(calen != "Mayan"){
+        theyear.value = thecurrentday.slice(-1)[0]
+        themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
+        themonth.value = 0
+        themonth.value = generateYear(theyear.value, calen).months.map(x => x.name).indexOf(thecurrentday.slice(1, -1).join(" "))
+        for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
+            theday.innerHTML += `<option value="${x}">${x}</option>`
+        }
+        theday.value = thecurrentday[0]
+        //
+        findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era
     }
-    theday.value = thecurrentday[0]
-    //
-    findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era
+    else{
+        selectblocktwo.style.display = "none"
+        selectblockthree.style.display = "block"
+    }
     convert()
 }
 
