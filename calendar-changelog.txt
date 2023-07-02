@@ -1,3 +1,9 @@
+2 Jul 23
+You can now select dates with the Japanese calendar
+
+30 Jun 23
+You can now select dates with the Mayan calendar
+
 28 Jun 23
 Over half the calendar's months are now underlined and linked to articles
 Shows first day of week for every calendar, "not applicable" symbol added

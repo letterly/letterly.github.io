@@ -47,12 +47,17 @@ input, select{
     margin-right: calc((100% - 580px) / 2);
 }
 #selectblockthree{
-    margin-left: calc((100% - 580px) / 2);
-    margin-right: calc((100% - 580px) / 2);
+    margin-left: calc((100% - 610px) / 2);
+    margin-right: calc((100% - 610px) / 2);
+    display: none;
+}
+#selectblockfour{
+    margin-left: calc((100% - 570px) / 2);
+    margin-right: calc((100% - 570px) / 2);
     display: none;
 }
 #selectblockthree select{
-    font-family: "Mayan";
+    font-family: "Mayan", "Verdana";
 }
 input{
     width: 20%;

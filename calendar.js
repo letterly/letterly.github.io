@@ -3,6 +3,8 @@ day = "Monday"
 yearObject = {}
 interCal = {}
 
+jmlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
 for(c of Object.entries(calendars)){
     if(c[1].intercalary.type == "day"){
         interCal[c[0]] = c[1].months[c[1].intercalary.month].days
@@ -265,6 +267,100 @@ for(d = 0; d < 80000; d++){
     alltimearray.push(obj)
 }
 
+function japanYear(){
+    yearnum = {
+        "Meiji": 45,
+        "Taishō": 15,
+        "Shōwa": 64,
+        "Heisei": 31,
+        "Reiwa": 6,
+    }[japanera.value]
+    japanyear.innerHTML = ""
+    for(x = (japanera.value == "Meiji" ? 33 : 1); x <= yearnum; x++){
+        japanyear.innerHTML += `<option value="${x}">${x}</option>`
+    }
+    japanMonth()
+}
+
+function japanMonth(){
+    e = japanera.value
+    y = japanyear.value
+    japanmonth.innerHTML = ""
+    numofmonths = 12
+    startnum = 0
+    if(y == 1){
+        console.log("AAA")
+        startnum = {
+            "Taishō": 6,
+            "Shōwa": 11,
+            "Heisei": 0,
+            "Reiwa": 4,
+        }[e]
+        numofmonths = 12
+    }
+    else if(e == "Meiji" && y == 45){
+        numofmonths = 7
+    }
+    else if(e == "Shōwa" && y == 64){
+        numofmonths = 1
+    }
+    else if(e == "Heisei" && y == 31){
+        numofmonths = 4
+    }
+    for(x = startnum; x < numofmonths; x++){
+        japanmonth.innerHTML += `<option value="${x+1}">${jmlist[x]}</option>`
+    }
+    japanDay()
+}
+
+function japanDay(){
+    e = japanera.value
+    y = japanyear.value
+    m = japanmonth.value
+    japanday.innerHTML = ""
+    numofdays = 31
+    startday = 1
+    if(e == "Heisei" && y == 1 && m == 1){
+        startday = 8
+        console.log("AAA")
+    }
+    else if(e == "Shōwa" && y == 1 && m == 12){
+        startday = 25
+    }
+    else if(e == "Taishō" && y == 1 && m == 7){
+        startday = 30
+    }
+    else if(e == "Meiji" && y == 45 && m == 7){
+        numofdays = 30
+    }
+    else if(e == "Taishō" && y == 45 && m == 12){
+        numofdays = 25
+    }
+    else if(e == "Shōwa" && y == 45){
+        numofdays = 7
+    }
+    else if(m == 2){
+        numofdays = 29
+        if(
+            (e == "Reiwa" && y % 4 == 2) ||
+            (e == "Heisei" && y % 4 == 0) ||
+            (e == "Shōwa" && y % 4 == 3) ||
+            (e == "Taishō" && y % 4 == 1) ||
+            (e == "Meiji" && y % 4 == 1 && y != 33)
+        ){
+            numofdays = 28
+        }
+    }
+    else if([4, 6, 9, 11].includes(m)){
+        numofdays = 30
+    }
+    for(x = startday; x <= numofdays; x++){
+        japanday.innerHTML += `<option value="${x}">${x}</option>`
+    }
+    convert()
+}
+
+
 
 function reset(){
     //
@@ -289,7 +385,58 @@ function reset(){
     currentDay = `${currentDay[1]} ${currentDay[0]} ${currentDay[2]}`
     thecurrentday = alltimearray.filter(x => x.Gregorian == currentDay)[0][calen].split(" ")
     
-    if(calen != "Mayan"){
+    if(calen == "Mayan"){
+        selectblocktwo.style.display = "none"
+        selectblockthree.style.display = "block"
+        selectblockfour.style.display = "none"
+        for(x = 0; x <= 19; x++){
+            g = Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[x]
+            maya2.innerHTML += `<option value="${x}">${g} ${x}</option>`
+            if(x <= 17) maya3.innerHTML += `<option value="${x}">${g} ${x}</option>`
+            maya4.innerHTML += `<option value="${x}">${g} ${x}</option>`
+        }
+        for(x = 0; x < 5; x++){
+            document.getElementById("maya" + x).value = thecurrentday[0].split(".")[x]
+        }
+        findany.textContent = `Find any day between 12.15.0.0.0 and 13.4.19.17.19`
+    }
+    else if(calen == "Japanese"){
+        selectblocktwo.style.display = "none"
+        selectblockthree.style.display = "none"
+        selectblockfour.style.display = "block"
+        japanera.value = thecurrentday[2]
+
+        //japanYear()
+
+        japanyear.value = thecurrentday[3]
+        //
+        //japanMonth()
+
+        japanmonth.value = jmlist.indexOf(thecurrentday[1]) + 1
+        //
+        //
+        //japanDay()
+        japanday.innerHTML = ""
+        numofdays = 31
+        if(thecurrentday[1] == "February"){
+            numofdays = 29
+            if(y % 4 == 2){
+                numofdays = 28
+            }
+        }
+        else if(["April", "June", "September", "November"].includes(thecurrentday[1])){
+            numofdays = 30
+        }
+        for(x = 1; x <= numofdays; x++){
+            japanday.innerHTML += `<option value="${x}">${x}</option>`
+        }
+        japanday.value = thecurrentday[0]
+        findany.textContent = `Find any day between Meiji 33 and Reiwa 6`
+    }
+    else{
+        selectblocktwo.style.display = "block"
+        selectblockthree.style.display = "none"
+        selectblockfour.style.display = "none"
         theyear.value = thecurrentday.slice(-1)[0]
         themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
         themonth.value = 0
@@ -300,10 +447,6 @@ function reset(){
         theday.value = thecurrentday[0]
         //
         findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era
-    }
-    else{
-        selectblocktwo.style.display = "none"
-        selectblockthree.style.display = "block"
     }
     convert()
 }
@@ -338,15 +481,40 @@ function openDay(){
     convert()
 }
 
+function openMaya(){
+    answer.innerHTML = ""
+    maya1.innerHTML = ""
+    if(maya0.value == 12){
+        for(x = 15; x <= 19; x++){
+            maya1.innerHTML += `<option value="${x}">${Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[x]} ${x}</option>`
+        }
+    }
+    else if(maya0.value == 13){
+        for(x = 0; x <= 4; x++){
+            maya1.innerHTML += `<option value="${x}">${Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[x]} ${x}</option>`
+        }
+    }
+    convert()
+}
+
 function convert(){
     calen = thecalendar.value
-    q = generateYear(theyear.value, calen)
-    themonth.style.color = "black"
-    theday.style.color = "black"
-    result = `${theday.value} ${themonth.options[themonth.selectedIndex].text} ${theyear.value}`
+    if(calen == "Mayan"){
+        result = `${maya0.value}.${maya1.value}.${maya2.value}.${maya3.value}.${maya4.value}`
+    }
+    else if(calen == "Japanese"){
+        result = `${japanday.value} ${japanmonth.options[japanmonth.selectedIndex].text} ${japanera.value} ${japanyear.value}`
+    }
+    else{
+        q = generateYear(theyear.value, calen)
+        themonth.style.color = "black"
+        theday.style.color = "black"
+        result = `${theday.value} ${themonth.options[themonth.selectedIndex].text} ${theyear.value}`
+    }
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
     holidays.innerHTML = ""
+    console.log(result)
     for(ourcalendar of Object.keys(thatspecificday).sort()){
         if(ourcalendar == "holidays"){
             for(h of thatspecificday.holidays){
