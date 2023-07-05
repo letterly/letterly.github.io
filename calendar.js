@@ -2,6 +2,7 @@ alltimearray = []
 day = "Monday"
 yearObject = {}
 interCal = {}
+hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
 
 jmlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -26,7 +27,7 @@ japaneseEraDates = ["30 July 1912", "25 December 1926", "8 January 1989", "1 May
 japaneseEras = ["Meiji", "Taishō", "Shōwa", "Heisei", "Reiwa"]
 japaneseSubtract = [1867, 1911, 1925, 1988, 2018]
 
-for(d = 0; d < 80000; d++){
+for(d = 0; d < 280000; d++){
 
     day = week[d % 7]
     mayaday = d + 1830738
@@ -43,7 +44,6 @@ for(d = 0; d < 80000; d++){
     obj = {
         Day: day,
         Mayan: `${bakatun}.${katun}.${tun}.${winal}.${kin}`,
-        holidays: [],
     }
 
     for(l of Object.entries(calendars)){
@@ -82,185 +82,6 @@ for(d = 0; d < 80000; d++){
                     }
                 }
             }
-            for(hol of Object.entries(yearObject[n].holidays)){ 
-                leday = obj[n].split(" ").slice(0, -1).join(" ")           
-                if(n == "Bahá'í" && hol[0].startsWith("Birth") && g.startDay.year >= 172 && g.startDay.year <= 217){
-                    theTwinBirthdays = [
-                            ["10 Qudrat", "11 Qudrat"], //172
-                            ["18 ʻIlm", "19 ʻIlm"],
-                            ["7 ʻIlm", "8 ʻIlm"],
-                            ["6 Qudrat", "7 Qudrat"],
-                            ["14 ʻIlm", "15 ʻIlm"],
-                            ["4 ʻIlm", "5 ʻIlm"],
-                            ["4 Qudrat", "5 Qudrat"],
-                            ["11 ʻIlm", "12 ʻIlm"],
-    
-                            ["1 ʻIlm", "2 ʻIlm"], //180
-                            ["19 ʻIlm", "1 Qudrat"],
-                            ["8 ʻIlm", "9 ʻIlm"],
-                            ["7 Qudrat", "8 Qudrat"],
-                            ["15 ʻIlm", "16 ʻIlm"],
-                            ["5 ʻIlm", "6 ʻIlm"],
-                            ["5 Qudrat", "6 Qudrat"],
-                            ["14 ʻIlm", "15 ʻIlm"],
-                            ["2 ʻIlm", "3 ʻIlm"],
-                            ["2 Qudrat", "3 Qudrat"],
-    
-                            ["10 ʻIlm", "11 ʻIlm"], //190
-                            ["10 Qudrat", "11 Qudrat"],
-                            ["17 ʻIlm", "18 ʻIlm"],
-                            ["6 ʻIlm", "7 ʻIlm"],
-                            ["6 Qudrat", "7 Qudrat"],
-                            ["15 ʻIlm", "16 ʻIlm"],
-                            ["4 ʻIlm", "5 ʻIlm"],
-                            ["4 Qudrat", "5 Qudrat"],
-                            ["12 ʻIlm", "13 ʻIlm"],
-                            ["1 ʻIlm", "2 ʻIlm"],
-    
-                            ["19 ʻIlm", "1 Qudrat"], //200
-                            ["8 ʻIlm", "9 ʻIlm"],
-                            ["8 Qudrat", "9 Qudrat"],
-                            ["16 ʻIlm", "17 ʻIlm"],
-                            ["5 ʻIlm", "6 ʻIlm"],
-                            ["5 Qudrat", "6 Qudrat"],
-                            ["14 ʻIlm", "15 ʻIlm"],
-                            ["3 ʻIlm", "4 ʻIlm"],
-                            ["2 Qudrat", "3 Qudrat"],
-                            ["10 ʻIlm", "11 ʻIlm"],
-    
-                            ["9 Qudrat", "10 Qudrat"], //210
-                            ["18 ʻIlm", "19 ʻIlm"],
-                            ["6 ʻIlm", "7 ʻIlm"],
-                            ["6 Qudrat", "7 Qudrat"],
-                            ["15 ʻIlm", "16 ʻIlm"],
-                            ["4 ʻIlm", "5 ʻIlm"],
-                            ["4 Qudrat", "5 Qudrat"],
-                            ["11 ʻIlm", "12 ʻIlm"],
-                            ["19 Mas͟híyyat", "1 ʻIlm"], //218
-                        ][g.startDay.year - 172]
-                    if(hol[0] == "Birth of the Báb" && theTwinBirthdays[0] == leday || hol[0] == "Birth of Baháʼu'lláh" && theTwinBirthdays[1] == leday){
-                        obj.holidays.push({
-                            name: hol[0],
-                            link: hol[1].link,
-                            religion: n,
-                        })
-                    }
-                } //twin birthdays
-                else if(n == "Gregorian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost", "Trinity Sunday", "Ash Wednesday", "Shrove Tuesday"].includes(hol[0])){
-                    eY = g.startDay.year
-                    eA = eY % 19
-                    eB = Math.floor(eY / 100)
-                    eC = eY % 100
-                    eD = Math.floor(eB / 4)
-                    eE = eB % 4
-                    eG = Math.floor((8 * eB + 13) / 25)
-                    eH = (19 * eA + eB - eD - eG + 15) % 30
-                    eI = Math.floor(eC / 4)
-                    eK = eC % 4
-                    eL = (32 + 2 * eE + 2 * eI - eH - eK) % 7
-                    eM = Math.floor((eA + 11 * eH + 19 * eL) / 433)
-                    eN = Math.floor((eH + eL - 7 * eM + 90) / 25)
-                    eP = (eH + eL - 7 * eM + 33 * eN + 19) % 32
-                    newv = eH + eL - 7 * eM + 33 * eN + 19
-                    if(newv <= 127) newv += 33
-                    if(hol[0] == "Palm Sunday") newv -= 7
-                    else if(hol[0] == "Maundy Thursday") newv -= 3
-                    else if(hol[0] == "Ash Wednesday"){
-                        newv -= 46
-                    }
-                    else if(hol[0] == "Shrove Tuesday"){
-                        newv -= 47
-                    }
-                    else if(hol[0] == "Feast of the Ascension"){
-                        newv += 39
-                    }
-                    else if(hol[0] == "Pentecost"){
-                        newv += 49
-                    }
-                    else if(hol[0] == "Trinity Sunday"){
-                        newv += 56
-                    }
-                    if(newv >= 222) easterDay = (newv - 221) + " June"
-                    else if(newv >= 191) easterDay = (newv - 190) + " May"
-                    else if(newv >= 161) easterDay = (newv - 160) + " April"
-                    else if(newv <= 160 && newv >= 130) easterDay = (newv - 129) + " March"
-                    else if(newv <= 129){
-                        if(eY == 2022) console.log(eY + ": " + newv)
-                        if(eY % 4 == 0 && !(eY % 100 == 0 && eY % 400 != 0)){
-                            easterDay = (newv - 100) + " February"
-                        }
-                        else{
-                            easterDay = (newv - 101) + " February"
-                        }
-                        //console.log(eY + ": " + easterDay)
-                    }
-                    if(leday == easterDay){
-                        obj.holidays.push({
-                            name: hol[0],
-                            link: hol[1].link,
-                            religion: n,
-                        })
-                    }
-                }
-                else if(n == "Julian" && ["Easter", "Palm Sunday", "Maundy Thursday", "Feast of the Ascension", "Pentecost"].includes(hol[0])){
-                    eY = g.startDay.year
-                    eA = eY % 4
-                    eB = eY % 7
-                    eC = eY % 19
-                    eD = (19 * eC + 15) % 30
-                    eE = (2 * eA + 4 * eB - eD + 34) % 7
-                    finalE = eD + eE + 114
-                    if(hol[0] == "Palm Sunday") finalE -= 7
-                    else if(hol[0] == "Maundy Thursday") finalE -= 3
-                    if(hol[0] == "Feast of the Ascension"){
-                        finalE += 39
-                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
-                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
-                    }
-                    else if(hol[0] == "Pentecost"){
-                        finalE += 49
-                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
-                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
-                    }
-                    else if(hol[0] == "Trinity Sunday"){
-                        finalE += 56
-                        if(finalE >= 185) easterDay = (finalE - 184) + " June"
-                        else if(finalE >= 154) easterDay = (finalE - 153) + " May"
-                    }
-                    else{
-                        if(finalE <= 123) easterDay = (finalE - 92) + " March"
-                        else easterDay = (finalE - 123) + " April"
-                    }
-                    if(leday == easterDay){
-                        obj.holidays.push({
-                            name: hol[0],
-                            link: hol[1].link,
-                            religion: n,
-                        })
-                    }
-                }
-                else if(leday == hol[1].day && (hol[1].shabbat == undefined || alltimearray.slice(-1)[0].Day != "Friday")){
-                    obj.holidays.push({
-                        name: hol[0],
-                        link: hol[1].link,
-                        religion: n,
-                    })
-                }
-                else if((alltimearray.length > 0 && hol[1].shabbat != undefined && hol[1].shabbat.day == alltimearray.slice(-1)[0].Day) && leday == hol[1].shabbat.date){
-                    obj.holidays.push({
-                        name: hol[0],
-                        link: hol[1].link,
-                        religion: n,
-                    })
-                }
-                if(hol[1].length && alltimearray.slice(-1 * hol[1].length + 1).map(x => x[n].split(" ").slice(0, -1).join(" ")).includes(hol[1].day)){ //long holiday
-                    obj.holidays.push({
-                        name: hol[0],
-                        link: hol[1].link,
-                        religion: n,
-                    })
-                }
-            }
             g.startDay.dayinmonth++
         }
     }
@@ -289,7 +110,6 @@ function japanMonth(){
     numofmonths = 12
     startnum = 0
     if(y == 1){
-        console.log("AAA")
         startnum = {
             "Taishō": 6,
             "Shōwa": 11,
@@ -322,7 +142,6 @@ function japanDay(){
     startday = 1
     if(e == "Heisei" && y == 1 && m == 1){
         startday = 8
-        console.log("AAA")
     }
     else if(e == "Shōwa" && y == 1 && m == 12){
         startday = 25
@@ -398,7 +217,7 @@ function reset(){
         for(x = 0; x < 5; x++){
             document.getElementById("maya" + x).value = thecurrentday[0].split(".")[x]
         }
-        findany.textContent = `Find any day between 12.15.0.0.0 and 13.4.19.17.19`
+        findany.textContent = `Find any day between 12.15.0.0.0 and 13.12.19.17.19`
     }
     else if(calen == "Japanese"){
         selectblocktwo.style.display = "none"
@@ -490,7 +309,12 @@ function openMaya(){
         }
     }
     else if(maya0.value == 13){
-        for(x = 0; x <= 4; x++){
+        for(x = 0; x <= 19; x++){
+            maya1.innerHTML += `<option value="${x}">${Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[x]} ${x}</option>`
+        }
+    }
+    else if(maya0.value == 14){
+        for(x = 0; x <= 11; x++){
             maya1.innerHTML += `<option value="${x}">${Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[x]} ${x}</option>`
         }
     }
@@ -514,14 +338,8 @@ function convert(){
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
     holidays.innerHTML = ""
-    console.log(result)
     for(ourcalendar of Object.keys(thatspecificday).sort()){
-        if(ourcalendar == "holidays"){
-            for(h of thatspecificday.holidays){
-                holidays.innerHTML += `<h2 class="${h.religion.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[h.religion].link}" target="_blank">${h.religion}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${h.link}">${h.name.split(":")[0]}</a>${h.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[h.name.split(":")[1]]}">(${h.name.split(":")[1]})</a>` : ``}</h2>`
-            }
-        }
-        if(ourcalendar != calen && ourcalendar != "holidays"){
+        if(ourcalendar != calen){
             if(ourcalendar == "Day"){
                 days = {
                     "Monday": {
@@ -631,8 +449,549 @@ function convert(){
     🟨 (Monday) ⬜ (Not applicable)
     </div>
     </div>`
-    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.txt'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+    holidaycheck(thatspecificday)
+}
 
+function holidaycheck(thatday){
+    d = thatday.Day
+    normalholidays = [
+        {
+            cal: "Gregorian",
+            day: ["6 January"],
+            link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+            name: "Epiphany",
+        },
+        {
+            name: "Christmas:Armenian",
+            cal: "Gregorian",
+            day: ["6 January"],
+            link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["24 June"],
+            link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
+            name: "Nativity of John the Baptist",
+        },
+        {
+            cal: "Gregorian",
+            day: ["15 August"],
+            link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+            name: "Assumption of Mary",
+        },
+        {
+            cal: "Gregorian",
+            day: ["14 September"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
+            name: "Feast of the Cross",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 November"],
+            link: "https://en.wikipedia.org/wiki/All_Saints%27_Day",
+            name: "All Saints' Day",
+        },
+        {
+            cal: "Gregorian",
+            day: ["8 December"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception",
+            name: "Feast of the Immaculate Conception",
+        },
+        {
+            cal: "Gregorian",
+            day: ["25 December"],
+            link: "https://en.wikipedia.org/wiki/Christmas",
+            name: "Christmas",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["1 Bahá"],
+            link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Naw-R%C3%BAz",
+            name: "Naw-Rúz",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["13 Jalál"],
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            name: "1st of Riḍván",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["2 Jamál"],
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            name: "9th of Riḍván",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["5 Jamál"],
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            name: "12th of Riḍván",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["8 ʻAẓamat"],
+            link: "https://en.wikipedia.org/wiki/B%C3%A1b#Declaration_to_Mull%C3%A1_Husayn",
+            name: "Declaration of the Báb",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["13 ʻAẓamat"],
+            link: "https://www.bpl.org/blogs/post/the-origins-and-practices-of-holidays-ascension-of-bahaullah-ascension-of-jesus/",
+            name: "Ascension of Baháʼu'lláh",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["17 Raḥmat"],
+            link: "https://en.wikipedia.org/wiki/Execution_of_the_B%C3%A1b",
+            name: "Martyrdom of the Báb",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["4 Qawl"],
+            link: "https://en.wikipedia.org/wiki/Day_of_the_Covenant_(Bah%C3%A1%CA%BC%C3%AD)",
+            name: "Day of the Covenant",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["6 Qawl"],
+            link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
+            name: "Ascension of ʻAbdu'l-Bahá",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["10 Qudrat", "18 ʻIlm", "7 ʻIlm", "6 Qudrat", "14 ʻIlm", "4 ʻIlm", "4 Qudrat", "11 ʻIlm", "1 ʻIlm", "19 ʻIlm", "8 ʻIlm", "7 Qudrat", "15 ʻIlm", "5 ʻIlm", "5 Qudrat", "14 ʻIlm", "2 ʻIlm", "2 Qudrat", "10 ʻIlm", "10 Qudrat", "17 ʻIlm", "6 ʻIlm", "6 Qudrat", "15 ʻIlm", "4 ʻIlm", "4 Qudrat", "12 ʻIlm", "1 ʻIlm", "19 ʻIlm", "8 ʻIlm", "8 Qudrat", "16 ʻIlm", "5 ʻIlm", "5 Qudrat", "14 ʻIlm", "3 ʻIlm", "2 Qudrat", "10 ʻIlm", "9 Qudrat", "18 ʻIlm", "6 ʻIlm", "6 Qudrat", "15 ʻIlm", "4 ʻIlm", "4 Qudrat", "11 ʻIlm", "19 Mas͟híyyat"][thatday["Bahá'í"].split(" ").slice(-1)[0] - 172],
+            link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
+            name: "Birth of the Báb",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["11 Qudrat", "19 ʻIlm", "8 ʻIlm", "7 Qudrat", "15 ʻIlm", "5 ʻIlm", "5 Qudrat", "12 ʻIlm", "2 ʻIlm", "1 Qudrat", "9 ʻIlm", "8 Qudrat", "16 ʻIlm", "6 ʻIlm", "6 Qudrat", "15 ʻIlm", "3 ʻIlm", "3 Qudrat", "11 ʻIlm", "11 Qudrat", "18 ʻIlm", "7 ʻIlm", "7 Qudrat", "16 ʻIlm", "5 ʻIlm", "5 Qudrat", "13 ʻIlm", "2 ʻIlm", "1 Qudrat", "9 ʻIlm", "9 Qudrat", "17 ʻIlm", "6 ʻIlm", "6 Qudrat", "15 ʻIlm", "4 ʻIlm", "3 Qudrat", "11 ʻIlm", "10 Qudrat", "19 ʻIlm", "7 ʻIlm", "7 Qudrat", "16 ʻIlm", "5 ʻIlm", "5 Qudrat", "12 ʻIlm", "1 ʻIlm"][thatday["Bahá'í"].split(" ").slice(-1)[0] - 172],
+            link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
+            name: "Birth of Baháʼu'lláh",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Khordad Sal",
+            day: ["6 Farvadin"],
+            link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Zartosht No-Diso",
+            day: ["11 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
+        },
+        {
+            cal: "Qadimi",
+            name: "Zartosht No-Diso",
+            day: ["11 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
+        },
+        {
+            cal: "Qadimi",
+            name: "Khordad Sal",
+            day: ["6 Farvadin"],
+            link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Khordad Sal",
+            day: ["6 Farvadin"],
+            link: "https://en.wikipedia.org/wiki/Khordad_Sal",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Zartosht No-Diso",
+            day: ["11 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
+        },
+        {
+            cal: "Hebrew",
+            name: "Rosh Hashanah",
+            day: ["1 Tishrei", "2 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Rosh_Hashanah",
+        },
+        {
+            cal: "Hebrew",
+            name: "Yom Kippur",
+            day: ["10 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Yom_Kippur",
+        },
+        {
+            cal: "Hebrew",
+            name: "Shemini Atzeret",
+            day: ["22 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Shemini_Atzeret",
+        },
+        {
+            name: "Simchat Torah:outside Israel",
+            cal: "Hebrew",
+            day: ["23 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Simchat_Torah",  
+        },
+        {
+            name: "Pesach",
+            cal: "Hebrew",
+            day: ["15 Nisan", "16 Nisan","17 Nisan", "18 Nisan","19 Nisan", "20 Nisan","21 Nisan"],
+            link: "https://en.wikipedia.org/wiki/Passover",
+        },
+        {
+            name: "Mimouna",
+            cal: "Hebrew",
+            day: ["22 Nisan"],
+            link: "https://en.wikipedia.org/wiki/Mimouna",
+        },
+        {
+            name: "Mimouna:outside Israel",
+            cal: "Hebrew",
+            day: ["23 Nisan"],
+            link: "https://en.wikipedia.org/wiki/Mimouna",
+        },
+        {
+            name: "Pesach:outside Israel",
+            cal: "Hebrew",
+            day: ["22 Nisan"],
+            link: "https://en.wikipedia.org/wiki/Passover",
+        },
+        {
+            name: "Sukkot",
+            cal: "Hebrew",
+            day: ["15 Tishrei", "16 Tishrei","17 Tishrei", "18 Tishrei","19 Tishrei", "20 Tishrei","21 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Sukkot",
+        },
+        {
+            name: "Sukkot:outside Israel",
+            cal: "Hebrew",
+            day: ["22 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Sukkot",
+        },
+        {
+            name: "Tu B'Av",
+            cal: "Hebrew",
+            day: ["15 Av"],
+            link: "https://en.wikipedia.org/wiki/Tu_B%27Av",
+        },
+        {
+            name: "Tisha B'Av",
+            cal: "Hebrew",
+            day: ["9 Av"],
+            link: "https://en.wikipedia.org/wiki/Tisha_B%27Av",
+        },
+        {
+            cal: "Hebrew",
+            name: "Purim",
+            day: ["14 Adar"],
+            link: "https://en.wikipedia.org/wiki/Purim",
+        },
+        {
+            cal: "Hebrew",
+            name: "Purim",
+            day: ["14 Adar II"],
+            link: "https://en.wikipedia.org/wiki/Purim",
+        },
+        {
+            cal: "Hebrew",
+            name: "Tu BiShvat",
+            day: ["15 Shvat"],
+            link: "https://en.wikipedia.org/wiki/Tu_BiShvat",
+        },
+        {
+            cal: "Hebrew",
+            name: "Sigd",
+            day: ["29 Cheshvan"],
+            link: "https://en.wikipedia.org/wiki/Sigd",
+        },
+        {
+            cal: "Hebrew",
+            name: "Lag BaOmer",
+            day: ["18 Iyar"],
+            link: "https://en.wikipedia.org/wiki/Lag_BaOmer",
+        },
+        {
+            cal: "Hebrew",
+            name: "Shavuot",
+            day: ["6 Sivan"],
+            link: "https://en.wikipedia.org/wiki/Shavuot",
+        },
+        {
+            cal: "Hebrew",
+            name: "Hanukkah",
+            day: ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(5660 - thatday.Hebrew.split(" ").slice(-1)[0]) == "d" ? "3 Tevet" : "30 Kislev")],
+            link: "https://en.wikipedia.org/wiki/Hanukkah",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Esther",
+            day: [(d == "Thursday" ? "11 Adar II" : ""), (d != "Saturday" ? "13 Adar II" : "")],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Esther",
+            day: [(d == "Thursday" ? "11 Adar" : ""), (d != "Saturday" ? "13 Adar" : "")],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Gedalia",
+            day: [(d != "Saturday" ? "3 Tishrei": ""),(d == "Sunday" ? "4 Tishrei": "")],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Gedalia",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of the Firstborn",
+            day: [(d != "Saturday" ? "14 Nisan" : ""), (d == "Thursday" ? "12 Nisan" : "")],
+            link: "https://en.wikipedia.org/wiki/Fast_of_the_Firstborn",
+        },
+        {
+            cal: "Hebrew",
+            name: "Seventeenth of Tammuz",
+            link: "https://en.wikipedia.org/wiki/Seventeenth_of_Tammuz",
+            day: [(d != "Saturday" ? "17 Tammuz" : ""), (d == "Sunday" ? "18 Tammuz" : "")],
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Day of Arafah",
+            day: ["9 Dhu al-Hijjah"],
+            link: "https://en.wikipedia.org/wiki/Day_of_Arafah",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Eid al-Adha",
+            day: ["10 Dhu al-Hijjah"],
+            link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Eid al-Ghadir:Shia",
+            day: ["18 Dhu al-Hijjah"],
+            link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Mawlid:Sunni",
+            day: ["12 Rabiʽ al-Awwal"],
+            link: "https://en.wikipedia.org/wiki/Mawlid",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Mawlid:Shia",
+            day: ["17 Rabiʽ al-Awwal"],
+            link: "https://en.wikipedia.org/wiki/Mawlid",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Eid al-Fitr",
+            day: ["1 Shawwal"],
+            link: "https://en.wikipedia.org/wiki/Eid_al-Fitr",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Ashura",
+            day: ["10 Muharram"],
+            link: "https://en.wikipedia.org/wiki/Ashura",
+        },
+        {
+            cal: "Julian",
+            name: "Christmas:Armenian Patriarchate of Jerusalem",
+            link: "https://en.wikipedia.org/wiki/Christmas",
+            day: ["6 January"],
+        },
+        {
+            cal: "Julian",
+            name: "Epiphany",
+            day: ["January 6"],
+            link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+        },
+        {
+            cal: "Julian",
+            name: "Feast of the Cross",
+            link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
+            day: ["14 September"],
+        },
+        {
+            cal: "Julian",
+            name: "Christmas",
+            day: ["25 December"],
+            link: "https://en.wikipedia.org/wiki/Christmas",
+        },
+        {
+            cal: "Nanakshahi",
+            name: "Sikh New Year",
+            link: "https://en.wikipedia.org/wiki/Punjabi_Culture_Day",
+            day: ["1 Chet"],
+        },
+        {
+            name: "Hola Mohalla",
+            cal: "Nanakshahi",
+            link: "https://en.wikipedia.org/wiki/Hola_Mohalla",
+            day: ["2 Chet", "3 Chet", "4 Chet"],
+        },
+        {
+            name: "Vaisakhi",
+            cal: "Nanakshahi",
+            link: "https://en.wikipedia.org/wiki/Vaisakhi",
+            day: ["1 Vaisakh", "2 Vaisakh"],
+        },
+        {
+            cal: "Mandaean",
+            name: "Dehwa Daimana",
+            day: ["1 Hiṭia"],
+            link: "https://en.wikipedia.org/wiki/Dehwa_Daimana"
+        },
+        {
+            cal: "Mandaean",
+            name: "Kanshiy u-Zahly",
+            day: ["30 Gadia"],
+            link: "https://en.wikipedia.org/wiki/Dehwa_Rabba#Kanshiy_u-Zahly",
+        },
+        {
+            cal: "Mandaean",
+            name: "Dehwa Rabba",
+            day: ["1 Daula"],
+            link: "https://en.wikipedia.org/wiki/Dehwa_Rabba",
+        },
+        {
+            cal: "Mandaean",
+            name: "Feast of the Great Shishlam",
+            day: ["6 Daula"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_the_Great_Shishlam",
+        },
+        {
+            cal: "Mandaean",
+            name: "Dehwa Hanina",
+            day: ["18 Taura"],
+            link: "https://en.wikipedia.org/wiki/Dehwa_Hanina",
+        },
+    ]
+
+    ///ADD EASTER HOLIDAYS
+
+    julianHolidays = {
+        "Easter": "https://en.wikipedia.org/wiki/Easter#Eastern_Christianity_2",
+        "Palm Sunday": "https://en.wikipedia.org/wiki/Palm_Sunday",
+        "Maundy Thursday": "https://en.wikipedia.org/wiki/Maundy_Thursday",
+        "Feast of the Ascension": "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
+        "Pentecost": "https://en.wikipedia.org/wiki/Pentecost",
+    }
+
+    gregorianHolidays = {
+        "Easter": "https://en.wikipedia.org/wiki/Easter",
+        "Ash Wednesday": "https://en.wikipedia.org/wiki/Ash_Wednesday",
+        "Shrove Tuesday": "https://en.wikipedia.org/wiki/Shrove_Tuesday",
+        "Palm Sunday": "https://en.wikipedia.org/wiki/Palm_Sunday",
+        "Maundy Thursday": "https://en.wikipedia.org/wiki/Maundy_Thursday",
+        "Feast of the Ascension": "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
+        "Pentecost": "https://en.wikipedia.org/wiki/Pentecost",
+        "Trinity Sunday": "https://en.wikipedia.org/wiki/Trinity_Sunday",
+    }
+
+    //first julian
+    for(hol of Object.entries(julianHolidays)){
+        eY = thatday.Julian.split(" ").slice(-1)[0]
+        eA = eY % 4
+        eB = eY % 7
+        eC = eY % 19
+        eD = (19 * eC + 15) % 30
+        eE = (2 * eA + 4 * eB - eD + 34) % 7
+        finalE = eD + eE + 114
+        if(hol[0] == "Palm Sunday") finalE -= 7
+        else if(hol[0] == "Maundy Thursday") finalE -= 3
+        if(hol[0] == "Feast of the Ascension"){
+            finalE += 39
+            if(finalE >= 185) easterDay = (finalE - 184) + " June"
+            else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+        }
+        else if(hol[0] == "Pentecost"){
+            finalE += 49
+            if(finalE >= 185) easterDay = (finalE - 184) + " June"
+            else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+        }
+        else if(hol[0] == "Trinity Sunday"){
+            finalE += 56
+            if(finalE >= 185) easterDay = (finalE - 184) + " June"
+            else if(finalE >= 154) easterDay = (finalE - 153) + " May"
+        }
+        else{
+            if(finalE <= 123) easterDay = (finalE - 92) + " March"
+            else easterDay = (finalE - 123) + " April"
+        }
+        normalholidays.push({
+            name: hol[0],
+            link: hol[1],
+            cal: "Julian",
+            day: easterDay,
+        })
+    }
+
+
+
+
+    //then western
+    for(hol of Object.entries(gregorianHolidays)){
+        eY = thatday.Gregorian.split(" ").slice(-1)[0]
+        eA = eY % 19
+        eB = Math.floor(eY / 100)
+        eC = eY % 100
+        eD = Math.floor(eB / 4)
+        eE = eB % 4
+        eG = Math.floor((8 * eB + 13) / 25)
+        eH = (19 * eA + eB - eD - eG + 15) % 30
+        eI = Math.floor(eC / 4)
+        eK = eC % 4
+        eL = (32 + 2 * eE + 2 * eI - eH - eK) % 7
+        eM = Math.floor((eA + 11 * eH + 19 * eL) / 433)
+        eN = Math.floor((eH + eL - 7 * eM + 90) / 25)
+        eP = (eH + eL - 7 * eM + 33 * eN + 19) % 32
+        newv = eH + eL - 7 * eM + 33 * eN + 19
+        if(newv <= 127) newv += 33
+        if(hol[0] == "Palm Sunday") newv -= 7
+        else if(hol[0] == "Maundy Thursday") newv -= 3
+        else if(hol[0] == "Ash Wednesday"){
+            newv -= 46
+        }
+        else if(hol[0] == "Shrove Tuesday"){
+            newv -= 47
+        }
+        else if(hol[0] == "Feast of the Ascension"){
+            newv += 39
+        }
+        else if(hol[0] == "Pentecost"){
+            newv += 49
+        }
+        else if(hol[0] == "Trinity Sunday"){
+            newv += 56
+        }
+        if(newv >= 222) easterDay = (newv - 221) + " June"
+        else if(newv >= 191) easterDay = (newv - 190) + " May"
+        else if(newv >= 161) easterDay = (newv - 160) + " April"
+        else if(newv <= 160 && newv >= 130) easterDay = (newv - 129) + " March"
+        else if(newv <= 129){
+            if(eY % 4 == 0 && !(eY % 100 == 0 && eY % 400 != 0)){
+                easterDay = (newv - 100) + " February"
+            }
+            else{
+                easterDay = (newv - 101) + " February"
+            }
+        }
+        normalholidays.push({
+            name: hol[0],
+            link: hol[1],
+            cal: "Gregorian",
+            day: easterDay,
+        })
+    }
+
+
+    //OKAY WE ARE READY NOW
+
+    for(n of normalholidays){
+        tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
+        if(tt != undefined && n.day.includes(tt)){
+            holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${n.cal}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+        }
+    }
 }
 
 
@@ -678,7 +1037,7 @@ function internationalize(dy, cl){
             dy = dy.replace(new RegExp(x, "g"), "০১২৩৪৫৬৭৮৯"[x])
         }
         dy = dy.split(" ")
-        dy = `${dy[0]} ${{"Boishakh": "বৈশাখ", "Jyoishţho": "জ্যৈষ্ঠ", "Ashaŗh": "আষাঢ়", "Shrabon": "শ্রাবণ", "Bhadro": "ভাদ্র", "Ashshin": "আশ্বিন", "Kartik": "কার্তিক", "Ôgrohayon": "অগ্রহায়ণ", "Poush": "পৌষ", "Magh": "মাঘ", "Falgun": "ফাল্গুন", "Choitro": "চৈত্র"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
+        dy = `${dy[0]} ${{"Boishakh": "বৈশাখ", "Jyoishţho": "জ্যৈষ্ঠ", "Ashaŗh": "আষাঢ়", "Shrabon": "শ্রাবণ", "Bhadro": "ভাদ্র", "Ashshin": "আশ্বিন", "Kartik": "কার্তিক", "Ôgrohayon": "অগ্রহায়ণ", "Poush": "পৌষ", "Magh": "মাঘ", "Falgun": "ফাল্গুন", "Choitro": "চৈত্র"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]} বঙ্গাব্দ`
         return dy
     }
     else if(cl == "Javanese"){
@@ -826,6 +1185,7 @@ function numeralize(number, era){
     }
     else if(era == "Armenian"){
         armenianArray = {
+            "Ս": 2000,
             "Ռ": 1000,
             "Ջ": 900,
             "Պ": 800,
@@ -865,6 +1225,7 @@ function numeralize(number, era){
     }
     else if(era == "Coptic"){
         copticArray = {
+            "𐋢𐋠": 2000,
             "𐋡𐋠": 1000,
             "𐋻": 900,
             "𐋺": 800,
@@ -904,6 +1265,12 @@ function numeralize(number, era){
     }
     else if(era == "Ethiopian"){
         ethiopianArray = {
+            "፳፮፻": 2600,
+            "፳፭፻": 2500,
+            "፳፬፻": 2400,
+            "፳፫፻": 2300,
+            "፳፪፻": 2200,
+            "፳፩፻": 2100,
             "፳፻": 2000,
             "፲፱፻": 1900,
             "፲፰፻": 1800,
@@ -993,7 +1360,6 @@ function numeralize(number, era){
 function generateYear(y, n){
     yO = {
         months: {},
-        holidays: {},
     }
     yO.months = calendars[n].months
     if(calendars[n].intercalary.type == "day"){
@@ -1005,25 +1371,7 @@ function generateYear(y, n){
         }
     }
     else if(n == "Hebrew"){ //FIX
-        yy = (
-            "rcdcrccrdc" + //660
-            "drccrdcrcd" + //670
-            "rccdrccdrc" + //680
-            "drccrdcrcd" + //690
-            "crcdrcdrcc" + //700
-            "drccdrccrd" + //710
-            "crdcrcdcrc" + //720
-            "drcdcrcdrc" + //730
-            "cdrccrdcrd" + //740
-            "crcdcrcdrc" + //750
-            "cdrccdrcdr" + //760
-            "ccrdcrcdrc" + //770
-            "cdrcdcrccr" + //780
-            "dcrdccrdcr" + //790
-            "cdrcdcrcdr" + //800
-            "ccdrccrdcr" + //810
-            "dc" //820 [just to 821]
-        ).charAt([y - 5660])
+        yy = hebrewCons.charAt([y - 5660])
         yO.months[1].days = yy == "c" ? 30 : 29
         yO.months[2].days = yy == "d" ? 29 : 30
         if([3,6,8,11,13,17,0].includes(y % 19)){
@@ -1124,7 +1472,6 @@ function generateYear(y, n){
                         link: "https://en.wikipedia.org/wiki/March",
                     },
                 ],
-                holidays: {},
             }
         }
         else if(y == 2483){
@@ -1176,7 +1523,6 @@ function generateYear(y, n){
                         link: "https://en.wikipedia.org/wiki/December",
                     },
                 ],
-                holidays: {},
             }
         }
         else if(y > 2483){
@@ -1243,15 +1589,11 @@ function generateYear(y, n){
                         link: "https://en.wikipedia.org/wiki/December",
                     },
                 ],
-                holidays: {},
             }
         }
     }
     if(n == "Thai Solar") return gg
 
-    //add holidays
-    yO.holidays = calendars[n].holidays
-    //
     return yO
 }
 

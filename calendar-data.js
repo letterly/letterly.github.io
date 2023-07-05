@@ -1,5 +1,7 @@
 week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
+T = 760
+
 calendars = {
     Gregorian: {
         months: [
@@ -76,7 +78,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2118],
+        bounds: [1900, 1900+T],
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
         holidays: {
@@ -201,7 +203,7 @@ calendars = {
             monthcount: 4,
             year: 1349, //445393
         },
-        bounds: [1350, 1511],
+        bounds: [1350, 1350+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Armenian_calendar",
         holidays: {},
@@ -426,7 +428,7 @@ calendars = {
             monthcount: 8,
             year: 1306,
         },
-        bounds: [1306, 1524],
+        bounds: [1306, 1306+T],
         era: "BS",
         link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
         holidays: {},
@@ -506,7 +508,7 @@ calendars = {
             monthcount: 11,
             year: 2850,
         },
-        bounds: [2851, 3070],
+        bounds: [2851, 2851+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
         holidays: {},
@@ -663,7 +665,7 @@ calendars = {
             monthcount: 3,
             year: 1616, //445393
         },
-        bounds: [1621, 1835],
+        bounds: [1621, 1621+T],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Coptic_calendar",
         holidays: {},
@@ -735,7 +737,7 @@ calendars = {
             monthcount: 3,
             year: 1892, //445393
         },
-        bounds: [1893, 2168],
+        bounds: [1893, 1893+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
         holidays: {},
@@ -827,7 +829,7 @@ calendars = {
             monthcount: 9,
             year: 1269,
         },
-        bounds: [1269, 1488],
+        bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
         holidays: {
@@ -837,7 +839,7 @@ calendars = {
             },
             "Zartosht No-Diso": {
                 day: "11 Dae",
-                link: "Zartosht No-Diso",
+                link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
             },
         },
     },
@@ -921,7 +923,7 @@ calendars = {
             monthcount: 3,
             year: 108,
         },
-        bounds: [108, 300],
+        bounds: [108, 108+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/French_Republican_calendar",
         holidays: {},
@@ -1275,7 +1277,7 @@ calendars = {
             monthcount: 9,
             year: 1821,
         },
-        bounds: [1822, 2039],
+        bounds: [1822, 1822+T],
         era: "SE",
         link: "https://en.wikipedia.org/wiki/Indian_national_calendar",
         holidays: {},
@@ -1355,7 +1357,7 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1544],
+        bounds: [1317, 1317+T],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {
@@ -1466,7 +1468,7 @@ calendars = {
             monthcount: 7,
             year: 1317, //445393
         },
-        bounds: [1317, 1544],
+        bounds: [1317, 1317+T],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
         holidays: {},
@@ -1534,7 +1536,7 @@ calendars = {
             monthcount: 8,
             year: 1829, //445393
         },
-        bounds: [1830, 1990],
+        bounds: [1830, 1830+T],
         era: "AJ",
         link: "https://en.wikipedia.org/wiki/Javanese_calendar",
         holidays: {},
@@ -1615,7 +1617,7 @@ calendars = {
             monthcount: 0,
             year: -11,
         },
-        bounds: [1, 150],
+        bounds: [1, T - 11],
         era: "",
         link: "https://en.wikipedia.org/wiki/Juche_calendar",
         holidays: {},
@@ -1695,14 +1697,10 @@ calendars = {
             monthcount: 11,
             year: 1899,
         },
-        bounds: [1899, 2118],
+        bounds: [1899, 1899 + T],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
         holidays: {
-            "Christmas:Armenian Patriarchate of Jerusalem": {
-                link: "https://en.wikipedia.org/wiki/Christmas",
-                day: "6 January",
-            },
             "Easter": {
                 link: "https://en.wikipedia.org/wiki/Easter#Eastern_Christianity_2",
             },
@@ -1720,6 +1718,10 @@ calendars = {
             },
             "Trinity Sunday": {
                 link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            },
+            "Christmas:Armenian Patriarchate of Jerusalem": {
+                link: "https://en.wikipedia.org/wiki/Christmas",
+                day: "6 January",
             },
             "Epiphany": {
                 day: "January 6",
@@ -1798,7 +1800,7 @@ calendars = {
             monthcount: 9,
             year: 2599,
         },
-        bounds: [2600, 2818],
+        bounds: [2600, 2600 + T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Kurdish_calendar",
         holidays: {},
@@ -1879,7 +1881,7 @@ calendars = {
             monthcount: 4,
             year: 445269, //445393
         },
-        bounds: [445270, 445487],
+        bounds: [445270, 445270+T],
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
         holidays: {
@@ -1981,7 +1983,7 @@ calendars = {
             monthcount: 0,
             year: -11,
         },
-        bounds: [1, 150],
+        bounds: [1, T - 11],
         era: "ROC",
         link: "https://en.wikipedia.org/wiki/Republic_of_China_calendar",
         holidays: {},
@@ -2061,7 +2063,7 @@ calendars = {
             monthcount: 4,
             year: 433,
         },
-        bounds: [433, 648],
+        bounds: [433, 433+T],
         era: "KE",
         link: "https://en.wikipedia.org/wiki/Nanakshahi_calendar#Mool_Nanakshahi_Calendar",
         holidays: {
@@ -2156,7 +2158,7 @@ calendars = {
             monthcount: 2,
             year: 1020,
         },
-        bounds: [1023, 1181],
+        bounds: [1023, 1023+T],
         era: "NE",
         link: "https://en.wikipedia.org/wiki/Nepal_Sambat#Solar_Calendar",
         holidays: {},
@@ -2240,7 +2242,7 @@ calendars = {
             monthcount: 4,
             year: 1269,
         },
-        bounds: [1269, 1430],
+        bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
         holidays: {
@@ -2329,7 +2331,7 @@ calendars = {
             monthcount: 0,
             year: 1900,
         },
-        bounds: [1900, 2118],
+        bounds: [1900, 1900+T],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
         holidays: {},
@@ -2413,7 +2415,7 @@ calendars = {
             monthcount: 3,
             year: 1269,
         },
-        bounds: [1269, 1430],
+        bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
         holidays: {
@@ -2502,7 +2504,7 @@ calendars = {
             monthcount: 9,
             year: 1278, //445393
         },
-        bounds: [1279, 1497],
+        bounds: [1279, 1279 +T],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
         holidays: {},
@@ -2578,7 +2580,7 @@ calendars = {
             monthcount: 5,
             year: 1411, //445393
         },
-        bounds: [1401, 1573],
+        bounds: [1401, 1401 +T],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
         holidays: {},
@@ -2654,7 +2656,7 @@ calendars = {
             monthcount: 9,
             year: 2442,
         },
-        bounds: [2443, 2604],
+        bounds: [2443, 2443+T],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Thai_solar_calendar",
         holidays: {},
