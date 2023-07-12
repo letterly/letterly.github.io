@@ -612,7 +612,7 @@ keyboards = {
         ShiftRight: "shift",
         Tab: "tab",
         //
-        Backquote: "!",
+        Backquote: "ə",
         Digit1: "1",
         Digit2: "2",
         Digit3: "3",
