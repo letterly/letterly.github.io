@@ -93,46 +93,12 @@ span{
     padding: 3px;
 }
 
-.cal::before{
-    content: "🌕 ";
-}
-#holidays h2::before{
-    content: "";
-}
 .callink{
     font-weight: 700;
-}
-.cal .callink::after{
-    content: " 🟨";
-}
-.gregorian .callink::after{
-    content: " 🟧/🟨";
-}
-.japanese .callink::after, .armenian .callink::after, .bengali .callink::after, .mandaean .callink::after, .nepal_sambat_solar .callink::after, .ethiopian .callink::after, .coptic .callink::after, .juche .callink::after, .hebrew .callink::after, .minguo .callink::after, .thai .callink::after, .indian_national .callink::after, .nanakshahi .callink::after{
-    content: " 🟧"
-}
-.islamic_tabular .callink::after, .islamic_tabular_tayyibi .callink::after, .baháí .callink::after, .solar_hijri .callink::after, .tabarian .callink::after, .kurdish .callink::after{
-    content: " 🟥";
-}
-.mayan .callink::after, .french_republican .callink::after, .javanese .callink::after, .fasli_zoroastrian .callink::after, .shahanshahi .callink::after, .qadimi .callink::after{
-    content: " ⬜";
-}
-.harris .callink::after{
-    content: "";
 }
 
 #dayname{
     text-align: center;
-}
-
-.hebrew::before,  .islamic_tabular::before, .islamic_tabular_tayyibi::before, .baháí::before, .javanese::before, .coptic::before, .ethiopian::before, .mayan::before{
-    content: '🌙 ';
-}
-.fasli_zoroastrian::before,  .qadimi::before, .mandaean::before, .shahanshahi::before{
-    content: '☀️ ';
-}
-.day::before, .harris::before, .time::before{
-    content: "";
 }
 
 @media (max-width: 1430px){

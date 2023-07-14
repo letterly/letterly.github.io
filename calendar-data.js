@@ -4,6 +4,8 @@ T = 760
 
 calendars = {
     Gregorian: {
+        firstDay: "Sunday/Monday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -141,6 +143,8 @@ calendars = {
         },
     },
     Armenian: {
+        firstDay: "N/A",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Nawasard",
@@ -209,6 +213,8 @@ calendars = {
         holidays: {},
     },
     "Bahá'í": {
+        firstDay: "Saturday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Bahá",
@@ -353,6 +359,8 @@ calendars = {
         },
     },
     Bengali: {
+        firstDay: "Sunday",
+        dayStart: "Sunrise",
         months: [
             {
                 name: "Boishakh",
@@ -424,7 +432,7 @@ calendars = {
             }
         },
         startDay: {
-            dayinmonth: 19,
+            dayinmonth: 18,
             monthcount: 8,
             year: 1306,
         },
@@ -434,6 +442,8 @@ calendars = {
         holidays: {},
     },
     Berber: {
+        firstDay: "Monday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Yennayer",
@@ -586,6 +596,8 @@ calendars = {
         holidays: {},
     },*/
     Coptic: {
+        firstDay: "Monday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Thout",
@@ -671,6 +683,8 @@ calendars = {
         holidays: {},
     },
     Ethiopian: {
+        firstDay: "Monday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Meskerem",
@@ -743,6 +757,8 @@ calendars = {
         holidays: {},
     },
     "Fasli (Zoroastrian)": {
+        firstDay: "N/A",
+        dayStart: "Sunrise",
         months: [
             {
                 name: "Farvardin",
@@ -844,6 +860,8 @@ calendars = {
         },
     },
     "French Republican": {
+        firstDay: "N/A",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Vendémiaire",
@@ -929,6 +947,8 @@ calendars = {
         holidays: {},
     },
     Japanese: {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -1009,6 +1029,8 @@ calendars = {
         holidays: {},
     },
     Hebrew: {
+        firstDay: "Sunday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Tishrei",
@@ -1202,6 +1224,8 @@ calendars = {
         },
     },
     "Indian National": {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Chaitra",
@@ -1283,6 +1307,8 @@ calendars = {
         holidays: {},
     },
     "Islamic Tabular": {
+        firstDay: "Saturday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Muharram",
@@ -1394,6 +1420,8 @@ calendars = {
         },
     },
     "Islamic Tabular Tayyibi": {
+        firstDay: "Saturday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Muharram",
@@ -1474,6 +1502,8 @@ calendars = {
         holidays: {},
     },
     Javanese: {
+        firstDay: "Monday",
+        dayStart: "Sunset",
         months: [
             {
                 name: "Sura",
@@ -1542,6 +1572,8 @@ calendars = {
         holidays: {},
     },
     Juche: {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -1623,6 +1655,8 @@ calendars = {
         holidays: {},
     },
     Julian: {
+        firstDay: "Monday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -1738,6 +1772,8 @@ calendars = {
         },
     },
     Kurdish: {
+        firstDay: "Saturday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Xakelêwe",
@@ -1806,6 +1842,8 @@ calendars = {
         holidays: {},
     },
     Mandaean: {
+        firstDay: "Sunday",
+        dayStart: "Sunrise",
         months: [
             {
                 name: "Daula",
@@ -1908,6 +1946,8 @@ calendars = {
         },
     },
     Minguo: {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -1989,6 +2029,8 @@ calendars = {
         holidays: {},
     },
     Nanakshahi: {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Chet",
@@ -2084,6 +2126,8 @@ calendars = {
         },
     },
     "Nepal Sambat Solar": {
+        firstDay: "Sunday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Kachhalā",
@@ -2164,6 +2208,8 @@ calendars = {
         holidays: {},
     },
     "Qadimi": {
+        firstDay: "N/A",
+        dayStart: "Sunrise",
         months: [
             {
                 name: "Farvardin",
@@ -2257,6 +2303,8 @@ calendars = {
         },
     },
     "Revised Julian": {
+        firstDay: "Monday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "January",
@@ -2337,6 +2385,8 @@ calendars = {
         holidays: {},
     },
     "Shahanshahi": {
+        firstDay: "N/A",
+        dayStart: "Sunrise",
         months: [
             {
                 name: "Farvardin",
@@ -2430,6 +2480,8 @@ calendars = {
         },
     },
     "Solar Hijri": {
+        firstDay: "Saturday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Farvardin",
@@ -2510,6 +2562,8 @@ calendars = {
         holidays: {},
     },
     "Tabarian": {
+        firstDay: "Saturday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "Fardine Ma",
@@ -2586,6 +2640,8 @@ calendars = {
         holidays: {},
     },
     "Thai Solar": {
+        firstDay: "Monday",
+        dayStart: "Midnight",
         months: [
             {
                 name: "April",

@@ -260,6 +260,7 @@ function reset(){
         themonth.innerHTML = generateYear(theyear.value, calen).months.filter(y => y.days != 0).map(x => `<option value='${calendars[calen].months.map(z=>z.name).indexOf(x.name)}'>${x.name}</select>`).join("")
         themonth.value = 0
         themonth.value = generateYear(theyear.value, calen).months.map(x => x.name).indexOf(thecurrentday.slice(1, -1).join(" "))
+        theday.innerHTML = ""
         for(x = 1; x <= generateYear(theyear.value, calen).months[themonth.value].days; x++){
             theday.innerHTML += `<option value="${x}">${x}</option>`
         }
@@ -403,11 +404,15 @@ function convert(){
                 answer.innerHTML += 
                 "<div class='cal " + 
                 ourcalendar.toLowerCase().replace(/ /g, "_").replace(/\'/g, "").replace(/[\(\)]/g, "") + 
-                "'><span><a class='callink' target='_blank' href='" + 
+                "'><span>" + 
+                {"Midnight": "🌕", "Sunrise": "☀️", "Sunset": "🌙"}[calendars[ourcalendar].dayStart] + " " + 
+                "<a class='callink' target='_blank' href='" + 
                 calendars[ourcalendar].link + 
                 "'>" + 
                 ourcalendar + 
-                "</a><br>" + 
+                "</a> " + 
+                {"Saturday": "🟥", "Sunday": "🟧", "Monday": "🟨", "N/A": "⬜"}[calendars[ourcalendar].firstDay] + " " + 
+                "<br>" + 
                 thatspecificday[ourcalendar].split(" ")[0] + 
                 " " + 
                 (
@@ -431,12 +436,12 @@ function convert(){
     }
     answer.innerHTML += 
     `<div class='cal time'>
-    <div class="line">🌕 days start at midnight</div>
+    <div class="line">Days start at...</div>
     <div class="line">
-    🌙 days start at sunset
+    ☀️ (Sunrise) 🌙 (Sunset)
     </div>
     <div class="line">
-    ☀️ days start at sunrise
+    🌕 (Midnight)
     </div>
     </div>`
     answer.innerHTML += 
@@ -456,6 +461,12 @@ function convert(){
 function holidaycheck(thatday){
     d = thatday.Day
     normalholidays = [
+        {
+            cal: "Gregorian",
+            day: ["31 December"],
+            link: "https://en.wikipedia.org/wiki/New_Year%27s_Eve",
+            name: "New Year's Eve",
+        },
         {
             cal: "Gregorian",
             day: ["6 January"],
@@ -793,6 +804,18 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Ashura",
         },
         {
+            cal: "Islamic Tabular",
+            name: "Islamic New Year",
+            link: "https://en.wikipedia.org/wiki/Islamic_New_Year",
+            day: ["1 Muharram"],
+        },
+        {
+            cal: "Julian",
+            name: "Old New Year",
+            link: "https://en.wikipedia.org/wiki/Old_New_Year",
+            day: ["1 January"]
+        },
+        {
             cal: "Julian",
             name: "Christmas:Armenian Patriarchate of Jerusalem",
             link: "https://en.wikipedia.org/wiki/Christmas",
@@ -863,6 +886,36 @@ function holidaycheck(thatday){
             name: "Dehwa Hanina",
             day: ["18 Taura"],
             link: "https://en.wikipedia.org/wiki/Dehwa_Hanina",
+        },
+        {
+            name: "Pohela Boishakh",
+            day: ["1 Boishakh"],
+            cal: "Bengali",
+            link: "https://en.wikipedia.org/wiki/Pohela_Boishakh",
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Satu_Suro",
+            day: ["1 Sura"],
+            cal: "Javanese",
+            name: "Satu Suro",
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Yennayer",
+            day: ["31 Dujembir"],
+            cal: "Berber",
+            name: "Yennayer",
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Nayrouz",
+            day: ["1 Thout"],
+            cal: "Coptic",
+            name: "Nayrouz",
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Enkutatash",
+            name: "Enkutatash",
+            cal: "Ethiopian",
+            day: ["1 Meskerem"],
         },
     ]
 
