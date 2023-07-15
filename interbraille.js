@@ -27,7 +27,7 @@ function toBraille(text){
 
     for(l of Object.entries(languages[language.value])){
         text = text.replace(new RegExp(l[0], "g"), l[1])
-        if(l[0].toUpperCase != l[0] && !["ka", "he"].includes(language.value) && (language.value != "tr" && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].toUpperCase(), "g"), (["en-1", "tr"].includes(language.value) ? "⠠" : "⠨") + l[1])
+        if(l[0].toUpperCase != l[0] && !["ka", "he"].includes(language.value) && !(language.value == "tr" && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].toUpperCase(), "g"), (["en-1", "tr"].includes(language.value) ? "⠠" : "⠨") + l[1])
     }
 
     for(l of g){
