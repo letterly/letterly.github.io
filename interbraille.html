@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="interbraille.css">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>LibHarris</title>
+    </head>
+    <body>
+        <h1>Braille Conversion Website</h1>
+        <h3>Choose a Language:</h3>
+        <div id="selectblock">
+            <select id="language" onchange="changeLang(this.value)">
+            <!--    <option value="ab">Abkhaz | Аԥсшәа</option> -->
+                <option value="en-1" selected>English</option>
+                <option value="ka">Georgian | ქართული</option>
+                <!-- <option value="os">Ossetian | Ирон</option> -->
+                <option value="pl">Polish | Polski</option>
+                <option value="pt">Portuguese | Português</option>
+            <!--   <option value="ru">Russian | Русский</option> -->
+                <option value="es">Spanish | Español</option>
+            </select>
+        </div>
+        <br>
+        <textarea id="input" placeholder="Write here..." onkeyup="printBraille(this.value)"></textarea>
+        <textarea id="output" contenteditable="false"></textarea>
+        <p><a href="interbraille.txt">Changelog</a></p>
+    </body>
+    <script src="interbraille.js"></script>
+    <script src="interbraille-data.js"></script>
+</html>
