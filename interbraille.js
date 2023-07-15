@@ -27,8 +27,7 @@ function toBraille(text){
 
     for(l of Object.entries(languages[language.value])){
         text = text.replace(new RegExp(l[0], "g"), l[1])
-        caps = {"en-1": "⠠", "es": "⠨", "pt": "⠨", "pl": "⠨", "sl": "⠨", "hr": "⠨"}[language.value]
-        if(l[0].toUpperCase != l[0] && language.value != "ka") text = text.replace(new RegExp(l[0].toUpperCase(), "g"), caps + l[1])
+        if(l[0].toUpperCase != l[0] && language.value != "ka") text = text.replace(new RegExp(l[0].toUpperCase(), "g"), (language.value == "en-1" ? "⠠" : "⠨") + l[1])
     }
 
     for(l of g){
@@ -52,5 +51,6 @@ function changeLang(lang){
         "ka": "დაწერე აქ",
         "sl": "Napišite tukaj",
         "hr": "Pišite ovdje",
+        "hu": "Írj ide",
     }[lang] + "..."
 }
