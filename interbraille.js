@@ -27,7 +27,7 @@ function toBraille(text){
 
     for(l of Object.entries(languages[language.value])){
         text = text.replace(new RegExp(l[0], "g"), l[1])
-        if(l[0].toUpperCase != l[0] && language.value != "ka" && (language.value != "tr" && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].toUpperCase(), "g"), (["en-1", "tr"].includes(language.value) ? "⠠" : "⠨") + l[1])
+        if(l[0].toUpperCase != l[0] && !["ka", "he"].includes(language.value) && (language.value != "tr" && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].toUpperCase(), "g"), (["en-1", "tr"].includes(language.value) ? "⠠" : "⠨") + l[1])
     }
 
     for(l of g){
@@ -43,6 +43,7 @@ function printBraille(text){
 
 
 function changeLang(lang){
+    input.dir = lang == "he" ? "rtl": "ltr"
     input.placeholder = {
         "es": "Escribe aquí",
         "en-1": "Write here",
@@ -53,5 +54,8 @@ function changeLang(lang){
         "hr": "Pišite ovdje",
         "hu": "Írj ide",
         "tr": "Buraya yaz",
+        "de": "Hier schreiben",
+        "fr": "Écrivez ici",
+        "he": "כתוב כאן",
     }[lang] + "..."
 }

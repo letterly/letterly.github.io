@@ -4,7 +4,8 @@ InterBraille Changelog
 Fixed some things in Polish braille
 Fixed an issue with converting the degree sign °
 Added () [] and {} to every language that didn't have them
-Then I added Slovene, Hungarian, Turkish and Croatian :)
+Then I added Hebrew, German, French, Slovene, Hungarian, Turkish and Croatian :)
+Fixed the code for "]" in English
 
 14 July 2023
 I published the website!
