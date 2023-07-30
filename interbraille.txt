@@ -1,5 +1,14 @@
 InterBraille Changelog
 
+30 July 2023
+Braille letters are now listed in alphabetical order (according to Unicode at least)
+Braille punctuation is now listen separately from the Braille letters
+
+27 July 2023
+Added link to my personal website
+Changed some of the website's appearance
+Now the Braille alphabet is displayed beneath the converter
+
 15 July 2023
 Fixed some things in Polish braille
 Fixed an issue with converting the degree sign °

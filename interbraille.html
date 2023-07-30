@@ -7,6 +7,8 @@
     </head>
     <body>
         <h1>Braille Conversion Website</h1>
+        <p id="link">By <a href="harrismowbray.com">Harris Mowbray</a></p>
+        <p id="changelog"><a href="interbraille.txt">Updates [30 Jul 23]</a></p>
         <h3>Choose a Language:</h3>
         <div id="selectblock">
             <select id="language" onchange="changeLang(this.value)">
@@ -28,9 +30,38 @@
             </select>
         </div>
         <br>
-        <textarea id="input" placeholder="Write here..." onkeyup="printBraille(this.value)"></textarea>
+        <textarea id="input" onkeyup="printBraille(this.value)"></textarea>
         <textarea id="output" contenteditable="false"></textarea>
-        <p><a href="interbraille.txt">Changelog</a></p>
+            <h1><span id="brltype"></span> Braille</h1>
+            <div class="tables">
+                <table id="t0">
+                </table>
+                <table id="t1">
+                </table>
+                <table id="t2">
+                </table>
+                <table id="t3">
+                </table>
+                <table id="t4">
+                </table>
+                <table id="t5">
+                </table>
+            </div>
+            <h1><span id="thebrltype"></span> Braille Punctuation</h1>
+            <div class="tables">
+                <table id="y0">
+                </table>
+                <table id="y1">
+                </table>
+                <table id="y2">
+                </table>
+                <table id="y3">
+                </table>
+                <table id="y4">
+                </table>
+                <table id="y5">
+                </table>
+            </div>
     </body>
     <script src="interbraille.js"></script>
     <script src="interbraille-data.js"></script>

@@ -58,4 +58,28 @@ function changeLang(lang){
         "fr": "Écrivez ici",
         "he": "כתוב כאן",
     }[lang] + "..."
+
+    for(r = 0; r < 6; r++){
+        document.getElementById("t" + r).innerHTML = ""
+        document.getElementById("y" + r).innerHTML = ""
+    }
+
+    punc = `()[]{},.:;-'!?°"$*„“/\\_<>&#%+=@”`
+
+    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "")) && f[0] == f[0].toLowerCase()).sort()
+
+    thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", "")))
+
+    theletters.forEach(([k, v], i) => {
+        brltype.textContent = language.options[language.selectedIndex].text.split(" | ")[0]
+        document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+    })
+
+    thepunctuation.forEach(([k, v], i) => {
+        thebrltype.textContent = language.options[language.selectedIndex].text.split(" | ")[0]
+        document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+    })
+
+
+
 }

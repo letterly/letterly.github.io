@@ -5,6 +5,7 @@ textarea{
     height: 80%;
     font-family: Verdana;
     font-size: 38px;
+    border-radius: 10px;
 }
 #selectblock{
     margin-left: calc((100% - 458.5px) / 2);
@@ -23,4 +24,42 @@ select{
 h1, h3{
     text-align: center;
     font-family: Verdana;
+}
+.tables{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    display: block;
+    float: left;
+}
+
+table{
+    font-size: 24px;
+    font-family: Verdana;
+    margin: 0px;
+    float: left;
+    margin: 0.5vw;
+}
+td{
+    border: 0.1vw black solid;
+    width: 6vw;
+    height: 6vw;
+    text-align: center;
+    display: block;
+    float: left;
+    font-size: 4vw;
+    margin: 0.2vw;
+}
+.brl{
+    background-color: #d2d2d2;
+}
+#changelog, #link{
+    font-family: Verdana;
+    text-align: center;
+    margin: 0px;
+}
+#changelog a{
+    color: orangered;
+}
+#link a{
+    color: darkgreen;
 }
