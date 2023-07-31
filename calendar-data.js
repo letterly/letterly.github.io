@@ -2548,7 +2548,7 @@ calendars = {
             type: "day",
             month: 11,
             method: function(x){
-                return ([1,5,9,13,17,21,25,30].includes(x % 33))
+                return ([1280, 1284, 1288, 1292, 1296, 1300, 1304, 1308, 1313, 1317, 1321, 1325, 1329, 1333, 1337, 1341, 1346, 1350, 1354, 1358, 1362, 1366, 1370, 1375, 1379, 1383, 1387, 1391, 1395, 1399, 1403].includes(x))
             }
         },
         startDay: {
@@ -2556,7 +2556,7 @@ calendars = {
             monthcount: 9,
             year: 1278, //445393
         },
-        bounds: [1279, 1279 +T],
+        bounds: [1279, 1403],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
         holidays: {},
@@ -2626,7 +2626,7 @@ calendars = {
             type: "day",
             month: 8,
             method: function(x){
-                return ([1,5,9,13,17,21,25,30].includes(x % 33))
+                return ([1280, 1284, 1288, 1292, 1296, 1300, 1304, 1308, 1313, 1317, 1321, 1325, 1329, 1333, 1337, 1341, 1346, 1350, 1354, 1358, 1362, 1366, 1370, 1375, 1379, 1383, 1387, 1391, 1395, 1399, 1403].includes(x - 132))
             }
         },
         startDay: {
@@ -2634,7 +2634,7 @@ calendars = {
             monthcount: 5,
             year: 1411,
         },
-        bounds: [1411, 1411 +T],
+        bounds: [1411, 1535],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
         holidays: {},
