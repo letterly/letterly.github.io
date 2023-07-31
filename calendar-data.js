@@ -2632,11 +2632,89 @@ calendars = {
         startDay: {
             dayinmonth: 11,
             monthcount: 5,
-            year: 1411, //445393
+            year: 1411,
         },
-        bounds: [1401, 1401 +T],
+        bounds: [1411, 1411 +T],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
+        holidays: {},
+    },
+    "Dilami": {
+        firstDay: "Saturday",
+        dayStart: "Midnight",
+        months: [
+            {
+                name: "Nowruz Ma",
+                days: 30,
+            },
+            {
+                name: "Korch Ma",
+                days: 30,
+            },
+            {
+                name: "Aria Ma",
+                days: 30,
+            },
+            {
+                name: "Tir Ma",
+                days: 30,
+            },
+            {
+                name: "Mordal Ma",
+                days: 30,
+            },
+            {
+                name: "Shrir Ma",
+                days: 30,
+            },
+            {
+                name: "Amir Ma",
+                days: 30,
+            },
+            {
+                name: "Aval Ma",
+                days: 30,
+            },
+            {
+                name: "Vishak",
+                days: "0/1",
+            },
+            {
+                name: "Panjik",
+                days: 5,
+            },
+            {
+                name: "Sia Ma",
+                days: 30,
+            },
+            {
+                name: "Dia Ma",
+                days: 30,
+            },
+            {
+                name: "Orfne Ma",
+                days: 30,
+            },
+            {
+                name: "Esfandar Ma",
+                days: 30,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 8,
+            method: function(x){
+                return x % 4 == 0
+            }
+        },
+        startDay: {
+            dayinmonth: 28,
+            monthcount: 4,
+            year: 1473, //445393
+        },
+        bounds: [1473, 1473 +T],
+        era: "",
+        link: "https://fa.wikipedia.org/wiki/%DA%AF%D8%A7%D9%87%E2%80%8C%D8%B4%D9%85%D8%A7%D8%B1%DB%8C_%D8%AF%DB%8C%D9%84%D9%85%DB%8C",
         holidays: {},
     },
     "Thai Solar": {
