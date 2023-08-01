@@ -2,14 +2,14 @@ textarea{
     resize: none;
     width: 43%;
     margin: 3%;
-    height: 80%;
+    height: 50%;
     font-family: Verdana;
     font-size: 38px;
     border-radius: 10px;
 }
 #selectblock{
-    margin-left: calc((100% - 458.5px) / 2);
-    margin-right: calc((100% - 458.5px) / 2);
+    margin-left: calc((100% - 611px) / 2);
+    margin-right: calc((100% - 611px) / 2);
     outline: none;
 }
 select{

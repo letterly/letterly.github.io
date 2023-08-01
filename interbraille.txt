@@ -1,8 +1,25 @@
 InterBraille Changelog
 
+#done: Albanian, Amharic, Azeri, Belarusian, Filipino, Luxembourgish, Macedonian, and Thai
+#todo Irish, Turkmen, Kyrgyz, Tajik, Lao, Guarani, Icelandic
+
+1 August 2023
+Added the Thai language
+Fixed alphabetical order for some languages
+
+31 July 2023
+Added the Amharic, Czech, Filipino, Luxembourgish, and Lithuanian languages
+Fixed issues with dotless i in Azerbaijani
+Reorganized the way digraphs/trigraphs are displayed
+Greatly improved the German braille alphabet
+Improved things about alphabetical-order collation
+Added Antoine numerals to French and Luxembourgish
+
 30 July 2023
 Braille letters are now listed in alphabetical order (according to Unicode at least)
 Braille punctuation is now listen separately from the Braille letters
+Fixed a capitalization issue with digraphs/trigraphs
+Added the Albanian, Azerbaijani, Belarusian, and Macedonian, Ukrainian languages 
 
 27 July 2023
 Added link to my personal website

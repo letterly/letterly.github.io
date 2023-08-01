@@ -8,26 +8,10 @@
     <body>
         <h1>Braille Conversion Website</h1>
         <p id="link">By <a href="harrismowbray.com">Harris Mowbray</a></p>
-        <p id="changelog"><a href="interbraille.txt">Updates [30 Jul 23]</a></p>
+        <p id="changelog"><a href="interbraille.txt">Updates [1 Aug 23]</a></p>
         <h3>Choose a Language:</h3>
         <div id="selectblock">
-            <select id="language" onchange="changeLang(this.value)">
-            <!--    <option value="ab">Abkhaz | Аԥсшәа</option> -->
-                <option value="hr" selected>Croatian | Hrvatski</option>
-                <option value="en-1" selected>English</option>
-                <option value="fr">French | Français</option>
-                <option value="ka">Georgian | ქართული</option>
-                <option value="de">German | Deutsch</option>
-                <option value="he">Hebrew | עברית</option>
-                <option value="hu">Hungarian | Magyar</option>
-                <!-- <option value="os">Ossetian | Ирон</option> -->
-                <option value="pl">Polish | Polski</option>
-                <option value="pt">Portuguese | Português</option>
-            <!--   <option value="ru">Russian | Русский</option> -->
-                <option value="sl">Slovene | Slovenščina</option>
-                <option value="es">Spanish | Español</option>
-                <option value="tr">Turkish | Türkçe</option>
-            </select>
+            <select id="language" onchange="changeLang(this.value)"></select>
         </div>
         <br>
         <textarea id="input" onkeyup="printBraille(this.value)"></textarea>
