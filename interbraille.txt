@@ -1,12 +1,14 @@
 InterBraille Changelog
 
-#done: Albanian, Amharic, Arabic, Azeri, Belarusian, Filipino, Luxembourgish, Macedonian, and Thai
-#todo: Irish, Turkmen, Kyrgyz, Tajik, Lao, Guarani, Icelandic, Armenian
-#also: Russian, Grade 2, Urdu (Pakistan)
+#done: Albanian, Amharic, Azeri, Belarusian, Filipino, Luxembourgish, Macedonian, and Thai
+#todo: Irish, Turkmen, Kyrgyz, Tajik, Lao, Guarani, Icelandic
+#also: Hindi
 
 2 August 2023
 Added English Grade 2 Braille, it may have some issues though
 Added Urdu Braille, the variant used in Pakistan
+Added both Eastern and Western Armenian Braille
+Added Russian Braille
 
 1 August 2023
 Added the Arabic and Thai languages

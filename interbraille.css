@@ -8,15 +8,15 @@ textarea{
     border-radius: 10px;
 }
 #selectblock{
-    margin-left: calc((100% - 611px) / 2);
-    margin-right: calc((100% - 611px) / 2);
+    margin-left: calc((100% - 650px) / 2);
+    margin-right: calc((100% - 650px) / 2);
     outline: none;
 }
 select{
     border: none; 
     outline: none;
     border-bottom: blue 2px solid;
-    font-size: 40px;
+    font-size: 34px;
     text-align: center;
     color: black;
 }
