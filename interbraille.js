@@ -21,7 +21,6 @@ function toBraille(text){
             ["9", "⠪"],
             [" 0", " ⠠⠼"],
             ["0", "⠼"],
-            [" ", "⠀"],
         ]
     }
     else if(language.value == "lb"){
@@ -36,7 +35,6 @@ function toBraille(text){
             ["8", "⠳"],
             ["9", "⠪"],
             ["0", "⠼"],
-            [" ", "⠀"],
         ]
     }
     else if(language.value == "th"){
@@ -81,7 +79,94 @@ function toBraille(text){
             ["๙", "⠊"],
             [" ๐", " ⠠⠼⠚"],
             ["๐", "⠚"],
-            [" ", "⠀"],
+        ]
+    }
+    else if(language.value == "ar"){
+        g = [
+            [" 1", " ⠼⠁"],
+            ["1", "⠁"],
+            [" 2", " ⠼⠃"],
+            ["2", "⠃"],
+            [" 3", " ⠼⠉"],
+            ["3", "⠉"],
+            [" 4", " ⠼⠙"],
+            ["4", "⠙"],
+            [" 5", " ⠼⠑"],
+            ["5", "⠑"],
+            [" 6", " ⠼⠋"],
+            ["6", "⠋"],
+            [" 7", " ⠼⠛"],
+            ["7", "⠛"],
+            [" 8", " ⠼⠓"],
+            ["8", "⠓"],
+            [" 9", " ⠼⠊"],
+            ["9", "⠊"],
+            [" 0", " ⠼⠚"],
+            ["0", "⠚"],
+            [" ١", " ⠼⠁"],
+            ["١", "⠁"],
+            [" ٢", " ⠼⠃"],
+            ["٢", "⠃"],
+            [" ٣", " ⠼⠉"],
+            ["٣", "⠉"],
+            [" ٤", " ⠼⠙"],
+            ["٤", "⠙"],
+            [" ٥", " ⠼⠑"],
+            ["٥", "⠑"],
+            [" ٦", " ⠼⠋"],
+            ["٦", "⠋"],
+            [" ٧", " ⠼⠛"],
+            ["٧", "⠛"],
+            [" ٨", " ⠼⠓"],
+            ["٨", "⠓"],
+            [" ٩", " ⠼⠊"],
+            ["٩", "⠊"],
+            [" ٠", " ⠼⠚"],
+            ["٠", "⠚"],
+        ]
+    }
+    else if(language.value == "ur-pk"){
+        g = [
+            [" 1", " ⠼⠁"],
+            ["1", "⠁"],
+            [" 2", " ⠼⠃"],
+            ["2", "⠃"],
+            [" 3", " ⠼⠉"],
+            ["3", "⠉"],
+            [" 4", " ⠼⠙"],
+            ["4", "⠙"],
+            [" 5", " ⠼⠑"],
+            ["5", "⠑"],
+            [" 6", " ⠼⠋"],
+            ["6", "⠋"],
+            [" 7", " ⠼⠛"],
+            ["7", "⠛"],
+            [" 8", " ⠼⠓"],
+            ["8", "⠓"],
+            [" 9", " ⠼⠊"],
+            ["9", "⠊"],
+            [" 0", " ⠼⠚"],
+            ["0", "⠚"],
+            [" ۱", " ⠼⠁"],
+            ["۱", "⠁"],
+            [" ۲", " ⠼⠃"],
+            ["۲", "⠃"],
+            [" ۳", " ⠼⠉"],
+            ["۳", "⠉"],
+            [" ۴", " ⠼⠙"],
+            ["۴", "⠙"],
+            [" ۵", " ⠼⠑"],
+            ["۵", "⠑"],
+            [" ۶", " ⠼⠋"],
+            ["۶", "⠋"],
+            [" ۷", " ⠼⠛"],
+            ["۷", "⠛"],
+            [" ۸", " ⠼⠓"],
+            ["۸", "⠓"],
+            [" ۹", " ⠼⠊"],
+            ["۹", "⠊"],
+            [" ۰", " ⠼⠚"],
+            ["۰", "⠚"],
         ]
     }
     else if(language.value == "lo"){
@@ -126,7 +211,6 @@ function toBraille(text){
             ["໙", "⠊"],
             [" ໐", " ⠠⠼⠚"],
             ["໐", "⠚"],
-            [" ", "⠀"],
         ]
     }
     else{
@@ -151,9 +235,9 @@ function toBraille(text){
             ["9", "⠊"],
             [" 0", " ⠼⠚"],
             ["0", "⠚"],
-            [" ", "⠀"],
         ]
     }
+    g.push([" ", "⠀"])
 
 
     if(["lo", "th"].includes(language.value)){
@@ -201,15 +285,20 @@ function changeLang(lang){
         document.getElementById("y" + r).innerHTML = ""
     }
 
-    punc = `()[]{},.:;-'!?°"$*„“/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐`
+    punc = `()[]{},.:;-'!?°"$*„“/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔`
 
-    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "")) && f[0] == f[0].toLowerCase()).sort((a,b) => a[0].length - b[0].length)
+    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && f[0] == f[0].toLowerCase() && f[0].length <= 2).sort((a,b) => a[0].length - b[0].length)
 
     thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
 
     theletters.forEach(([k, v], i) => {
         brltype.textContent = language.options[language.selectedIndex].text.split(" | ")[0]
-        document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+        if(input.dir == "rtl"){
+            document.getElementById("t" + (5 - (i % 6))).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+        }
+        else{
+            document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+        }
     })
 
     thepunctuation.forEach(([k, v], i) => {
