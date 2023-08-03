@@ -30,12 +30,12 @@ h1, h3{
     margin-right: 1vw;
     display: block;
     float: left;
+    width: 100%;
 }
 
 table{
     font-size: 24px;
     font-family: Verdana;
-    margin: 0px;
     float: left;
     margin: 0.5vw;
 }
