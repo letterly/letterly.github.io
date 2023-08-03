@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Convert to new orthography</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "ch": "č",
+                    "sh": "š",
+                    "zh": "ž",
+                    "th": "đ",
+                    "ⁿ": "̨",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Convert Text to Ponca Orthography</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter text"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+    </body>
+</html>

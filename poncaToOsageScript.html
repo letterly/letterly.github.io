@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Ponca Osage Script</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "š": "š",
+                    "č": "č",
+                    "ž": "ž",
+                    "̨": "͘",
+                    "a": "𐒰",
+                    //"𐒱": "ai",
+                    //"𐒲": "aiⁿ",
+                    //"𐒴": "br",
+                    "č": "𐒵",
+                    "e": "𐒷",
+                    "h": "𐒹",
+                    "i": "𐒻",
+                    "k": "𐒼",
+                    "g": "𐒽",
+                    //"𐒾": "ky",
+                    "l": "𐒿",
+                    "m": "𐓀",
+                    "n": "𐓁",
+                    "o": "𐓂",
+                    //"𐓃": "oiⁿ",
+                    "p": "𐓄",
+                    "b": "𐓅",
+                    "w": "𐓆",
+                    "š": "𐓇",
+                    "j": "𐓉𐓓",
+                    "t": "𐓈",
+                    "d": "𐓉",
+                    "c": "𐓊",
+                    //"𐓋": "hc",
+                    //"𐓌": "ch",
+                    "đ": "𐓍",
+                    "u": "𐓎",
+                    "w": "𐓏",
+                    "x": "𐓐",
+                    //"𐓑": "gh",
+                    "z": "𐓒",
+                    "ž": "𐓓",
+                    "ə": "𐒳",
+                    //"𐒸": "eiⁿ",
+                    //"𐒺": "hy",
+                    //"𐒶": "hč",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Ponca Text to Osage Script</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter text"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="output here"></textarea>
+    </body>
+</html>
