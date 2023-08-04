@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Ponca Dictionary</title>
+        <style>
+            button{
+                width: 5vw;
+                height: 5vw;
+                max-width: 45px;
+                max-height: 45px;
+                border: none;
+                background-color: red;
+                color: white;
+                font-weight: 700;
+                font-size: min(4vw, 32px);
+                border-radius: 1vw;
+            }
+            input{
+                outline: none;
+                margin-bottom: 12px;
+                margin-top: 12px;
+                border: 3px black solid;
+                width: 60%;
+                margin-left: 20%;
+                margin-right: 20%;
+                height: 40px;
+                font-size: 4vh;
+            }
+            #field{
+                font-size: 24px;
+                margin: 20px;
+            }
+            h1{
+                font-family: Verdana;
+                text-align: center;
+                font-size: 48px;
+            }
+            #buttonarray{
+                margin-left: calc((100% - 31vw) / 2);
+                margin-right: calc((100% - 31vw) / 2);
+            }
+            #shell{
+                border: 2px solid black;
+                border-radius: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Ponca Dictionary</h1>
+        <div id="shell">
+            <input id='input' onkeyup="openDictionary()" placeholder="Type Ponca text here..." />
+            <div id="buttonarray">
+                <button onclick="addText(this.textContent)">č</button>
+                <button onclick="addText(this.textContent)">đ</button>
+                <button onclick="addText(this.textContent)">ə</button>
+                <button onclick="addText(this.textContent)">ʃ</button>
+                <button onclick="addText(this.textContent)">š</button>
+                <button onclick="addText(this.textContent)">ž</button>
+                <button onclick="addText(this.textContent)">́</button>
+                <button onclick="addText(this.textContent)">̀</button>
+                <button onclick="addText(this.textContent)">̨</button>
+            </div>
+            <input id='eninput' onkeyup="openEnglish()" placeholder="Or search a word in English..." />
+        </div>
+        <div id="field"></div>
+    </body>
+    <script>
+dictionary = 
+`đišké|adj.|untied, unhooked, undone
+uđíaì|v.|scatter, made into small pieces and scattered
+baxú|v.|write, to write, as in writing a letter
+ę́gąđąžą̀|prep.|except, but, as in "that's the way it was <i>but</i>..."
+ešą́'|adj/adv.|near, close at hand, very close, adjacent
+mą́šą'hągà|n.|center tail feather of the eagle
+waná'|v.|beg, beg for, ask for something to begin
+žúhè|v.|wade, to wade, to walk in water
+í'xa|v.|to laugh
+í'xa'xà|v.|to laugh at, laugh to scorn, sneer at, make fun of, mock, jeer
+k'í'u|v.|wounded (in war)`.split("\n")
+
+endictionary = 
+`implode|mút'ušì|v.|an explosion from forces within
+hurt|ną́ka|n./v.|injured
+icebound|udá'|adj.|something that is frozen within or covered with ice
+event|šká'de|n.|a happening (this may include dances, ballgames, etc.)
+deaf|waną́'ą́ži|n.|lit., cannot hear
+debt|wagáxe|n.|something (money) that is owed to somebody, bound by verbal or written agreement
+pond|né'|n.|pool`.split("\n")
+
+
+function openDictionary(){
+    z = input.value
+    z = z.toLowerCase()
+    field.innerHTML = ""
+    if(z != ""){
+        selected = dictionary.filter(y => y.startsWith(z)).slice(0,5)
+        console.log(selected)
+        for(s of selected){
+            s = s.split("|")
+            field.innerHTML += `<p><b>${s[0]}</b> <i>${verbify(s[1])}</i> ${deAbbrev(s[2])}</p>`
+        }
+    }
+}
+function openEnglish(){
+    z = eninput.value
+    z = z.toLowerCase()
+    field.innerHTML = ""
+    if(z != ""){
+        selected = endictionary.filter(y => y.startsWith(z)).slice(0,5)
+        console.log(selected)
+        for(s of selected){
+            s = s.split("|")
+            field.innerHTML += `<p><u>${s[0]}</u>: <b>${s[1]}</b> <i>${verbify(s[2])}</i> ${deAbbrev(s[3])}</p>`
+        }
+    }
+}
+
+function verbify(v){
+    g = {
+        "n./v.": "noun/verb",
+        "adj/adv.": "adjective/adverb",
+        "adv.": "adverb",
+        "v.": "verb",
+        "adj.": "adjective",
+        "adj/v.": "adjective/verb",
+    }[v]
+    return g == undefined ? v : g
+}
+
+function deAbbrev(t){
+    t = t.replace(/lit\./g, "<span style='text-decoration:dotted underline'>literally</span>")
+    return t
+}
+
+function addText(x){
+    input.value += x
+    openDictionary()
+}
+    </script>
+</html>
