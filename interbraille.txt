@@ -2,6 +2,9 @@ InterBraille Changelog
 
 #done: Albanian, Amharic, Azeri, Belarusian, Filipino, Icelandic, Irish, Kyrgyz, Lao, Luxembourgish, Macedonian, Tajik, and Thai
 
+8 August 2023
+Added Faroese
+
 4 August 2023
 Added Icelandic
 
