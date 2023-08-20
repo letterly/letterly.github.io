@@ -1,7 +1,12 @@
 InterBraille Changelog
 
+20 August 2023
+-Added accented vowels in Macedonian
+-Added the Bosnian, Bulgarian, and Serbian languages
+
 19 August 2023
-Added Esperanto, Estonian, Latvian, and Romanian
+-Added Esperanto, Estonian, Latvian, and Romanian
+-Fixed issue with text which began with numbers
 
 17 August 2023
 Added Danish, Greenlandic, and Norwegian
