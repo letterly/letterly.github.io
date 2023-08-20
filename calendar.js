@@ -411,7 +411,7 @@ function convert(){
                 "'>" + 
                 ourcalendar + 
                 "</a> " + 
-                {"Saturday": "🟥", "Sunday": "🟧", "Monday": "🟨", "N/A": "⬜"}[calendars[ourcalendar].firstDay] + " " + 
+                {"Saturday": "🟥", "Sunday": "🟧", "Monday": "🟨", "N/A": "⬜", "Sunday/Monday": "🟧/🟨"}[calendars[ourcalendar].firstDay] + " " + 
                 "<br>" + 
                 thatspecificday[ourcalendar].split(" ")[0] + 
                 " " + 
@@ -625,6 +625,12 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
+            name: "Rosh Hashanah Lemaasar Behema",
+            day: ["1 Elul"],
+            link: "https://en.wikipedia.org/wiki/Rosh_HaShanah_LeMaasar_Behema",
+        },
+        {
+            cal: "Hebrew",
             name: "Yom Kippur",
             day: ["10 Tishrei"],
             link: "https://en.wikipedia.org/wiki/Yom_Kippur",
@@ -703,6 +709,12 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
+            name: "Purim Meshulash",
+            day: [(d == "Sunday" ? "16 Adar" : "")],
+            link: "https://en.wikipedia.org/wiki/Purim#Purim_Meshulash",
+        },
+        {
+            cal: "Hebrew",
             name: "Purim",
             day: ["14 Adar II"],
             link: "https://en.wikipedia.org/wiki/Purim",
@@ -712,6 +724,24 @@ function holidaycheck(thatday){
             name: "Shushan Purim",
             day: ["15 Adar II"],
             link: "https://en.wikipedia.org/wiki/Purim#Shushan_Purim",
+        },
+        {
+            cal: "Hebrew",
+            name: "Purim Meshulash",
+            day: [(d == "Sunday" ? "16 Adar II" : "")],
+            link: "https://en.wikipedia.org/wiki/Purim#Purim_Meshulash",
+        },
+        {
+            cal: "Hebrew",
+            name: "Purim Katan",
+            day: ["14 Adar I"],
+            link: "https://en.wikipedia.org/wiki/Purim#Purim_Katan",
+        },
+        {
+            cal: "Hebrew",
+            name: "Shushan Purim Katan",
+            day: ["15 Adar I"],
+            link: "https://en.wikipedia.org/wiki/Purim#Purim_Katan",
         },
         {
             cal: "Hebrew",

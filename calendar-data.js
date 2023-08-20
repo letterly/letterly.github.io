@@ -83,64 +83,6 @@ calendars = {
         bounds: [1900, 1900+T],
         era: "CE",
         link: "https://en.wikipedia.org/wiki/Gregorian_calendar",
-        holidays: {
-            "Easter": {
-                link: "https://en.wikipedia.org/wiki/Easter",
-            },
-            "Ash Wednesday": {
-                link: "https://en.wikipedia.org/wiki/Ash_Wednesday",
-            },
-            "Shrove Tuesday": {
-                link: "https://en.wikipedia.org/wiki/Shrove_Tuesday",
-            },
-            "Palm Sunday": {
-                link: "https://en.wikipedia.org/wiki/Palm_Sunday",
-            },
-            "Maundy Thursday": {
-                link: "https://en.wikipedia.org/wiki/Maundy_Thursday",
-            },
-            "Feast of the Ascension": {
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
-            },
-            "Pentecost": {
-                link: "https://en.wikipedia.org/wiki/Pentecost",
-            },
-            "Trinity Sunday": {
-                link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
-            },
-            "Epiphany": {
-                day: "6 January",
-                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
-            },
-            "Nativity of John the Baptist": {
-                day: "24 June",
-                link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
-            },
-            "Assumption of Mary": {
-                day: "15 August",
-                link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
-            },
-            "All Saints' Day": {
-                day: "1 November",
-                link: "https://en.wikipedia.org/wiki/All_Saints%27_Day"
-            },
-            "Feast of the Immaculate Conception": {
-                day: "8 December",
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception",
-            },
-            "Christmas": {
-                day: "25 December",
-                link: "https://en.wikipedia.org/wiki/Christmas",
-            },
-            "Christmas:Armenian": {
-                day: "6 January",
-                link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
-            },
-            "Feast of the Cross": {
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
-                day: "14 September",
-            }
-        },
     },
     Armenian: {
         firstDay: "N/A",
@@ -210,7 +152,6 @@ calendars = {
         bounds: [1350, 1350+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Armenian_calendar",
-        holidays: {},
     },
     "Bahá'í": {
         firstDay: "Saturday",
@@ -313,50 +254,6 @@ calendars = {
         bounds: [56, 218],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar",
-        holidays: {
-            "Naw-Rúz": {
-                day: "1 Bahá",
-                link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Naw-R%C3%BAz",
-            },
-            "1st of Riḍván": {
-                day: "13 Jalál",
-                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
-            },
-            "9th of Riḍván": {
-                day: "2 Jamál",
-                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
-            },
-            "12th of Riḍván": {
-                day: "5 Jamál",
-                link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
-            },
-            "Declaration of the Báb": {
-                day: "8 ʻAẓamat",
-                link: "https://en.wikipedia.org/wiki/B%C3%A1b#Declaration_to_Mull%C3%A1_Husayn",
-            },
-            "Ascension of Baháʼu'lláh": {
-                day: "13 ʻAẓamat",
-                link: "https://www.bpl.org/blogs/post/the-origins-and-practices-of-holidays-ascension-of-bahaullah-ascension-of-jesus/",
-            },
-            "Martyrdom of the Báb": {
-                day: "17 Raḥmat",
-                link: "https://en.wikipedia.org/wiki/Execution_of_the_B%C3%A1b",
-            },
-            "Day of the Covenant": {
-                day: "4 Qawl",
-                link: "https://en.wikipedia.org/wiki/Day_of_the_Covenant_(Bah%C3%A1%CA%BC%C3%AD)",
-            },
-            "Ascension of ʻAbdu'l-Bahá": {
-                day: "6 Qawl",
-                link: "https://en.wikipedia.org/wiki/%CA%BBAbdu%27l-Bah%C3%A1#Death_and_funeral",
-            },
-            "Birth of the Báb": {
-                link: "https://en.wikipedia.org/wiki/Twin_Holy_Birthdays",
-            },
-            "Birth of Baháʼu'lláh": {
-                link: "https://en.wikipedia.org/wiki/Birth_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h",
-            },
-        },
     },
     Bengali: {
         firstDay: "Sunday",
@@ -439,7 +336,6 @@ calendars = {
         bounds: [1306, 1306+T],
         era: "BS",
         link: "https://en.wikipedia.org/wiki/Bengali_calendars#2018_Revision_of_Bangladesh",
-        holidays: {},
     },
     Berber: {
         firstDay: "Monday",
@@ -521,7 +417,6 @@ calendars = {
         bounds: [2851, 2851+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
-        holidays: {},
     },
     /*
     Burmese: {
@@ -593,7 +488,6 @@ calendars = {
         bounds: [1261, 1420],
         era: "ME",
         link: "https://en.wikipedia.org/wiki/Burmese_calendar",
-        holidays: {},
     },*/
     Coptic: {
         firstDay: "Monday",
@@ -680,7 +574,6 @@ calendars = {
         bounds: [1621, 1621+T],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Coptic_calendar",
-        holidays: {},
     },
     Ethiopian: {
         firstDay: "Monday",
@@ -754,7 +647,6 @@ calendars = {
         bounds: [1893, 1893+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Ethiopian_calendar",
-        holidays: {},
     },
     "Fasli (Zoroastrian)": {
         firstDay: "N/A",
@@ -848,16 +740,6 @@ calendars = {
         bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Fasli_calendar",
-        holidays: {
-            "Khordad Sal": {
-                day: "6 Farvadin",
-                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
-            },
-            "Zartosht No-Diso": {
-                day: "11 Dae",
-                link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
-            },
-        },
     },
     "French Republican": {
         firstDay: "N/A",
@@ -944,7 +826,6 @@ calendars = {
         bounds: [108, 108+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/French_Republican_calendar",
-        holidays: {},
     },
     Japanese: {
         firstDay: "Sunday",
@@ -1026,7 +907,6 @@ calendars = {
         bounds: [1900, 2024],
         era: "",
         link: "https://en.wikipedia.org/wiki/Japanese_calendar",
-        holidays: {},
     },
     Hebrew: {
         firstDay: "Sunday",
@@ -1112,116 +992,6 @@ calendars = {
         bounds: [5660, 5879],
         era: "AM",
         link: "https://en.wikipedia.org/wiki/Hebrew_calendar",
-        holidays: {
-            "Rosh Hashanah": {
-                day: "1 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Rosh_Hashanah",
-                length: 2,
-            },
-            "Yom Kippur": {
-                day: "10 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Yom_Kippur",
-            },
-            "Sukkot": {
-                day: "15 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Sukkot",
-                length: 7,
-            },
-            "Fast of the Firstborn": {
-                day: "14 Nisan",
-                link: "https://en.wikipedia.org/wiki/Fast_of_the_Firstborn",
-                shabbat: {
-                    date: "12 Nisan",
-                    day: "Wednesday"
-                },
-            },
-            "Pesach": {
-                day: "15 Nisan",
-                link: "https://en.wikipedia.org/wiki/Passover",
-                length: 7,
-            },
-            "Shemini Atzeret": {
-                day: "22 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Shemini_Atzeret"
-            },
-            "Simchat Torah:outside Israel": {
-                day: "23 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Simchat_Torah",  
-            },
-            "Tisha B'Av": {
-                day: "9 Av",
-                link: "https://en.wikipedia.org/wiki/Tisha_B%27Av",
-            },
-            "Tu B'Av": {
-                day: "15 Av",
-                link: "https://en.wikipedia.org/wiki/Tu_B%27Av",
-            },
-            "Purim": {
-                day: "14 Adar",
-                link: "https://en.wikipedia.org/wiki/Purim",
-            },
-            "Purim": {
-                day: "14 Adar II",
-                link: "https://en.wikipedia.org/wiki/Purim",
-            },
-            "Seventeenth of Tammuz": {
-                day: "17 Tammuz",
-                link: "https://en.wikipedia.org/wiki/Seventeenth_of_Tammuz",
-            },
-            "Yom Yerushalayim": {
-                day: "28 Iyar",
-                link: "https://en.wikipedia.org/wiki/Jerusalem_Day",
-            },
-            "Tu BiShvat": {
-                day: "15 Shvat",
-                link: "https://en.wikipedia.org/wiki/Tu_BiShvat",
-            },
-            "Sigd": {
-                day: "29 Cheshvan",
-                link: "https://en.wikipedia.org/wiki/Sigd",
-            },
-            "Lag BaOmer": {
-                day: "18 Iyar",
-                link: "https://en.wikipedia.org/wiki/Lag_BaOmer",
-            },
-            "Shavuot": {
-                day: "6 Sivan",
-                link: "https://en.wikipedia.org/wiki/Shavuot",
-            },
-            "Hanukkah": {
-                day: "25 Kislev",
-                link: "https://en.wikipedia.org/wiki/Hanukkah",
-                length: 8,
-            },
-            "Tenth of Tevet": {
-                day: "10 Tevet",
-                link: "https://en.wikipedia.org/wiki/Tenth_of_Tevet",
-            },
-            "Fast of Gedalia": {
-                day: "3 Tishrei",
-                link: "https://en.wikipedia.org/wiki/Fast_of_Gedalia",
-                shabbat: {
-                    date: "4 Tishrei",
-                    day: "Saturday"
-                },
-            },
-            "Fast of Esther": {
-                day: "13 Adar",
-                link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
-                shabbat: {
-                    date: "11 Adar",
-                    day: "Wednesday"
-                },
-            },
-            "Fast of Esther": {
-                day: "13 Adar II",
-                link: "https://en.wikipedia.org/wiki/Fast_of_Esther",
-                shabbat: {
-                    date: "11 Adar II",
-                    day: "Wednesday"
-                },            
-            },
-        },
     },
     "Indian National": {
         firstDay: "Sunday",
@@ -1304,7 +1074,6 @@ calendars = {
         bounds: [1822, 1822+T],
         era: "SE",
         link: "https://en.wikipedia.org/wiki/Indian_national_calendar",
-        holidays: {},
     },
     "Islamic Tabular": {
         firstDay: "Saturday",
@@ -1386,38 +1155,6 @@ calendars = {
         bounds: [1317, 1317+T],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
-        holidays: {
-
-            "Day of Arafah": {
-                day: "9 Dhu al-Hijjah",
-                link: "https://en.wikipedia.org/wiki/Day_of_Arafah",
-            },
-            "Eid al-Adha": {
-                day: "10 Dhu al-Hijjah",
-                link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
-            },
-            "Eid al-Ghadir:Shia": {
-                day: "18 Dhu al-Hijjah",
-                link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
-            },
-            "Mawlid:Sunni": {
-                day: "12 Rabiʽ al-Awwal",
-                link: "https://en.wikipedia.org/wiki/Mawlid",
-            },
-            "Mawlid:Shia": {
-                day: "17 Rabiʽ al-Awwal",
-                link: "https://en.wikipedia.org/wiki/Mawlid",
-            },
-            "Eid al-Fitr": {
-                day: "1 Shawwal",
-                link: "https://en.wikipedia.org/wiki/Eid_al-Fitr",
-            },
-            "Ashura": {
-                day: "10 Muharram",
-                link: "https://en.wikipedia.org/wiki/Ashura",
-            },
-
-        },
     },
     "Islamic Tabular Tayyibi": {
         firstDay: "Saturday",
@@ -1499,7 +1236,6 @@ calendars = {
         bounds: [1317, 1317+T],
         era: "AH",
         link: "https://en.wikipedia.org/wiki/Tabular_Islamic_calendar#30-year_cycle",
-        holidays: {},
     },
     Javanese: {
         firstDay: "Monday",
@@ -1569,7 +1305,6 @@ calendars = {
         bounds: [1830, 1830+T],
         era: "AJ",
         link: "https://en.wikipedia.org/wiki/Javanese_calendar",
-        holidays: {},
     },
     Juche: {
         firstDay: "Sunday",
@@ -1652,7 +1387,6 @@ calendars = {
         bounds: [1, T - 11],
         era: "",
         link: "https://en.wikipedia.org/wiki/Juche_calendar",
-        holidays: {},
     },
     Julian: {
         firstDay: "Monday",
@@ -1734,42 +1468,6 @@ calendars = {
         bounds: [1899, 1899 + T],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Julian_calendar",
-        holidays: {
-            "Easter": {
-                link: "https://en.wikipedia.org/wiki/Easter#Eastern_Christianity_2",
-            },
-            "Palm Sunday": {
-                link: "https://en.wikipedia.org/wiki/Palm_Sunday",
-            },
-            "Maundy Thursday": {
-                link: "https://en.wikipedia.org/wiki/Maundy_Thursday",
-            },
-            "Feast of the Ascension": {
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
-            },
-            "Pentecost": {
-                link: "https://en.wikipedia.org/wiki/Pentecost",
-            },
-            "Trinity Sunday": {
-                link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
-            },
-            "Christmas:Armenian Patriarchate of Jerusalem": {
-                link: "https://en.wikipedia.org/wiki/Christmas",
-                day: "6 January",
-            },
-            "Epiphany": {
-                day: "January 6",
-                link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
-            },
-            "Christmas": {
-                day: "25 December",
-                link: "https://en.wikipedia.org/wiki/Christmas",
-            },
-            "Feast of the Cross": {
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
-                day: "14 September",
-            },
-        },
     },
     Kurdish: {
         firstDay: "Saturday",
@@ -1839,7 +1537,6 @@ calendars = {
         bounds: [2600, 2600 + T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Kurdish_calendar",
-        holidays: {},
     },
     Mandaean: {
         firstDay: "Sunday",
@@ -1922,28 +1619,6 @@ calendars = {
         bounds: [445270, 445270+T],
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
-        holidays: {
-            "Dehwa Daimana":{
-                day: "1 Hiṭia",
-                link: "https://en.wikipedia.org/wiki/Dehwa_Daimana"
-            },
-            "Kanshiy u-Zahly": {
-                day: "30 Gadia",
-                link: "https://en.wikipedia.org/wiki/Dehwa_Rabba#Kanshiy_u-Zahly",
-            },
-            "Dehwa Rabba": {
-                day: "1 Daula",
-                link: "https://en.wikipedia.org/wiki/Dehwa_Rabba",
-            },
-            "Feast of the Great Shishlam": {
-                day: "6 Daula",
-                link: "https://en.wikipedia.org/wiki/Feast_of_the_Great_Shishlam",
-            },
-            "Dehwa Hanina": {
-                day: "18 Taura",
-                link: "https://en.wikipedia.org/wiki/Dehwa_Hanina",
-            }
-        },
     },
     Minguo: {
         firstDay: "Sunday",
@@ -2026,7 +1701,6 @@ calendars = {
         bounds: [1, T - 11],
         era: "ROC",
         link: "https://en.wikipedia.org/wiki/Republic_of_China_calendar",
-        holidays: {},
     },
     Nanakshahi: {
         firstDay: "Sunday",
@@ -2108,22 +1782,6 @@ calendars = {
         bounds: [433, 433+T],
         era: "KE",
         link: "https://en.wikipedia.org/wiki/Nanakshahi_calendar#Mool_Nanakshahi_Calendar",
-        holidays: {
-            "Sikh New Year": {
-                link: "https://en.wikipedia.org/wiki/Punjabi_Culture_Day",
-                day: "1 Chet"
-            },
-            "Hola Mohalla": {
-                link: "https://en.wikipedia.org/wiki/Hola_Mohalla",
-                day: "2 Chet",
-                length: 3,
-            },
-            "Vaisakhi": {
-                link: "https://en.wikipedia.org/wiki/Vaisakhi",
-                day: "1 Vaisakh",
-                length: 2,
-            },
-        },
     },
     "Nepal Sambat Solar": {
         firstDay: "Sunday",
@@ -2205,7 +1863,6 @@ calendars = {
         bounds: [1023, 1023+T],
         era: "NE",
         link: "https://en.wikipedia.org/wiki/Nepal_Sambat#Solar_Calendar",
-        holidays: {},
     },
     "Qadimi": {
         firstDay: "N/A",
@@ -2291,16 +1948,6 @@ calendars = {
         bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Qadimi_calendar",
-        holidays: {
-            "Khordad Sal": {
-                day: "6 Farvadin",
-                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
-            },
-            "Zartosht No-Diso": {
-                day: "11 Dae",
-                link: "Zartosht No-Diso",
-            },
-        },
     },
     "Revised Julian": {
         firstDay: "Monday",
@@ -2382,7 +2029,6 @@ calendars = {
         bounds: [1900, 1900+T],
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
-        holidays: {},
     },
     "Shahanshahi": {
         firstDay: "N/A",
@@ -2468,16 +2114,6 @@ calendars = {
         bounds: [1269, 1269+T],
         era: "YZ",
         link: "https://en.wikipedia.org/wiki/Zoroastrian_calendar#Shahanshahi_calendar",
-        holidays: {
-            "Khordad Sal": {
-                day: "6 Farvadin",
-                link: "https://en.wikipedia.org/wiki/Khordad_Sal",
-            },
-            "Zartosht No-Diso": {
-                day: "11 Dae",
-                link: "Zartosht No-Diso",
-            },
-        },
     },
     "Solar Hijri": {
         firstDay: "Saturday",
@@ -2559,7 +2195,6 @@ calendars = {
         bounds: [1279, 1403],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Solar_Hijri_calendar",
-        holidays: {},
     },
     "Tabarian": {
         firstDay: "Saturday",
@@ -2637,7 +2272,6 @@ calendars = {
         bounds: [1411, 1535],
         era: "SH",
         link: "https://en.wikipedia.org/wiki/Tabarian_calendar",
-        holidays: {},
     },
     "Dilami": {
         firstDay: "Saturday",
@@ -2715,7 +2349,6 @@ calendars = {
         bounds: [1473, 1473 +T],
         era: "",
         link: "https://fa.wikipedia.org/wiki/%DA%AF%D8%A7%D9%87%E2%80%8C%D8%B4%D9%85%D8%A7%D8%B1%DB%8C_%D8%AF%DB%8C%D9%84%D9%85%DB%8C",
-        holidays: {},
     },
     "Thai Solar": {
         firstDay: "Monday",
@@ -2793,6 +2426,5 @@ calendars = {
         bounds: [2443, 2443+T],
         era: "BE",
         link: "https://en.wikipedia.org/wiki/Thai_solar_calendar",
-        holidays: {},
     },
 }
