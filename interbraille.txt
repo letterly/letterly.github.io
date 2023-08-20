@@ -1,6 +1,10 @@
 InterBraille Changelog
 
-#done: Albanian, Amharic, Azeri, Belarusian, Filipino, Icelandic, Irish, Kyrgyz, Lao, Luxembourgish, Macedonian, Tajik, and Thai
+19 August 2023
+Added Esperanto, Estonian, Latvian, and Romanian
+
+17 August 2023
+Added Danish, Greenlandic, and Norwegian
 
 16 August 2023
 Added Swedish (Finland) and Greek
@@ -53,3 +57,6 @@ Fixed the code for "]" in English
 14 July 2023
 I published the website!
 You can convert English, Georgian, Polish, Portuguese, and Spanish text to braille
+
+
+#done: Albanian, Amharic, Azeri, Belarusian, Filipino, Icelandic, Irish, Kyrgyz, Lao, Luxembourgish, Macedonian, Tajik, and Thai
