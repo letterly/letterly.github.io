@@ -1,4 +1,5 @@
 function toBraille(text){
+    text = " " + text + " "
     if(language.value == "fr"){
         g = [ //add decimal and comma later
             [" 1", " ⠠⠡"],
@@ -296,7 +297,7 @@ function toBraille(text){
         text = text.replace(new RegExp(l[0], "g"), l[1])
     }
 
-    return text
+    return text.slice(1, -1)
 }
 
 function printBraille(text){
