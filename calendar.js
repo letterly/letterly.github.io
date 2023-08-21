@@ -1139,9 +1139,9 @@ function holidaycheck(thatday){
         })
         /*if(hol[0].startsWith("Maundy")){
             m.cal == 0
-        }*
+        }*/
     }
-/*
+    /*
     normalobservances.push({
         name: "Lent",
         link: "https://en.wikipedia.org/wiki/Lent",
@@ -1169,7 +1169,6 @@ function holidaycheck(thatday){
         if(tt != undefined){
             myday = tt.split(" ")[0]
             mymonth = tt.split(" ").slice(1).join("")
-            console.log(mymonth)
             if(n.day[mymonth] != undefined && n.day[mymonth][0] <= myday && n.day[mymonth][1] >= myday){
                 observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${n.cal}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
