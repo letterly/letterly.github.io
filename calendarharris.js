@@ -4,6 +4,9 @@ startDays = {
     "Armenian": [14, "Kʿałocʿ", 1349],
 }
 
+hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
+
+
 function toHarrisDate(date, cal){
     lenum = cal == "Japanese" ? -2 : -1
     leDay = date.split(" ")[0]
@@ -94,7 +97,36 @@ function getYear(year, cal){
             "November:30",
             "December:31",
         ],
+        "Hebrew": [
+            "Tishrei:30",
+            `Cheshvan:${hebrewCons.charAt([year - 5660]) != "c" ? 29 : 30}`,
+            `Kislev:${hebrewCons.charAt([year - 5660]) != "d" ? 30 : 29}`,
+            "Tevet:29",
+            "Shvat:30",
+            ([3,6,8,11,13,17,0].includes(year % 19) ? "Adar:29" : "Adar I:30"),
+            ([3,6,8,11,13,17,0].includes(year % 19) ? "" : "Adar II:29"),
+            "Nisan:30",
+            "Iyar:29",
+            "Sivan:30",
+            "Tammuz:29",
+            "Av:30",
+            "Elul:29",
+        ],
+        "Islamic Tabular": [
+            "Muharram:30",
+            "Safar:29",
+            "Rabiʽ al-Awwal:30",
+            "Rabiʽ al-Thani:29",
+            "Jumada al-Awwal:30",
+            "Jumada al-Thani:29",
+            "Rajab:30",
+            "Sha'ban:29",
+            "Ramadan:30",
+            "Shawwal:29",
+            "Dhu al-Qadah:30",
+            `Dhu al-Hijjah:${![2,5,7,10,13,16,18,21,24,26,29].includes(year % 30) ? "29" : "30"}`,
+        ],
     }
-    return calendar[cal]
+    return calendar[cal].filter(x => x)
 }
 

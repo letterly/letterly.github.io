@@ -2,8 +2,6 @@ alltimearray = []
 day = "Monday"
 yearObject = {}
 interCal = {}
-hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
-
 jmlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 for(c of Object.entries(calendars)){
@@ -463,55 +461,39 @@ function holidaycheck(thatday){
     normalobservances = [
         {
             cal: "Hebrew",
-            day: {
-                "Nisan": [16,30],
-                "Iyar": [1, 29],
-                "Sivan": [1,5],
-            },
+            day: ["16 Nisan", "5 Sivan"], //iyar
             link: "https://en.wikipedia.org/wiki/Counting_of_the_Omer",
             name: "Counting of the Omer",
         },
         {
             cal: "Hebrew",
-            day: {
-                "Tishrei": [1,10],
-            },
-            link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
-            name: "Ten Days of Repentance",
-        },
-        {
-            cal: "Hebrew",
-            day: {
-                "Tammuz": [17,29],
-                "Av": [1,9],
-            },
+            day: ["17 Tammuz", "9 Av"],
             link: "https://en.wikipedia.org/wiki/The_Three_Weeks",
             name: "The Three Weeks",
         },
         {
             cal: "Hebrew",
-            day: {
-                "Av": [1,9],
-            },
+            day: ["1 Av", "9 Av"],
             link: "https://en.wikipedia.org/wiki/The_Nine_Days",
             name: "The Nine Days",
         },
         {
             cal: "Islamic Tabular",
-            day: {
-                "Ramadan": [1,30],
-            },
+            day: ["1 Ramadan", "30 Ramadan"],
             link: "https://en.wikipedia.org/wiki/Ramadan",
             name: "Ramadan",
         },
         {
             cal: "Gregorian",
-            day: {
-                "December": [25,31],
-                "January": [1,5],
-            },
+            day: ["25 December", "5 January"],
             link: "https://en.wikipedia.org/wiki/Christmastide",
             name: "Christmastide",
+        },
+        {
+            cal: "Hebrew",
+            day: ["1 Tishrei", "10 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
+            name: "Ten Days of Repentance",
         },
     ]
 
@@ -1137,18 +1119,19 @@ function holidaycheck(thatday){
             cal: "Gregorian",
             day: easterDay,
         })
-        /*if(hol[0].startsWith("Maundy")){
-            m.cal == 0
-        }*/
+        if(hol[0].startsWith("Maundy")){
+            lentend = easterDay
+        }
+        else if(hol[0].startsWith("Ash")){
+            lentstart = easterDay
+        }
+        
     }
-    /*
-    normalobservances.push({
+    /*normalobservances.push({
         name: "Lent",
         link: "https://en.wikipedia.org/wiki/Lent",
         cal: "Gregorian",
-        day: {
-
-        }
+        day: [lentstart, lentend]
     })*/
 
     //OKAY WE ARE READY NOW
@@ -1165,11 +1148,17 @@ function holidaycheck(thatday){
 
     observances.innerHTML = ""
     for(n of normalobservances){
-        tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
+        tt = thatday[n.cal].split(" ")
         if(tt != undefined){
-            myday = tt.split(" ")[0]
-            mymonth = tt.split(" ").slice(1).join("")
-            if(n.day[mymonth] != undefined && n.day[mymonth][0] <= myday && n.day[mymonth][1] >= myday){
+            myday = tt[0]
+            mymonth = tt.slice(1, -1).join("")
+            myyear = tt.slice(-1)[0]
+            monthlist = getYear(myyear,n.cal).map(u => u.split(":")[0])
+            if(
+            (mymonth == n.day[0].split(" ")[1] && +myday >= +n.day[0].split(" ")[0] && !(mymonth == n.day[1].split(" ")[1] && +myday >= +n.day[1].split(" ")[0])) ||
+            (mymonth == n.day[1].split(" ")[1] && +myday <= +n.day[1].split(" ")[0]) ||
+            (monthlist.indexOf(mymonth) > monthlist.indexOf(n.day[0].split(" ")[1]) && monthlist.indexOf(mymonth) < monthlist.indexOf(n.day[1].split(" ")[1]))
+            ){
                 observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${n.cal}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
@@ -1558,14 +1547,15 @@ function generateYear(y, n){
         yO.months[1].days = yy == "c" ? 30 : 29
         yO.months[2].days = yy == "d" ? 29 : 30
         if([3,6,8,11,13,17,0].includes(y % 19)){
-            yO.months[5].days = 30
-            yO.months[6].days = 29
-            yO.months[5].name = "Adar I"
+            yO.months[5].days = 0
+            yO.months[6].days = 30
+            yO.months[7].days = 29
         }
         else{
             yO.months[5].days = 29
             yO.months[6].days = 0
-            yO.months[5].name = "Adar"
+            yO.months[7].days = 0
+           // yO.months[5].name = "Adar"
         }
     }
     /*

@@ -943,6 +943,11 @@ calendars = {
                 link: "https://en.wikipedia.org/wiki/Adar",
             },
             {
+                name: "Adar I",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Adar",
+            },
+            {
                 name: "Adar II",
                 days: 29,
                 link: "https://en.wikipedia.org/wiki/Adar",
