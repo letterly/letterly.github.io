@@ -226,6 +226,11 @@ span{
     background-color: indigo;
     color: indigo;
 }
+h3{
+    text-align: center;
+    font-size: 24px;
+    margin: 0px;
+}
 .thai_solar{
     background-color: orangered;
     color: orangered;

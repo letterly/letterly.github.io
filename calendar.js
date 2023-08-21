@@ -338,7 +338,6 @@ function convert(){
     }
     thatspecificday = alltimearray.filter(x => x[calen] == result)[0]
     answer.innerHTML = ""
-    holidays.innerHTML = ""
     for(ourcalendar of Object.keys(thatspecificday).sort()){
         if(ourcalendar != calen){
             if(ourcalendar == "Day"){
@@ -460,6 +459,62 @@ function convert(){
 
 function holidaycheck(thatday){
     d = thatday.Day
+
+    normalobservances = [
+        {
+            cal: "Hebrew",
+            day: {
+                "Nisan": [16,30],
+                "Iyar": [1, 29],
+                "Sivan": [1,5],
+            },
+            link: "https://en.wikipedia.org/wiki/Counting_of_the_Omer",
+            name: "Counting of the Omer",
+        },
+        {
+            cal: "Hebrew",
+            day: {
+                "Tishrei": [1,10],
+            },
+            link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
+            name: "Ten Days of Repentance",
+        },
+        {
+            cal: "Hebrew",
+            day: {
+                "Tammuz": [17,29],
+                "Av": [1,9],
+            },
+            link: "https://en.wikipedia.org/wiki/The_Three_Weeks",
+            name: "The Three Weeks",
+        },
+        {
+            cal: "Hebrew",
+            day: {
+                "Av": [1,9],
+            },
+            link: "https://en.wikipedia.org/wiki/The_Nine_Days",
+            name: "The Nine Days",
+        },
+        {
+            cal: "Islamic Tabular",
+            day: {
+                "Ramadan": [1,30],
+            },
+            link: "https://en.wikipedia.org/wiki/Ramadan",
+            name: "Ramadan",
+        },
+        {
+            cal: "Gregorian",
+            day: {
+                "December": [25,31],
+                "January": [1,5],
+            },
+            link: "https://en.wikipedia.org/wiki/Christmastide",
+            name: "Christmastide",
+        },
+    ]
+
     normalholidays = [
         {
             cal: "Gregorian",
@@ -478,6 +533,12 @@ function holidaycheck(thatday){
             cal: "Gregorian",
             day: ["6 January"],
             link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
+        },
+        {
+            name: "Candlemas",
+            cal: "Gregorian",
+            day: ["2 February"],
+            link: "https://en.wikipedia.org/wiki/Candlemas",
         },
         {
             cal: "Gregorian",
@@ -1076,17 +1137,45 @@ function holidaycheck(thatday){
             cal: "Gregorian",
             day: easterDay,
         })
+        /*if(hol[0].startsWith("Maundy")){
+            m.cal == 0
+        }*
     }
+/*
+    normalobservances.push({
+        name: "Lent",
+        link: "https://en.wikipedia.org/wiki/Lent",
+        cal: "Gregorian",
+        day: {
 
+        }
+    })*/
 
     //OKAY WE ARE READY NOW
-
+    holidays.innerHTML = ""
     for(n of normalholidays){
         tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
         if(tt != undefined && n.day.includes(tt)){
             holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${n.cal}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
         }
     }
+    if(holidays.innerHTML != "") holidays.innerHTML = "<h3>Holidays</h3>" + holidays.innerHTML
+
+    //
+
+    observances.innerHTML = ""
+    for(n of normalobservances){
+        tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
+        if(tt != undefined){
+            myday = tt.split(" ")[0]
+            mymonth = tt.split(" ").slice(1).join("")
+            console.log(mymonth)
+            if(n.day[mymonth] != undefined && n.day[mymonth][0] <= myday && n.day[mymonth][1] >= myday){
+                observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${n.cal}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+            }
+        }
+    }
+    if(observances.innerHTML != "") observances.innerHTML = "<h3>Observances</h3>" + observances.innerHTML
 }
 
 
