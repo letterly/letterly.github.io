@@ -1,5 +1,8 @@
 InterBraille Changelog
 
+21 August 2023
+-Added Northern and Southern Sami
+
 20 August 2023
 -Added accented vowels in Macedonian
 -Added the Bosnian, Bulgarian, Serbian, and Slovak languages
