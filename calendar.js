@@ -5,20 +5,46 @@ interCal = {}
 jmlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
-function religionize(cl){
+function religionize(cl, att){
     c2r = {
-        "Hebrew": "Judaism",
-        "Islamic Tabular": "Islam",
-        "Gregorian": "Christianity",
-        "Julian": "Eastern Orthodox Christianity",
-        "Ethiopian": "Ethiopian Orthodox Christianity",
-        "Nanakshahi": "Sikhism",
-        "Solar Hijri": "Iran",
-        "Javanese": "Java",
-        "Mandaean": "Mandeanism",
-
+        "Hebrew": {
+            name: "Judaism",
+            link: "https://en.wikipedia.org/wiki/Judaism",
+        },
+        "Islamic Tabular": {
+            name: "Islam",
+            link: "https://en.wikipedia.org/wiki/Islam",
+        },
+        "Gregorian": {
+            name: "Christianity",
+            link: "https://en.wikipedia.org/wiki/Christianity",
+        },
+        "Julian": {
+            name: "Eastern Orthodox Christianity",
+            link: "https://en.wikipedia.org/wiki/Eastern_Orthodoxy",
+        },
+        "Ethiopian": {
+            name: "Ethiopian Orthodox Christianity",
+            link: "https://en.wikipedia.org/wiki/Ethiopian_Orthodox_Tewahedo_Church",
+        },
+        "Nanakshahi": {
+            name: "Sikhism",
+            link: "https://en.wikipedia.org/wiki/Sikhism",
+        },
+        "Solar Hijri": {
+            name: "Iran",
+            link: "https://en.wikipedia.org/wiki/Culture_of_Iran",
+        },
+        "Javanese": {
+            name: "Java",
+            link: "https://en.wikipedia.org/wiki/Javanese_culture",
+        },
+        "Mandaean": {
+            name: "Mandaeism",
+            link: "https://en.wikipedia.org/wiki/Mandaeism",
+        },
     }
-    return c2r[cl] == undefined ? cl : c2r[cl]
+    return c2r[cl][att]
 }
 
 
@@ -476,7 +502,6 @@ function convert(){
 function holidaycheck(thatday){
     d = thatday.Day
 
-    console.log(thatday)
     normalobservances = [
         {
             cal: "Hebrew",
@@ -516,7 +541,6 @@ function holidaycheck(thatday){
         },
     ]
 
-    console.log(thatday)
 
     normalholidays = [
         {
@@ -1031,10 +1055,6 @@ function holidaycheck(thatday){
         },
     ]
 
-    console.log(normalholidays)
-
-    ///ADD EASTER HOLIDAYS
-
     julianHolidays = {
         "Easter": "https://en.wikipedia.org/wiki/Easter#Eastern_Christianity_2",
         "Palm Sunday": "https://en.wikipedia.org/wiki/Palm_Sunday",
@@ -1169,7 +1189,7 @@ function holidaycheck(thatday){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
             if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${religionize(n.cal)}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${(religionize(n.cal), "link")}" target="_blank">${religionize(n.cal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
@@ -1190,7 +1210,7 @@ function holidaycheck(thatday){
             (mymonth == n.day[1].split(" ")[1] && +myday <= +n.day[1].split(" ")[0]) ||
             (monthlist.indexOf(mymonth) > monthlist.indexOf(n.day[0].split(" ")[1]) && monthlist.indexOf(mymonth) < monthlist.indexOf(n.day[1].split(" ")[1]))
             ){
-                observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${calendars[n.cal].link}" target="_blank">${religionize(n.cal)}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(n.cal,"link")}" target="_blank">${religionize(n.cal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
