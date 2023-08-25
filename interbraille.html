@@ -8,13 +8,13 @@
     <body>
         <h1>Braille Conversion Website</h1>
         <p id="link">By <a href="https://harrismowbray.com">Harris Mowbray</a></p>
-        <p id="changelog"><a href="interbraille.txt">Updates [20 Aug 23]</a></p>
+        <p id="changelog"><a href="interbraille.txt">Updates [25 Aug 23]</a></p>
         <h3>Choose a Language:</h3>
         <div id="selectblock">
             <select id="language" onchange="changeLang(this.value)"></select>
         </div>
         <br>
-        <textarea id="input" onkeyup="printBraille(this.value)"></textarea>
+        <textarea id="input" spellcheck="false" onkeyup="printBraille(this.value)"></textarea>
         <textarea id="output" contenteditable="false"></textarea>
             <h1><span id="brltype"></span> Braille</h1>
             <div class="tables">

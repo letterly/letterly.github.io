@@ -1,5 +1,9 @@
 InterBraille Changelog
 
+25 August 2023
+-Added Cornish and Manx
+-Removed spellcheck from the text input
+
 21 August 2023
 -Added Northern and Southern Sami
 
