@@ -2,14 +2,27 @@
     <head>
         <title>Ponca Dictionary</title>
         <style>
-            button{
+            body{
+                background-color: bisque;
+            }
+            #buttonarray button{
                 width: 5vw;
                 height: 5vw;
                 max-width: 45px;
                 max-height: 45px;
                 border: none;
-                background-color: red;
+                background-color: navy;
                 color: white;
+                font-weight: 700;
+                font-size: min(4vw, 32px);
+                border-radius: 1vw;
+            }
+            #options button{
+                height: 5vw;
+                max-height: 45px;
+                border: none;
+                background-color: gray;
+                color: black;
                 font-weight: 700;
                 font-size: min(4vw, 32px);
                 border-radius: 1vw;
@@ -22,8 +35,14 @@
                 width: 60%;
                 margin-left: 20%;
                 margin-right: 20%;
-                height: 40px;
-                font-size: 4vh;
+                height: 46px;
+                font-size: 5vh;
+                background-color: bisque;
+                border-radius: 10px;
+            }
+            input::placeholder{
+                font-family: Verdana;
+                color: navy
             }
             #field{
                 font-size: 24px;
@@ -33,61 +52,100 @@
                 font-family: Verdana;
                 text-align: center;
                 font-size: 48px;
+                margin: 0px;
+            }
+            h3{
+                font-family: Verdana;
+                text-align: center;
+                font-size: 24px;
+                margin: 2px;
             }
             #buttonarray{
                 margin-left: calc((100% - 31vw) / 2);
                 margin-right: calc((100% - 31vw) / 2);
             }
-            #shell{
-                border: 2px solid black;
-                border-radius: 100px;
+            #options{
+                text-align: center;
+                font-family: Verdana;
+                border: 3px solid black;
+                padding: 5px;
+                width: 60%;
+                margin-left: 19.5%;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                border-radius: 10px;
+            }
+            #selectalph{
+                font-size: 18px;
+                margin: 2px;
+            }
+            .small{
+                font-size: 80%;
+                font-family: Courier;
             }
         </style>
     </head>
     <body>
         <h1>Ponca Dictionary</h1>
-        <div id="shell">
-            <input id='input' onkeyup="openDictionary()" placeholder="Type Ponca text here..." />
-            <div id="buttonarray">
-                <button onclick="addText(this.textContent)">č</button>
-                <button onclick="addText(this.textContent)">đ</button>
-                <button onclick="addText(this.textContent)">ə</button>
-                <button onclick="addText(this.textContent)">ʃ</button>
-                <button onclick="addText(this.textContent)">š</button>
-                <button onclick="addText(this.textContent)">ž</button>
-                <button onclick="addText(this.textContent)">́</button>
-                <button onclick="addText(this.textContent)">̀</button>
-                <button onclick="addText(this.textContent)">̨</button>
-            </div>
-            <input id='eninput' onkeyup="openEnglish()" placeholder="Or search a word in English..." />
+        <h3>Ponca Tribe of Nebraska</h3>
+        <div id="options">
+            <p id="selectalph">Select a second alphabet (optional)</p>
+            <button id="IPA" onclick="altScript(this.textContent)">IPA</button>
+            <button id="Omaha" onclick="altScript(this.textContent)">Omaha</button>
+            <button id="Osage" onclick="altScript(this.textContent)">Osage</button>
+        </div>
+        <input id='input' onkeyup="openDictionary()" placeholder="Search a word in Ponca or English here..." />
+        <div id="buttonarray">
+            <button onclick="addText(this.textContent)">č</button>
+            <button onclick="addText(this.textContent)">đ</button>
+            <button onclick="addText(this.textContent)">ə</button>
+            <button onclick="addText(this.textContent)">ʃ</button>
+            <button onclick="addText(this.textContent)">š</button>
+            <button onclick="addText(this.textContent)">ž</button>
+            <button onclick="addText(this.textContent)">́</button>
+            <button onclick="addText(this.textContent)">̀</button>
+            <button onclick="addText(this.textContent)">̨</button>
         </div>
         <div id="field"></div>
     </body>
     <script>
+
+    alphabet = "none"
+
+    function altScript(alp){
+        if(alphabet != "none"){
+            document.getElementById(alphabet).style.backgroundColor = "gray"
+        }
+        alphabet = alp
+
+        console.log(alphabet)
+        document.getElementById(alphabet).style.backgroundColor = "green"
+    }
 dictionary = 
 `đišké|adj.|untied, unhooked, undone
 uđíaì|v.|scatter, made into small pieces and scattered
 baxú|v.|write, to write, as in writing a letter
-ę́gąđąžą̀|prep.|except, but, as in "that's the way it was <i>but</i>..."
-ešą́'|adj/adv.|near, close at hand, very close, adjacent
-mą́šą'hągà|n.|center tail feather of the eagle
+ę́gąđąžą̀|prep.|except, but, as in "that's the way it was <i>but</i>..."
+ešą́'|adj/adv.|near, close at hand, very close, adjacent
+mą́šą'hągà|n.|center tail feather of the eagle
 waná'|v.|beg, beg for, ask for something to begin
 žúhè|v.|wade, to wade, to walk in water
 í'xa|v.|to laugh
 í'xa'xà|v.|to laugh at, laugh to scorn, sneer at, make fun of, mock, jeer
-k'í'u|v.|wounded (in war)`.split("\n")
-
-endictionary = 
-`implode|mút'ušì|v.|an explosion from forces within
-hurt|ną́ka|n./v.|injured
+k'í'u|v.|wounded (in war)
+implode|mút'ušì|v.|an explosion from forces within
+hurt|ną́ka|n./v.|injured
 icebound|udá'|adj.|something that is frozen within or covered with ice
 event|šká'de|n.|a happening (this may include dances, ballgames, etc.)
-deaf|waną́'ą́ži|n.|lit., cannot hear
+deaf|waną́'ą́ži|n.|lit., cannot hear
 debt|wagáxe|n.|something (money) that is owed to somebody, bound by verbal or written agreement
 pond|né'|n.|pool`.split("\n")
 
 
 function openDictionary(){
+    //take out the accent problem
+    input.value = input.value.replace(/̨́/g, "̨́").replace(/̨̀/g, "̨̀")
+    //
     z = input.value
     z = z.toLowerCase()
     field.innerHTML = ""
@@ -96,20 +154,12 @@ function openDictionary(){
         console.log(selected)
         for(s of selected){
             s = s.split("|")
-            field.innerHTML += `<p><b>${s[0]}</b> <i>${verbify(s[1])}</i> ${deAbbrev(s[2])}</p>`
-        }
-    }
-}
-function openEnglish(){
-    z = eninput.value
-    z = z.toLowerCase()
-    field.innerHTML = ""
-    if(z != ""){
-        selected = endictionary.filter(y => y.startsWith(z)).slice(0,5)
-        console.log(selected)
-        for(s of selected){
-            s = s.split("|")
-            field.innerHTML += `<p><u>${s[0]}</u>: <b>${s[1]}</b> <i>${verbify(s[2])}</i> ${deAbbrev(s[3])}</p>`
+            if(s.length == 3){
+                field.innerHTML += `<p><b>${altOrth(s[0])}</b> <i>${verbify(s[1])}</i> ${deAbbrev(s[2])}</p>`
+            }
+            else{
+                field.innerHTML += `<p><u>${s[0]}</u>: <b>${altOrth(s[1])}</b> <i>${verbify(s[2])}</i> ${deAbbrev(s[3])}</p>`
+            }
         }
     }
 }
@@ -122,6 +172,7 @@ function verbify(v){
         "v.": "verb",
         "adj.": "adjective",
         "adj/v.": "adjective/verb",
+        "prep.": "preposition",
     }[v]
     return g == undefined ? v : g
 }
@@ -134,6 +185,95 @@ function deAbbrev(t){
 function addText(x){
     input.value += x
     openDictionary()
+}
+
+
+function altOrth(txt){
+    chains = {
+        "IPA": {
+            "\\'": "ʔ",
+            "̨́": "̨́",
+            "̨̀": "̨̀",
+            "à": "ˌa",
+            "è": "ˌe",
+            "ì": "ˌi",
+            "ò": "ˌo",
+            "ù": "ˌu",
+            "ə̀": "ˌə",
+            "ʃ̀": "ˌʃ",
+            "á": "ˈa",
+            "é": "ˈe",
+            "í": "ˈi",
+            "ó": "ˈo",
+            "ú": "ˈu",
+            "ə́": "ˈə",
+            "ʃ́": "ˈʃ",
+            "̨": "̃",
+            "ʃ": "ɪ",
+            "a": "ɑ",
+            "č": "t͡ʃ",
+            "č": "t͡ʃ",
+            "š": "ʃ",
+            "š": "ʃ",
+            "ž": "ʒ",
+            "ž": "ʒ",
+            "đ": "ð",
+            "c": "t͡s",
+            "j": "d͡ʒ",
+            "y": "j",
+        },
+        "Omaha": {
+            "̨́": "̨́",
+            "̨̀": "̨̀",
+            "č": "ch",
+            "š": "sh",
+            "ž": "zh",
+            "đ": "th",
+            "̨": "ⁿ",
+        },
+        "Osage": {
+            "̀": "",
+            "š": "š",
+            "č": "č",
+            "ž": "ž",
+            "̨": "͘",
+            "a": "𐒰",
+            "č": "𐒵",
+            "e": "𐒷",
+            "h": "𐒹",
+            "i": "𐒻",
+            "k": "𐒼",
+            "g": "𐒽",
+            "l": "𐒿",
+            "m": "𐓀",
+            "n": "𐓁",
+            "o": "𐓂",
+            "p": "𐓄",
+            "b": "𐓅",
+            "w": "𐓆",
+            "š": "𐓇",
+            "j": "𐓉𐓓",
+            "t": "𐓈",
+            "d": "𐓉",
+            "c": "𐓊",
+            "đ": "𐓍",
+            "u": "𐓎",
+            "w": "𐓏",
+            "x": "𐓐",
+            "z": "𐓒",
+            "ž": "𐓓",
+            "ə": "𐒳",
+        },
+    }
+    newtxt = txt
+
+    if(alphabet == "none") return txt
+    else{
+        for(e of Object.keys(chains[alphabet])){
+            newtxt = newtxt.replace(new RegExp(e, 'g'), chains[alphabet][e])
+        }
+        return txt + " (<span class='small'>" + newtxt + "</span>)"
+     }
 }
     </script>
 </html>
