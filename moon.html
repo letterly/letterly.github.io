@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: "RNIB MOON";
+                src: url("fonts/rnibmoon.ttf");
+            }
+            textarea{
+                resize: none;
+                height: 80%;
+                width: 45%;
+                font-size: 24px;
+                line-height: 120%;
+            }
+            #moon{
+                font-family: "RNIB MOON";
+            }
+            h1, p{
+                font-family: Verdana;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Text => Moon Converter</h1>
+        <p>I apologize for the lack of aesthetics in this simple website</p>
+        <textarea id="english" onkeyup="moonify()" placeholder="Write English text here"></textarea>
+        <textarea id="moon" contenteditable="none" onchange="moonify()"></textarea>
+    </body>
+    <script>
+        function moonify(){
+            text = " " + english.value.toLowerCase() + " "
+            chain = {
+                " 0": " #0",
+                " 1": " #1",
+                " 2": " #2",
+                " 3": " #3",
+                " 4": " #4",
+                " 5": " #5",
+                " 6": " #6",
+                " 7": " #7",
+                " 8": " #8",
+                " 9": " #9",
+                " and ": "&",
+                "ful ": ":l ",
+                "ing ": ":g ",
+                "ment ": ":m ",
+                "tion ": ":n ",
+                "ness ": ":s ",
+                "ound ": ":d ",
+                "ence ": ":e ",
+                "ful ": ":l ",
+                "ity ": ":y ",
+                " but ": " b ",
+                " can ": " c ",
+                " do ": " d ",
+                " every ": " e ",
+                " from ": " f ",
+                " go ": " g ",
+                " have ": " h ",
+                " just ": " j ",
+                " know ": " k ",
+                " like ": " l ",
+                " more ": " m ",
+                " not ": " n ",
+                " people ": " p ",
+                " quite ": " q ",
+                " rather ": " r ",
+                " some ": " s ",
+                " that ": " t ",
+                " very ": " v ",
+                " was ": " w ",
+                " it ": " x ",
+                " you ": " y ",
+                " which ": " $ ",
+                " child ": " % ",
+                " the ": " > ",
+                "th": ">",
+                " about ": " ab ",
+                " after ": " af ",
+                " again ": " ag ",
+                " could ": " cd ",
+                " good ": " gd ",
+                " necessary ": " nec ",
+                " little ": " ll ",
+                " letter ": " lr ",
+                " said ": " sd ",
+                " should ": " shd ",
+                " would ": " wd ",
+                " your ": " yr ",
+                "£": "l#",
+                "wh": "$",
+                "ch": "%",
+            }
+            for(e of Object.keys(chain)){
+                text = text.replace(new RegExp(e, 'g'), chain[e])
+            }
+            console.log(text)
+            moon.value = text.slice(1, -1)
+        }
+    </script>
+</html>
