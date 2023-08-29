@@ -36,7 +36,7 @@
                 margin-left: 20%;
                 margin-right: 20%;
                 height: 46px;
-                font-size: 5vh;
+                font-size: 24px;
                 background-color: bisque;
                 border-radius: 10px;
             }
@@ -94,7 +94,7 @@
             <button id="Omaha" onclick="altScript(this.textContent)">Omaha</button>
             <button id="Osage" onclick="altScript(this.textContent)">Osage</button>
         </div>
-        <input id='input' onkeyup="openDictionary()" placeholder="Search a word in Ponca or English here..." />
+        <input id='input' onkeyup="openDictionary()" placeholder="Search a word in Ponca or English..." />
         <div id="buttonarray">
             <button onclick="addText(this.textContent)">č</button>
             <button onclick="addText(this.textContent)">đ</button>
@@ -273,7 +273,7 @@ function altOrth(txt){
             newtxt = newtxt.replace(new RegExp(e, 'g'), chains[alphabet][e])
         }
         return txt + " (<span class='small'>" + newtxt + "</span>)"
-     }
+    }
 }
     </script>
 </html>
