@@ -170,7 +170,7 @@ function toBraille(text){
             ["०", "⠚"],
         ]
     }
-    else if(language.value == "ur-pk"){
+    else if(language.value == "ur_pk"){
         g = [
             [" 1", " ⠼⠁"],
             ["1", "⠁"],
@@ -316,7 +316,7 @@ function changeLang(lang){
 
     punc = `()[]{},.:;-'!?°"$*„“‚‘/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔՞֊՝։՜·`
 
-    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && f[0] == f[0].toLowerCase() && f[0].length <= 2).sort((a,b) => a[0].length - b[0].length)
+    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && f[0] == f[0].toLowerCase() && f[0].length <= 3).sort((a,b) => a[0].length - b[0].length)
 
     thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
 

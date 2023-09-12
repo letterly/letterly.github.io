@@ -350,7 +350,7 @@ languages = {
         "“": "⠦",
         "”": "⠴",
     },
-    "en-1": {
+    en_1: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -395,7 +395,47 @@ languages = {
         "“": "⠦",
         "”": "⠴",
     },
-    "eo": {
+    ik: {
+        "a": "⠁",
+        "c": "⠉",
+        "ġ": "⠾",
+        "g": "⠛",
+        "h": "⠓",
+        "i": "⠊",
+        "ḳ": "⠬",
+        "k": "⠅",
+        "ḷ": "⠷",
+        "l": "⠇",
+        "ł̣": "⠯",
+        "ł": "⠹",
+        "m": "⠍",
+        "n": "⠝",
+        "ñ": "⠻",
+        "ŋ": "⠫",
+        "p": "⠏",
+        "q": "⠟",
+        "r": "⠗",
+        "s": "⠎",
+        "ṭ": "⠳",
+        "t": "⠞",
+        "u": "⠥",
+        "v": "⠧",
+        "y": "⠽",
+        "'": "⠄",
+        ",": "⠂",
+        ":": "⠒",
+        ";": "⠆",
+        "!": "⠖",
+        "\\.": "⠲",
+        "\\?": "⠦",
+        "-": "⠤",
+        "°": "⠘⠚",
+        "\\(": "⠶",
+        "\\)": "⠶",
+        "“": "⠦",
+        "”": "⠴",
+    },
+    eo: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -444,6 +484,107 @@ languages = {
         "”": "⠴",
         "\\/": "⠌",
         "\\*": "⠔",
+    },
+    ne_ne: { //
+        "sch": "⠱",
+        "ch": "⠹",
+        "ij": "⠽",
+        "oe": "⠪",
+        "a": "⠁",
+        "b": "⠃",
+        "c": "⠉",
+        "d": "⠙",
+        "e": "⠑",
+        "f": "⠋",
+        "g": "⠛",
+        "h": "⠓",
+        "i": "⠊",
+        "j": "⠚",
+        "k": "⠅",
+        "l": "⠇",
+        "m": "⠍",
+        "n": "⠝",
+        "o": "⠕",
+        "p": "⠏",
+        "q": "⠟",
+        "r": "⠗",
+        "s": "⠎",
+        "t": "⠞",
+        "u": "⠥",
+        "v": "⠧",
+        "w": "⠾",
+        "x": "⠭",
+        "y": "⠠⠽",
+        "z": "⠵",
+        "'": "⠄",
+        ",": "⠂",
+        ":": "⠒",
+        ";": "⠆",
+        "!": "⠖",
+        "\\.": "⠲",
+        "\\?": "⠢",
+        "-": "⠤",
+        "\\(": "⠶",
+        "\\)": "⠶",
+        "“": "⠦",
+        "”": "⠴",
+        "\\/": "⠌",
+        "\\*": "⠔",
+        "&": "⠬",
+    },
+    "pap": { //
+        "ch": "⠹",
+        "sh": "⠱",
+        "a": "⠁",
+        "á": "⠷",
+        "b": "⠃",
+        "c": "⠉",
+        "d": "⠙",
+        "e": "⠑",
+        "è": "⠮",
+        "é": "⠿",
+        "f": "⠋",
+        "g": "⠛",
+        "h": "⠓",
+        "i": "⠊",
+        "í": "⠌",
+        "j": "⠚",
+        "k": "⠅",
+        "l": "⠇",
+        "m": "⠍",
+        "n": "⠝",
+        "ñ": "⠻",
+        "o": "⠕",
+        "ò": "⠬",
+        "ó": "⠪",
+        "p": "⠏",
+        "q": "⠟",
+        "r": "⠗",
+        "s": "⠎",
+        "t": "⠞",
+        "u": "⠥",
+        "ù": "⠾",
+        "ú": "⠡",
+        "ü": "⠳",
+        "v": "⠧",
+        "w": "⠺",
+        "x": "⠭",
+        "y": "⠽",
+        "z": "⠵",
+        "ç": "⠯",
+        "-": "⠤",
+        "'": "⠐",
+        "\\.": "⠠",
+        "\\;": "⠆",
+        "\\:": "⠒",
+        "\\?": "⠢",
+        "\\!": "⠲",
+        "\\(": "⠶",
+        "\\)": "⠶",
+        ",": "⠂",
+        "\\*": "⠔",
+        "“": "⠦",
+        "”": "⠴",
     },
     lv: {
         "a": "⠁",
@@ -541,7 +682,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "sv-fi": {
+    "sv_fi": {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -635,7 +776,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "et": {
+    et: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -683,7 +824,7 @@ languages = {
         "”": "⠰",
         "\\*": "⠔",
     },
-    "no": {
+    no: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -732,7 +873,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "sme": {
+    sme: {
         "a": "⠁",
         "á": "⠷",
         "b": "⠃",
@@ -785,7 +926,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "sma": {
+    sma: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -835,7 +976,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "da": {
+    da: {
         "a": "⠁",
         "b": "⠃",
         "c": "⠉",
@@ -929,7 +1070,7 @@ languages = {
         "&": "⠯",
         "\\*": "⠔",
     },
-    "en-2": {
+    en_2: {
         "about": "⠁⠃",
         "above": "⠁⠃⠧",
         "according": "⠁⠉",
@@ -1102,7 +1243,7 @@ languages = {
         "“": "⠦",
         "”": "⠴",
     },
-    "cs": {
+    cs: {
         "a": "⠁",
         "á": "⠡",
         "b": "⠃",
@@ -1161,7 +1302,7 @@ languages = {
         "\\(": "⠦",
         "\\)": "⠴",
     },
-    "sk": {
+    sk: {
         "a": "⠁",
         "á": "⠡",
         "ä": "⠈",
@@ -1218,7 +1359,7 @@ languages = {
         "\\(": "⠦",
         "\\)": "⠴",
     },
-    "de": {
+    de: {
         "lich ": "⠸ ",
         "ach ": "⠰ ",
         "ich": "⠼",
@@ -1936,6 +2077,55 @@ languages = {
         "w": "⠺",
         "x": "⠭",
         "y": "⠽",
+        "z": "⠵",
+        "\\.": "⠲",
+        "'": "⠄",
+        ",": "⠂",
+        ":": "⠒",
+        ";": "⠆",
+        "!": "⠖",
+        "\\?": "⠢",
+        "\"": "⠶",
+        "\\*": "⠬",
+        "\\(": "⠦",
+        "\\)": "⠴",
+        "-": "⠤",
+        "\\$": "⠘⠎",
+    },
+    "br": {
+        "a": "⠁",
+        "â": "⠡",
+        "b": "⠃",
+        "ch": "⠌",
+        "c'h": "⠜",
+        "d": "⠙",
+        "e": "⠑",
+        "ê": "⠣",
+        "f": "⠋",
+        "g": "⠛",
+        "h": "⠓",
+        "i": "⠊",
+        "î": "⠩",
+        "j": "⠚",
+        "k": "⠅",
+        "l": "⠇",
+        "m": "⠍",
+        "n": "⠝",
+        "ñ": "⠻",
+        "o": "⠕",
+        "ô": "⠹",
+        "p": "⠏",
+        "r": "⠗",
+        "s": "⠎",
+        "t": "⠞",
+        "u": "⠥",
+        "û": "⠱",
+        "ù": "⠾",
+        "ü": "⠳",
+        "v": "⠧",
+        "w": "⠺",
+        "y": "⠽",
+        "zh": "⠮",
         "z": "⠵",
         "\\.": "⠲",
         "'": "⠄",
@@ -3058,7 +3248,7 @@ languages = {
         "\\(": "⠶",
         "\\)": "⠶",
     },
-    "ur-pk": {
+    "ur_pk": {
         "ونگ": "⠶",
         "بے": "⠤",
         "لا": "⠧",
@@ -3168,61 +3358,68 @@ for(aa of Object.entries(amharicData)){
 
 
 otherdata = {
-    "sq": {
+    sq: {
         englishName: "Albanian",
         nativeName: "Shqip",
         script: "Latin",
         capital: "⠨",
         writeHere: "Shkruaj këtu",
     },
-    "am": {
+    am: {
         englishName: "Amharic",
         nativeName: "አማርኛ",
         script: "Ethiopic",
         writeHere: "እዚህ ጻፍ",
     },
-    "ar": {
+    ar: {
         englishName: "Arabic",
         nativeName: "العربية",
         script: "Arabic",
         writeHere: "اكتب هنا",
     },
-    "hy": {
+    hy: {
         englishName: "Armenian",
         nativeName: "Հայերեն",
         script: "Armenian",
         writeHere: "Գրեք այստեղ",
         capital: "⠨",
     },
-    "hyw": {
+    hyw: {
         englishName: "Armenian - Western",
         nativeName: "Արեւմտահայերէն",
         script: "Armenian",
         writeHere: "Գրեք այստեղ",
         capital: "⠨",
     },
-    "az": {
+    az: {
         englishName: "Azerbaijani",
         nativeName: "Azərbaycanca",
         script: "Latin",
         capital: "⠠",
         writeHere: "Bura yaz",
     },
-    "be": {
+    be: {
         englishName: "Belarusian",
         nativeName: "Беларуская",
         script: "Cyrillic",
         capital: "⠨",
         writeHere: "Пішыце тут",
     },
-    "bs": {
+    bs: {
         englishName: "Bosnian",
         nativeName: "Bosanski",
         script: "Latin",
         capital: "⠨",
         writeHere: "Pišite ovdje",
     },
-    "bg": {
+    br: {
+        englishName: "Breton",
+        nativeName: "Brezhoneg [draft]",
+        script: "Latin",
+        capital: "⠨",
+        writeHere: "Écrivez ici",
+    },
+    bg: {
         englishName: "Bulgarian",
         nativeName: "Български",
         script: "Cyrillic",
@@ -3231,39 +3428,46 @@ otherdata = {
     },
     kw: {
         englishName: "Cornish",
-        nativeName: "Kernewek",
+        nativeName: "Kernewek [draft]",
         script: "Latin",
         writeHere: "Write here",
         capital: "⠠",
     },
-    "hr": {
+    hr: {
         englishName: "Croatian",
         nativeName: "Hrvatski",
         script: "Latin",
         capital: "⠨",
         writeHere: "Pišite ovdje",
     },
-    "cs": {
+    cs: {
         englishName: "Czech",
         nativeName: "Čeština",
         script: "Latin",
         capital: "⠠",
         writeHere: "Pište zde",
     },
-    "da": {
+    da: {
         englishName: "Danish",
         nativeName: "Dansk",
         capital: "⠨",
         script: "Latin",
         writeHere: "Skriv her", 
     },
-    "en-1": {
+    ne_ne: {
+        englishName: "Dutch (Netherlands)",
+        nativeName: "Nederlands (Nederlands)",
+        capital: "⠨",
+        script: "Latin",
+        writeHere: "Schrijf hier",
+    },
+    en_1: {
         englishName: "English [G1] (EBAE)",
         script: "Latin",
         capital: "⠠",
         writeHere: "Write here",
     },
-    "en-2": {
+    en_2: {
         englishName: "English [G2] (UEB)",
         script: "Latin",
         capital: "⠠",
@@ -3275,7 +3479,7 @@ otherdata = {
         script: "Latin",
         writeHere: "Skribu ĉi tie",
     },
-    "et": {
+    et: {
         englishName: "Estonian",
         nativeName: "Eesti",
         capital: "⠠",
@@ -3289,21 +3493,21 @@ otherdata = {
         script: "Latin",
         writeHere: "Skriva her", 
     },
-    "fi": {
+    fi: {
         englishName: "Finnish",
         nativeName: "Suomi",
         capital: "⠠",
         script: "Latin",
         writeHere: "Kirjoita tähän", 
     },
-    "fr": {
+    fr: {
         englishName: "French",
         nativeName: "Français",
         script: "Latin",
         capital: "⠨",
         writeHere: "Écrivez ici",
     },
-    "ka": {
+    ka: {
         englishName: "Georgian",
         nativeName: "ქართული",
         script: "Georgian",
@@ -3356,6 +3560,12 @@ otherdata = {
         script: "Latin",
         writeHere: "Skrifaðu hér",
     },
+    ik: {
+        englishName: "Iñupiaq",
+        capital: "⠠",
+        script: "Latin",
+        writeHere: "Write here",
+    },
     "ga": {
         englishName: "Irish",
         nativeName: "Gaeilge",
@@ -3405,7 +3615,7 @@ otherdata = {
     },
     gv: {
         englishName: "Manx",
-        nativeName: "Gaelg",
+        nativeName: "Gaelg [draft]",
         script: "Latin",
         writeHere: "Write here",
         capital: "⠠",
@@ -3416,6 +3626,12 @@ otherdata = {
         capital: "⠠",
         script: "Latin",
         writeHere: "Skriv her", 
+    },
+    pap: {
+        englishName: "Papiamento / Papiamentu",
+        script: "Latin",
+        capital: "⠨",
+        writeHere: "Schrijf hier",
     },
     "pl": {
         englishName: "Polish",
@@ -3487,16 +3703,16 @@ otherdata = {
         capital: "⠨",
         writeHere: "Escribe aquí",
     },
-    sv: {
-        englishName: "Swedish (Sweden)",
-        nativeName: "Svenska (Sverige)",
+    sv_fi: {
+        englishName: "Swedish (Finland)",
+        nativeName: "Svenska (Finland)",
         capital: "⠠",
         script: "Latin",
         writeHere: "Skriv här", 
     },
-    "sv-fi": {
-        englishName: "Swedish (Finland)",
-        nativeName: "Svenska (Finland)",
+    sv: {
+        englishName: "Swedish (Sweden)",
+        nativeName: "Svenska (Sverige)",
         capital: "⠠",
         script: "Latin",
         writeHere: "Skriv här", 
@@ -3534,7 +3750,7 @@ otherdata = {
         capital: "⠨",
         writeHere: "Напишіть тут",
     },
-    "ur-pk": {
+    ur_pk: {
         englishName: "Urdu (Pakistan)",
         nativeName: "اردو (پاکستان)",
         script: "Arabic",
@@ -3594,7 +3810,7 @@ scriptData = {
 }
 
 for(g of Object.entries(otherdata)){
-    language.innerHTML += `<option value="${g[0]}" ${g[0] == "en-1" ? "selected" : ""}>${g[1].englishName}${g[1].nativeName ? (" | " + g[1].nativeName) : ""}</option>`
+    language.innerHTML += `<option value="${g[0]}" ${g[0] == "en_1" ? "selected" : ""}>${g[1].englishName}${g[1].nativeName ? (" | " + g[1].nativeName) : ""}</option>`
 }
 
-changeLang("en-1")
+changeLang("en_1")

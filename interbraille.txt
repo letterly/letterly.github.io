@@ -1,5 +1,15 @@
 InterBraille Changelog
 
+11 September 2023
+-Added Breton [draft]
+
+2 September 2023
+-Added Iñupiaq 
+
+1 September 2023
+-Added Dutch (Netherlands) and Papiamentu
+-Specified that Cornish and Manx are drafts
+
 25 August 2023
 -Added Cornish and Manx
 -Removed spellcheck from the text input
