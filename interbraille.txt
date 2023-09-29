@@ -1,5 +1,8 @@
 InterBraille Changelog
 
+29 September 2023
+-Fixed an error in Breton Braille
+
 11 September 2023
 -Added Breton [draft]
 
