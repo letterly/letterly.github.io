@@ -3416,7 +3416,7 @@ otherdata = {
         nativeName: "Brezhoneg [draft]",
         script: "Latin",
         capital: "⠨",
-        writeHere: "Écrivez ici",
+        writeHere: "Skrivit amañ",
     },
     bg: {
         englishName: "Bulgarian",

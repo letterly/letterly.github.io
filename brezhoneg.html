@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Brezhoneg/Braille</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "A": "⠨⠁",
+                    "Â": "⠨⠡",
+                    "B": "⠨⠃",
+                    "Ch": "⠨⠌",
+                    "C'h": "⠨⠜",
+                    "Zh": "⠨⠮",
+                    "D": "⠨⠙",
+                    "E": "⠨⠑",
+                    "Ê": "⠨⠣",
+                    "F": "⠨⠋",
+                    "G": "⠨⠛",
+                    "H": "⠨⠓",
+                    "I": "⠨⠊",
+                    "J": "⠨⠚",
+                    "K": "⠨⠅",
+                    "L": "⠨⠇",
+                    "M": "⠨⠍",
+                    "N": "⠨⠝",
+                    "Ñ": "⠨⠻",
+                    "O": "⠨⠕",
+                    "Ô": "⠨⠹",
+                    "P": "⠨⠏",
+                    "R": "⠨⠗",
+                    "S": "⠨⠎",
+                    "T": "⠨⠞",
+                    "U": "⠨⠥",
+                    "Û": "⠨⠱",
+                    "Ù": "⠨⠾",
+                    "Ü": "⠨⠳",
+                    "V": "⠨⠧",
+                    "W": "⠨⠺",
+                    "Y": "⠨⠽",
+                    "Z": "⠨⠵",
+                    //
+                    "a": "⠁",
+                    "â": "⠡",
+                    "b": "⠃",
+                    "ch": "⠌",
+                    "c'h": "⠜",
+                    "zh": "⠮",
+                    "d": "⠙",
+                    "e": "⠑",
+                    "ê": "⠣",
+                    "f": "⠋",
+                    "g": "⠛",
+                    "h": "⠓",
+                    "i": "⠊",
+                    "j": "⠚",
+                    "k": "⠅",
+                    "l": "⠇",
+                    "m": "⠍",
+                    "n": "⠝",
+                    "ñ": "⠻",
+                    "o": "⠕",
+                    "ô": "⠹",
+                    "p": "⠏",
+                    "r": "⠗",
+                    "s": "⠎",
+                    "t": "⠞",
+                    "u": "⠥",
+                    "û": "⠱",
+                    "ù": "⠾",
+                    "ü": "⠳",
+                    "v": "⠧",
+                    "w": "⠺",
+                    "y": "⠽",
+                    "z": "⠵",
+                    "\\.": "⠲",
+                    "'": "⠄",
+                    ",": "⠂",
+                    ":": "⠒",
+                    ";": "⠆",
+                    "!": "⠖",
+                    "\\?": "⠢",
+                    "\"": "⠶",
+                    "\\*": "⠬",
+                    "\\(": "⠦",
+                    "\\)": "⠴",
+                    "-": "⠤",
+                    "\\$": "⠘⠎",
+                    " ": "⠀",
+                    "0": "⠼⠚",
+                    "1": "⠼⠁",
+                    "2": "⠼⠃",
+                    "3": "⠼⠉",
+                    "4": "⠼⠙",
+                    "5": "⠼⠑",
+                    "6": "⠼⠋",
+                    "7": "⠼⠛",
+                    "8": "⠼⠓",
+                    "9": "⠼⠊",
+                    "⠊⠼": "⠊",
+                    "⠓⠼": "⠓",
+                    "⠛⠼": "⠛",
+                    "⠋⠼": "⠋",
+                    "⠑⠼": "⠑",
+                    "⠙⠼": "⠙",
+                    "⠉⠼": "⠉",
+                    "⠃⠼": "⠃",
+                    "⠁⠼": "⠁",
+                    "⠚⠼": "⠚",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Brezhoneg => Braille</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="Skrivit amañ..." style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="⠨⠎⠅⠗⠊⠧⠊⠞⠀⠁⠍⠁⠻⠲⠲⠲" style="direction:ltr"></textarea>
+    </body>
+</html>
