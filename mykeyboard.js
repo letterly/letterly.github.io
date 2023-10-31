@@ -203,7 +203,7 @@ keyboards = {
         Digit5: "̋",
         Digit6: "̆",
         Digit7: "ñ",
-        Digit8: "",
+        Digit8: "h͇",
         Digit9: "",
         Digit0: "",
         Minus: "-",
@@ -219,8 +219,8 @@ keyboards = {
         KeyI: "i",
         KeyO: "o",
         KeyP: "p",
-        BracketLeft: "[",
-        BracketRight: "]",
+        BracketLeft: "(",
+        BracketRight: ")",
         Backslash: "\\",
         //
         KeyA: "a",
@@ -244,7 +244,7 @@ keyboards = {
         KeyM: "m",
         Comma: ",",
         Period: ".",
-        Slash: "/",
+        Slash: "?",
         //
     },
     English: {
@@ -305,7 +305,7 @@ keyboards = {
         KeyM: "m",
         Comma: ",",
         Period: ".",
-        Slash: "/",
+        Slash: "?",
         //
     },
     Goral: {
