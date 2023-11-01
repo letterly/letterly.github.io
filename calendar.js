@@ -43,8 +43,15 @@ function religionize(cl, att){
             name: "Mandaeism",
             link: "https://en.wikipedia.org/wiki/Mandaeism",
         },
+        "Western Christianity": {
+            link: "https://en.wikipedia.org/wiki/Western_Christianity",
+        },
+        "Bahá'í": {
+            name: "Bahá'í Faith",
+            link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith",
+        },
     }
-    return c2r[cl][att]
+    return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
 
 
@@ -539,6 +546,14 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
             name: "Ten Days of Repentance",
         },
+        
+        {
+            cal: "Bahá'í",
+            day: ["1 ʻAláʼ", "19 ʻAláʼ"],
+            link: "https://en.wikipedia.org/wiki/Nineteen-Day_Fast",
+            name: "Nineteen-Day Fast",
+        },
+        
     ]
 
 
@@ -1167,6 +1182,7 @@ function holidaycheck(thatday){
             link: hol[1],
             cal: "Gregorian",
             day: easterDay,
+            sect: "Western Christianity",
         })
         if(hol[0].startsWith("Maundy")){
             lentend = easterDay
@@ -1180,16 +1196,19 @@ function holidaycheck(thatday){
         name: "Lent",
         link: "https://en.wikipedia.org/wiki/Lent",
         cal: "Gregorian",
-        day: [lentstart, lentend]
+        day: [lentstart, lentend],
+        sect: "Western Christianity",
     })
 
     //OKAY WE ARE READY NOW
+
     holidays.innerHTML = ""
     for(n of normalholidays){
+        caal = n.sect == undefined ? n.cal : n.sect
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
             if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(n.cal, "link")}" target="_blank">${religionize(n.cal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }

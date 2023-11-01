@@ -126,7 +126,30 @@ function getYear(year, cal){
             "Dhu al-Qadah:30",
             `Dhu al-Hijjah:${![2,5,7,10,13,16,18,21,24,26,29].includes(year % 30) ? "29" : "30"}`,
         ],
+        "Bahá'í": [
+            "Bahá:19",
+            "Jalál:19",
+            "Jamál:19",
+            "ʻAẓamat:19",
+            "Núr:19",
+            "Raḥmat:19",
+            "Kalimát:19",
+            "Kamál:19",
+            "Asmáʼ:19",
+            "ʻIzzat:19",
+            "Mas͟híyyat:19",
+            "ʻIlm:19",
+            "Qudrat:19",
+            "Qawl:19",
+            "Masáʼil:19",
+            "S͟haraf:19",
+            "Sulṭán:19",
+            "Mulk:19",
+            `Ayyám-i-Há:${year <= 168 ? (year % 4 != 0 ? "4" : "5") : (![174, 178, 182, 187, 191, 195, 199, 203, 207, 211, 216, 220].includes(year) ? "4" : "5")}`,
+            "ʻAláʼ:19",
+        ],
     }
+    console.log(cal)
     return calendar[cal].filter(x => x)
 }
 
