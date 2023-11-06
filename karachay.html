@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Karachay Text Converter</title>
+        <style>
+            body{
+                background-color: lightblue;
+            }
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+                border-radius: 4px;
+                background-color: lightblue;
+                border: 5px solid black;
+                outline: none;
+            }
+            textarea::placeholder{
+                color: black;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+            p{
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Karachay Transliterator</h1>
+        <p>The goal of this website is to allow users to convert text between the Karachay Cyrillic alphabet (mostly used in Russia) and the Karachay Latin alphabet (mostly used in Turkey). Hopefully this will allow for a greater exchange of communication and literature.</p>
+        <textarea id="cyrillic" placeholder="Write something in Къарачай here :)"></textarea>
+        <textarea  direction="rtl" id="latin" placeholder="Or write something in Qaraçay here :)"></textarea>
+    </body>
+    <script>
+        var typingTimer
+        var doneTypingInterval = 1000
+        var $cyrillic = document.getElementById("cyrillic")
+        var $latin = document.getElementById("latin")
+        $cyrillic.addEventListener('keyup', cyrillicFunction);
+        $latin.addEventListener('keyup', latinFunction);
+
+
+        function cyrillicFunction () {
+        cyrillic = $cyrillic.value
+        for(e of Object.keys(cyrillicKey)){
+            var myRegExp = new RegExp(e, 'g')
+            cyrillic = cyrillic.replace(myRegExp, cyrillicKey[e])
+        }
+        $latin.value = cyrillic
+        }
+
+        function latinFunction () {
+        latinText = $latin.value
+        for(e of Object.keys(latinKey)){
+            var myRegExp = new RegExp(e, 'g')
+            latinText = latinText.replace(myRegExp, latinKey[e])
+        }
+        $cyrillic.value = latinText
+        }
+
+        cyrillicKey = {
+            " е": " ye",
+            " э": " e",
+            "еу": "ew",
+            "дж": "c",
+            "къ": "q",
+            "уу": "uw",
+            "гъ": "ğ",
+            "нг": "ñ",
+            "ё": "ö",
+            "ю": "ü",
+            "а": "a",
+            "б": "b",
+            "в": "v", 
+            "ч": "ç",
+            "ж": "j",
+            "д": "d",
+            "ф": "f",
+            "г": "g",
+            "и": "i",
+            "й": "y",
+            "к": "k",
+            "л": "l",
+            "м": "m",
+            "н": "n",
+            "о": "o",
+            "п": "p",
+            "р": "r",
+            "с": "s",
+            "ш": "ş",
+            "т": "t", 
+            "у": "u",
+            "х": "h",
+            "з": "z",
+            "ы": "ı",
+        }
+        for(n of Object.keys(cyrillicKey)){
+        cyrillicKey[n[0].toUpperCase() + n.slice(1)] = cyrillicKey[n][0].toUpperCase() + cyrillicKey[n].slice(1)
+        }
+        console.log(cyrillicKey)
+
+        const reverse = object => JSON.parse(`{${Object.entries(object).map(x => `"${x[1]}": "${x[0]}"`).join(",")}}`);
+        latinKey = reverse(cyrillicKey)
+
+    </script>
+</html>
