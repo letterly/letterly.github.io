@@ -67,7 +67,7 @@
 
         cyrillicKey = {
             " е": " ye",
-            " э": " e",
+            "э": " e",
             "еу": "ew",
             "дж": "c",
             "къ": "q",
@@ -105,6 +105,8 @@
         cyrillicKey[n[0].toUpperCase() + n.slice(1)] = cyrillicKey[n][0].toUpperCase() + cyrillicKey[n].slice(1)
         }
         console.log(cyrillicKey)
+        cyrillicKey["И"] = "İ"
+        cyrillicKey[" Э"] = " E"
 
         const reverse = object => JSON.parse(`{${Object.entries(object).map(x => `"${x[1]}": "${x[0]}"`).join(",")}}`);
         latinKey = reverse(cyrillicKey)
