@@ -170,6 +170,50 @@ function toBraille(text){
             ["०", "⠚"],
         ]
     }
+    else if(language.value == "ff"){
+        g = [
+            [" 𞥑", " ⠼⠁"],
+            ["𞥑", "⠁"],
+            [" 𞥒", " ⠼⠃"],
+            ["𞥒", "⠃"],
+            [" 𞥓", " ⠼⠉"],
+            ["𞥓", "⠉"],
+            [" 𞥔", " ⠼⠙"],
+            ["𞥔", "⠙"],
+            [" 𞥕", " ⠼⠑"],
+            ["𞥕", "⠑"],
+            [" 𞥖", " ⠼⠋"],
+            ["𞥖", "⠋"],
+            [" 𞥗", " ⠼⠛"],
+            ["𞥗", "⠛"],
+            [" 𞥘", " ⠼⠓"],
+            ["𞥘", "⠓"],
+            [" 𞥙", " ⠼⠊"],
+            ["𞥙", "⠊"],
+            [" 𞥐", " ⠼⠚"],
+            ["𞥐", "⠚"],
+            [" १", " ⠼⠁"],
+            ["१", "⠁"],
+            [" २", " ⠼⠃"],
+            ["२", "⠃"],
+            [" ३", " ⠼⠉"],
+            ["३", "⠉"],
+            [" ४", " ⠼⠙"],
+            ["४", "⠙"],
+            [" ५", " ⠼⠑"],
+            ["५", "⠑"],
+            [" ६", " ⠼⠋"],
+            ["६", "⠋"],
+            [" ७", " ⠼⠛"],
+            ["७", "⠛"],
+            [" ८", " ⠼⠓"],
+            ["८", "⠓"],
+            [" ९", " ⠼⠊"],
+            ["९", "⠊"],
+            [" ०", " ⠼⠚"],
+            ["०", "⠚"],
+        ]
+    }
     else if(language.value == "ur_pk"){
         g = [
             [" 1", " ⠼⠁"],
@@ -290,7 +334,8 @@ function toBraille(text){
 
     for(l of Object.entries(languages[language.value])){
         text = text.replace(new RegExp(l[0], "g"), l[1])
-        if(l[0].toUpperCase != l[0] && scriptData[otherdata[language.value].script].capitalize && !(Object.keys(languages[language.value]).includes("İ") && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].charAt(0).toUpperCase() + l[0].slice(1), "g"), otherdata[language.value].capital + l[1])
+        if(language.value == "ff") text = text.replace(new RegExp(l[0].toUpperCase(), "g"), otherdata[language.value].capital + l[1])
+        else if(l[0].toUpperCase != l[0] && scriptData[otherdata[language.value].script].capitalize && !(Object.keys(languages[language.value]).includes("İ") && "Iiıİ".includes(l[0]))) text = text.replace(new RegExp(l[0].charAt(0).toUpperCase() + l[0].slice(1), "g"), otherdata[language.value].capital + l[1])
     }
 
     for(l of g){
