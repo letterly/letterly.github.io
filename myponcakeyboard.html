@@ -1,0 +1,309 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>My Keyboard</title>
+        <style>
+            body{
+                font-family: Roboto;
+                background-color: #221a0f;
+            }
+            #text{
+                font-family: Roboto;
+            }
+            #Space{
+                width: 83vw;
+            }
+            .row{
+                width: 84vw;
+                margin-left: 7vw;
+                margin-right: 5vw;
+                background-color: #fdf6e3;
+                height: 6vw;
+            }
+            .key{
+                float: left;
+                height: 5vw;
+                width: 5vw;
+                margin: 0.5%;
+                background-color: #cb4b16;
+                text-align: center;
+                color: #fdf6e3;
+                font-size: 3vw;
+            }
+            #Tab, #Backspace{
+                width: 7vw;
+            }
+            #Tab{
+                background-color: #657b83;
+            }
+            #CapsLock, #ShiftLeft, #ShiftRight{
+                background-color: #b58900;
+                text-decoration: underline;
+            }
+            #CapsLock{
+                width: 8vw;
+            }
+            #Enter{
+                width: 10vw;
+            }
+            #Enter, #Backspace{
+                background-color: #d33682;
+                font-style: italic;
+            }
+            #ShiftLeft, #ShiftRight{
+                width: 11.9vw;
+            }
+            #text, #custom{
+                background-color: #2aa198;
+                width: 84vw;
+                margin-left: 7vw;
+                margin-right: 5vw;
+                resize: none;
+                height: 15vw;
+                margin-top: 2vw;
+                border: none;
+                outline: none;
+                color: #fdf6e3;
+                font-size: 3vw;
+            }
+            #custom{
+                height: 25vw;
+                background-color: #dc322f;
+            }
+            h2{
+                float: left;
+                color: #fdf6e3;
+                margin: 5vw;
+                font-size: 3vw;
+                width: 90vw;
+            }
+            span{
+                text-decoration: underline;
+                color: #dc322f;
+            }
+            span:hover{
+                color: #fdf6e3;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="keyboard">
+            <div class="row" id="row0">
+                <div class="key" id="Backquote"></div>
+                <div class="key" id="Digit1"></div>
+                <div class="key" id="Digit2"></div>
+                <div class="key" id="Digit3"></div>
+                <div class="key" id="Digit4"></div>
+                <div class="key" id="Digit5"></div>
+                <div class="key" id="Digit6"></div>
+                <div class="key" id="Digit7"></div>
+                <div class="key" id="Digit8"></div>
+                <div class="key" id="Digit9"></div>
+                <div class="key" id="Digit0"></div>
+                <div class="key" id="Minus"></div>
+                <div class="key" id="Equal"></div>
+                <div class="key" id="Backspace"></div>
+            </div>
+            <div class="row" id="row1">
+                <div class="key" id="Tab"></div>
+                <div class="key" id="KeyQ"></div>
+                <div class="key" id="KeyW"></div>
+                <div class="key" id="KeyE"></div>
+                <div class="key" id="KeyR"></div>
+                <div class="key" id="KeyT"></div>
+                <div class="key" id="KeyY"></div>
+                <div class="key" id="KeyU"></div>
+                <div class="key" id="KeyI"></div>
+                <div class="key" id="KeyO"></div>
+                <div class="key" id="KeyP"></div>
+                <div class="key" id="BracketLeft"></div>
+                <div class="key" id="BracketRight"></div>
+                <div class="key" id="Backslash"></div>
+            </div>
+            <div class="row" id="row2">
+                <div class="key" id="CapsLock"></div>
+                <div class="key" id="KeyA"></div>
+                <div class="key" id="KeyS"></div>
+                <div class="key" id="KeyD"></div>
+                <div class="key" id="KeyF"></div>
+                <div class="key" id="KeyG"></div>
+                <div class="key" id="KeyH"></div>
+                <div class="key" id="KeyJ"></div>
+                <div class="key" id="KeyK"></div>
+                <div class="key" id="KeyL"></div>
+                <div class="key" id="Semicolon"></div>
+                <div class="key" id="Quote"></div>
+                <div class="key" id="Enter"></div>
+            </div>
+            <div class="row" id="row3">
+                <div class="key" id="ShiftLeft"></div>
+                <div class="key" id="KeyZ"></div>
+                <div class="key" id="KeyX"></div>
+                <div class="key" id="KeyC"></div>
+                <div class="key" id="KeyV"></div>
+                <div class="key" id="KeyB"></div>
+                <div class="key" id="KeyN"></div>
+                <div class="key" id="KeyM"></div>
+                <div class="key" id="Comma"></div>
+                <div class="key" id="Period"></div>
+                <div class="key" id="Slash"></div>
+                <div class="key" id="ShiftRight"></div>
+            </div>
+            <div class="row" id="row4">
+                <div class="key" id="Space" onclick="space()">s p a c e</div>
+            </div>
+            <textarea id="text" spellcheck="false"></textarea>
+        </div>
+    <script>
+lang = "Ponca"
+document.addEventListener('keypress', function(e){
+    if(e.code != "Space" && e.code != "Enter"){
+        event.preventDefault()
+        pressKey(e.code)
+    }
+});
+document.addEventListener('keydown', function(e){
+    if(e.code.startsWith("Shift")){
+        if(lang != "Osage") theShift(e.code)
+    }
+    else if(e.code == "CapsLock"){
+        if(lang != "Osage") theShift(e.code)
+    }
+    else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#859900"
+});
+document.addEventListener('keyup', function(e){
+    if(e.code.startsWith("Shift")){
+        if(lang != "Osage") leShift(e.code)
+    }
+    else if(e.code == "CapsLock"){
+        if(lang != "Osage") leShift(e.code)
+    }
+    else if(e.code == "Backspace" || e.code == "Enter") document.getElementById(e.code).style.backgroundColor = "#d33682"
+    else if(e.code.startsWith("Key") || e.code.startsWith("Digit") || ["Backquote", "Minus", "Equal", "Comma", "Period", "Slash", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote"].includes(e.code)) document.getElementById(e.code).style.backgroundColor = e.code != "Backspace" ? "#cb4b16" : "#d33682"
+});
+document.body.onmousedown = function(e){
+    if(e.srcElement.id == "CapsLock" && lang != "Osage") theShift("CapsLock")
+    else if(e.srcElement.id == "Enter") text.value += "\r"
+    else if(e.srcElement.classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter", "Space"].includes(e.srcElement.id))){
+        pressKey(e.srcElement.id)
+    }
+}
+document.body.onmouseup = function(e){
+    if(e.srcElement.id == "CapsLock") leShift("CapsLock")
+    else if(e.srcElement.classList[0] == "key" && !(["Tab", "ShiftLeft", "ShiftRight", "Enter"].includes(e.srcElement.id))) e.srcElement.style.backgroundColor = e.srcElement.id != "Backspace" ? "#cb4b16" : "#d33682"
+}
+
+function pressKey(k){
+    n = text.selectionStart + document.getElementById(k).textContent.length
+    if(k != "Space") document.getElementById(k).style.backgroundColor = "#859900"
+    if(k != "Backspace"){
+        text.value += document.getElementById(k).textContent
+    }
+    else{
+        text.value = text.value.slice(0,-1)
+    }
+    text.selectionStart = n
+}
+
+function theShift(c){
+    document.getElementById(c).style.backgroundColor = "#859900"
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9"])){
+        document.getElementById(x).textContent = document.getElementById(x).textContent.toUpperCase()
+        //remove
+        Slash.textContent = "|"
+    }
+}
+
+function space(){
+    text.value += " "
+}
+
+function leShift(c){
+    document.getElementById(c).style.backgroundColor = "#b58900"
+    for(x of "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map(r => `Key${r}`).concat(["Backquote", "Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9"])){
+        document.getElementById(x).textContent = document.getElementById(x).textContent.toLowerCase()
+    }
+}
+
+keyboards = {
+    Ponca: {
+        //
+        Backspace: "del",
+        CapsLock: "caps",
+        Enter: "return",
+        ShiftLeft: "shift",
+        ShiftRight: "shift",
+        Tab: "tab",
+        //
+        Backquote: "ə",
+        Digit1: "1",
+        Digit2: "2",
+        Digit3: "3",
+        Digit4: "4",
+        Digit5: "5",
+        Digit6: "6",
+        Digit7: "7",
+        Digit8: "8",
+        Digit9: "9",
+        Digit0: "0",
+        Minus: "ʃ",
+        Equal: "đ",
+        //
+        KeyQ: "q",
+        KeyW: "w",
+        KeyE: "e",
+        KeyR: "r",
+        KeyT: "t",
+        KeyY: "y",
+        KeyU: "u",
+        KeyI: "i",
+        KeyO: "o",
+        KeyP: "p",
+        BracketLeft: "́",
+        BracketRight: "̀",
+        Backslash: "̌",
+        //
+        KeyA: "a",
+        KeyS: "s",
+        KeyD: "d",
+        KeyF: "f",
+        KeyG: "g",
+        KeyH: "h",
+        KeyJ: "j",
+        KeyK: "k",
+        KeyL: "l",
+        Semicolon: "̨",
+        Quote: "'",
+        //
+        KeyZ: "z",
+        KeyX: "x",
+        KeyC: "c",
+        KeyV: "v",
+        KeyB: "b",
+        KeyN: "n",
+        KeyM: "m",
+        Comma: ",",
+        Period: ".",
+        Slash: "?",
+        //
+    }
+}
+
+function keySet(lang){
+    for(n of Object.entries(keyboards[lang])) document.getElementById(n[0]).textContent = n[1]
+    text.style.direction = (lang == "Judeo-Arabic" || lang == "Yezidi" || lang == "Ladino") ? "rtl" : "ltr"
+}
+keySet("Ponca")
+
+function customize(){
+    custom.style.display = "block"
+    custom.value = ""
+    for(h of Object.entries(keyboards.Osage)){
+        custom.value += `${h[0]}:${h[1]}` + "\r"
+    }
+}
+    </script>
+</html>
