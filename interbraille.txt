@@ -1,5 +1,8 @@
 InterBraille Changelog
 
+30 Nov 2023
+-Added Basque Braille
+
 18 Nov 2023
 -Added Fulani (Adlam) Braille
 
