@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Karachay-Balkar Text Converter</title>
+        <title>Kumyk Text Converter</title>
         <style>
             body{
                 background-color: lightblue;
@@ -41,10 +41,10 @@
         </style>
     </head>
     <body>
-        <h1>Karachay-Balkar Transliterator</h1>
-        <p>The goal of this website is to allow users to convert text between the Karachay-Balkar Cyrillic alphabet (mostly used in Russia) and the Karachay-Balkar Latin alphabet (mostly used in Turkey). Hopefully this will allow for a greater exchange of communication and literature.</p>
-        <textarea id="cyrillic" placeholder="Write something in Къарачай-Малкъар here :)"></textarea>
-        <textarea  direction="rtl" id="latin" placeholder="Or write something in Qaraçay-Malqar here :)"></textarea>
+        <h1>Kumyk Transliterator</h1>
+        <p>The goal of this website is to allow users to convert text between the Cyrillic and Latin alphabets of the Kumyk language. Hopefully this will allow for a greater exchange of communication and literature.</p>
+        <textarea id="cyrillic" placeholder="Write something in Qumuq here :)"></textarea>
+        <textarea  direction="rtl" id="latin" placeholder="Or write something in Къумукъ here :)"></textarea>
         <h1>Conversion Chart</h1>
         <div id="section">
             <div>a / а</div>
@@ -52,12 +52,11 @@
             <div>c / дж</div>
             <div>ç / ч</div>
             <div>d / д</div>
-            <div>e / е</div>
-            <div>e / э (word-initially)</div>
+            <div>e / э </div>
             <div>f / ф</div>
             <div>g / г</div>
             <div>ğ / гъ</div>
-            <div>h / х</div>
+            <div>h / гь</div>
             <div>ı / ы</div>
             <div>i / и</div>
             <div>j / ж</div>
@@ -67,7 +66,7 @@
             <div>n / н</div>
             <div>ñ / нг</div>
             <div>o / о</div>
-            <div>ö / ё</div>
+            <div>ö / оь</div>
             <div>p / п</div>
             <div>q / къ</div>
             <div>r / р</div>
@@ -77,11 +76,15 @@
             <div>t / т</div>
             <div>ts / ц</div>
             <div>u / у</div>
-            <div>ü / ю</div>
+            <div>ü / уь</div>
             <div>v / в</div>
             <div>w / у (after vowel)</div>
+            <div>x / х</div>
             <div>y / й</div>
             <div>ya / я</div>
+            <div>ye / е</div>
+            <div>yo / ё</div>
+            <div>yu / ю</div>
             <div>z / з</div>
         </div>
     </body>
@@ -113,6 +116,8 @@
         }
 
         cyrillicKey = {
+            " е": " ye",
+            " э": " e",
             "еу": "ew",
             "дж": "c",
             "къ": "q",
@@ -120,9 +125,10 @@
             "гъ": "ğ",
             "я": "ya",
             "нг": "ñ",
+            "гь": "h",
             "ц": "ts",
-            "ё": "ö",
-            "ю": "ü",
+            "ё": "yo",
+            "ю": "yu",
             "а": "a",
             "б": "b",
             "в": "v", 
@@ -145,7 +151,7 @@
             "щ": "şç",
             "т": "t", 
             "у": "u",
-            "х": "h",
+            "х": "x",
             "з": "z",
             "ы": "ı",
         }
