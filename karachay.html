@@ -43,8 +43,8 @@
     <body>
         <h1>Karachay-Balkar Transliterator</h1>
         <p>The goal of this website is to allow users to convert text between the Karachay-Balkar Cyrillic alphabet (mostly used in Russia) and the Karachay-Balkar Latin alphabet (mostly used in Turkey). Hopefully this will allow for a greater exchange of communication and literature.</p>
-        <textarea id="cyrillic" placeholder="Write something in Къарачай-Малкъар here :)"></textarea>
-        <textarea  direction="rtl" id="latin" placeholder="Or write something in Qaraçay-Malqar here :)"></textarea>
+        <textarea id="cyrillic" placeholder="Write something in Къарачай-Малкъар here :)" spellcheck="false"></textarea>
+        <textarea  direction="rtl" id="latin" placeholder="Or write something in Qaraçay-Malqar here :)" spellcheck="false"></textarea>
         <h1>Conversion Chart</h1>
         <div id="section">
             <div>a / а</div>
@@ -95,68 +95,111 @@
 
 
         function cyrillicFunction () {
-        cyrillic = $cyrillic.value
-        for(e of Object.keys(cyrillicKey)){
-            var myRegExp = new RegExp(e, 'g')
-            cyrillic = cyrillic.replace(myRegExp, cyrillicKey[e])
-        }
-        $latin.value = cyrillic
+            cyrillic = $cyrillic.value
+            for(e of cyrillicKey) cyrillic = cyrillic.replace(new RegExp(e[0], 'g'), e[1])
+            $latin.value = cyrillic
         }
 
         function latinFunction () {
-        latinText = $latin.value
-        for(e of Object.keys(latinKey)){
-            var myRegExp = new RegExp(e, 'g')
-            latinText = latinText.replace(myRegExp, latinKey[e])
-        }
-        $cyrillic.value = latinText
+            latinText = $latin.value
+            for(e of latinKey) latinText = latinText.replace(new RegExp(e[0], 'g'), e[1])
+            $cyrillic.value = latinText
         }
 
-        cyrillicKey = {
-            "еу": "ew",
-            "дж": "c",
-            "къ": "q",
-            "уу": "uw",
-            "гъ": "ğ",
-            "я": "ya",
-            "нг": "ñ",
-            "ц": "ts",
-            "ё": "ö",
-            "ю": "ü",
-            "а": "a",
-            "б": "b",
-            "в": "v", 
-            "ч": "ç",
-            "ж": "j",
-            "д": "d",
-            "ф": "f",
-            "г": "g",
-            "и": "i",
-            "й": "y",
-            "к": "k",
-            "л": "l",
-            "м": "m",
-            "н": "n",
-            "о": "o",
-            "п": "p",
-            "р": "r",
-            "с": "s",
-            "ш": "ş",
-            "щ": "şç",
-            "т": "t", 
-            "у": "u",
-            "х": "h",
-            "з": "z",
-            "ы": "ı",
+        cyrillicKey = []
+        lang = "karachay"
+        function setKey(lang){
+
+            cyrillicKey = [
+                ["Э", "E"],
+                ["э", "e"],
+                ["Еу", "Ew"],
+                ["еу", "ew"],
+                ["Дж", "C"],
+                ["дж", "c"],
+                ["Къ", "Q"],
+                ["къ", "q"],
+                ["Уу", "Uw"],
+                ["уу", "uw"],
+                ["Гъ", "Ğ"],
+                ["гъ", "ğ"],
+                [" Е", " Ye"],
+                [" е", " ye"],
+                ["Я", "Ya"],
+                ["я", "ya"],
+                ["НГ", "Ñ"],
+                ["нг", "ñ"],
+                ["Аь", "Ä"],
+                ["аь", "ä"],
+                ["Оь", "Ö"],
+                ["оь", "ö"],
+                ["Уь", "Ü"],
+                ["уь", "ü"],
+                ["Нъ", "Ñ"],
+                ["нъ", "ñ"],
+                ["Ц", "Ts"],
+                ["ц", "ts"],
+                ["Ё", "Ö"],
+                ["ё", "ö"],
+                ["Ю", "Ü"],
+                ["ю", "ü"],
+                ["А", "A"],
+                ["а", "a"],
+                ["Б", "B"],
+                ["б", "b"],
+                ["В", "V"], 
+                ["в", "v"], 
+                ["Ч", "Ç"],
+                ["ч", "ç"],
+                ["Ж", "J"],
+                ["ж", "j"],
+                ["Д", "D"],
+                ["д", "d"],
+                ["Ф", "F"],
+                ["ф", "f"],
+                ["Г", "G"],
+                ["г", "g"],
+                ["И", "İ"],
+                ["и", "i"],
+                ["Й", "Y"],
+                ["й", "y"],
+                ["К", "K"],
+                ["к", "k"],
+                ["Л", "L"],
+                ["л", "l"],
+                ["М", "M"],
+                ["м", "m"],
+                ["Н", "N"],
+                ["н", "n"],
+                ["О", "O"],
+                ["о", "o"],
+                ["П", "P"],
+                ["п", "p"],
+                ["Р", "R"],
+                ["р", "r"],
+                ["С", "S"],
+                ["с", "s"],
+                ["Щ", "Şç"],
+                ["щ", "şç"],
+                ["Ш", "Ş"],
+                ["ш", "ş"],
+                ["Т", "T"], 
+                ["т", "t"], 
+                ["У", "U"],
+                ["у", "u"],
+                ["Х", "H"],
+                ["х", "h"],
+                ["З", "Z"],
+                ["з", "z"],
+                ["Ы", "I"],
+                ["ы", "ı"],
+            ]
+
         }
-        for(n of Object.keys(cyrillicKey)){
-        cyrillicKey[n[0].toUpperCase() + n.slice(1)] = cyrillicKey[n][0].toUpperCase() + cyrillicKey[n].slice(1)
-        }
+
         console.log(cyrillicKey)
-        cyrillicKey["И"] = "İ"
-        cyrillicKey[" Э"] = " E"
 
-        const reverse = object => JSON.parse(`{${Object.entries(object).map(x => `"${x[1]}": "${x[0]}"`).join(",")}}`);
+        const reverse = object => JSON.parse(`[${object.map(x => `["${x[1]}", "${x[0]}"]`).join(",")}]`);
         latinKey = reverse(cyrillicKey)
 
     </script>
