@@ -203,9 +203,9 @@ keyboards = {
         Digit5: "̋",
         Digit6: "̆",
         Digit7: "ñ",
-        Digit8: "h͇",
-        Digit9: "!",
-        Digit0: "",
+        Digit8: "͇",
+        Digit9: "ṵ",
+        Digit0: "!",
         Minus: "-",
         Equal: "=",
         //
