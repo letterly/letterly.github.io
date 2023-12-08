@@ -97,7 +97,7 @@
         <input id='input' onkeyup="openDictionary()" placeholder="Search a word in Ponca or English..." />
         <div id="buttonarray">
             <button onclick="addText(this.textContent)">č</button>
-            <button onclick="addText(this.textContent)">đ</button>
+            <button onclick="addText(this.textContent)">ꟈ</button>
             <button onclick="addText(this.textContent)">ə</button>
             <button onclick="addText(this.textContent)">ʃ</button>
             <button onclick="addText(this.textContent)">š</button>
@@ -121,11 +121,23 @@
         console.log(alphabet)
         document.getElementById(alphabet).style.backgroundColor = "green"
     }
+
+newdictionary = 
+`Ábagè /ä’- bthä- gā’/ v., sheltered, usu. on the
+side sheltered from the wind
+Ábagè /ä’- bthä- gā’/ n., calm, on the sheltered side of a windbreak, usu. refers to a
+place where people are standing or sitting
+at an outdoor event or activity
+Ábe /ä’- bā/ n., leaf or leaves
+Ábixą̀  /ä’- bē- xoⁿ’/ v., boil, simmer, bubble,
+e.g., water changing from a liquid to a vapor
+with the addition of heat`
+
 dictionary = 
-`đišké|adj.|untied, unhooked, undone
-uđíaì|v.|scatter, made into small pieces and scattered
+`ꟈišké|adj.|untied, unhooked, undone
+uꟈíaì|v.|scatter, made into small pieces and scattered
 baxú|v.|write, to write, as in writing a letter
-ę́gąđąžą̀|prep.|except, but, as in "that's the way it was <i>but</i>..."
+ę́gąꟈąžą̀|prep.|except, but, as in "that's the way it was <i>but</i>..."
 ešą́'|adj/adv.|near, close at hand, very close, adjacent
 mą́šą'hągà|n.|center tail feather of the eagle
 waná'|v.|beg, beg for, ask for something to begin
@@ -217,7 +229,7 @@ function altOrth(txt){
             "š": "ʃ",
             "ž": "ʒ",
             "ž": "ʒ",
-            "đ": "ð",
+            "ꟈ": "ð",
             "c": "t͡s",
             "j": "d͡ʒ",
             "y": "j",
@@ -228,7 +240,7 @@ function altOrth(txt){
             "č": "ch",
             "š": "sh",
             "ž": "zh",
-            "đ": "th",
+            "ꟈ": "th",
             "̨": "ⁿ",
         },
         "Osage": {
@@ -256,7 +268,7 @@ function altOrth(txt){
             "t": "𐓈",
             "d": "𐓉",
             "c": "𐓊",
-            "đ": "𐓍",
+            "ꟈ": "𐓍",
             "u": "𐓎",
             "w": "𐓏",
             "x": "𐓐",
