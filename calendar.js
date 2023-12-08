@@ -511,6 +511,30 @@ function holidaycheck(thatday){
 
     normalobservances = [
         {
+            cal: "Gregorian",
+            day: ["25 December", "5 January"],
+            link: "https://en.wikipedia.org/wiki/Christmastide",
+            name: "Christmastide",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["1 ʻAláʼ", "19 ʻAláʼ"],
+            link: "https://en.wikipedia.org/wiki/Nineteen-Day_Fast",
+            name: "Nineteen-Day Fast",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["13 Jalál", "5 Jamál"],
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            name: "Riḍván",
+        },
+        {
+            cal: "Islamic Tabular",
+            day: ["1 Ramadan", "30 Ramadan"],
+            link: "https://en.wikipedia.org/wiki/Ramadan",
+            name: "Ramadan",
+        },
+        {
             cal: "Hebrew",
             day: ["16 Nisan", "5 Sivan"], //iyar
             link: "https://en.wikipedia.org/wiki/Counting_of_the_Omer",
@@ -529,31 +553,11 @@ function holidaycheck(thatday){
             name: "The Nine Days",
         },
         {
-            cal: "Islamic Tabular",
-            day: ["1 Ramadan", "30 Ramadan"],
-            link: "https://en.wikipedia.org/wiki/Ramadan",
-            name: "Ramadan",
-        },
-        {
-            cal: "Gregorian",
-            day: ["25 December", "5 January"],
-            link: "https://en.wikipedia.org/wiki/Christmastide",
-            name: "Christmastide",
-        },
-        {
             cal: "Hebrew",
             day: ["1 Tishrei", "10 Tishrei"],
             link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
             name: "Ten Days of Repentance",
         },
-        
-        {
-            cal: "Bahá'í",
-            day: ["1 ʻAláʼ", "19 ʻAláʼ"],
-            link: "https://en.wikipedia.org/wiki/Nineteen-Day_Fast",
-            name: "Nineteen-Day Fast",
-        },
-        
     ]
 
 
@@ -627,19 +631,19 @@ function holidaycheck(thatday){
         {
             cal: "Bahá'í",
             day: ["13 Jalál"],
-            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n#Festival",
             name: "1st of Riḍván",
         },
         {
             cal: "Bahá'í",
             day: ["2 Jamál"],
-            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n#Festival",
             name: "9th of Riḍván",
         },
         {
             cal: "Bahá'í",
             day: ["5 Jamál"],
-            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n",
+            link: "https://en.wikipedia.org/wiki/Ridv%C3%A1n#Festival",
             name: "12th of Riḍván",
         },
         {
@@ -873,7 +877,7 @@ function holidaycheck(thatday){
         {
             cal: "Hebrew",
             name: "Hanukkah",
-            day: [thatday["Hebrew"] != undefined ? ("25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(5660 - thatday.Hebrew.split(" ").slice(-1)[0]) == "d" ? "3 Tevet" : "30 Kislev")) : "none"],
+            day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(5660 - thatday.Hebrew.split(" ").slice(-1)[0]) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
             link: "https://en.wikipedia.org/wiki/Hanukkah",
         },
         {
@@ -1119,7 +1123,7 @@ function holidaycheck(thatday){
             if(finalE <= 123) easterDay = (finalE - 92) + " March"
             else easterDay = (finalE - 123) + " April"
         }
-        normalholidays.push({
+        normalholidays.unshift({
             name: hol[0],
             link: hol[1],
             cal: "Julian",
@@ -1177,7 +1181,7 @@ function holidaycheck(thatday){
                 easterDay = (newv - 101) + " February"
             }
         }
-        normalholidays.push({
+        normalholidays.unshift({
             name: hol[0],
             link: hol[1],
             cal: "Gregorian",
