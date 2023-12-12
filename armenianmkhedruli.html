@@ -1,0 +1,93 @@
+
+
+  <html>
+    <head>
+        <style>
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+        </style>
+        <title>Crimean Tatar Braille</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ 
+                var typingTimer
+                var doneTypingInterval = 1000
+                var $inuk = document.getElementById("inuk")
+                var $braille = document.getElementById("braille")
+                $inuk.addEventListener('keyup', inukFunction)
+                function inukFunction () {
+                    inuk = $inuk.value.toLowerCase()
+
+                    for(e of Object.keys(inukKey)){
+                        var myRegExp = new RegExp(e, 'g')
+                        inuk = inuk.replace(myRegExp, inukKey[e])
+                    }
+                    $braille.value = "" + inuk
+                }
+
+                inukKey = {
+                    "։": ".",
+                    "ու": "ւ",
+                    "ւ": "უ",
+                    "ա": "ა",
+                    "բ": "ბ",
+                    "գ": "გ",
+                    "դ": "დ",
+                    " ե": " ჲე",
+                    "ե": "ე",
+                    "զ": "ზ",
+                    "է": "ე",
+                    "ը": "ჽ",
+                    "թ": "თ",
+                    "ժ": "ჟ",
+                    "ի": "ი",
+                    "լ": "ლ",
+                    "խ": "ხ",
+                    "ծ": "წ",
+                    "կ": "კ",
+                    "հ": "ჰ",
+                    "ձ": "ძ",
+                    "ղ": "ჹ",
+                    "ճ": "ჭ",
+                    "մ": "მ",
+                    "յ": "ჲ",
+                    "ն": "ნ",
+                    "շ": "შ",
+                    " ո": " ვო",
+                    "ո": "ო",
+                    "չ": "ჩ",
+                    "պ": "Პ",
+                    "ջ": "ჯ",//x
+                    "ռ": "ღ",
+                    "ս": "ს",
+                    "վ": "ვ",
+                    "տ": "ტ",
+                    "ր": "რ",
+                    "ց": "ც",
+                    "փ": "Ფ",//x
+                    "ք": "ქ",
+                    " և": " ჲევ",
+                    "և": "ევ",
+                    "օ": "ჵ",
+                    "ֆ": "ჶ",
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h1>Armenian Mkhedruli Converter</h1>
+        <textarea spellcheck="false" id="inuk" placeholder="enter Armenian text here" style="direction:ltr"></textarea>
+        <textarea contenteditable="false" id="braille" placeholder="Mkhedruli output here" style="direction:ltr"></textarea>
+    </body>
+</html>
