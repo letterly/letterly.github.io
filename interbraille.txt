@@ -1,5 +1,12 @@
 InterBraille Changelog
 
+13 Dec 2023
+-Added Elfdalian Braille
+
+1 Dec 2023
+-Added Tongan Braille (experimental)
+-Added the rare letter ü to Basque Braille
+
 30 Nov 2023
 -Added Basque Braille
 
