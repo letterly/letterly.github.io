@@ -1,5 +1,8 @@
 InterBraille Changelog
 
+28 Dec 2023
+-Added the option to convert to Braille ASCII
+
 13 Dec 2023
 -Added Elfdalian Braille
 
