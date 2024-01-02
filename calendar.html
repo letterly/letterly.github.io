@@ -6,7 +6,7 @@
         <title>Calendar</title>
     </head>
     <body>
-        <h1>Date Converter</h1>
+        <h1>Universal Calendar Project</h1>
         <div id="selection">
             <div class="selectblock" id="selectblockone">
                 <select id="thecalendar" onchange="reset()">
@@ -111,12 +111,35 @@
                 </select>
                 <select id="japanday" onchange="convert()"></select>
             </div>
+            <div id="dayname"></div>
+            <div class="selectblock" id="selectblockfive">
+                <select id="loc" onchange="locationChange()">
+                    <option value="32;35;2">Jerusalem</option>
+                    <option value="50.5;30.5;2">Kyiv</option>
+                    <option value="21.5;40;3">Mecca</option>
+                    <option value="19.5;-99;-1">Mexico City</option>
+                    <option value="40.5;-74;-5">New York City</option>
+                    <option value="40;-75;-5">Philadelphia</option>
+                    <option value="41.5;45;4">Tbilisi</option>
+                    <option value="35.5;139.5;9">Tokyo</option>
+                    <option value="43.5;-79;-5">Toronto</option>
+                    <option value="-23.5;-46.5;-3">São Paulo</option>
+                    <option value="52;21;1">Warsaw</option>
+                    <option value="39;-77;-5" selected>Washington DC</option>
+                </select>
+            </div>
         </div>
-        <div id="dayname"></div>
+        <div id="sunrisesunset">
+            
+        </div>
         <br>
         <div id="holidays">
         </div>
         <div id="observances">
+        </div>
+        <div id="monthly">
+        </div>
+        <div id="weekly">
         </div>
         <br>
         <div id="answer">

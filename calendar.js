@@ -50,6 +50,10 @@ function religionize(cl, att){
             name: "Bahá'í Faith",
             link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith",
         },
+        "Fasli (Zoroastrian)": {
+            name: "Zoroastrianism",
+            link: "https://en.wikipedia.org/wiki/Zoroastrianism",
+        }
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -91,6 +95,8 @@ for(d = 0; d < 280000; d++){
     kin = mayaday
 
     obj = {
+        Juliandate: d + 2415020.5,
+        Harrisdate: d,
         Day: day,
         Mayan: `${bakatun}.${katun}.${tun}.${winal}.${kin}`,
     }
@@ -228,6 +234,77 @@ function japanDay(){
     convert()
 }
 
+
+function suntimes(lat, lng, tz, angl) {
+    dd = new Date();
+    radians = Math.PI / 180;
+    degrees = 180 / Math.PI;
+  
+     var a = Math.floor((14 - (dd.getMonth() + 1)) / 12)
+    var yy = dd.getFullYear() + 4800 - a;
+    var mm = (dd.getMonth() + 1) + 12 * a - 3;
+    j_day = dd.getDate() + Math.floor((153 * mm + 2)/5) + 365 * yy + Math.floor(yy/4) - Math.floor(yy/100) + Math.floor(yy/400) - 32045;
+      var n_star = j_day - 2451545.0009 - lng / 360.0;
+      var nn = Math.floor(n_star + 0.5);
+      var solar_noon = 2451545.0009 - lng / 360.0 + nn;
+      var M = 356.0470 + 0.9856002585 * nn;
+      var C = 1.9148 * Math.sin( M * radians ) + 0.02 * Math.sin( 2 * M * radians ) + 0.0003 * Math.sin( 3 * M * radians );
+      var L = ( M + 102.9372 + C + 180 ) % 360;
+      var j_transit = solar_noon + 0.0053 * Math.sin( M * radians) - 0.0069 * Math.sin( 2 * L * radians );
+      var D = Math.asin( Math.sin( L * radians ) * Math.sin( 23.45 * radians ) ) * degrees;
+      var cos_omega = ( Math.sin(angl * radians) - Math.sin( lat * radians ) * Math.sin( D * radians ) ) / ( Math.cos( lat * radians ) * Math.cos( D * radians ) );
+  
+      // sun never rises
+      if( cos_omega > 1)
+        return [null, -1];
+  
+      // sun never sets
+      if( cos_omega < -1 )
+        return [-1, null];
+  
+      var omega = Math.acos( cos_omega ) * degrees;
+      var j_set = j_transit + omega / 360.0;
+      var j_rise = j_transit - omega / 360.0;
+      var utc_time_set = 24 * (j_set - j_day) + 12;
+      var utc_time_rise = 24 * (j_rise - j_day) + 12;
+      var tz_offset = tz === undefined ? -1 * d.getTimezoneOffset() / 60 : tz;
+      var local_rise = (utc_time_rise + +tz_offset) % 24;
+      var local_set = (utc_time_set + +tz_offset) % 24;
+      console.log(local_set)
+      relativehour = (local_set - local_rise) / 12
+      return [julianhourize(local_rise), julianhourize(local_set), julianhourize((local_rise + local_set) / 2), julianhourize(local_rise + 3 * relativehour)];
+  }
+  
+  function julianhourize(juliandecimal){ //REWRITE
+    hours = Math.floor(juliandecimal)
+    minutes = Math.floor(juliandecimal % 1 * 60)
+    if(minutes < 10) minutes = "0" + minutes
+    return `${hours}:${minutes}`
+  }
+
+function locationChange(){
+    locinfo = loc.value.split(";")
+    console.log(thatspecificday)
+    sunrisesunset.innerHTML = ""
+    sunrisesunset.innerHTML += `Fajr: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
+    sunrisesunset.innerHTML += `Sunrise: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
+    sunrisesunset.innerHTML += `Sof Zman Kriyat Shema: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3]} | `
+    sunrisesunset.innerHTML += `Solar noon [Dhuhr]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
+    sunrisesunset.innerHTML += `Sunset [Isha]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
+    if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `Shabbat end: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
+    sunrisesunset.innerHTML += `Isha: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
+    /*console.log("Fajr: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0])
+    console.log("Sunrise: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0])
+    console.log("Sof Zman Kriyat Shema: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3])
+    console.log("Midday [Dhuhr]: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2])
+    console.log("Sunset [Isha]: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1])
+    console.log("Shabbat end: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1])
+    console.log("Isha: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1])*/
+
+
+
+    
+}
 
 
 function reset(){
@@ -447,7 +524,7 @@ function convert(){
             else if(ourcalendar == "Mayan"){
                 answer.innerHTML += `<div class='cal mayan'><span>🌙 <a class="callink" target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a> ⬜<br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
             }
-            else if(+thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
+            else if(!ourcalendar.endsWith("date") && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] > 0 && +thatspecificday[ourcalendar].split(" ").slice(-1)[0] <= calendars[ourcalendar].bounds[1]){
                 zzz = ourcalendar == "Japanese" ? -2 : -1
                 answer.innerHTML += 
                 "<div class='cal " + 
@@ -504,6 +581,7 @@ function convert(){
     </div>`
     answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
     holidaycheck(thatspecificday)
+    locationChange()
 }
 
 function holidaycheck(thatday){
@@ -877,7 +955,7 @@ function holidaycheck(thatday){
         {
             cal: "Hebrew",
             name: "Hanukkah",
-            day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(5660 - thatday.Hebrew.split(" ").slice(-1)[0]) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
+            day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(thatday.Hebrew.split(" ").slice(-1)[0] - 5660) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
             link: "https://en.wikipedia.org/wiki/Hanukkah",
         },
         {
@@ -909,6 +987,12 @@ function holidaycheck(thatday){
             name: "Seventeenth of Tammuz",
             link: "https://en.wikipedia.org/wiki/Seventeenth_of_Tammuz",
             day: [(d != "Saturday" ? "17 Tammuz" : ""), (d == "Sunday" ? "18 Tammuz" : "")],
+        },
+        {
+            name: "Tenth of Tevet",
+            cal: "Hebrew",
+            link: "https://en.wikipedia.org/wiki/Tenth_of_Tevet",
+            day: "10 Tevet",
         },
         {
             cal: "Islamic Tabular",
@@ -957,6 +1041,18 @@ function holidaycheck(thatday){
             name: "Islamic New Year",
             link: "https://en.wikipedia.org/wiki/Islamic_New_Year",
             day: ["1 Muharram"],
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Islamic New Year",
+            link: "https://en.wikipedia.org/wiki/Islamic_New_Year",
+            day: ["1 Muharram"],
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Shab-e-Barat",
+            link: "https://en.wikipedia.org/wiki/Shab-e-Barat",
+            day: ["15 Sha'ban"],
         },
         {
             cal: "Julian",
@@ -1212,7 +1308,7 @@ function holidaycheck(thatday){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
             if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
@@ -1238,6 +1334,32 @@ function holidaycheck(thatday){
         }
     }
     if(observances.innerHTML != "") observances.innerHTML = "<h3>Observances</h3>" + observances.innerHTML
+
+
+    //ADD MONTHLY AND WEEKLY CODE
+    monthly.innerHTML = ""
+    if(thatday.Hebrew.startsWith("1 ") || thatday.Hebrew.startsWith("30 ")){
+        monthly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Rosh_Chodesh">Rosh Chodesh</a></h2>`
+    }
+    if(thatday["Bahá'í"].startsWith("1 ")){
+        monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
+    }
+    if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly celebrations</h3>" + monthly.innerHTML
+
+    //
+    weekly.innerHTML = ""
+    if(thatday.Day == "Friday"){
+        weekly.innerHTML += `<h2 class="islamic_tabular"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Islam" target="_blank">Islam</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Friday_prayer">Friday prayer</a></h2>`
+        weekly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sabbath#Bah%C3%A1%CA%BC%C3%AD_Faith">Day of rest</a></h2>`
+    }
+    else if(thatday.Day == "Saturday"){
+        weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Shabbat">Shabbat</a></h2>`
+    }
+    else if(thatday.Day == "Sunday"){
+        weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Christianity" target="_blank">Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sabbath_in_Christianity">Sabbath</a></h2>`
+    }
+    if(weekly.innerHTML != "") weekly.innerHTML = "<h3>Holy day of week</h3>" + weekly.innerHTML
+
 }
 
 

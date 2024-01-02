@@ -22,6 +22,10 @@ body{
     color: black;
     border-bottom: blue 2px solid;
 }
+#loc{
+    color: black;
+    border-bottom: orange 2px solid;
+}
 #theday{
     width: 120px;
 }
@@ -55,6 +59,10 @@ input, select{
     margin-left: calc((100% - 570px) / 2);
     margin-right: calc((100% - 570px) / 2);
     display: none;
+}
+#selectblockfive{
+    margin-left: calc((100% - 340px) / 2);
+    margin-right: calc((100% - 340px) / 2);
 }
 #selectblockthree select{
     font-family: "Mayan", "Verdana";
@@ -289,4 +297,14 @@ h2{
 
 .monthlink{
     text-decoration: dotted underline !important;
+}
+
+#sunrisesunset{
+    border: black, 2px, solid;
+    border-radius: 5px;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: center;
+    font-size: 19px;
 }
