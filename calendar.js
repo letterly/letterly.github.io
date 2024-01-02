@@ -236,7 +236,8 @@ function japanDay(){
 
 
 function suntimes(lat, lng, tz, angl) {
-    dd = new Date();
+    dd = new Date(thatspecificday.Gregorian);
+    console.log(dd)
     radians = Math.PI / 180;
     degrees = 180 / Math.PI;
   
@@ -270,7 +271,6 @@ function suntimes(lat, lng, tz, angl) {
       var tz_offset = tz === undefined ? -1 * d.getTimezoneOffset() / 60 : tz;
       var local_rise = (utc_time_rise + +tz_offset) % 24;
       var local_set = (utc_time_set + +tz_offset) % 24;
-      console.log(local_set)
       relativehour = (local_set - local_rise) / 12
       return [julianhourize(local_rise), julianhourize(local_set), julianhourize((local_rise + local_set) / 2), julianhourize(local_rise + 3 * relativehour)];
   }
@@ -284,7 +284,6 @@ function suntimes(lat, lng, tz, angl) {
 
 function locationChange(){
     locinfo = loc.value.split(";")
-    console.log(thatspecificday)
     sunrisesunset.innerHTML = ""
     sunrisesunset.innerHTML += `Fajr: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
     sunrisesunset.innerHTML += `Sunrise: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
@@ -293,16 +292,6 @@ function locationChange(){
     sunrisesunset.innerHTML += `Sunset [Isha]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
     if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `Shabbat end: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
     sunrisesunset.innerHTML += `Isha: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
-    /*console.log("Fajr: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0])
-    console.log("Sunrise: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0])
-    console.log("Sof Zman Kriyat Shema: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3])
-    console.log("Midday [Dhuhr]: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2])
-    console.log("Sunset [Isha]: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1])
-    console.log("Shabbat end: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1])
-    console.log("Isha: " + suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1])*/
-
-
-
     
 }
 
