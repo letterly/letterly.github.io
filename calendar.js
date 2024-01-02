@@ -237,7 +237,6 @@ function japanDay(){
 
 function suntimes(lat, lng, tz, angl) {
     dd = new Date(thatspecificday.Gregorian);
-    console.log(dd)
     radians = Math.PI / 180;
     degrees = 180 / Math.PI;
   
@@ -285,14 +284,14 @@ function suntimes(lat, lng, tz, angl) {
 function locationChange(){
     locinfo = loc.value.split(";")
     sunrisesunset.innerHTML = ""
-    sunrisesunset.innerHTML += `Fajr: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
-    sunrisesunset.innerHTML += `Sunrise: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
-    sunrisesunset.innerHTML += `Sof Zman Kriyat Shema: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3]} | `
-    sunrisesunset.innerHTML += `Solar noon [Dhuhr]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
-    sunrisesunset.innerHTML += `Sunset [Isha]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
-    if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `Shabbat end: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
-    sunrisesunset.innerHTML += `Isha: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
-    
+    sunrisesunset.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
+    sunrisesunset.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Fajr" target="_blank">Fajr</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunrise" target="_blank">Sunrise</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Kriyat_Shema" class="hebrew" target="_blank">Sof Zman Kriyat Shema</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar noon</a> [<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Dhuhr" target="_blank">Dhuhr</a>]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a> [<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Maghrib" target="_blank">Maghrib</a>]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
+    if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Nightfall" class="hebrew" target="_blank">Shabbat end</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
+    sunrisesunset.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Isha" target="_blank">Isha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
 }
 
 
