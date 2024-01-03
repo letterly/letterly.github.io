@@ -292,6 +292,13 @@ function locationChange(){
     sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a> [<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Maghrib" target="_blank">Maghrib</a>]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
     if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Nightfall" class="hebrew" target="_blank">Shabbat end</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
     sunrisesunset.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Isha" target="_blank">Isha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
+    
+    qibla = Math.atan(Math.sin((39.75 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(21.45  * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((39.75 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
+    qiblih = Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
+
+    angles.innerHTML = ""
+    angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
+    angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Qiblih</a> Angle: " + Math.round(qiblih * 10) / 10 + "°"
 }
 
 

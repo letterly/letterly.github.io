@@ -299,8 +299,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset{
-    border: black, 2px, solid;
+#sunrisesunset, #angles{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -308,7 +307,7 @@ h2{
     text-align: center;
     font-size: 19px;
 }
-#sunrisesunset a{
+#sunrisesunset a, #angles a{
     text-decoration: dotted underline;
     background-color: white;
 }
