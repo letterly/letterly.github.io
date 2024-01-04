@@ -4001,6 +4001,14 @@ otherdata = {
         script: "Cyrillic",
         capital: "⠨",
         writeHere: "Пиши овде",
+        title: "Веб-страница за Транслитерација во Брајова Азбука",
+        updates: "Ажурирања",
+        byharris: "Изработено од Harris Mowbray",
+        choose: "Одберете јазик",
+        convertascii: "Конвертирај во ASCII брајово писмо",
+        braille1: "Македонско брајово писмо",
+        braille2: "Македонско брајово интерпункција"
+
     },
     gv: {
         englishName: "Manx",
@@ -4227,4 +4235,6 @@ for(g of Object.entries(otherdata)){
     language.innerHTML += `<option value="${g[0]}" ${g[0] == "en_1" ? "selected" : ""}>${g[1].englishName}${g[1].nativeName ? (" | " + g[1].nativeName) : ""}</option>`
 }
 
-changeLang("en_1")
+
+params = new URLSearchParams(location.search).get("lang")
+changeLang(params ?? "en_1")

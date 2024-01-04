@@ -351,8 +351,18 @@ function printBraille(text){
 
 
 function changeLang(lang){
+    document.getElementById('language').value = lang
     input.dir = scriptData[otherdata[lang].script].dir
     input.placeholder = otherdata[lang].writeHere + "..."
+    title.textContent = otherdata[lang].title ?? "Braille Conversion Website"
+    harriswebsite.textContent = otherdata[lang].byharris ?? "By Harris Mowbray"
+    update.textContent = otherdata[lang].updates ?? "Updates"
+    choose.textContent = (otherdata[lang].choose ?? "Choose a Language") + ":"
+    asci.textContent = otherdata[lang].convertascii ?? "Convert to Braille ASCII"
+
+    brltype.textContent = otherdata[lang].braille1 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille")
+    thebrltype.textContent = otherdata[lang].braille2 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille Punctuation")
+
 
     for(r = 0; r < 6; r++){
         document.getElementById("t" + r).innerHTML = ""
@@ -366,7 +376,6 @@ function changeLang(lang){
     thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
 
     theletters.forEach(([k, v], i) => {
-        brltype.textContent = language.options[language.selectedIndex].text.split(" | ")[0]
         if(input.dir == "rtl"){
             document.getElementById("t" + (5 - (i % 6))).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
         }
@@ -376,7 +385,6 @@ function changeLang(lang){
     })
 
     thepunctuation.forEach(([k, v], i) => {
-        thebrltype.textContent = language.options[language.selectedIndex].text.split(" | ")[0]
         document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
     })
 

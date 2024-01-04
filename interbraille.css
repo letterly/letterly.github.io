@@ -7,7 +7,7 @@ textarea{
     font-size: 38px;
     border-radius: 10px;
 }
-#selectblock{
+.selectblock{
     margin-left: calc((100% - 650px) / 2);
     margin-right: calc((100% - 650px) / 2);
     outline: none;

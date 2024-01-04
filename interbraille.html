@@ -6,18 +6,18 @@
         <title>Braille</title>
     </head>
     <body>
-        <h1>Braille Conversion Website</h1>
-        <p id="link">By <a href="https://harrismowbray.com">Harris Mowbray</a></p>
-        <p id="changelog"><a href="interbraille.txt">Updated [13 December 2023]</a></p>
-        <h3>Choose a Language:</h3>
-        <div id="selectblock">
+        <h1 id="title">Braille Conversion Website</h1>
+        <p id="link"><a id="harriswebsite" href="https://harrismowbray.com">By Harris Mowbray</a></p>
+        <p id="changelog"><a href="interbraille.txt" id="update">Updates</a></p>
+        <h3 id="choose">Choose a Language:</h3>
+        <div class="selectblock">
             <select id="language" onchange="changeLang(this.value)"></select>
         </div>
         <br>
         <textarea id="input" spellcheck="false" onkeyup="printBraille(this.value)"></textarea>
         <textarea id="output" contenteditable="false"></textarea>
-        <button onclick="asciize()">Convert to ASCII Braille</button>
-            <h1><span id="brltype"></span> Braille</h1>
+        <button id="asci" onclick="asciize()">Convert to ASCII Braille</button>
+            <h1 id="brltype"></h1>
             <div class="tables">
                 <table id="t0">
                 </table>
@@ -32,7 +32,7 @@
                 <table id="t5">
                 </table>
             </div>
-            <h1><span id="thebrltype"></span> Braille Punctuation</h1>
+            <h1 id="thebrltype"></h1>
             <div class="tables">
                 <table id="y0">
                 </table>

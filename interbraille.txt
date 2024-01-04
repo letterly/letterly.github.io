@@ -1,5 +1,9 @@
 InterBraille Changelog
 
+4 Jan 2023
+-With my friend Kristijan's help, the website is now fully operational in Macedonian
+-The website no longer displays the last day it was updated
+
 28 Dec 2023
 -Added the option to convert to Braille ASCII
 
