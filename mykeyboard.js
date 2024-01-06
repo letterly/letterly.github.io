@@ -221,7 +221,7 @@ keyboards = {
         KeyP: "p",
         BracketLeft: "(",
         BracketRight: ")",
-        Backslash: "\\",
+        Backslash: "ç",
         //
         KeyA: "a",
         KeyS: "s",
