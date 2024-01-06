@@ -53,7 +53,16 @@ function religionize(cl, att){
         "Fasli (Zoroastrian)": {
             name: "Zoroastrianism",
             link: "https://en.wikipedia.org/wiki/Zoroastrianism",
-        }
+        },
+        "Armenian Christianity": {
+            link: "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church",
+        },
+        "Shia Islam": {
+            link: "https://en.wikipedia.org/wiki/Shia_Islam",
+        },
+        "Global": {
+            link: "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -282,6 +291,7 @@ function suntimes(lat, lng, tz, angl) {
   }
 
 function locationChange(){
+    city = loc.options[loc.selectedIndex].text
     locinfo = loc.value.split(";")
     sunrisesunset.innerHTML = ""
     sunrisesunset.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
@@ -297,7 +307,8 @@ function locationChange(){
     qiblih = Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
 
     angles.innerHTML = ""
-    angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
+    if(city != "Mecca") angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
+    else angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla:</a> Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
     angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Qiblih</a> Angle: " + Math.round(qiblih * 10) / 10 + "°"
 }
 
@@ -636,10 +647,18 @@ function holidaycheck(thatday){
 
     normalholidays = [
         {
+            sect: "Global",
             cal: "Gregorian",
             day: ["31 December"],
             link: "https://en.wikipedia.org/wiki/New_Year%27s_Eve",
             name: "New Year's Eve",
+        },
+        {
+            sect: "Global",
+            cal: "Gregorian",
+            day: ["1 January"],
+            link: "https://en.wikipedia.org/wiki/New_Year%27s_Day",
+            name: "New Year's Day",
         },
         {
             cal: "Gregorian",
@@ -648,6 +667,7 @@ function holidaycheck(thatday){
             name: "Epiphany",
         },
         {
+            sect: "Armenian Christianity",
             name: "Christmas:Armenian",
             cal: "Gregorian",
             day: ["6 January"],
@@ -1002,8 +1022,9 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
         },
         {
+            sect: "Shia Islam",
             cal: "Islamic Tabular",
-            name: "Eid al-Ghadir:Shia",
+            name: "Eid al-Ghadir",
             day: ["18 Dhu al-Hijjah"],
             link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
         },
@@ -1014,8 +1035,9 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Mawlid",
         },
         {
+            sect: "Shia Islam",
             cal: "Islamic Tabular",
-            name: "Mawlid:Shia",
+            name: "Mawlid",
             day: ["17 Rabiʽ al-Awwal"],
             link: "https://en.wikipedia.org/wiki/Mawlid",
         },
@@ -1056,6 +1078,7 @@ function holidaycheck(thatday){
             day: ["1 January"]
         },
         {
+            sect: "Armenian Christianity",
             cal: "Julian",
             name: "Christmas:Armenian Patriarchate of Jerusalem",
             link: "https://en.wikipedia.org/wiki/Christmas",
