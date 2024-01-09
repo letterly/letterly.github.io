@@ -60,6 +60,9 @@ function religionize(cl, att){
         "Shia Islam": {
             link: "https://en.wikipedia.org/wiki/Shia_Islam",
         },
+        "Sunni Islam": {
+            link: "https://en.wikipedia.org/wiki/Shia_Islam",
+        },
         "Global": {
             link: "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar",
         },
@@ -305,11 +308,15 @@ function locationChange(){
     
     qibla = Math.atan(Math.sin((39.75 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(21.45  * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((39.75 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
     qiblih = Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
+    mizrah = Math.atan(Math.sin((35.235833 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(31.778056 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.235833 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
 
     angles.innerHTML = ""
-    if(city != "Mecca") angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
-    else angles.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla:</a> Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Qiblih</a> Angle: " + Math.round(qiblih * 10) / 10 + "°"
+    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Mizrah</a> Angle: " + Math.round(mizrah * 10) / 10 + "°"
+    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Mizrah</a>: Face the <a href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
+    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
+    else angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
+    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Qiblih</a> Angle: " + Math.round(qiblih * 10) / 10 + "°"
+    else angles.innerHTML += ` | <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Qiblih</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
 }
 
 
@@ -585,7 +592,7 @@ function convert(){
     🟨 (Monday) ⬜ (Not applicable)
     </div>
     </div>`
-    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Changelog</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Updates</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
     holidaycheck(thatspecificday)
     locationChange()
 }
@@ -668,7 +675,7 @@ function holidaycheck(thatday){
         },
         {
             sect: "Armenian Christianity",
-            name: "Christmas:Armenian",
+            name: "Christmas",
             cal: "Gregorian",
             day: ["6 January"],
             link: "https://en.wikipedia.org/wiki/Observance_of_Christmas_by_country#Armenia",
@@ -1029,8 +1036,9 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
         },
         {
+            sect: "Sunni Islam",
             cal: "Islamic Tabular",
-            name: "Mawlid:Sunni",
+            name: "Mawlid",
             day: ["12 Rabiʽ al-Awwal"],
             link: "https://en.wikipedia.org/wiki/Mawlid",
         },
@@ -1080,7 +1088,7 @@ function holidaycheck(thatday){
         {
             sect: "Armenian Christianity",
             cal: "Julian",
-            name: "Christmas:Armenian Patriarchate of Jerusalem",
+            name: "Christmas:in Israel and Jordan",
             link: "https://en.wikipedia.org/wiki/Christmas",
             day: ["6 January"],
         },
@@ -1326,7 +1334,7 @@ function holidaycheck(thatday){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
             if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
@@ -1374,7 +1382,7 @@ function holidaycheck(thatday){
         weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Shabbat">Shabbat</a></h2>`
     }
     else if(thatday.Day == "Sunday"){
-        weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Christianity" target="_blank">Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sabbath_in_Christianity">Sabbath</a></h2>`
+        weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Christianity" target="_blank">Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Lord%27s_Day">Lord's Day</a></h2>`
     }
     if(weekly.innerHTML != "") weekly.innerHTML = "<h3>Holy day of week</h3>" + weekly.innerHTML
 

@@ -64,7 +64,7 @@ function daysInYear(calArray){
     return calArray.map(x => x.split(":")[1]).reduce((a, b) => +a + +b, 0)
 }
 
-console.log(toHarrisDate("1 Nawasard 1350", "Armenian"))
+//console.log(toHarrisDate("1 Nawasard 1350", "Armenian"))
 
 function getYear(year, cal){
     calendar = {
@@ -149,7 +149,7 @@ function getYear(year, cal){
             "ʻAláʼ:19",
         ],
     }
-    console.log(cal)
+    //console.log(cal)
     return calendar[cal].filter(x => x)
 }
 
