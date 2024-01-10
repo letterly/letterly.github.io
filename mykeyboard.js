@@ -207,7 +207,7 @@ keyboards = {
         Digit9: "ṵ",
         Digit0: "!",
         Minus: "-",
-        Equal: "͑",
+        Equal: "",
         //
         KeyQ: "q",
         KeyW: "w",
