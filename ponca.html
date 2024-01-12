@@ -61,8 +61,8 @@
                 margin: 2px;
             }
             #buttonarray{
-                margin-left: calc((100% - 31vw) / 2);
-                margin-right: calc((100% - 31vw) / 2);
+                margin-left: calc((100% -31vw) / 2);
+                margin-right: calc((100% -31vw) / 2);
             }
             #options{
                 text-align: center;
@@ -94,7 +94,7 @@
             <button id="Omaha" onclick="altScript(this.textContent)">Omaha</button>
             <button id="Osage" onclick="altScript(this.textContent)">Osage</button>
         </div>
-        <input id='input' onkeyup="openDictionary()" placeholder="Search a word in Ponca or English..." />
+        <input id='input' onkeyup="openDictionary()" placeholder="Search any word in Ponca!" />
         <div id="buttonarray">
             <button onclick="addText(this.textContent)">č</button>
             <button onclick="addText(this.textContent)">ꟈ</button>
@@ -106,6 +106,7 @@
             <button onclick="addText(this.textContent)">̀</button>
             <button onclick="addText(this.textContent)">̨</button>
         </div>
+        <input id='input' onkeyup="openDictionary()" placeholder="Or search an English word" />
         <div id="field"></div>
     </body>
     <script>
@@ -123,13 +124,13 @@
     }
 
 newdictionary = 
-`Ábagè /ä’- bthä- gā’/ v., sheltered, usu. on the
+`Ábagè /ä’-bthä-gā’/ v., sheltered, usu. on the
 side sheltered from the wind
-Ábagè /ä’- bthä- gā’/ n., calm, on the sheltered side of a windbreak, usu. refers to a
+Ábagè /ä’-bthä-gā’/ n., calm, on the sheltered side of a windbreak, usu. refers to a
 place where people are standing or sitting
 at an outdoor event or activity
-Ábe /ä’- bā/ n., leaf or leaves
-Ábixą̀  /ä’- bē- xoⁿ’/ v., boil, simmer, bubble,
+Ábe /ä’-bā/ n., leaf or leaves
+Ábixą̀  /ä’-bē-xoⁿ’/ v., boil, simmer, bubble,
 e.g., water changing from a liquid to a vapor
 with the addition of heat`
 
@@ -178,6 +179,9 @@ function openDictionary(){
 
 function verbify(v){
     g = {
+        "n.": "noun",
+        "v.t. past t.": "verb tense past tense",
+        "v.t.": "verb tense",
         "n./v.": "noun/verb",
         "adj/adv.": "adjective/adverb",
         "adv.": "adverb",
