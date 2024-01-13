@@ -66,6 +66,12 @@ function religionize(cl, att){
         "Global": {
             link: "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar",
         },
+        "Berber": {
+            link: "https://en.wikipedia.org/wiki/Berbers",
+        },
+        "Bengali": {
+            link: "https://en.wikipedia.org/wiki/Bengalis",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -1069,12 +1075,6 @@ function holidaycheck(thatday){
         },
         {
             cal: "Islamic Tabular",
-            name: "Islamic New Year",
-            link: "https://en.wikipedia.org/wiki/Islamic_New_Year",
-            day: ["1 Muharram"],
-        },
-        {
-            cal: "Islamic Tabular",
             name: "Shab-e-Barat",
             link: "https://en.wikipedia.org/wiki/Shab-e-Barat",
             day: ["15 Sha'ban"],
@@ -1346,6 +1346,7 @@ function holidaycheck(thatday){
     for(n of normalobservances){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ")
+            console.log(tt)
             myday = tt[0]
             mymonth = tt.slice(1, -1).join("")
             myyear = tt.slice(-1)[0]

@@ -410,11 +410,11 @@ calendars = {
             }
         },
         startDay: {
-            dayinmonth: 19,
+            dayinmonth: 20,
             monthcount: 11,
-            year: 2850,
+            year: 2849,
         },
-        bounds: [2851, 2851+T],
+        bounds: [2850, 2849+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
     },
