@@ -1,8 +1,13 @@
 InterBraille Changelog
 
+23 Jan 2023
+-Added Svan and Laz Braille
+-Altered Macedonian translation
+
 4 Jan 2023
 -With my friend Kristijan's help, the website is now fully operational in Macedonian
 -The website no longer displays the last day it was updated
+-Added Mingrelian (experimental)
 
 28 Dec 2023
 -Added the option to convert to Braille ASCII
