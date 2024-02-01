@@ -1243,6 +1243,24 @@ function holidaycheck(thatday){
         },
         {
             cal: "Mandaean",
+            name: "Ead Fel",
+            day: ["1 Taura"],
+            link: "https://en.wikipedia.org/wiki/Mandaean_calendar#Festivals",
+        },
+        {
+            cal: "Mandaean",
+            name: "Dehwa Daimana",
+            day: ["1 Taura"],
+            link: "https://en.wikipedia.org/wiki/Dehwa_Daimana"
+        },
+        {
+            cal: "Mandaean",
+            name: "Abu al-Haris",
+            day: ["1 Sarṭana"],
+            link: "https://en.wikipedia.org/wiki/Abu_al-Haris",
+        },
+        {
+            cal: "Mandaean",
             name: "Kanshiy u-Zahly",
             day: ["30 Gadia"],
             link: "https://en.wikipedia.org/wiki/Dehwa_Rabba#Kanshiy_u-Zahly",
@@ -1256,7 +1274,7 @@ function holidaycheck(thatday){
         {
             cal: "Mandaean",
             name: "Feast of the Great Shishlam",
-            day: ["6 Daula"],
+            day: ["6 Daula", "7 Daula"],
             link: "https://en.wikipedia.org/wiki/Feast_of_the_Great_Shishlam",
         },
         {
