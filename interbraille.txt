@@ -1,10 +1,13 @@
 InterBraille Changelog
 
-23 Jan 2023
+1 Feb 2024
+-Added the Ho Language
+
+23 Jan 2024
 -Added Svan and Laz Braille
 -Altered Macedonian translation
 
-4 Jan 2023
+4 Jan 2024
 -With my friend Kristijan's help, the website is now fully operational in Macedonian
 -The website no longer displays the last day it was updated
 -Added Mingrelian (experimental)
