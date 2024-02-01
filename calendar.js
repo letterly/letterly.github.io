@@ -319,6 +319,7 @@ function locationChange(){
     //
     zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim: </a>"
     zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
+    zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Misheyakir target="_blank">Misheyakir</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -10.2)[0]} | `
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Kriyat_Shema" class="hebrew" target="_blank">Sof Zman Kriyat Shema</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 3)[0]} | `
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Tefilah" class="hebrew" target="_blank">Sof Zman Tefilah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 4)[0]} | `
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Mincha_Gedolah" class="hebrew" target="_blank">Mincha Gedolah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 6.5)[0]} | `
