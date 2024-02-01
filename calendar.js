@@ -50,6 +50,10 @@ function religionize(cl, att){
             name: "Bahá'í Faith",
             link: "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith",
         },
+        "Solar Hijri": {
+            name: "Iranian",
+            link: "https://en.wikipedia.org/wiki/Persians",
+        },
         "Fasli (Zoroastrian)": {
             name: "Zoroastrianism",
             link: "https://en.wikipedia.org/wiki/Zoroastrianism",
@@ -80,6 +84,9 @@ function religionize(cl, att){
         },
         "Ethiopian Jews": {
             link: "https://en.wikipedia.org/wiki/Beta_Israel",
+        },
+        "Indian Sufism": {
+            link: "https://en.wikipedia.org/wiki/Sufism_in_India",
         },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
@@ -1060,6 +1067,48 @@ function holidaycheck(thatday){
             day: "10 Tevet",
         },
         {
+            cal: "Solar Hijri",
+            name: "Tirgan",
+            day: ["13 Tir"],
+            link: "https://en.wikipedia.org/wiki/Tirgan",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Yaldā Night",
+            day: ["30 Azar"],
+            link: "https://en.wikipedia.org/wiki/Yald%C4%81_Night",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Nowruz",
+            day: ["1 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Nowruz",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Sizdah Be-dar",
+            day: ["13 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Sizdah_Be-dar",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Khorram Rooz",
+            day: ["1 Dey"],
+            link: "https://en.wikipedia.org/wiki/Khorram_rooz",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Amordadegan",
+            day: ["7 Mordad"],
+            link: "https://en.wikipedia.org/wiki/Amordadegan_festival",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Cyrus the Great Day",
+            day: ["7 Aban"],
+            link: "https://en.wikipedia.org/wiki/Cyrus_the_Great_Day",
+        },
+        {
             cal: "Islamic Tabular",
             name: "Day of Arafah",
             day: ["9 Dhu al-Hijjah"],
@@ -1084,6 +1133,20 @@ function holidaycheck(thatday){
             name: "Mawlid",
             day: ["12 Rabiʽ al-Awwal"],
             link: "https://en.wikipedia.org/wiki/Mawlid",
+        },
+        {
+            sect: "Indian Sufism",
+            cal: "Islamic Tabular",
+            name: "Juloos-e-Ghausiya",
+            day: ["11 Rabiʽ al-Thani"],
+            link: "https://en.wikipedia.org/wiki/Juloos-e-Ghausiya",
+        },
+        {
+            sect: "Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Tasu'a",
+            day: ["9 Muharram"],
+            link: "https://en.wikipedia.org/wiki/Tasu%27a",
         },
         {
             sect: "Shia Islam",
