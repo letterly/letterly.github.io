@@ -72,6 +72,15 @@ function religionize(cl, att){
         "Bengali": {
             link: "https://en.wikipedia.org/wiki/Bengalis",
         },
+        "Egyptian Jews": {
+            link: "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Egypt",
+        },
+        "Kurdistani Jews": {
+            link: "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Kurdistan",
+        },
+        "Ethiopian Jews": {
+            link: "https://en.wikipedia.org/wiki/Beta_Israel",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -253,7 +262,8 @@ function japanDay(){
 }
 
 
-function suntimes(lat, lng, tz, angl) {
+function suntimes(lat, lng, tz, angl, relativehours) {
+    if(relativehours == undefined) relativehours = 0
     dd = new Date(thatspecificday.Gregorian);
     radians = Math.PI / 180;
     degrees = 180 / Math.PI;
@@ -289,7 +299,7 @@ function suntimes(lat, lng, tz, angl) {
       var local_rise = (utc_time_rise + +tz_offset) % 24;
       var local_set = (utc_time_set + +tz_offset) % 24;
       relativehour = (local_set - local_rise) / 12
-      return [julianhourize(local_rise), julianhourize(local_set), julianhourize((local_rise + local_set) / 2), julianhourize(local_rise + 3 * relativehour)];
+      return [julianhourize(local_rise + relativehours * relativehour), julianhourize(local_set), julianhourize((local_rise + local_set) / 2)];
   }
   
   function julianhourize(juliandecimal){ //REWRITE
@@ -302,26 +312,44 @@ function suntimes(lat, lng, tz, angl) {
 function locationChange(){
     city = loc.options[loc.selectedIndex].text
     locinfo = loc.value.split(";")
-    sunrisesunset.innerHTML = ""
-    sunrisesunset.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
-    sunrisesunset.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Fajr" target="_blank">Fajr</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
+    sunrisesunset.innerHTML = "<span style='font-weight:700;color:black'>Sunrise/Sunset: </span>"
     sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunrise" target="_blank">Sunrise</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Kriyat_Shema" class="hebrew" target="_blank">Sof Zman Kriyat Shema</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[3]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar noon</a> [<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Dhuhr" target="_blank">Dhuhr</a>]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a> [<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Maghrib" target="_blank">Maghrib</a>]: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
-    if(thatspecificday.Day == "Saturday") sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Nightfall" class="hebrew" target="_blank">Shabbat end</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]} | `
-    sunrisesunset.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Isha" target="_blank">Isha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
-    
-    qibla = Math.atan(Math.sin((39.75 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(21.45  * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((39.75 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
-    qiblih = Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
-    mizrah = Math.atan(Math.sin((35.235833 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(31.778056 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.235833 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar noon</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]}`
+    //
+    zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim: </a>"
+    zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
+    zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Kriyat_Shema" class="hebrew" target="_blank">Sof Zman Kriyat Shema</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 3)[0]} | `
+    zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Tefilah" class="hebrew" target="_blank">Sof Zman Tefilah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 4)[0]} | `
+    zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Mincha_Gedolah" class="hebrew" target="_blank">Mincha Gedolah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 6.5)[0]} | `
+    zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Mincha_Ketanah" class="hebrew" target="_blank">Mincha Ketanah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 9.5)[0]} | `
+    zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Plag_Hamincha" class="hebrew" target="_blank">Plag Hamincha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 10.75)[0]}`
+    if(thatspecificday.Day == "Saturday") zmanim.innerHTML += ` | <a href="https://en.wikipedia.org/wiki/Zmanim#Nightfall" class="hebrew" target="_blank">Shabbat end</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]}`
+    //
+    prayertimes.innerHTML = "<a style='font-weight:700;color:black' target='_blank' href='https://en.wikipedia.org/wiki/Salah_times'>Salah Times</a>: "
+    prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Fajr" target="_blank">Fajr</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
+    prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Dhuhr" target="_blank">Dhuhr</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
+    prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Maghrib" target="_blank">Maghrib</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
+    prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Isha" target="_blank">Isha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
 
-    angles.innerHTML = ""
-    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Mizrah</a> Angle: " + Math.round(mizrah * 10) / 10 + "°"
+    //
+    directions = []
+    directions.push(Math.atan(Math.sin((35.235833 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(31.778056 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.235833 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //temple mount
+    directions.push(Math.atan(Math.sin((35.273258 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.200861 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.273258 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //mt gerizim
+    directions.push(Math.atan(Math.sin((39.8173 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(21.4241  * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((39.8173 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //mecca
+    directions.push(Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //qiblih
+
+
+
+    directions = directions.map(ee => Math.round(ee * 10) / 10 + "°" /*+ "(" + ['N ↑', 'NE ↗', 'E →', 'SE ↘', 'S ↓', 'SW ↙', 'W ←', 'NW ↖'][Math.round(ee / 45) % 8] + ")" */)
+
+    angles.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>: "
+    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + directions[0]
     else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Mizrah</a>: Face the <a href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a> Angle: ` + Math.round(qibla * 10) / 10 + "°"
+    angles.innerHTML += " | <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + directions[1]
+    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + directions[2]
     else angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Qiblih</a> Angle: " + Math.round(qiblih * 10) / 10 + "°"
+    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + directions[3]
     else angles.innerHTML += ` | <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Qiblih</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
 }
 
@@ -891,6 +919,13 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Sukkot",
         },
         {
+            name: "Seharane",
+            cal: "Hebrew",
+            day: ["19 Tishrei", "20 Tishrei"],
+            link: "https://archive.jewishagency.org/holidays-and-memorial-days/content/23863/",
+            sect: "Kurdistani Jews",
+        },
+        {
             name: "Sukkot:outside Israel",
             cal: "Hebrew",
             day: ["22 Tishrei"],
@@ -967,6 +1002,7 @@ function holidaycheck(thatday){
             name: "Sigd",
             day: ["29 Cheshvan"],
             link: "https://en.wikipedia.org/wiki/Sigd",
+            sect: "Ethiopian Jews",
         },
         {
             cal: "Hebrew",
@@ -1084,6 +1120,13 @@ function holidaycheck(thatday){
             name: "Old New Year",
             link: "https://en.wikipedia.org/wiki/Old_New_Year",
             day: ["1 January"]
+        },
+        {
+            cal: "Hebrew",
+            name: "Seder El-Tawhid",
+            link: "https://www.hsje.org/library/Seder-ElTawhid.html",
+            day: ["1 Nisan"],
+            sect: "Egyptian Jews",
         },
         {
             sect: "Armenian Christianity",
@@ -1334,7 +1377,7 @@ function holidaycheck(thatday){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
             if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem","Egyptian Jews": "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Egypt"}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
@@ -1346,7 +1389,6 @@ function holidaycheck(thatday){
     for(n of normalobservances){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ")
-            console.log(tt)
             myday = tt[0]
             mymonth = tt.slice(1, -1).join("")
             myyear = tt.slice(-1)[0]
