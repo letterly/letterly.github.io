@@ -1,7 +1,10 @@
 InterBraille Changelog
 
+2 Feb 2024
+-Added the Osage and Ponca languages
+
 1 Feb 2024
--Added the Ho Language
+-Added the Ho and Yiddish languages
 
 23 Jan 2024
 -Added Svan and Laz Braille
