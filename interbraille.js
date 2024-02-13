@@ -355,7 +355,7 @@ function printBraille(text){
 
 
 function changeLang(lang){
-    document.getElementById('language').value = lang
+    document.getElementById("language").value = lang
     input.dir = scriptData[otherdata[lang].script].dir
     input.placeholder = otherdata[lang].writeHere + "..."
     title.textContent = otherdata[lang].title ?? "Braille Conversion Website"

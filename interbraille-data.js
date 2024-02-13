@@ -4177,7 +4177,7 @@ otherdata = {
     },
     br: {
         englishName: "Breton",
-        nativeName: "Brezhoneg [draft]",
+        nativeName: "Brezhoneg",
         script: "Latin",
         capital: "⠨",
         writeHere: "Skrivit amañ",
@@ -4438,7 +4438,7 @@ otherdata = {
         writeHere: "Skriv her", 
     },
     osa: {
-        englishName: "Osage [draft]",
+        englishName: "Osage",
         nativeName: "𐓏𐒰𐓓𐒰𐓓𐒷",
         capital: "⠠",
         script: "Osage",
@@ -4466,7 +4466,7 @@ otherdata = {
         writeHere: "Napisz tutaj",
     },
     oma_ponca: {
-        englishName: "Ponca [draft]",
+        englishName: "Ponca",
         nativeName: "P'ą́'k'a",
         script: "Latin",
         capital: "⠠",
