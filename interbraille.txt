@@ -1,5 +1,8 @@
 InterBraille Changelog
 
+18 Feb 2024
+-Added a draft proposal for Belarusian Latin Braille
+
 2 Feb 2024
 -Added the Osage and Ponca languages
 
