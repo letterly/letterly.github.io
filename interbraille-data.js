@@ -4226,7 +4226,7 @@ otherdata = {
         nativeName: "Biełaruskaja",
         script: "Latin",
         capital: "⠨",
-        writeHere: "Pišyćе tut",
+        writeHere: "Pišyciе tut",
     },
     bs: {
         englishName: "Bosnian",
