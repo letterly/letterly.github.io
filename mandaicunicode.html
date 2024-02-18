@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>Mandaic Unicode</title>
+        <style>
+            body{
+                background-color: lightblue;
+            }
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+                border-radius: 4px;
+                background-color: lightblue;
+                border: 5px solid black;
+                outline: none;
+            }
+            textarea::placeholder{
+                color: black;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+            p{
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+            #section div{
+                float: left;
+                border: 1px solid black;
+                border-radius: 2px;
+                margin: 3px;
+                padding: 3px;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mandaic Unicode Font Converter</h1>
+        <p>This website converts old non-Unicode Mandaic text to Unicode standards in order to aid the digitization of the Mandaic language. Note: This also reverses text direction</p>
+        <textarea id="cyrillic" placeholder="Insert your non-Unicode Mandaic text here :)" spellcheck="false"></textarea>
+        <textarea dir="rtl" id="latin" spellcheck="false" contenteditable="false"></textarea>
+    </body>
+    <script>
+        var typingTimer
+        var doneTypingInterval = 1000
+        var $cyrillic = document.getElementById("cyrillic")
+        var $latin = document.getElementById("latin")
+        $cyrillic.addEventListener('keyup', cyrillicFunction);
+
+
+        function cyrillicFunction () {
+            cyrillic = $cyrillic.value
+            //alert(cyrillic)
+            key = {
+                "": "ࡀ",
+                "\n": "ࡀ",
+                "": "ࡁ",
+                "3": "ࡂ",
+                "": "ࡃ",
+                "": "ࡄ",
+                "": "ࡅ",
+                "": "ࡆ",
+                "%": "ࡆ",
+                "": "ࡇ",//
+                "": "ࡈ",
+                "\"": "ࡉ",
+                "": "ࡊ",//
+                "": "ࡋ",//
+                "": "ࡌ",
+                "(": "ࡌ",
+                "": "ࡍ",//
+                "$": "ࡎ",
+                "": "ࡏ",
+                "": "ࡐ",//
+                "": "ࡑ",//
+                "": "ࡒ",
+                " ": "ࡓ",
+                "": "ࡔ",
+                "": "ࡕ",
+                "": "ࡕ",
+                "": "ࡖ",//
+                " ": "،",
+            }
+            $latin.value = cyrillic.split("").map(x => key[x] != undefined ? key[x] : x).reverse().join("")
+        }
+
+
+        cyrillicKey = []
+
+
+    </script>
+</html>
