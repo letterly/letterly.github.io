@@ -54,6 +54,8 @@
         $cyrillic.addEventListener('keyup', cyrillicFunction);
 
 
+        $cyrillic.addEventListener("paste", cyrillicFunction)
+
         function cyrillicFunction () {
             cyrillic = $cyrillic.value
             //alert(cyrillic)
