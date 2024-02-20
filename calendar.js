@@ -67,6 +67,9 @@ function religionize(cl, att){
         "Sunni Islam": {
             link: "https://en.wikipedia.org/wiki/Shia_Islam",
         },
+        "Twelver Shia Islam": {
+            link: "https://en.wikipedia.org/wiki/Twelver_Shi%27ism",
+        },
         "Global": {
             link: "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar",
         },
@@ -87,6 +90,15 @@ function religionize(cl, att){
         },
         "Indian Sufism": {
             link: "https://en.wikipedia.org/wiki/Sufism_in_India",
+        },
+        "Tunisian Jews": {
+            link: "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Tunisia"
+        },
+        "Ashkenazi Jews": {
+            link: "https://en.wikipedia.org/wiki/Ashkenazi_Jews",
+        },
+        "Sephardi Jews": {
+            link: "https://en.wikipedia.org/wiki/Sephardic_law_and_customs",
         },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
@@ -691,6 +703,13 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Ten_Days_of_Repentance",
             name: "Ten Days of Repentance",
         },
+        {
+            cal: "Islamic Tabular",
+            day: ["9 Rabiʽ al-Awwal", "27 Rabiʽ al-Awwal"],
+            link: "https://en.wikipedia.org/wiki/Omar_Koshan",
+            name: "Omar Koshan",
+            sect: "Twelver Shia Islam",
+        },
     ]
 
 
@@ -874,6 +893,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
+            name: "Chag HaBanot",
+            day: ["1 Tevet"],
+            link: "https://en.wikipedia.org/wiki/Girls%27_Day_(Judaism)",
+            sect: "Tunisian Jews",
+        },
+        {
+            cal: "Hebrew",
             name: "Rosh Hashanah Lemaasar Behema",
             day: ["1 Elul"],
             link: "https://en.wikipedia.org/wiki/Rosh_HaShanah_LeMaasar_Behema",
@@ -1026,6 +1052,21 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
+            name: "Leil Selichot",
+            day: ["20 Elul", "21 Elul", "22 Elul", "23 Elul", "24 Elul", "25 Elul"],
+            link: "https://en.wikipedia.org/wiki/Selichot#Selichot_of_the_High_Holidays",
+            theDay: "Saturday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Leil Selichot",
+            day: ["2 Elul"],
+            link: "https://en.wikipedia.org/wiki/Selichot#Selichot_of_the_High_Holidays",
+            sect: "Sephardi Jews",
+        },
+        {
+            cal: "Hebrew",
             name: "Hanukkah",
             day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(thatday.Hebrew.split(" ").slice(-1)[0] - 5660) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
             link: "https://en.wikipedia.org/wiki/Hanukkah",
@@ -1116,6 +1157,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Islamic Tabular",
+            name: "Jumu'atul-Wida",
+            day: ["30 Ramadan", "29 Ramadan", "28 Ramadan", "27 Ramadan", "26 Ramadan", "25 Ramadan", "24 Ramadan"],
+            link: "https://en.wikipedia.org/wiki/Jumu%27atul-Wida",
+            theDay: "Friday",
+        },
+        {
+            cal: "Islamic Tabular",
             name: "Eid al-Adha",
             day: ["10 Dhu al-Hijjah"],
             link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
@@ -1126,6 +1174,20 @@ function holidaycheck(thatday){
             name: "Eid al-Ghadir",
             day: ["18 Dhu al-Hijjah"],
             link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
+        },
+        {
+            sect: "Twelver Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Chup Tazia",
+            day: ["8 Rabiʽ al-Awwal"],
+            link: "https://en.wikipedia.org/wiki/Chup_Tazia",
+        },
+        {
+            sect: "Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Fatimiyya",
+            day: ["13 Jumada al-Awwal", "14 Jumada al-Awwal", "15 Jumada al-Awwal", "3 Jumada al-Thani", "4 Jumada al-Thani", "5 Jumada al-Thani"],
+            link: "https://en.wikipedia.org/wiki/Fatimiyya",
         },
         {
             sect: "Sunni Islam",
@@ -1458,17 +1520,19 @@ function holidaycheck(thatday){
         caal = n.sect == undefined ? n.cal : n.sect
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
-            if(tt != undefined && n.day.includes(tt)){
-                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem","Egyptian Jews": "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Egypt"}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+            if(tt != undefined && n.day.includes(tt) && (n.theDay == undefined || n.theDay == thatday.Day)){
+                holidays.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem", "Chol HaMoed in Israel": "", "Chol HaMoed": "",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
+    if(thatday.Harrisdate % 10227 == 9228) holidays.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="${religionize("hebrew", "link")}" target="_blank">${religionize("hebrew", "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Birkat_Hachama">Birkat Hachama</a>`
     if(holidays.innerHTML != "") holidays.innerHTML = "<h3>Holidays</h3>" + holidays.innerHTML
 
     //
 
     observances.innerHTML = ""
     for(n of normalobservances){
+        caal = n.sect == undefined ? n.cal : n.sect
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ")
             myday = tt[0]
@@ -1476,11 +1540,11 @@ function holidaycheck(thatday){
             myyear = tt.slice(-1)[0]
             monthlist = getYear(myyear,n.cal).map(u => u.split(":")[0])
             if(
-            (mymonth == n.day[0].split(" ")[1] && +myday >= +n.day[0].split(" ")[0] && !(mymonth == n.day[1].split(" ")[1] && +myday >= +n.day[1].split(" ")[0])) ||
-            (mymonth == n.day[1].split(" ")[1] && +myday <= +n.day[1].split(" ")[0]) ||
-            (monthlist.indexOf(mymonth) > monthlist.indexOf(n.day[0].split(" ")[1]) && monthlist.indexOf(mymonth) < monthlist.indexOf(n.day[1].split(" ")[1]))
+            (mymonth == n.day[0].split(" ").slice(1).join("") && +myday >= +n.day[0].split(" ")[0] && !(mymonth == n.day[1].split(" ").slice(1).join("") && +myday >= +n.day[1].split(" ")[0])) ||
+            (mymonth == n.day[1].split(" ").slice(1).join("") && +myday <= +n.day[1].split(" ")[0]) ||
+            (monthlist.indexOf(mymonth) > monthlist.indexOf(n.day[0].split(" ")[1]) && monthlist.indexOf(mymonth) < monthlist.indexOf(n.day[1].split(" ").slice(1).join("")))
             ){
-                observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(n.cal,"link")}" target="_blank">${religionize(n.cal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
+                observances.innerHTML += `<h2 class="${n.cal.replace(/\'/, "").replace(/ /g, "_").toLowerCase()}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal,"link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "Armenian Patriarchate of Jerusalem": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
     }
@@ -1504,10 +1568,24 @@ function holidaycheck(thatday){
         weekly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sabbath#Bah%C3%A1%CA%BC%C3%AD_Faith">Day of rest</a></h2>`
     }
     else if(thatday.Day == "Saturday"){
-        weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Shabbat">Shabbat</a></h2>`
+        specialshabbat = ""
+        thehebrewday = thatday.Hebrew.split(" ").slice(0, -1).join(" ")
+        hyear = thatday.Hebrew.split(" ").pop()
+        if(["1 Nisan", "29 Adar", "28 Adar", "27 Adar", "26 Adar", "25 Adar", "24 Adar", "29 Adar II", "28 Adar II", "27 Adar II", "26 Adar II", "25 Adar II", "24 Adar II"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_HaChodesh'>HaChodesh</a>)</small>`
+        else if(["23 Adar", "22 Adar", "21 Adar", "20 Adar", "19 Adar", "18 Adar", "17 Adar", "23 Adar II", "22 Adar II", "21 Adar II", "20 Adar II", "19 Adar II", "18 Adar II", "17 Adar II"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Parah'>Parah</a>)</small>`
+        else if(["8 Nisan", "9 Nisan", "10 Nisan", "11 Nisan", "12 Nisan", "13 Nisan", "14 Nisan"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_HaGadol'>HaGadol</a>)</small>`
+        else if(["3 Tishrei", "4 Tishrei", "5 Tishrei", "6 Tishrei", "7 Tishrei", "8 Tishrei"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shuvah_%E2%80%93_Return'>Shuva</a>)</small>`
+        else if(["4 Av", "5 Av", "6 Av", "7 Av", "8 Av", "9 Av"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Chazon_–_of_Vision'>Chazon</a>)</small>`
+        else if(["11 Av", "12 Av", "13 Av", "14 Av", "15 Av", "16 Av"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank'  style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Nachamu'>Nachamu</a>)</small>`
+        else if(["1 Adar", "1 Adar II", "30 Adar I", "29 Adar I", "28 Adar I", "27 Adar I", "26 Adar I", "25 Adar I", "30 Shvat", "29 Shvat", "28 Shvat", "27 Shvat", "26 Shvat", "25 Shvat"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shekalim_–_of_Shekels'>Shekalim</a>)</small>`
+        else if(["8 Adar", "8 Adar II", "9 Adar", "9 Adar II", "10 Adar", "10 Adar II", "11 Adar", "11 Adar II", "12 Adar", "12 Adar II", "13 Adar", "13 Adar II"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Zachor_–_of_Remembrance'>Zachor</a>)</small>`
+        else if(hebrewCons.charAt([hyear - 5660]) == "d" && ["17 Shvat", "11 Shvat", "12 Shvat", "13 Shvat", "14 Shvat", "15 Shvat", "16 Shvat"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shirah_%E2%80%93_Song'>Shirah</a>)</small>`
+        else if("rc".includes(hebrewCons.charAt([hyear - 5660])) && ["10 Shvat", "11 Shvat", "12 Shvat", "13 Shvat", "14 Shvat", "15 Shvat", "16 Shvat"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shirah_%E2%80%93_Song'>Shirah</a>)</small>`
+        weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Shabbat">Shabbat</a>${specialshabbat}</h2>`
     }
     else if(thatday.Day == "Sunday"){
         weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Christianity" target="_blank">Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Lord%27s_Day">Lord's Day</a></h2>`
+        weekly.innerHTML += `<h2 class="mandaean"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Mandaeism" target="_blank">Mandaeanism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sunday#Sunday_in_Mandaeism">Habshaba</a></h2>`
     }
     if(weekly.innerHTML != "") weekly.innerHTML = "<h3>Holy day of week</h3>" + weekly.innerHTML
 
@@ -1924,7 +2002,7 @@ function generateYear(y, n){
         //
     }*/
 
-    
+
 
     // thai code section
     if(n == "Thai Solar"){
