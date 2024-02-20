@@ -1,4 +1,8 @@
-InterBraille Changelog
+InterBraille Updates
+
+20 Feb 2024
+-Added an accent mark for Mingrelian
+-Changed title of InterBraille Changelog to InterBraille Updates
 
 18 Feb 2024
 -Added a draft proposal for Belarusian Latin Braille
