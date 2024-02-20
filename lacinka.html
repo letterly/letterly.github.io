@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <title>Łacinka Text Converter</title>
+        <style>
+            body{
+                background-color: lightblue;
+            }
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+                border-radius: 4px;
+                background-color: lightblue;
+                border: 5px solid black;
+                outline: none;
+            }
+            textarea::placeholder{
+                color: black;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+            p{
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+            #section div{
+                float: left;
+                border: 1px solid black;
+                border-radius: 2px;
+                margin: 3px;
+                padding: 3px;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Belarusian => Łacinka</h1>
+        <p>The goal of this website is to allow users to convert Belarusian text from the Cyrillic alphabet to the Latin alphabet (Łacinka).</p>
+        <textarea id="cyrillic" placeholder="Write something in Belarusian (Cyrillic)" spellcheck="false"></textarea>
+        <textarea id="latin" placeholder="Łacinka output" contenteditable="false"></textarea>
+        <h1>Conversion Chart</h1>
+        <div id="section">
+            <div>a / а</div>
+            <div>b / б</div>
+            <div>c / ц</div>
+            <div>ch / х</div>
+            <div>ć / ць</div>
+            <div>č / ч</div>
+            <div>d / д</div>
+            <div>e / э</div>
+            <div>f / ф</div>
+            <div>g / ґ</div>
+            <div>h / г</div>
+            <div>i / и</div>
+            <div>j / й</div>
+            <div>ja / я</div>
+            <div>je / е</div>
+            <div>jo / ё</div>
+            <div>ju / ю</div>
+            <div>k / к</div>
+            <div>l / ль</div>
+            <div>ł / л</div>
+            <div>m / м</div>
+            <div>n / н</div>
+            <div>ń / нь</div>
+            <div>o / о</div>
+            <div>p / п</div>
+            <div>r / р</div>
+            <div>s / с</div>
+            <div>ś / сь</div>
+            <div>š / ш</div>
+            <div>t / т</div>
+            <div>u / у</div>
+            <div>ŭ / ў</div>
+            <div>v / в</div>
+            <div>y / ы</div>
+            <div>z / з</div>
+            <div>ź / зь</div>
+            <div>ž / ж</div>
+        </div>
+    </body>
+    <script>
+        var typingTimer
+        var doneTypingInterval = 1000
+        var $cyrillic = document.getElementById("cyrillic")
+        var $latin = document.getElementById("latin")
+        $cyrillic.addEventListener('keyup', cyrillicFunction);
+        $cyrillic.addEventListener('paste', cyrillicFunction);
+
+        function cyrillicFunction () {
+            cyrillic = $cyrillic.value
+            for(e of cyrillicKey) cyrillic = cyrillic.replace(new RegExp(e[0], 'g'), e[1])
+            $latin.value = cyrillic
+        }
+
+            cyrillicKey = [
+                ["Ле", "Le"],
+                ["Лё", "Lo"],
+                ["Лю", "Lu"],
+                ["Ля", "La"],
+                ["лле", "lle"],
+                ["ллё", "llo"],
+                ["ллю", "llu"],
+                ["лля", "lla"],
+                ["ле", "le"],
+                ["лё", "lo"],
+                ["лю", "lu"],
+                ["ля", "la"],
+                ["нне", "ńnie"],
+                ["ннё", "ńnio"],
+                ["нню", "ńniu"],
+                ["ння", "ńnia"],
+
+            //
+                ["ая", "aja"],
+                ["ію", "iju"],
+                ["аю", "aju"],
+                ["ую", "uju"],
+                [" ю", " ju"],
+                [" я", " ja"],
+                [" ё", " jo"],
+                [" е", " je"],
+        
+                ["А", "A"],
+                ["а", "a"],
+                ["Б", "B"],
+                ["б", "b"],
+                ["В", "V"], 
+                ["в", "v"], 
+                ["Г", "G"],
+                ["г", "g"],
+                ["Ґ", "G"],
+                ["ґ", "g"],
+                ["Д", "D"],
+                ["д", "d"],
+                ["Е", "Je"],
+                ["е", "ie"],
+                ["Ё", "Jo"],
+                ["ё", "io"],
+                ["Ж", "Ž"],
+                ["ж", "ž"],
+                ["Зь", "Ź"],
+                ["зь", "ź"],
+                ["З", "Z"],
+                ["з", "z"],
+                ["І", "I"],
+                ["i", "i"],
+                ["Й", "J"],
+                ["й", "j"],
+                ["К", "K"],
+                ["к", "k"],
+                ["Ль", "L"],
+                ["ль", "l"],
+                ["Л", "Ł"],
+                ["л", "ł"],
+                ["М", "M"],
+                ["м", "m"],
+                ["Нь", "Ń"],
+                ["нь", "ń"],
+                ["Н", "N"],
+                ["н", "n"],
+                ["О", "O"],
+                ["о", "o"],
+                ["П", "P"],
+                ["п", "p"],
+                ["Р", "R"],
+                ["р", "r"],
+                ["Сь", "Ś"],
+                ["сь", "š"],
+                ["С", "S"],
+                ["с", "s"],
+                ["Т", "T"], 
+                ["т", "t"], 
+                ["У", "U"],
+                ["у", "u"],
+                ["Ў", "Ŭ"],
+                ["ў", "ŭ"],
+                ["Ф", "F"],
+                ["ф", "f"],
+                ["Х", "Ch"],
+                ["х", "ch"],
+                ["Ць", "Ć"],
+                ["ць", "ć"],
+                ["Ц", "C"],
+                ["ц", "c"],
+                ["Ч", "Č"],
+                ["ч", "č"],
+                ["Ш", "Š"],
+                ["ш", "š"],
+                ["Ы", "Y"],
+                ["ы", "y"],
+                ["Э", "Je"],
+                ["э", "e"],
+                ["Я", "Ja"],
+                ["я", "ia"],
+                ["Ю", "Iu"],
+                ["ю", "iu"],
+            ]
+
+
+        console.log(cyrillicKey)
+
+        const reverse = object => JSON.parse(`[${object.map(x => `["${x[1]}", "${x[0]}"]`).join(",")}]`);
+        latinKey = reverse(cyrillicKey)
+
+    </script>
+</html>
