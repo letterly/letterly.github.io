@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Łacinka Text Converter</title>
+        <title>Łatynka Text Converter</title>
         <style>
             body{
                 background-color: lightblue;
@@ -41,10 +41,10 @@
         </style>
     </head>
     <body>
-        <h1>Belarusian => Łacinka</h1>
-        <p>The goal of this website is to allow users to convert Belarusian text from the Cyrillic alphabet to the Latin alphabet (Łacinka).</p>
-        <textarea id="cyrillic" placeholder="Write something in Belarusian (Cyrillic)" spellcheck="false"></textarea>
-        <textarea id="latin" placeholder="Łacinka output" contenteditable="false" spellcheck="false"></textarea>
+        <h1>Ukrainian => Łatynka</h1>
+        <p>The goal of this website is to allow users to convert Ukrainian text from the Cyrillic alphabet to the Latin alphabet (Łatynka).</p>
+        <textarea id="cyrillic" placeholder="Write something in Ukrainian (Cyrillic)" spellcheck="false"></textarea>
+        <textarea id="latin" placeholder="Łatynka output" contenteditable="false" spellcheck="false"></textarea>
         <h1>Conversion Chart</h1>
         <div id="section">
             <div>a / а</div>
@@ -54,14 +54,16 @@
             <div>ć / ць</div>
             <div>č / ч</div>
             <div>d / д</div>
-            <div>e / э</div>
+            <div>ď / дь</div>
+            <div>e / е</div>
             <div>f / ф</div>
             <div>g / ґ</div>
             <div>h / г</div>
             <div>i / и</div>
             <div>j / й</div>
             <div>ja / я</div>
-            <div>je / е</div>
+            <div>je / є</div>
+            <div>ji / ї</div>
             <div>jo / ё</div>
             <div>ju / ю</div>
             <div>k / к</div>
@@ -73,14 +75,16 @@
             <div>o / о</div>
             <div>p / п</div>
             <div>r / р</div>
+            <div>ŕ / рь</div>
             <div>s / с</div>
             <div>ś / сь</div>
             <div>š / ш</div>
+            <div>šč / щ</div>
             <div>t / т</div>
+            <div>ť / ть</div>
             <div>u / у</div>
-            <div>ŭ / ў</div>
-            <div>v / в</div>
-            <div>y / ы</div>
+            <div>w / в</div>
+            <div>y / и</div>
             <div>z / з</div>
             <div>ź / зь</div>
             <div>ž / ж</div>
@@ -101,81 +105,71 @@
         }
 
             cyrillicKey = [
-                ["Ле", "Le"],
-                ["Лё", "Lo"],
+                ["Лє", "Le"],
                 ["Лю", "Lu"],
                 ["Ля", "La"],
                 ["ляю", "laju"],
-                ["ляе", "laje"],
-                ["лле", "lle"],
-                ["ллё", "llo"],
+                ["ляє", "laje"],
+                ["ллє", "lle"],
                 ["ллю", "llu"],
                 ["лля", "lla"],
-                ["ле", "le"],
-                ["лё", "lo"],
+                ["лє", "le"],
                 ["лю", "lu"],
                 ["ля", "la"],
-                ["нне", "ńnie"],
+               /* ["нне", "ńnie"],
                 ["ннё", "ńnio"],
                 ["нню", "ńniu"],
-                ["ння", "ńnia"],
+                ["ння", "ńnia"], */
 
             //
                 ["ая", "aja"],
-                ["ае", "aje"],
+                ["ає", "aje"],
                 ["аю", "aju"],
                 ["яя", "iaja"],
-                ["яе", "iaje"],
+                ["яє", "iaje"],
                 ["яю", "iaju"],
-                ["ею", "ieju"],
+                ["єю", "ieju"],
                 ["ія", "ija"],
                 ["ію", "iju"],
                 ["юю", "iuju"],
                 ["оя", "oja"],
-                ["ое", "oje"],
-                ["уе", "uje"],
+                ["оє", "oje"],
+                ["ує", "uje"],
                 ["ую", "uju"],
-                ["ўя", "ŭja"],
-                ["ўе", "ŭje"],
-                ["ыя", "yja"],
                 [" ю", " ju"],
                 [" я", " ja"],
-                [" ё", " jo"],
-                [" е", " je"],
+                [" є", " je"],
 
-                //uk
-                /*
-                ["И", "y"],
-                ["и", "y"],
-                ["Ї", "Ji"],
-                ["ї", "ji"],
-                */
-                //
-        
                 ["А", "A"],
                 ["а", "a"],
                 ["Б", "B"],
                 ["б", "b"],
-                ["В", "V"], 
-                ["в", "v"], 
+                ["В", "W"], 
+                ["в", "w"], 
                 ["Г", "H"],
                 ["г", "h"],
                 ["Ґ", "G"],
                 ["ґ", "g"],
+                ["Дь", "Ď"],
+                ["дь", "ď"],
                 ["Д", "D"],
                 ["д", "d"],
-                ["Е", "Je"],
-                ["е", "ie"],
-                ["Ё", "Jo"],
-                ["ё", "io"],
+                ["Е", "E"],
+                ["е", "e"],
+                ["Є", "Je"],
+                ["є", "ie"],
                 ["Ж", "Ž"],
                 ["ж", "ž"],
                 ["Зь", "Ź"],
                 ["зь", "ź"],
                 ["З", "Z"],
                 ["з", "z"],
+                ["И", "Y"],
+                ["и", "y"],
                 ["І", "I"],
                 ["i", "i"],
+                ["Ї", "Ji"],
+                ["ї", "ji"],
                 ["Й", "J"],
                 ["й", "j"],
                 ["К", "K"],
@@ -194,18 +188,20 @@
                 ["о", "o"],
                 ["П", "P"],
                 ["п", "p"],
+                ["Рь", "Ŕ"],
+                ["рь", "ŕ"],
                 ["Р", "R"],
                 ["р", "r"],
                 ["Сь", "Ś"],
                 ["сь", "š"],
                 ["С", "S"],
                 ["с", "s"],
+                ["Ть", "Ť"],
+                ["ть", "ť"],
                 ["Т", "T"], 
                 ["т", "t"], 
                 ["У", "U"],
                 ["у", "u"],
-                ["Ў", "Ŭ"],
-                ["ў", "ŭ"],
                 ["Ф", "F"],
                 ["ф", "f"],
                 ["Х", "Ch"],
@@ -218,10 +214,8 @@
                 ["ч", "č"],
                 ["Ш", "Š"],
                 ["ш", "š"],
-                ["Ы", "Y"],
-                ["ы", "y"],
-                ["Э", "Je"],
-                ["э", "e"],
+                ["Щ", "Šč"],
+                ["щ", "šč"],
                 ["Я", "Ja"],
                 ["я", "ia"],
                 ["Ю", "Iu"],
