@@ -135,6 +135,7 @@ emoji = {
     'Mongolia': '🇲🇳',
     'Maldives': '🇲🇻',
     'Malaysia': '🇲🇾',
+    "Eswatini": "🇸🇿",
     'Nepal': '🇳🇵',
     'Oman': '🇴🇲',
     'Philippines': '🇵🇭',
