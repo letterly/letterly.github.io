@@ -70,6 +70,10 @@ function religionize(cl, att){
         "Twelver Shia Islam": {
             link: "https://en.wikipedia.org/wiki/Twelver_Shi%27ism",
         },
+        "Yazidi": {
+            name: "Yazidism",
+            link: "https://en.wikipedia.org/wiki/Yazidism",
+        },
         "Global": {
             link: "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar",
         },
@@ -1066,6 +1070,29 @@ function holidaycheck(thatday){
             sect: "Sephardi Jews",
         },
         {
+            cal: "Julian",
+            name: "Yazidi New Year",
+            day: ["1 April", "2 April", "3 April", "4 April", "5 April", "6 April", "7 April"],
+            link: "https://en.wikipedia.org/wiki/Yazidi_New_Year",
+            theDay: "Wednesday",
+            sect: "Yazidi",
+        },
+        {
+            cal: "Julian",
+            name: "Cejna Cemayê",
+            day: ["24 September", "25 September", "26 September", "27 September", "28 September", "29 September", "30 September"],
+            link: "https://en.wikipedia.org/wiki/Cejna_Cemay%C3%AA",
+            sect: "Yazidi",
+        },
+        {
+            cal: "Julian",
+            name: "Feast of Ezid",
+            day: ["1 December", "2 December", "3 December", "4 December", "5 December", "6 December", "7 December"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_Ezid",
+            theDay: "Friday",
+            sect: "Yazidi",
+        },
+        {
             cal: "Hebrew",
             name: "Hanukkah",
             day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(thatday.Hebrew.split(" ").slice(-1)[0] - 5660) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
@@ -1582,6 +1609,7 @@ function holidaycheck(thatday){
         else if(hebrewCons.charAt([hyear - 5660]) == "d" && ["17 Shvat", "11 Shvat", "12 Shvat", "13 Shvat", "14 Shvat", "15 Shvat", "16 Shvat"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shirah_%E2%80%93_Song'>Shirah</a>)</small>`
         else if("rc".includes(hebrewCons.charAt([hyear - 5660])) && ["10 Shvat", "11 Shvat", "12 Shvat", "13 Shvat", "14 Shvat", "15 Shvat", "16 Shvat"].includes(thehebrewday)) specialshabbat = `<small>(<a target='_blank' style="color:inherit;font-weight:700;text-decoration:underline" href='https://en.wikipedia.org/wiki/Special_Shabbat#Shabbat_Shirah_%E2%80%93_Song'>Shirah</a>)</small>`
         weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Shabbat">Shabbat</a>${specialshabbat}</h2>`
+        weekly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Samaritanism" target="_blank">Samaritanism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://www.israelite-samaritans.com/religion/sabbath-observance/">Shabbat</a></h2>`
     }
     else if(thatday.Day == "Sunday"){
         weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Christianity" target="_blank">Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Lord%27s_Day">Lord's Day</a></h2>`
