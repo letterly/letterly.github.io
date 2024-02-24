@@ -770,6 +770,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["14 June"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_Day_(United_States)",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
             day: ["28 November"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Albania)",
@@ -805,6 +812,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["20 June"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_Day_(Argentina)",
+            country: "Argentina",
+        },
+        {
+            cal: "Gregorian",
             day: ["28 May"],
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(Armenia)",
@@ -829,6 +843,13 @@ function holidaycheck(thatday){
             day: ["28 May"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Azerbaijan,_28_May)",
+            country: "Azerbaijan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["9 November"],
+            name: "State Flag Day",
+            link: "https://en.wikipedia.org/wiki/State_Flag_Day_(Azerbaijan)",
             country: "Azerbaijan",
         },
         {
@@ -941,6 +962,13 @@ function holidaycheck(thatday){
             day: ["1 July"],
             name: "Canada Day",
             link: "https://en.wikipedia.org/wiki/Canada_Day",
+            country: "Canada",
+        },
+        {
+            cal: "Gregorian",
+            day: ["15 February"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/National_Flag_of_Canada_Day",
             country: "Canada",
         },
         {
@@ -1120,6 +1148,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["18 May"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Haitian_Flag_Day",
+            country: "Haiti",
+        },
+        {
+            cal: "Gregorian",
             day: ["17 June"],
             name: "Icelandic National Day",
             link: "https://en.wikipedia.org/wiki/Icelandic_National_Day",
@@ -1172,6 +1207,13 @@ function holidaycheck(thatday){
             day: ["2 June"],
             name: "Festa della Repubblica",
             link: "https://en.wikipedia.org/wiki/Festa_della_Repubblica",
+            country: "Italy",
+        },
+        {
+            cal: "Gregorian",
+            day: ["7 January"],
+            name: "Tricolor Day",
+            link: "https://en.wikipedia.org/wiki/Tricolour_Day",
             country: "Italy",
         },
         {
@@ -1295,10 +1337,24 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["24 February"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_Day_in_Mexico",
+            country: "Mexico",
+        },
+        {
+            cal: "Gregorian",
             day: ["27 August"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_of_the_Republic_of_Moldova",
             country: "Moldova",
+        },
+        {
+            cal: "Gregorian",
+            day: ["10 July"],
+            name: "State Flag Day",
+            link: "https://en.wikipedia.org/wiki/Mongolian_State_Flag_Day",
+            country: "Mongolia",
         },
         {
             cal: "Gregorian",
@@ -1429,6 +1485,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["2 May"],
+            name: "National Flag Day",
+            link: "https://en.wikipedia.org/wiki/Polish_National_Flag_Day",
+            country: "Poland",
+        },
+        {
+            cal: "Gregorian",
             day: ["10 June"],
             name: "Portugal Day",
             link: "https://en.wikipedia.org/wiki/Portugal_Day",
@@ -1457,9 +1520,23 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["11 March"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Saudi_Flag_Day",
+            country: "Saudi Arabia",
+        },
+        {
+            cal: "Gregorian",
             day: ["23 September"],
             name: "Statehood Day",
             link: "https://en.wikipedia.org/wiki/Statehood_Day_(Serbia)",
+            country: "Serbia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["15 September"],
+            name: "Day of Serb Unity, Freedom and the National Flag",
+            link: "https://en.wikipedia.org/wiki/Day_of_Serb_Unity,_Freedom_and_the_National_Flag",
             country: "Serbia",
         },
         {
@@ -1576,6 +1653,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["18 May"],
+            name: "State Flag and Constitution Day",
+            link: "https://en.wikipedia.org/wiki/State_Flag_and_Constitution_Day_(Turkmenistan)",
+            country: "Turkmenistan",
+        },
+        {
+            cal: "Gregorian",
             day: ["9 October"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Uganda)",
@@ -1597,9 +1681,23 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["23 August"],
+            name: "Day of the National Flag",
+            link: "https://en.wikipedia.org/wiki/Day_of_the_National_Flag_(Ukraine)",
+            country: "Ukraine",
+        },
+        {
+            cal: "Gregorian",
             day: ["2 December"],
             name: "National Day",
             link: "https://en.wikipedia.org/wiki/National_Day_(United_Arab_Emirates)",
+            country: "United Arab Emirates",
+        },
+        {
+            cal: "Gregorian",
+            day: ["3 November"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_Day_(United_Arab_Emirates)",
             country: "United Arab Emirates",
         },
         {
@@ -2389,6 +2487,12 @@ function holidaycheck(thatday){
             day: [makeGregorianDate(-2), makeGregorianDate(-1), makeGregorianDate(0)],
         },
         {
+            link: "https://en.wikipedia.org/wiki/Allhallowtide",
+            name: "Allhallowtide",
+            cal: "Gregorian",
+            day: ["31 October", "1 November", "2 November"],
+        },
+        {
             link: "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
             name: "Feast of the Ascension",
             cal: "Julian",
@@ -2459,7 +2563,25 @@ function holidaycheck(thatday){
             name: "Trinity Sunday",
             cal: "Gregorian",
             day: [makeGregorianDate(56)],
-        }
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Septuagesima",
+            name: "Septuagesima",
+            cal: "Gregorian",
+            day: [makeGregorianDate(-63)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Sexagesima",
+            name: "Sexagesima",
+            cal: "Gregorian",
+            day: [makeGregorianDate(-56)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Quinquagesima",
+            name: "Quinquagesima",
+            cal: "Gregorian",
+            day: [makeGregorianDate(-49)],
+        },
     ]
 
 
@@ -2489,10 +2611,20 @@ function holidaycheck(thatday){
         else if(newv <= 160 && newv >= 130) easterDay = (newv - 129) + " March"
         else if(newv <= 129){
             if(eY % 4 == 0 && !(eY % 100 == 0 && eY % 400 != 0)){
-                easterDay = (newv - 100) + " February"
+                if(newv <= 100){
+                    easterDay = (newv - 69) + " January"
+                }
+                else{
+                    easterDay = (newv - 100) + " February"
+                }
             }
             else{
-                easterDay = (newv - 101) + " February"
+                if(newv <= 100){
+                    easterDay = (newv - 70) + " January"
+                }
+                else{
+                    easterDay = (newv - 101) + " February"
+                }            
             }
         }
         return easterDay

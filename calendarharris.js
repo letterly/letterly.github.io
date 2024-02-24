@@ -2,6 +2,7 @@ startDays = {
     "Gregorian": [1, "January", 1900],
     "Mayan": "12.14.5.6.18",
     "Armenian": [14, "Kʿałocʿ", 1349],
+    "Julian": [20, "December", 1899]
 }
 
 hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
