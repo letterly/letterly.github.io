@@ -1869,6 +1869,97 @@ calendars = {
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
     },
+    "Mandaean Reformed": {
+        firstDay: "Sunday",
+        dayStart: "Sunrise",
+        months: [
+            {
+                name: "Daula",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Daula_(month)",
+            },
+            {
+                name: "Nuna",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Nuna_(month)",
+            },
+            {
+                name: "ʿmbra",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Embra_(month)",
+            },
+            {
+                name: "Taura",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Taura_(month)",
+            },
+            {
+                name: "Ṣilmia",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Silmia",
+            },
+            {
+                name: "Sarṭana",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Sartana_(month)",
+            },
+            {
+                name: "Aria",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Aria_(month)",
+            },
+            {
+                name: "Šumbulta",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Shumbulta",
+            },
+            {
+                name: "Parwanaya",
+                days: 5,
+                link: "https://en.wikipedia.org/wiki/Parwanaya",
+            },
+            {
+                name: "Intercalary Day",
+                days: "0/1",
+                link: "https://en.wikipedia.org/wiki/Intercalation_(timekeeping)",
+            },
+            {
+                name: "Qaina",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Qaina",
+            },
+            {
+                name: "Arqba",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Arqba",
+            },
+            {
+                name: "Hiṭia",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Hitia",
+            },
+            {
+                name: "Gadia",
+                days: 30,
+                link: "https://en.wikipedia.org/wiki/Gadia_(month)",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 9,
+            method: function(x){
+                return (x % 4 == 0 && (x % 100 != 0 || x % 900 == 300 || x % 900 == 600))
+            }
+        },
+        startDay: {
+            dayinmonth: 0,
+            monthcount: 11,
+            year: 445268, //445393
+        },
+        bounds: [445270, 445270+T],
+        era: "AA",
+        link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
+    },
     Minguo: {
         firstDay: "Sunday",
         dayStart: "Midnight",

@@ -274,7 +274,7 @@ function japanDay(){
         numofdays = 7
     }
     else if(m == 2){
-        numofdays = 29
+        numofdays = 28
         if(
             (e == "Reiwa" && y % 4 == 2) ||
             (e == "Heisei" && y % 4 == 0) ||
@@ -282,7 +282,7 @@ function japanDay(){
             (e == "Taishō" && y % 4 == 1) ||
             (e == "Meiji" && y % 4 == 1 && y != 33)
         ){
-            numofdays = 28
+            numofdays = 29
         }
     }
     else if([4, 6, 9, 11].includes(m)){
@@ -445,10 +445,17 @@ function reset(){
         japanday.innerHTML = ""
         numofdays = 31
         if(thecurrentday[1] == "February"){
-            numofdays = 29
-            if(y % 4 == 2){
-                numofdays = 28
-            }
+            numofdays == 28
+            /* FIGURE IT OUT
+            if(
+                (e == "Reiwa" && y % 4 == 2) ||
+                (e == "Heisei" && y % 4 == 0) ||
+                (e == "Shōwa" && y % 4 == 3) ||
+                (e == "Taishō" && y % 4 == 1) ||
+                (e == "Meiji" && y % 4 == 1 && y != 33)
+            ){
+                numofdays = 29
+            }*/
         }
         else if(["April", "June", "September", "November"].includes(thecurrentday[1])){
             numofdays = 30
@@ -2804,7 +2811,7 @@ function internationalize(dy, cl){
         dy = `${dy[0]} ${{"Chet": "ਚੇਤ", "Vaisakh": "ਵੈਸਾਖ", "Jeth": "ਜੇਠ", "Harh": "ਹਾੜ", "Sawan": "ਸਾਵਣ", "Bhadon": "ਭਾਦੋਂ", "Assu": "ਅੱਸੂ", "Kattak": "ਕੱਤਕ", "Maghar": "ਮੱਘਰ", "Poh": "ਪੋਹ", "Magh": "ਮਾਘ", "Phaggan": "ਫੱਗਣ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
         return dy
     }
-    else if(cl == "Mandaean"){
+    else if(cl.startsWith("Mandaean")){
         dy = dy.split(" ")
         dy = `<span dir="rtl">${dy[0]} ${{"Daula": "ࡃࡀࡅࡋࡀ", "Nuna": "ࡍࡅࡍࡀ", "ʿmbra": "ࡏࡌࡁࡓࡀ", "Taura": "ࡕࡀࡅࡓࡀ", "Ṣilmia": "ࡑࡉࡋࡌࡉࡀ", "Sarṭana": "ࡎࡀࡓࡈࡀࡍࡀ", "Aria": "ࡀࡓࡉࡀ", "Šumbulta": "ࡔࡅࡌࡁࡅࡋࡕࡀ", "Qaina": "ࡒࡀࡉࡍࡀ", "Arqba": "ࡀࡓࡒࡁࡀ", "Hiṭia": "ࡄࡉࡈࡉࡀ", "Gadia": "ࡂࡀࡃࡉࡀ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}</span>`
         return dy
