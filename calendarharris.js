@@ -118,7 +118,7 @@ function getYear(year, cal){
             `Kislev:${hebrewCons.charAt([year - 5660]) != "d" ? 30 : 29}`,
             "Tevet:29",
             "Shvat:30",
-            ([3,6,8,11,13,17,0].includes(year % 19) ? "Adar:29" : "Adar I:30"),
+            ([3,6,8,11,13,17,0].includes(year % 19) ? "Adar I:30" : "Adar:29"),
             ([3,6,8,11,13,17,0].includes(year % 19) ? "" : "Adar II:29"),
             "Nisan:30",
             "Iyar:29",

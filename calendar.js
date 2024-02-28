@@ -114,6 +114,9 @@ function religionize(cl, att){
         "Sephardi Jews": {
             link: "https://en.wikipedia.org/wiki/Sephardic_law_and_customs",
         },
+        "Italian Jews": {
+            link: "https://en.wikipedia.org/wiki/Italian_Nusach",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -2090,6 +2093,61 @@ function holidaycheck(thatday){
             sect: "Sephardi Jews",
         },
         {
+            cal: "Hebrew",
+            name: "Leil Selichot",
+            day: [(d == "Thursday" ? "23 Elul" : ""), (d == "Monday" ? "23 Elul" : ""), (d == "Monday" ? "25 Elul" : ""), (d == "Monday" ? "22 Elul" : "")],
+            link: "https://en.wikipedia.org/wiki/Selichot#Selichot_of_the_High_Holidays",
+            sect: "Italian Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["2 Cheshvan", "3 Cheshvan", "4 Cheshvan", "5 Cheshvan", "6 Cheshvan", "7 Cheshvan", "8 Cheshvan"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Monday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["9 Cheshvan", "10 Cheshvan", "11 Cheshvan", "12 Cheshvan", "13 Cheshvan", "14 Cheshvan", "15 Cheshvan"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Monday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["2 Cheshvan", "3 Cheshvan", "4 Cheshvan", "5 Cheshvan", "6 Cheshvan", "7 Cheshvan", "8 Cheshvan"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Thursday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["2 Iyar", "3 Iyar", "4 Iyar", "5 Iyar", "6 Iyar", "7 Iyar", "8 Iyar"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Monday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["9 Iyar", "10 Iyar", "11 Iyar", "12 Iyar", "13 Iyar", "14 Iyar", "15 Iyar"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Monday",
+            sect: "Ashkenazi Jews",
+        },
+        {
+            cal: "Hebrew",
+            name: "Fast of Behav",
+            day: ["2 Iyar", "3 Iyar", "4 Iyar", "5 Iyar", "6 Iyar", "7 Iyar", "8 Iyar"],
+            link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
+            theDay: "Thursday",
+            sect: "Ashkenazi Jews",
+        },
+        {
             cal: "Julian",
             name: "Yazidi New Year",
             day: ["1 April", "2 April", "3 April", "4 April", "5 April", "6 April", "7 April"],
@@ -2190,6 +2248,24 @@ function holidaycheck(thatday){
             day: "10 Tevet",
         },
         {
+            name: "Twentieth of Sivan",
+            cal: "Hebrew",
+            link: "https://en.wikipedia.org/wiki/Twentieth_of_Sivan",
+            day: "20 Sivan",
+        },
+        {
+            name: "Zayin Adar",
+            cal: "Hebrew",
+            link: "https://en.wikipedia.org/wiki/Seventh_of_Adar",
+            day: "7 Adar",
+        },
+        {
+            name: "Zayin Adar",
+            cal: "Hebrew",
+            link: "https://en.wikipedia.org/wiki/Seventh_of_Adar",
+            day: "7 Adar II",
+        },
+        {
             cal: "Solar Hijri",
             name: "Tirgan",
             day: ["13 Tir"],
@@ -2236,6 +2312,26 @@ function holidaycheck(thatday){
             name: "Day of Arafah",
             day: ["9 Dhu al-Hijjah"],
             link: "https://en.wikipedia.org/wiki/Day_of_Arafah",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Laylat al-Miʿraj",
+            day: ["27 Rajab"],
+            link: "https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj#Modern_Muslim_observance",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Laylat al-Raghaib",
+            link: "https://en.wikipedia.org/wiki/Laylat_al-Raghaib",
+            day: ["1 Rajab", "2 Rajab", "3 Rajab", "4 Rajab", "5 Rajab", "6 Rajab", "7 Rajab"],
+            theDay: "Thursday",
+        },
+        {
+            cal: "Islamic Tabular",
+            name: "Night of Power",
+            link: "https://en.wikipedia.org/wiki/Night_of_Power",
+            day: ["21 Ramadan", "23 Ramadan", "25 Ramadan", "27 Ramadan", "29 Ramadan"],
+            theDay: "Thursday",
         },
         {
             cal: "Islamic Tabular",
@@ -2692,8 +2788,17 @@ function holidaycheck(thatday){
     if(thatday.Hebrew.startsWith("1 ") || thatday.Hebrew.startsWith("30 ")){
         monthly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Rosh_Chodesh">Rosh Chodesh</a></h2>`
     }
+    lehebrewmonthlength = getYear(thatday.Hebrew.split(" ").slice(-1)[0], "Hebrew")
+    lehebrewmonthlength = lehebrewmonthlength.filter(yyy => yyy.startsWith(thatday.Hebrew.split(" ").slice(1, -1).join(" ")))[0]
+    lehebrewmonthlength = lehebrewmonthlength.split(":")[1]
+    if(lehebrewmonthlength == 30 && (thatday.Hebrew.startsWith("29") || (thatday.Hebrew.startsWith("28") && thatday.Day == "Thursday") || (thatday.Hebrew.startsWith("27") && thatday.Day == "Thursday")) || lehebrewmonthlength == 29 && (thatday.Hebrew.startsWith("28") || (thatday.Hebrew.startsWith("27") && thatday.Day == "Thursday") || (thatday.Hebrew.startsWith("26") && thatday.Day == "Thursday"))){
+        monthly.innerHTML += `<h2 class="hebrew"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Judaism" target="_blank">Judaism</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Yom_Kippur_Katan">Yom Kippur Katan</a></h2>`
+    }
+    if(thatday["Islamic Tabular"].startsWith("1") && "345".includes(thatday["Islamic Tabular"].charAt(1))){
+        monthly.innerHTML += `<h2 class="islamic_tabular"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Islam" target="_blank">Islam</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/The_White_Days">White Days</a></h2>`
+    }
     if(thatday["Bahá'í"].startsWith("1 ")){
-        monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
+        monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith" target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
     }
     if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly celebrations</h3>" + monthly.innerHTML
 
