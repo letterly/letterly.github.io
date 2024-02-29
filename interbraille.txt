@@ -1,5 +1,8 @@
 InterBraille Updates
 
+29 Feb 2024
+-Fixed issues with the Ponca alphabet
+
 26 Feb 2024
 -Fixed serious issues with the Osage alphabet
 
