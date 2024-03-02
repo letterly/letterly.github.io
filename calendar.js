@@ -117,6 +117,9 @@ function religionize(cl, att){
         "Italian Jews": {
             link: "https://en.wikipedia.org/wiki/Italian_Nusach",
         },
+        "Assyrians": {
+            link: "https://en.wikipedia.org/wiki/Assyrian_people",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -369,6 +372,10 @@ function locationChange(){
     prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Maghrib" target="_blank">Maghrib</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
     prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Isha" target="_blank">Isha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[1]}`
 
+    mandaictimes.innerHTML = "<a style='font-weight:700;color:black' target='_blank' href='https://en.wikipedia.org/wiki/Brakha'>Brakha Times</a>: "
+    mandaictimes.innerHTML += `<a class="mandaean" href="https://en.wikipedia.org/wiki/Brakha#Prayer_times" target="_blank">Rahmia Ḏ-miṣṭipra</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
+    mandaictimes.innerHTML += `<a class="mandaean" href="https://en.wikipedia.org/wiki/Brakha#Prayer_times" target="_blank">Rahmia Ḏ-šuba Šaiia</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
+    mandaictimes.innerHTML += `<a class="mandaean" href="https://en.wikipedia.org/wiki/Brakha#Prayer_times" target="_blank">Rahmia Ḏ-l-paina</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]}`
     //
     directions = []
     directions.push(Math.atan(Math.sin((35.235833 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(31.778056 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.235833 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //temple mount
@@ -707,6 +714,12 @@ function holidaycheck(thatday){
             name: "Christmastide",
         },
         {
+            cal: "Mandaean",
+            name: "Mbaṭṭal days",
+            link: "https://en.wikipedia.org/wiki/Sauma",
+            day: ["25 Nuna", "2 Taura", "3 Taura", "4 Taura", "9 Sarṭana", "15 Sarṭana", "23 Sarṭana", "26 Šumbulta", "27 Šumbulta", "28 Šumbulta", "29 Šumbulta", "30 Šumbulta", "1 Qaina", "28 Gadia", "29 Gadia"],
+        },
+        {
             name: "Great Lent",
             link: "https://en.wikipedia.org/wiki/Great_Lent",
             cal: "Julian",
@@ -773,17 +786,24 @@ function holidaycheck(thatday){
     natholidays = [
         {
             cal: "Gregorian",
-            day: ["4 July"],
-            name: "Independence Day",
-            link: "https://en.wikipedia.org/wiki/Independence_Day_(United_States)",
-            country: "United States",
+            day: ["25 May"],
+            name: "Africa Day",
+            link: "https://en.wikipedia.org/wiki/Africa_Day",
+            country: "Africa",
         },
         {
             cal: "Gregorian",
-            day: ["14 June"],
-            name: "Flag Day",
-            link: "https://en.wikipedia.org/wiki/Flag_Day_(United_States)",
-            country: "United States",
+            day: ["9 June"],
+            name: "Autonomy Day",
+            link: "https://en.wikipedia.org/wiki/%C3%85land%27s_Autonomy_Day",
+            country: "Åland",
+        },
+        {
+            cal: "Gregorian",
+            day: ["22 March"],
+            name: "Sultan Nevruz",
+            link: "https://en.wikipedia.org/wiki/Nevruz_in_Albania",
+            country: "Albania",
         },
         {
             cal: "Gregorian",
@@ -829,6 +849,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["20 November"],
+            name: "National Sovereignty Day",
+            link: "https://en.wikipedia.org/wiki/National_Sovereignty_Day",
+            country: "Argentina",
+        },
+        {
+            cal: "Gregorian",
             day: ["28 May"],
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(Armenia)",
@@ -839,6 +866,13 @@ function holidaycheck(thatday){
             day: ["21 September"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Armenia)",
+            country: "Armenia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["24 April"],
+            name: "Armenian Genocide Remembrance Day",
+            link: "https://en.wikipedia.org/wiki/Armenian_Genocide_Remembrance_Day",
             country: "Armenia",
         },
         {
@@ -892,6 +926,20 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["15 August"],
+            name: "National Day of Mourning",
+            link: "https://en.wikipedia.org/wiki/National_Day_of_Mourning_(Bangladesh)",
+            country: "Bangladesh",
+        },
+        {
+            cal: "Gregorian",
+            day: ["21 February"],
+            name: "Language Movement Day",
+            link: "https://en.wikipedia.org/wiki/Language_Movement_Day",
+            country: "Bangladesh",
+        },
+        {
+            cal: "Gregorian",
             day: ["30 November"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Public_holidays_in_Barbados",
@@ -927,6 +975,14 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["23 May", "24 May", "25 May", "26 May", "27 May", "28 May", "22 May"],
+            name: "Bermuda Day",
+            link: "https://en.wikipedia.org/wiki/Bermuda_Day",
+            country: "Bermuda",
+            theExactDay: "Friday",
+        },
+        {
+            cal: "Gregorian",
             day: ["30 September"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Botswana)",
@@ -951,6 +1007,13 @@ function holidaycheck(thatday){
             day: ["3 March"],
             name: "Liberation Day",
             link: "https://en.wikipedia.org/wiki/Liberation_Day_(Bulgaria)",
+            country: "Bulgaria",
+        },
+        {
+            cal: "Gregorian",
+            day: ["6 September"],
+            name: "Unification Day",
+            link: "https://en.wikipedia.org/wiki/Unification_Day_(Bulgaria)",
             country: "Bulgaria",
         },
         {
@@ -983,6 +1046,21 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            theExactDay: "Monday",
+            day: ["1 September", "2 September", "3 September", "4 September", "5 September", "6 September", "7 September"],
+            name: "Labour Day",
+            link: "https://en.wikipedia.org/wiki/Labour_Day_(Canada)",
+            country: "Canada",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 December"],
+            name: "Freedom and Democracy Day",
+            link: "https://en.wikipedia.org/wiki/Freedom_and_Democracy_Day",
+            country: "Chad",
+        },
+        {
+            cal: "Gregorian",
             day: ["18 September", "19 September", (["Monday", "Friday"].includes(d) ? "17 September" : ""), (d == "Friday" ? "20 September" : "")],
             name: "Fiestas Patrias",
             link: "https://en.wikipedia.org/wiki/Fiestas_Patrias_(Chile)",
@@ -1000,6 +1078,27 @@ function holidaycheck(thatday){
             day: ["30 May"],
             name: "Statehood Day",
             link: "https://en.wikipedia.org/wiki/Statehood_Day_(Croatia)",
+            country: "Croatia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["18 November"],
+            name: "Remembrance Day",
+            link: "https://en.wikipedia.org/wiki/Remembrance_Day_(Croatia)",
+            country: "Croatia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["5 August"],
+            name: "Victory Day",
+            link: "https://en.wikipedia.org/wiki/Victory_Day_(Croatia)",
+            country: "Croatia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["22 June"],
+            name: "Anti-Fascist Struggle Day",
+            link: "https://en.wikipedia.org/wiki/Anti-Fascist_Struggle_Day",
             country: "Croatia",
         },
         {
@@ -1025,6 +1124,14 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["3 November", "4 November", "5 November", "6 November", "7 November", "8 November", "9 November"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_of_the_Dominican_Republic#Constitution_Day",
+            country: "Dominican Republic",
+            theExactDay: "Monday",
+        },
+        {
+            cal: "Gregorian",
             day: ["23 July"],
             name: "Revolution Day",
             link: "https://en.wikipedia.org/wiki/Revolution_Day_(Egypt)",
@@ -1046,9 +1153,24 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["23 June"],
+            name: "Võidupüha",
+            link: "https://en.wikipedia.org/wiki/Võidupüha",
+            country: "Estonia",
+        },
+        {
+            cal: "Gregorian",
             day: ["14 June"],
             name: "Liberation Day",
             link: "https://en.wikipedia.org/wiki/Liberation_Day_(Falkland_Islands)",
+            country: "Falkland Islands",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 October", "2 October", "3 October", "4 October", "5 October", "6 October", "7 October"],
+            theExactDay: "Monday",
+            name: "Peat Cutting Monday",
+            link: "https://en.wikipedia.org/wiki/Peat_Cutting_Monday",
             country: "Falkland Islands",
         },
         {
@@ -1102,6 +1224,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["10 September"],
+            name: "National Day",
+            link: "https://en.wikipedia.org/wiki/Gibraltar_National_Day",
+            country: "Gibraltar",
+        },
+        {
+            cal: "Gregorian",
             day: ["6 March"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Ghana)",
@@ -1119,6 +1248,13 @@ function holidaycheck(thatday){
             day: ["28 October"],
             name: "Ohi Day",
             link: "https://en.wikipedia.org/wiki/Ohi_Day",
+            country: "Greece",
+        },
+        {
+            cal: "Gregorian",
+            day: ["21 June"],
+            name: "Liberation Day",
+            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Guam)",
             country: "Greece",
         },
         {
@@ -1172,6 +1308,29 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["19 April", "20 April", "21 April", "22 April", "23 April", "24 April", "25 April"],
+            name: "First day of summer",
+            link: "https://en.wikipedia.org/wiki/First_day_of_summer_(Iceland)",
+            country: "Iceland",
+            theExactDay: "Thursday",
+        },
+        {
+            cal: "Gregorian",
+            day: ["8 March", "9 March", "10 March", "11 March", "12 March", "13 March", "14 March"],
+            name: "Commonwealth Day",
+            link: "https://en.wikipedia.org/wiki/Commonwealth_Day",
+            country: "Commonwealth",
+            theExactDay: "Monday",
+        },
+        {
+            cal: "Gregorian",
+            day: ["11 November"],
+            name: "Remembrance Day",
+            link: "https://en.wikipedia.org/wiki/Remembrance_Day",
+            country: "Commonwealth",
+        },
+        {
+            cal: "Gregorian",
             day: ["15 August"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(India)",
@@ -1213,6 +1372,34 @@ function holidaycheck(thatday){
             country: "Israel",
         },
         {
+            cal: "Hebrew",
+            day: ["28 Iyar"],
+            name: "Jerusalem Day",
+            link: "https://en.wikipedia.org/wiki/Jerusalem_Day",
+            country: "Israel",
+        },
+        {
+            cal: "Hebrew",
+            day: ["27 Nisan"],
+            name: "Yom HaShoah",
+            link: "https://en.wikipedia.org/wiki/Yom_HaShoah",
+            country: "Israel",
+        },
+        {
+            cal: "Hebrew",
+            day: ["10 Nisan", "7 Cheshvan"],
+            name: "Yom HaAliyah",
+            link: "https://en.wikipedia.org/wiki/Yom_HaAliyah",
+            country: "Israel",
+        },
+        {
+            cal: "Hebrew",
+            day: ["4 Iyar"],
+            name: "Yom HaZikaron",
+            link: "https://en.wikipedia.org/wiki/Yom_HaZikaron",
+            country: "Israel",
+        },
+        {
             cal: "Gregorian",
             day: ["2 June"],
             name: "Festa della Repubblica",
@@ -1228,9 +1415,52 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["25 April"],
+            name: "Liberation Day",
+            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Italy)",
+            country: "Italy",
+        },
+        {
+            cal: "Gregorian",
             day: ["11 February"],
             name: "National Foundation Day",
             link: "https://en.wikipedia.org/wiki/National_Foundation_Day_(Japan)",
+            country: "Japan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["3 November"],
+            name: "Culture Day",
+            link: "https://en.wikipedia.org/wiki/Culture_Day",
+            country: "Japan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["3 May"],
+            name: "Constitution Memorial Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_Memorial_Day",
+            country: "Japan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["23 February"],
+            name: "Emperor's Birthday",
+            link: "https://en.wikipedia.org/wiki/The_Emperor%27s_Birthday",
+            country: "Japan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["29 April"],
+            name: "Shōwa Day",
+            link: "https://en.wikipedia.org/wiki/Sh%C5%8Dwa_Day",
+            country: "Japan",
+        },
+        {
+            cal: "Gregorian",
+            theExactDay: "Monday",
+            day: ["8 January", "9 January", "10 January", "11 January", "12 January", "13 January", "14 January"],
+            name: "Coming of Age Day",
+            link: "https://en.wikipedia.org/wiki/Coming_of_Age_Day",
             country: "Japan",
         },
         {
@@ -1239,6 +1469,13 @@ function holidaycheck(thatday){
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Jamaica)",
             country: "Jamaica",
+        },
+        {
+            cal: "Gregorian",
+            day: ["9 May"],
+            name: "Liberation Day",
+            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Channel_Islands)",
+            country: "Jersey, Guernsey",
         },
         {
             cal: "Gregorian",
@@ -1256,6 +1493,41 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["25 October"],
+            name: "Republic Day",
+            link: "https://en.wikipedia.org/wiki/Republic_Day_(Kazakhstan)",
+            country: "Kazakhstan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 May"],
+            name: "Kazakhstan People's Unity Day",
+            link: "https://en.wikipedia.org/wiki/Kazakhstan_People%27s_Unity_Day",
+            country: "Kazakhstan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["7 May"],
+            name: "Defender of the Fatherland Day",
+            link: "https://en.wikipedia.org/wiki/Defender_of_the_Fatherland_Day_(Kazakhstan)",
+            country: "Kazakhstan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["6 July"],
+            name: "Capital City Day",
+            link: "https://en.wikipedia.org/wiki/Capital_City_Day_(Kazakhstan)",
+            country: "Kazakhstan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 August"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_Day_(Kazakhstan)",
+            country: "Kazakhstan",
+        },
+        {
+            cal: "Gregorian",
             day: ["12 December"],
             name: "Jamhuri Day",
             link: "https://en.wikipedia.org/wiki/Jamhuri_Day",
@@ -1263,10 +1535,24 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["17 February"],
+            name: "Independence Day",
+            link: "https://en.wikipedia.org/wiki/Kosovo_Independence_Day",
+            country: "Kosovo",
+        },
+        {
+            cal: "Gregorian",
             day: ["31 August"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Kyrgyzstan)",
             country: "Kyrgyzstan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["2 December"],
+            name: "National Day",
+            link: "https://en.wikipedia.org/wiki/Lao_National_Day",
+            country: "Laos",
         },
         {
             cal: "Gregorian",
@@ -1294,6 +1580,13 @@ function holidaycheck(thatday){
             day: ["16 February"],
             name: "Lithuanian State Reestablishment Day",
             link: "https://en.wikipedia.org/wiki/Act_of_Independence_of_Lithuania#Legacy",
+            country: "Lithuania",
+        },
+        {
+            cal: "Gregorian",
+            day: ["6 July"],
+            name: "Statehood Day",
+            link: "https://en.wikipedia.org/wiki/Statehood_Day_(Lithuania)",
             country: "Lithuania",
         },
         {
@@ -1327,7 +1620,7 @@ function holidaycheck(thatday){
         {
             cal: "Gregorian",
             day: ["31 March"],
-            name: "Independence Day",
+            name: "Freedom Day",
             link: "https://en.wikipedia.org/wiki/Freedom_Day_(Malta)",
             country: "Malta",
         },
@@ -1347,6 +1640,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["13 December"],
+            name: "Republic Day",
+            link: "https://en.wikipedia.org/wiki/Republic_Day_(Malta)",
+            country: "Malta",
+        },
+        {
+            cal: "Gregorian",
             day: ["24 February"],
             name: "Flag Day",
             link: "https://en.wikipedia.org/wiki/Flag_Day_in_Mexico",
@@ -1354,10 +1654,24 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            name: "Independence Day",
+            link: "https://en.wikipedia.org/wiki/Cry_of_Dolores#National_festivities",
+            country: "Mexico",
+            day: ["16 September"],
+        },
+        {
+            cal: "Gregorian",
             day: ["27 August"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_of_the_Republic_of_Moldova",
             country: "Moldova",
+        },
+        {
+            cal: "Gregorian",
+            day: ["19 November"],
+            name: "National Day",
+            link: "https://en.wikipedia.org/wiki/National_Day_of_Monaco",
+            country: "Monaco",
         },
         {
             cal: "Gregorian",
@@ -1375,9 +1689,30 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["13 July"],
+            name: "Statehood Day",
+            link: "https://en.wikipedia.org/wiki/Statehood_Day_(Montenegro)",
+            country: "Montenegro",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 July"],
+            name: "Throne Day",
+            link: "https://en.wikipedia.org/wiki/Throne_Day_(Morocco)",
+            country: "Morocco",
+        },
+        {
+            cal: "Gregorian",
             day: ["4 January"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Myanmar)",
+            country: "Myanmar",
+        },
+        {
+            cal: "Gregorian",
+            day: ["19 July"],
+            name: "Martyrs' Day",
+            link: "https://en.wikipedia.org/wiki/Martyrs%27_Day_(Myanmar)",
             country: "Myanmar",
         },
         {
@@ -1386,6 +1721,13 @@ function holidaycheck(thatday){
             name: "Angam Day",
             link: "https://en.wikipedia.org/wiki/Angam_Day",
             country: "Nauru",
+        },
+        {
+            cal: "Gregorian",
+            day: ["11 January"],
+            name: "Prithvi Jayanti",
+            link: "https://en.wikipedia.org/wiki/Prithvi_Jayanti",
+            country: "Nepal",
         },
         {
             cal: "Gregorian",
@@ -1411,9 +1753,30 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["25 April"],
+            name: "Anzac Day",
+            link: "https://en.wikipedia.org/wiki/Anzac_Day",
+            country: "Australia, New Zealand",
+        },
+        {
+            cal: "Gregorian",
             day: ["18 December"],
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(Niger)",
+            country: "Niger",
+        },
+        {
+            cal: "Gregorian",
+            day: ["3 August"],
+            name: "Republic Day",
+            link: "https://en.wikipedia.org/wiki/Independence_Day_(Niger)",
+            country: "Niger",
+        },
+        {
+            cal: "Gregorian",
+            day: ["24 April"],
+            name: "Concord Day",
+            link: "https://en.wikipedia.org/wiki/Concord_Day",
             country: "Niger",
         },
         {
@@ -1425,9 +1788,30 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["23 January"],
+            name: "Bounty Day",
+            link: "https://en.wikipedia.org/wiki/Bounty_Day",
+            country: "Norfolk Island",
+        },
+        {
+            cal: "Gregorian",
             day: ["2 August"],
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(North_Macedonia)",
+            country: "North Macedonia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["23 October"],
+            name: "Day of the Macedonian Revolutionary Struggle",
+            link: "https://en.wikipedia.org/wiki/Day_of_the_Macedonian_Revolutionary_Struggle_(Holiday)",
+            country: "North Macedonia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["11 October"],
+            name: "Day of the Macedonian Uprising",
+            link: "https://en.wikipedia.org/wiki/Day_of_the_Macedonian_Uprising",
             country: "North Macedonia",
         },
         {
@@ -1460,6 +1844,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["25 December"],
+            name: "Jinnah's Birthday",
+            link: "https://en.wikipedia.org/wiki/Jinnah%27s_Birthday",
+            country: "Pakistan",
+        },
+        {
+            cal: "Gregorian",
             day: ["14 August"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Pakistan)",
@@ -1474,9 +1865,30 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["9 April"],
+            name: "Day of Valor",
+            link: "https://en.wikipedia.org/wiki/Day_of_Valor",
+            country: "Philippines",
+        },
+        {
+            cal: "Gregorian",
             day: ["12 June"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Philippines)",
+            country: "Philippines",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 December"],
+            name: "Rizal Day",
+            link: "https://en.wikipedia.org/wiki/Rizal_Day",
+            country: "Philippines",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 November"],
+            name: "Bonifacio Day",
+            link: "https://en.wikipedia.org/wiki/Bonifacio_Day",
             country: "Philippines",
         },
         {
@@ -1509,6 +1921,20 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["25 April"],
+            name: "Freedom Day",
+            link: "https://en.wikipedia.org/wiki/Carnation_Revolution#Freedom_Day",
+            country: "Portugal",
+        },
+        {
+            cal: "Gregorian",
+            day: ["25 June"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Puerto_Rico_Constitution_Day",
+            country: "Puerto Rico",
+        },
+        {
+            cal: "Gregorian",
             day: ["18 December"],
             name: "National Day",
             link: "https://en.wikipedia.org/wiki/National_Day_(Qatar)",
@@ -1523,6 +1949,27 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["24 January"],
+            name: "Little Union Day",
+            link: "https://en.wikipedia.org/wiki/Day_of_the_Unification_of_the_Romanian_Principalities",
+            country: "Romania",
+        },
+        {
+            cal: "Gregorian",
+            day: ["12 June"],
+            name: "Russia Day",
+            link: "https://en.wikipedia.org/wiki/Russia_Day",
+            country: "Russia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["4 July"],
+            name: "Liberation Day",
+            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Rwanda)",
+            country: "Rwanda",
+        },
+        {
+            cal: "Gregorian",
             day: ["23 September"],
             name: "Saudi National Day",
             link: "https://en.wikipedia.org/wiki/Saudi_National_Day",
@@ -1533,6 +1980,13 @@ function holidaycheck(thatday){
             day: ["11 March"],
             name: "Flag Day",
             link: "https://en.wikipedia.org/wiki/Saudi_Flag_Day",
+            country: "Saudi Arabia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["22 February"],
+            name: "Founding Day",
+            link: "https://en.wikipedia.org/wiki/Saudi_Founding_Day",
             country: "Saudi Arabia",
         },
         {
@@ -1557,10 +2011,24 @@ function holidaycheck(thatday){
             country: "Singapore",
         },
         {
+            name: "Slovak National Uprising Anniversary",
+            day: ["29 August"],
+            cal: "Gregorian",
+            country: "Slovakia",
+            link: "https://en.wikipedia.org/wiki/Slovak_National_Uprising_Anniversary",
+        },
+        {
             cal: "Gregorian",
             day: ["25 June"],
             name: "Statehood Day",
             link: "https://en.wikipedia.org/wiki/Statehood_Day_(Slovenia)",
+            country: "Slovenia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["8 February"],
+            name: "Prešeren Day",
+            link: "https://en.wikipedia.org/wiki/Pre%C5%A1eren_Day",
             country: "Slovenia",
         },
         {
@@ -1586,6 +2054,27 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["16 December"],
+            name: "Day of Reconciliation",
+            link: "https://en.wikipedia.org/wiki/Day_of_Reconciliation",
+            country: "South Africa",
+        },
+        {
+            cal: "Gregorian",
+            day: ["24 September"],
+            name: "Heritage Day",
+            link: "https://en.wikipedia.org/wiki/Heritage_Day_(South_Africa)",
+            country: "South Africa",
+        },
+        {
+            cal: "Gregorian",
+            day: ["9 August"],
+            name: "National Women's Day",
+            link: "https://en.wikipedia.org/wiki/National_Women%27s_Day",
+            country: "South Africa",
+        },
+        {
+            cal: "Gregorian",
             day: ["15 August"],
             name: "National Liberation Day",
             link: "https://en.wikipedia.org/wiki/National_Liberation_Day_of_Korea",
@@ -1596,6 +2085,27 @@ function holidaycheck(thatday){
             day: ["3 October"],
             name: "National Foundation Day",
             link: "https://en.wikipedia.org/wiki/National_Foundation_Day_(Korea)",
+            country: "South Korea",
+        },
+        {
+            cal: "Gregorian",
+            day: ["9 October"],
+            name: "Hangul Day",
+            link: "https://en.wikipedia.org/wiki/Hangul_Day",
+            country: "South Korea",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 March"],
+            name: "Independence Movement Day",
+            link: "https://en.wikipedia.org/wiki/March_1st_Movement#Commemorations",
+            country: "South Korea",
+        },
+        {
+            cal: "Gregorian",
+            day: ["17 July"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_Day_(South_Korea)",
             country: "South Korea",
         },
         {
@@ -1670,6 +2180,20 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["6 October"],
+            name: "Day of Remembrance",
+            link: "https://en.wikipedia.org/wiki/Day_of_Remembrance_(Turkmenistan)",
+            country: "Turkmenistan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["12 December"],
+            name: "Day of Neutrality",
+            link: "https://en.wikipedia.org/wiki/Day_of_Neutrality",
+            country: "Turkmenistan",
+        },
+        {
+            cal: "Gregorian",
             day: ["9 October"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Uganda)",
@@ -1698,6 +2222,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["28 June"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_Day_(Ukraine)",
+            country: "Ukraine",
+        },
+        {
+            cal: "Gregorian",
             day: ["2 December"],
             name: "National Day",
             link: "https://en.wikipedia.org/wiki/National_Day_(United_Arab_Emirates)",
@@ -1709,6 +2240,58 @@ function holidaycheck(thatday){
             name: "Flag Day",
             link: "https://en.wikipedia.org/wiki/Flag_Day_(United_Arab_Emirates)",
             country: "United Arab Emirates",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 December"],
+            name: "Commemoration Day",
+            link: "https://en.wikipedia.org/wiki/Commemoration_Day",
+            country: "United Arab Emirates",
+        },
+        {
+            cal: "Gregorian",
+            day: ["4 July"],
+            name: "Independence Day",
+            link: "https://en.wikipedia.org/wiki/Independence_Day_(United_States)",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            day: ["14 June"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_Day_(United_States)",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            theExactDay: "Monday",
+            day: ["31 May", "30 May", "29 May", "28 May", "27 May", "26 May", "25 May"],
+            name: "Memorial Day",
+            link: "https://en.wikipedia.org/wiki/Memorial_Day",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            theExactDay: "Monday",
+            day: ["1 September", "2 September", "3 September", "4 September", "5 September", "6 September", "7 September"],
+            name: "Labor Day",
+            link: "https://en.wikipedia.org/wiki/Labor_Day",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            theExactDay: "Thursday",
+            day: ["22 November", "23 November", "28 November", "24 November", "25 November", "26 November", "27 November"],
+            name: "Thanksgiving",
+            link: "https://en.wikipedia.org/wiki/Thanksgiving_(United_States)",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            day: ["18 April"],
+            name: "Landing of the 33 Patriots",
+            link: "https://en.wikipedia.org/wiki/Landing_of_the_33_Patriots_Day",
+            country: "Uruguay",
         },
         {
             cal: "Gregorian",
@@ -1726,35 +2309,63 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["30 April"],
+            name: "Reunification Day",
+            link: "https://en.wikipedia.org/wiki/Reunification_Day",
+            country: "Vietnam",
+        },
+        {
+            cal: "Gregorian",
             day: ["2 September"],
-            name: "National_ Day",
+            name: "National Day",
             link: "https://en.wikipedia.org/wiki/National_Day_(Vietnam)",
             country: "Vietnam",
         },
-    ]
-
-    normalholidays = [
         {
-            sect: "Global",
+            cal: "Gregorian",
+            day: ["22 May"],
+            name: "Unity Day",
+            link: "https://en.wikipedia.org/wiki/Unity_Day_(Yemen)",
+            country: "Yemen",
+        },
+        {
+            country: "Global",
             cal: "Gregorian",
             day: ["31 December"],
             link: "https://en.wikipedia.org/wiki/New_Year%27s_Eve",
             name: "New Year's Eve",
         },
         {
-            sect: "Global",
+            country: "Global",
             cal: "Gregorian",
             day: ["1 January"],
             link: "https://en.wikipedia.org/wiki/New_Year%27s_Day",
             name: "New Year's Day",
         },
         {
-            sect: "Global",
+            country: "Global",
             cal: "Gregorian",
             day: ["29 February"],
-            link: "https://www.youtube.com/watch?v=S5vaVNvcgiI",
+            link: "https://www.youtube.com/watch?v=uK0KTH0ezgc",
             name: "Leap Day",
         },
+        {
+            country: "Global",
+            cal: "Gregorian",
+            day: ["8 March"],
+            link: "https://en.wikipedia.org/wiki/International_Women's_Day",
+            name: "International Women's Day",
+        },
+        {
+            country: "Global",
+            cal: "Gregorian",
+            day: ["1 May"],
+            link: "https://en.wikipedia.org/wiki/International_Workers%27_Day",
+            name: "International Workers' Day",
+        },
+    ]
+
+    normalholidays = [
         {
             cal: "Gregorian",
             day: ["6 January"],
@@ -1788,15 +2399,76 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["8 September"],
+            link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+            name: "Nativity of Mary",
+        },
+        {
+            cal: "Julian",
+            day: ["8 September"],
+            link: "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+            name: "Nativity of Mary",
+        },
+        {
+            cal: "Gregorian",
+            day: ["26 December"],
+            link: "https://en.wikipedia.org/wiki/Saint_Stephen%27s_Day",
+            name: "Saint Stephen's Day",
+        },
+        {
+            cal: "Gregorian",
+            day: ["17 March"],
+            link: "https://en.wikipedia.org/wiki/Saint_Patrick%27s_Day",
+            name: "Saint Patrick's Day",
+        },
+        {
+            cal: "Julian",
+            day: ["27 December"],
+            link: "https://en.wikipedia.org/wiki/Saint_Stephen%27s_Day",
+            name: "Saint Stephen's Day",
+        },
+        {
+            cal: "Gregorian",
             day: ["14 September"],
             link: "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
             name: "Feast of the Cross",
         },
         {
             cal: "Gregorian",
+            day: ["1 April"],
+            link: "https://en.wikipedia.org/wiki/Kha_b-Nisan",
+            name: "Kha b-Nisan",
+            sect: "Assyrians",
+        },
+        {
+            cal: "Gregorian",
             day: ["1 November"],
             link: "https://en.wikipedia.org/wiki/All_Saints%27_Day",
             name: "All Saints' Day",
+        },
+        {
+            cal: "Gregorian",
+            day: ["19 March"],
+            link: "https://en.wikipedia.org/wiki/Saint_Joseph%27s_Day",
+            name: "Saint Joseph's Day",
+        },
+        {
+            cal: "Gregorian",
+            day: ["29 June"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul",
+            name: "Feast of Saints Peter and Paul",
+        },
+        {
+            cal: "Julian",
+            day: ["29 June"],
+            link: "https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul",
+            name: "Feast of Saints Peter and Paul",
+        },
+        {
+            cal: "Gregorian",
+            day: ["2 November"],
+            link: "https://en.wikipedia.org/wiki/All_Souls%27_Day",
+            name: "All Souls' Day",
         },
         {
             cal: "Gregorian",
@@ -1809,6 +2481,12 @@ function holidaycheck(thatday){
             day: ["25 December"],
             link: "https://en.wikipedia.org/wiki/Christmas",
             name: "Christmas",
+        },
+        {
+            cal: "Gregorian",
+            day: ["26 December"],
+            link: "https://en.wikipedia.org/wiki/Boxing_Day",
+            name: "Boxing Day",
         },
         {
             cal: "Bahá'í",
@@ -1950,6 +2628,18 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Simchat_Torah",  
         },
         {
+            name: "Isru Chag",
+            cal: "Hebrew",
+            day: ["22 Nisan", "7 Sivan", "22 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Isru_chag",
+        },
+        {
+            name: "Isru Chag:outside Israel",
+            cal: "Hebrew",
+            day: ["23 Nisan", "8 Sivan", "23 Tishrei"],
+            link: "https://en.wikipedia.org/wiki/Isru_chag",
+        },
+        {
             name: "Pesach",
             cal: "Hebrew",
             day: ["15 Nisan", "16 Nisan","17 Nisan", "18 Nisan","19 Nisan", "20 Nisan","21 Nisan"],
@@ -2079,10 +2769,16 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
+            name: "Shavuot:outside Israel",
+            day: ["7 Sivan"],
+            link: "https://en.wikipedia.org/wiki/Shavuot",
+        },
+        {
+            cal: "Hebrew",
             name: "Leil Selichot",
             day: ["20 Elul", "21 Elul", "22 Elul", "23 Elul", "24 Elul", "25 Elul"],
             link: "https://en.wikipedia.org/wiki/Selichot#Selichot_of_the_High_Holidays",
-            theDay: "Saturday",
+            theExactDay: "Saturday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2104,7 +2800,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["2 Cheshvan", "3 Cheshvan", "4 Cheshvan", "5 Cheshvan", "6 Cheshvan", "7 Cheshvan", "8 Cheshvan"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Monday",
+            theExactDay: "Monday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2112,7 +2808,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["9 Cheshvan", "10 Cheshvan", "11 Cheshvan", "12 Cheshvan", "13 Cheshvan", "14 Cheshvan", "15 Cheshvan"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Monday",
+            theExactDay: "Monday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2120,7 +2816,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["2 Cheshvan", "3 Cheshvan", "4 Cheshvan", "5 Cheshvan", "6 Cheshvan", "7 Cheshvan", "8 Cheshvan"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Thursday",
+            theExactDay: "Thursday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2128,7 +2824,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["2 Iyar", "3 Iyar", "4 Iyar", "5 Iyar", "6 Iyar", "7 Iyar", "8 Iyar"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Monday",
+            theExactDay: "Monday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2136,7 +2832,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["9 Iyar", "10 Iyar", "11 Iyar", "12 Iyar", "13 Iyar", "14 Iyar", "15 Iyar"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Monday",
+            theExactDay: "Monday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2144,7 +2840,7 @@ function holidaycheck(thatday){
             name: "Fast of Behav",
             day: ["2 Iyar", "3 Iyar", "4 Iyar", "5 Iyar", "6 Iyar", "7 Iyar", "8 Iyar"],
             link: "https://en.wikipedia.org/wiki/Fast_of_Behav",
-            theDay: "Thursday",
+            theExactDay: "Thursday",
             sect: "Ashkenazi Jews",
         },
         {
@@ -2152,7 +2848,7 @@ function holidaycheck(thatday){
             name: "Yazidi New Year",
             day: ["1 April", "2 April", "3 April", "4 April", "5 April", "6 April", "7 April"],
             link: "https://en.wikipedia.org/wiki/Yazidi_New_Year",
-            theDay: "Wednesday",
+            theExactDay: "Wednesday",
             sect: "Yazidi",
             overrideCal: "yazidi",
         },
@@ -2169,7 +2865,7 @@ function holidaycheck(thatday){
             name: "Feast of Ezid",
             day: ["1 December", "2 December", "3 December", "4 December", "5 December", "6 December", "7 December"],
             link: "https://en.wikipedia.org/wiki/Feast_of_Ezid",
-            theDay: "Friday",
+            theExactDay: "Friday",
             sect: "Yazidi",
             overrideCal: "yazidi",
         },
@@ -2324,21 +3020,21 @@ function holidaycheck(thatday){
             name: "Laylat al-Raghaib",
             link: "https://en.wikipedia.org/wiki/Laylat_al-Raghaib",
             day: ["1 Rajab", "2 Rajab", "3 Rajab", "4 Rajab", "5 Rajab", "6 Rajab", "7 Rajab"],
-            theDay: "Thursday",
+            theExactDay: "Thursday",
         },
         {
             cal: "Islamic Tabular",
             name: "Night of Power",
             link: "https://en.wikipedia.org/wiki/Night_of_Power",
             day: ["21 Ramadan", "23 Ramadan", "25 Ramadan", "27 Ramadan", "29 Ramadan"],
-            theDay: "Thursday",
+            theExactDay: "Thursday",
         },
         {
             cal: "Islamic Tabular",
             name: "Jumu'atul-Wida",
             day: ["30 Ramadan", "29 Ramadan", "28 Ramadan", "27 Ramadan", "26 Ramadan", "25 Ramadan", "24 Ramadan"],
             link: "https://en.wikipedia.org/wiki/Jumu%27atul-Wida",
-            theDay: "Friday",
+            theExactDay: "Friday",
         },
         {
             cal: "Islamic Tabular",
@@ -2590,6 +3286,30 @@ function holidaycheck(thatday){
             day: [makeGregorianDate(-2), makeGregorianDate(-1), makeGregorianDate(0)],
         },
         {
+            link: "https://en.wikipedia.org/wiki/Bright_Week",
+            name: "Bright Week",
+            cal: "Julian",
+            day: [makeJulianDate(2), makeJulianDate(1), makeJulianDate(0), makeJulianDate(3), makeJulianDate(4), makeJulianDate(5), makeJulianDate(6)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Easter_Monday",
+            cal: "Julian",
+            name: "Easter Monday",
+            day: [makeJulianDate(2)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Laetare_Sunday",
+            cal: "Gregorian",
+            name: "Laetare Sunday",
+            day: [makeGregorianDate(2)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Easter_Monday",
+            cal: "Gregorian",
+            name: "Easter Monday",
+            day: [makeGregorianDate(2)],
+        },
+        {
             link: "https://en.wikipedia.org/wiki/Allhallowtide",
             name: "Allhallowtide",
             cal: "Gregorian",
@@ -2608,8 +3328,50 @@ function holidaycheck(thatday){
             day: [makeJulianDate(49)],
         },
         {
-            link: "https://en.wikipedia.org/wiki/Clean_Monday",
+            link: "https://en.wikipedia.org/wiki/Pentecost",
             name: "Pentecost",
+            cal: "Gregorian",
+            day: [makeGregorianDate(49)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Whit_Monday",
+            name: "Whit Monday",
+            cal: "Julian",
+            day: [makeJulianDate(50)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Whit_Monday",
+            name: "Whit Monday",
+            cal: "Gregorian",
+            day: [makeGregorianDate(50)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            name: "Trinity Sunday",
+            cal: "Julian",
+            day: [makeJulianDate(56)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            name: "Trinity Sunday",
+            cal: "Gregorian",
+            day: [makeGregorianDate(56)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Feast_of_Corpus_Christi",
+            name: "Feast of Corpus Christi",
+            cal: "Gregorian",
+            day: [makeGregorianDate(60), makeGregorianDate(63)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart",
+            name: "Feast of the Sacred Heart",
+            cal: "Gregorian",
+            day: [makeGregorianDate(68)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Clean_Monday",
+            name: "Clean Monday",
             cal: "Julian",
             day: [makeJulianDate(-48)],
         },
@@ -2618,6 +3380,30 @@ function holidaycheck(thatday){
             name: "Easter",
             cal: "Gregorian",
             day: [makeGregorianDate(0)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Good_Friday",
+            name: "Good Friday",
+            cal: "Gregorian",
+            day: [makeGregorianDate(-2)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Good_Friday",
+            name: "Good Friday",
+            cal: "Julian",
+            day: [makeJulianDate(-2)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Holy_Saturday",
+            name: "Holy Saturday",
+            cal: "Gregorian",
+            day: [makeGregorianDate(-1)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Holy_Saturday",
+            name: "Holy Saturday",
+            cal: "Julian",
+            day: [makeJulianDate(-1)],
         },
         {
             link: "https://en.wikipedia.org/wiki/Ash_Wednesday",
@@ -2642,12 +3428,6 @@ function holidaycheck(thatday){
             name: "Feast of the Ascension",
             cal: "Gregorian",
             day: [makeGregorianDate(39)],
-        },
-        {
-            link: "https://en.wikipedia.org/wiki/Pentecost",
-            name: "Pentecost",
-            cal: "Gregorian",
-            day: [makeGregorianDate(49)],
         },
         {
             link: "https://en.wikipedia.org/wiki/Palm_Sunday",
@@ -2741,7 +3521,7 @@ function holidaycheck(thatday){
         calclass = n.overrideCal != undefined ? n.overrideCal : n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
-            if(tt != undefined && n.day.includes(tt) && (n.theDay == undefined || n.theDay == thatday.Day)){
+            if(tt != undefined && n.day.includes(tt) && (n.theExactDay == undefined || n.theExactDay == thatday.Day)){
                 holidays.innerHTML += `<h2 class="${calclass}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem", "Chol HaMoed in Israel": "", "Chol HaMoed": "",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
@@ -2753,12 +3533,12 @@ function holidaycheck(thatday){
     for(n of natholidays){
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
-            if(tt != undefined && n.day.includes(tt) && (n.theDay == undefined || n.theDay == thatday.Day)){
-                nationalholidays.innerHTML += `<h2><a href="${n.link}" target="_blank">${n.name}${n.name.includes(n.country.slice(0,3)) ? `` : ` (${n.country})`}</a> ${emoji[n.country]}</h2>`
+            if(tt != undefined && n.day.includes(tt) && (n.theExactDay == undefined || n.theExactDay == thatday.Day)){
+                nationalholidays.innerHTML += `<h2><a href="${n.link}" target="_blank">${n.name}${n.name.includes(n.country.slice(0,3)) ? `` : ` (${n.country})`}</a> ${n.country.split(", ").map(g => emoji[g]).join("/") ?? ""}</h2>`
             }
         }
     }
-    if(nationalholidays.innerHTML != "") nationalholidays.innerHTML = "<h3>National Holidays</h3>" + nationalholidays.innerHTML
+    if(nationalholidays.innerHTML != "") nationalholidays.innerHTML = "<h3>National/Global Holidays</h3>" + nationalholidays.innerHTML
 
     //
 
@@ -2772,6 +3552,7 @@ function holidaycheck(thatday){
             myyear = tt.slice(-1)[0]
             monthlist = getYear(myyear,n.cal).map(u => u.split(":")[0])
             if(
+            (n.day.length > 2 && n.day.includes(myday + " " + mymonth)) ||
             (mymonth == n.day[0].split(" ").slice(1).join("") && +myday >= +n.day[0].split(" ")[0] && !(mymonth == n.day[1].split(" ").slice(1).join("") && +myday >= +n.day[1].split(" ")[0])) ||
             (mymonth == n.day[1].split(" ").slice(1).join("") && +myday <= +n.day[1].split(" ")[0]) ||
             (monthlist.indexOf(mymonth) > monthlist.indexOf(n.day[0].split(" ")[1]) && monthlist.indexOf(mymonth) < monthlist.indexOf(n.day[1].split(" ").slice(1).join("")))
@@ -2804,7 +3585,14 @@ function holidaycheck(thatday){
 
     //
     weekly.innerHTML = ""
-    if(thatday.Day == "Friday"){
+    if(thatday.day == "Wednesday"){
+        weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Eastern_Orthodox_Church" target="_blank">Orthodox Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Fasting_in_religion#Eastern_Orthodoxy_and_Oriental_Orthodoxy">Fasting Day</a></h2>`
+    }
+    else if(thatday.day == "Thursday"){
+        weekly.innerHTML += `<h2 class="druze"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Druze" target="_blank">Druze Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Druze#Other_beliefs">Weekly Meeting</a></h2>`
+    }
+    else if(thatday.Day == "Friday"){
+        weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Eastern_Orthodox_Church" target="_blank">Orthodox Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Fasting_in_religion#Eastern_Orthodoxy_and_Oriental_Orthodoxy">Fasting Day</a></h2>`
         weekly.innerHTML += `<h2 class="islamic_tabular"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Islam" target="_blank">Islam</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Friday_prayer">Friday prayer</a></h2>`
         weekly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Sabbath#Bah%C3%A1%CA%BC%C3%AD_Faith">Day of rest</a></h2>`
     }
@@ -2860,7 +3648,7 @@ function internationalize(dy, cl){
             dy = dy.replace(new RegExp(x, "g"), "۰۱۲۳۴۵۶۷۸۹"[x])
         }
         dy = dy.split(" ")
-        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما", "Panjik": "پنجیک", "Vishak": "ویشَک", "Nowruz Ma": "نوروز ما", "Korch Ma": "کورچ ما", "Aria Ma": "اریه ما", "Tir Ma": "تیر ما", "Mordal Ma": "موردال ما", "Shrir Ma": "شریر ما", "Amir Ma": "امیر ما", "Aval Ma": "آوَل ما", "Sia Ma": "سیا ما", "Dia Ma": "دیا ما", "Orfne Ma": "ورفًنه ما", "Esfandar Ma": "اسفندار ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${(cl == "Bahá'í" || cl == "Dilami") ? `` : " هـ ش"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mashíyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "Sharaf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما", "Panjik": "پنجیک", "Vishak": "ویشَک", "Nowruz Ma": "نوروز ما", "Korch Ma": "کورچ ما", "Aria Ma": "اریه ما", "Tir Ma": "تیر ما", "Mordal Ma": "موردال ما", "Shrir Ma": "شریر ما", "Amir Ma": "امیر ما", "Aval Ma": "آوَل ما", "Sia Ma": "سیا ما", "Dia Ma": "دیا ما", "Orfne Ma": "ورفًنه ما", "Esfandar Ma": "اسفندار ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${(cl == "Bahá'í" || cl == "Dilami") ? `` : " هـ ش"}</span>`
         return dy
     }
     else if(cl.startsWith("Islamic") || cl == "Kurdish"){

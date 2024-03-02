@@ -315,7 +315,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #zmanim, #prayertimes, #angles{
+#sunrisesunset, #zmanim, #prayertimes, #mandaictimes, #angles{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -323,7 +323,7 @@ h2{
     text-align: center;
     font-size: 19px;
 }
-#sunrisesunset a, #angles a, #zmanim a, #prayertimes a{
+#sunrisesunset a, #angles a, #zmanim a, #prayertimes a, #mandaictimes a{
     text-decoration: dotted underline;
     background-color: white;
 }

@@ -215,7 +215,7 @@ emoji = {
     'Ukraine': '🇺🇦',
     'Vatican City': '🇻🇦',
     'Kosovo': '🇽🇰',
-    'Åland Islands': '🇦🇽',
+    'Åland': '🇦🇽',
     'England': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
     'Scotland': '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
     'Wales': '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
@@ -244,6 +244,7 @@ emoji = {
     'Vanuatu': '🇻🇺',
     'Wallis and Futuna': '🇼🇫',
     'Mayotte': '🇾🇹',
+    'Global': "🌎",
 }
 
 calendars = {
@@ -442,7 +443,7 @@ calendars = {
                 days: 19,
             },
             {
-                name: "Mas͟híyyat",
+                name: "Mashíyyat",
                 days: 19,
             },
             {
@@ -462,7 +463,7 @@ calendars = {
                 days: 19,
             },
             {
-                name: "S͟haraf",
+                name: "Sharaf",
                 days: 19,
             },
             {
@@ -658,7 +659,7 @@ calendars = {
             monthcount: 11,
             year: 2849,
         },
-        bounds: [2850, 2849+T],
+        bounds: [2849, 2849+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Berber_calendar#Current_Julian_calendar",
     },
@@ -1952,8 +1953,8 @@ calendars = {
             }
         },
         startDay: {
-            dayinmonth: 0,
-            monthcount: 11,
+            dayinmonth: 30,
+            monthcount: 10,
             year: 445268, //445393
         },
         bounds: [445270, 445270+T],
