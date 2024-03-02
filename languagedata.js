@@ -2,6 +2,8 @@ languageData = {
   armenian: {
       script: "armenian",
       alphabet: {
+        "ու": "ւ",
+        "ւ": "u",
           "ա": "a",
           "բ": "b",
           "գ": "g",
@@ -40,7 +42,6 @@ languageData = {
           "և": "yev,ev",
           "օ": "ō",
           "ֆ": "f",
-          "ու": "u",
       },
       toIPA: {
           "a": "ɑ",
@@ -1394,7 +1395,7 @@ languageData = {
           ["l:ייִ", "l:יי", "l:ײַ", "l:צ", "t:דעמאָלט", "t:דרײַצן", "d:ביליאָן>billion"],
           ["l:ק", "l:פ", "l:ס", "l:ג", "t:לייקענען", "t:אָנגעשטאָפט", "d:באַרבאַדאָס>Barbados", "d:אוזבעקיסטאַן>Uzbekistan"],
           ["l:וּ", "l:בֿ", "l:פֿ", "l:כ", "t:אַלפֿאַרבאַנדיש", "t:קייסעך", "d:סורינאם>Suriname", "d:פערו>Peru"],
-          ["l:וו", "l:וי", "l:זש", "t:צוואַנציק", "t:וווּ", "t:אַלטהויכדײַטש", "d:אַזערבײַדזשאַן>Azerbaijan", "d:לוקסעמבורג>Luxembourg", "t:yidish"],
+          ["l:וו", "l:וי", "l:זש", "t:צוואַנציק", "t:וווּ", "t:אַלטהויכדײַטש", "d:אַזערבײַדזשאַן>Azerbaijan", "d:לוקסעמבורג>Luxembourg", /*"t:yidish"*/],
       ],
   },
   hebrew: {
@@ -2374,6 +2375,43 @@ languageData = {
         ["l:د", "l:ز", "l:آ", "t:آزاد", "l:ب", "l:ر", "t:پ", "t:ابری"]
     ]
   },
+  mandaic: {
+    script: "mandaic",
+    alphabet: {
+        "ࡀ": "a",
+        "ࡁ": "b",
+        "ࡂ": "g",
+        "ࡃ": "d",
+        "ࡄ": "h",
+        "ࡅ": "u",
+        "ࡆ": "z",
+        "ࡇ": "ẖ",
+        "ࡈ": "ṭ",
+        "ࡉ": "i",
+        "ࡊ": "k",
+        "ࡋ": "l",
+        "ࡌ": "m",
+        "ࡍ": "n",
+        "ࡎ": "s",
+        "ࡏ": "e",
+        "ࡐ": "p",
+        "ࡑ": "ṣ",
+        "ࡒ": "q",
+        "ࡓ": "r",
+        "ࡔ": "š",
+        "ࡕ": "t",
+        "ࡖ": "ḏ",
+    },
+    toIPA: {
+        "a": "ɑ",
+        "e": "ɛ",
+    },
+    latinKeyboard: [],
+    plan: [
+        ["i:Very important: This language is written from RIGHT TO LEFT", "l:ࡀ", "l:ࡍ", "t:ࡀࡍࡀࡍࡀ", "l:ࡉ", "t:ࡀࡉࡍࡀ⁩", "l:ࡌ", "t:ࡌࡉࡀ⁩"],
+        ["l:ࡐ", "t:ࡀࡐࡀ⁩", "l:ࡓ", "t:ࡌࡀࡓࡀ⁩", "l:ࡅ", "t:ࡀࡃࡅࡍࡀࡉ⁩", "t:ࡀࡐࡀࡓࡀ⁩"]
+    ]
+  },
   persian: {
     script: "arabic",
     alphabet: {
@@ -2510,7 +2548,7 @@ languageData = {
     nativeKeyboard: {
         "Backquote": "ё",
         "Minus": "ғ",
-        "Plus": "ҳ",
+        "Equal": "ҳ",
         "KeyQ": "й",
         "KeyW": "ц",
         "KeyE": "у",
@@ -2545,7 +2583,7 @@ languageData = {
         "Period": "ю",
     },
     plan: [ // ф п в ў ъ ю
-        ["l:с", "l:о", "l:т", "l:а", "t:соат", "l:э", "l:м", "t:эмас"],
+        ["l:с", "l:о", "l:т", "l:а", "t:соат", "t:t", "l:э", "l:м", "t:эмас"],
         ["l:и", "l:р", "l:х", "t:харита", "l:э", "l:ж", "l:к", "l:н", "d:Тожикистон>Tajikistan", "t:r"],
         ["l:қ", "l:з", "l:ғ", "t:Қозоғистон", "l:ҳ", "t:n", "l:д", "t:ҳақида", "l:у", "t:мавжуд"],
         ["l:ч", "l:е", "l:г", "t:ж", "l:ш", "t:чегарадош", "l:ц", "t:рицар", "t:q"],
@@ -2553,7 +2591,7 @@ languageData = {
         ["l:ф", "l:п", "t:в", "t:Европа", "d:Ҳунгарй>Hungary", "t:f", "l:ў", "l:в", "l:ъ", "d:Люксембург>Luxembourg", "t:қитъалари", "d:Замбия>Zambia"], //
     ]
 },
-dungan: {
+dungan: { 
     script: "cyrillic",
     alphabet: {
         "а": "a",
@@ -2622,7 +2660,7 @@ dungan: {
     nativeKeyboard: {
         "Backquote": "ё",
         "Minus": "ў",
-        "Plus": "ү",
+        "Equal": "ү",
         "KeyQ": "й",
         "KeyW": "ц",
         "KeyE": "у",
@@ -2653,7 +2691,7 @@ dungan: {
         "KeyV": "м",
         "KeyB": "и",
         "KeyN": "т",
-        "KeyM": "!",
+        "KeyM": "щ",
         "Comma": "б",
         "Period": "ю",
     },
@@ -2714,6 +2752,10 @@ scriptData = {
         cameral: false,
         direction: "ltr",
     },
+    mandaic: {
+        cameral: false,
+        direction: "rtl",
+    },
     hiragana: {
         cameral: false,
         direction: "ltr",
@@ -2769,5 +2811,5 @@ scriptData = {
         cameral: false,
         direction: "ltr",
         numerals: "୦୧୨୩୪୫୬୭୮୯",
-    }
+    },
 }

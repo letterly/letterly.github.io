@@ -73,7 +73,6 @@ function format(){
             break
         case "t":
             input.value = ""
-            console.log(otherdata.charCodeAt(0))
             sentence.textContent = `Transliterate this ${otherdata.length > 1 ? "word": "letter"} to ${otherdata.charCodeAt(0) > 800 ? "Latin" : language.charAt(0).toUpperCase() + language.slice(1)}`
             for(b of document.getElementsByClassName("key")) b.textContent = ""
             if(otherdata.charCodeAt(0) > 800){
@@ -124,7 +123,8 @@ function enter(){
 }
 function tlit(word){
     if(S.cameral) word = word.toLowerCase()
-    if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)].split(",")[0] + word.slice(1)
+    console.log(Array.from(word))
+    if(L.alphabet[Array.from(word)[0]]?.includes(",")) word = L.alphabet[Array.from(word)[0]].split(",")[0] + word.slice(1)
     for(f of Object.entries(L.alphabet)) word = word.replace(new RegExp(f[0].replace("X", ""), "g"), f[1].split(",")[f[1].split(",").length-1])
     return word
 }
