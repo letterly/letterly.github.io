@@ -377,24 +377,64 @@ function locationChange(){
     mandaictimes.innerHTML += `<a class="mandaean" href="https://en.wikipedia.org/wiki/Brakha#Prayer_times" target="_blank">Rahmia Ḏ-šuba Šaiia</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
     mandaictimes.innerHTML += `<a class="mandaean" href="https://en.wikipedia.org/wiki/Brakha#Prayer_times" target="_blank">Rahmia Ḏ-l-paina</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]}`
     //
-    directions = []
-    directions.push(Math.atan(Math.sin((35.235833 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(31.778056 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.235833 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //temple mount
-    directions.push(Math.atan(Math.sin((35.273258 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.200861 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.273258 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //mt gerizim
-    directions.push(Math.atan(Math.sin((39.8173 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(21.4241  * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((39.8173 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //mecca
-    directions.push(Math.atan(Math.sin((35.091944 - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(32.943611 * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((35.091944 - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI) //qiblih
+    holysites = {
+        Kaaba: {
+            lat: 21.4225,
+            long: 39.826167,
+        },
+        Gerizim: {
+            lat: 32.200861,
+            long: 35.273258,
+        },
+        Temple: {
+            lat: 31.778056,
+            long: 35.235833,
+        },
+        Qiblih: {
+            lat: 32.943611,
+            long: 35.091944,
+        },
+    }
 
+    function directionalize(lt, lng){
+        return Math.atan(Math.sin((lng - locinfo[1]) * (Math.PI / 180)) / ((Math.cos(locinfo[0] * (Math.PI / 180)) * (Math.tan(lt * (Math.PI / 180)))) - (Math.sin(locinfo[0] * Math.PI / 180) * Math.cos((lng - locinfo[1]) * (Math.PI / 180))))) * 180 / Math.PI
+    }
 
-
-    directions = directions.map(ee => Math.round(ee * 10) / 10 + "°" /*+ "(" + ['N ↑', 'NE ↗', 'E →', 'SE ↘', 'S ↓', 'SW ↙', 'W ←', 'NW ↖'][Math.round(ee / 45) % 8] + ")" */)
+    for(h of Object.keys(holysites)){
+        g = directionalize(holysites[h].lat, holysites[h].long)
+        if(holysites[h].long < locinfo[1]){
+            if(g < 0){
+                g = 360 + g
+            }
+            else{
+                g += 180
+            }
+        }
+        else{
+            if(g < 0) g = 180 + g
+        }
+        g = Math.round(g * 10) / 10
+        dir = ""
+        if(g < 22.5 || g > 337.5) dir = "(N ↑)"
+        else if(g > 292.5) dir = "(NW ↖)"
+        else if(g > 247.5) dir = "(W ←)"
+        else if(g > 202.5) dir = "(SW ↙)"
+        else if(g > 157.5) dir = "(S ↓)"
+        else if(g > 112.5) dir = "(SE ↘)"
+        else if(g > 67.5) dir = "(E →)"
+        else dir = "(NE ↗)"
+        holysites[h].direction = g + "° " + dir
+    }
 
     angles.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>: "
-    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + directions[0]
-    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Mizrah</a>: Face the <a href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    angles.innerHTML += " | <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + directions[1]
-    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + directions[2]
-    else angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Qibla</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + directions[3]
-    else angles.innerHTML += ` | <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Qiblih</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
+    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction
+    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
+    if(city != "Nablus") angles.innerHTML += " | <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
+    else angles.innerHTML += `<a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
+    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction
+    else angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
+    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
+    else angles.innerHTML += ` | <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
 }
 
 
@@ -3254,6 +3294,24 @@ function holidaycheck(thatday){
             name: "Enkutatash",
             cal: "Ethiopian",
             day: ["1 Meskerem"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Meskel",
+            name: "Meskel",
+            cal: "Ethiopian",
+            day: ["17 Meskerem"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Timkat",
+            name: "Timkat",
+            cal: "Ethiopian",
+            day: ["11 Tir"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Buhe",
+            name: "Buhe",
+            cal: "Ethiopian",
+            day: ["13 Nehasa"],
         },
         {
             link: "https://en.wikipedia.org/wiki/Ethiopian_Christmas",
