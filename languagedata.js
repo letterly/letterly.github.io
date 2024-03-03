@@ -2408,8 +2408,8 @@ languageData = {
     },
     latinKeyboard: [],
     plan: [
-        ["i:Very important: This language is written from RIGHT TO LEFT", "l:ࡀ", "l:ࡍ", "t:ࡀࡍࡀࡍࡀ", "l:ࡉ", "t:ࡀࡉࡍࡀ⁩", "l:ࡌ", "t:ࡌࡉࡀ⁩"],
-        ["l:ࡐ", "t:ࡀࡐࡀ⁩", "l:ࡓ", "t:ࡌࡀࡓࡀ⁩", "l:ࡅ", "t:ࡀࡃࡅࡍࡀࡉ⁩", "t:ࡀࡐࡀࡓࡀ⁩"]
+        ["i:Very important: This language is written from RIGHT TO LEFT", "l:ࡀ", "l:ࡍ", "t:ࡀࡍࡀࡍࡀ", "l:ࡉ", "t:ࡀࡉࡍࡀ", "l:ࡌ", "t:ࡌࡉࡀ"],
+        ["l:ࡐ", "t:ࡀࡐࡀ", "l:ࡓ", "t:ࡌࡀࡓࡀ", "l:ࡅ", "t:ࡀࡃࡅࡍࡀࡉ", "t:ࡀࡐࡀࡓࡀ"]
     ]
   },
   persian: {
