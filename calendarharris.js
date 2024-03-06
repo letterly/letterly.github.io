@@ -8,6 +8,7 @@ startDays = {
     "Hebrew": [1, "Shvat", 5660],
     "Islamic Tabular": [28, "Sha'ban", 1317],
     "Bengali": [18, "Poush", 1306],
+    "Mandaean": [19, "Ṣilmia", 445269],
 }
 
 hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
@@ -39,7 +40,7 @@ function toHarrisDate(date, cal){
         firstDays = dayWithinYear(startDays[cal].join(" "), cal).split("/")[1] - dayWithinYear(startDays[cal].join(" "), cal).split("/")[0] + 1
         intermediateYears = 0
         for(x = startDays[cal][2] + 1; x < leYear; x++){
-            //intermediateYears += daysWithinYear(getYear(x, cal))
+            intermediateYears += daysWithinYear(getYear(x, cal))
         }
         finalDays = dayWithinYear(date, cal).split("/")[0]
         total = firstDays + +intermediateYears + +finalDays
@@ -86,8 +87,8 @@ function dayWithinYear(date, cal){
 function daysInYear(calArray){
     return calArray.map(x => x.split(":")[1]).reduce((a, b) => +a + +b, 0)
 }
-
-//console.log(toHarrisDate("2 February 1901", "Gregorian"))
+console.log(toHarrisDate("2 January 1900", "Gregorian"))
+console.log(toHarrisDate("2 February 1901", "Gregorian"))
 
 function getYear(year, cal){
     /*

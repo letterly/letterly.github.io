@@ -1870,6 +1870,7 @@ calendars = {
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
     },
+    /*
     "Mandaean Reformed": {
         firstDay: "Sunday",
         dayStart: "Sunrise",
@@ -1961,6 +1962,7 @@ calendars = {
         era: "AA",
         link: "https://en.wikipedia.org/wiki/Mandaean_calendar",
     },
+    */
     Minguo: {
         firstDay: "Sunday",
         dayStart: "Midnight",

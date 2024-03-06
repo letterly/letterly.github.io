@@ -382,11 +382,19 @@ function locationChange(){
             lat: 21.4225,
             long: 39.826167,
         },
+        Kaaba2: {
+            lat: 21.4225,
+            long: 39.826167,
+        },
         Gerizim: {
             lat: 32.200861,
             long: 35.273258,
         },
         Temple: {
+            lat: 31.778056,
+            long: 35.235833,
+        },
+        Temple2: {
             lat: 31.778056,
             long: 35.235833,
         },
@@ -401,17 +409,32 @@ function locationChange(){
     }
 
     for(h of Object.keys(holysites)){
-        g = directionalize(holysites[h].lat, holysites[h].long)
-        if(holysites[h].long < locinfo[1]){
-            if(g < 0){
-                g = 360 + g
+        if(!h.endsWith("2")){
+            g = directionalize(holysites[h].lat, holysites[h].long)
+            if(holysites[h].long < locinfo[1]){
+                if(g < 0){
+                    g = 360 + g
+                }
+                else{
+                    g += 180
+                }
             }
             else{
-                g += 180
+                if(g < 0) g = 180 + g
             }
         }
         else{
-            if(g < 0) g = 180 + g
+            latA = locinfo[0] * Math.PI / 180
+            latB = holysites[h.slice(0,-1)].lat * Math.PI / 180
+            lonA = locinfo[1] * Math.PI / 180
+            lonB = holysites[h.slice(0,-1)].long * Math.PI / 180
+            Δφ = Math.log( Math.tan( latB / 2 + Math.PI / 4 ) / Math.tan( latA / 2 + Math.PI / 4) )
+            Δlon = Math.abs( lonA - lonB )
+            g = Math.atan2( Δlon ,  Δφ )
+            g = g * 180 / Math.PI
+            if(holysites[h].long < locinfo[1]){
+                g = 360 - g
+            }
         }
         g = Math.round(g * 10) / 10
         dir = ""
@@ -427,14 +450,14 @@ function locationChange(){
     }
 
     angles.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>: "
-    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction
-    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    if(city != "Nablus") angles.innerHTML += " | <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
-    else angles.innerHTML += `<a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
-    if(city != "Mecca") angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction
-    else angles.innerHTML += ` | <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(city != "Akko") angles.innerHTML += " | <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
-    else angles.innerHTML += ` | <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
+    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
+    if(city != "Nablus") angles.innerHTML += " <b>|</b> <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
+    else angles.innerHTML += ` <b>|</b> <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
+    if(city != "Mecca") angles.innerHTML += ` <b>|</b> <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    else angles.innerHTML += ` <b>|</b> <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
+    if(city != "Akko") angles.innerHTML += " <b>|</b> <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
+    else angles.innerHTML += ` <b>|</b> <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
 }
 
 
@@ -3639,7 +3662,7 @@ function holidaycheck(thatday){
     if(thatday["Bahá'í"].startsWith("1 ")){
         monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith" target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
     }
-    if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly celebrations</h3>" + monthly.innerHTML
+    if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly traditions</h3>" + monthly.innerHTML
 
     //
     weekly.innerHTML = ""
