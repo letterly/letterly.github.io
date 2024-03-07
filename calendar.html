@@ -6,7 +6,18 @@
         <title>Calendar</title>
     </head>
     <body>
-        <h1>Universal Calendar Project</h1>
+        <h1 id="header" onclick="reveal('menu')"">Universal Calendar Project</h1>
+        <div id="menu">
+            <h3>Select a section:</h3>
+            <button onclick="reveal('calendar')">Calendar Converter</button>
+            <button onclick="reveal('holidays')">Holidays</button>
+            <button onclick="reveal('name')">Name Days</button>
+            <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
+            <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
+            <button onclick="reveal('prayer')">Prayer Directions</button>
+            <button onclick="reveal('contactinfo')">Contact/Info</button>
+            <button><a href="calendar-changelog.html" target="_blank" style="text-decoration: none;">Updates</a></button>
+        </div>
         <div id="selection">
             <div class="selectblock" id="selectblockone">
                 <select id="thecalendar" onchange="reset()">
@@ -165,7 +176,6 @@
         <div id="prayertimes"></div>
         <div id="mandaictimes"></div>
         <div id="angles"></div>
-        <br>
         <div id="nationalholidays">
         </div>
         <div id="holidays">
@@ -177,10 +187,17 @@
         <div id="weekly">
         </div>
         <br>
-        <div id="answer">
-
+        <div id="answer"></div>
+        <div id="namediv"></div>
+        <div id="contactinfo">
+            <h3>The goal of this website is to develop calendar and time-related tools both for practical purposes and also to help unite people across various cultural, national, and religious divisions</h3>
+            <br>
+            <h3>This site was created by <a href="https://harrismowbray.com" target="_blank">Harris Mowbray</a> :)</h3>
+            <br>
+            <h3>Email me <a href="mailto:harrismowbray@yahoo.com">here</a> with any questions you have</h3>
         </div>
     </body>
+    <script src="nameday.js"></script>
     <script src="calendarharris.js"></script>
     <script src="calendar-data.js"></script>
     <script src="calendar.js"></script>

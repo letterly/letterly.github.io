@@ -351,12 +351,18 @@ function suntimes(lat, lng, tz, angl, relativehours) {
 function locationChange(){
     city = loc.options[loc.selectedIndex].text
     locinfo = loc.value.split(";")
-    sunrisesunset.innerHTML = "<span style='font-weight:700;color:black'>Sunrise/Sunset: </span>"
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunrise" target="_blank">Sunrise</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar noon</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]}`
+    sunrisesunset.innerHTML = ""
+    sunrisesunset.innerHTML += `<br><a href="https://en.wikipedia.org/wiki/Twilight#Astronomical_twilight" target="_blank">Astronomical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Nautical_twilight" target="_blank">Nautical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Civil_twilight" target="_blank">Civil Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunrise" target="_blank">Sunrise</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]}`
+    sunrisesunset.innerHTML += `<br><br><a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar Noon</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]}`
+    sunrisesunset.innerHTML += `<br><br><a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Civil_twilight" target="_blank">Civil Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Nautical_twilight" target="_blank">Nautical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1]} | `
+    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Astronomical_twilight" target="_blank">Astronomical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[1]}`
     //
-    zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim: </a>"
+    zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim</a>: "
     zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
     zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Misheyakir target="_blank">Misheyakir</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -10.2)[0]} | `
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Sof_Zman_Kriyat_Shema" class="hebrew" target="_blank">Sof Zman Kriyat Shema</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 3)[0]} | `
@@ -449,15 +455,15 @@ function locationChange(){
         holysites[h].direction = g + "° " + dir
     }
 
-    angles.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>: "
-    if(city != "Jerusalem") angles.innerHTML += "<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
-    else angles.innerHTML += `<a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    if(city != "Nablus") angles.innerHTML += " <b>|</b> <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
-    else angles.innerHTML += ` <b>|</b> <a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
-    if(city != "Mecca") angles.innerHTML += ` <b>|</b> <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
-    else angles.innerHTML += ` <b>|</b> <a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(city != "Akko") angles.innerHTML += " <b>|</b> <a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
-    else angles.innerHTML += ` <b>|</b> <a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
+    angles.innerHTML = "<br><a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>"
+    if(city != "Jerusalem") angles.innerHTML += "<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    else angles.innerHTML += `<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
+    if(city != "Nablus") angles.innerHTML += "<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
+    else angles.innerHTML += `<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
+    if(city != "Mecca") angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    else angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
+    if(city != "Akko") angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
+    else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
 }
 
 
@@ -740,9 +746,10 @@ function convert(){
     🟨 (Monday) ⬜ (Not applicable)
     </div>
     </div>`
-    answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Updates</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+    //answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Updates</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
     holidaycheck(thatspecificday)
     locationChange()
+    nameday(thatspecificday)
 }
 
 
@@ -3666,10 +3673,10 @@ function holidaycheck(thatday){
 
     //
     weekly.innerHTML = ""
-    if(thatday.day == "Wednesday"){
+    if(thatday.Day == "Wednesday"){
         weekly.innerHTML += `<h2 class="gregorian"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Eastern_Orthodox_Church" target="_blank">Orthodox Christianity</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Fasting_in_religion#Eastern_Orthodoxy_and_Oriental_Orthodoxy">Fasting Day</a></h2>`
     }
-    else if(thatday.day == "Thursday"){
+    else if(thatday.Day == "Thursday"){
         weekly.innerHTML += `<h2 class="druze"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Druze" target="_blank">Druze Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Druze#Other_beliefs">Weekly Meeting</a></h2>`
     }
     else if(thatday.Day == "Friday"){
@@ -3701,7 +3708,6 @@ function holidaycheck(thatday){
     if(weekly.innerHTML != "") weekly.innerHTML = "<h3>Holy day of week</h3>" + weekly.innerHTML
 
 }
-
 
 function internationalize(dy, cl){
     if(cl == "Gregorian" || cl.includes("Julian") || cl.includes("French")){
@@ -4308,3 +4314,87 @@ function generateYear(y, n){
 
 
 reset()
+
+
+
+function reveal(subject){
+    if(subject != "menu"){
+        header.textContent = "<= Return to menu"
+        menu.style.display = "none"
+    }
+    else{
+        header.textContent = "Universal Calendar Converter"
+        menu.style.display = "block"
+        for(oooo of "selection, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+    }
+
+    if(subject == "calendar"){
+        selectblockone.style.display = "block"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "block"
+        dayname.style.display = "block"
+        selection.style.display = "block"
+        answer.style.display = "block"
+    }
+    else if(subject == "salahprayerzmanim"){
+        selectblockone.style.display = "block"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "block"
+        dayname.style.display = "block"
+        selection.style.display = "block"
+        selectblockfive.style.display = "block"
+        zmanim.style.display = "block"
+        prayertimes.style.display = "block"
+        mandaictimes.style.display = "block"
+    }
+    else if(subject == "prayer"){
+        selection.style.display = "block"
+        selectblockfive.style.display = "block"
+        selectblockone.style.display = "none"
+        selectblocktwo.style.display = "none"
+        findany.style.display = "none"
+        dayname.style.display = "none"
+        angles.style.display = "block"
+    }
+    else if(subject == "sunrisesunset"){
+        selectblockone.style.display = "block"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "block"
+        dayname.style.display = "block"
+        selection.style.display = "block"
+        selectblockfive.style.display = "block"
+        sunrisesunset.style.display = "block"
+    }
+    else if(subject == "holidays"){
+        selectblockone.style.display = "block"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "block"
+        dayname.style.display = "block"
+        selection.style.display = "block"
+        nationalholidays.style.display = "block"
+        holidays.style.display = "block"
+        observances.style.display = "block"
+        monthly.style.display = "block"
+        weekly.style.display = "block"
+    }
+    if(subject == "contactinfo"){
+        contactinfo.style.display = "block"
+    }
+    if(subject == "name"){
+        selectblockone.style.display = "block"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "block"
+        dayname.style.display = "block"
+        selection.style.display = "block"
+        namediv.style.display = "block"
+    }
+}
+ 
+
+function nameday(theday){
+    namediv.innerHTML = ""
+    nameoftheday = theday.Gregorian.split(" ").slice(0,2).join(" ")
+    for(countries of Object.entries(namedaycal)){
+        if(countries[1][nameoftheday] != "-") namediv.innerHTML += (countries[0] + " " + emoji[countries[0]] + ": " + countries[1][nameoftheday]) + "<br>"
+    }
+}

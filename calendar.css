@@ -13,9 +13,27 @@ body{
     background-color: white;
 }
 
+#selection, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv{
+    display: none;
+}
+#contactinfo{
+    padding: 24px;
+}
 #answer{
     width: 100%;
-    display: block;
+}
+
+#menu button{
+    font-size: 56px;
+    background-color: coral;
+    margin: 5px;
+    border: none;
+}
+#menu button:hover{
+    color: white;
+}
+#menu button a:hover{
+    color: white;
 }
 
 #thecalendar{
@@ -315,13 +333,13 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #zmanim, #prayertimes, #mandaictimes, #angles{
+#sunrisesunset, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
     margin-right: 10vw;
     text-align: center;
-    font-size: 19px;
+    font-size: 28px;
 }
 #sunrisesunset a, #angles a, #zmanim a, #prayertimes a, #mandaictimes a{
     text-decoration: dotted underline;
