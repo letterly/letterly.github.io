@@ -3,11 +3,15 @@
     src: url(fonts/Mont.ttf);
 }
 @font-face {
+    font-family: "Noto";
+    src: url(fonts/Noto.ttf);
+}
+@font-face {
     font-family: "Mayan";
     src: url(fonts/Mayan.ttf);
 }
 *{
-    font-family: 'Montserrat';
+    font-family: 'Noto';
 }
 body{
     background-color: white;
@@ -21,6 +25,15 @@ body{
 }
 #answer{
     width: 100%;
+}
+
+td{
+    font-size: 24px;
+    width: 30%;
+    border-bottom: solid black 1px;
+}
+td:first-child{
+    text-align: right;
 }
 
 #menu button{

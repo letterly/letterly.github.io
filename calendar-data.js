@@ -443,7 +443,7 @@ calendars = {
                 days: 19,
             },
             {
-                name: "Mashíyyat",
+                name: "Mas͟híyyat",
                 days: 19,
             },
             {
@@ -463,7 +463,7 @@ calendars = {
                 days: 19,
             },
             {
-                name: "Sharaf",
+                name: "S͟haraf",
                 days: 19,
             },
             {
