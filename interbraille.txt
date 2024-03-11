@@ -1,5 +1,8 @@
 InterBraille Updates
 
+11 Mar 2024
+-Chukchi language added
+
 29 Feb 2024
 -Fixed issues with the Ponca alphabet
 
@@ -44,64 +47,64 @@ InterBraille Updates
 18 Nov 2023
 -Added Fulani (Adlam) Braille
 
-5 October 2023
+5 Oct 2023
 -Added the phrase for "write here" in Breton
 
-29 September 2023
+29 Sep 2023
 -Fixed an error in Breton Braille
 
-11 September 2023
+11 Sep 2023
 -Added Breton [draft]
 
-2 September 2023
+2 Sep 2023
 -Added Iñupiaq 
 
-1 September 2023
+1 Sep 2023
 -Added Dutch (Netherlands) and Papiamentu
 -Specified that Cornish and Manx are drafts
 
-25 August 2023
+25 Aug 2023
 -Added Cornish and Manx
 -Removed spellcheck from the text input
 
-21 August 2023
+21 Aug 2023
 -Added Northern and Southern Sami
 
-20 August 2023
+20 Aug 2023
 -Added accented vowels in Macedonian
 -Added the Bosnian, Bulgarian, Serbian, and Slovak languages
 -Added Áá in Czech Braille
 
-19 August 2023
+19 Aug 2023
 -Added Esperanto, Estonian, Latvian, and Romanian
 -Fixed issue with text which began with numbers
 
-17 August 2023
+17 Aug 2023
 Added Danish, Greenlandic, and Norwegian
 
-16 August 2023
+16 Aug 2023
 Added Swedish (Finland) and Greek
 
-9 August 2023
+9 Aug 2023
 Added Swedish and Faroese
 
-4 August 2023
+4 Aug 2023
 Added Icelandic
 
-3 August 2023
+3 Aug 2023
 Added Irish, Hindi, Kyrgyz, and Tajik braille
 
-2 August 2023
+2 Aug 2023
 Added English Grade 2 braille, it may have some issues though
 Added Urdu braille, the variant used in Pakistan
 Added both Eastern and Western Armenian braille
 Added Lao and Russian braille
 
-1 August 2023
+1 Aug 2023
 Added the Arabic and Thai languages
 Fixed alphabetical order for some languages
 
-31 July 2023
+31 Jul 2023
 Added the Amharic, Czech, Filipino, Lithuanian, and Luxembourgish languages
 Fixed issues with dotless i in Azerbaijani
 Reorganized the way digraphs/trigraphs are displayed
@@ -109,25 +112,25 @@ Greatly improved the German braille alphabet
 Improved things about alphabetical-order collation
 Added Antoine numerals to French and Luxembourgish
 
-30 July 2023
+30 Jul 2023
 Braille letters are now listed in alphabetical order (according to Unicode at least)
 Braille punctuation is now listen separately from the braille letters
 Fixed a capitalization issue with digraphs/trigraphs
 Added the Albanian, Azerbaijani, Belarusian, and Macedonian, Ukrainian languages 
 
-27 July 2023
+27 Jul 2023
 Added link to my personal website
 Changed some of the website's appearance
 Now the braille alphabet is displayed beneath the converter
 
-15 July 2023
+15 Jul 2023
 Fixed some things in Polish braille
 Fixed an issue with converting the degree sign °
 Added () [] and {} to every language that didn't have them
 Then I added Croatian, French, German, Hebrew, Hungarian, Slovene, and Turkish :)
 Fixed the code for "]" in English
 
-14 July 2023
+14 Jul 2023
 I published the website!
 You can convert English, Georgian, Polish, Portuguese, and Spanish text to braille
 
