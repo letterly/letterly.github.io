@@ -351,16 +351,15 @@ function suntimes(lat, lng, tz, angl, relativehours) {
 function locationChange(){
     city = loc.options[loc.selectedIndex].text
     locinfo = loc.value.split(";")
-    sunrisesunset.innerHTML = ""
-    sunrisesunset.innerHTML += `<br><a href="https://en.wikipedia.org/wiki/Twilight#Astronomical_twilight" target="_blank">Astronomical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Nautical_twilight" target="_blank">Nautical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Civil_twilight" target="_blank">Civil Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Sunrise" target="_blank">Sunrise</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]}`
-    sunrisesunset.innerHTML += `<br><br><a href="https://en.wikipedia.org/wiki/Noon#Solar_noon" target="_blank">Solar Noon</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]}`
-    sunrisesunset.innerHTML += `<br><br><a href="https://en.wikipedia.org/wiki/Sunset" target="_blank">Sunset</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Civil_twilight" target="_blank">Civil Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Nautical_twilight" target="_blank">Nautical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1]} | `
-    sunrisesunset.innerHTML += `<a href="https://en.wikipedia.org/wiki/Twilight#Astronomical_twilight" target="_blank">Astronomical Twilight</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[1]}`
+    astrotwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]
+    nauticaltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]
+    civiltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
+    snrs.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
+    mddy.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]
+    snst.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]
+    civiltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1]
+    nauticaltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1]
+    astrotwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[1]
     //
     zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim</a>: "
     zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
@@ -408,6 +407,10 @@ function locationChange(){
             lat: 32.943611,
             long: 35.091944,
         },
+        Sultan2: {
+            lat: 35.128570, 
+            long: 46.205226,
+        },
     }
 
     function directionalize(lt, lng){
@@ -431,9 +434,9 @@ function locationChange(){
         }
         else{
             latA = locinfo[0] * Math.PI / 180
-            latB = holysites[h.slice(0,-1)].lat * Math.PI / 180
+            latB = holysites[h].lat * Math.PI / 180
             lonA = locinfo[1] * Math.PI / 180
-            lonB = holysites[h.slice(0,-1)].long * Math.PI / 180
+            lonB = holysites[h].long * Math.PI / 180
             Δφ = Math.log( Math.tan( latB / 2 + Math.PI / 4 ) / Math.tan( latA / 2 + Math.PI / 4) )
             Δlon = Math.abs( lonA - lonB )
             g = Math.atan2( Δlon ,  Δφ )
@@ -456,14 +459,16 @@ function locationChange(){
     }
 
     angles.innerHTML = "<br><a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>"
-    if(city != "Jerusalem") angles.innerHTML += "<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    if(!city.startsWith("Jerusalem")) angles.innerHTML += "<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
     else angles.innerHTML += `<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    if(city != "Nablus") angles.innerHTML += "<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
+    if(!city.startsWith("Nablus")) angles.innerHTML += "<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
     else angles.innerHTML += `<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
-    if(city != "Mecca") angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
+    if(!city.startsWith("Mecca")) angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
     else angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(city != "Akko") angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
+    if(!city.startsWith("Akko")) angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
     else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
+    angles.innerHTML += "<br><br><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a>: " + holysites.Sultan2.direction
+    dateify()
 }
 
 
@@ -747,11 +752,61 @@ function convert(){
     </div>
     </div>`
     //answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Updates</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
+
+    dateToFormat = thatspecificday.Gregorian.split(" ")
+    YY = dateToFormat[2] % 100
+    YYYY = dateToFormat[2]
+    M = jmlist.indexOf(dateToFormat[1]) + 1
+    MM = M > 10 ? M : "0" + M
+    MMMM = dateToFormat[1]
+    D = dateToFormat[0]
+    DD = dateToFormat[0] > 10 ? dateToFormat[0] : "0" + dateToFormat[0]
+
     holidaycheck(thatspecificday)
     locationChange()
     nameday(thatspecificday)
 }
 
+
+function eastArabic(nm){
+    for(x = 0; x <= 9; x++) nm = nm.replace(new RegExp(x, "g"), "۰۱۲۳۴۵۶۷۸۹"[x])
+    return nm
+}
+
+function dateify(){
+    moji = loc.options[loc.selectedIndex].text.split(" ").slice(-1)[0]
+    dateFormat = {
+        "🇦🇺": `${D}/${M}/${YY}`,
+        "🇺🇸": `${M}/${D}/${YY}`,
+        "🇮🇱": `${DD}-${MM}-${YYYY}`,
+        "🇰🇿": `${YYYY}.${DD}.${MM}`,
+        "🇵🇱": `${D}.${M}.${YY}`,
+        //
+        "🇱🇰": `${YYYY}-${MM}-${DD}`,
+        "🇨🇦": `${YYYY}-${MM}-${DD}`,
+        "🇨🇳": `${YYYY}-${MM}-${DD}`,
+        //
+        "🇲🇦": `${YYYY}/${MM}/${DD}`,
+        "🇯🇵": `${YYYY}/${MM}/${DD}`,
+        //
+        "🇪🇬": `${eastArabic(YYYY)}/${eastArabic(MM)}/${eastArabic(DD)}`,
+        "🇸🇦": `${eastArabic(YYYY)}/${eastArabic(MM)}/${eastArabic(DD)}`,
+        "🇮🇶": `${eastArabic(YYYY)}/${eastArabic(MM)}/${eastArabic(DD)}`,
+        //
+        "🇸🇳": `${DD}/${MM}/${YYYY}`,
+        "🇨🇩": `${DD}/${MM}/${YYYY}`,
+        "🇵🇸": `${DD}/${MM}/${YYYY}`,
+        "🇧🇷": `${DD}/${MM}/${YYYY}`,
+        //
+        "🇮🇩": `${DD}/${MM}/${YY}`,
+        "🇲🇽": `${DD}/${MM}/${YY}`,
+        //
+        "🇺🇦": `${DD}.${MM}.${YY}`,
+        "🇬🇪": `${DD}.${MM}.${YY}`,
+        //
+    }
+    format.textContent = dateFormat[moji]
+}
 
 function holidaycheck(thatday){
     d = thatday.Day
@@ -3109,7 +3164,7 @@ function holidaycheck(thatday){
         {
             cal: "Islamic Tabular",
             name: "Eid al-Adha",
-            day: ["10 Dhu al-Hijjah"],
+            day: ["10 Dhu al-Hijjah", "11 Dhu al-Hijjah", "12 Dhu al-Hijjah", "13 Dhu al-Hijjah"],
             link: "https://en.wikipedia.org/wiki/Eid_al-Adha",
         },
         {
@@ -4323,9 +4378,9 @@ function reveal(subject){
         menu.style.display = "none"
     }
     else{
-        header.textContent = "Universal Calendar Converter"
+        header.textContent = "Universal Calendar Project"
         menu.style.display = "block"
-        for(oooo of "selection, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "selection, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
     }
 
     if(subject == "calendar"){
@@ -4377,16 +4432,25 @@ function reveal(subject){
         monthly.style.display = "block"
         weekly.style.display = "block"
     }
-    if(subject == "contactinfo"){
+    else if(subject == "contactinfo"){
         contactinfo.style.display = "block"
     }
-    if(subject == "name"){
+    else if(subject == "name"){
         selectblockone.style.display = "block"
         selectblocktwo.style.display = "block"
         findany.style.display = "block"
         dayname.style.display = "block"
         selection.style.display = "block"
         namediv.style.display = "block"
+    }
+    else if(subject == "date"){
+        format.style.display = "block"
+        selection.style.display = "block"
+        selectblockfive.style.display = "block"
+        selectblockone.style.display = "none"
+        selectblocktwo.style.display = "none"
+        findany.style.display = "none"
+        dayname.style.display = "none"
     }
 }
  

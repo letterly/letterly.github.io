@@ -17,7 +17,7 @@ body{
     background-color: white;
 }
 
-#selection, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv{
+#selection, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv{
     display: none;
 }
 #contactinfo{
@@ -201,6 +201,10 @@ span{
     background-color: steelblue;
     color: steelblue;
 }
+.yarsan{ 
+    background-color: mediumvioletred;
+    color: mediumvioletred;
+}
 .druze{ 
     background-color: lightsalmon;
     color: lightsalmon;
@@ -346,13 +350,17 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv{
+#sunrisesunset, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
     margin-right: 10vw;
     text-align: center;
-    font-size: 28px;
+    font-size: 32px;
+    margin-top: 1vw;
+}
+#format{
+    font-size: 54px !important;
 }
 #sunrisesunset a, #angles a, #zmanim a, #prayertimes a, #mandaictimes a{
     text-decoration: dotted underline;
