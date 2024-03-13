@@ -1,5 +1,9 @@
 InterBraille Updates
 
+13 Mar 2024
+-Fixed some glitches for a couple languages
+-Added Jamska [proposal]
+
 11 Mar 2024
 -Chukchi language added
 
