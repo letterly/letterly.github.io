@@ -769,6 +769,7 @@ function convert(){
 
 
 function eastArabic(nm){
+    nm = "" + nm
     for(x = 0; x <= 9; x++) nm = nm.replace(new RegExp(x, "g"), "۰۱۲۳۴۵۶۷۸۹"[x])
     return nm
 }
