@@ -3764,6 +3764,23 @@ function holidaycheck(thatday){
 
 }
 
+
+
+function parseString(urString){
+    finArray = []
+    urString = urString.split(" ")
+    for(ur of urString){
+        if(ur.endsWith("I")){
+            finArray[finArray.length - 1] += " " + ur
+        }
+        else{
+            finArray[finArray.length] = ur
+        }
+    }
+    return finArray
+}
+
+
 function internationalize(dy, cl){
     if(cl == "Gregorian" || cl.includes("Julian") || cl.includes("French")){
         dy = dy.split(" ")
@@ -3779,7 +3796,7 @@ function internationalize(dy, cl){
         return dy.join(" ")
     }
     else if(cl == "Hebrew"){
-        dy = dy.split(" ")
+        dy = parseString(dy)
         dy[0] = numeralize(dy[0], "Hebrew")
         dy[1] = {"Tishrei": "תשרי‎", "Cheshvan": "חשון", "Kislev": "כסלו", "Tevet": "טבת", "Shvat": "שבט", "Adar": "אדר", "Adar I": "אדר א׳", "Adar II": "אדר ב׳", "Nisan": "ניסן", "Iyar": "אייר", "Sivan": "סיון", "Tammuz": "תמוז", "Av": "אב‎", "Elul": "אלול"}[dy[1]]
         dy[2] = numeralize(dy[2], "Hebrew")
@@ -3797,7 +3814,7 @@ function internationalize(dy, cl){
         for(x = 0; x <= 9; x++){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
-        dy = dy.split(" ")
+        dy = parseString(dy)
         dy = `<span dir="rtl">${dy[0]} ${{"Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
         return dy
     }
@@ -3848,7 +3865,8 @@ function internationalize(dy, cl){
     }
     else if(cl.startsWith("Mandaean")){
         dy = dy.split(" ")
-        dy = `<span dir="rtl">${dy[0]} ${{"Daula": "ࡃࡀࡅࡋࡀ", "Nuna": "ࡍࡅࡍࡀ", "ʿmbra": "ࡏࡌࡁࡓࡀ", "Taura": "ࡕࡀࡅࡓࡀ", "Ṣilmia": "ࡑࡉࡋࡌࡉࡀ", "Sarṭana": "ࡎࡀࡓࡈࡀࡍࡀ", "Aria": "ࡀࡓࡉࡀ", "Šumbulta": "ࡔࡅࡌࡁࡅࡋࡕࡀ", "Qaina": "ࡒࡀࡉࡍࡀ", "Arqba": "ࡀࡓࡒࡁࡀ", "Hiṭia": "ࡄࡉࡈࡉࡀ", "Gadia": "ࡂࡀࡃࡉࡀ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}</span>`
+        console.log(dy)
+        dy = `<span dir="rtl">${dy[0]} ${{"Daula": "ࡃࡀࡅࡋࡀ", "Nuna": "ࡍࡅࡍࡀ", "ʿmbra": "ࡏࡌࡁࡓࡀ", "Taura": "ࡕࡀࡅࡓࡀ", "Ṣilmia": "ࡑࡉࡋࡌࡉࡀ", "Sarṭana": "ࡎࡀࡓࡈࡀࡍࡀ", "Aria": "ࡀࡓࡉࡀ", "Šumbulta": "ࡔࡅࡌࡁࡅࡋࡕࡀ", "Qaina": "ࡒࡀࡉࡍࡀ", "Arqba": "ࡀࡓࡒࡁࡀ", "Hiṭia": "ࡄࡉࡈࡉࡀ", "Gadia": "ࡂࡀࡃࡉࡀ", "Parwanaya": "ࡐࡀࡓࡅࡀࡍࡀࡉࡉࡀ"}[dy.slice(1, -1).join(" ")]} ${dy[2]}</span>`
         return dy
     }
     else if(cl == "Berber"){
