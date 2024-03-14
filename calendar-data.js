@@ -167,7 +167,7 @@ emoji = {
     "New Zealand": "🇳🇿",
     'Belgium': '🇧🇪',
     'Bulgaria': '🇧🇬',
-    'Belarus': '🇧🇾',
+    'Belarus': '⚪🔴⚪',
     'Switzerland': '🇨🇭',
     'Cyprus': '🇨🇾',
     'Czechia': '🇨🇿',
