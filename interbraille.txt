@@ -1,5 +1,8 @@
 InterBraille Updates
 
+16 Mar 2024
+-Added a second Yiddish proposal
+
 13 Mar 2024
 -Fixed some glitches for a couple languages
 -Added Jamska [proposal]
