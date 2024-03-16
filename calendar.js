@@ -120,6 +120,9 @@ function religionize(cl, att){
         "Assyrians": {
             link: "https://en.wikipedia.org/wiki/Assyrian_people",
         },
+        "East Slavs": {
+            link: "https://en.wikipedia.org/wiki/East_Slavs",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -469,6 +472,7 @@ function locationChange(){
     else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
     angles.innerHTML += "<br><br><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a>: " + holysites.Sultan2.direction
     dateify()
+    timeify(locinfo[2])
 }
 
 
@@ -757,10 +761,10 @@ function convert(){
     YY = dateToFormat[2] % 100
     YYYY = dateToFormat[2]
     M = jmlist.indexOf(dateToFormat[1]) + 1
-    MM = M > 10 ? M : "0" + M
+    MM = M >= 10 ? M : "0" + M
     MMMM = dateToFormat[1]
     D = dateToFormat[0]
-    DD = dateToFormat[0] > 10 ? dateToFormat[0] : "0" + dateToFormat[0]
+    DD = dateToFormat[0] >= 10 ? dateToFormat[0] : "0" + dateToFormat[0]
 
     holidaycheck(thatspecificday)
     locationChange()
@@ -807,6 +811,27 @@ function dateify(){
         //
     }
     format.textContent = dateFormat[moji]
+}
+function timeify(tz){
+    paren = ""
+    newdate = new Date()
+    hr = newdate.getHours()
+    min = newdate.getMinutes()
+    bruh = newdate.getTimezoneOffset() / 60
+    hr += (+tz + +bruh)
+    console.log(hr)
+    if(hr < 0){
+       hr = 24 + hr
+       paren = " (yesterday)"
+    }
+    else if(hr > 24){
+        hr -= 24
+        parent = " (tomorrow)"
+    }
+    if(hr < 10) hr = "0" + hr
+    if(min < 10) min = "0" + min
+    tz = (tz < 0 ? tz : "+" + tz)
+    timenow.innerHTML = hr + ":" + min + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B") + "'>" + tz + "</a>"
 }
 
 function holidaycheck(thatday){
@@ -1076,6 +1101,13 @@ function holidaycheck(thatday){
             day: ["3 July"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Belarus)",
+            country: "Belarus",
+        },
+        {
+            cal: "Gregorian",
+            day: ["25 March"],
+            name: "Freedom Day",
+            link: "https://en.wikipedia.org/wiki/Freedom_Day_(Belarus)",
             country: "Belarus",
         },
         {
@@ -2493,6 +2525,13 @@ function holidaycheck(thatday){
 
     normalholidays = [
         {
+            name: "Kupala Night",
+            link: "https://en.wikipedia.org/wiki/Kupala_Night",
+            cal: "Julian",
+            day: ["July 6", "July 7"],
+            sect: "East Slavs",
+        },
+        {
             cal: "Gregorian",
             day: ["6 January"],
             link: "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
@@ -2643,6 +2682,12 @@ function holidaycheck(thatday){
             day: ["8 ʻAẓamat"],
             link: "https://en.wikipedia.org/wiki/B%C3%A1b#Declaration_to_Mull%C3%A1_Husayn",
             name: "Declaration of the Báb",
+        },
+        {
+            cal: "Bahá'í",
+            day: ["1 Ayyám-i-Há", "2 Ayyám-i-Há", "3 Ayyám-i-Há" , "4 Ayyám-i-Há" , "5 Ayyám-i-Há"],
+            link: "https://en.wikipedia.org/wiki/Ayy%C3%A1m-i-H%C3%A1",
+            name: "Festival of Ayyám-i-Há",
         },
         {
             cal: "Bahá'í",
@@ -3032,6 +3077,13 @@ function holidaycheck(thatday){
             name: "Hanukkah",
             day: thatday.Hebrew != undefined ? ["25 Kislev", "26 Kislev", "27 Kislev", "28 Kislev", "29 Kislev", "1 Tevet", "2 Tevet", (hebrewCons.charAt(thatday.Hebrew.split(" ").slice(-1)[0] - 5660) == "d" ? "3 Tevet" : "30 Kislev")] : ["none"],
             link: "https://en.wikipedia.org/wiki/Hanukkah",
+        },
+        {
+            sect: "East Slavs",
+            name: "Maslenitsa",
+            link: "https://en.wikipedia.org/wiki/Maslenitsa",
+            cal: "Julian",
+            day: [makeJulianDate(-55), makeJulianDate(-54), makeJulianDate(-53), makeJulianDate(-52), makeJulianDate(-51), makeJulianDate(-50), makeJulianDate(-49)],
         },
         {
             cal: "Hebrew",
@@ -3722,7 +3774,7 @@ function holidaycheck(thatday){
     if(thatday["Islamic Tabular"].startsWith("1") && "345".includes(thatday["Islamic Tabular"].charAt(1))){
         monthly.innerHTML += `<h2 class="islamic_tabular"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Islam" target="_blank">Islam</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/The_White_Days">White Days</a></h2>`
     }
-    if(thatday["Bahá'í"].startsWith("1 ")){
+    if(thatday["Bahá'í"].startsWith("1 ") && !thatday["Bahá'í"].includes("-")){
         monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith" target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
     }
     if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly traditions</h3>" + monthly.innerHTML
@@ -3803,20 +3855,20 @@ function internationalize(dy, cl){
         dy[2] = numeralize(dy[2], "Hebrew")
         return dy.join(" ")
     }
-    else if(cl == "Bahá'í" || cl == "Solar Hijri" || cl == "Tabarian" || cl == "Dilami"){
+    else if(cl == "Solar Hijri" || cl == "Tabarian" || cl == "Dilami"){
         for(x = 0; x <= 9; x++){
             dy = dy.replace(new RegExp(x, "g"), "۰۱۲۳۴۵۶۷۸۹"[x])
         }
         dy = dy.split(" ")
-        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mashíyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما", "Panjik": "پنجیک", "Vishak": "ویشَک", "Nowruz Ma": "نوروز ما", "Korch Ma": "کورچ ما", "Aria Ma": "اریه ما", "Tir Ma": "تیر ما", "Mordal Ma": "موردال ما", "Shrir Ma": "شریر ما", "Amir Ma": "امیر ما", "Aval Ma": "آوَل ما", "Sia Ma": "سیا ما", "Dia Ma": "دیا ما", "Orfne Ma": "ورفًنه ما", "Esfandar Ma": "اسفندار ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${(cl == "Bahá'í" || cl == "Dilami") ? `` : " هـ ش"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما", "Panjik": "پنجیک", "Vishak": "ویشَک", "Nowruz Ma": "نوروز ما", "Korch Ma": "کورچ ما", "Aria Ma": "اریه ما", "Tir Ma": "تیر ما", "Mordal Ma": "موردال ما", "Shrir Ma": "شریر ما", "Amir Ma": "امیر ما", "Aval Ma": "آوَل ما", "Sia Ma": "سیا ما", "Dia Ma": "دیا ما", "Orfne Ma": "ورفًنه ما", "Esfandar Ma": "اسفندار ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${(cl == "Bahá'í" || cl == "Dilami") ? `` : " هـ ش"}</span>`
         return dy
     }
-    else if(cl.startsWith("Islamic") || cl == "Kurdish"){
+    else if(cl == "Bahá'í" || cl.startsWith("Islamic") || cl == "Kurdish" ){
         for(x = 0; x <= 9; x++){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
         dy = parseString(dy)
-        dy = `<span dir="rtl">${dy[0]} ${{"Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mashíyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
         return dy
     }
     else if(cl == "Bengali"){
@@ -3866,7 +3918,6 @@ function internationalize(dy, cl){
     }
     else if(cl.startsWith("Mandaean")){
         dy = dy.split(" ")
-        console.log(dy)
         dy = `<span dir="rtl">${dy[0]} ${{"Daula": "ࡃࡀࡅࡋࡀ", "Nuna": "ࡍࡅࡍࡀ", "ʿmbra": "ࡏࡌࡁࡓࡀ", "Taura": "ࡕࡀࡅࡓࡀ", "Ṣilmia": "ࡑࡉࡋࡌࡉࡀ", "Sarṭana": "ࡎࡀࡓࡈࡀࡍࡀ", "Aria": "ࡀࡓࡉࡀ", "Šumbulta": "ࡔࡅࡌࡁࡅࡋࡕࡀ", "Qaina": "ࡒࡀࡉࡍࡀ", "Arqba": "ࡀࡓࡒࡁࡀ", "Hiṭia": "ࡄࡉࡈࡉࡀ", "Gadia": "ࡂࡀࡃࡉࡀ", "Parwanaya": "ࡐࡀࡓࡅࡀࡍࡀࡉࡉࡀ"}[dy.slice(1, -1).join(" ")]} ${dy[2]}</span>`
         return dy
     }
@@ -4399,7 +4450,7 @@ function reveal(subject){
     else{
         header.textContent = "Universal Calendar Project"
         menu.style.display = "block"
-        for(oooo of "selection, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "selection, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
     }
 
     if(subject == "calendar"){
@@ -4455,7 +4506,9 @@ function reveal(subject){
         contactinfo.style.display = "block"
     }
     else if(subject == "name"){
-        selectblockone.style.display = "block"
+        thecalendar.value = "Gregorian"
+        reset()
+        selectblockone.style.display = "none"
         selectblocktwo.style.display = "block"
         findany.style.display = "block"
         dayname.style.display = "block"
@@ -4463,13 +4516,33 @@ function reveal(subject){
         namediv.style.display = "block"
     }
     else if(subject == "date"){
+        thecalendar.value = "Gregorian"
+        reset()
         format.style.display = "block"
+        selection.style.display = "block"
+        selectblockfive.style.display = "block"
+        selectblockone.style.display = "none"
+        selectblocktwo.style.display = "block"
+        findany.style.display = "none"
+        dayname.style.display = "none"
+    }
+    else if(subject == "find"){
+        namesearch.value = ""
+        nametable.innerHTML = ""
+        namesearch.style.display = "block"
+        namediv.style.display = "block"
+    }
+    else if(subject == "time"){
+        thecalendar.value = "Gregorian"
+        reset()
+        timenow.style.display = "block"
         selection.style.display = "block"
         selectblockfive.style.display = "block"
         selectblockone.style.display = "none"
         selectblocktwo.style.display = "none"
         findany.style.display = "none"
         dayname.style.display = "none"
+        timeify(loc.value.split(";")[2])
     }
 }
  
@@ -4477,5 +4550,5 @@ function reveal(subject){
 function nameday(theday){
     nametable.innerHTML = ""
     nameoftheday = theday.Gregorian.split(" ").slice(0,2).join(" ")
-    for(countries of Object.entries(namedaycal)) if(countries[1][nameoftheday] != "-") nametable.innerHTML += "<tr><td>" + countries[0] + " " + emoji[countries[0]] + "</td><td>" + countries[1][nameoftheday].replace(/,/g, ", ") + "</td>"
+    for(countries of Object.entries(namedaycal)) if(countries[1][nameoftheday] != "-") nametable.innerHTML += "<tr><td>" + countries[0] + " " + emoji[countries[0]] + "</td><td>" + countries[1][nameoftheday].replace(/,/g, ", ") + "</td></tr>"
 }

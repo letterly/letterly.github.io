@@ -12,9 +12,11 @@
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
-            <button onclick="reveal('name')">Name Days</button>
+            <button onclick="reveal('name')">Name Day Today</button>
+            <button onclick="reveal('find')">Find Name Day</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
+            <button onclick="reveal('time')">Time Now</button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('contactinfo')">Contact/Info</button>
             <button><a href="calendar-changelog.html" target="_blank" style="text-decoration: none;">Updates</a></button>
@@ -215,6 +217,7 @@
             </table>
         </div>
         <h3 id="format"></h3>
+        <h3 id="timenow"></h3>
         <div id="zmanim"></div>
         <div id="prayertimes"></div>
         <div id="mandaictimes"></div>
@@ -231,6 +234,7 @@
         </div>
         <br>
         <div id="answer"></div>
+        <input id="namesearch" placeholder="Search a name here..." onchange="namedaysearch(this.value)" />
         <div id="namediv">
             <table id="nametable">
             </table>
@@ -243,8 +247,8 @@
             <h3>Email me <a href="mailto:harrismowbray@yahoo.com">here</a> with any questions you have</h3>
         </div>
     </body>
+    <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
     <script src="calendarharris.js"></script>
-    <script src="calendar-data.js"></script>
     <script src="calendar.js"></script>
 </html>
