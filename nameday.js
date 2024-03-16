@@ -6630,7 +6630,7 @@ namedaycal = {
 }
 
 for(nam of Object.entries(namedays)){
-    namemonths = nam[1].replace(/[0-9    ]/g, "")
+    namemonths = nam[1].replace(/[0-9	]/g, "").replace(/[0-9   ]/g, "")
     namemonths = namemonths.split("\n")
     for(day = 1; day <= 366; day++){
         if(day <= 31){
