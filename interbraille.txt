@@ -1,5 +1,9 @@
 InterBraille Updates
 
+17 Mar 2024
+-Fixed some issues with Yiddish/Hebrew Braille
+-Added the Hebrew punctuation mark ־
+
 16 Mar 2024
 -Added a second Yiddish proposal
 
