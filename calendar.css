@@ -41,6 +41,7 @@ td:first-child{
     background-color: coral;
     margin: 5px;
     border: none;
+    color: black;
 }
 #menu button:hover{
     color: white;

@@ -414,6 +414,10 @@ function locationChange(){
             lat: 35.128570, 
             long: 46.205226,
         },
+        Sheikh2: {
+            lat: 36.771459, 
+            long: 43.304053,
+        },
     }
 
     function directionalize(lt, lng){
@@ -471,6 +475,7 @@ function locationChange(){
     if(!city.startsWith("Akko")) angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
     else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
     angles.innerHTML += "<br><br><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a>: " + holysites.Sultan2.direction
+    angles.innerHTML += "<br><br><a class='yazidi' href='https://en.wikipedia.org/wiki/Yazidism' target='_blank'>Yazidism</a>: " + holysites.Sheikh2.direction
     dateify()
     timeify(locinfo[2])
 }
@@ -818,8 +823,23 @@ function timeify(tz){
     hr = newdate.getHours()
     min = newdate.getMinutes()
     bruh = newdate.getTimezoneOffset() / 60
-    hr += (+tz + +bruh)
-    console.log(hr)
+    console.log(tz)
+    if(Number.isInteger(+tz)){
+        console.log('e')
+        hr += (+tz + +bruh)
+    }
+    else{
+        console.log('2')
+        console.log('bruh')
+        if(min >= 30){
+            min = min - 30
+            hr += (Math.floor(tz) + +bruh + 1)
+        }
+        else{
+            min = min + 30
+            hr += (Math.floor(tz) + +bruh)
+        }
+    }
     if(hr < 0){
        hr = 24 + hr
        paren = " (yesterday)"
@@ -3137,6 +3157,12 @@ function holidaycheck(thatday){
             name: "Zayin Adar",
             cal: "Hebrew",
             link: "https://en.wikipedia.org/wiki/Seventh_of_Adar",
+            day: "7 Adar I",
+        },
+        {
+            name: "Zayin Adar",
+            cal: "Hebrew",
+            link: "https://en.wikipedia.org/wiki/Seventh_of_Adar",
             day: "7 Adar II",
         },
         {
@@ -3868,7 +3894,7 @@ function internationalize(dy, cl){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
         dy = parseString(dy)
-        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mashíyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
         return dy
     }
     else if(cl == "Bengali"){
