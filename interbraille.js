@@ -336,6 +336,10 @@ function toBraille(text){
         text = newword
     }
 
+    for(l of Object.entries(unicodenorm)){
+        text = text.replace(new RegExp(l[0], "g"), l[1])
+    }
+
     for(l of Object.entries(languages[language.value])){
         text = text.replace(new RegExp(l[0], "g"), l[1])
         if(language.value == "ff") text = text.replace(new RegExp(l[0].toUpperCase(), "g"), otherdata[language.value].capital + l[1])
@@ -373,7 +377,7 @@ function changeLang(lang){
         document.getElementById("y" + r).innerHTML = ""
     }
 
-    punc = `()[]{},.:;-'!?°"$*„“‚‘/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔՞֊՝։՜־·`
+    punc = `()[]{},.:;-—'!?°"$*„“‚‘/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔՞֊՝։՜־·`
 
     theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && (lang == "osa" || f[0] == f[0].toLowerCase()) && f[0].length <= 3).sort((a,b) => a[0].length - b[0].length)
 
@@ -473,3 +477,30 @@ function asciize(){
 
     output.value = v
 }
+
+
+unicodenorm = {
+
+    //latin
+
+    //hebrew
+    "וּ": "וּ",
+    "פּ": "פּ",
+    "פֿ": "פֿ",
+    "בֿ": "בֿ",
+    "כּ": "כּ",
+    "שׂ": "שׂ",
+    "ײַ": "ייַ",
+    "יִ": "יִ",
+    "אָ": "אָ",
+    "אַ": "אַ",
+    "װ": "וו",
+    "ױ": "וי",
+    "ײ": "יי",
+}
+
+canonOrder = {
+    sv: "",
+}
+
+canonPunctuationOrder = [".", ",", ":", ";", "¡", "!", "¿", "?", "-"] //etc...
