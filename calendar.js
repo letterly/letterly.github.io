@@ -4,6 +4,9 @@ yearObject = {}
 interCal = {}
 jmlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+preferences = {
+    gregEra: "CE",
+}
 
 
 
@@ -58,8 +61,16 @@ function religionize(cl, att){
             link: "https://en.wikipedia.org/wiki/Persians",
         },
         "Fasli (Zoroastrian)": {
-            name: "Zoroastrianism",
+            name: "Zoroastrianism [Fasli]",
             link: "https://en.wikipedia.org/wiki/Zoroastrianism",
+        },
+        "Qadimi": {
+            name: "Zoroastrianism [Qadimi]",
+            link: "https://en.wikipedia.org/wiki/Zoroastrianism#South_Asia",
+        },
+        "Shahanshahi": {
+            name: "Zoroastrianism [Shahanshahi]",
+            link: "https://en.wikipedia.org/wiki/Zoroastrianism#South_Asia",
         },
         "Armenian Christianity": {
             link: "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church",
@@ -573,7 +584,7 @@ function reset(){
         }
         theday.value = thecurrentday[0]
         //
-        findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era
+        findany.textContent = `Find any day between ${calendars[calen].bounds[0] + (["Gregorian", "Revised Julian", "Thai Solar", "Juche", "Minguo"].includes(calen) ? 0 : 1)} and ${calendars[calen].bounds[1] - 1} ` + calendars[calen].era.replace("CE", preferences.gregEra)
     }
     convert()
 }
@@ -700,7 +711,7 @@ function convert(){
                     },
                 }
                 dOw = thatspecificday[ourcalendar]
-                dayname.innerHTML = "<b>Day of the Week</b> " + dOw + ` | ${days[dOw].es} | ${days[dOw].fr} | ${days[dOw].ru} | ${days[dOw].zh} | ${days[dOw].ar}`
+                dayname.innerHTML = "<b>Day of the Week</b> <a style='text-decoration:dotted underline' target='_blank' href='https://en.wikipedia.org/wiki/" + dOw + "'>" + dOw + `</a> | ${days[dOw].es} | ${days[dOw].fr} | ${days[dOw].ru} | ${days[dOw].zh} | ${days[dOw].ar}`
             }
             else if(ourcalendar == "Mayan"){
                 answer.innerHTML += `<div class='cal mayan'><span>🌙 <a class="callink" target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a> ⬜<br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
@@ -733,7 +744,7 @@ function convert(){
                 " " + 
                 thatspecificday[ourcalendar].split(" ").slice(zzz).map(x => isNaN(x) ? `<a target='_blank' class='monthlink' href='https://en.wikipedia.org/wiki/` + x + "_era'>" + [x] + "</a>" : x).join(" ") + 
                 " " + 
-                calendars[ourcalendar].era + 
+                calendars[ourcalendar].era.replace("CE", preferences.gregEra) + 
                 "<br>" + 
                 internationalize(thatspecificday[ourcalendar], ourcalendar) + 
                 "</span></div>"
@@ -783,6 +794,18 @@ function eastArabic(nm){
     return nm
 }
 
+function adce(){
+    if(preferences.gregEra == "CE"){
+        preferences.gregEra = "AD"
+        gregera.innerHTML = "<b>AD</b>/CE"
+    }
+    else{
+        preferences.gregEra = "CE"
+        gregera.innerHTML = "AD/<b>CE</b>"
+    }
+    reset()
+}
+
 function dateify(){
     moji = loc.options[loc.selectedIndex].text.split(" ").slice(-1)[0]
     dateFormat = {
@@ -823,14 +846,10 @@ function timeify(tz){
     hr = newdate.getHours()
     min = newdate.getMinutes()
     bruh = newdate.getTimezoneOffset() / 60
-    console.log(tz)
     if(Number.isInteger(+tz)){
-        console.log('e')
         hr += (+tz + +bruh)
     }
     else{
-        console.log('2')
-        console.log('bruh')
         if(min >= 30){
             min = min - 30
             hr += (Math.floor(tz) + +bruh + 1)
@@ -2758,6 +2777,84 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
         },
         {
+            cal: "Fasli (Zoroastrian)",
+            name: "Nouruz",
+            day: ["1 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Nowruz#Theology",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Farvardin",
+            day: ["19 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Tir",
+            day: ["13 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Aban",
+            day: ["9 Aban"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Azar",
+            day: ["10 Azar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Mehr",
+            day: ["16 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Dadvah",
+            day: ["1 Dae", "8 Dae", "15 Dae", "23 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Bahman",
+            day: ["2 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Ardibehest",
+            day: ["3 Ardibehest"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Shehrevar",
+            day: ["4 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Asfand",
+            day: ["5 Asfand"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Khordad",
+            day: ["6 Khordad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan of Amardad",
+            day: ["7 Amardad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
             cal: "Qadimi",
             name: "Zartosht No-Diso",
             day: ["11 Dae"],
@@ -2770,6 +2867,84 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Khordad_Sal",
         },
         {
+            cal: "Qadimi",
+            name: "Pateti",
+            day: ["1 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Other_holy_days",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Farvardin",
+            day: ["19 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Tir",
+            day: ["13 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Aban",
+            day: ["9 Aban"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Azar",
+            day: ["10 Azar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Mehr",
+            day: ["16 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Dadvah",
+            day: ["1 Dae", "8 Dae", "15 Dae", "23 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Bahman",
+            day: ["2 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Ardibehest",
+            day: ["3 Ardibehest"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Shehrevar",
+            day: ["4 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Asfand",
+            day: ["5 Asfand"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Khordad",
+            day: ["6 Khordad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Qadimi",
+            name: "Jashan of Amardad",
+            day: ["7 Amardad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
             cal: "Shahanshahi",
             name: "Khordad Sal",
             day: ["6 Farvadin"],
@@ -2780,6 +2955,84 @@ function holidaycheck(thatday){
             name: "Zartosht No-Diso",
             day: ["11 Dae"],
             link: "https://en.wikipedia.org/wiki/Zartosht_No-Diso",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Pateti",
+            day: ["1 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Other_holy_days",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Farvardin",
+            day: ["19 Farvardin"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Tir",
+            day: ["13 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Aban",
+            day: ["9 Aban"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Azar",
+            day: ["10 Azar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Mehr",
+            day: ["16 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Dadvah",
+            day: ["1 Dae", "8 Dae", "15 Dae", "23 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Bahman",
+            day: ["2 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Ardibehest",
+            day: ["3 Ardibehest"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Shehrevar",
+            day: ["4 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Asfand",
+            day: ["5 Asfand"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Khordad",
+            day: ["6 Khordad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan of Amardad",
+            day: ["7 Amardad"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
         },
         {
             cal: "Hebrew",
@@ -3894,7 +4147,7 @@ function internationalize(dy, cl){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
         dy = parseString(dy)
-        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${cl == "Kurdish" ? "" :  " هـ"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${["Bahá'í", "Kurdish"].includes(cl) ? "" :  " هـ"}</span>`
         return dy
     }
     else if(cl == "Bengali"){
@@ -4476,7 +4729,7 @@ function reveal(subject){
     else{
         header.textContent = "Universal Calendar Project"
         menu.style.display = "block"
-        for(oooo of "selection, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "selection, #settings, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
     }
 
     if(subject == "calendar"){
@@ -4530,6 +4783,9 @@ function reveal(subject){
     }
     else if(subject == "contactinfo"){
         contactinfo.style.display = "block"
+    }
+    else if(subject == "settings"){
+        settings.style.display = "block"
     }
     else if(subject == "name"){
         thecalendar.value = "Gregorian"
