@@ -2373,6 +2373,76 @@ calendars = {
         era: "AD",
         link: "https://en.wikipedia.org/wiki/Revised_Julian_calendar",
     },
+    "Assyrian": {
+        firstDay: "Monday",
+        dayStart: "Midnight",
+        months: [
+            {
+                name: "Nīsān",
+                days: 30,
+            },
+            {
+                name: "ʾĪyār",
+                days: 31,
+            },
+            {
+                name: "Ḥzīrān",
+                days: 30,
+            },
+            {
+                name: "Tammūz",
+                days: 31,
+            },
+            {
+                name: "ʾĀb",
+                days: 31,
+            },
+            {
+                name: "ʾĪlūl",
+                days: 30,
+            },
+            {
+                name: "Tešrīn Qḏīm",
+                days: 31,
+            },
+            {
+                name: "Tešrīn ʾḤrāy",
+                days: 30,
+            },
+            {
+                name: "Kānōn Qḏīm",
+                days: 31,
+            },
+            {
+                name: "Kānōn ʾḤrāy",
+                days: 31,
+            },
+            {
+                name: "Šḇāṭ",
+                days: "28/29",
+            },
+            {
+                name: "ʾĀḏar",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 10,
+            method: function(x){
+                x = x - 50
+                return (x % 4 == 0 && (x % 100 != 0 || x % 900 == 200 || x % 900 == 600))
+            }
+        },
+        startDay: {
+            dayinmonth: 30,
+            monthcount: 8,
+            year: 6649,
+        },
+        bounds: [6650, 6650+T],
+        era: "",
+        link: "https://en.wikipedia.org/wiki/Assyrian_calendar",
+    },
     "Shahanshahi": {
         firstDay: "N/A",
         dayStart: "Sunrise",

@@ -17,6 +17,10 @@ function religionize(cl, att){
             name: "Judaism",
             link: "https://en.wikipedia.org/wiki/Judaism",
         },
+        "Assyrian": {
+            name: "Assyrian",
+            link: "https://en.wikipedia.org/wiki/Assyrian_people",
+        },
         "Islamic Tabular": {
             name: "Islam",
             link: "https://en.wikipedia.org/wiki/Islam",
@@ -127,9 +131,6 @@ function religionize(cl, att){
         },
         "Italian Jews": {
             link: "https://en.wikipedia.org/wiki/Italian_Nusach",
-        },
-        "Assyrians": {
-            link: "https://en.wikipedia.org/wiki/Assyrian_people",
         },
         "East Slavs": {
             link: "https://en.wikipedia.org/wiki/East_Slavs",
@@ -2638,11 +2639,10 @@ function holidaycheck(thatday){
             name: "Feast of the Cross",
         },
         {
-            cal: "Gregorian",
-            day: ["1 April"],
+            cal: "Assyrian",
+            day: ["1 Nīsān"],
             link: "https://en.wikipedia.org/wiki/Kha_b-Nisan",
             name: "Kha b-Nisan",
-            sect: "Assyrians",
         },
         {
             cal: "Gregorian",
@@ -4130,7 +4130,7 @@ function internationalize(dy, cl){
     else if(cl == "Hebrew"){
         dy = parseString(dy)
         dy[0] = numeralize(dy[0], "Hebrew")
-        dy[1] = {"Tishrei": "תשרי‎", "Cheshvan": "חשון", "Kislev": "כסלו", "Tevet": "טבת", "Shvat": "שבט", "Adar": "אדר", "Adar I": "אדר א׳", "Adar II": "אדר ב׳", "Nisan": "ניסן", "Iyar": "אייר", "Sivan": "סיון", "Tammuz": "תמוז", "Av": "אב‎", "Elul": "אלול"}[dy[1]]
+        dy[1] = {"Tishrei": "תשרי", "Cheshvan": "חשון", "Kislev": "כסלו", "Tevet": "טבת", "Shvat": "שבט", "Adar": "אדר", "Adar I": "אדר א׳", "Adar II": "אדר ב׳", "Nisan": "ניסן", "Iyar": "אייר", "Sivan": "סיון", "Tammuz": "תמוז", "Av": "אב", "Elul": "אלול"}[dy[1]]
         dy[2] = numeralize(dy[2], "Hebrew")
         return dy.join(" ")
     }
@@ -4156,6 +4156,13 @@ function internationalize(dy, cl){
         }
         dy = dy.split(" ")
         dy = `${dy[0]} ${{"Boishakh": "বৈশাখ", "Jyoishţho": "জ্যৈষ্ঠ", "Ashaŗh": "আষাঢ়", "Shrabon": "শ্রাবণ", "Bhadro": "ভাদ্র", "Ashshin": "আশ্বিন", "Kartik": "কার্তিক", "Ôgrohayon": "অগ্রহায়ণ", "Poush": "পৌষ", "Magh": "মাঘ", "Falgun": "ফাল্গুন", "Choitro": "চৈত্র"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]} বঙ্গাব্দ`
+        return dy
+    }
+    else if(cl == "Assyrian"){
+        dy = dy.split(" ")
+        if(dy.length == 4) dy = `${dy[0]};${dy[1]} ${dy[2]};${dy[3]}`.split(";")
+        else dy = `${dy[0]};${dy[1]};${dy[2]}`.split(";")
+        dy = `${dy[2]} ‎${{"Nīsān": "ܐܵܕܲܪ", "ʾĪyār": "ܐܝܼܵܪ", "Ḥzīrān": "ܚܙܝܼܪܵܢ", "Tammūz": "ܬܲܡܘܼܙ", "ʾĀb": "ܐܵܒ", "ʾĪlūl": "ܐܝܼܠܘܼܠ", "Tešrīn Qḏīm": "ܬܸܫܪܝܼܢ ܐ", "Tešrīn ʾḤrāy": "ܬܸܫܪܝܼܢ ܒ", "Kānōn Qḏīm": "ܟܵܢܘܿܢ ܐ", "Kānōn ʾḤrāy": "ܟܵܢܘܿܢ ܒ", "Šḇāṭ": "ܫܒ݂ܵܛ", "ʾĀḏar": "ܐܵܕܲܪ"}[dy[1]]}‎ ${dy[0]}`
         return dy
     }
     else if(cl == "Javanese"){
