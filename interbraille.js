@@ -355,6 +355,10 @@ function toBraille(text){
 
 function printBraille(text){
     output.value = toBraille(text)
+    if(document.getElementById("language").value == "lb"){
+        ascii.textContent = "Sorry, ASCII Braille does not exist for 8-dot systems"
+    }
+    else asciize()
 }
 
 
@@ -366,7 +370,6 @@ function changeLang(lang){
     harriswebsite.textContent = otherdata[lang].byharris ?? "By Harris Mowbray"
     update.textContent = otherdata[lang].updates ?? "Updates"
     choose.textContent = (otherdata[lang].choose ?? "Choose a Language") + ":"
-    asci.textContent = otherdata[lang].convertascii ?? "Convert to Braille ASCII"
 
     brltype.textContent = otherdata[lang].braille1 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille")
     thebrltype.textContent = otherdata[lang].braille2 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille Punctuation")
@@ -438,32 +441,32 @@ function asciize(){
         "⠜": ">",
         "⠹": "?",
         "⠈": "@",
-        "⠁": "A",
-        "⠃": "B",
-        "⠉": "C",
-        "⠙": "D",
-        "⠑": "E",
-        "⠋": "F",
-        "⠛": "G",
-        "⠓": "H",
-        "⠊": "I",
-        "⠚": "J",
-        "⠅": "K",
-        "⠇": "L",
-        "⠍": "M",
-        "⠝": "N",
-        "⠕": "O",
-        "⠏": "P",
-        "⠟": "Q",
-        "⠗": "R",
-        "⠎": "S",
-        "⠞": "T",
-        "⠥": "U",
-        "⠧": "V",
-        "⠺": "W",
-        "⠭": "X",
-        "⠽": "Y",
-        "⠵": "Z",
+        "⠁": "a",
+        "⠃": "b",
+        "⠉": "c",
+        "⠙": "d",
+        "⠑": "e",
+        "⠋": "f",
+        "⠛": "g",
+        "⠓": "h",
+        "⠊": "i",
+        "⠚": "j",
+        "⠅": "k",
+        "⠇": "l",
+        "⠍": "m",
+        "⠝": "n",
+        "⠕": "o",
+        "⠏": "p",
+        "⠟": "q",
+        "⠗": "r",
+        "⠎": "s",
+        "⠞": "t",
+        "⠥": "u",
+        "⠧": "v",
+        "⠺": "w",
+        "⠭": "x",
+        "⠽": "y",
+        "⠵": "z",
         "⠪": "[",
         "⠳": "\\",
         "⠻": "]",
@@ -475,7 +478,29 @@ function asciize(){
         v = v.replace(new RegExp(o[0], "g"), o[1])
     }
 
-    output.value = v
+    rowlength = 0
+
+    v = v.split(" ")
+    asciival = []
+    for(vvvv of v){
+        rowlength += (vvvv.length)
+        if(rowlength >= 32){
+            asciival.push(vvvv)
+            rowlength = vvvv.length
+        }
+        else{
+            if(asciival.length == 0){
+                asciival[0] = vvvv
+            }
+            else{
+                asciival[asciival.length - 1] += (" " + vvvv)
+                rowlength++
+            }
+        }
+    }
+
+    ascii.value = asciival.join("\n")
+
 }
 
 

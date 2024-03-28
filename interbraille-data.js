@@ -4629,7 +4629,6 @@ otherdata = {
         updates: "Ажурирања",
         byharris: "Изработено од Harris Mowbray",
         choose: "Одберете јазик",
-        convertascii: "Конвертирај во ASCII брајово писмо",
         braille1: "Македонско брајово писмо",
         braille2: "Интерпункција на македонско брајово писмо",
     },

@@ -1,5 +1,15 @@
 InterBraille Updates
 
+28 Mar 2024
+-.BRL file column now included!
+
+21 Mar 2024
+-Braille ASCII is now the third column and the button for it is removed
+-Luxembourgish is disabled from Braille ASCII
+
+20 Mar 2024
+-Instituted Unicode normalization for Yiddish
+
 17 Mar 2024
 -Fixed some issues with Yiddish/Hebrew Braille
 -Added the Hebrew punctuation mark ־

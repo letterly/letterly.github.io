@@ -7,8 +7,7 @@
     </head>
     <body>
         <h1 id="title">Braille Conversion Website</h1>
-        <p id="link"><a id="harriswebsite" href="https://harrismowbray.com">By Harris Mowbray</a></p>
-        <p id="changelog"><a href="interbraille.txt" id="update">Updates</a></p>
+        <p id="link"><a id="harriswebsite" href="https://harrismowbray.com">By Harris Mowbray</a> | <a href="interbraille.txt" id="update">Updates</a></p>
         <h3 id="choose">Choose a Language:</h3>
         <div class="selectblock">
             <select id="language" onchange="changeLang(this.value)"></select>
@@ -16,8 +15,8 @@
         <br>
         <textarea id="input" spellcheck="false" onkeyup="printBraille(this.value)"></textarea>
         <textarea id="output" contenteditable="false"></textarea>
-        <button id="asci" onclick="asciize()">Convert to ASCII Braille</button>
-            <h1 id="brltype"></h1>
+        <textarea id="ascii" contenteditable="false"></textarea>   
+        <h1 id="brltype"></h1>
             <div class="tables">
                 <table id="t0">
                 </table>

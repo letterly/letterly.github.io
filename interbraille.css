@@ -1,10 +1,10 @@
 textarea{
     resize: none;
-    width: 43%;
-    margin: 3%;
-    height: 50%;
+    width: 32%;
+    margin: 0.2%;
+    height: 80%;
     font-family: Verdana;
-    font-size: 38px;
+    font-size: 32px;
     border-radius: 10px;
 }
 .selectblock{
@@ -62,4 +62,7 @@ td{
 }
 #link a{
     color: darkgreen;
+}
+#ascii{
+    font-size: 16px;
 }
