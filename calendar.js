@@ -135,6 +135,9 @@ function religionize(cl, att){
         "East Slavs": {
             link: "https://en.wikipedia.org/wiki/East_Slavs",
         },
+        "Syriac Christianity": {
+            link: "https://en.wikipedia.org/wiki/Syriac_Christianity",
+        },
     }
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
@@ -915,6 +918,24 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Great_Lent",
             cal: "Julian",
             day: [makeJulianDate(-48), makeJulianDate(-9)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Apostles%27_Fast",
+            name: "Apostles' Fast",
+            cal: "Julian",
+            day: [makeJulianDate(57), "29 June"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Fasting_and_abstinence_of_the_Coptic_Orthodox_Church#The_Fast_of_the_Dormition_of_the_Mother_of_God",
+            name: "Fast of the Dormition of the Mother of God",
+            cal: "Coptic",
+            day: ["1 Mesori", "15 Mesori"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Fasting_and_abstinence_of_the_Coptic_Orthodox_Church#The_Fast_of_the_Advent",
+            name: "Fast of the Advent",
+            cal: "Coptic",
+            day: ["16 Hathor", "28 Koiak"],
         },
         {
             name: "Lent",
@@ -3359,6 +3380,13 @@ function holidaycheck(thatday){
             day: [makeJulianDate(-55), makeJulianDate(-54), makeJulianDate(-53), makeJulianDate(-52), makeJulianDate(-51), makeJulianDate(-50), makeJulianDate(-49)],
         },
         {
+            cal: "Gregorian",
+            name: "Fast of Nineveh",
+            link: "https://en.wikipedia.org/wiki/Fast_of_Nineveh",
+            day: [makeGregorianDate(-62), makeGregorianDate(-61), makeGregorianDate(-60)],
+            sect: "Syriac Christianity",
+        },
+        {
             cal: "Hebrew",
             name: "Fast of Esther",
             day: [(d == "Thursday" ? "11 Adar II" : ""), (d != "Saturday" ? "13 Adar II" : "")],
@@ -4224,6 +4252,8 @@ function internationalize(dy, cl){
     }
     else if(cl == "Coptic"){
         dy = dy.split(" ")
+        if(dy.length == 5) dy = `${dy[0]};${dy[1]} ${dy[2]} ${dy[3]};${dy[4]}`.split(";")
+        else dy = `${dy[0]};${dy[1]};${dy[2]}`.split(";")
         dy[0] = numeralize(dy[0], "Coptic")
         dy[2] = numeralize(dy[2], "Coptic")
         dy = `${dy[0]} ${{"Thout": "Ⲑⲱⲟⲩⲧ", "Paopi": "Ⲡⲁⲟⲡⲓ", "Hathor": "Ⲁⲑⲱⲣ", "Koiak": "Ⲭⲟⲓⲁⲕ", "Tobi": "Ⲧⲱⲃⲓ", "Meshir": "Ⲙⲉϣⲓⲣ", "Paremhat": "Ⲡⲁⲣⲉⲙϩⲁⲧ", "Parmouti": "Ⲫⲁⲣⲙⲟⲩⲑⲓ", "Pashons": "Ⲡⲁϣⲟⲛⲥ", "Paoni": "Ⲡⲁⲱⲛⲓ", "Epip": "Ⲉⲡⲓⲡ", "Mesori": "Ⲙⲉⲥⲱⲣⲓ", "Pi Kogi Enavot": "Ⲡⲓⲕⲟⲩϫⲓ ⲛ̀ⲁ̀ⲃⲟⲧ",}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`

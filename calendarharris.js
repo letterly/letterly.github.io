@@ -9,6 +9,7 @@ startDays = {
     "Islamic Tabular": [28, "Sha'ban", 1317],
     "Bengali": [18, "Poush", 1306],
     "Mandaean": [19, "Ṣilmia", 445269],
+    "Coptic": [23, "Koiak", 1616],
 }
 
 hebrewCons = (/*660*/"rcdcrccrdc|drccrdcrcd|rccdrccdrc|drccrdcrcd|crcdrcdrcc|drccdrccrd|crdcrcdcrc|drcdcrcdrc|cdrccrdcrd|crcdcrcdrc|cdrccdrcdr|ccrdcrcdrc|cdrcdcrccr|dcrdccrdcr|cdrcdcrcdr|ccdrccrdcr|dc"/*to 821*/).replace(/\|/g,"")
@@ -106,7 +107,6 @@ function getYear(year, cal){
     TODO
 
     -Berber
-    -Coptic
     -Dilami
     -Ethiopian
     -Fasli
@@ -280,6 +280,21 @@ function getYear(year, cal){
             "Arqba:30",
             "Hiṭia:30",
             "Gadia:30",
+        ],
+        "Coptic": [
+            "Thout:30",
+            "Paopi:30",
+            "Hathor:30",
+            "Koiak:30",
+            "Tobi:30",
+            "Meshir:30",
+            "Paremhat:30",
+            "Parmouti:30",
+            "Pashons:30",
+            "Paoni:30",
+            "Epip:30",
+            "Mesori:30",
+            `Pi Kogi Enavot:${(year % 4 == 0 ? "6": "5")}`,
         ],
     }
     return calendar[cal].filter(x => x)
