@@ -41,10 +41,6 @@ function religionize(cl, att){
             name: "Sikhism",
             link: "https://en.wikipedia.org/wiki/Sikhism",
         },
-        "Solar Hijri": {
-            name: "Iran",
-            link: "https://en.wikipedia.org/wiki/Culture_of_Iran",
-        },
         "Javanese": {
             name: "Java",
             link: "https://en.wikipedia.org/wiki/Javanese_culture",
@@ -2876,6 +2872,48 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
         },
         {
+            cal: "Fasli (Zoroastrian)",
+            name: "Jashan-e Sadeh",
+            day: ["9 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Sadeh",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Hamaspathmaidyem",
+            day: ["30 Asfand", "1 Ahunavaiti", "1 Ushtavaiti", "1 Spentamainyu", "1 Vohuxshathra"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Maidyozarem Gahambar",
+            day: ["11 Ardibehesht", "12 Ardibehesht", "13 Ardibehesht", "14 Ardibehesht", "15 Ardibehesht"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Maidyoshahem Gahambar",
+            day: ["11 Tir", "12 Tir", "13 Tir", "14 Tir", "15 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Paitishahem Gahambar",
+            day: ["26 Shehrevar", "27 Shehrevar", "28 Shehrevar", "29 Shehrevar", "30 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Ayathrem Gahambar",
+            day: ["26 Mehr", "27 Mehr", "28 Mehr", "29 Mehr", "30 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Fasli (Zoroastrian)",
+            name: "Maidyarem Gahambar",
+            day: ["16 Dae", "17 Dae", "18 Dae", "19 Dae", "20 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
             cal: "Qadimi",
             name: "Zartosht No-Diso",
             day: ["11 Dae"],
@@ -2966,6 +3004,48 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
         },
         {
+            cal: "Qadimi",
+            name: "Jashan-e Sadeh",
+            day: ["9 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Sadeh",
+        },
+        {
+            cal: "Qadimi",
+            name: "Hamaspathmaidyem",
+            day: ["30 Asfand", "1 Ahunavaiti", "1 Ushtavaiti", "1 Spentamainyu", "1 Vohuxshathra"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Qadimi",
+            name: "Maidyozarem Gahambar",
+            day: ["11 Ardibehesht", "12 Ardibehesht", "13 Ardibehesht", "14 Ardibehesht", "15 Ardibehesht"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Qadimi",
+            name: "Maidyoshahem Gahambar",
+            day: ["11 Tir", "12 Tir", "13 Tir", "14 Tir", "15 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Qadimi",
+            name: "Paitishahem Gahambar",
+            day: ["26 Shehrevar", "27 Shehrevar", "28 Shehrevar", "29 Shehrevar", "30 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Qadimi",
+            name: "Ayathrem Gahambar",
+            day: ["26 Mehr", "27 Mehr", "28 Mehr", "29 Mehr", "30 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Qadimi",
+            name: "Maidyarem Gahambar",
+            day: ["16 Dae", "17 Dae", "18 Dae", "19 Dae", "20 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
             cal: "Shahanshahi",
             name: "Khordad Sal",
             day: ["6 Farvadin"],
@@ -3054,6 +3134,48 @@ function holidaycheck(thatday){
             name: "Jashan of Amardad",
             day: ["7 Amardad"],
             link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Name-day_feasts",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Jashan-e Sadeh",
+            day: ["9 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Sadeh",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Hamaspathmaidyem",
+            day: ["30 Asfand", "1 Ahunavaiti", "1 Ushtavaiti", "1 Spentamainyu", "1 Vohuxshathra"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Maidyozarem Gahambar",
+            day: ["11 Ardibehesht", "12 Ardibehesht", "13 Ardibehesht", "14 Ardibehesht", "15 Ardibehesht"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Maidyoshahem Gahambar",
+            day: ["11 Tir", "12 Tir", "13 Tir", "14 Tir", "15 Tir"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Paitishahem Gahambar",
+            day: ["26 Shehrevar", "27 Shehrevar", "28 Shehrevar", "29 Shehrevar", "30 Shehrevar"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Ayathrem Gahambar",
+            day: ["26 Mehr", "27 Mehr", "28 Mehr", "29 Mehr", "30 Mehr"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
+        },
+        {
+            cal: "Shahanshahi",
+            name: "Maidyarem Gahambar",
+            day: ["16 Dae", "17 Dae", "18 Dae", "19 Dae", "20 Dae"],
+            link: "https://en.wikipedia.org/wiki/Zoroastrian_festivals#Seasonal_festivals",
         },
         {
             cal: "Hebrew",
@@ -3487,6 +3609,12 @@ function holidaycheck(thatday){
             name: "Cyrus the Great Day",
             day: ["7 Aban"],
             link: "https://en.wikipedia.org/wiki/Cyrus_the_Great_Day",
+        },
+        {
+            cal: "Solar Hijri",
+            name: "Sadeh",
+            day: ["10 Bahman"],
+            link: "https://en.wikipedia.org/wiki/Sadeh",
         },
         {
             cal: "Islamic Tabular",
@@ -4024,7 +4152,7 @@ function holidaycheck(thatday){
         calclass = n.overrideCal != undefined ? n.overrideCal : n.cal.replace(/\'/, "").replace(/ /g, "_").replace("(", "").replace(")", "").toLowerCase()
         if(thatday[n.cal] != undefined){
             tt = thatday[n.cal].split(" ").slice(0, -1).join(" ")
-            if(tt != undefined && n.day.includes(tt) && (n.theExactDay == undefined || n.theExactDay == thatday.Day)){
+            if(tt != undefined && n.day == tt && (n.theExactDay == undefined || n.theExactDay == thatday.Day)){
                 holidays.innerHTML += `<h2 class="${calclass}"><a style="color:inherit;text-decoration:dotted underline" href="${religionize(caal, "link")}" target="_blank">${religionize(caal, "name")}</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="${n.link}">${n.name.split(":")[0]}</a>${n.name.includes(":") ? ` <a target="_blank" class='sect' href="${{"outside Israel": "https://en.wikipedia.org/wiki/Yom_tov_sheni_shel_galuyot", "Sunni": "https://en.wikipedia.org/wiki/Sunni_Islam", "Shia": "https://en.wikipedia.org/wiki/Shia_Islam", "Armenian": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church", "in Israel and Jordan": "https://en.wikipedia.org/wiki/Armenian_Patriarchate_of_Jerusalem", "Chol HaMoed in Israel": "", "Chol HaMoed": "",}[n.name.split(":")[1]]}">(${n.name.split(":")[1]})</a>` : ``}</h2>`
             }
         }
@@ -4081,7 +4209,7 @@ function holidaycheck(thatday){
     if(thatday["Islamic Tabular"].startsWith("1") && "345".includes(thatday["Islamic Tabular"].charAt(1))){
         monthly.innerHTML += `<h2 class="islamic_tabular"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Islam" target="_blank">Islam</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/The_White_Days">White Days</a></h2>`
     }
-    if(thatday["Bahá'í"].startsWith("1 ") && !thatday["Bahá'í"].includes("-")){
+    if(thatday["Bahá'í"] != undefined && thatday["Bahá'í"].startsWith("1 ") && !thatday["Bahá'í"].includes("-")){
         monthly.innerHTML += `<h2 class="baháí"><a style="color:inherit;text-decoration:dotted underline" href="https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith" target="_blank">Bahá'í Faith</a>: <a target="_blank" style="color:inherit;font-weight:700;text-decoration:underline" href="https://en.wikipedia.org/wiki/Nineteen_Day_Feast">Nineteen Day Feast</a></h2>`
     }
     if(monthly.innerHTML != "") monthly.innerHTML = "<h3>Monthly traditions</h3>" + monthly.innerHTML
@@ -4170,12 +4298,12 @@ function internationalize(dy, cl){
         dy = `<span dir="rtl">${dy[0]} ${{"Farvardin": "فروردین", "Ordibehesht": "اردیبهشت", "Khordad": "خرداد", "Tir": "تیر", "Mordad": "مرداد", "Shahrivar": "شهریور", "Mehr": "مهر", "Aban": "آبان", "Azar": "آذر", "Dey": "دی", "Bahman": "بهمن", "Esfand": "اسفند", "Fardine Ma": "فردینه ما", "Kerche Ma": "کرچه ما", "Hare Ma": "هر ماه", "Tire Ma": "تیر ماه", "Melare Ma": "ملاره ما", "Shervine Ma": "شروینه ما", "Mire Ma": "میره ما", "Une Ma": "اونه ما", "Shishak": "شیشک", "Pitek": "پیتک", "Arke Ma": "ارکه ما", "De Ma": "دِ ماه", "Vahmane Ma": "وهمنه ما", "Nurze Ma": "نوروز ما", "Panjik": "پنجیک", "Vishak": "ویشَک", "Nowruz Ma": "نوروز ما", "Korch Ma": "کورچ ما", "Aria Ma": "اریه ما", "Tir Ma": "تیر ما", "Mordal Ma": "موردال ما", "Shrir Ma": "شریر ما", "Amir Ma": "امیر ما", "Aval Ma": "آوَل ما", "Sia Ma": "سیا ما", "Dia Ma": "دیا ما", "Orfne Ma": "ورفًنه ما", "Esfandar Ma": "اسفندار ما"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${(cl == "Bahá'í" || cl == "Dilami") ? `` : " هـ ش"}</span>`
         return dy
     }
-    else if(cl == "Bahá'í" || cl.startsWith("Islamic") || cl == "Kurdish" ){
+    else if(cl == "Bahá'í" || cl.startsWith("Islamic") || cl == "Kurdish" || cl.startsWith("Saudi")){
         for(x = 0; x <= 9; x++){
             dy = dy.replace(new RegExp(x, "g"), "٠١٢٣٤٥٦٧٨٩"[x])
         }
         dy = parseString(dy)
-        dy = `<span dir="rtl">${dy[0]} ${{"Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${["Bahá'í", "Kurdish"].includes(cl) ? "" :  " هـ"}</span>`
+        dy = `<span dir="rtl">${dy[0]} ${{"al-Mīzān": "المیزان", "al-ʿAqrab": "العقرب", "al-Qaws": "القوس", "al-Jady": "الجَدْي", "al-Dalw": "الدَّلو", "al-Ḥūt": "الحوت", "al-Ḥamal": "الحَمَل", "al-Thawr": "الثَور", "al-Jawzāʾ": "الجَوزاء", "al-Saraṭān": "السَرَطان", "al-Asad": "الأسد", "al-Sunbula": "السُنبُلة", "Bahá": "بهاء", "Jalál": "جلال", "Jamál": "جمال", "ʻAẓamat": "عظمة", "Núr": "نور", "Raḥmat": "رحمة", "Kalimát": "كلمات", "Kamál": "كمال", "Asmáʼ": "اسماء", "ʻIzzat": "عزة", "Mas͟híyyat": "مشية", "ʻIlm": "علم", "Qudrat": "قدرة", "Qawl": "قول", "Masáʼil": "مسائل", "S͟haraf": "شرف","Sulṭán": "سلطان","Mulk": "ملك","Ayyám-i-Há": "ايام الهاء","ʻAláʼ": "علاء", "Xakelêwe": "خاکەلێوە", "Gullan": "گوڵان","Zerdan": "زەردان", "Puşperr": "پووشپەڕ","Gelawêj": "گەلاوێژ", "Xermanan": "خەرمانان","Beran": "بەران", "Xezan": "گێزان","Saran": "ﺳﺎﺮﺍﻦ", "Befran": "بەفران","Rêbendan": "ڕێبەندان", "Reşeme": "ڕەشەمە","Muharram": "محرم", "Safar": "صفر", "Rabiʽ al-Awwal": "ربيع الأول", "Rabiʽ al-Thani": "ربيع الآخر", "Jumada al-Awwal": "جمادى الأولى", "Jumada al-Thani": "جمادى الآخرة", "Rajab": "رجب", "Sha'ban": "شعبان", "Ramadan": "رمضان", "Shawwal": "شوال", "Dhu al-Qadah": "ذو القعدة", "Dhu al-Hijjah": "ذو الحجة"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}${["Bahá'í", "Kurdish"].includes(cl) ? "" :  " هـ"}</span>`
         return dy
     }
     else if(cl == "Bengali"){
@@ -4458,11 +4586,11 @@ function numeralize(number, era){
     }
     else if(era == "Hebrew"){
         hebrewArray = {
-            "ה׳": 5000,
-            "ד׳": 4000,
-            "ג׳": 3000,
-            "ב׳": 2000,
-            "א׳": 1000,
+            "ה'": 5000,
+            "ד'": 4000,
+            "ג'": 3000,
+            "ב'": 2000,
+            "א'": 1000,
             "תתק": 900,
             "תת": 800,
             "תש": 700,
@@ -4502,9 +4630,10 @@ function numeralize(number, era){
                 number = number - rA[1]
             }
         }
-        if(finalNum.length > 1 && !finalNum.endsWith("׳")){
+        if(finalNum.length > 1 && !finalNum.endsWith("'")){
             finalNum = finalNum.slice(0, -1) + "״" + finalNum.slice(-1)
         }
+        else if(finalNum.length == 1) finalNum += "׳"
         return finalNum
     }
 }

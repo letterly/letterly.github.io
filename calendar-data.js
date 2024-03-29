@@ -2431,7 +2431,7 @@ calendars = {
             month: 10,
             method: function(x){
                 x = x - 50
-                return (x % 4 == 0 && (x % 100 != 0 || x % 900 == 200 || x % 900 == 600))
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
             }
         },
         startDay: {
@@ -2442,6 +2442,76 @@ calendars = {
         bounds: [6650, 6650+T],
         era: "",
         link: "https://en.wikipedia.org/wiki/Assyrian_calendar",
+    },
+    "Saudi Solar Hijri": {
+        firstDay: "Saturday",
+        dayStart: "Midnight",
+        months: [
+            {
+                name: "al-Mīzān",
+                days: 30,
+            },
+            {
+                name: "al-ʿAqrab",
+                days: 30,
+            },
+            {
+                name: "al-Qaws",
+                days: 30,
+            },
+            {
+                name: "al-Jady",
+                days: 30,
+            },
+            {
+                name: "al-Dalw",
+                days: 30,
+            },
+            {
+                name: "al-Ḥūt",
+                days: "29/30",
+            },
+            {
+                name: "al-Ḥamal",
+                days: 31,
+            },
+            {
+                name: "al-Thawr",
+                days: 31,
+            },
+            {
+                name: "al-Jawzāʾ",
+                days: 31,
+            },
+            {
+                name: "al-Saraṭān",
+                days: 31,
+            },
+            {
+                name: "al-Asad",
+                days: 31,
+            },
+            {
+                name: "al-Sunbula",
+                days: 31,
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 5,
+            method: function(x){
+                x = x - 178
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 11,
+            monthcount: 3,
+            year: 1278,
+        },
+        bounds: [1278, 1278+T],
+        era: "",
+        link: "https://webspace.science.uu.nl/~gent0113/islam/ummalqura_solar.htm",
     },
     "Shahanshahi": {
         firstDay: "N/A",
