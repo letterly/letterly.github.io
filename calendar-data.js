@@ -2581,7 +2581,7 @@ calendars = {
         },
         bounds: [595, 595+T],
         era: "AJ",
-        link: "https://webspace.science.uu.nl/~gent0113/islam/ummalqura_solar.htm",
+        link: "https://en.wikipedia.org/wiki/Sylhetis",
     },
     "Shahanshahi": {
         firstDay: "N/A",
