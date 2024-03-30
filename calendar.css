@@ -17,7 +17,7 @@ body{
     background-color: white;
 }
 
-#selection, #settings, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv, #timenow{
+#selection, #settings, #changelog, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv, #timenow{
     display: none;
 }
 #contactinfo{
@@ -293,6 +293,10 @@ span{
 .saudi_solar_hijri{
     background-color: green;
     color: green;
+}
+.syloti{
+    background-color: sienna;
+    color: sienna;
 }
 .tabarian{
     background-color: coral;

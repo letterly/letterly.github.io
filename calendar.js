@@ -870,7 +870,7 @@ function timeify(tz){
     if(hr < 10) hr = "0" + hr
     if(min < 10) min = "0" + min
     tz = (tz < 0 ? tz : "+" + tz)
-    timenow.innerHTML = hr + ":" + min + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B") + "'>" + tz + "</a>"
+    timenow.innerHTML = hr + ":" + min + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B").replace(".5", ":30") + "'>" + tz + "</a>"
 }
 
 function holidaycheck(thatday){
@@ -3663,6 +3663,13 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Eid_al-Ghadir",
         },
         {
+            sect: "Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Arba'in",
+            day: ["20 Safar"],
+            link: "https://en.wikipedia.org/wiki/Arba%27in",
+        },
+        {
             sect: "Twelver Shia Islam",
             cal: "Islamic Tabular",
             name: "Chup Tazia",
@@ -4314,6 +4321,14 @@ function internationalize(dy, cl){
         dy = `${dy[0]} ${{"Boishakh": "বৈশাখ", "Jyoishţho": "জ্যৈষ্ঠ", "Ashaŗh": "আষাঢ়", "Shrabon": "শ্রাবণ", "Bhadro": "ভাদ্র", "Ashshin": "আশ্বিন", "Kartik": "কার্তিক", "Ôgrohayon": "অগ্রহায়ণ", "Poush": "পৌষ", "Magh": "মাঘ", "Falgun": "ফাল্গুন", "Choitro": "চৈত্র"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]} বঙ্গাব্দ`
         return dy
     }
+    else if(cl == "Syloti"){
+        for(x = 0; x <= 9; x++){
+            dy = dy.replace(new RegExp(x, "g"), "০১২৩৪৫৬৭৮৯"[x])
+        }
+        dy = dy.split(" ")
+        dy = `${dy[0]} ${{"Soit": "ꠌꠂꠔ", "Boihag": "ꠛꠂꠢꠣꠉ", "Zoiṭ": "ꠎꠂꠑ", "Aar": "ꠀꠠ", "Haon": "ꠢꠣꠅꠘ", "Bado": "ꠜꠣꠖ", "Aiin": "ꠀꠁꠘ", "Xati": "ꠇꠣꠔꠤ", "Agon": "ꠀꠉꠘ", "Fu'": "ꠙꠥ", "Mag": "ꠝꠣꠊ", "Falgun": "ꠚꠣꠟ꠆ꠉꠥꠘ"}[dy.slice(1, -1).join(" ")]} ${dy[dy.length - 1]}`
+        return dy
+    }
     else if(cl == "Assyrian"){
         dy = dy.split(" ")
         if(dy.length == 4) dy = `${dy[0]};${dy[1]} ${dy[2]};${dy[3]}`.split(";")
@@ -4895,7 +4910,7 @@ function reveal(subject){
     else{
         header.textContent = "Universal Calendar Project"
         menu.style.display = "block"
-        for(oooo of "selection, #settings, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "selection, #settings, #changelog, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
     }
 
     if(subject == "calendar"){
@@ -4950,18 +4965,24 @@ function reveal(subject){
     else if(subject == "contactinfo"){
         contactinfo.style.display = "block"
     }
+    else if(subject == "changelog"){
+        changelog.style.display = "block"
+    }
     else if(subject == "settings"){
         settings.style.display = "block"
     }
     else if(subject == "name"){
         thecalendar.value = "Gregorian"
+        nametable.innerHTML = ""
         reset()
+        namesearch.value = ""
         selectblockone.style.display = "none"
         selectblocktwo.style.display = "block"
         findany.style.display = "block"
         dayname.style.display = "block"
         selection.style.display = "block"
         namediv.style.display = "block"
+        namesearch.style.display = "block"
     }
     else if(subject == "date"){
         thecalendar.value = "Gregorian"
@@ -4973,12 +4994,6 @@ function reveal(subject){
         selectblocktwo.style.display = "block"
         findany.style.display = "none"
         dayname.style.display = "none"
-    }
-    else if(subject == "find"){
-        namesearch.value = ""
-        nametable.innerHTML = ""
-        namesearch.style.display = "block"
-        namediv.style.display = "block"
     }
     else if(subject == "time"){
         thecalendar.value = "Gregorian"

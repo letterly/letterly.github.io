@@ -2513,6 +2513,76 @@ calendars = {
         era: "",
         link: "https://webspace.science.uu.nl/~gent0113/islam/ummalqura_solar.htm",
     },
+    "Syloti": {
+        firstDay: "Sunday",
+        dayStart: "Sunrise",
+        months: [
+            {
+                name: "Soit",
+                days: 31,
+            },
+            {
+                name: "Boihag",
+                days: 31,
+            },
+            {
+                name: "Zoiṭ",
+                days: 31,
+            },
+            {
+                name: "Aar",
+                days: 31,
+            },
+            {
+                name: "Haon",
+                days: 31,
+            },
+            {
+                name: "Bado",
+                days: 31,
+            },
+            {
+                name: "Aiin",
+                days: 30,
+            },
+            {
+                name: "Xati",
+                days: 30,
+            },
+            {
+                name: "Agon",
+                days: 30,
+            },
+            {
+                name: "Fu'",
+                days: 30,
+            },
+            {
+                name: "Mag",
+                days: 30,
+            },
+            {
+                name: "Falgun",
+                days: "29/30",
+            },
+        ],
+        intercalary: {
+            type: "day",
+            month: 11,
+            method: function(x){
+                x += 105
+                return (x % 4 == 0 && !(x % 100 == 0 && x % 400 != 0))
+            }
+        },
+        startDay: {
+            dayinmonth: 18,
+            monthcount: 9,
+            year: 595,
+        },
+        bounds: [595, 595+T],
+        era: "AJ",
+        link: "https://webspace.science.uu.nl/~gent0113/islam/ummalqura_solar.htm",
+    },
     "Shahanshahi": {
         firstDay: "N/A",
         dayStart: "Sunrise",

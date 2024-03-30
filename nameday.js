@@ -6675,18 +6675,21 @@ for(nam of Object.entries(namedays)){
 
 
 function namedaysearch(thename){
-    thename = thename.toLowerCase()
-    answerarray = []
-    for(country of Object.keys(namedaycal)){
-        for(days of Object.keys(namedaycal[country])){
-            if(namedaycal[country][days].split(",").map(x => x.toLowerCase()).includes(thename)){
-                answerarray.push([country, days])
+    if(thename == "") reset()
+    else{
+        thename = thename.toLowerCase()
+        answerarray = []
+        for(country of Object.keys(namedaycal)){
+            for(days of Object.keys(namedaycal[country])){
+                if(namedaycal[country][days].split(",").map(x => x.toLowerCase()).includes(thename)){
+                    answerarray.push([country, days])
+                }
             }
         }
+        nametable.innerHTML = ""
+        for(answ of answerarray){
+            nametable.innerHTML += "<tr><td>" + answ[0] + " " + emoji[answ[0]] + "</td><td>" + answ[1] + "</td></tr>"
+        }
+        return answerarray
     }
-    nametable.innerHTML = ""
-    for(answ of answerarray){
-        nametable.innerHTML += "<tr><td>" + answ[0] + " " + emoji[answ[0]] + "</td><td>" + answ[1] + "</td></tr>"
-    }
-    return answerarray
 }

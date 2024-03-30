@@ -127,6 +127,9 @@ function getYear(year, cal){
     -Shahanshahi
     -Tabarian
     -Thai
+    -Assyrian
+    -Syloti
+    -Saudi Solar Hijri
     */
     calendar = {
         "Armenian": [

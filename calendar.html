@@ -3,23 +3,23 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="calendar.css">
         <link rel="shortcut icon" href="favicon.ico?">
-        <title>Calendar</title>
+        <title>Internationalization</title>
     </head>
     <body>
-        <h1 id="header" onclick="reveal('menu')"">Universal Calendar Project</h1>
+        <h1 id="header" onclick="reveal('menu')"">Internationalization Project</h1>
         <div id="menu">
             <h3>Select a section:</h3>
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
+            <button><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('holidays')">Holidays</button>
-            <button onclick="reveal('name')">Name Day Today</button>
-            <button onclick="reveal('find')">Find Name Day</button>
+            <button onclick="reveal('name')">Name Day</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
             <button onclick="reveal('time')">Time Now</button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('contactinfo')">Contact/Info</button>
-            <button><a href="calendar-changelog.html" target="_blank" style="text-decoration: none;">Updates</a></button>
+            <button onclick="reveal('changelog')">Updates</button>
             <button onclick="reveal('settings')">Settings</button>
         </div>
         <div id="selection">
@@ -51,6 +51,7 @@
                         <option value="Nepal Sambat Solar">Nepal Sambat Solar</option>
                         <option value="Saudi Solar Hijri">Saudi Solar Hijri</option>
                         <option value="Solar Hijri">Solar Hijri</option>
+                        <option value="Syloti">Syloti</option>
                         <option value="Tabarian">Tabarian</option>
                     </optgroup>
                     <optgroup label="Invariant Solar (365)">
@@ -225,19 +226,14 @@
         <div id="prayertimes"></div>
         <div id="mandaictimes"></div>
         <div id="angles"></div>
-        <div id="nationalholidays">
-        </div>
-        <div id="holidays">
-        </div>
-        <div id="observances">
-        </div>
-        <div id="monthly">
-        </div>
-        <div id="weekly">
-        </div>
+        <div id="nationalholidays"></div>
+        <div id="holidays"></div>
+        <div id="observances"></div>
+        <div id="monthly"></div>
+        <div id="weekly"></div>
         <br>
         <div id="answer"></div>
-        <input id="namesearch" placeholder="Search a name here..." onchange="namedaysearch(this.value)" />
+        <input id="namesearch" placeholder="Choose a date or search a name here..." onchange="namedaysearch(this.value)" />
         <div id="namediv">
             <table id="nametable">
             </table>
@@ -252,9 +248,11 @@
         <div id="settings">
             <button id="gregera" onclick="adce()">AD/<b>CE</b></button>
         </div>
+        <div id="changelog"></div>
     </body>
     <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
     <script src="calendarharris.js"></script>
     <script src="calendar.js"></script>
+    <script src="calendar-changelog.js"></script>
 </html>
