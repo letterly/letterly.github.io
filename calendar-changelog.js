@@ -1,5 +1,17 @@
 changelog.innerHTML = 
-`<h3>30 March 2024</h3>
+`<pre><h3>1 April 2024</h3>
+>Added April Fools' Day as a global holiday
+>Separate Braille conversion website is now linked
+>Fixed date of Laetare Sunday
+>Fixed some issues with how the changelog was displayed
+>Modified the "return to menu" button
+
+<h3>31 March 2024</h3>
+>AM/PM times are now an option in settings
+>My separate numeral converter website is now linked in the menu, full integration coming soon
+>Updated the time zones of European countries and Israel (I promise this will eventually be automatic... someday)
+
+<h3>30 March 2024</h3>
 >Website renamed Internationalization Project from Universal Calendar Project
 >The updates are now on the main website not a separate page
 >Name Day Today and Find Name Day are now combined into a single Name Day section

@@ -6,6 +6,7 @@ jmlist = ["January", "February", "March", "April", "May", "June", "July", "Augus
 
 preferences = {
     gregEra: "CE",
+    time: "24",
 }
 
 
@@ -357,23 +358,37 @@ function suntimes(lat, lng, tz, angl, relativehours) {
   
   function julianhourize(juliandecimal){ //REWRITE
     hours = Math.floor(juliandecimal)
+    appendage = ""
+    if(preferences.time == "12"){
+        if(hours > 12){
+            hours -= 12
+            appendage = " p.m."
+        }
+        else if(hours == 0){
+            hours = 12
+            appendage = " a.m."
+        }
+        else{
+            appendage = " a.m."
+        }
+    }
     minutes = Math.floor(juliandecimal % 1 * 60)
     if(minutes < 10) minutes = "0" + minutes
-    return `${hours}:${minutes}`
+    return `${hours}:${minutes}${appendage}`
   }
 
 function locationChange(){
     city = loc.options[loc.selectedIndex].text
     locinfo = loc.value.split(";")
-    astrotwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]
-    nauticaltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]
-    civiltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
+    astrotwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]
+    nauticaltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]
+    civiltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
     snrs.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
     mddy.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[2]
     snst.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1]
-    civiltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1]
-    nauticaltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1]
-    astrotwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1] + "-" + suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[1]
+    civiltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[1] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1]
+    nauticaltwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[1] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1]
+    astrotwilight2.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[1] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[1]
     //
     zmanim.innerHTML = "<a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Zmanim' target='_blank'>Zmanim</a>: "
     zmanim.innerHTML += `<a class="hebrew" href="https://en.wikipedia.org/wiki/Zmanim#Daybreak" target="_blank">Daybreak</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -16.1)[0]} | `
@@ -802,6 +817,17 @@ function adce(){
     else{
         preferences.gregEra = "CE"
         gregera.innerHTML = "AD/<b>CE</b>"
+    }
+    reset()
+}
+function twelve(){
+    if(preferences.time == "12"){
+        preferences.time = "24"
+        twelvetwenty.innerHTML = "AM|PM/<b>24 Hour</b>"
+    }
+    else{
+        preferences.time = "12"
+        twelvetwenty.innerHTML = "<b>AM|PM</b>/24 Hour"
     }
     reset()
 }
@@ -2574,6 +2600,13 @@ function holidaycheck(thatday){
         {
             country: "Global",
             cal: "Gregorian",
+            day: ["1 April"],
+            link: "https://en.wikipedia.org/wiki/April_Fools'_Day",
+            name: "April Fools' Day",
+        },
+        {
+            country: "Global",
+            cal: "Gregorian",
             day: ["1 May"],
             link: "https://en.wikipedia.org/wiki/International_Workers%27_Day",
             name: "International Workers' Day",
@@ -3939,13 +3972,43 @@ function holidaycheck(thatday){
             link: "https://en.wikipedia.org/wiki/Laetare_Sunday",
             cal: "Gregorian",
             name: "Laetare Sunday",
-            day: [makeGregorianDate(2)],
+            day: [makeGregorianDate(-21)],
         },
         {
             link: "https://en.wikipedia.org/wiki/Easter_Monday",
             cal: "Gregorian",
             name: "Easter Monday",
             day: [makeGregorianDate(2)],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Presentation_of_Mary",
+            cal: "Gregorian",
+            name: "Presentation of Mary",
+            day: ["21 November"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Presentation_of_Mary",
+            cal: "Julian",
+            name: "The Entry of the Most Holy Theotokos into the Temple",
+            day: ["21 November"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Saint_John%27s_Eve",
+            cal: "Gregorian",
+            name: "Saint John's Eve",
+            day: ["23 June"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
+            cal: "Gregorian",
+            name: "Nativity of Saint John the Baptist",
+            day: ["24 June"],
+        },
+        {
+            link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
+            cal: "Julian",
+            name: "Nativity of Saint John the Baptist",
+            day: ["24 June"],
         },
         {
             link: "https://en.wikipedia.org/wiki/Allhallowtide",
@@ -4904,11 +4967,11 @@ reset()
 
 function reveal(subject){
     if(subject != "menu"){
-        header.textContent = "<= Return to menu"
+        header.textContent = "🔙"
         menu.style.display = "none"
     }
     else{
-        header.textContent = "Universal Calendar Project"
+        header.textContent = "Internationalization Project"
         menu.style.display = "block"
         for(oooo of "selection, #settings, #changelog, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
     }

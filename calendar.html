@@ -9,6 +9,7 @@
         <h1 id="header" onclick="reveal('menu')"">Internationalization Project</h1>
         <div id="menu">
             <h3>Select a section:</h3>
+            <button><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
@@ -133,16 +134,16 @@
             <div id="dayname"></div>
             <div class="selectblock" id="selectblockfive">
                 <select id="loc" onchange="locationChange()">
-                    <option value="33;35;2">Akko 🇮🇱</option>
+                    <option value="33;35;3">Akko 🇮🇱</option>
                     <option value="51.2;71.4;5">Astana 🇰🇿</option>
                     <option value="30;31;2">Cairo 🇪🇬</option>
                     <option value="6.9;79.9;5.5">Colombo 🇱🇰</option>
                     <option value="14.7;-17.5;0">Dakar 🇸🇳</option>
                     <option value="36.2;44;3">Erbil 🇮🇶</option>
                     <option value="-6;107;7">Jakarta 🇮🇩</option>
-                    <option value="31.7683;35.2137;2">Jerusalem 🇮🇱</option>
+                    <option value="31.7683;35.2137;3">Jerusalem 🇮🇱</option>
                     <option value="-4;15;1">Kinshasa 🇨🇩</option>
-                    <option value="50.5;30.5;2">Kyiv 🇺🇦</option>
+                    <option value="50.5;30.5;3">Kyiv 🇺🇦</option>
                     <option value="21.5;40;3">Mecca 🇸🇦</option>
                     <option value="24.5;39.6;3">Medina 🇸🇦</option>
                     <option value="-38;145;11">Melbourne 🇦🇺</option>
@@ -158,7 +159,7 @@
                     <option value="43.5;-79;-4">Toronto 🇨🇦</option>
                     <option value="-23.5;-46.5;-3">São Paulo 🇧🇷</option>
                     <option value="31;121.5;8">Shanghai 🇨🇳</option>
-                    <option value="52;21;1">Warsaw 🇵🇱</option>
+                    <option value="52;21;2">Warsaw 🇵🇱</option>
                     <option value="38.89;-77.01;-4" selected>Washington DC 🇺🇸</option>
                 </select>
                 <!--
@@ -247,6 +248,7 @@
         </div>
         <div id="settings">
             <button id="gregera" onclick="adce()">AD/<b>CE</b></button>
+            <button id="twelvetwenty" onclick="twelve()">AM|PM/<b>24 Hour</b></button>
         </div>
         <div id="changelog"></div>
     </body>
