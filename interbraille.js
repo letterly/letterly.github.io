@@ -529,3 +529,26 @@ canonOrder = {
 }
 
 canonPunctuationOrder = [".", ",", ":", ";", "¡", "!", "¿", "?", "-"] //etc...
+
+
+
+
+function bruh(){
+    const file = new File([ascii.value], 'file' + Math.round(Date.now() / 1000) + '.brl', {
+        type: 'text/plain',
+      })
+      
+      function download() {
+        const link = document.createElement('a')
+        const url = URL.createObjectURL(file)
+      
+        link.href = url
+        link.download = file.name
+        document.body.appendChild(link)
+        link.click()
+      
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+      }
+      download(file)
+}
