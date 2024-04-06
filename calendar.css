@@ -29,6 +29,8 @@ body{
 
 #changelog{
     font-size: 28px;
+    height: 80%;
+    overflow: scroll;
 }
 #changelog pre{
     white-space: pre-wrap;

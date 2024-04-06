@@ -424,6 +424,10 @@ function locationChange(){
             lat: 32.200861,
             long: 35.273258,
         },
+        Gerizim2: {
+            lat: 32.200861,
+            long: 35.273258,
+        },
         Temple: {
             lat: 31.778056,
             long: 35.235833,
@@ -435,6 +439,14 @@ function locationChange(){
         Qiblih: {
             lat: 32.943611,
             long: 35.091944,
+        },
+        Sultan: {
+            lat: 35.128570, 
+            long: 46.205226,
+        },
+        Sheikh: {
+            lat: 36.771459, 
+            long: 43.304053,
         },
         Sultan2: {
             lat: 35.128570, 
@@ -491,17 +503,72 @@ function locationChange(){
         holysites[h].direction = g + "° " + dir
     }
 
-    angles.innerHTML = "<br><a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a>"
-    if(!city.startsWith("Jerusalem")) angles.innerHTML += "<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: " + holysites.Temple.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Temple2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
-    else angles.innerHTML += `<br><br><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a>`
-    if(!city.startsWith("Nablus")) angles.innerHTML += "<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
+    angles.innerHTML = ""
+    angles.innerHTML += "<br><a style='font-weight:700;color:black' href='https://en.wikipedia.org/wiki/Direction_of_prayer' target='_blank'>Directions of prayer</a><br>"
+    angles.innerHTML += 
+    `<table>
+        <tr>
+            <th>Religion</th>
+            <th><a href='https://en.wikipedia.org/wiki/Great_circle' target='_blank'>Great Circle</a></th>
+            <th><a href='https://en.wikipedia.org/wiki/Rhumb_line' target='_blank'>Rhumb Line</a></th>
+        </tr>
+        <tr>
+            <td><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a></td>
+        
+            ${city != "Jerusalem" ? 
+            `<td>${holysites.Temple.direction}</td>
+            <td>${holysites.Temple2.direction}</td>`
+            :
+            `<td colspan='2'>Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a></td>`}
+        </tr>
+        <tr>
+            <td><a class='samaritanism' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a></td>
+    
+            ${city != "Nablus" ? 
+            `<td>${holysites.Gerizim.direction}</td>
+            <td>${holysites.Gerizim2.direction}</td>`
+            :
+            `<td colspan='2'>Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a></td>`}
+        </tr>
+        <tr>
+            <td><a class='islamic_tabular' href='https://en.wikipedia.org/wiki/Qibla' target='_blank'>Islam (Qibla)</a></td>
+
+            ${city != "Mecca" ? 
+            `<td>${holysites.Kaaba.direction}</td>
+            <td>${holysites.Kaaba2.direction}</td>`
+            :
+            `<td colspan='2'>Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a></td>`}
+        </tr>
+        <tr>
+            <td><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a></td>
+
+            ${city != "Akko" ? 
+            `<td>${holysites.Qiblih.direction}</td>
+            <td>-</td>`
+            :
+            `<td colspan='2'>Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a></td>`}
+        </tr>
+        <tr>
+            <td><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a></td>
+            <td>${holysites.Sultan.direction}</td>
+            <td>${holysites.Sultan2.direction}</td>
+        </tr>
+        <tr>
+            <td><a class='yazidi' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yazidism</a></td>
+            <td>${holysites.Sheikh.direction}</td>
+            <td>${holysites.Sheikh2.direction}</td>
+        </tr>
+    </table>`
+    /*if(!city.startsWith("Jerusalem")) angles.innerHTML += "<tr>><td>" +  + ` </td><td>` + holysites.Temple2.direction + `</td></tr>`
+    else angles.innerHTML += `<tr><td><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</td><td colspan='2'></td></tr></table>`
+    if(!city.startsWith("Nablus")) angles.innerHTML += "<tr><td><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
     else angles.innerHTML += `<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
     if(!city.startsWith("Mecca")) angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
     else angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
     if(!city.startsWith("Akko")) angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
     else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
     angles.innerHTML += "<br><br><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a>: " + holysites.Sultan2.direction
-    angles.innerHTML += "<br><br><a class='yazidi' href='https://en.wikipedia.org/wiki/Yazidism' target='_blank'>Yazidism</a>: " + holysites.Sheikh2.direction
+    angles.innerHTML += "<br><br><a class='yazidi' href='https://en.wikipedia.org/wiki/Yazidism' target='_blank'>Yazidism</a>: " + holysites.Sheikh2.direction*/
     dateify()
     timeify(locinfo[2])
 }

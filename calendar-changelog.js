@@ -1,5 +1,17 @@
 changelog.innerHTML = 
-`<pre><h3>1 April 2024</h3>
+`<h1>Updates</h1>
+<p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
+
+<pre><h3>5 April 2024</h3>
+>Made the update section easier to navigate
+>Improved how the prayer direction section looks
+>Great Circle and Rhumb Line calculations are now shown for every religion except Bahá'í (Great Circle only)
+
+<h3>4 April 2024</h3>
+>Added an external website, the original Letterly website which teaches alphabets
+>The website's new address is LETTERLY.GITHUB.IO rather than LETTERLY.GITHUB.IO/CALENDAR.HTML
+
+<h3>1 April 2024</h3>
 >Added April Fools' Day as a global holiday
 >Separate Braille conversion website is now linked
 >Fixed date of Laetare Sunday
@@ -194,7 +206,7 @@ changelog.innerHTML =
 >I changed the way some religious holidays are displayed
 >Fixed Mexico City's time zone
 
-<h3>2 January 2024</h3>
+<h3 id="2024">2 January 2024</h3>
 >Changed website title from Date Converter to Universal Calendar Project
 >Now you can select location to see sunrise/sunset times
 >Four of the five daily Islamic prayers are shown too, as are three Jewish times [Daybreak, end of Shabbat & Sof Zman Kriyat Shema]
@@ -421,7 +433,7 @@ changelog.innerHTML =
 <h3>14 January 2023</h3>
 >Added the Ethiopian calendar
 
-<h3>13 January 2023</h3>
+<h3 id="2023">13 January 2023</h3>
 >I started the change log today :)
 >So far the program converts dates in the Gregorian, Armenian, Berber, Indian, Iranian, and Mandaean calendars from approximately 1901 to 2172 CE</pre>`
 
