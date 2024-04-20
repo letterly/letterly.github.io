@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>Kivruli Text Converter</title>
+        <style>
+            body{
+                background-color: lightblue;
+            }
+            h1,h2{
+                text-align: center;
+            }
+            textarea{
+                margin-left: 5%;
+                margin-right: 5%;
+                width: 39%;
+                font-size: 24px;
+                height: 600px;
+                resize: none;
+                border-radius: 4px;
+                background-color: lightblue;
+                border: 5px solid black;
+                outline: none;
+            }
+            textarea::placeholder{
+                color: black;
+            }
+            *{
+                font-family: 'Verdana';
+            }
+            p{
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+            #section div{
+                float: left;
+                border: 1px solid black;
+                border-radius: 2px;
+                margin: 3px;
+                padding: 3px;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Kivruli Mkhedruli => Hebrew</h1>
+        <p>The goal of this website is to allow users to convert Kivruli text between the Mkhedruli and Hebrew alphabets</p>
+        <textarea id="cyrillic" placeholder="Write something in Kivruli (Mkhedruli)" spellcheck="false"></textarea>
+        <textarea id="latin" placeholder="Or write something in Kivruli (Hebrew)" contenteditable="false" spellcheck="false" dir="rtl"></textarea>
+        <!--
+        <h1>Conversion Chart</h1>
+        <div id="section">
+            <div>a / а</div>
+            <div>b / б</div>
+            <div>c / ц</div>
+            <div>ch / х</div>
+            <div>ć / ць</div>
+            <div>č / ч</div>
+            <div>d / д</div>
+            <div>ď / дь</div>
+            <div>e / е</div>
+            <div>f / ф</div>
+            <div>g / ґ</div>
+            <div>h / г</div>
+            <div>i / и</div>
+            <div>j / й</div>
+            <div>ja / я</div>
+            <div>je / є</div>
+            <div>ji / ї</div>
+            <div>jo / ё</div>
+            <div>ju / ю</div>
+            <div>k / к</div>
+            <div>l / ль</div>
+            <div>ł / л</div>
+            <div>m / м</div>
+            <div>n / н</div>
+            <div>ń / нь</div>
+            <div>o / о</div>
+            <div>p / п</div>
+            <div>r / р</div>
+            <div>ŕ / рь</div>
+            <div>s / с</div>
+            <div>ś / сь</div>
+            <div>š / ш</div>
+            <div>šč / щ</div>
+            <div>t / т</div>
+            <div>ť / ть</div>
+            <div>u / у</div>
+            <div>w / в</div>
+            <div>y / и</div>
+            <div>z / з</div>
+            <div>ź / зь</div>
+            <div>ž / ж</div>
+        </div>
+        -->
+    </body>
+    <script>
+        var typingTimer
+        var doneTypingInterval = 1000
+        var $cyrillic = document.getElementById("cyrillic")
+        var $latin = document.getElementById("latin")
+        $cyrillic.addEventListener('keyup', cyrillicFunction);
+        $cyrillic.addEventListener('paste', cyrillicFunction);
+
+        $latin.addEventListener('keyup', latinFunction);
+        $latin.addEventListener('paste', latinFunction);
+
+        function cyrillicFunction () {
+            cyrillic = $cyrillic.value
+            for(e of cyrillicKey) cyrillic = cyrillic.replace(new RegExp(e[0], 'g'), e[1])
+            $latin.value = cyrillic
+        }
+        function latinFunction () {
+            latin = $latin.value
+            for(e of latinKey) latin = latin.replace(new RegExp(e[0], 'g'), e[1])
+            $cyrillic.value = latin
+        }
+
+            cyrillicKey = [
+                ["ნ ", "ן "],
+                ["ჭ", "שצ"],
+                ["ძ", "דז"],
+                ["ყ", "ע"],
+                ["ვ", "וו"],
+                ["ქ", "כּ"],
+                ["ც", "תס"],
+                ["ე", "א"],
+                ["კ", "ק"],
+                ["ლ", "ל"],
+                ["ა", "ה"], 
+                ["დ", "ד"], 
+                ["მ", "מ"],
+                ["ნ", "נ"],
+                ["ბ", "ב"],
+                ["თ", "ת"],
+                ["ს", "ס"],
+                ["ფ", "פֿ"],
+                ["უ", "וּ"],
+                ["ი", "י"],
+                ["რ", "ר"],
+                ["წ", "צ"],
+                ["ო", "וֹ"],
+                ["გ", "גּ"],
+                ["ღ", "גֿ"],
+            ]
+
+
+        console.log(cyrillicKey)
+
+        const reverse = object => JSON.parse(`[${object.map(x => `["${x[1]}", "${x[0]}"]`).join(",")}]`);
+        latinKey = reverse(cyrillicKey)
+
+    </script>
+</html>
