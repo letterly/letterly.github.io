@@ -1,5 +1,9 @@
 InterBraille Updates
 
+20 Apr 2024
+-Added Võro Braille
+-Added õ to Estonian Braille
+
 28 Mar 2024
 -.BRL file column now included!
 -Added Yiddish quotation marks
