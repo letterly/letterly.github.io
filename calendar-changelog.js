@@ -2,7 +2,13 @@ changelog.innerHTML =
 `<h1>Updates</h1>
 <p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
 
-<pre><h3>5 April 2024</h3>
+<pre><h3>22 April 2024</h3>
+>Fixed a glitch with how some multi-day holidays were displayed
+
+<pre><h3>6 April 2024</h3>
+>The old website address LETTERLY.GITHUB.IO/CALENDAR.HTML redirects to the new one now
+
+<h3>5 April 2024</h3>
 >Made the update section easier to navigate
 >Improved how the prayer direction section looks
 >Great Circle and Rhumb Line calculations are now shown for every religion except Bahá'í (Great Circle only)
