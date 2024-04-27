@@ -1,7 +1,7 @@
 InterBraille Updates
 
 27 Apr 2024
--Added Latgalian Braille
+-Added Kashubian, Latgalian, Rusyn, and Silesian Braille
 
 20 Apr 2024
 -Added Võro Braille
