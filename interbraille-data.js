@@ -4819,10 +4819,10 @@ otherdata = {
     },
     ltg: {
         englishName: "Latgalian",
-        nativeName: "Latgaļu",
+        nativeName: "Latgalīšu",
         capital: "⠨",
         script: "Latin",
-        writeHere: "Rakstiet šeit",
+        writeHere: "Rokstit ite",
     },
     lv: {
         englishName: "Latvian",
