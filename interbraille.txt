@@ -1,5 +1,10 @@
 InterBraille Updates
 
+1 May 2024
+Changed "escribe aquí" to "escriba aquí" for Spanish
+Added Rapa Nui Braille
+No spaces after periods in Latvian Braille
+
 28 Apr 2024
 Added more accurate Latgalian text
 
