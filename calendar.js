@@ -653,7 +653,7 @@ function reset(){
         findany.textContent = `Find any day between Meiji 33 and Reiwa 6`
     }
     else{
-        selectblocktwo.style.display = "block"
+        selectblocktwo.style.display = "none"
         selectblockthree.style.display = "none"
         selectblockfour.style.display = "none"
         theyear.value = thecurrentday.slice(-1)[0]
@@ -1688,7 +1688,7 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
-            day: ["27 Nisan"],
+            day: [d != "Saturday" && d != "Friday" ? "27 Nisan" : "", d == "Monday" ? "28 Nisan" : "", d == "Thursday" ? "26 Nisan": ""],
             name: "Yom HaShoah",
             link: "https://en.wikipedia.org/wiki/Yom_HaShoah",
             country: "Israel",
@@ -2120,6 +2120,13 @@ function holidaycheck(thatday){
             day: ["11 October"],
             name: "Day of the Macedonian Uprising",
             link: "https://en.wikipedia.org/wiki/Day_of_the_Macedonian_Uprising",
+            country: "North Macedonia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["5 May"],
+            name: "Macedonian Language Day",
+            link: "https://en.wikipedia.org/wiki/Macedonian_Language_Day",
             country: "North Macedonia",
         },
         {
@@ -5031,7 +5038,6 @@ function generateYear(y, n){
 reset()
 
 
-
 function reveal(subject){
     if(subject != "menu"){
         header.textContent = "🔙"
@@ -5040,103 +5046,90 @@ function reveal(subject){
     else{
         header.textContent = "Internationalization Project"
         menu.style.display = "block"
-        for(oooo of "selection, #settings, #changelog, #timenow, #namesearch, #zmanim, #format, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #contactinfo, #namediv".split(", #")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
-    if(subject == "calendar"){
-        selectblockone.style.display = "block"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "block"
-        dayname.style.display = "block"
-        selection.style.display = "block"
-        answer.style.display = "block"
+    switch(subject){
+        case "color":
+            color.style.display = "block"
+            break
+        case "calendar":
+            selectblockone.style.display = "block"
+            selectblocktwo.style.display = "block"
+            findany.style.display = "block"
+            dayname.style.display = "block"
+            answer.style.display = "block"
+            break
+        case "salahprayerzmanim":
+            selectblockone.style.display = "block"
+            selectblocktwo.style.display = "block"
+            findany.style.display = "block"
+            dayname.style.display = "block"
+            selectblockfive.style.display = "block"
+            zmanim.style.display = "block"
+            prayertimes.style.display = "block"
+            mandaictimes.style.display = "block"
+            break
+        case "prayer":
+            selectblockfive.style.display = "block"
+            dayname.style.display = "none"
+            angles.style.display = "block"
+            break
+        case "sunrisesunset":
+            selectblockone.style.display = "block"
+            selectblocktwo.style.display = "block"
+            findany.style.display = "block"
+            dayname.style.display = "block"
+            selectblockfive.style.display = "block"
+            sunrisesunset.style.display = "block"
+            break
+        case "holidays":
+            selectblockone.style.display = "block"
+            selectblocktwo.style.display = "block"
+            findany.style.display = "block"
+            dayname.style.display = "block"
+            nationalholidays.style.display = "block"
+            holidays.style.display = "block"
+            observances.style.display = "block"
+            monthly.style.display = "block"
+            weekly.style.display = "block"
+            break
+        case "contactinfo":
+            contactinfo.style.display = "block"
+            break
+        case "changelog":
+            changelog.style.display = "block"
+            break
+        case "settings":
+            settings.style.display = "block"
+            break
+        case "name":
+            thecalendar.value = "Gregorian"
+            nametable.innerHTML = ""
+            reset()
+            namesearch.value = ""
+            selectblocktwo.style.display = "block"
+            findany.style.display = "block"
+            dayname.style.display = "block"
+            namediv.style.display = "block"
+            namesearch.style.display = "block"
+            break
+        case "date":
+            thecalendar.value = "Gregorian"
+            reset()
+            format.style.display = "block"
+            selectblockfive.style.display = "block"
+            selectblocktwo.style.display = "block"
+            break
+        case "time":
+            thecalendar.value = "Gregorian"
+            reset()
+            timenow.style.display = "block"
+            selectblockfive.style.display = "block"
+            timeify(loc.value.split(";")[2])
+            break
     }
-    else if(subject == "salahprayerzmanim"){
-        selectblockone.style.display = "block"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "block"
-        dayname.style.display = "block"
-        selection.style.display = "block"
-        selectblockfive.style.display = "block"
-        zmanim.style.display = "block"
-        prayertimes.style.display = "block"
-        mandaictimes.style.display = "block"
-    }
-    else if(subject == "prayer"){
-        selection.style.display = "block"
-        selectblockfive.style.display = "block"
-        selectblockone.style.display = "none"
-        selectblocktwo.style.display = "none"
-        findany.style.display = "none"
-        dayname.style.display = "none"
-        angles.style.display = "block"
-    }
-    else if(subject == "sunrisesunset"){
-        selectblockone.style.display = "block"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "block"
-        dayname.style.display = "block"
-        selection.style.display = "block"
-        selectblockfive.style.display = "block"
-        sunrisesunset.style.display = "block"
-    }
-    else if(subject == "holidays"){
-        selectblockone.style.display = "block"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "block"
-        dayname.style.display = "block"
-        selection.style.display = "block"
-        nationalholidays.style.display = "block"
-        holidays.style.display = "block"
-        observances.style.display = "block"
-        monthly.style.display = "block"
-        weekly.style.display = "block"
-    }
-    else if(subject == "contactinfo"){
-        contactinfo.style.display = "block"
-    }
-    else if(subject == "changelog"){
-        changelog.style.display = "block"
-    }
-    else if(subject == "settings"){
-        settings.style.display = "block"
-    }
-    else if(subject == "name"){
-        thecalendar.value = "Gregorian"
-        nametable.innerHTML = ""
-        reset()
-        namesearch.value = ""
-        selectblockone.style.display = "none"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "block"
-        dayname.style.display = "block"
-        selection.style.display = "block"
-        namediv.style.display = "block"
-        namesearch.style.display = "block"
-    }
-    else if(subject == "date"){
-        thecalendar.value = "Gregorian"
-        reset()
-        format.style.display = "block"
-        selection.style.display = "block"
-        selectblockfive.style.display = "block"
-        selectblockone.style.display = "none"
-        selectblocktwo.style.display = "block"
-        findany.style.display = "none"
-        dayname.style.display = "none"
-    }
-    else if(subject == "time"){
-        thecalendar.value = "Gregorian"
-        reset()
-        timenow.style.display = "block"
-        selection.style.display = "block"
-        selectblockfive.style.display = "block"
-        selectblockone.style.display = "none"
-        selectblocktwo.style.display = "none"
-        findany.style.display = "none"
-        dayname.style.display = "none"
-        timeify(loc.value.split(";")[2])
-    }
+
 }
  
 
@@ -5144,4 +5137,36 @@ function nameday(theday){
     nametable.innerHTML = ""
     nameoftheday = theday.Gregorian.split(" ").slice(0,2).join(" ")
     for(countries of Object.entries(namedaycal)) if(countries[1][nameoftheday] != "-") nametable.innerHTML += "<tr><td>" + countries[0] + " " + emoji[countries[0]] + "</td><td>" + countries[1][nameoftheday].replace(/,/g, ", ") + "</td></tr>"
+}
+
+
+
+function colorconvert(type){
+    if(type == "rgb"){
+        RGB = [rgbr.value, rgbg.value, rgbb.value]
+        hex.value = RGB.map(x => (x <= 15 ? "0" : "") + (+x).toString(16)).join("").toUpperCase()
+        K = 1 - (Math.max(...RGB) / 255)
+        C = K == 1 ? 0 : (1 - RGB[0]/255 - K) / (1 - K)
+        M = K == 1 ? 0 : (1 - RGB[1]/255 - K) / (1 - K)
+        Y = K == 1 ? 0 : (1 - RGB[2]/255 - K) / (1 - K)
+        console.log(C)
+        cmykk.value = Math.round(K * 1000) / 1000
+        cmykc.value = Math.round(C * 1000) / 1000
+        cmykm.value = Math.round(M * 1000) / 1000
+        cmyky.value = Math.round(Y * 1000) / 1000
+    }
+    else{
+        if(type == "hex"){
+            hex.value = hex.value.toUpperCase()
+            rgbr.value = parseInt(hex.value.slice(0,2), 16)
+            rgbg.value = parseInt(hex.value.slice(2,4), 16)
+            rgbb.value = parseInt(hex.value.slice(4,6), 16)
+        }
+        else if(type == "cmyk"){
+            rgbr.value = Math.round(255 * (1 - cmykc.value) * (1 - cmykk.value))
+            rgbg.value = Math.round(255 * (1 - cmykm.value) * (1 - cmykk.value))
+            rgbb.value = Math.round(255 * (1 - cmyky.value) * (1 - cmykk.value))
+        }
+        colorconvert("rgb")
+    }
 }

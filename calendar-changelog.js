@@ -2,7 +2,13 @@ changelog.innerHTML =
 `<h1>Updates</h1>
 <p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
 
-<pre><h3>22 April 2024</h3>
+<pre><h3>6 May 2024</h3>
+>Links to outside websites in the menu are now colored orange (rather than coral)
+>New section: Color Converter, you can now translate color data between RGB, CMYK, and Hexcode
+>Yom HaShoah is now movable to avoid being on Friday or Sunday
+>Added another holiday, Macedonian Language Day
+
+<h3>22 April 2024</h3>
 >Fixed a glitch with how some multi-day holidays were displayed
 
 <pre><h3>6 April 2024</h3>
