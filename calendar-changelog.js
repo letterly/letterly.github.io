@@ -2,7 +2,12 @@ changelog.innerHTML =
 `<h1>Updates</h1>
 <p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
 
-<pre><h3>6 May 2024</h3>
+<pre><h3>7 May 2024</h3>
+>Added the HSL color model to the color converter
+>The color converter uses a little more rounding for CMYK
+>Informative Wikipedia links are included for each color model
+
+<h3>6 May 2024</h3>
 >Links to outside websites in the menu are now colored orange (rather than coral)
 >New section: Color Converter, you can now translate color data between RGB, CMYK, and Hexcode
 >Yom HaShoah is now movable to avoid being on Friday or Sunday

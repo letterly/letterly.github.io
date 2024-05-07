@@ -121,10 +121,16 @@ input, select{
     margin-right: calc((100% - 800px) / 2);
 }
 #selectblocksix p{
-    font-size: 24px !important;
+    font-size: 26px !important;
 }
 #selectblockthree select{
     font-family: "Mayan", "Verdana";
+}
+#insertedcolor p a{
+    text-decoration: none;
+}
+#insertedcolor p a:hover{
+    text-decoration: dotted underline;
 }
 input{
     width: 20%;

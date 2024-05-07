@@ -5144,16 +5144,42 @@ function nameday(theday){
 function colorconvert(type){
     if(type == "rgb"){
         RGB = [rgbr.value, rgbg.value, rgbb.value]
+        rgb = [rgbr.value, rgbg.value, rgbb.value].map(x => x / 255)
         hex.value = RGB.map(x => (x <= 15 ? "0" : "") + (+x).toString(16)).join("").toUpperCase()
-        K = 1 - (Math.max(...RGB) / 255)
-        C = K == 1 ? 0 : (1 - RGB[0]/255 - K) / (1 - K)
-        M = K == 1 ? 0 : (1 - RGB[1]/255 - K) / (1 - K)
-        Y = K == 1 ? 0 : (1 - RGB[2]/255 - K) / (1 - K)
-        console.log(C)
+        K = 1 - (Math.max(...rgb))
+        C = K == 1 ? 0 : (1 - rgb[0] - K) / (1 - K)
+        M = K == 1 ? 0 : (1 - rgb[1] - K) / (1 - K)
+        Y = K == 1 ? 0 : (1 - rgb[2] - K) / (1 - K)
         cmykk.value = Math.round(K * 1000) / 1000
         cmykc.value = Math.round(C * 1000) / 1000
         cmykm.value = Math.round(M * 1000) / 1000
         cmyky.value = Math.round(Y * 1000) / 1000
+
+        Cmax = Math.max(...rgb)
+        Cmin = Math.min(...rgb)
+        Delta = Cmax - Cmin
+
+        L = (Cmax + Cmin) / 2
+        if(Delta == 0){
+            H = 0
+            S = 0
+        }
+        else{
+            if(Cmax == rgb[0]){
+                H = 60 * (((rgb[1] - rgb[2]) / Delta) % 6)
+            }
+            else if(Cmax == rgb[1]){
+                H = 60 * (((rgb[2] - rgb[0]) / Delta) + 2)
+            }
+            else{
+                H = 60 * (((rgb[0] - rgb[1]) / Delta) + 4)
+            }
+            S = Delta / (1 - Math.abs(2 * L - 1))
+        }
+        hslh.value = Math.round(H)
+        hsls.value = Math.round(S * 100)
+        hsll.value = Math.round(L * 100)
+
     }
     else{
         if(type == "hex"){
@@ -5166,6 +5192,33 @@ function colorconvert(type){
             rgbr.value = Math.round(255 * (1 - cmykc.value) * (1 - cmykk.value))
             rgbg.value = Math.round(255 * (1 - cmykm.value) * (1 - cmykk.value))
             rgbb.value = Math.round(255 * (1 - cmyky.value) * (1 - cmykk.value))
+        }
+        else if(type == "hsl"){
+            C = (1 - Math.abs(2 * hsll.value / 100 - 1)) * hsls.value / 100
+            X = C * (1 - Math.abs((hslh.value / 60) % 2 - 1))
+            M = hsll.value / 100 - C / 2
+            if(hslh.value < 60){
+                [RR, GG, BB] = [C, X, 0]
+            }
+            else if(hslh.value < 120){
+                [RR, GG, BB] = [X, C, 0]
+            }
+            else if(hslh.value < 180){
+                [RR, GG, BB] = [0, C, X]
+            }
+            else if(hslh.value < 240){
+                [RR, GG, BB] = [0, X, C]
+            }
+            else if(hslh.value < 300){
+                [RR, GG, BB] = [X, 0, C]
+            }
+            else{
+                [RR, GG, BB] = [C, 0, X]
+            }
+            console.log(M)
+            rgbr.value = Math.round((+RR + +M) * 255)
+            rgbg.value = Math.round((+GG + +M) * 255)
+            rgbb.value = Math.round((+BB + +M) * 255)
         }
         colorconvert("rgb")
     }
