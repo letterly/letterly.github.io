@@ -653,7 +653,6 @@ function reset(){
         findany.textContent = `Find any day between Meiji 33 and Reiwa 6`
     }
     else{
-        selectblocktwo.style.display = "none"
         selectblockthree.style.display = "none"
         selectblockfour.style.display = "none"
         theyear.value = thecurrentday.slice(-1)[0]
@@ -5109,7 +5108,6 @@ function reveal(subject){
             reset()
             namesearch.value = ""
             selectblocktwo.style.display = "block"
-            findany.style.display = "block"
             dayname.style.display = "block"
             namediv.style.display = "block"
             namesearch.style.display = "block"

@@ -6,6 +6,7 @@ changelog.innerHTML =
 >Added the HSL color model to the color converter
 >The color converter uses a little more rounding for CMYK
 >Informative Wikipedia links are included for each color model
+>Fixed a glitch with the name day search
 
 <h3>6 May 2024</h3>
 >Links to outside websites in the menu are now colored orange (rather than coral)
