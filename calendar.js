@@ -5157,6 +5157,7 @@ function colorconvert(type){
         Cmin = Math.min(...rgb)
         Delta = Cmax - Cmin
 
+        //
         L = (Cmax + Cmin) / 2
         if(Delta == 0){
             H = 0
@@ -5178,6 +5179,37 @@ function colorconvert(type){
         hsls.value = Math.round(S * 100)
         hsll.value = Math.round(L * 100)
 
+        //
+        if(Delta == 0){
+            H = 0
+        }
+        else if(Cmax == rgb[0]){
+            H = 60 * (((rgb[1] - rgb[2]) / Delta) % 6)
+        }
+        else if(Cmax == rgb[1]){
+            H = 60 * (((rgb[2] - rgb[0]) / Delta) + 2)
+        }
+        else{
+            H = 60 * (((rgb[0] - rgb[1]) / Delta) + 4)
+        }
+
+        if(Cmax == 0){
+            S = 0
+        }
+        else{
+            S = Delta / Cmax
+        }
+        V = Cmax
+        hsvh.value = Math.round(H)
+        hsvs.value = Math.round(S * 100)
+        hsvv.value = Math.round(V * 100)
+        //
+        /*
+        hwbh.value = hsvh.value
+        hwbw.value = Math.round(((1 - hsvs.value / 100) * hsvv.value / 100) * 100)
+        hwbb.value = Math.round((1 - hsvv.value / 100) * 100)
+        */
+
     }
     else{
         if(type == "hex"){
@@ -5185,11 +5217,13 @@ function colorconvert(type){
             rgbr.value = parseInt(hex.value.slice(0,2), 16)
             rgbg.value = parseInt(hex.value.slice(2,4), 16)
             rgbb.value = parseInt(hex.value.slice(4,6), 16)
+            colorconvert("rgb")
         }
         else if(type == "cmyk"){
             rgbr.value = Math.round(255 * (1 - cmykc.value) * (1 - cmykk.value))
             rgbg.value = Math.round(255 * (1 - cmykm.value) * (1 - cmykk.value))
             rgbb.value = Math.round(255 * (1 - cmyky.value) * (1 - cmykk.value))
+            colorconvert("rgb")
         }
         else if(type == "hsl"){
             C = (1 - Math.abs(2 * hsll.value / 100 - 1)) * hsls.value / 100
@@ -5217,7 +5251,44 @@ function colorconvert(type){
             rgbr.value = Math.round((+RR + +M) * 255)
             rgbg.value = Math.round((+GG + +M) * 255)
             rgbb.value = Math.round((+BB + +M) * 255)
+            colorconvert("rgb")
         }
-        colorconvert("rgb")
+        else if(type == "hsv"){
+            C = hsvv.value / 100 * hsvs.value / 100
+            X = C * (1 - Math.abs((hsvh.value / 60) % 2 - 1))
+            M = hsvv.value / 100 - C
+            if(hsvh.value < 60){
+                [RR, GG, BB] = [C, X, 0]
+            }
+            else if(hsvh.value < 120){
+                [RR, GG, BB] = [X, C, 0]
+            }
+            else if(hsvh.value < 180){
+                [RR, GG, BB] = [0, C, X]
+            }
+            else if(hsvh.value < 240){
+                [RR, GG, BB] = [0, X, C]
+            }
+            else if(hsvh.value < 300){
+                [RR, GG, BB] = [X, 0, C]
+            }
+            else{
+                [RR, GG, BB] = [C, 0, X]
+            }
+            console.log(M)
+            rgbr.value = Math.round((+RR + +M) * 255)
+            rgbg.value = Math.round((+GG + +M) * 255)
+            rgbb.value = Math.round((+BB + +M) * 255)
+            colorconvert("rgb")
+        }
+        /*
+        else if(type == "hwb"){
+            hsvh.value = hwbh.value
+            hsvs.value = 1 - (hwbw.value / (1 - hwbb.value))
+            hsvv.value = 1 - hwbb.value
+            colorconvert("hsv")
+        }
+        */
     }
+    sample.style.backgroundColor = hex.value
 }

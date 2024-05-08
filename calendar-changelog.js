@@ -2,7 +2,11 @@ changelog.innerHTML =
 `<h1>Updates</h1>
 <p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
 
-<pre><h3>7 May 2024</h3>
+<pre><h3>8 May 2024</h3>
+>Added the HSV color model to the color converter
+>A color sample is now shown under the color converter
+
+<h3>7 May 2024</h3>
 >Added the HSL color model to the color converter
 >The color converter uses a little more rounding for CMYK
 >Informative Wikipedia links are included for each color model
