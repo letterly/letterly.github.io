@@ -47,7 +47,7 @@ lessons = {
         ],
     },
     "Fruits": {
-        grammar: "",
+        grammar: "The hackberry is a purple fruit from the Midwest.",
         vocab: [
             "𐓍𐒰𐓌𐒷́: to eat",
             "𐓆𐒰́𐒽𐓎: watermelon",
