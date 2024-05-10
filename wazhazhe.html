@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <style>
+            body{
+                background: url(Bison.jpg) no-repeat center center fixed; 
+                font-family: "Verdana";
+            }
+            h1,h5{
+                text-align: center;
+            }
+            #start table{
+                margin-left: 30%;
+                margin-right: 30%;
+                width: 40%;
+                text-align: center;
+            }
+            #start td:not(:first-child){
+                border: white 2px solid;
+            }
+            #start td:first-child{
+                text-decoration: underline;
+            }
+            #start td:not(:first-child):hover{
+                background-color: white;
+            }
+            a{
+                color: white;
+                text-decoration: dotted underline;
+            }
+            td{
+                font-size: 18px;
+            }
+            #vocabulary td{
+                text-align: center;
+                border: white 1px solid;
+                width: 50%;
+            }
+            #vocabulary{
+                margin-left: 40%;
+                margin-right: 40%;
+                width: 20%;
+            }
+            #vocabulary, #grammar, #quiz, #button, #write, #click{
+                display: none;
+            }
+            #grammar{
+                width: 80%;
+                background-color: #ffffff88;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            #write button, #write input{
+                font-size: 24px;
+            }
+            #write{
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+            #click button{
+                margin-left: 15%;
+                width: 150px;
+                font-size: 28px;
+                background-color: #ff000077;
+                border: none;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="start">
+            <h1>learn 𐓏𐒰𐓓𐒰𐓓𐒷</h1>
+            <table>
+                <tr>
+                    <td>Orthography I</td>
+                    <td onclick="vocab('Orthography I')">Letters</td>
+                    <td onclick="read('Orthography I')">Information</td>
+                    <td onclick="zone('Orthography I')">Test</td>
+                </tr>
+                <tr>
+                    <td>Orthography II</td>
+                    <td onclick="vocab('Orthography II')">Letters</td>
+                    <td onclick="read('Orthography II')">Information</td>
+                    <td onclick="zone('Orthography II')">Test</td>
+                </tr>
+                <tr>
+                    <td>Colors</td>
+                    <td onclick="vocab('Colors')">Vocabulary</td>
+                    <td onclick="read('Colors')">Grammar</td>
+                    <td onclick="zone('Colors')">Test</td>
+                </tr>
+                <tr>
+                    <td>Fruits</td>
+                    <td onclick="vocab('Fruits')">Vocabulary</td>
+                    <td onclick="read('Fruits')">Grammar</td>
+                    <td onclick="zone('Fruits')">Test</td>
+                </tr>
+                <tr>
+                    <td>Animals</td>
+                    <td onclick="vocab('Animals')">Vocabulary</td>
+                    <td onclick="read('Animals')">Grammar</td>
+                    <td onclick="zone('Animals')">Test</td>
+                </tr>
+                <!--
+                <tr>
+                    <td>Plurals</td>
+                    <td onclick="vocab('Plurals')">Vocabulary</td>
+                    <td onclick="read('Plurals')">Grammar</td>
+                    <td onclick="zone('Plurals')">Test</td>
+                </tr>
+            -->
+                <tr>
+                    <td>Numbers I</td>
+                    <td onclick="read('Numbers I')">Vocabulary</td>
+                    <td onclick="read('Numbers I')">Grammar</td>
+                    <td onclick="zone('Numbers I')">Test</td>
+                </tr>
+                <tr>
+                    <td>Numbers II</td>
+                    <td onclick="read('Numbers II')">Vocabulary</td>
+                    <td onclick="read('Numbers II')">Grammar</td>
+                    <td onclick="zone('Numbers II')">Test</td>
+                </tr>
+            </table>
+
+            <br>
+            <br>
+            <h1 style="color:white">External Links</h1>
+            <h5><a target="_blank" href="https://letterly.github.io/myosagekeyboard.html">Online Osage Keyboard</a></h5>
+            <h5><a target="_blank" href="https://letterly.github.io/letterly.html#osage">Introduction to the Osage Orthography</a></h5>
+            <h5><a target="_blank" href="https://letterly.github.io/interbraille.html?lang=osa">Osage Braille Converter</a></h5>
+        </div>
+        <h1 id="button" onclick="menu()">🔙</h1>
+        <table id="vocabulary"></table>
+        <div id="grammar"></div>
+        <div id="quiz">
+            <h1 id="question"></h1>
+            <div id="write">
+                <input placeholder="type here..." />
+                <button onclick='next()'>Submit</button>
+            </div>
+            <div id="click">
+                <button onclick='next()' id="b0"></button>
+                <button onclick='next()' id="b1"></button>
+                <button onclick='next()' id="b2"></button>
+            </div>
+        </div>
+    </body>
+    <script src="wazhazhe.js"></script>
+</html>
