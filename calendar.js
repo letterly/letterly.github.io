@@ -4216,12 +4216,6 @@ function holidaycheck(thatday){
             day: [makeGregorianDate(-3)],
         },
         {
-            link: "https://en.wikipedia.org/wiki/Trinity_Sunday",
-            name: "Trinity Sunday",
-            cal: "Gregorian",
-            day: [makeGregorianDate(56)],
-        },
-        {
             link: "https://en.wikipedia.org/wiki/Septuagesima",
             name: "Septuagesima",
             cal: "Gregorian",
@@ -5039,11 +5033,11 @@ reset()
 
 function reveal(subject){
     if(subject != "menu"){
-        header.textContent = "🔙"
+        header.innerHTML = `<span onclick="reveal('menu')">🔙</span>`
         menu.style.display = "none"
     }
     else{
-        header.textContent = "Internationalization Project"
+        header.innerHTML = `<span onclick="reveal('menu')">Internationalization Project</span>`
         menu.style.display = "block"
         for(oooo of "settings dayname findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
@@ -5143,7 +5137,7 @@ function colorconvert(type){
     if(type == "rgb"){
         RGB = [rgbr.value, rgbg.value, rgbb.value]
         rgb = [rgbr.value, rgbg.value, rgbb.value].map(x => x / 255)
-        hex.value = RGB.map(x => (x <= 15 ? "0" : "") + (+x).toString(16)).join("").toUpperCase()
+        css.value = RGB.map(x => (x <= 15 ? "0" : "") + (+x).toString(16)).join("").toUpperCase()
         K = 1 - (Math.max(...rgb))
         C = K == 1 ? 0 : (1 - rgb[0] - K) / (1 - K)
         M = K == 1 ? 0 : (1 - rgb[1] - K) / (1 - K)
@@ -5204,19 +5198,19 @@ function colorconvert(type){
         hsvs.value = Math.round(S * 100)
         hsvv.value = Math.round(V * 100)
         //
-        /*
+        
         hwbh.value = hsvh.value
         hwbw.value = Math.round(((1 - hsvs.value / 100) * hsvv.value / 100) * 100)
         hwbb.value = Math.round((1 - hsvv.value / 100) * 100)
-        */
+        
 
     }
     else{
-        if(type == "hex"){
-            hex.value = hex.value.toUpperCase()
-            rgbr.value = parseInt(hex.value.slice(0,2), 16)
-            rgbg.value = parseInt(hex.value.slice(2,4), 16)
-            rgbb.value = parseInt(hex.value.slice(4,6), 16)
+        if(type == "css"){
+            css.value = css.value.toUpperCase()
+            rgbr.value = parseInt(css.value.slice(0,2), 16)
+            rgbg.value = parseInt(css.value.slice(2,4), 16)
+            rgbb.value = parseInt(css.value.slice(4,6), 16)
             colorconvert("rgb")
         }
         else if(type == "cmyk"){
@@ -5225,10 +5219,22 @@ function colorconvert(type){
             rgbb.value = Math.round(255 * (1 - cmyky.value) * (1 - cmykk.value))
             colorconvert("rgb")
         }
-        else if(type == "hsl"){
-            C = (1 - Math.abs(2 * hsll.value / 100 - 1)) * hsls.value / 100
-            X = C * (1 - Math.abs((hslh.value / 60) % 2 - 1))
-            M = hsll.value / 100 - C / 2
+        else if(type.startsWith("h")){
+            if(type == "hsl"){
+                C = (1 - Math.abs(2 * hsll.value / 100 - 1)) * hsls.value / 100
+                X = C * (1 - Math.abs((hslh.value / 60) % 2 - 1))
+                M = hsll.value / 100 - C / 2
+            }
+            else{
+                if(type == "hwb"){
+                    hsvh.value = hwbh.value
+                    hsvs.value = 1 - (hwbw.value / (1 - hwbb.value))
+                    hsvv.value = 1 - hwbb.value
+                }
+                C = hsvv.value / 100 * hsvs.value / 100
+                X = C * (1 - Math.abs((hsvh.value / 60) % 2 - 1))
+                M = hsvv.value / 100 - C
+            }
             if(hslh.value < 60){
                 [RR, GG, BB] = [C, X, 0]
             }
@@ -5247,48 +5253,11 @@ function colorconvert(type){
             else{
                 [RR, GG, BB] = [C, 0, X]
             }
-            console.log(M)
             rgbr.value = Math.round((+RR + +M) * 255)
             rgbg.value = Math.round((+GG + +M) * 255)
             rgbb.value = Math.round((+BB + +M) * 255)
             colorconvert("rgb")
         }
-        else if(type == "hsv"){
-            C = hsvv.value / 100 * hsvs.value / 100
-            X = C * (1 - Math.abs((hsvh.value / 60) % 2 - 1))
-            M = hsvv.value / 100 - C
-            if(hsvh.value < 60){
-                [RR, GG, BB] = [C, X, 0]
-            }
-            else if(hsvh.value < 120){
-                [RR, GG, BB] = [X, C, 0]
-            }
-            else if(hsvh.value < 180){
-                [RR, GG, BB] = [0, C, X]
-            }
-            else if(hsvh.value < 240){
-                [RR, GG, BB] = [0, X, C]
-            }
-            else if(hsvh.value < 300){
-                [RR, GG, BB] = [X, 0, C]
-            }
-            else{
-                [RR, GG, BB] = [C, 0, X]
-            }
-            console.log(M)
-            rgbr.value = Math.round((+RR + +M) * 255)
-            rgbg.value = Math.round((+GG + +M) * 255)
-            rgbb.value = Math.round((+BB + +M) * 255)
-            colorconvert("rgb")
-        }
-        /*
-        else if(type == "hwb"){
-            hsvh.value = hwbh.value
-            hsvs.value = 1 - (hwbw.value / (1 - hwbb.value))
-            hsvv.value = 1 - hwbb.value
-            colorconvert("hsv")
-        }
-        */
     }
-    sample.style.backgroundColor = hex.value
+    sample.style.backgroundColor = css.value
 }

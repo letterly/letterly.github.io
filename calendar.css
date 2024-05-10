@@ -16,6 +16,9 @@
 body{
     background-color: white;
 }
+#header span{
+    color: black;
+}
 
 #settings, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany{
     display: none;
