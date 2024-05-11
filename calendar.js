@@ -88,6 +88,10 @@ function religionize(cl, att){
         "Ahmadiyya": {
             link: "https://en.wikipedia.org/wiki/Ahmadiyya",
         },
+        "Coptic": {
+            name: "Coptic Orthodox Church",
+            link: "https://en.wikipedia.org/wiki/Coptic_Orthodox_Church",
+        },
         "Yazidi": {
             name: "Yazidism",
             link: "https://en.wikipedia.org/wiki/Yazidism",
@@ -136,6 +140,7 @@ function religionize(cl, att){
             link: "https://en.wikipedia.org/wiki/Syriac_Christianity",
         },
     }
+    console.log(cl)
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
 
@@ -5228,31 +5233,32 @@ function colorconvert(type){
             else{
                 if(type == "hwb"){
                     hsvh.value = hwbh.value
-                    hsvs.value = 1 - (hwbw.value / (1 - hwbb.value))
-                    hsvv.value = 1 - hwbb.value
+                    hsvs.value = 100 - (hwbw.value / (100 - hwbb.value))
+                    hsvv.value = 100 - hwbb.value
                 }
                 C = hsvv.value / 100 * hsvs.value / 100
                 X = C * (1 - Math.abs((hsvh.value / 60) % 2 - 1))
                 M = hsvv.value / 100 - C
             }
-            if(hslh.value < 60){
+            if(document.getElementById(type + "h").value < 60){
                 [RR, GG, BB] = [C, X, 0]
             }
-            else if(hslh.value < 120){
+            else if(document.getElementById(type + "h").value < 120){
                 [RR, GG, BB] = [X, C, 0]
             }
-            else if(hslh.value < 180){
+            else if(document.getElementById(type + "h").value < 180){
                 [RR, GG, BB] = [0, C, X]
             }
-            else if(hslh.value < 240){
+            else if(document.getElementById(type + "h").value < 240){
                 [RR, GG, BB] = [0, X, C]
             }
-            else if(hslh.value < 300){
+            else if(document.getElementById(type + "h").value < 300){
                 [RR, GG, BB] = [X, 0, C]
             }
             else{
                 [RR, GG, BB] = [C, 0, X]
             }
+            console.log([RR, GG, BB])
             rgbr.value = Math.round((+RR + +M) * 255)
             rgbg.value = Math.round((+GG + +M) * 255)
             rgbb.value = Math.round((+BB + +M) * 255)

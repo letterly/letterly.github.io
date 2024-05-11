@@ -2,7 +2,11 @@ changelog.innerHTML =
 `<h1>Updates</h1>
 <p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
 
-<pre><h3>9 May 2024</h3>
+<pre><h3>11 May 2024</h3>
+>Fixed some problems with Hue-based color models
+>Fixed display of Coptic holidays
+
+<h3>9 May 2024</h3>
 >Fixed an issue with displaying the holiday Trinity Sunday
 >The old address LETTERLY.GITHUB.IO/CALENDAR.HTML now redirects to the current LETTERLY.GITHUB.IO
 >Added the HWB color model
