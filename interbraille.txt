@@ -1,5 +1,8 @@
 InterBraille Updates
 
+14 May 2024
+The ASCII Braille column can now be used to convert ASCII to Unicode
+
 1 May 2024
 Changed "escribe aquí" to "escriba aquí" for Spanish
 Added Rapa Nui Braille
