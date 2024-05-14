@@ -363,50 +363,6 @@ function printBraille(text){
 
 
 function changeLang(lang){
-    document.getElementById("language").value = lang
-    input.dir = scriptData[otherdata[lang].script].dir
-    input.placeholder = otherdata[lang].writeHere + "..."
-    title.textContent = otherdata[lang].title ?? "Braille Conversion Website"
-    harriswebsite.textContent = otherdata[lang].byharris ?? "By Harris Mowbray"
-    update.textContent = otherdata[lang].updates ?? "Updates"
-    choose.textContent = (otherdata[lang].choose ?? "Choose a Language") + ":"
-
-    brltype.textContent = otherdata[lang].braille1 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille")
-    thebrltype.textContent = otherdata[lang].braille2 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille Punctuation")
-
-
-    for(r = 0; r < 6; r++){
-        document.getElementById("t" + r).innerHTML = ""
-        document.getElementById("y" + r).innerHTML = ""
-    }
-
-    punc = `()[]{},.:;-—'!?°"$*„“‚‘/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔՞֊՝։՜־·`
-
-    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && (lang == "osa" || f[0] == f[0].toLowerCase()) && f[0].length <= 3).sort((a,b) => a[0].length - b[0].length)
-
-    thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
-
-    theletters.forEach(([k, v], i) => {
-        if(input.dir == "rtl"){
-            document.getElementById("t" + (5 - (i % 6))).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-        }
-        else{
-            document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-        }
-    })
-
-    thepunctuation.forEach(([k, v], i) => {
-        document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-    })
-
-
-
-}
-
-
-function asciize(){
-    v = (output.value)
-
     stringo = {
         "⠀": " ",
         "⠮": "!",
@@ -473,6 +429,116 @@ function asciize(){
         "⠘": "^",
         "⠸": "_",
     }
+    document.getElementById("language").value = lang
+    input.dir = scriptData[otherdata[lang].script].dir
+    input.placeholder = otherdata[lang].writeHere + "..."
+    title.textContent = otherdata[lang].title ?? "Braille Conversion Website"
+    harriswebsite.textContent = otherdata[lang].byharris ?? "By Harris Mowbray"
+    update.textContent = otherdata[lang].updates ?? "Updates"
+    choose.textContent = (otherdata[lang].choose ?? "Choose a Language") + ":"
+
+    brltype.textContent = otherdata[lang].braille1 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille")
+    thebrltype.textContent = otherdata[lang].braille2 ?? (language.options[language.selectedIndex].text.split(" | ")[0] + " Braille Punctuation")
+
+
+    for(r = 0; r < 6; r++){
+        document.getElementById("t" + r).innerHTML = ""
+        document.getElementById("y" + r).innerHTML = ""
+    }
+
+    punc = `()[]{},.:;-—'!?°"$*„“‚‘/\\_<>&#%‰+=@”«»§|፡።፣፤፦፧᎐؟،؛۔՞֊՝։՜־·`
+
+    theletters = Object.entries(languages[lang]).filter(f => !punc.includes(f[0].replace("\\", "") ) && (lang == "osa" || f[0] == f[0].toLowerCase()) && f[0].length <= 3).sort((a,b) => a[0].length - b[0].length)
+
+    thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
+
+    theletters.forEach(([k, v], i) => {
+        if(input.dir == "rtl"){
+            document.getElementById("t" + (5 - (i % 6))).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+        }
+        else{
+            document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+        }
+    })
+
+    thepunctuation.forEach(([k, v], i) => {
+        document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
+    })
+
+
+
+}
+
+
+
+function asciize(){
+    stringo = {
+        "⠀": " ",
+        "⠮": "!",
+        "⠐": `"`,
+        "⠼": "#",
+        "⠫": "$",
+        "⠩": "%",
+        "⠯": "&",
+        "⠄": "'",
+        "⠷": "(",
+        "⠾": ")",
+        "⠡": "*",
+        "⠬": "+",
+        "⠠": ",",
+        "⠤": "-",
+        "⠨": ".",
+        "⠌": "/",
+        "⠴": "0",
+        "⠂": "1",
+        "⠆": "2",
+        "⠒": "3",
+        "⠲": "4",
+        "⠢": "5",
+        "⠖": "6",
+        "⠶": "7",
+        "⠦": "8",
+        "⠔": "9",
+        "⠱": ":",
+        "⠰": ";",
+        "⠣": "<",
+        "⠿": "=",
+        "⠜": ">",
+        "⠹": "?",
+        "⠈": "@",
+        "⠁": "a",
+        "⠃": "b",
+        "⠉": "c",
+        "⠙": "d",
+        "⠑": "e",
+        "⠋": "f",
+        "⠛": "g",
+        "⠓": "h",
+        "⠊": "i",
+        "⠚": "j",
+        "⠅": "k",
+        "⠇": "l",
+        "⠍": "m",
+        "⠝": "n",
+        "⠕": "o",
+        "⠏": "p",
+        "⠟": "q",
+        "⠗": "r",
+        "⠎": "s",
+        "⠞": "t",
+        "⠥": "u",
+        "⠧": "v",
+        "⠺": "w",
+        "⠭": "x",
+        "⠽": "y",
+        "⠵": "z",
+        "⠪": "[",
+        "⠳": "\\",
+        "⠻": "]",
+        "⠘": "^",
+        "⠸": "_",
+    }
+    v = (output.value)
 
     for(o of Object.entries(stringo)){
         v = v.replace(new RegExp(o[0], "g"), o[1])
@@ -501,6 +567,81 @@ function asciize(){
 
     ascii.value = asciival.join("\n")
 
+}
+
+function ASCIItoUnicode(){
+    stringo = {
+        "⠀": " ",
+        "⠮": "\\!",
+        "⠐": `"`,
+        "⠼": "#",
+        "⠫": "\\$",
+        "⠩": "%",
+        "⠯": "&",
+        "⠄": "'",
+        "⠷": "\\(",
+        "⠾": "\\)",
+        "⠡": "\\*",
+        "⠬": "\\+",
+        "⠠": "\\,",
+        "⠤": "\\-",
+        "⠨": "\\.",
+        "⠌": "\\/",
+        "⠴": "0",
+        "⠂": "1",
+        "⠆": "2",
+        "⠒": "3",
+        "⠲": "4",
+        "⠢": "5",
+        "⠖": "6",
+        "⠶": "7",
+        "⠦": "8",
+        "⠔": "9",
+        "⠱": ":",
+        "⠰": ";",
+        "⠣": "\\<",
+        "⠿": "\\=",
+        "⠜": "\\>",
+        "⠹": "\\?",
+        "⠈": "@",
+        "⠁": "a",
+        "⠃": "b",
+        "⠉": "c",
+        "⠙": "d",
+        "⠑": "e",
+        "⠋": "f",
+        "⠛": "g",
+        "⠓": "h",
+        "⠊": "i",
+        "⠚": "j",
+        "⠅": "k",
+        "⠇": "l",
+        "⠍": "m",
+        "⠝": "n",
+        "⠕": "o",
+        "⠏": "p",
+        "⠟": "q",
+        "⠗": "r",
+        "⠎": "s",
+        "⠞": "t",
+        "⠥": "u",
+        "⠧": "v",
+        "⠺": "w",
+        "⠭": "x",
+        "⠽": "y",
+        "⠵": "z",
+        "⠪": "\\[",
+        "⠳": "\\\\",
+        "⠻": "\\]",
+        "⠘": "\\^",
+        "⠸": "_",
+    }
+    v = ascii.value
+    for(o of Object.entries(stringo)){
+        v = v.replace(new RegExp(o[1], "g"), o[0])
+    }
+    input.value = ""
+    output.value = v
 }
 
 
