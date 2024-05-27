@@ -13,17 +13,19 @@
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('color')">Color Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
-            <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('holidays')">Holidays</button>
+            <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
+            <button onclick="reveal('measure')">Length Converter</button>
             <button onclick="reveal('name')">Name Day</button>
+            <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
+            <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
             <button onclick="reveal('time')">Time Now</button>
-            <button onclick="reveal('prayer')">Prayer Directions</button>
-            <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
-            <button onclick="reveal('contactinfo')">Contact/Info</button>
-            <button onclick="reveal('changelog')">Updates</button>
-            <button onclick="reveal('settings')">Settings</button>
+            <button class='meta' onclick="reveal('contactinfo')">Contact/Info</button>
+            <button class='meta' onclick="reveal('settings')">Settings</button>
+            <button class='meta' onclick="reveal('changelog')">Updates</button>
+            <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
         </div>
         <div class="selectblock" id="selectblockone">
             <select id="thecalendar" onchange="reset()">
@@ -265,6 +267,46 @@
                 <div id="convertedcolors"></div>
                 <div id="sample"></div>
             </div>
+        </div>
+        <div id="measure">
+            <input onkeyup="measureConvert(0)" id="measure0" value="25.4" />
+            <select id="unit0" onchange="measureConvert(0)">
+                <optgroup label="Metric">
+                    <option value="1">Millimeter (mm)</option>
+                    <option value="10">Centimeter (cm)</option>
+                    <option value="1000">Meter (m)</option>
+                    <option value="1000000">Kilometer (km)</option>
+                </optgroup>
+                <optgroup label="Imperial/American">
+                    <option value="25.4">Inch (in)</option>
+                    <option value="304.8">Foot (ft)</option>
+                    <option value="914.4">Yard (yd)</option>
+                    <option value="5029.2">Rod</option>
+                    <option value="20116.8">Chain (ch)</option>
+                    <option value="201168">Furlong</option>
+                    <option value="1609344">Mile (mi)</option>
+                </optgroup>
+            </select>
+            <br>
+            <br>
+            <input onkeyup="measureConvert(1)" id="measure1" value="1" />
+            <select id="unit1" onchange="measureConvert(1)">
+                <optgroup label="Metric">
+                    <option value="1">Millimeter (mm)</option>
+                    <option value="10">Centimeter (cm)</option>
+                    <option value="1000">Meter (m)</option>
+                    <option value="1000000">Kilometer (km)</option>
+                </optgroup>
+                <optgroup label="Imperial/American">
+                    <option selected value="25.4">Inch (in)</option>
+                    <option value="304.8">Foot (ft)</option>
+                    <option value="914.4">Yard (yd)</option>
+                    <option value="5029.2">Rod</option>
+                    <option value="20116.8">Chain (ch)</option>
+                    <option value="201168">Furlong</option>
+                    <option value="1609344">Mile (mi)</option>
+                </optgroup>
+            </select>
         </div>
     </body>
     <script src="calendar-data.js"></script>

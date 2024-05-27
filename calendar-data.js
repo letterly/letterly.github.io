@@ -150,7 +150,7 @@ emoji = {
     'Tajikistan': '🇹🇯',
     'Timor-Leste': '🇹🇱',
     'Turkmenistan': '🇹🇲',
-    'Turkey': '🇹🇷',
+    'Türkiye': '🇹🇷',
     'Taiwan': '🇹🇼',
     'Uzbekistan': '🇺🇿',
     'Vietnam': '🇻🇳',
@@ -2118,8 +2118,8 @@ calendars = {
             }
         },
         startDay: {
-            dayinmonth: 19,
-            monthcount: 4,
+            dayinmonth: 23,
+            monthcount: 5,
             year: 433,
         },
         bounds: [433, 433+T],

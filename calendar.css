@@ -20,7 +20,7 @@ body{
     color: black;
 }
 
-#settings, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany{
+#settings, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany{
     display: none;
 }
 #contactinfo{
@@ -65,6 +65,12 @@ td:first-child{
 }
 .outside{
     background-color: orange !important;
+}
+.meta{
+    background-color: gray !important;
+}
+.website{
+    background-color: limegreen !important;
 }
 #menu button:hover{
     color: white;
@@ -399,7 +405,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch{
+#sunrisesunset, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #measure{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;

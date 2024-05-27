@@ -1,6 +1,21 @@
 changelog.innerHTML = 
 `<h1>Updates</h1>
-<p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a></p>
+<p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a> | <a href="https://letterly.github.io/interbraille.txt" target="_blank">Braille Converter Updates</a> | <a href="https://letterly.github.io/letterly.html#changelog" target="_blank">Alphabet Website Updates</a></p>
+
+<pre><h3>27 May 2024</h3>
+>Length Converter: This new section converts lengths from different Metric and Imperial measurements
+>Menu: The menu now has a direct link to my personal website
+>Holidays: Added Iraqi National Day, Lithuanian Independence Restoration Day, Moshoeshoe Day (Lesotho), and several Turkish holidays
+>Holidays: Turkey will now be referred to as Türkiye
+>Calendar Converter: The Mool Nanakshahi calendar was about a month off and has now been adjusted to fix that
+>Name Days: Fixed issue displaying double names such as Maria Magdalena
+
+<h3>14 May 2024</h3>
+>Contact/Info, Settings, and Update menu buttons are now gray
+>The Braille Converter can now convert ASCII Braille to Unicode Braille (using the 3rd column)
+>Fixed some random display issues don't worry about it ;)
+>Added the Braille and Alphabet Website specific update logs to the main update logs
+>Fixed a Braille issue with invisible Unicode characters
 
 <pre><h3>11 May 2024</h3>
 >Fixed some problems with Hue-based color models

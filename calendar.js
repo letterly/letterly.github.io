@@ -140,7 +140,6 @@ function religionize(cl, att){
             link: "https://en.wikipedia.org/wiki/Syriac_Christianity",
         },
     }
-    console.log(cl)
     return c2r[cl][att] == undefined ? cl : c2r[cl][att] 
 }
 
@@ -527,7 +526,7 @@ function locationChange(){
             `<td colspan='2'>Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Temple_Mount">Temple Mount</a></td>`}
         </tr>
         <tr>
-            <td><a class='samaritanism' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a></td>
+            <td><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a></td>
     
             ${city != "Nablus" ? 
             `<td>${holysites.Gerizim.direction}</td>
@@ -1677,6 +1676,13 @@ function holidaycheck(thatday){
             country: "Isle of Man",
         },
         {
+            cal: "Gregorian",
+            day: ["3 October"],
+            name: "National Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Iraq",
+            country: "Iraq",
+        },
+        {
             cal: "Hebrew",
             day: ["5 Iyar"],
             name: "Independence Day",
@@ -1889,9 +1895,23 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["11 March"],
+            name: "Moshoeshoe Day",
+            link: "https://en.wikipedia.org/wiki/Moshoeshoe_I#Legacy",
+            country: "Lesotho",
+        },
+        {
+            cal: "Gregorian",
             day: ["16 February"],
             name: "Lithuanian State Reestablishment Day",
             link: "https://en.wikipedia.org/wiki/Act_of_Independence_of_Lithuania#Legacy",
+            country: "Lithuania",
+        },
+        {
+            cal: "Gregorian",
+            day: ["11 March"],
+            name: "Lithuanian Independence Restoration Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania",
             country: "Lithuania",
         },
         {
@@ -2481,7 +2501,35 @@ function holidaycheck(thatday){
             day: ["29 October"],
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(Turkey)",
-            country: "Turkey",
+            country: "Türkiye",
+        },
+        {
+            cal: "Gregorian",
+            day: ["23 April"],
+            name: "National Sovereignty and Children's Day",
+            link: "https://en.wikipedia.org/wiki/National_Sovereignty_and_Children%27s_Day",
+            country: "Türkiye",
+        },
+        {
+            cal: "Gregorian",
+            day: ["19 May"],
+            name: "Commemoration of Atatürk, Youth and Sports Day",
+            link: "https://en.wikipedia.org/wiki/Commemoration_of_Atat%C3%BCrk,_Youth_and_Sports_Day",
+            country: "Türkiye",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 August"],
+            name: "Victory Day",
+            link: "https://en.wikipedia.org/wiki/Victory_Day_(Turkey)",
+            country: "Türkiye",
+        },
+        {
+            cal: "Gregorian",
+            day: ["6 May"],
+            name: "Hıdırellez",
+            link: "https://en.wikipedia.org/wiki/Hıdırellez",
+            country: "Türkiye", 
         },
         {
             cal: "Gregorian",
@@ -5044,7 +5092,7 @@ function reveal(subject){
     else{
         header.innerHTML = `<span onclick="reveal('menu')">Internationalization Project</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname measure findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
@@ -5100,6 +5148,9 @@ function reveal(subject){
             break
         case "settings":
             settings.style.display = "block"
+            break
+        case "measure":
+            measure.style.display = "block"
             break
         case "name":
             thecalendar.value = "Gregorian"
@@ -5258,7 +5309,6 @@ function colorconvert(type){
             else{
                 [RR, GG, BB] = [C, 0, X]
             }
-            console.log([RR, GG, BB])
             rgbr.value = Math.round((+RR + +M) * 255)
             rgbg.value = Math.round((+GG + +M) * 255)
             rgbb.value = Math.round((+BB + +M) * 255)
@@ -5266,4 +5316,13 @@ function colorconvert(type){
         }
     }
     sample.style.backgroundColor = css.value
+}
+
+function measureConvert(x){
+    if(x == 0){
+        Math.round((measure1.value = measure0.value * unit0.value / unit1.value) * 1000) / 1000
+    }
+    else{
+       Math.round((measure0.value = measure1.value * unit1.value / unit0.value) * 1000 ) / 1000
+    }
 }
