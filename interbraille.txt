@@ -1,7 +1,11 @@
 InterBraille Updates
 
+2 June 2024
+Added some Yiddish Braille proposals
+
 14 May 2024
 The ASCII Braille column can now be used to convert ASCII to Unicode
+Fixed an issue with invisible Unicode characters
 
 1 May 2024
 Changed "escribe aquí" to "escriba aquí" for Spanish
