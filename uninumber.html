@@ -19,9 +19,9 @@
                 src: url(fonts/Kawi.ttf);
             }
             body{
-                font-family: Verdana;
+                font-family: Verdana, Mundari, DhivesAkuru, Tangsa, Kawi;
             }
-            #Mundari_Bani{
+            /*#Mundari_Bani{
                 font-family: Mundari;
             }
             #Dhives_Akuru{
@@ -32,7 +32,7 @@
             }
             #Kawi{
                 font-family: Kawi;
-            }
+            }*/
             h1, h3, .numdiv{
                 text-align: center;
             }
@@ -502,10 +502,9 @@
                                 ethnum.units = newi
                             }
                             //
-                            console.log(ethnum)
                             //
                             function getEthNum(nm){
-                                console.log(nm)
+                                nm = Math.floor(nm)
                                 return Object.entries(numberstorage.Ethiopic).filter(q => q[1] == nm)[0][0]
                             }
                             if(ethnum.tenthousands > 9){
