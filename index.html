@@ -11,17 +11,20 @@
             <h3>Select a section:</h3>
             <button class='outside'><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
             <button onclick="reveal('calendar')">Calendar Converter</button>
+            <button class='outside'><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
             <button onclick="reveal('color')">Color Converter</button>
+            <button onclick="reveal('currencies')">Currency Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
             <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
-            <button onclick="reveal('measure')">Length Converter</button>
             <button onclick="reveal('name')">Name Day</button>
             <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
+            <button onclick="reveal('temperature')">Temperature Converter</button>
             <button onclick="reveal('time')">Time Now</button>
+            <button onclick="reveal('measure')">Unit Converter</button>
             <button class='meta' onclick="reveal('contactinfo')">Contact/Info</button>
             <button class='meta' onclick="reveal('settings')">Settings</button>
             <button class='meta' onclick="reveal('changelog')">Updates</button>
@@ -251,6 +254,7 @@
         <div id="settings">
             <button id="gregera" onclick="adce()">AD/<b>CE</b></button>
             <button id="twelvetwenty" onclick="twelve()">AM|PM/<b>24 Hour</b></button>
+            <button id="deg" onclick="degree()"><b>5.5°</b>/5° 30′</button>
         </div>
         <div id="changelog"></div>
         <div id="color">
@@ -263,50 +267,51 @@
                     <p><a href="https://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">hsv</a>(<input value="0" onchange="colorconvert('hsv')" id="hsvh" />°, <input value="0" onchange="colorconvert('hsv')" id="hsvs" />%, <input value="0" id="hsvv" onchange="colorconvert('hslv')" />%)</p>
                     <p><a href="https://en.wikipedia.org/wiki/HWB_color_model" target="_blank">hwb</a>(<input value="0" onchange="colorconvert('hwb')" id="hwbh" />°, <input value="0" onchange="colorconvert('hwb')" id="hwbw" />%, <input value="0" id="hwbb" onchange="colorconvert('hwb')" />%)</p>
                 </div>
-                <p id="colorerror"></p>
                 <div id="convertedcolors"></div>
                 <div id="sample"></div>
             </div>
         </div>
         <div id="measure">
-            <input onkeyup="measureConvert(0)" id="measure0" value="25.4" />
-            <select id="unit0" onchange="measureConvert(0)">
-                <optgroup label="Metric">
-                    <option value="1">Millimeter (mm)</option>
-                    <option value="10">Centimeter (cm)</option>
-                    <option value="1000">Meter (m)</option>
-                    <option value="1000000">Kilometer (km)</option>
-                </optgroup>
-                <optgroup label="Imperial/American">
-                    <option value="25.4">Inch (in)</option>
-                    <option value="304.8">Foot (ft)</option>
-                    <option value="914.4">Yard (yd)</option>
-                    <option value="5029.2">Rod</option>
-                    <option value="20116.8">Chain (ch)</option>
-                    <option value="201168">Furlong</option>
-                    <option value="1609344">Mile (mi)</option>
-                </optgroup>
+            <select id="unittype" onchange="measureSetUp(this.value)">
+                <option value="Angle">Angle</option>
+                <option value="Area">Area</option>
+                <option value="Length" selected>Length</option>
+                <option value="Power">Power</option>
+                <option value="Pressure">Pressure</option>
+                <option value="Speed">Speed</option>
+                <option value="Time">Time</option>
+                <option value="Volume">Volume</option>
+                <option value="Weight">Weight</option>
             </select>
             <br>
             <br>
-            <input onkeyup="measureConvert(1)" id="measure1" value="1" />
-            <select id="unit1" onchange="measureConvert(1)">
-                <optgroup label="Metric">
-                    <option value="1">Millimeter (mm)</option>
-                    <option value="10">Centimeter (cm)</option>
-                    <option value="1000">Meter (m)</option>
-                    <option value="1000000">Kilometer (km)</option>
-                </optgroup>
-                <optgroup label="Imperial/American">
-                    <option selected value="25.4">Inch (in)</option>
-                    <option value="304.8">Foot (ft)</option>
-                    <option value="914.4">Yard (yd)</option>
-                    <option value="5029.2">Rod</option>
-                    <option value="20116.8">Chain (ch)</option>
-                    <option value="201168">Furlong</option>
-                    <option value="1609344">Mile (mi)</option>
-                </optgroup>
-            </select>
+            <input onkeyup="measureConvert(0)" id="measure0" value="0" />
+            <select id="unit0" onchange="measureConvert(0)"></select>
+            <br>
+            <br>
+            <input onkeyup="measureConvert(1)" id="measure1" value="0" />
+            <select id="unit1" onchange="measureConvert(1)"></select>
+        </div>
+        <div id="currencies">
+            <input onkeyup="currencyConvert(0)" id="money0" value="0" />
+            <select id="currency0" onchange="currencyConvert(0)"></select>
+            <br>
+            <br>
+            <input onkeyup="currencyConvert(1)" id="money1" value="0" />
+            <select id="currency1" onchange="currencyConvert(1)"></select>
+        </div>
+        <div id="temperature">
+            <div id="selectblockseven">
+                <div id="insertedtemperature">
+                    <p><a href="https://en.wikipedia.org/wiki/Celsius" target="_blank">Celsius (°C)</a> <input value="10" id="celsius" onchange="tempconvert('celsius')" /></p>
+                    <p><a href="https://en.wikipedia.org/wiki/Fahrenheit" target="_blank">Fahrenheit (°F)</a> <input value="50" id="fahrenheit" onchange="tempconvert('fahrenheit')" /></p>
+                    <p><a href="https://en.wikipedia.org/wiki/Kelvin" target="_blank">Kelvin (K)</a> <input value="283.15" id="kelvin" onchange="tempconvert('kelvin')" /></p>
+                    <p><a href="https://en.wikipedia.org/wiki/Rankine_scale" target="_blank">Rankine (°R)</a> <input value="509.67" id="rankine" onchange="tempconvert('rankine')" /></p>
+                    <p><a href="https://en.wikipedia.org/wiki/R%C3%A9aumur_scale" target="_blank">Réaumur (°Ré)</a> <input value="8" id="reaumur" onchange="tempconvert('reaumur')" /></p>
+                </div>
+                <div id="convertedcolors"></div>
+                <div id="sample"></div>
+            </div>
         </div>
     </body>
     <script src="calendar-data.js"></script>

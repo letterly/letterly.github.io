@@ -1,139 +1,167 @@
 changelog.innerHTML = 
 `<h1>Updates</h1>
-<p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a> | <a href="https://letterly.github.io/interbraille.txt" target="_blank">Braille Converter Updates</a> | <a href="https://letterly.github.io/letterly.html#changelog" target="_blank">Alphabet Website Updates</a></p>
+<p style='text-align:center'>Go to: <a href="#2023">2023</a> | <a href="#2024">2024</a> | <a href="https://letterly.github.io/interbraille.txt" target="_blank">Braille Converter Updates</a> | <a href="https://letterly.github.io/changelog.html" target="_blank">Alphabet Website Updates</a></p>
 
-<pre><h3>27 May 2024</h3>
->Length Converter: This new section converts lengths from different Metric and Imperial measurements
->Menu: The menu now has a direct link to my personal website
+<pre><h3>6 June 2024</h3>
+>Calculator: Added a new section (external website) that serves as a simple calculator for many numeral systems
+>Settings: You can now choose between getting prayer direction degrees with decimals or arcminutes
+>Temperature Converter: New section converts temperatures between the Fahrenheit, Celsius, Rankine, Kelvin, and Réaumur scales
+>Unit Converter: Added time and angle unit conversions
+
+<h3>5 June 2024</h3>
+>Currency Converter: Added a new section that lets you convert between 32 global currencies
+>Holidays: Added two more Islamic holidays
+>Unit Converter: Added Japanese units of area
+
+<h3>4 June 2024</h3>
+>Unit Converter: Length Converter renamed to Unit Converter
+>Unit Converter: You can now convert between power, speed, volume, weight measurements in addition to length
+>Unit Converter: Added many new length measurements; the Scandanavian Mile, micron/micrometer, nanometer, ångström, rack unit, and light-second
+>Unit Converter: Changed "light year" to "light-year"
+>Updates: Changed the internal link to lead to the complete separate "Learn Alphabets" update log
+>Updates: Began organizing previous updates into categories and reworded a few
+
+<h3>3 June 2024</h3>
+>Unit Converter: Added the Imperial unit 'thou', equivalent to 0.001 inches
+
+<h3>30 May 2024</h3>
+>Prayer Directions: Fixed an issue with giving prayer directions within four cities (Jerusalem, Mecca, Akko, and Nablus)
+>Unit Converter: Added the Imperial unit 'hand', equivalent to four inches
+
+<h3>28 May 2024</h3>
+>Unit Converter: Added Nautical, Astronomical, and Taiwanese units of length
+
+<h3>27 May 2024</h3>
+>Calendar Converter: The Mool Nanakshahi calendar was about a month off and has now been adjusted to fix that
 >Holidays: Added Iraqi National Day, Lithuanian Independence Restoration Day, Moshoeshoe Day (Lesotho), and several Turkish holidays
 >Holidays: Turkey will now be referred to as Türkiye
->Calendar Converter: The Mool Nanakshahi calendar was about a month off and has now been adjusted to fix that
+>Menu: The menu now has a direct link to my personal website
 >Name Days: Fixed issue displaying double names such as Maria Magdalena
+>Unit Converter: This new section "Length Converter" converts lengths from different Metric and Imperial measurements
 
 <h3>14 May 2024</h3>
->Contact/Info, Settings, and Update menu buttons are now gray
->The Braille Converter can now convert ASCII Braille to Unicode Braille (using the 3rd column)
->Fixed some random display issues don't worry about it ;)
->Added the Braille and Alphabet Website specific update logs to the main update logs
->Fixed a Braille issue with invisible Unicode characters
+>Braille Converter: The converter can now convert ASCII Braille to Unicode Braille (using the 3rd column)
+>Braille Converter: Fixed a Braille issue with invisible Unicode characters
+>Menu: Contact/Info, Settings, and Update menu buttons are now gray
+>Updates: Added the Braille and Alphabet Website specific update logs to the main update logs
 
 <pre><h3>11 May 2024</h3>
->Fixed some problems with Hue-based color models
->Fixed display of Coptic holidays
+>Color Converter: Fixed some problems with Hue-based color models
+>Holidays: Fixed display of Coptic holidays
 
 <h3>9 May 2024</h3>
->Fixed an issue with displaying the holiday Trinity Sunday
->The old address LETTERLY.GITHUB.IO/CALENDAR.HTML now redirects to the current LETTERLY.GITHUB.IO
->Added the HWB color model
->Fixed an issue with the back button
+>Color Converter: Added the HWB color model
+>Holidays: Fixed an issue with displaying the holiday Trinity Sunday
+>Website: Fixed an issue with the back button
+>Website: The old address LETTERLY.GITHUB.IO/CALENDAR.HTML now redirects to the current LETTERLY.GITHUB.IO
 
 <h3>8 May 2024</h3>
->Added the HSV color model to the color converter
->A color sample is now shown under the color converter
+>Color Converter: Added the HSV color model to the color converter
+>Color Converter: A color sample is now shown under the color converter
 
 <h3>7 May 2024</h3>
->Added the HSL color model to the color converter
->The color converter uses a little more rounding for CMYK
->Informative Wikipedia links are included for each color model
->Fixed a glitch with the name day search
+>Color Converter: Added the HSL color model to the color converter
+>Color Converter: The color converter uses a little more rounding for CMYK
+>Color Converter: Informative Wikipedia links are included for each color model
+>Name Day: Fixed a glitch with the name day search
 
 <h3>6 May 2024</h3>
->Links to outside websites in the menu are now colored orange (rather than coral)
->New section: Color Converter, you can now translate color data between RGB, CMYK, and Hexcode
->Yom HaShoah is now movable to avoid being on Friday or Sunday
->Added another holiday, Macedonian Language Day
+>Color Converter: This new section lets you translate color data between RGB, CMYK, and Hexcode
+>Holidays: Yom HaShoah is now movable to avoid being on Friday or Sunday
+>Holidays: Added another holiday, Macedonian Language Day
+>Menu: Links to outside websites in the menu are now colored orange (rather than coral)
 
 <h3>22 April 2024</h3>
->Fixed a glitch with how some multi-day holidays were displayed
+>Holidays: Fixed a glitch with how some multi-day holidays were displayed
 
 <pre><h3>6 April 2024</h3>
->The old website address LETTERLY.GITHUB.IO/CALENDAR.HTML redirects to the new one now
+>Website: The old website address LETTERLY.GITHUB.IO/CALENDAR.HTML redirects to the new one now
 
 <h3>5 April 2024</h3>
->Made the update section easier to navigate
->Improved how the prayer direction section looks
->Great Circle and Rhumb Line calculations are now shown for every religion except Bahá'í (Great Circle only)
+>Prayer Directions: Improved how the prayer direction section looks
+>Prayer Directions: Great Circle and Rhumb Line calculations are now shown for every religion except Bahá'í (Great Circle only)
+>Updates: Made the update section easier to navigate
 
 <h3>4 April 2024</h3>
->Added an external website, the original Letterly website which teaches alphabets
->The website's new address is LETTERLY.GITHUB.IO rather than LETTERLY.GITHUB.IO/CALENDAR.HTML
+>Learn Alphabets: Added an external website, the original Letterly website which teaches alphabets
+>Website: The website's new address is LETTERLY.GITHUB.IO rather than LETTERLY.GITHUB.IO/CALENDAR.HTML
 
 <h3>1 April 2024</h3>
->Added April Fools' Day as a global holiday
->Separate Braille conversion website is now linked
->Fixed date of Laetare Sunday
->Fixed some issues with how the changelog was displayed
->Modified the "return to menu" button
+>Braille Converter: Separate Braille conversion website is now linked
+>Holidays: Added April Fools' Day as a global holiday
+>Holidays: Fixed date of Laetare Sunday
+>Updates: Fixed some issues with how the changelog was displayed
+>Website: Modified the "return to menu" button
 
 <h3>31 March 2024</h3>
->AM/PM times are now an option in settings
->My separate numeral converter website is now linked in the menu, full integration coming soon
->Updated the time zones of European countries and Israel (I promise this will eventually be automatic... someday)
+>Numeral Converter: My separate numeral converter website is now linked in the menu, full integration coming soon
+>Settings: AM/PM times are now an option in settings
+>Time Now: Updated the time zones of European countries and Israel (I promise this will eventually be automatic... someday)
 
 <h3>30 March 2024</h3>
->Website renamed Internationalization Project from Universal Calendar Project
->The updates are now on the main website not a separate page
->Name Day Today and Find Name Day are now combined into a single Name Day section
->Fixed Wikipedia links for decimal time zones
->Added the Syloti calendar!
+>Calendar Converter: Added the Syloti calendar!
+>Name Day: Name Day Today and Find Name Day are now combined into a single Name Day section
+>Time Now: Fixed Wikipedia links for decimal time zones
+>Website: Website renamed Internationalization Project from Universal Calendar Project
+>Updates: The updates are now on the main website not a separate page
 
 <h3>29 March 2024</h3>
->Changed the Saudi Solar Hijri calendar to change days at midnight
->Fixed an issue displaying holidays on some days in the far future
->Fixed an issue with Zayin Adar being displayed twice during the month of Adar I
->Adjusted the way single digit Hebrew numerals are shown and changed the "thousands place" indicator
+>Calendar Converter: hanged the Saudi Solar Hijri calendar to change days at midnight
+>Calendar Converter: Adjusted the way single digit Hebrew numerals are shown and changed the "thousands place" indicator
+>Holidays: Fixed an issue displaying holidays on some days in the far future
+>Holidays: Fixed an issue with Zayin Adar being displayed twice during the month of Adar I
 
 <h3>28 March 2024</h3>
->Added the Assyrian calendar!
->Added the Saudi Solar Hijri calendar!
->Assyrian New Year is now shown as 1 Nīsān not 1 April
->Added the Fast of Nineveh
->Added a few Orthodox/Coptic fasts
->Fixed an issue with the display of Coptic intercalary months
->Added seven Zoroastrian holidays (added to all three calendars)
+>Calendar Converter: Added the Assyrian calendar!
+>Calendar Converter: Added the Saudi Solar Hijri calendar!
+>Calendar Converter: Fixed an issue with the display of Coptic intercalary months
+>Holidays: Assyrian New Year is now shown as 1 Nīsān not 1 April
+>Holidays: Added the Fast of Nineveh
+>Holidays: Added a few Orthodox/Coptic fasts
+>Holidays: Added seven Zoroastrian holidays (added to all three calendars)
 
 <h3>27 March 2024</h3>
->Fixed the display of some Zoroastrian holidays
->Added the Zoroastrian holidays of Nouroz and Pateti
->Fixed an issue with the Bahá'í date in Arabic
->The day of the week now has a Wikipedia article attached
->The name search now does not care about letter casing
->Added Zoroastrian name-day feasts
+>Calendar Converter: Fixed an issue with the Bahá'í date in Arabic
+>Calendar Converter: The day of the week now has a Wikipedia article attached
+>Holidays: Fixed the display of some Zoroastrian holidays
+>Holidays: Added the Zoroastrian holidays of Nouroz and Pateti
+>Holidays: Added Zoroastrian name-day feasts
+>Name Day: The name search now does not care about letter casing
 
 <h3>20 March 2024</h3>
->Added the Yazidi prayer direction
+>Prayer Directions: Added the Yazidi prayer direction
 
 <h3>18 March 2024</h3>
->Fixed issue with decimal time zones
->Zayin Adar is now on both Adar I and Adar II in leap years
+>Holidays: Zayin Adar is now on both Adar I and Adar II in leap years
+>Time Now: Fixed issue with decimal time zones
 
 <h3>17 March 2024</h3>
->Zayin Adar is moved to Adar I in leap years instead of Adar II
->Started to fix some Belarusian names (by putting them in the nominative form)
+>Holidays: Zayin Adar is moved to Adar I in leap years instead of Adar II
+>Name Day: Started to fix some Belarusian names (by putting them in the nominative form)
 
 <h3>16 March 2024</h3>
->Fixed some issues regarding the name day search
->New section: You can see times and time zones around the world
+>Name Day: Fixed some issues regarding the name day search
+>Time Now: A new section where you can see times and time zones for different cities around the world
 
 <h3>15 March 2024</h3>
->Fixed an issue with how dates are displayed
->You can now only use the Gregorian calendar to search for name days
->You can now format dates for days other than today
->Added three holidays: Maslenitsa, Kupala Night, and Freedom Day (Belarus)
->New section: You can now search your name to find your name day
+>Calendar Converter: Fixed an issue with how dates are displayed
+>Date Formatter: You can now format dates for days other than today
+>Holidays: Added three holidays: Maslenitsa, Kupala Night, and Freedom Day (Belarus)
+>Name Day: You can now only use the Gregorian calendar to search for name days
+>Name Day: You can now search your name to find your name day
 
 <h3>14 March 2024</h3>
->Added the Mandaean word for Parwanaya to the calendar
->Fixed an issue regarding Hebrew and Arabic numerals
->Changed Belarus emoji to ⚪🔴⚪
->Added Belarusian name days
->Fixed issues with a few Greek name days
->Bahá'í calendar now uses Arabic instead of Persian numerals
->Ayyám-i-Há became listed as a holiday and there is no longer a nineteen day feast for this intercalary month
+>Calendar Converter: Added the Mandaean word for Parwanaya to the calendar
+>Calendar Converter: Fixed an issue regarding Hebrew and Arabic numerals
+>Calendar Converter: Bahá'í calendar now uses Arabic instead of Persian numerals
+>Holidays: Ayyám-i-Há became listed as a holiday and there is no longer a nineteen day feast for this intercalary month
+>Name Day: Changed Belarus emoji to ⚪🔴⚪
+>Name Day: Added Belarusian name days
+>Name Day: Fixed issues with a few Greek name days
 
 <h3>13 March 2024</h3>
->Added the city of Erbil
->Added the Yarsan direction of prayer
+>Prayer Directions: Added the city of Erbil
+>Prayer Directions: Added the Yarsan direction of prayer
 
 <h3>11 March 2024</h3>
 >Canada and USA now updated to daylight savings time... this should be done automatically soon enough
@@ -173,48 +201,48 @@ changelog.innerHTML =
 >Added 26 new national holidays (224 total)
 
 <h3>28 February 2024</h3>
->Made the holiday of Shavuot two days in the diaspora
->Added isru chag to the Three Pilgramage Holidays in Judaism
->"National holidays" is now "National/Global holidays"; Leap day, New Year's Eve, and New Year's Day have been moved
->Added 58 more national/global holidays (198 total)
+>Holidays: Made the holiday of Shavuot two days in the diaspora
+>Holidays: Added isru chag to the Three Pilgramage Holidays in Judaism
+>Holidays: "National holidays" is now "National/Global holidays"; Leap day, New Year's Eve, and New Year's Day have been moved
+>Holidays: Added 58 more national/global holidays (198 total)
 
 <h3>27 February 2024</h3>
->Added the Jewish fast days of Zayin Adar, Twentieth of Sivan, and Fast of Behav
->Added the Jewish prayer observation of Leil Selichot for the Italian rite of Judaism
->Added the Islamic holidays of Laylat al-Miʿraj, Laylat al-Raghaib, and the Night of Power
->Added the monthly observances of Yom Kippur Katan and White Nights
+>Holidays: Added the Jewish fast days of Zayin Adar, Twentieth of Sivan, and Fast of Behav
+>Holidays: Added the Jewish prayer observation of Leil Selichot for the Italian rite of Judaism
+>Holidays: Added the Islamic holidays of Laylat al-Miʿraj, Laylat al-Raghaib, and the Night of Power
+>Holidays: Added the monthly observances of Yom Kippur Katan and White Nights
 
 <h3>23 February 2024</h3>
->Added Ethiopian Christmas, the Pascal Triduum, Shrove Monday, Quinquagesima, Sexagesima, Septuagesima, and Allhallowtide
->Added 30 more national holidays (137 total)
+>Holidays: Added Ethiopian Christmas, the Pascal Triduum, Shrove Monday, Quinquagesima, Sexagesima, Septuagesima, and Allhallowtide
+>Holidays: Added 30 more national holidays (137 total)
 
 <h3>22 February 2024</h3>
->Added the Druze holiday of Ziyarat al-Nabi Shu'ayb
->Added 41 more national holidays (107 total)
+>Holidays: Added the Druze holiday of Ziyarat al-Nabi Shu'ayb
+>Holidays: Added 41 more national holidays (107 total)
 
 <h3>21 February 2024</h3>
->Added the Saudi cities of Medina and Riyadh
->National and Religious/Cultural Holidays are now separated
->Julian and Revised Julian calendars now both start at sunset
->Added the Orthodox holidays of Clean Monday and Great Lent
->Added 66 national holidays from around the world!
->Added Leap Day as a holiday
+>Calendar Converter: Julian and Revised Julian calendars now both start at sunset
+>Prayer Directions: Added the Saudi cities of Medina and Riyadh
+>Holidays: National and Religious/Cultural Holidays are now separated
+>Holidays: Added the Orthodox holidays of Clean Monday and Great Lent
+>Holdays: Added 66 national holidays from around the world!
+>Holidays: Added Leap Day as a holiday
 
 <h3>20 February 2024</h3>
->Added three Ahmadi holidays
->Fixed the way some observances are displayed
->Some Shia observances were added
->Three Yazidi holidays were added too
->Added the Mandaean holy day of the week, Habshaba (Sunday) and the Samaritan holy day Shabbat (Saturday)
+>Holidays: Added three Ahmadi holidays
+>Holidays: Fixed the way some observances are displayed
+>Holidays: Some Shia observances were added
+>Holidays: Three Yazidi holidays were added too
+>Holidays: Added the Mandaean holy day of the week, Habshaba (Sunday) and the Samaritan holy day Shabbat (Saturday)
 
 <h3>5 February 2024</h3>
->Added two special Shabbats: Chazon & Shira
+>Holidays: Added two special Shabbats: Chazon & Shira
 
 <h3>4 February 2024</h3>
->Added the rare Jewish observance of Birkat Hachama which happens once every 28 years
+>Holidays: Added the rare Jewish observance of Birkat Hachama which happens once every 28 years
 
 <h3>3 February 2024</h3>
->Added seven special Shabbat types (Shuva, Sehkalim, Zachor, Parah, HaChodesh, Nachamu, & HaGadol)
+>Holidays: Added seven special Shabbat types (Shuva, Sehkalim, Zachor, Parah, HaChodesh, Nachamu, & HaGadol)
 
 <h3>2 February 2024</h3>
 >Added the Jewish holiday of Chag HaBanot, as well as Leil Selichot (in both Ashkenazi and Sephardi tradition)
@@ -245,10 +273,10 @@ changelog.innerHTML =
 >Changed Christian Sabbath to "Lord's Day"
 >Added the cities of Akko, Jakarta and Melbourne
 >Added the Mizrah angle
->Renamed "changelog" to Updates and slightly changed the appearance
+>Updates: Renamed "Changelog" to Updates and slightly changed the appearance
 
 <h3>6 January 2024</h3>
->The Qibla angle is set to "Face the Kaaba" if the city selected is Mecca
+>Prayer Directions: The Qibla angle is set to "Face the Kaaba" if the city selected is Mecca
 >Added New Year's Day as a holiday
 >I changed the way some religious holidays are displayed
 >Fixed Mexico City's time zone
@@ -257,7 +285,7 @@ changelog.innerHTML =
 >Changed website title from Date Converter to Universal Calendar Project
 >Now you can select location to see sunrise/sunset times
 >Four of the five daily Islamic prayers are shown too, as are three Jewish times [Daybreak, end of Shabbat & Sof Zman Kriyat Shema]
->The direction of the Qibla and Qiblih is now shown too
+>Prayer Directions: The direction of the Qibla and Qiblih is now shown too
 
 <h3>27 December 2023</h3>
 >Fixed an issue with the display of Zoroastrian holidays
@@ -269,27 +297,27 @@ changelog.innerHTML =
 >The Jewish fast day, '10th of Tevet' was added
 
 <h3>20 December 2023</h3>
->Added the holy day of the week for Judaism, Christianity, Islam, and the Bahá'í Faith
->Added the monthly observances of Rosh Chodesh [Judaism] and the Nineteen Day Feasts [Bahá'í Faith]    
+>Holidays: Added the holy day of the week for Judaism, Christianity, Islam, and the Bahá'í Faith
+>Holidays: Added the monthly observances of Rosh Chodesh [Judaism] and the Nineteen Day Feasts [Bahá'í Faith]    
     
 <h3>15 December 2023</h3>
->Fixed another issue regarding Hanukkah days    
+>Holidays: Fixed another issue regarding Hanukkah days    
 
 <h3>8 December 2023</h3>
->Fixed an issue regarding Hanukkah days
+>Holidays: Fixed an issue regarding Hanukkah days
 
 <h3>1 November 2023</h3>
->Added the Bahá'í observances of the Nineteen-Day Fast and Riḍván
->Fixed an issue of Bahá'í holidays not being displayed
+>Holidays: Added the Bahá'í observances of the Nineteen-Day Fast and Riḍván
+>Holidays: Fixed an issue of Bahá'í holidays not being displayed
     
 <h3>29 September 2023</h3>
->Starting to change how individual sects display holidays
+>Holidays: Starting to change how individual sects display holidays
 
 <h3>30 August 2023</h3>
->Fixed an issue with religions' Wikipedia article links
+>Holidays: Fixed an issue with religions' Wikipedia article links
 
 <h3>23 August 2023</h3>
->Added Wikipedia articles for the religions
+>Holidays: Added Wikipedia articles for the religions
 
 <h3>22 August 2023</h3>
 >Added the Mandaean festival of Parwanaya
@@ -303,7 +331,7 @@ changelog.innerHTML =
 >Fixed an issue with displaying a link for the month of Adar in certain years
 
 <h3>16 August 2023</h3>
->Rosh Hashanah Lemaasar Behema, Purim Katan, Shushan Purim Katan, and Purim Meshulash added to the Hebrew calendar
+>Holidays: Rosh Hashanah Lemaasar Behema, Purim Katan, Shushan Purim Katan, and Purim Meshulash added to the Hebrew calendar
 
 <h3>15 August 2023</h3>
 >Fixed an issue in displaying the first day of the week of the Gregorian calendar   
@@ -387,102 +415,102 @@ changelog.innerHTML =
 >Added Zoroastrian holidays to the Qadimi and Shahanshahi calendars
 
 <h3>26 May 2023</h3>
->Added some Gregorian, Julian and Zoroastrian holidays
+>Holidays: Added some Gregorian, Julian and Zoroastrian holidays
 
 <h3>25 May 2023</h3>
->Added the Kurdish calendar
->Fixed a glitch with selecting certain Hebrew months
->Fixed some issues with how some holidays were displayed
->Added the Jewish holiday of Pesach (Passover)
->Added Hebrew fasts which move to avoid being on Saturday (Shabbat): "Fast of Gedalia", "Fast of Esther", "Fast of the Firstborn"
+>Calendar Converter: Added the Kurdish calendar
+>Calendar Converter: Fixed a glitch with selecting certain Hebrew months
+>Holidays: Fixed some issues with how some holidays were displayed
+>Holidays: Added the Jewish holiday of Pesach (Passover)
+>Holidays: Added Hebrew fasts which move to avoid being on Saturday (Shabbat): "Fast of Gedalia", "Fast of Esther", "Fast of the Firstborn"
 
 <h3>24 May 2023</h3>
->The days of the week are now in all six official UN languages
->Changed the apperance of the inputs and made some minor stylistic edits
->Ethiopian numerals are now used on the Ethiopian calendar
->Fixed a glitch involving months with multiple words in the name
->Show which calendars have days that start on sunrise or sunset (rather than midnight)
+>Calendar Converter: The days of the week are now in all six official UN languages
+>Calendar Converter: Changed the apperance of the inputs and made some minor stylistic edits
+>Calendar Converter: Ethiopian numerals are now used on the Ethiopian calendar
+>Calendar Converter: Fixed a glitch involving months with multiple words in the name
+>Calendar Converter: Show which calendars have days that start on sunrise or sunset (rather than midnight)
 
 <h3>23 May 2023</h3>
->Renamed Coptic epagomenal month to "Pi Kogi Enavot"
->All calendars are shown in their native languages (and numeral systems)
->Switched the order of Tabarian months to be correct
->Added my email
+>Calendar Converter: Renamed Coptic epagomenal month to "Pi Kogi Enavot"
+>Calendar Converter: All calendars are shown in their native languages (and numeral systems)
+>Calendar Converter: Switched the order of Tabarian months to be correct
+>Contact/Info: Added my email
 
 <h3>22 May 2023</h3>
->Added "Julian-based" as a calendar selection category
->Removed the Burmese calendar for technical reasons :(
->Added Armenian Christmas (Jan 6) as a holiday
->Added holidays to the Julian calendar
->Added the day in French :)
->Around half the calendars are now additionally shown in their native languages
+>Calendar Converter: Added "Julian-based" as a calendar selection category
+>Calendar Converter: Removed the Burmese calendar for technical reasons :(
+>Calendar Converter: Added the day in French :)
+>Calendar Converter: Around half the calendars are now additionally shown in their native languages
+>Holidays: Added Armenian Christmas (Jan 6) as a holiday
+>Holidays: Added holidays to the Julian calendar
 
 <h3>21 May 2023</h3>
->Added the Shia date for the holiday of Mawlid and added Eid al-Ghadir
->Added Nativity of John the Baptist as a Christian holiday
->Badi calendar renamed to Bahá'í
->Holidays can now be multiday (made Hanukkah 8 days and Rosh Hashanah 2 days)
->Added the Jewish festival of Sukkot (7 days)
+>Calendar Converter: Badi calendar renamed to Bahá'í
+>Holidays: Added the Shia date for the holiday of Mawlid and added Eid al-Ghadir
+>Holidays: Added Nativity of John the Baptist as a Christian holiday
+>Holidays: Holidays can now be multiday (made Hanukkah 8 days and Rosh Hashanah 2 days)
+>Holidays: Added the Jewish festival of Sukkot (7 days)
 
 <h3>20 May 2023</h3>
->Holidays are now shown for the Hebrew, Gregorian, Islamic Tabular, Mandaean, and Badi calendars
->Each holiday has a link to relevant information
+>Holidays: Holidays are now shown for the Hebrew, Gregorian, Islamic Tabular, Mandaean, and Badi calendars
+>Holidays: Each holiday has a link to relevant information
 
 <h3>6 May 2023</h3>
->Added Nanakshahi era "KE" and Nepal Sambat Solar era "NE"
+>Calendar Converter: Added Nanakshahi era "KE" and Nepal Sambat Solar era "NE"
 
 <h3>4 May 2023</h3>
->Added Mandaean era "AA" and Indian National era "SE"
+>Calendar Converter: Added Mandaean era "AA" and Indian National era "SE"
 
 <h3>1 May 2023</h3>
->Simplified the Zoroastrian calendars' names
->Reorganized the 'calendar' selector based on calendar type
->The Hebrew month of Adar is now called Adar I in leap years
->Added the Burmese calendar, there may be some errors as there is very little information about it in English
+>Calendar Converter: Simplified the Zoroastrian calendars' names
+>Calendar Converter: Reorganized the 'calendar' selector based on calendar type
+>Calendar Converter: The Hebrew month of Adar is now called Adar I in leap years
+>Calendar Converter: Added the Burmese calendar, there may be some errors as there is very little information about it in English
 
 <h3>30 April 2023</h3>
->Issue with selecting Nisan in some Hebrew calendar years solved
->Fixed a critical error which broke the website when the current Gregorian month day was less than 10
+>Calendar Converter: Issue with selecting Nisan in some Hebrew calendar years solved
+>Calendar Converter: ixed a critical error which broke the website when the current Gregorian month day was less than 10
 
 <h3>22 April 2023</h3>
->Fixed upper bound for Tabarian
->Added the Zoroastrian Fasli, Qadimi, and Shahanshahi calendars
->Revised the way months are displayed
->Added my personal website to the contact information
+>Calendar Converter: Fixed upper bound for Tabarian
+>Calendar Converter: Added the Zoroastrian Fasli, Qadimi, and Shahanshahi calendars
+>Calendar Converter: Revised the way months are displayed
+>Contact/Info: Added my personal website to the contact information
 
 <h3>20 April 2023</h3>
->Made inputting dates easier
->I added another Islamic Tabular calendar, the Islamic Tabular Tayyibi calendar
->I added my name and a link to the changelog at the bottom
->The upper/lower year limits are now shown for every calendar now, not just Gregorian
->Fixed some of the Wikipedia links
->Added Nepal Sambat Solar and Thai Solar calendars
->Added Tabarian, it could have leap year algorithm issues :(
->Fixed Bengali calendar issue
->Fixed an issue with Revised Julian calendar leap years
->Made the website a little more aesthetic and added the Montserrat font
->Eras are now displayed with most calendars (like CE, AD, AH, SH, BE etc.)
+>Calendar Converter: Made inputting dates easier
+>Calendar Converter: I added another Islamic Tabular calendar, the Islamic Tabular Tayyibi calendar
+>Calendar Converter: The upper/lower year limits are now shown for every calendar now, not just Gregorian
+>Calendar Converter: Fixed some of the Wikipedia links
+>Calendar Converter: Added Nepal Sambat Solar and Thai Solar calendars
+>Calendar Converter: Added Tabarian, it could have leap year algorithm issues :(
+>Calendar Converter: Fixed Bengali calendar issue
+>Calendar Converter: Fixed an issue with Revised Julian calendar leap years
+>Calendar Converter: Eras are now displayed with most calendars (like CE, AD, AH, SH, BE etc.)
+>Website: I added my name and a link to the changelog at the bottom
+>Website: Made the website a little more aesthetic and added the Montserrat font
 
 <h3>19 April 2023</h3>
->Added Hebrew and Islamic Tabular calendars
->Improved UI: The website now automatically loads the current date
->Improved the date selection scheme
+>Calendar Converter: Added Hebrew and Islamic Tabular calendars
+>Calendar Converter: The website now automatically loads the current date
+>calendar Converter: Improved the date selection scheme
 
 <h3>18 April 2023</h3>
->Added the Badi, Bengali, Juche, Julian, Minguo, Mool Nanakshahi, and Revised Julian calendars
->Indian is now called Indian National, Iranian is now called Solar Hijri
->Added Wikipedia links to the calendars
->Reduced upper year limit to 2060 CE (sorry, will increase later)
+>Calendar Converter: Added the Badi, Bengali, Juche, Julian, Minguo, Mool Nanakshahi, and Revised Julian calendars
+>Calendar Converter: Indian is now called Indian National, Iranian is now called Solar Hijri
+>Calendar Converter: Added Wikipedia links to the calendars
+>Calendar Converter: Reduced upper year limit to 2060 CE (sorry, will increase later)
 
 <h3>15 January 2023</h3>
->Added the Coptic calendar
+>Calendar Converter: Added the Coptic calendar
 
 <h3>14 January 2023</h3>
->Added the Ethiopian calendar
+>Calendar Converter: Added the Ethiopian calendar
 
 <h3 id="2023">13 January 2023</h3>
->I started the change log today :)
->So far the program converts dates in the Gregorian, Armenian, Berber, Indian, Iranian, and Mandaean calendars from approximately 1901 to 2172 CE</pre>`
+>Updates: I started the changelog today :)
+>Calendar Converter: So far the program converts dates in the Gregorian, Armenian, Berber, Indian, Iranian, and Mandaean calendars from approximately 1901 to 2172 CE</pre>`
 
 /*
 KNOWN ISSUES 

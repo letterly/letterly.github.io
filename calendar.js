@@ -7,6 +7,7 @@ jmlist = ["January", "February", "March", "April", "May", "June", "July", "Augus
 preferences = {
     gregEra: "CE",
     time: "24",
+    degree: "decimal",
 }
 
 
@@ -504,7 +505,13 @@ function locationChange(){
         else if(g > 112.5) dir = "(SE ↘)"
         else if(g > 67.5) dir = "(E →)"
         else dir = "(NE ↗)"
-        holysites[h].direction = g + "° " + dir
+        if(preferences.degree == "arcminute"){
+            g = Math.floor(g) + "° " + Math.round((g % 1) * 60) + "′ "
+        }
+        else{
+            g += "° "
+        }
+        holysites[h].direction = g + dir
     }
 
     angles.innerHTML = ""
@@ -519,7 +526,7 @@ function locationChange(){
         <tr>
             <td><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</a></td>
         
-            ${city != "Jerusalem" ? 
+            ${city != "Jerusalem 🇮🇱" ? 
             `<td>${holysites.Temple.direction}</td>
             <td>${holysites.Temple2.direction}</td>`
             :
@@ -528,7 +535,7 @@ function locationChange(){
         <tr>
             <td><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a></td>
     
-            ${city != "Nablus" ? 
+            ${city != "Nablus 🇵🇸" ? 
             `<td>${holysites.Gerizim.direction}</td>
             <td>${holysites.Gerizim2.direction}</td>`
             :
@@ -537,7 +544,7 @@ function locationChange(){
         <tr>
             <td><a class='islamic_tabular' href='https://en.wikipedia.org/wiki/Qibla' target='_blank'>Islam (Qibla)</a></td>
 
-            ${city != "Mecca" ? 
+            ${city != "Mecca 🇸🇦" ? 
             `<td>${holysites.Kaaba.direction}</td>
             <td>${holysites.Kaaba2.direction}</td>`
             :
@@ -546,7 +553,7 @@ function locationChange(){
         <tr>
             <td><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a></td>
 
-            ${city != "Akko" ? 
+            ${city != "Akko 🇮🇱" ? 
             `<td>${holysites.Qiblih.direction}</td>
             <td>-</td>`
             :
@@ -898,6 +905,18 @@ function twelve(){
     else{
         preferences.time = "12"
         twelvetwenty.innerHTML = "<b>AM|PM</b>/24 Hour"
+    }
+    reset()
+}
+
+function degree(){
+    if(preferences.degree == "decimal"){
+        preferences.degree = "arcminute"
+        deg.innerHTML = "5.5°/<b>5° 30′</b>"
+    }
+    else{
+        preferences.degree = "decimal"
+        deg.innerHTML = "<b>5.5°</b>/5° 30′"
     }
     reset()
 }
@@ -3789,6 +3808,19 @@ function holidaycheck(thatday){
         },
         {
             cal: "Islamic Tabular",
+            name: "Laylat al-Jaiza",
+            day: ["30 Ramadan"],
+            link: "https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj#Modern_Muslim_observance",
+        },
+        {
+            sect: "Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Ehya Night",
+            day: ["19 Ramadan", "21 Ramadan", "23 Ramadan"],
+            link: "https://en.wikipedia.org/wiki/Ehya_night",
+        },
+        {
+            cal: "Islamic Tabular",
             name: "Laylat al-Raghaib",
             link: "https://en.wikipedia.org/wiki/Laylat_al-Raghaib",
             day: ["1 Rajab", "2 Rajab", "3 Rajab", "4 Rajab", "5 Rajab", "6 Rajab", "7 Rajab"],
@@ -5092,13 +5124,10 @@ function reveal(subject){
     else{
         header.innerHTML = `<span onclick="reveal('menu')">Internationalization Project</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname measure findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname currencies measure temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
-        case "color":
-            color.style.display = "block"
-            break
         case "calendar":
             selectblockone.style.display = "block"
             selectblocktwo.style.display = "block"
@@ -5141,16 +5170,13 @@ function reveal(subject){
             weekly.style.display = "block"
             break
         case "contactinfo":
-            contactinfo.style.display = "block"
-            break
         case "changelog":
-            changelog.style.display = "block"
-            break
         case "settings":
-            settings.style.display = "block"
-            break
         case "measure":
-            measure.style.display = "block"
+        case "currencies":
+        case "temperature":
+        case "color":
+            document.getElementById(subject).style.display = "block"
             break
         case "name":
             thecalendar.value = "Gregorian"
@@ -5320,9 +5346,441 @@ function colorconvert(type){
 
 function measureConvert(x){
     if(x == 0){
-        Math.round((measure1.value = measure0.value * unit0.value / unit1.value) * 1000) / 1000
+        measure1.value = Math.round((measure0.value * unit0.value / unit1.value) * (10**10)) / (10**10)
     }
     else{
-       Math.round((measure0.value = measure1.value * unit1.value / unit0.value) * 1000 ) / 1000
+        measure0.value = Math.round((measure1.value * unit1.value / unit0.value) * (10**10)) / (10**10)
     }
 }
+function currencyConvert(x){
+    if(x == 0){
+        money1.value = Math.round((money0.value * currency0.value / currency1.value) * (10**10)) / (10**10)
+    }
+    else{
+        money0.value = Math.round((money1.value * currency1.value / currency0.value) * (10**10)) / (10**10)
+    }
+}
+
+
+units = {
+    Length: { //base unit: m
+        Metric: {
+            "ångström": 0.0000000001,
+            "nanometer (μm)": 0.000000001,
+            "micron/micrometer (μm)": 0.000001,
+            "millimeter (mm)": 0.001,
+            "centimeter (cm)": 0.01,
+            "meter (m)": 1,
+            "kilometer (km)": 1000,
+            "Scandanavian mile": 10000,
+        },
+        Imperial: {
+            "thou": 0.0000254,
+            "inch (in)": 0.0254,
+            "rack unit": 0.04445,
+            "hand (hh)": 0.1016,
+            "foot (ft)": 0.3048,
+            "yard (yd)": 0.9144,
+            "rod": 5.0292,
+            "chain (ch)": 20.1168,
+            "furlong": 201.168,
+            "mile": 1609.344,
+        },
+        Astronomical: {
+            "light-second": 299792458,
+            "astronomical unit (au)": 14959787070,
+            "light-year (ly)": 946073047258080,
+            "parsec (pc)": 3085677581467190,
+        },
+        Nautical: {
+            "fathom": 1.8288,
+            "nautical mile (nmi)": 1852,
+        },
+        Taiwanese: {
+            "fēn (分)": 0.00303,
+            "cùn (寸)": 0.0303,
+            "chǐ (尺)": 0.303,
+            "zhàng (丈)": 3.03,
+        },
+    },
+    Weight: { //base unit: mg
+        Metric: {
+            "microgram (μg)": 0.001,
+            "milligram (mg)": 1,
+            "gram (g)": 1000,
+            "kilogram (kg)": 1000000,
+            "metric ton": 1000000000,
+        },
+        Imperial: {
+            "grain": 64.8,
+            "ounce (oz)": 28349.523,
+            "pound (lb)": 453592,
+            "stone": 6350293,
+            "hundredweight (cwt) [U.S.]": 45359237,
+            "hundredweight (cwt) [U.K.]": 50802345,
+            "ton [U.S.]": 907184740,
+            "ton [U.K.]": 1016046909,
+        },
+        Troy: {
+            "pennyweight (dwt)": 1555,
+            "troy ounce (oz t)": 31100,
+            "troy pound (lb t)": 373241.7,
+        }
+    },
+    Volume: { //base unit mL
+        Metric: {
+            "milliliter (mL)": 1,
+            "metric teaspoon": 5,
+            "centiliter (cL)": 10,
+            "metric tablespoon": 15,
+            "metric cup": 250,
+            "liter (L)": 1000,
+            "cubic meter (m³)": 1000000,
+        },
+        Imperial: {
+            "imperial fluid dram": 3.551632,
+            "imperial teaspoon (imp tsp)": 5.919,
+            "imperial tablespoon (imp tbsp)": 17.758,
+            "imperial fluid ounce (imp fl oz)": 28.413,
+            "imperial gill": 142.065,
+            "imperial pint (imp pt)": 568.261,
+            "imperial quart (imp qt)": 1136.52,
+            "imperial gallon (imp gal)": 4546.09,
+            "imperial peck": 9092.18,
+            "imperial bushel (imp bsh)":  36368.72,
+            "cubic feet (ft³)": 28316.8,
+            "cubic yard (yd³)": 764554.9,
+            "acre-foot (ac ft)": 12334818.375,
+        },
+        "U.S. Liquid Volume": {
+            "U.S. fluid dram": 3.696691,
+            "U.S. teaspoon (imp tsp)": 4.929,
+            "U.S. tablespoon (US tbsp)": 14.787,
+            "U.S. fluid ounce (US fl oz)": 29.5735,
+            "U.S. gill": 118.294,
+            "U.S. cup": 236.588,
+            "U.S. pint (US pt)": 473.176,
+            "U.S. quart (US qt)": 946.352,
+            "U.S. gallon (US gal)": 3785.41,
+        },
+        "U.S. Dry Volume": {
+            "U.S. dry pint": 550.61047,
+            "U.S. dry quart": 8809.7675,
+            "U.S. dry gallon": 4404.883,
+            "U.S. peck": 8809.76754,
+            "U.S. bushel (US bsh)": 35239.1,
+        },
+        "U.S. Nutrition Labeling": {
+            "U.S. food labeling fluid ounce": 30,
+            "legal cup": 240,
+        },
+        "Australian": {
+            "Australian teaspoon": 5,
+            "Australian dessertspoon": 10,
+            "Australian tablespoon": 20,
+        },
+    },
+    Speed: { //base unit m/s
+        Metric: {
+            "meters per second (m/s)": 1,
+            "kilometers per hour (km/h)": 3.6,
+        },
+        Imperial: {
+            "feet per second (ft/s)": 3.280840,
+            "miles per hour (mph)": 2.236936,
+        },
+        "Nautical/Aviation": {
+            "knots (kn)": 1.943844 
+        },
+    },
+    Pressure: { //base unit bar
+        "Metric": { 
+            "pascal": 0.00001,
+            "millibar": 0.001,
+            "hectopascal": 0.001,
+            "kilopascal": 0.01,
+            "millimeter of mercury (mmHg)": 0.00133322,
+            "bar": 1,
+        },
+        "Imperial": {
+            "pouns per square inch (psi)": 0.06894757,
+            "inch of mercury (inHg)": 0.0338639,
+        },
+        "Scientific": {
+            "torr": 0.001333224,
+            "technical atmosphere (at)": 0.980665,
+            "atmosphere (atm)": 1.01325,
+        },
+    },
+    Power: { //base unit: W
+        "Metric": { 
+            "watt (W)": 1,
+            "kilowatt (kW)": 1000,
+            "metric horsepower": 735.49875,
+        },
+        "Imperial": {
+            "imperial horsepower (hp)": 745.7,
+            "refrigeration ton (RT)": 3516.85
+        },
+    },
+    Area: { //base unit: m²
+        "Metric": { 
+            "square meter (m²)": 1,
+            "are (a)": 100, 
+            "decare (daa)": 1000,
+            "stremma": 1000,
+            "hectare": 10000,
+            "square kilometer (km²)": 1000000,
+        },
+        "Imperial": {
+            "square inch (in²)": 0.00064516,
+            "square foot (ft²)": 0.092903,
+            "square yard (yd²)": 0.836127,
+            "square [construction]": 9.29030,
+            "square mile (mi²)": 2589990,
+            "acre (ac)": 4046.856,
+        },
+        "Middle Eastern": {
+            "kirat": 175,
+            "dunam": 1000,
+            "feddan": 4200,
+        },
+        "Thai": {
+            "tarang wa (ตารางวา)": 4,
+            "ngan (งาน)": 400,
+            "rai (ไร่)": 1600,
+        },
+        "Japanese": {
+            "shaku (勺)": 0.03306,
+            "gō (合)": 0.3306,
+            "jō (畳)": 1.653,
+            "tsubo (坪)": 3.306,
+            "se (畝)": 99.17,
+            "tan (段)": 991.7,
+            "chōbu (町)": 9917,
+        },
+    },
+    Angle: {
+        "Traditional": {
+            "turn": 1296000,
+            "degree (°)": 3600,
+            "minute of arc (′)": 60,
+            "arcsecond (″)": 1,
+            "milliarcsecond (mas)": 0.001,
+            "microarcsecond (μas)": 0.000001,
+            "nanoarcsecond (nas)": 0.000000001,
+        },
+        "Mathematical": {
+            "radian": 206265,
+            "milliradian (mrad)": 206.265,
+        },
+        "Engineering": {
+            "gradian (ᵍ)": 3240,
+        },
+    },
+    Time: {
+        "Common": {
+            "second (s)": 1,
+            "minute (min)": 60,
+            "hour (h)": 3600,
+            "day (d)": 86400,
+            "week": 604800,
+            "fortnight": 1209600,
+            "common year": 31536000,
+            "leap year": 31622400,
+        },
+        "Scientific": {
+            "millisecond (ms)": 0.001,
+            "microsecond (μs)": 0.000001,
+            "nanosecond (ns)": 0.000000001,
+            "picosecond (ps)": 0.000000000001,
+        }
+    },
+    //LENGTH, MASS, VOLUME, SPEED, PRESSURE, POWER, AREA, ANGLES, TIME
+    //TEMPERATURE (separate)
+}
+
+USD = 1
+Euro = 0.91925
+worldCurrencies = {
+    "U.S. Dollar": {
+        Symbol: "$",
+        Code: "USD",
+        Value: USD,
+    },
+    "Aruban Florin": {
+        Symbol: "ƒ",
+        Code: "AWG",
+        Value: 1.79 * USD,
+    },
+    "Azerbaijani Manat": {
+        Symbol: "₼",
+        Code: "AZN",
+        Value: 1.7 * USD,
+    },
+    "Bahamian Dollar": {
+        Symbol: "$",
+        Code: "BHD",
+        Value: USD,
+    },
+    "Bahraini Dinar": {
+        Symbol: ".د.ب",
+        Code: "BHD",
+        Value: 0.376 * USD,
+    },
+    "Barbadian Dollar": {
+        Symbol: "$",
+        Code: "BBD",
+        Value: 2 * USD,
+    },
+    "Belize Dollar": {
+        Symbol: "$",
+        Code: "BZD",
+        Value: 2 * USD,
+    },
+    "Bermudian Dollar": {
+        Symbol: "$",
+        Code: "BMD",
+        Value: USD,
+    },
+    "Bolivian Boliviano": {
+        Symbol: "Bs‎",
+        Code: "BOB",
+        Value: 6.96 * USD,
+    },
+    "Bosnian Convertible Mark": {
+        Symbol: "KM",
+        Code: "BAM",
+        Value: Euro * 1.95583,
+    },
+    "Bulgarian Lev": {
+        Symbol: "лв.",
+        Code: "BGN",
+        Value: Euro * 1.95583,
+    },
+    "Cayman Islands Dollar": {
+        Symbol: "$",
+        Code: "KYD",
+        Value: USD * 0.8333,
+    },
+    "Central African CFA Franc": {
+        Symbol: "F.CFA‎",
+        Code: "XAF",
+        Value: Euro * 655.957,
+    },
+    "CFP Franc": {
+        Symbol: "F",
+        Code: "XPF",
+        Value: Euro * 119.33174,
+    },
+    "Comorian Franc": {
+        Symbol: "FC",
+        Code: "KMF",
+        Value: Euro * 491.96775,
+    },
+    "Danish Krone": {
+        Symbol: "kr.",
+        Code: "DKK",
+        Value: Euro * 7.46038,
+    },
+    "Djiboutian Franc": {
+        Symbol: "Fdj",
+        Code: "DJF",
+        Value: USD * 177.721,
+    },
+    "Eastern Caribbean Dollar": {
+        Symbol: "EC$",
+        Code: "XCD",
+        Value: USD * 2.7,
+    },
+    "Eritrean Nakfa": {
+        Symbol: "Nkf",
+        Code: "ERN",
+        Value: USD * 15,
+    },
+    "Euro": {
+        Symbol: "€",
+        Code: "EUR",
+        Value: Euro,
+    },
+    "Hong Kong Dollar": {
+        Symbol: "HK$",
+        Code: "HKD",
+        Value: USD * 7.8,
+    },
+    "Jordanian Dinar": {
+        Symbol: "د.أ‎",
+        Code: "JOD",
+        Value: USD * 0.709,
+    },
+    "Macanese Pataca": {
+        Symbol: "$",
+        Code: "MOP",
+        Value: USD * 7.5728,
+    },
+    "Macedonian Denar": {
+        Symbol: "den",
+        Code: "MKD",
+        Value: 61.3644 * Euro,
+    },
+    "Netherlands Antillean Guilder": {
+        Symbol: "NAƒ",
+        Code: "ANG",
+        Value: USD * 1.79,
+    },
+    "Omani Rial": {
+        Symbol: "ر.ع",
+        Code: "OMR",
+        Value: USD * 0.384497,
+    },
+    "Panamanian Balboa": {
+        Symbol: "B/.",
+        Code: "PAB",
+        Value: USD,
+    },
+    "Qatari Riyal": {
+        Symbol: "QR",
+        Code: "QAR",
+        Value: USD * 3.64,
+    },
+    "West African CFA Franc": {
+        Symbol: "F.CFA‎",
+        Code: "XOF",
+        Value: Euro * 655.957,
+    },
+    "São Tomé and Príncipe Dobra": {
+        Symbol: "Db",
+        Code: "STN",
+        Value: 24.5 * Euro,
+    },
+    "Saudi Riyal": {
+        Symbol: "ر.س",
+        Code: "SAR",
+        Value: 3.75 * USD,
+    },
+    "United Arab Emirates Dirham": {
+        Symbol: "د.إ‎",
+        Code: "AED",
+        Value: 3.6725 * USD,
+    },
+}
+
+for(x of Object.entries(worldCurrencies)){
+    currency0.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
+    currency1.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
+}
+
+function measureSetUp(unit){
+    conv = ""
+    for(x of Object.keys(units[unit])){
+        conv += `<optgroup label="${x}">`
+        for(y of Object.entries(units[unit][x])){
+            conv += `<option value="${y[1]}">${y[0]}</option>`
+        }
+        conv += `</optgroup>`
+    }
+    unit0.innerHTML = conv
+    unit1.innerHTML = conv
+}
+
+measureSetUp("Length")
