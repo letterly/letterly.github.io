@@ -332,12 +332,12 @@ function suntimes(lat, lng, tz, angl, relativehours) {
     var mm = (dd.getMonth() + 1) + 12 * a - 3;
     j_day = dd.getDate() + Math.floor((153 * mm + 2)/5) + 365 * yy + Math.floor(yy/4) - Math.floor(yy/100) + Math.floor(yy/400) - 32045;
       var n_star = j_day - 2451545.0009 - lng / 360.0;
-      var nn = Math.floor(n_star + 0.5);
+      var nn = Math.floor(n_star + .5);
       var solar_noon = 2451545.0009 - lng / 360.0 + nn;
-      var M = 356.0470 + 0.9856002585 * nn;
-      var C = 1.9148 * Math.sin( M * radians ) + 0.02 * Math.sin( 2 * M * radians ) + 0.0003 * Math.sin( 3 * M * radians );
+      var M = 356.0470 + .9856002585 * nn;
+      var C = 1.9148 * Math.sin( M * radians ) + .02 * Math.sin( 2 * M * radians ) + .0003 * Math.sin( 3 * M * radians );
       var L = ( M + 102.9372 + C + 180 ) % 360;
-      var j_transit = solar_noon + 0.0053 * Math.sin( M * radians) - 0.0069 * Math.sin( 2 * L * radians );
+      var j_transit = solar_noon + .0053 * Math.sin( M * radians) - .0069 * Math.sin( 2 * L * radians );
       var D = Math.asin( Math.sin( L * radians ) * Math.sin( 23.45 * radians ) ) * degrees;
       var cos_omega = ( Math.sin(angl * radians) - Math.sin( lat * radians ) * Math.sin( D * radians ) ) / ( Math.cos( lat * radians ) * Math.cos( D * radians ) );
   
@@ -5361,26 +5361,63 @@ function currencyConvert(x){
     }
 }
 
+function tempconvert(x){
+    switch(x){
+
+    case "celsius":
+        reaumur.value = celsius.value * .8
+        fahrenheit.value = celsius.value * 1.8 + 32
+        kelvin.value = +celsius.value + 273.15
+        rankine.value = (+celsius.value + 273.15) * 1.8
+        break
+    case "fahrenheit":
+        celsius.value = (fahrenheit.value - 32) * 5/9
+        reaumur.value = (fahrenheit.value - 32) * 4/9
+        kelvin.value = (+fahrenheit.value + 459.67) * 5/9
+        rankine.value = +fahrenheit.value + 459.67
+        break
+    case "kelvin":
+        celsius.value = kelvin.value - 273.15
+        reaumur.value = (kelvin.value - 273.15) * .8
+        fahrenheit.value = (1.8 * kelvin.value - 459.67)
+        rankine.value = kelvin.value * 1.8
+        break
+    case "rankine":
+        celsius.value = (rankine.value * 5/9) + 273.15
+        reaumur.value = ((rankine.value * 5/9) + 273.15) * .8
+        fahrenheit.value = rankine.value - 459.67
+        kelvin.value = rankine.value * 5/9
+        break
+    case "reaumur":
+        celsius.value = reaumur.value * 1.25
+        fahrenheit.value = reaumur.value * 2.25 + 32
+        kelvin.value = (reaumur.value * 1.25) + 273.15
+        rankine.value = ((reaumur.value * 1.25) + 273.15) * 1.8
+        break
+    }
+    for(q of ["celsius", "fahrenheit", "kelvin", "rankine", "reaumur"]) document.getElementById(q).value = Math.round(document.getElementById(q).value * 100) / 100
+}
+
 
 units = {
     Length: { //base unit: m
         Metric: {
-            "ångström": 0.0000000001,
-            "nanometer (μm)": 0.000000001,
-            "micron/micrometer (μm)": 0.000001,
-            "millimeter (mm)": 0.001,
-            "centimeter (cm)": 0.01,
+            "ångström": .0000000001,
+            "nanometer (μm)": .000000001,
+            "micron/micrometer (μm)": .000001,
+            "millimeter (mm)": .001,
+            "centimeter (cm)": .01,
             "meter (m)": 1,
             "kilometer (km)": 1000,
             "Scandanavian mile": 10000,
         },
         Imperial: {
-            "thou": 0.0000254,
-            "inch (in)": 0.0254,
-            "rack unit": 0.04445,
-            "hand (hh)": 0.1016,
-            "foot (ft)": 0.3048,
-            "yard (yd)": 0.9144,
+            "thou": .0000254,
+            "inch (in)": .0254,
+            "rack unit": .04445,
+            "hand (hh)": .1016,
+            "foot (ft)": .3048,
+            "yard (yd)": .9144,
             "rod": 5.0292,
             "chain (ch)": 20.1168,
             "furlong": 201.168,
@@ -5397,15 +5434,15 @@ units = {
             "nautical mile (nmi)": 1852,
         },
         Taiwanese: {
-            "fēn (分)": 0.00303,
-            "cùn (寸)": 0.0303,
-            "chǐ (尺)": 0.303,
+            "fēn (分)": .00303,
+            "cùn (寸)": .0303,
+            "chǐ (尺)": .303,
             "zhàng (丈)": 3.03,
         },
     },
     Weight: { //base unit: mg
         Metric: {
-            "microgram (μg)": 0.001,
+            "microgram (μg)": .001,
             "milligram (mg)": 1,
             "gram (g)": 1000,
             "kilogram (kg)": 1000000,
@@ -5495,20 +5532,20 @@ units = {
     },
     Pressure: { //base unit bar
         "Metric": { 
-            "pascal": 0.00001,
-            "millibar": 0.001,
-            "hectopascal": 0.001,
-            "kilopascal": 0.01,
-            "millimeter of mercury (mmHg)": 0.00133322,
+            "pascal": .00001,
+            "millibar": .001,
+            "hectopascal": .001,
+            "kilopascal": .01,
+            "millimeter of mercury (mmHg)": .00133322,
             "bar": 1,
         },
         "Imperial": {
-            "pouns per square inch (psi)": 0.06894757,
-            "inch of mercury (inHg)": 0.0338639,
+            "pouns per square inch (psi)": .06894757,
+            "inch of mercury (inHg)": .0338639,
         },
         "Scientific": {
-            "torr": 0.001333224,
-            "technical atmosphere (at)": 0.980665,
+            "torr": .001333224,
+            "technical atmosphere (at)": .980665,
             "atmosphere (atm)": 1.01325,
         },
     },
@@ -5533,9 +5570,9 @@ units = {
             "square kilometer (km²)": 1000000,
         },
         "Imperial": {
-            "square inch (in²)": 0.00064516,
-            "square foot (ft²)": 0.092903,
-            "square yard (yd²)": 0.836127,
+            "square inch (in²)": .00064516,
+            "square foot (ft²)": .092903,
+            "square yard (yd²)": .836127,
             "square [construction]": 9.29030,
             "square mile (mi²)": 2589990,
             "acre (ac)": 4046.856,
@@ -5551,8 +5588,8 @@ units = {
             "rai (ไร่)": 1600,
         },
         "Japanese": {
-            "shaku (勺)": 0.03306,
-            "gō (合)": 0.3306,
+            "shaku (勺)": .03306,
+            "gō (合)": .3306,
             "jō (畳)": 1.653,
             "tsubo (坪)": 3.306,
             "se (畝)": 99.17,
@@ -5566,9 +5603,9 @@ units = {
             "degree (°)": 3600,
             "minute of arc (′)": 60,
             "arcsecond (″)": 1,
-            "milliarcsecond (mas)": 0.001,
-            "microarcsecond (μas)": 0.000001,
-            "nanoarcsecond (nas)": 0.000000001,
+            "milliarcsecond (mas)": .001,
+            "microarcsecond (μas)": .000001,
+            "nanoarcsecond (nas)": .000000001,
         },
         "Mathematical": {
             "radian": 206265,
@@ -5590,10 +5627,10 @@ units = {
             "leap year": 31622400,
         },
         "Scientific": {
-            "millisecond (ms)": 0.001,
-            "microsecond (μs)": 0.000001,
-            "nanosecond (ns)": 0.000000001,
-            "picosecond (ps)": 0.000000000001,
+            "millisecond (ms)": .001,
+            "microsecond (μs)": .000001,
+            "nanosecond (ns)": .000000001,
+            "picosecond (ps)": .000000000001,
         }
     },
     //LENGTH, MASS, VOLUME, SPEED, PRESSURE, POWER, AREA, ANGLES, TIME
@@ -5601,7 +5638,7 @@ units = {
 }
 
 USD = 1
-Euro = 0.91925
+Euro = .91925
 worldCurrencies = {
     "U.S. Dollar": {
         Symbol: "$",
@@ -5626,7 +5663,7 @@ worldCurrencies = {
     "Bahraini Dinar": {
         Symbol: ".د.ب",
         Code: "BHD",
-        Value: 0.376 * USD,
+        Value: .376 * USD,
     },
     "Barbadian Dollar": {
         Symbol: "$",
@@ -5661,7 +5698,7 @@ worldCurrencies = {
     "Cayman Islands Dollar": {
         Symbol: "$",
         Code: "KYD",
-        Value: USD * 0.8333,
+        Value: USD * .8333,
     },
     "Central African CFA Franc": {
         Symbol: "F.CFA‎",
@@ -5711,7 +5748,7 @@ worldCurrencies = {
     "Jordanian Dinar": {
         Symbol: "د.أ‎",
         Code: "JOD",
-        Value: USD * 0.709,
+        Value: USD * .709,
     },
     "Macanese Pataca": {
         Symbol: "$",
@@ -5731,7 +5768,7 @@ worldCurrencies = {
     "Omani Rial": {
         Symbol: "ر.ع",
         Code: "OMR",
-        Value: USD * 0.384497,
+        Value: USD * .384497,
     },
     "Panamanian Balboa": {
         Symbol: "B/.",

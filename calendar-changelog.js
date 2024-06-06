@@ -23,7 +23,7 @@ changelog.innerHTML =
 >Updates: Began organizing previous updates into categories and reworded a few
 
 <h3>3 June 2024</h3>
->Unit Converter: Added the Imperial unit 'thou', equivalent to 0.001 inches
+>Unit Converter: Added the Imperial unit 'thou', equivalent to .001 inches
 
 <h3>30 May 2024</h3>
 >Prayer Directions: Fixed an issue with giving prayer directions within four cities (Jerusalem, Mecca, Akko, and Nablus)
