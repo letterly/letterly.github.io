@@ -4,6 +4,7 @@ changelog.innerHTML =
 
 <pre><h3>6 June 2024</h3>
 >Calculator: Added a new section (external website) that serves as a simple calculator for many numeral systems
+>Numeral Converter: Added three fonts so that the numerals will display correctly on devices without the proper system fonts
 >Settings: You can now choose between getting prayer direction degrees with decimals or arcminutes
 >Temperature Converter: New section converts temperatures between the Fahrenheit, Celsius, Rankine, Kelvin, and Réaumur scales
 >Unit Converter: Added time and angle unit conversions
