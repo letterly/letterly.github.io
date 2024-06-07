@@ -20,7 +20,7 @@ body{
     color: black;
 }
 
-#settings, #temperature, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#settings, #temperature, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
@@ -47,6 +47,15 @@ td{
 td:first-child{
     text-align: right;
 }
+
+#conjugation td, #conjugation th{
+    font-size: 20px;
+    width: auto;
+    text-align: center;
+    padding: 5px;
+    border-bottom: solid black 1px;
+}
+
 
 #settings button{
     font-size: 56px;
@@ -405,7 +414,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #measure, #currencies, #temperature{
+#sunrisesunset, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;

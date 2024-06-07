@@ -5122,9 +5122,9 @@ function reveal(subject){
         menu.style.display = "none"
     }
     else{
-        header.innerHTML = `<span onclick="reveal('menu')">Internationalization Project</span>`
+        header.innerHTML = `<span onclick="reveal('menu')">Harris' Website</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname currencies measure temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname currencies measure verb temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
@@ -5176,6 +5176,7 @@ function reveal(subject){
         case "currencies":
         case "temperature":
         case "color":
+        case "verb":
             document.getElementById(subject).style.display = "block"
             break
         case "name":
@@ -5352,14 +5353,6 @@ function measureConvert(x){
         measure0.value = Math.round((measure1.value * unit1.value / unit0.value) * (10**10)) / (10**10)
     }
 }
-function currencyConvert(x){
-    if(x == 0){
-        money1.value = Math.round((money0.value * currency0.value / currency1.value) * (10**10)) / (10**10)
-    }
-    else{
-        money0.value = Math.round((money1.value * currency1.value / currency0.value) * (10**10)) / (10**10)
-    }
-}
 
 function tempconvert(x){
     switch(x){
@@ -5439,6 +5432,17 @@ units = {
             "chǐ (尺)": .303,
             "zhàng (丈)": 3.03,
         },
+        Japanese: {
+            "mō (毛)": .0000303,
+            "rin (厘)": .000303,
+            "bu (分)": .00303,
+            "san (寸)": .0303,
+            "shaku (尺)": .303,
+            "ken (間)": 1.818,
+            "jo (丈)": 3.03,
+            "cho (町)": 109.1,
+            "ri (里)": 3927,
+        },
     },
     Weight: { //base unit: mg
         Metric: {
@@ -5462,7 +5466,26 @@ units = {
             "pennyweight (dwt)": 1555,
             "troy ounce (oz t)": 31100,
             "troy pound (lb t)": 373241.7,
-        }
+        },
+        Taiwanese: {
+            "lí (釐)": 37.5,
+            "fēn (分)": 375,
+            "qián (分)": 3750,
+            "liǎng (分)": 37500,
+            "jīn (分)": 600000,
+            "dàn (分)": 60000000,
+        },
+        Japanese: {
+            "mō (毛)": 3.75,
+            "rin (厘)": 37.5,
+            "fun (分)": 375,
+            "momme (匁)": 3750,
+            "hyakume (百目)": 375000,
+            "kin (斤)": 600000,
+            "kan (貫)": 3750000,
+            "maru (丸)": 30000000,
+            "tan (担)": 60000000,
+        },
     },
     Volume: { //base unit mL
         Metric: {
@@ -5485,6 +5508,7 @@ units = {
             "imperial gallon (imp gal)": 4546.09,
             "imperial peck": 9092.18,
             "imperial bushel (imp bsh)":  36368.72,
+            "imperial tun":  954678.9,
             "cubic feet (ft³)": 28316.8,
             "cubic yard (yd³)": 764554.9,
             "acre-foot (ac ft)": 12334818.375,
@@ -5499,6 +5523,9 @@ units = {
             "U.S. pint (US pt)": 473.176,
             "U.S. quart (US qt)": 946.352,
             "U.S. gallon (US gal)": 3785.41,
+            "U.S. tun": 953923.7,
+            "cubic ton (timber)": 113300,
+            "acre-foot": 1233480000,
         },
         "U.S. Dry Volume": {
             "U.S. dry pint": 550.61047,
@@ -5506,6 +5533,8 @@ units = {
             "U.S. dry gallon": 4404.883,
             "U.S. peck": 8809.76754,
             "U.S. bushel (US bsh)": 35239.1,
+            "board foot": 2359.74,
+            "cord": 3624560,
         },
         "U.S. Nutrition Labeling": {
             "U.S. food labeling fluid ounce": 30,
@@ -5515,6 +5544,14 @@ units = {
             "Australian teaspoon": 5,
             "Australian dessertspoon": 10,
             "Australian tablespoon": 20,
+        },
+        Japanese: {
+            "sai (才)": 1.804,
+            "shaku (勺)": 18.04,
+            "gō (合)": 180.4,
+            "shō (升)": 1804,
+            "to (斗)": 18040,
+            "koku (石)": 180400,
         },
     },
     Speed: { //base unit m/s
@@ -5596,6 +5633,19 @@ units = {
             "tan (段)": 991.7,
             "chōbu (町)": 9917,
         },
+        "Taiwanese": {
+            "píng (坪)": 3.306,
+            "mǔ (畝)": 99.17,
+            "fēn (分)": 969.92,
+            "jiǎ (甲)": 9699.2,
+            "lí (犁)": 48496,
+        },
+        "Other Traditional": {
+            "cent": 40.46856,
+            "stremma": 1000,
+            "jerib (Afghanistan)": 2000,
+            "cuerda (Puerto Rico)": 3930.395,
+        },
     },
     Angle: {
         "Traditional": {
@@ -5633,178 +5683,30 @@ units = {
             "picosecond (ps)": .000000000001,
         }
     },
-    //LENGTH, MASS, VOLUME, SPEED, PRESSURE, POWER, AREA, ANGLES, TIME
-    //TEMPERATURE (separate)
-}
-
-USD = 1
-Euro = .91925
-worldCurrencies = {
-    "U.S. Dollar": {
-        Symbol: "$",
-        Code: "USD",
-        Value: USD,
+    Paper: {
+        "Standard": {
+            "sheet": 1,
+            "quire": 25,
+            "ream": 500,
+            "bundle": 1000,
+            "bale": 5000,
+            "pallet": 200000
+        },
+        "'Short' Units": {
+            "short quire": 24,
+            "short ream": 480,
+            "short bundle": 960,
+            "short bale": 4800,
+        },
+        "Posters": {
+            "printer's ream": 516,
+            "printer's bundle": 1032,
+            "printer's bale": 5160,
+        },
+        "Index Paper": {
+            "cover/index ream": 250,
+        },
     },
-    "Aruban Florin": {
-        Symbol: "ƒ",
-        Code: "AWG",
-        Value: 1.79 * USD,
-    },
-    "Azerbaijani Manat": {
-        Symbol: "₼",
-        Code: "AZN",
-        Value: 1.7 * USD,
-    },
-    "Bahamian Dollar": {
-        Symbol: "$",
-        Code: "BHD",
-        Value: USD,
-    },
-    "Bahraini Dinar": {
-        Symbol: ".د.ب",
-        Code: "BHD",
-        Value: .376 * USD,
-    },
-    "Barbadian Dollar": {
-        Symbol: "$",
-        Code: "BBD",
-        Value: 2 * USD,
-    },
-    "Belize Dollar": {
-        Symbol: "$",
-        Code: "BZD",
-        Value: 2 * USD,
-    },
-    "Bermudian Dollar": {
-        Symbol: "$",
-        Code: "BMD",
-        Value: USD,
-    },
-    "Bolivian Boliviano": {
-        Symbol: "Bs‎",
-        Code: "BOB",
-        Value: 6.96 * USD,
-    },
-    "Bosnian Convertible Mark": {
-        Symbol: "KM",
-        Code: "BAM",
-        Value: Euro * 1.95583,
-    },
-    "Bulgarian Lev": {
-        Symbol: "лв.",
-        Code: "BGN",
-        Value: Euro * 1.95583,
-    },
-    "Cayman Islands Dollar": {
-        Symbol: "$",
-        Code: "KYD",
-        Value: USD * .8333,
-    },
-    "Central African CFA Franc": {
-        Symbol: "F.CFA‎",
-        Code: "XAF",
-        Value: Euro * 655.957,
-    },
-    "CFP Franc": {
-        Symbol: "F",
-        Code: "XPF",
-        Value: Euro * 119.33174,
-    },
-    "Comorian Franc": {
-        Symbol: "FC",
-        Code: "KMF",
-        Value: Euro * 491.96775,
-    },
-    "Danish Krone": {
-        Symbol: "kr.",
-        Code: "DKK",
-        Value: Euro * 7.46038,
-    },
-    "Djiboutian Franc": {
-        Symbol: "Fdj",
-        Code: "DJF",
-        Value: USD * 177.721,
-    },
-    "Eastern Caribbean Dollar": {
-        Symbol: "EC$",
-        Code: "XCD",
-        Value: USD * 2.7,
-    },
-    "Eritrean Nakfa": {
-        Symbol: "Nkf",
-        Code: "ERN",
-        Value: USD * 15,
-    },
-    "Euro": {
-        Symbol: "€",
-        Code: "EUR",
-        Value: Euro,
-    },
-    "Hong Kong Dollar": {
-        Symbol: "HK$",
-        Code: "HKD",
-        Value: USD * 7.8,
-    },
-    "Jordanian Dinar": {
-        Symbol: "د.أ‎",
-        Code: "JOD",
-        Value: USD * .709,
-    },
-    "Macanese Pataca": {
-        Symbol: "$",
-        Code: "MOP",
-        Value: USD * 7.5728,
-    },
-    "Macedonian Denar": {
-        Symbol: "den",
-        Code: "MKD",
-        Value: 61.3644 * Euro,
-    },
-    "Netherlands Antillean Guilder": {
-        Symbol: "NAƒ",
-        Code: "ANG",
-        Value: USD * 1.79,
-    },
-    "Omani Rial": {
-        Symbol: "ر.ع",
-        Code: "OMR",
-        Value: USD * .384497,
-    },
-    "Panamanian Balboa": {
-        Symbol: "B/.",
-        Code: "PAB",
-        Value: USD,
-    },
-    "Qatari Riyal": {
-        Symbol: "QR",
-        Code: "QAR",
-        Value: USD * 3.64,
-    },
-    "West African CFA Franc": {
-        Symbol: "F.CFA‎",
-        Code: "XOF",
-        Value: Euro * 655.957,
-    },
-    "São Tomé and Príncipe Dobra": {
-        Symbol: "Db",
-        Code: "STN",
-        Value: 24.5 * Euro,
-    },
-    "Saudi Riyal": {
-        Symbol: "ر.س",
-        Code: "SAR",
-        Value: 3.75 * USD,
-    },
-    "United Arab Emirates Dirham": {
-        Symbol: "د.إ‎",
-        Code: "AED",
-        Value: 3.6725 * USD,
-    },
-}
-
-for(x of Object.entries(worldCurrencies)){
-    currency0.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
-    currency1.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
 }
 
 function measureSetUp(unit){
@@ -5821,3 +5723,125 @@ function measureSetUp(unit){
 }
 
 measureSetUp("Length")
+
+
+function conjugate(){
+    infinitive = enterverb.value.toLowerCase()
+    verblist = ["zijn", "dichten", "spreken", "barbecueën", "cijferen", "aanvaarden", "bedoelen"]
+    recognizedverb.innerHTML = verblist.includes(infinitive) ? "recognized verb ✅" : "verb not recognized ❌"
+    dutchverbs = ["zijn", "spreken", "dichten"]
+    //present1
+    if(infinitive == "zijn") present1 = "ben"
+    else if(infinitive == "spreken") present1 = "spreek"
+    else present1 = infinitive.slice(0, -2)
+    //present2
+    if(infinitive == "zijn") present2= "bent"
+    else{
+        present2 = present1.endsWith("t") ? present1 : present1 + "t"
+    }
+    //present3
+    if(infinitive == "zijn") present3 = "is"
+    else{
+        present3 = present1.endsWith("t") ? present1 : present1 + "t"
+    }    
+    //present4
+    if(infinitive == "zijn") present4 = "zijt"
+    else{
+        present4 = present1.endsWith("t") ? present1 : present1 + "t"
+    }    
+    //present5
+    if(infinitive == "zijn") present5 = "is"
+    else{
+        present5 = present1.endsWith("t") ? present1 : present1 + "t"
+    }    
+    //past1
+    if(infinitive == "zijn") past1 = "was"
+    else if(infinitive == "spreken") past1 = "sprak"
+    else{
+        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) past1 = infinitive.slice(0, -2) + "de"
+        else past1 = infinitive.slice(0, -2) + "te"
+    }
+    //past2
+    if(infinitive == "zijn") past2 = "waart"
+    else if(infinitive == "spreken") past2 = "spraakt"
+    else{
+        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) past2 = infinitive.slice(0, -2) + "de"
+        else past2 = infinitive.slice(0, -2) + "te"
+    }
+    //past3
+    if(infinitive == "zijn") past3 = "waren"
+    else if(infinitive == "spreken") past3 = "spraken"
+    else past3 = past1 + "n"
+    //subj1
+    subj1 = infinitive.slice(0, -1)
+    //subj2
+    if(infinitive == "zijn") subj2 = "ware"
+    else if(infinitive == "spreken") subj2 = "sprake"
+    else{
+        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) subj2 = infinitive.slice(0, -2) + "de"
+        else subj2 = infinitive.slice(0, -2) + "te"
+    }
+    //subj3
+    if(infinitive == "zijn") subj3 = "waren"
+    else if(infinitive == "spreken") subj3 = "spraken"
+    else subj3 = subj2 + "n"
+    //imp1
+    if(infinitive == "zijn") imp1 = "wees"
+    else imp1 = present1
+    //imp2
+    if(imp1.endsWith("t")) imp2 = imp1
+    else imp2 = imp1 + "t"
+    //participle1
+    participle1 = infinitive + "d"
+    //participle2
+    if(infinitive == "zijn") participle2 = "geweest"
+    else if(infinitive == "spreken") participle2 = "gesproken"
+    else{
+        if(present1.endsWith("t")) participle2 = "ge" + present1
+        else if(present1.startsWith("aa") || present1.startsWith("b")) participle2 = present1
+        else participle2 = "ge" + present1 + "d"
+    }
+    dutchverb.innerHTML = 
+`<tr>
+    <th>Present</th>
+    <td>${present1}</td>
+    <td>${present2}</td>
+    <td>${present3}</td>
+    <td>${present4}</td>
+    <td>${present5}</td>
+    <td>${infinitive}</td>
+</tr>
+<tr>
+    <th>Past</th>
+    <td>${past1}</td>
+    <td>${past1}</td>
+    <td>${past1}</td>
+    <td>${past2}</td>
+    <td>${past1}</td>
+    <td>${past3}</td>
+</tr>
+<tr>
+    <th>Subjunctive Present</th>
+    <td colspan="5">${subj1}</td>
+    <td>${infinitive}</td>
+</tr>
+<tr>
+    <th>Subjunctive Past</th>
+    <td colspan="5">${subj2}</td>
+    <td>${subj3}</td>
+</tr>
+<tr>
+    <th>Imperative</th>
+    <td colspan="5">${imp1}</td>
+    <td>${imp2}</td>
+</tr>
+<tr>
+    <th>Present Participle</th>
+    <td colspan="6">${participle1}</td>
+</tr>
+<tr>
+    <th>Past Participle</th>
+    <td colspan="6">${participle2}</td>
+</tr>`
+}
+conjugate()

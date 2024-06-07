@@ -3,10 +3,10 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="calendar.css">
         <link rel="shortcut icon" href="favicon.ico?">
-        <title>Internationalization</title>
+        <title>Harris Mowbray</title>
     </head>
     <body>
-        <h1 id="header"><span onclick="reveal('menu')">Internationalization Project</span></h1>
+        <h1 id="header"><span onclick="reveal('menu')">Harris' Website</span></h1>
         <div id="menu">
             <h3>Select a section:</h3>
             <button class='outside'><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
@@ -16,19 +16,24 @@
             <button onclick="reveal('currencies')">Currency Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
+            <button class='outside'><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
             <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
             <button onclick="reveal('name')">Name Day</button>
             <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
-            <button onclick="reveal('sunrisesunset')">Sunrise/Sunset Times</button>
+            <button onclick="reveal('sunrisesunset')">Sunrise/Sunset</button>
             <button onclick="reveal('temperature')">Temperature Converter</button>
             <button onclick="reveal('time')">Time Now</button>
             <button onclick="reveal('measure')">Unit Converter</button>
-            <button class='meta' onclick="reveal('contactinfo')">Contact/Info</button>
+            <button onclick="reveal('verb')">Verb Conjugator</button>
             <button class='meta' onclick="reveal('settings')">Settings</button>
             <button class='meta' onclick="reveal('changelog')">Updates</button>
+            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
+            <button class='website' onclick="reveal('contactinfo')">Contact</button>
             <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
+            <button class='website'><a href="https://harrismowbray.com/Resume.pdf" target="_blank" style="text-decoration: none;">Résumé</a></button>
+            <button class='website'><a href="https://en.wikipedia.org/wiki/Harris_Mowbray" target="_blank" style="text-decoration: none;">Wikipedia</a></button>
         </div>
         <div class="selectblock" id="selectblockone">
             <select id="thecalendar" onchange="reset()">
@@ -245,11 +250,10 @@
             </table>
         </div>
         <div id="contactinfo">
-            <h3>The goal of this website is to develop calendar and time-related tools both for practical purposes and also to help unite people across various cultural, national, and religious divisions</h3>
-            <br>
-            <h3>This site was created by <a href="https://harrismowbray.com" target="_blank">Harris Mowbray</a> :)</h3>
-            <br>
-            <h3>Email me <a href="mailto:harrismowbray@yahoo.com">here</a> with any questions you have</h3>
+            <p>Email: <a href="mailto:harrismowbray@yahoo.com">harrismowbray@yahoo.com</a></p>
+            <p>Phone: +1 (650) 468 8928</p>
+            <p>Whatsapp: <a id="whatsapp" href="https://wa.me/16504688928" target="_blank">Personal Whatsapp Link</a></p>
+            <p>Telegram: <a id="telegram" href="https://t.me/harrismowbray" target="_blank">@harrismowbray</a></p>
         </div>
         <div id="settings">
             <button id="gregera" onclick="adce()">AD/<b>CE</b></button>
@@ -275,6 +279,7 @@
                 <option value="Angle">Angle</option>
                 <option value="Area">Area</option>
                 <option value="Length" selected>Length</option>
+                <option value="Paper">Paper</option>
                 <option value="Power">Power</option>
                 <option value="Pressure">Pressure</option>
                 <option value="Speed">Speed</option>
@@ -310,10 +315,32 @@
                 </div>
             </div>
         </div>
+        <div id="verb">
+            <input id="enterverb" value="spreken" onkeyup="conjugate()" />
+            <div id="conjugation">
+                <h1>Dutch Verb Conjugation</h1>
+                <h5 id="recognizedverb">recognized verb ✅</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="border:none"></td>
+                            <th>1st p. sing.</th>
+                            <th>2nd p. sing. (jij)</th>
+                            <th>2nd p. sing. (u)</th>
+                            <th>2nd p. sing. (gij)</th>
+                            <th>3rd p. sing.</th>
+                            <th>Plural</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dutchverb"></tbody>
+                </table>
+            </div>
+        </div>
     </body>
     <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
     <script src="calendarharris.js"></script>
     <script src="calendar.js"></script>
-    <script src="calendar-changelog.js"></script>
+    <script src="updates.js"></script>
+    <script src="currencies.js"></script>
 </html>
