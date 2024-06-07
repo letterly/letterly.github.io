@@ -362,7 +362,18 @@ function printBraille(text){
 }
 
 
+function changethelang(lang){
+    url = new URL("https://letterly.github.io/interbraille.html")
+    url.searchParams.set('lang', lang);
+    history.pushState({}, "", url);
+    changeLang(lang)
+}
+
 function changeLang(lang){
+    
+
+
+
     stringo = {
         "⠀": " ",
         "⠮": "!",

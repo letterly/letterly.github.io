@@ -5348,6 +5348,5 @@ for(g of Object.entries(otherdata)){
     language.innerHTML += `<option value="${g[0]}" ${g[0] == "en_1" ? "selected" : ""}>${g[1].englishName}${g[1].nativeName ? (" | " + g[1].nativeName) : ""}</option>`
 }
 
-
 params = new URLSearchParams(location.search).get("lang")
 changeLang(params ?? "en_1")
