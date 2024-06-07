@@ -8,18 +8,17 @@
     <body>
         <h1 id="header"><span onclick="reveal('menu')">Harris' Website</span></h1>
         <div id="menu">
-            <h3>Select a section:</h3>
             <button class='outside'><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
             <button class='outside'><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
+            <button class='outside'><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
+            <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
+            <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('color')">Color Converter</button>
             <button onclick="reveal('currencies')">Currency Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
-            <button class='outside'><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
-            <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
             <button onclick="reveal('name')">Name Day</button>
-            <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset</button>
@@ -32,6 +31,7 @@
             <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
             <button class='website' onclick="reveal('contactinfo')">Contact</button>
             <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
+            <button class='website' onclick="reveal('mynews')">Press</button>
             <button class='website'><a href="https://harrismowbray.com/Resume.pdf" target="_blank" style="text-decoration: none;">Résumé</a></button>
             <button class='website'><a href="https://en.wikipedia.org/wiki/Harris_Mowbray" target="_blank" style="text-decoration: none;">Wikipedia</a></button>
         </div>
@@ -336,6 +336,7 @@
                 </table>
             </div>
         </div>
+        <div id="mynews"></div>
     </body>
     <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
@@ -343,4 +344,5 @@
     <script src="calendar.js"></script>
     <script src="updates.js"></script>
     <script src="currencies.js"></script>
+    <script src="mynews.js"></script>
 </html>

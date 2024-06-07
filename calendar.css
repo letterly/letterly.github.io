@@ -20,7 +20,7 @@ body{
     color: black;
 }
 
-#settings, #temperature, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#settings, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
@@ -68,8 +68,9 @@ td:first-child{
 #menu button{
     font-size: 56px;
     background-color: coral;
-    margin: 5px;
+    margin: 2px;
     border: none;
+    border-radius: 20px;
     color: black;
 }
 .outside{
@@ -414,7 +415,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #measure, #currencies, #temperature{
+#sunrisesunset, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -437,4 +438,15 @@ h2{
     height: 50px;
     background-color: black;
     margin-top: 10px;
+}
+
+#mynews a{
+    color: lightseagreen;
+    font-size: 38px;
+}
+#mynews p{
+    font-size: 16px;
+}
+#mynews div{
+    margin: 10px;
 }

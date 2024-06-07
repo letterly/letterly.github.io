@@ -1,9 +1,12 @@
 
 log = `<pre><h3>7 June 2024</h3>
+>Braille Converter: A new link is developed when you switch languages
 >Contact: Contact/Info renamed to Contact
 >Contact: My phone number, Whatsapp, and Telegram were all added
 >Currency Converter: Added some new currencies for a total of 54
 >Keyboards: External webpage I made where you can choose various keyboards to type with
+>Menu: Outside websites are now organized together and there have been slight adjustments to the buttons
+>Press: New section which shows various media articles around the world that I have been in
 >Résumé: Added my résumé as a menu link - I am preparing for this website to become my personal website
 >Sunrise/Sunset: "Sunrise/Sunset Times" renamed to "Sunrise/Sunset"
 >Unit Converter: Added a few American measurements of volume
