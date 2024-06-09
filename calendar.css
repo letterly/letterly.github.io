@@ -20,12 +20,24 @@ body{
     color: black;
 }
 
-#settings, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#menu h3{
+    margin: 5px;
+}
+
+#settings, #trigonometry, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
     padding: 24px;
 }
+#contactinfo p{
+    font-size: 24px;
+}
+
+#insertedtemperature p{
+    font-size: 24px;
+}
+
 #answer{
     width: 100%;
 }
@@ -66,21 +78,28 @@ td:first-child{
 }
 
 #menu button{
-    font-size: 56px;
-    background-color: coral;
+    font-size: 46px;
+    background-color: #F8B55B;
     margin: 2px;
     border: none;
     border-radius: 20px;
     color: black;
 }
-.outside{
-    background-color: orange !important;
+.math{
+    background-color: #F09B4E !important;
+}
+
+.linguistics{
+    background-color: #FFCF67 !important;
+}
+.converter{
+    background-color: #E26636 !important;
 }
 .meta{
-    background-color: gray !important;
+    background-color: #D3321D !important;
 }
 .website{
-    background-color: limegreen !important;
+    background-color: #DA4C29 !important;
 }
 #menu button:hover{
     color: white;
@@ -415,7 +434,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
+#sunrisesunset, #trigonometry, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;

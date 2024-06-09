@@ -1,5 +1,12 @@
 
-log = `<pre><h3>7 June 2024</h3>
+log = `<pre><h3>9 June 2024</h3>
+>Holidays: Added U.S. Constitution Day and the Israeli Iron Sword War Memorial Day
+>Menu: Organized all links into six new sections - Linguistics, Religion/Calendars, Mathematics, Other Converters, Me, and Website Settings
+>Trigonometric Functions: Added a new Mathematics section that calculates various trigonometric functions
+>Unit Converter: Fixed the value for Astronomical Unit
+>Unit Converter: Added a few measurements for length and angles
+
+<h3>7 June 2024</h3>
 >Braille Converter: A new link is developed when you switch languages
 >Contact: Contact/Info renamed to Contact
 >Contact: My phone number, Whatsapp, and Telegram were all added
@@ -9,10 +16,11 @@ log = `<pre><h3>7 June 2024</h3>
 >Press: New section which shows various media articles around the world that I have been in
 >Résumé: Added my résumé as a menu link - I am preparing for this website to become my personal website
 >Sunrise/Sunset: "Sunrise/Sunset Times" renamed to "Sunrise/Sunset"
->Unit Converter: Added a few American measurements of volume
+>Unit Converter: Added a few American measurements of volume and other miscellaneous measurement units
 >Verb Conjugator: Added a new section that conjugates Dutch verbs. It is still in development in only has been verified with a few verbs
 >Website: Renamed the website to Harris' Website until I think of a better name
 >Website: Began reorganizing and renaming files
+>Website: Title now says "Harris Mowbray"
 >Website Code: Added a menu link to the code for the website
 >Wikipedia: Added a menu link to my Wikipedia article
 
@@ -530,6 +538,25 @@ log = `<pre><h3>7 June 2024</h3>
 <h3 id="2023">13 January 2023</h3>
 >Updates: I started the changelog today :)
 >Calendar Converter: So far the program converts dates in the Gregorian, Armenian, Berber, Indian, Iranian, and Mandaean calendars from approximately 1901 to 2172 CE</pre>`
+
+/*
+CATEGORIES TO MAKE
+
+Adjective Inflector
+Noun Decliner
+Number Generator
+Transliterator
+IPA Converter
+Learn Coding
+Learn Languages
+Trig/Factorial Functions
+Geometry/Formulae
+Code Converter
+Programming Dictionary
+Bio
+Website Info
+*/
+
 
 /*
 KNOWN ISSUES 

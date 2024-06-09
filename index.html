@@ -8,32 +8,39 @@
     <body>
         <h1 id="header"><span onclick="reveal('menu')">Harris' Website</span></h1>
         <div id="menu">
-            <button class='outside'><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
-            <button class='outside'><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
-            <button class='outside'><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
-            <button class='outside'><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
-            <button class='outside'><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
+            <h3>Linguistics</h3>
+            <button class="linguistics"><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
+            <button class="linguistics"><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
+            <button class="linguistics"><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
+            <button class="linguistics" onclick="reveal('verb')">Verb Conjugator</button>
+            <h3>Religion/Calendars</h3>
             <button onclick="reveal('calendar')">Calendar Converter</button>
-            <button onclick="reveal('color')">Color Converter</button>
-            <button onclick="reveal('currencies')">Currency Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
             <button onclick="reveal('name')">Name Day</button>
             <button onclick="reveal('prayer')">Prayer Directions</button>
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset</button>
-            <button onclick="reveal('temperature')">Temperature Converter</button>
             <button onclick="reveal('time')">Time Now</button>
-            <button onclick="reveal('measure')">Unit Converter</button>
-            <button onclick="reveal('verb')">Verb Conjugator</button>
-            <button class='meta' onclick="reveal('settings')">Settings</button>
-            <button class='meta' onclick="reveal('changelog')">Updates</button>
-            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
+            <h3>Mathematics</h3>
+            <button class="math"><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
+            <button class="math"><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
+            <button class="math" onclick="reveal('trigonometry')">Trigonometric Functions</button>
+            <h3>Other Converters</h3>
+            <button class="converter" onclick="reveal('color')">Color Converter</button>
+            <button class="converter" onclick="reveal('currencies')">Currency Converter</button>
+            <button class="converter" onclick="reveal('temperature')">Temperature Converter</button>
+            <button class="converter" onclick="reveal('measure')">Unit Converter</button>
+            <h3>Me</h3>
             <button class='website' onclick="reveal('contactinfo')">Contact</button>
             <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
             <button class='website' onclick="reveal('mynews')">Press</button>
             <button class='website'><a href="https://harrismowbray.com/Resume.pdf" target="_blank" style="text-decoration: none;">Résumé</a></button>
             <button class='website'><a href="https://en.wikipedia.org/wiki/Harris_Mowbray" target="_blank" style="text-decoration: none;">Wikipedia</a></button>
+            <h3>Website Settings</h3>
+            <button class='meta' onclick="reveal('settings')">Settings</button>
+            <button class='meta' onclick="reveal('changelog')">Updates</button>
+            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
         </div>
         <div class="selectblock" id="selectblockone">
             <select id="thecalendar" onchange="reset()">
@@ -296,6 +303,7 @@
             <input onkeyup="measureConvert(1)" id="measure1" value="0" />
             <select id="unit1" onchange="measureConvert(1)"></select>
         </div>
+        <!-- CURRENCY CONVERTER -->
         <div id="currencies">
             <input onkeyup="currencyConvert(0)" id="money0" value="0" />
             <select id="currency0" onchange="currencyConvert(0)"></select>
@@ -304,6 +312,7 @@
             <input onkeyup="currencyConvert(1)" id="money1" value="0" />
             <select id="currency1" onchange="currencyConvert(1)"></select>
         </div>
+        <!-- TEMPERATURE -->
         <div id="temperature">
             <div id="selectblockseven">
                 <div id="insertedtemperature">
@@ -315,8 +324,9 @@
                 </div>
             </div>
         </div>
+        <!-- VERB CONJUGATOR -->
         <div id="verb">
-            <input id="enterverb" value="spreken" onkeyup="conjugate()" />
+            <input id="enterverb" value="spreken" onkeyup="conjugate()" spellcheck="false" />
             <div id="conjugation">
                 <h1>Dutch Verb Conjugation</h1>
                 <h5 id="recognizedverb">recognized verb ✅</h5>
@@ -336,7 +346,48 @@
                 </table>
             </div>
         </div>
+        <!-- NEWS -->
         <div id="mynews"></div>
+        <!-- TRIGONOMETRY -->
+        <div id="trigonometry">
+            <select id="trigfunction" onchange="trig()">
+                <optgroup label="Classic">
+                    <option value="sin" selected>sine (sin)</option>
+                    <option value="cos">cosine (cos)</option>
+                    <option value="tan">tangent (tan)</option>
+                    <option value="sec">secant (sec)</option>
+                    <option value="csc">cosecant (csc)</option>
+                    <option value="cot">cotangent (cot)</option>
+                </optgroup>
+                <optgroup label="Inverse">
+                    <option value="asin">arcsine (asin)</option>
+                    <option value="acos">arccosine (acos)</option>
+                    <option value="atan">arctangent (atan)</option>
+                    <option value="asec">arcsecant (asec)</option>
+                    <option value="acsc">arccosecant (acsc)</option>
+                    <option value="acot">arccotangent (acot)</option>
+                </optgroup>
+                <optgroup label="Hyperbolic">
+                    <option value="sinh">sinh</option>
+                    <option value="cosh">cosh</option>
+                    <option value="tanh">tanh</option>
+                    <option value="sech">sech</option>
+                    <option value="csch">csch</option>
+                    <option value="coth">coth</option>
+                </optgroup>
+                <optgroup label="Inverse Hyperbolic">
+                    <option value="arsinh">arsinh</option>
+                    <option value="arcosh">arcosh</option>
+                    <option value="artanh">artanh</option>
+              <!--      <option value="arsech">arsech</option>
+                    <option value="arcsch">arcsch</option>
+                    <option value="arcoth">arcoth</option>
+              -->
+                </optgroup>
+            </select>
+            <input onkeyup="trig()" id="trigangle" value="0" />
+            <h1 id="trigresult">0</h1>
+        </div>
     </body>
     <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
@@ -345,4 +396,5 @@
     <script src="updates.js"></script>
     <script src="currencies.js"></script>
     <script src="mynews.js"></script>
+    <script src="trigonometry.js"></script>
 </html>

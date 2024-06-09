@@ -1717,9 +1717,9 @@ function holidaycheck(thatday){
         },
         {
             cal: "Hebrew",
-            day: [d != "Saturday" && d != "Friday" ? "27 Nisan" : "", d == "Monday" ? "28 Nisan" : "", d == "Thursday" ? "26 Nisan": ""],
-            name: "Yom HaShoah",
-            link: "https://en.wikipedia.org/wiki/Yom_HaShoah",
+            day: [d != "Saturday" && d != "Friday" ? "24 Tishrei" : "", d == "Sunday" ? "25 Tishrei" : "", d == "Sunday" ? "26 Tishrei": ""],
+            name: "Iron Sword War Memorial Day",
+            link: "https://en.wikipedia.org/wiki/Iron_Sword_War_Memorial_Day",
             country: "Israel",
         },
         {
@@ -2662,6 +2662,13 @@ function holidaycheck(thatday){
             day: ["1 September", "2 September", "3 September", "4 September", "5 September", "6 September", "7 September"],
             name: "Labor Day",
             link: "https://en.wikipedia.org/wiki/Labor_Day",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
+            day: ["17 September"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Constitution_Day_(United_States)",
             country: "United States",
         },
         {
@@ -5124,7 +5131,7 @@ function reveal(subject){
     else{
         header.innerHTML = `<span onclick="reveal('menu')">Harris' Website</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname currencies measure verb mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname currencies trigonometry measure verb mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
@@ -5178,6 +5185,7 @@ function reveal(subject){
         case "color":
         case "verb":
         case "mynews":
+        case "trigonometry":
             document.getElementById(subject).style.display = "block"
             break
         case "name":
@@ -5396,7 +5404,6 @@ function tempconvert(x){
 units = {
     Length: { //base unit: m
         Metric: {
-            "ångström": .0000000001,
             "nanometer (μm)": .000000001,
             "micron/micrometer (μm)": .000001,
             "millimeter (mm)": .001,
@@ -5408,18 +5415,26 @@ units = {
         Imperial: {
             "thou": .0000254,
             "inch (in)": .0254,
-            "rack unit": .04445,
             "hand (hh)": .1016,
             "foot (ft)": .3048,
             "yard (yd)": .9144,
             "rod": 5.0292,
             "chain (ch)": 20.1168,
             "furlong": 201.168,
-            "mile": 1609.344,
+            "mile (mi)": 1609.344,
+        },
+        "Electronic Equipment": {
+            "horizontal pitch (HP)": 0.00508,
+            "rack unit": .04445,
+        },
+        Scientific: {
+            "x-unit": .00000000000010021,
+            "ångström": .0000000001,
         },
         Astronomical: {
+            "lunar distance (LD)":    384398300,
             "light-second": 299792458,
-            "astronomical unit (au)": 14959787070,
+            "astronomical unit (au)": 149597870700,
             "light-year (ly)": 946073047258080,
             "parsec (pc)": 3085677581467190,
         },
@@ -5450,6 +5465,7 @@ units = {
             "microgram (μg)": .001,
             "milligram (mg)": 1,
             "gram (g)": 1000,
+            "carat (ct)": 200000,
             "kilogram (kg)": 1000000,
             "metric ton": 1000000000,
         },
@@ -5495,6 +5511,7 @@ units = {
             "centiliter (cL)": 10,
             "metric tablespoon": 15,
             "metric cup": 250,
+            "metric fifth": 750,
             "liter (L)": 1000,
             "cubic meter (m³)": 1000000,
         },
@@ -5648,7 +5665,7 @@ units = {
             "cuerda (Puerto Rico)": 3930.395,
         },
     },
-    Angle: {
+    Angle: { //base unit arcsecond
         "Traditional": {
             "turn": 1296000,
             "degree (°)": 3600,
@@ -5665,8 +5682,14 @@ units = {
         "Engineering": {
             "gradian (ᵍ)": 3240,
         },
+        "Military": {
+            "NATO mil": 202.5,
+            "Swedish streck": 205.714286, 
+            "Finnish streck": 216,
+            "nautical line": 40500,
+        },
     },
-    Time: {
+    Time: { //base unit
         "Common": {
             "second (s)": 1,
             "minute (min)": 60,
