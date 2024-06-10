@@ -24,7 +24,7 @@ body{
     margin: 5px;
 }
 
-#settings, #trigonometry, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#settings, #trigonometry, #bio, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
@@ -434,7 +434,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #trigonometry, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
+#sunrisesunset, #trigonometry, #bio, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -468,4 +468,8 @@ h2{
 }
 #mynews div{
     margin: 10px;
+}
+
+#bio p{
+    font-size: 24px;
 }

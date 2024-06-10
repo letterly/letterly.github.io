@@ -12,8 +12,9 @@
             <button class="linguistics"><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
             <button class="linguistics"><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
             <button class="linguistics"><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
+            <button class="linguistics"><a href="language.html" target="_blank" style="text-decoration: none;">Learn Languages</a></button>
             <button class="linguistics" onclick="reveal('verb')">Verb Conjugator</button>
-            <h3>Religion/Calendars</h3>
+            <h3>Calendars & Religion</h3>
             <button onclick="reveal('calendar')">Calendar Converter</button>
             <button onclick="reveal('date')">Date Formatter</button>
             <button onclick="reveal('holidays')">Holidays</button>
@@ -22,8 +23,9 @@
             <button onclick="reveal('salahprayerzmanim')">Prayer Times</button>
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset</button>
             <button onclick="reveal('time')">Time Now</button>
-            <h3>Mathematics</h3>
+            <h3>Mathematics & Programming</h3>
             <button class="math"><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
+            <button class="math"><a href="codecode.html" target="_blank" style="text-decoration: none;">Learn Coding</a></button>
             <button class="math"><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button class="math" onclick="reveal('trigonometry')">Trigonometric Functions</button>
             <h3>Other Converters</h3>
@@ -31,16 +33,17 @@
             <button class="converter" onclick="reveal('currencies')">Currency Converter</button>
             <button class="converter" onclick="reveal('temperature')">Temperature Converter</button>
             <button class="converter" onclick="reveal('measure')">Unit Converter</button>
-            <h3>Me</h3>
+            <h3>Website Settings</h3>
+            <button class='meta' onclick="reveal('settings')">Settings</button>
+            <button class='meta' onclick="reveal('changelog')">Updates</button>
+            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
+            <h3>About Me</h3>
+            <button class='website' onclick="reveal('bio')">Bio</button>
             <button class='website' onclick="reveal('contactinfo')">Contact</button>
             <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
             <button class='website' onclick="reveal('mynews')">Press</button>
             <button class='website'><a href="https://harrismowbray.com/Resume.pdf" target="_blank" style="text-decoration: none;">Résumé</a></button>
             <button class='website'><a href="https://en.wikipedia.org/wiki/Harris_Mowbray" target="_blank" style="text-decoration: none;">Wikipedia</a></button>
-            <h3>Website Settings</h3>
-            <button class='meta' onclick="reveal('settings')">Settings</button>
-            <button class='meta' onclick="reveal('changelog')">Updates</button>
-            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
         </div>
         <div class="selectblock" id="selectblockone">
             <select id="thecalendar" onchange="reset()">
@@ -305,11 +308,11 @@
         </div>
         <!-- CURRENCY CONVERTER -->
         <div id="currencies">
-            <input onkeyup="currencyConvert(0)" id="money0" value="0" />
+            <input onkeyup="currencyConvert(0)" id="money0" value="15" />
             <select id="currency0" onchange="currencyConvert(0)"></select>
             <br>
             <br>
-            <input onkeyup="currencyConvert(1)" id="money1" value="0" />
+            <input onkeyup="currencyConvert(1)" id="money1" value="56.25" />
             <select id="currency1" onchange="currencyConvert(1)"></select>
         </div>
         <!-- TEMPERATURE -->
@@ -348,24 +351,28 @@
         </div>
         <!-- NEWS -->
         <div id="mynews"></div>
+        <!-- BIO -->
+        <div id="bio">
+            <p>My name is Harris S. Mowbray and I live in Washington DC where I earned my Bachelor's degree in International Relations from American University in 2022. Since graduating, I have been working with various ethnolinguistic communities around the world, using technology to help revitalize endangered languages. In my free time, I collaborate with organizations for the visually-impaired around the globe in order to help develop braille for every language which lacks it.</p>
+        </div>
         <!-- TRIGONOMETRY -->
         <div id="trigonometry">
             <select id="trigfunction" onchange="trig()">
                 <optgroup label="Classic">
-                    <option value="sin" selected>sine (sin)</option>
-                    <option value="cos">cosine (cos)</option>
-                    <option value="tan">tangent (tan)</option>
-                    <option value="sec">secant (sec)</option>
-                    <option value="csc">cosecant (csc)</option>
-                    <option value="cot">cotangent (cot)</option>
+                    <option value="sin" selected>sin</option>
+                    <option value="cos">cos</option>
+                    <option value="tan">tan</option>
+                    <option value="sec">sec</option>
+                    <option value="csc">csc</option>
+                    <option value="cot">cot</option>
                 </optgroup>
                 <optgroup label="Inverse">
-                    <option value="asin">arcsine (asin)</option>
-                    <option value="acos">arccosine (acos)</option>
-                    <option value="atan">arctangent (atan)</option>
-                    <option value="asec">arcsecant (asec)</option>
-                    <option value="acsc">arccosecant (acsc)</option>
-                    <option value="acot">arccotangent (acot)</option>
+                    <option value="asin">sin</option>
+                    <option value="acos">acos</option>
+                    <option value="atan">atan</option>
+                    <option value="asec">asec</option>
+                    <option value="acsc">acsc</option>
+                    <option value="acot">acot</option>
                 </optgroup>
                 <optgroup label="Hyperbolic">
                     <option value="sinh">sinh</option>
@@ -379,10 +386,35 @@
                     <option value="arsinh">arsinh</option>
                     <option value="arcosh">arcosh</option>
                     <option value="artanh">artanh</option>
-              <!--      <option value="arsech">arsech</option>
+                    <option value="arsech">arsech</option>
                     <option value="arcsch">arcsch</option>
                     <option value="arcoth">arcoth</option>
-              -->
+                </optgroup>
+                <optgroup label="Versed">
+                    <option value="versin">versin</option>
+                    <option value="vercos">vercos</option>
+                    <option value="coversin">coversin</option>
+                    <option value="covercos">covercos</option>
+                    <option value="haversin">haversin</option>
+                    <option value="havercos">havercos</option>
+                    <option value="hacoversin">hacoversin</option>
+                    <option value="hacovercos">hacovercos</option>
+                </optgroup>
+                <optgroup label="Inverse Versed">
+                    <option value="arcversin">arcversin</option>
+                    <option value="arcvercos">arcvercos</option>
+                    <option value="arccoversin">arccoversin</option>
+                    <option value="arccovercos">arccovercos</option>
+                    <option value="archaversin">archaversin</option>
+                    <option value="archavercos">archavercos</option>
+                    <option value="archacoversin">archacoversin</option>
+                    <option value="archacovercos">archacovercos</option>
+                </optgroup>
+                <optgroup label="External">
+                    <option value="exsec">exsec</option>
+                    <option value="excsc">excsc</option>
+                    <option value="arcexsec">arcexsec</option>
+                    <option value="arcexcsc">arcexcsc</option>
                 </optgroup>
             </select>
             <input onkeyup="trig()" id="trigangle" value="0" />

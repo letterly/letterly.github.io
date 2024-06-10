@@ -1,5 +1,13 @@
 
-log = `<pre><h3>9 June 2024</h3>
+log = `<pre><h3>10 June 2024</h3>
+>Bio: Added a new section containing my personal bio
+>Currency Converter: U.S. Dollar and Saudi Arabian Riyal are now automatically selected
+>Learn Coding: A website I previously made is now externally connected in the menu
+>Learn Languages: A website I previous made is now externally connected in the menu
+>Menu: Religion/Calendars section renamed to Calendars & Religion, the Mathematics section is now Mathematics & Programming, Me section is now About Me, and About Me is now on the bottom of the menu
+>Trigonometric Functions: Added three more inverse hyperbolic functions as well as versed, inverse versed, and external trigonometric functions
+
+<h3>9 June 2024</h3>
 >Holidays: Added U.S. Constitution Day and the Israeli Iron Sword War Memorial Day
 >Menu: Organized all links into six new sections - Linguistics, Religion/Calendars, Mathematics, Other Converters, Me, and Website Settings
 >Trigonometric Functions: Added a new Mathematics section that calculates various trigonometric functions

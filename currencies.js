@@ -282,7 +282,7 @@ worldCurrencies = {
 
 for(x of Object.entries(worldCurrencies)){
     currency0.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
-    currency1.innerHTML += `<option value=${x[1].Value}>${x[0]}</option>`
+    currency1.innerHTML += `<option${x[0].startsWith("Saudi") ? " selected" : ""} value=${x[1].Value}>${x[0]}</option>`
 }
 
 function currencyConvert(x){
