@@ -6680,8 +6680,9 @@ function namedaysearch(thename){
         thename = thename.toLowerCase()
         answerarray = []
         for(country of Object.keys(namedaycal)){
+            console.log(country)
             for(days of Object.keys(namedaycal[country])){
-                if(namedaycal[country][days].split(",").map(x => x.toLowerCase()).includes(thename)){
+                if(namedaycal[country][days].split(", ").map(x => x.toLowerCase()).includes(thename)){
                     answerarray.push([country, days])
                 }
             }
