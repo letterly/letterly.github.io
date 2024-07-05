@@ -1,11 +1,37 @@
-$ = { //updated 6 June 2024
+$ = { //updated 23 June 2024 / 2 July 2024
     USD: 1,
-    AUD: 1.49879,
-    EUR: .91925,
-    GBP: .781365,
-    INR: 83.4735,
-    SGD: 1.345475,
-    ZAR: 18.9488,
+    ARS: 914.22613,
+    AUD: 1.5062432,
+    BRL: 5.3884952,
+    CAD: 1.3700263,
+    CHF: 0.89381147,
+    CLP: 947.40503,
+    CNY: 7.2610051,
+    COP: 4125.1327,
+    CZK: 23.375944,
+    EUR: 0.93526136,
+    GBP: 0.79098635,
+    HUF: 367.20497,
+    IDR: 16392.398,
+    INR: 83.571737,
+    ILS: 3.7278227,
+    JPY: 159.79834,
+    KRW: 1387.607,
+    MXN: 17.919446,
+    MYR: 4.7165306,
+    NOK: 10.549902,
+    NZD: 1.6334609,
+    PEN: 3.8195114,
+    PHP: 58.810498,
+    PLN: 4.0012363,
+    RON: 4.6285921,
+    RUB: 90.468976,
+    SEK: 10.483471,
+    SGD: 1.355509,
+    THB: 36.645367,
+    TRY: 32.554567,
+    TWD: 32.378451,
+    ZAR: 17.993608,
 }
 worldCurrencies = {
     "U.S. Dollar": {
@@ -17,6 +43,11 @@ worldCurrencies = {
         Symbol: "£",
         Code: "GBP",
         Value: $.GBP,
+    },
+    "Argentine Peso": {
+        Symbol: "$",
+        Code: "ARS",
+        Value: $.ARS,
     },
     "Aruban Florin": {
         Symbol: "ƒ",
@@ -83,6 +114,11 @@ worldCurrencies = {
         Code: "GBP",
         Value: $.GBP,
     },
+    "Brazilian Real": {
+        Symbol: "R$",
+        Code: "BRL",
+        Value: $.BRL,
+    },
     "Brunei Dollar": {
         Symbol: "$",
         Code: "BND",
@@ -92,6 +128,11 @@ worldCurrencies = {
         Symbol: "лв.",
         Code: "BGN",
         Value: $.EUR * 1.95583,
+    },
+    "Canadian Dollar": {
+        Symbol: "$",
+        Code: "CAD",
+        Value: $.CAD,
     },
     "Cayman Islands Dollar": {
         Symbol: "$",
@@ -108,10 +149,25 @@ worldCurrencies = {
         Code: "XPF",
         Value: $.EUR * 119.33174,
     },
+    "Chilean Peso": {
+        Symbol: "$",
+        Code: "CLP",
+        Value: $.CLP,
+    },
+    "Colombian Peso": {
+        Symbol: "$",
+        Code: "COP",
+        Value: $.COP,
+    },
     "Comorian Franc": {
         Symbol: "FC",
         Code: "KMF",
         Value: $.EUR * 491.96775,
+    },
+    "Czech Koruna": {
+        Symbol: "Kč",
+        Code: "CZK",
+        Value: $.CZK,
     },
     "Danish Krone": {
         Symbol: "kr.",
@@ -163,10 +219,30 @@ worldCurrencies = {
         Code: "HKD",
         Value: $.USD * 7.8,
     },
+    "Hungarian Forint": {
+        Symbol: "Ft",
+        Code: "HUF",
+        Value: $.HUF,
+    },
     "Indian Rupee": {
         Symbol: "₹",
         Code: "INR",
         Value: $.INR,
+    },
+    "Indonesian Rupiah": {
+        Symbol: "Rp",
+        Code: "IDR",
+        Value: $.IDR,
+    },
+    "Israeli New Shekel": {
+        Symbol: "₪",
+        Code: "ILS",
+        Value: $.ILS,
+    },
+    "Japanese Yen": {
+        Symbol: "¥",
+        Code: "JPY",
+        Value: $.JPY,
     },
     "Jersey Pound": {
         Symbol: "£",
@@ -198,10 +274,20 @@ worldCurrencies = {
         Code: "MKD",
         Value: 61.3644 * $.EUR,
     },
+    "Malaysian Rinngit": {
+        Symbol: "RM",
+        Code: "MYR",
+        Value: $.MYR,
+    },
     "Manx Pound": {
         Symbol: "£",
         Code: "GBP",
         Value: $.GBP,
+    },
+    "Mexican Peso": {
+        Symbol: "MX$",
+        Code: "MXN",
+        Value: $.MXN,
     },
     "Namibian Dollar": {
         Symbol: "$",
@@ -218,6 +304,21 @@ worldCurrencies = {
         Code: "ANG",
         Value: $.USD * 1.79,
     },
+    "New Taiwan Dollar": {
+        Symbol: "NT$",
+        Code: "TWD",
+        Value: $.TWD,
+    },
+    "New Zealand Dollar": {
+        Symbol: "NZ$",
+        Code: "NZD",
+        Value: $.NZD,
+    },
+    "Norwegian Krone": {
+        Symbol: "kr",
+        Code: "NOK",
+        Value: $.NOK,
+    },
     "Omani Rial": {
         Symbol: "ر.ع",
         Code: "OMR",
@@ -227,6 +328,36 @@ worldCurrencies = {
         Symbol: "B/.",
         Code: "PAB",
         Value: $.USD,
+    },
+    "Peruvian Sol": {
+        Symbol: "S/",
+        Code: "PEN",
+        Value: $.PEN,
+    },
+    "Philippine Peso": {
+        Symbol: "₱",
+        Code: "PHP",
+        Value: $.PHP,
+    },
+    "Polish Złoty": {
+        Symbol: "zł",
+        Code: "PLN",
+        Value: $.PLN,
+    },
+    "Renminbi": {
+        Symbol: "¥",
+        Code: "CNY",
+        Value: $.CNY,
+    },
+    "Romanian Leu": {
+        Symbol: "L",
+        Code: "RON",
+        value: $.RON,
+    },
+    "Russian Ruble": {
+        Symbol: "₽",
+        Code: "RUB",
+        value: $.RUB,
     },
     "Qatari Riyal": {
         Symbol: "QR",
@@ -258,10 +389,35 @@ worldCurrencies = {
         Code: "ZAR",
         Value: $.ZAR,
     },
+    "South Korean Won": {
+        Symbol: "₩",
+        Code: "KRW",
+        Value: $.KRW,
+    },
     "Swazi Lilangeni": {
         Symbol: "L",
         Code: "SZL",
         Value: $.ZAR,
+    },
+    "Swedish Krona": {
+        Symbol: "kr",
+        Code: "SEK",
+        Value: $.SEK,
+    },
+    "Swiss Franc": {
+        Symbol: "Fr.",
+        Code: "SZL",
+        Value: $.ZAR,
+    },
+    "Thai Baht": {
+        Symbol: "฿",
+        Code: "THB",
+        Value: $.THB,
+    },
+    "Turkish Lira": {
+        Symbol: "₺",
+        Code: "TRY",
+        Value: $.TRY,
     },
     "Tuvaluan Dollar": {
         Symbol: "$",

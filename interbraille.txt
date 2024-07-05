@@ -1,5 +1,11 @@
 InterBraille Updates
 
+5 July 2024
+Added Sicilian Braille
+
+3 July 2024
+Added Italian Braille
+
 2 June 2024
 Added some Yiddish Braille proposals
 

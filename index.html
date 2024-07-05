@@ -9,10 +9,12 @@
         <h1 id="header"><span onclick="reveal('menu')">Harris' Website</span></h1>
         <div id="menu">
             <h3>Linguistics</h3>
-            <button class="linguistics"><a href="interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
-            <button class="linguistics"><a href="mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
-            <button class="linguistics"><a href="letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
-            <button class="linguistics"><a href="language.html" target="_blank" style="text-decoration: none;">Learn Languages</a></button>
+            <button class="linguistics" onclick="reveal('adjective')">Adjective Inflector</button>
+            <button class="linguistics"><a href="https://letterly.github.io/interbraille.html" target="_blank" style="text-decoration: none;">Braille Converter</a></button>
+            <button class="linguistics"><a href="https://letterly.github.io/mykeyboard.html" target="_blank" style="text-decoration: none;">Keyboards</a></button>
+            <button class="linguistics"><a href="https://letterly.github.io/letterly.html" target="_blank" style="text-decoration: none;">Learn Alphabets</a></button>
+            <button class="linguistics"><a href="https://letterly.github.io/language.html" target="_blank" style="text-decoration: none;">Learn Languages</a></button>
+            <button class="linguistics" onclick="reveal('noun')">Noun Decliner</button>
             <button class="linguistics" onclick="reveal('verb')">Verb Conjugator</button>
             <h3>Calendars & Religion</h3>
             <button onclick="reveal('calendar')">Calendar Converter</button>
@@ -24,9 +26,9 @@
             <button onclick="reveal('sunrisesunset')">Sunrise/Sunset</button>
             <button onclick="reveal('time')">Time Now</button>
             <h3>Mathematics & Programming</h3>
-            <button class="math"><a href="unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
-            <button class="math"><a href="codecode.html" target="_blank" style="text-decoration: none;">Learn Coding</a></button>
-            <button class="math"><a href="uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
+            <button class="math"><a href="https://letterly.github.io/unicalc.html" target="_blank" style="text-decoration: none;">Calculator</a></button>
+            <button class="math"><a href="https://letterly.github.io/codecode.html" target="_blank" style="text-decoration: none;">Learn Coding</a></button>
+            <button class="math"><a href="https://harrismowbray.com/uninumber.html" target="_blank" style="text-decoration: none;">Numeral Converter</a></button>
             <button class="math" onclick="reveal('trigonometry')">Trigonometric Functions</button>
             <h3>Other Converters</h3>
             <button class="converter" onclick="reveal('color')">Color Converter</button>
@@ -36,14 +38,14 @@
             <h3>Website Settings</h3>
             <button class='meta' onclick="reveal('settings')">Settings</button>
             <button class='meta' onclick="reveal('changelog')">Updates</button>
-            <button class='meta'><a href="https://github.com/letterly/letterly.github.io/tree/main" target="_blank" style="text-decoration: none;">Website Code</a></button>
+            <button class='meta'><a href="https://github.com/harrismowbray/harrismowbray.github.io" target="_blank" style="text-decoration: none;">Website Code</a></button>
             <h3>About Me</h3>
             <button class='website' onclick="reveal('bio')">Bio</button>
             <button class='website' onclick="reveal('contactinfo')">Contact</button>
-            <button class='website'><a href="https://harrismowbray.com" target="_blank" style="text-decoration: none;">Personal Website</a></button>
+            <button class='website'><a href="https://www.linkedin.com/in/harris-m-373291133/" target="_blank" style="text-decoration: none;">LinkedIn</a></button>
             <button class='website' onclick="reveal('mynews')">Press</button>
             <button class='website'><a href="https://harrismowbray.com/Resume.pdf" target="_blank" style="text-decoration: none;">Résumé</a></button>
-            <button class='website'><a href="https://en.wikipedia.org/wiki/Harris_Mowbray" target="_blank" style="text-decoration: none;">Wikipedia</a></button>
+            <button class='website' onclick="reveal('wikipedia')">Wikipedia</button>
         </div>
         <div class="selectblock" id="selectblockone">
             <select id="thecalendar" onchange="reset()">
@@ -155,12 +157,15 @@
         <div id="dayname"></div>
         <div class="selectblock" id="selectblockfive">
             <select id="loc" onchange="locationChange()">
+                <!-- TEL AVIV, HAIFA, HEBRON, -->
                 <option value="33;35;3">Akko 🇮🇱</option>
                 <option value="51.2;71.4;5">Astana 🇰🇿</option>
                 <option value="30;31;2">Cairo 🇪🇬</option>
                 <option value="6.9;79.9;5.5">Colombo 🇱🇰</option>
                 <option value="14.7;-17.5;0">Dakar 🇸🇳</option>
                 <option value="36.2;44;3">Erbil 🇮🇶</option>
+                <option value="31.7683;35.2137;3">Haifa 🇮🇱</option>
+                <option value="31.7683;35.2137;3">Hebron 🇮🇱🇵🇸</option>
                 <option value="-6;107;7">Jakarta 🇮🇩</option>
                 <option value="31.7683;35.2137;3">Jerusalem 🇮🇱</option>
                 <option value="-4;15;1">Kinshasa 🇨🇩</option>
@@ -176,6 +181,7 @@
                 <option value="34;-6.85;1">Rabat 🇲🇦</option>
                 <option value="24.7;46.7;3">Riyadh 🇸🇦</option>
                 <option value="41.5;45;4">Tbilisi 🇬🇪</option>
+                <option value="31.7683;35.2137;3">Tel Aviv 🇮🇱</option>
                 <option value="35.5;139.5;9">Tokyo 🇯🇵</option>
                 <option value="43.5;-79;-4">Toronto 🇨🇦</option>
                 <option value="-23.5;-46.5;-3">São Paulo 🇧🇷</option>
@@ -264,11 +270,17 @@
             <p>Phone: +1 (650) 468 8928</p>
             <p>Whatsapp: <a id="whatsapp" href="https://wa.me/16504688928" target="_blank">Personal Whatsapp Link</a></p>
             <p>Telegram: <a id="telegram" href="https://t.me/harrismowbray" target="_blank">@harrismowbray</a></p>
+            <p>Signal: <a id="signal" href="https://signal.me/#p/+16504688928" target="_blank">+16504688928</a></p>
+            <p id="viber1">Viber: <a href="viber://contact?number=16504688928" target="_blank">+16504688928</a></p>
+            <p id="viber2">Viber: <a href="viber://contact?number=+16504688928" target="_blank">+16504688928 [Viber must be installed]</a></p>
         </div>
         <div id="settings">
+            <h2>Calendar Converter</h2>
             <button id="gregera" onclick="adce()">AD/<b>CE</b></button>
-            <button id="twelvetwenty" onclick="twelve()">AM|PM/<b>24 Hour</b></button>
+            <h2>Prayer Directions</h2>
             <button id="deg" onclick="degree()"><b>5.5°</b>/5° 30′</button>
+            <h2>Prayer Times, Sunset/Sunrise, Time Now</h2>
+            <button id="twelvetwenty" onclick="twelve()">AM|PM/<b>24 Hour</b></button>
         </div>
         <div id="changelog"></div>
         <div id="color">
@@ -286,12 +298,15 @@
         </div>
         <div id="measure">
             <select id="unittype" onchange="measureSetUp(this.value)">
-                <option value="Angle">Angle</option>
                 <option value="Area">Area</option>
+                <option value="Energy">Energy</option>
+                <option value="Force">Force</option>
                 <option value="Length" selected>Length</option>
                 <option value="Paper">Paper</option>
+                <option value="Plane Angle">Plane Angle</option>
                 <option value="Power">Power</option>
                 <option value="Pressure">Pressure</option>
+                <option value="Solid Angle">Solid Angle</option>
                 <option value="Speed">Speed</option>
                 <option value="Time">Time</option>
                 <option value="Volume">Volume</option>
@@ -320,33 +335,41 @@
             <div id="selectblockseven">
                 <div id="insertedtemperature">
                     <p><a href="https://en.wikipedia.org/wiki/Celsius" target="_blank">Celsius (°C)</a> <input value="10" id="celsius" onchange="tempconvert('celsius')" /></p>
+                    <p>Celsius is the most common temperature scale, which is used in almost every country</p>
                     <p><a href="https://en.wikipedia.org/wiki/Fahrenheit" target="_blank">Fahrenheit (°F)</a> <input value="50" id="fahrenheit" onchange="tempconvert('fahrenheit')" /></p>
+                    <p>Fahrenheit is the only other prominent temperature scale globally; it is mainly used in the United States but some smaller countries use it (many of which use it alongside Celsius)</p>
                     <p><a href="https://en.wikipedia.org/wiki/Kelvin" target="_blank">Kelvin (K)</a> <input value="283.15" id="kelvin" onchange="tempconvert('kelvin')" /></p>
+                    <p>Kelvin is a temperature that starts at absolute zero and increases one unit for every degree Celsius; it is used by scientists around the world</p>
                     <p><a href="https://en.wikipedia.org/wiki/Rankine_scale" target="_blank">Rankine (°R)</a> <input value="509.67" id="rankine" onchange="tempconvert('rankine')" /></p>
+                    <p>Rankine starts at absolute zero like Kelvin but 1 °R is equal to 1 °F; this temperature scale is mostly used by NASA</p>
                     <p><a href="https://en.wikipedia.org/wiki/R%C3%A9aumur_scale" target="_blank">Réaumur (°Ré)</a> <input value="8" id="reaumur" onchange="tempconvert('reaumur')" /></p>
+                    <p>This temperature scale is mostly used by cheese producers in Italy and Switzerland as well as candy-makers in the Netherlands - it is just Celsius multiplied by ⅘</p>
                 </div>
             </div>
         </div>
         <!-- VERB CONJUGATOR -->
         <div id="verb">
-            <input id="enterverb" value="spreken" onkeyup="conjugate()" spellcheck="false" />
             <div id="conjugation">
                 <h1>Dutch Verb Conjugation</h1>
+                <input id="enterverb" value="spreken" onkeyup="conjugate()" spellcheck="false" />
                 <h5 id="recognizedverb">recognized verb ✅</h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <td style="border:none"></td>
-                            <th>1st p. sing.</th>
-                            <th>2nd p. sing. (jij)</th>
-                            <th>2nd p. sing. (u)</th>
-                            <th>2nd p. sing. (gij)</th>
-                            <th>3rd p. sing.</th>
-                            <th>Plural</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dutchverb"></tbody>
-                </table>
+                <table id="dutchverb"></table>
+            </div>
+        </div>
+        <!-- NOUN DECLINER -->
+        <div id="noun">
+            <div id="declension">
+                <h1>English Noun Declension</h1>
+                <input id="enternoun" value="crisis" onkeyup="decline()" spellcheck="false" />
+                <table id="englishnoun"></table>
+            </div>
+        </div>
+        <!-- NOUN DECLINER -->
+        <div id="adjective">
+            <div id="inflection">
+                <h1>Spanish Adjective Inflection</h1>
+                <input id="enteradjective" value="rojo" onkeyup="inflect()" spellcheck="false" />
+                <table id="spanishadjective"></table>
             </div>
         </div>
         <!-- NEWS -->
@@ -420,6 +443,18 @@
             <input onkeyup="trig()" id="trigangle" value="0" />
             <h1 id="trigresult">0</h1>
         </div>
+        <!-- WIKIPEDIA -->
+        <div id="wikipedia">
+            <p>Thanks to the efforts of kind volunteers, you can now read about me and my work on Wikipedia in eight languages (so far)!</p>
+            <p><a target="_blank" href="https://en.wikipedia.org/wiki/Harris_Mowbray">English - Harris Mowbray</a></p>
+            <p><a target="_blank" href="https://rw.wikipedia.org/wiki/Harris_Mowbray">Kinyarwanda - Harris Mowbray</a></p>
+            <p><a target="_blank" href="https://ckb.wikipedia.org/wiki/%DA%BE%D8%A7%D8%B1%DB%8C%D8%B3_%D9%85%DB%86%D8%A8%D8%B1%D8%A7%DB%8C">Kurdî | Kurdish - Harris Mobray</a></p>
+            <p><a target="_blank" href="https://mk.wikipedia.org/wiki/%D0%A5%D0%B0%D1%80%D1%80%D0%B8%D1%81_%D0%9C%D0%BE%D1%83%D0%B1%D1%80%D0%B5%D1%98">Македонски | Macedonian - Харрис Моубреј</a></p>
+            <p><a target="_blank" href="https://ka.wikipedia.org/wiki/%E1%83%B0%E1%83%90%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%A3%E1%83%91%E1%83%A0%E1%83%94%E1%83%98">ქართული | Georgian - ჰარის მოუბრეი</a></p>
+            <p><a target="_blank" href="https://incubator.wikimedia.org/wiki/Wp/syl/%EA%A0%A2%EA%A0%A6%EA%A0%9E%EA%A0%A4%EA%A0%8C_%EA%A0%9D%EA%A0%9B%EA%A0%A6">Syloti | ꠍꠤꠟꠐꠤ - ꠢꠦꠞꠤꠌ ꠝꠛꠦ</a></p>
+            <p><a target="_blank" href="https://ckb.wikipedia.org/wiki/%DA%BE%D8%A7%D8%B1%DB%8C%D8%B3_%D9%85%DB%86%D8%A8%D8%B1%D8%A7%DB%8C">کوردی | Central Kurdish - ھاریس مۆبرای</a></p>
+            <p><a target="_blank" href="https://fa.wikipedia.org/wiki/%D9%87%D8%A7%D8%B1%DB%8C%D8%B3_%D9%85%D9%88%D8%A8%D8%B1%DB%8C">فارسی | Farsi - هاریس موبری</a></p>
+        </div>
     </body>
     <script src="calendar-data.js"></script>
     <script src="nameday.js"></script>
@@ -429,4 +464,7 @@
     <script src="currencies.js"></script>
     <script src="mynews.js"></script>
     <script src="trigonometry.js"></script>
+    <script src="verbs.js"></script>
+    <script src="adjectives.js"></script>
+    <script src="nouns.js"></script>
 </html>

@@ -321,7 +321,7 @@ function japanDay(){
 }
 
 
-function suntimes(lat, lng, tz, angl, relativehours) {
+function suntimes(lat, lng, tz, angl, relativehours, minuto) {
     if(relativehours == undefined) relativehours = 0
     dd = new Date(thatspecificday.Gregorian);
     radians = Math.PI / 180;
@@ -358,6 +358,7 @@ function suntimes(lat, lng, tz, angl, relativehours) {
       var local_rise = (utc_time_rise + +tz_offset) % 24;
       var local_set = (utc_time_set + +tz_offset) % 24;
       relativehour = (local_set - local_rise) / 12
+      if(minuto != undefined) return julianhourize(local_set - minuto / 60)
       return [julianhourize(local_rise + relativehours * relativehour), julianhourize(local_set), julianhourize((local_rise + local_set) / 2)];
   }
   
@@ -365,7 +366,7 @@ function suntimes(lat, lng, tz, angl, relativehours) {
     hours = Math.floor(juliandecimal)
     appendage = ""
     if(preferences.time == "12"){
-        if(hours > 12){
+        if(hours >= 12){
             hours -= 12
             appendage = " p.m."
         }
@@ -404,6 +405,7 @@ function locationChange(){
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Mincha_Ketanah" class="hebrew" target="_blank">Mincha Ketanah</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 9.5)[0]} | `
     zmanim.innerHTML += `<a href="https://en.wikipedia.org/wiki/Zmanim#Plag_Hamincha" class="hebrew" target="_blank">Plag Hamincha</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 10.75)[0]}`
     if(thatspecificday.Day == "Saturday") zmanim.innerHTML += ` | <a href="https://en.wikipedia.org/wiki/Zmanim#Nightfall" class="hebrew" target="_blank">Shabbat end</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -8.5)[1]}`
+    if(thatspecificday.Day == "Friday") zmanim.innerHTML += ` | <a href="https://en.wikipedia.org/wiki/Zmanim#Bein_Hashemashot" class="hebrew" target="_blank">Candle Lighting</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833, 0, {"Jerusalem 🇮🇱": 40, "Tel Aviv 🇮🇱": 22, "Haifa 🇮🇱": 30, "Hebron 🇮🇱🇵🇸": 30}[city] ?? 18)}`
     //
     prayertimes.innerHTML = "<a style='font-weight:700;color:black' target='_blank' href='https://en.wikipedia.org/wiki/Salah_times'>Salah Times</a>: "
     prayertimes.innerHTML += `<a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Fajr" target="_blank">Fajr</a>: ${suntimes(locinfo[0], locinfo[1], locinfo[2], -15)[0]} | `
@@ -570,16 +572,6 @@ function locationChange(){
             <td>${holysites.Sheikh2.direction}</td>
         </tr>
     </table>`
-    /*if(!city.startsWith("Jerusalem")) angles.innerHTML += "<tr>><td>" +  + ` </td><td>` + holysites.Temple2.direction + `</td></tr>`
-    else angles.innerHTML += `<tr><td><a class='hebrew' href='https://en.wikipedia.org/wiki/Mizrah' target='_blank'>Judaism (Mizrah)</td><td colspan='2'></td></tr></table>`
-    if(!city.startsWith("Nablus")) angles.innerHTML += "<tr><td><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: " + holysites.Gerizim.direction
-    else angles.innerHTML += `<br><br><a class='samaritan' href='https://en.wikipedia.org/wiki/Mount_Gerizim' target='_blank'>Samaritanism</a>: Face <a target="_blank" href="https://en.wikipedia.org/wiki/Mount_Gerizim">Mount Gerizim</a>`
-    if(!city.startsWith("Mecca")) angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: ` + holysites.Kaaba.direction + ` <small><a href="https://en.wikipedia.org/wiki/Great_circle" target="_blank">Great Circle</a></small> // ` + holysites.Kaaba2.direction + ` <small><a href="https://en.wikipedia.org/wiki/Rhumb_line" target="_blank">Rhumb Line</a></small>`
-    else angles.innerHTML += `<br><br><a class="islamic_tabular" href="https://en.wikipedia.org/wiki/Qibla" target="_blank">Islam (Qibla)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Kaaba">Kaaba</a>`
-    if(!city.startsWith("Akko")) angles.innerHTML += "<br><br><a class='baháí' href='https://en.wikipedia.org/wiki/Qiblih' target='_blank'>Bahá'í (Qiblih)</a>: " + holysites.Qiblih.direction
-    else angles.innerHTML += `<br><br><a class="baháí" href="https://en.wikipedia.org/wiki/Qiblih" target="_blank">Bahá'í (Qiblih)</a>: Face the <a target="_blank" href="https://en.wikipedia.org/wiki/Shrine_of_Bah%C3%A1%CA%BCu%27ll%C3%A1h">Shrine of Baháʼu'lláh</a>`
-    angles.innerHTML += "<br><br><a class='yarsan' href='https://en.wikipedia.org/wiki/Yarsanism' target='_blank'>Yarsanism</a>: " + holysites.Sultan2.direction
-    angles.innerHTML += "<br><br><a class='yazidi' href='https://en.wikipedia.org/wiki/Yazidism' target='_blank'>Yazidism</a>: " + holysites.Sheikh2.direction*/
     dateify()
     timeify(locinfo[2])
 }
@@ -753,6 +745,7 @@ function convert(){
             if(ourcalendar == "Day"){
                 days = {
                     "Monday": {
+                        en: "Monday",
                         es: "Lunes",
                         fr: "Lundi",
                         ru: "Понедельник",
@@ -760,6 +753,7 @@ function convert(){
                         ar: "الاثنين",
                     },
                     "Tuesday": {
+                        en: "Tuesday",
                         es: "Martes",
                         fr: "Mardi",
                         ru: "Вторник",
@@ -767,6 +761,7 @@ function convert(){
                         ar: "الثلاثاء",
                     },
                     "Wednesday": {
+                        en: "Wednesday",
                         es: "Miércoles",
                         fr: "Mercredi",
                         ru: "Среда",
@@ -774,6 +769,7 @@ function convert(){
                         ar: "الأربعاء",
                     },
                     "Thursday": {
+                        en: "Thursday",
                         es: "Jueves",
                         fr: "Jeudi",
                         ru: "Четверг",
@@ -781,6 +777,7 @@ function convert(){
                         ar: "الخميس",
                     },
                     "Friday": {
+                        en: "Friday",
                         es: "Viernes",
                         fr: "Vendredi",
                         ru: "Пятница",
@@ -788,6 +785,7 @@ function convert(){
                         ar: "الجمعة",
                     },
                     "Saturday": {
+                        en: "Saturday",
                         es: "Sábado",
                         fr: "Samedi",
                         ru: "Суббота",
@@ -795,6 +793,7 @@ function convert(){
                         ar: "السبت",
                     },
                     "Sunday": {
+                        en: "Sunday",
                         es: "Domingo",
                         fr: "Dimanche",
                         ru: "Воскрешения",
@@ -803,7 +802,7 @@ function convert(){
                     },
                 }
                 dOw = thatspecificday[ourcalendar]
-                dayname.innerHTML = "<b>Day of the Week</b> <a style='text-decoration:dotted underline' target='_blank' href='https://en.wikipedia.org/wiki/" + dOw + "'>" + dOw + `</a> | ${days[dOw].es} | ${days[dOw].fr} | ${days[dOw].ru} | ${days[dOw].zh} | ${days[dOw].ar}`
+                dayname.innerHTML = `<b>Day of the Week</b>` + ["en", "es", "fr", "ru", "zh", "ar"].map(k => ` | <a style='text-decoration:dotted underline' target='_blank' href='https://${k}.wikipedia.org/wiki/${days[dOw][k]}'>${days[dOw][k]}</a>`).join("")
             }
             else if(ourcalendar == "Mayan"){
                 answer.innerHTML += `<div class='cal mayan'><span>🌙 <a class="callink" target='_blank' href='https://en.wikipedia.org/wiki/Maya_calendar#Long_Count'>Mayan</a> ⬜<br>${thatspecificday[ourcalendar]}<br><span id="mayannumerals">${thatspecificday[ourcalendar].split(".").map(z => Array.from("𝋠𝋡𝋢𝋣𝋤𝋥𝋦𝋧𝋨𝋩𝋪𝋫𝋬𝋭𝋮𝋯𝋰𝋱𝋲𝋳")[z]).join(" ")}</span></span></div>`
@@ -863,7 +862,6 @@ function convert(){
     🟨 (Monday) ⬜ (Not applicable)
     </div>
     </div>`
-    //answer.innerHTML += "<div class='cal harris'>By <a href='http://harrismowbray.com/' target='_blank'>Harris Mowbray</a><br><a href='calendar-changelog.html'>Updates</a><br><a href='mailto:harrismowbray@yahoo.com'>Email</a></div>"
 
     dateToFormat = thatspecificday.Gregorian.split(" ")
     YY = dateToFormat[2] % 100
@@ -984,8 +982,22 @@ function timeify(tz){
     }
     if(hr < 10) hr = "0" + hr
     if(min < 10) min = "0" + min
+    appendage = ""
+    if(preferences.time == "12"){
+        if(hr >= 12){
+            hr -= 12
+            appendage = " p.m."
+        }
+        else if(hr == 0){
+            hr = 12
+            appendage = " a.m."
+        }
+        else{
+            appendage = " a.m."
+        }
+    }
     tz = (tz < 0 ? tz : "+" + tz)
-    timenow.innerHTML = hr + ":" + min + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B").replace(".5", ":30") + "'>" + tz + "</a>"
+    timenow.innerHTML = hr + ":" + min + appendage + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B").replace(".5", ":30") + "'>" + tz + "</a>"
 }
 
 function holidaycheck(thatday){
@@ -1144,6 +1156,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["17 April"],
+            name: "Flag Day",
+            link: "https://en.wikipedia.org/wiki/Flag_of_American_Samoa#Design",
+            country: "American Samoa",
+        },
+        {
+            cal: "Gregorian",
             day: ["11 November"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Angola)",
@@ -1197,6 +1216,20 @@ function holidaycheck(thatday){
             name: "Armenian Genocide Remembrance Day",
             link: "https://en.wikipedia.org/wiki/Armenian_Genocide_Remembrance_Day",
             country: "Armenia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["5 July"],
+            name: "Constitution Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Armenia#Legal_holidays_and_remembrance_days",
+            country: "Armenia",
+        },
+        {
+            cal: "Gregorian",
+            day: ["18 March"],
+            name: "National Anthem and Flag Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Aruba",
+            country: "Aruba",
         },
         {
             cal: "Gregorian",
@@ -1433,6 +1466,20 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["2 July"],
+            name: "National Anthem and Flag Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Curaçao",
+            country: "Curaçao",
+        },
+        {
+            cal: "Gregorian",
+            day: ["10 October"],
+            name: "Curaçao Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_Curaçao",
+            country: "Curaçao",
+        },
+        {
+            cal: "Gregorian",
             day: ["1 October"],
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Cyprus)",
@@ -1583,13 +1630,6 @@ function holidaycheck(thatday){
         {
             cal: "Gregorian",
             day: ["21 June"],
-            name: "Liberation Day",
-            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Guam)",
-            country: "Greece",
-        },
-        {
-            cal: "Gregorian",
-            day: ["21 June"],
             name: "Greenland National Day",
             link: "https://en.wikipedia.org/wiki/Greenland_National_Day",
             country: "Greenland",
@@ -1600,6 +1640,13 @@ function holidaycheck(thatday){
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Grenada)",
             country: "Grenada",
+        },
+        {
+            cal: "Gregorian",
+            day: ["21 June"],
+            name: "Liberation Day",
+            link: "https://en.wikipedia.org/wiki/Liberation_Day_(Guam)",
+            country: "Guam",
         },
         {
             cal: "Gregorian",
@@ -1995,6 +2042,13 @@ function holidaycheck(thatday){
             name: "Republic Day",
             link: "https://en.wikipedia.org/wiki/Republic_Day_(Malta)",
             country: "Malta",
+        },
+        {
+            cal: "Islamic Tabular",
+            day: ["1 Rabiʽ al-Awwal"],
+            name: "Qaumee Dhuvas",
+            link: "https://en.wikipedia.org/wiki/Qaumee_Dhuvas_(Maldives_National_Day)",
+            country: "Maldives",
         },
         {
             cal: "Gregorian",
@@ -2673,6 +2727,13 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["19 June"],
+            name: "Juneteenth",
+            link: "https://en.wikipedia.org/wiki/Juneteenth",
+            country: "United States",
+        },
+        {
+            cal: "Gregorian",
             theExactDay: "Thursday",
             day: ["22 November", "23 November", "28 November", "24 November", "25 November", "26 November", "27 November"],
             name: "Thanksgiving",
@@ -2685,6 +2746,13 @@ function holidaycheck(thatday){
             name: "Landing of the 33 Patriots",
             link: "https://en.wikipedia.org/wiki/Landing_of_the_33_Patriots_Day",
             country: "Uruguay",
+        },
+        {
+            cal: "Gregorian",
+            day: ["31 March"],
+            name: "Transfer Day",
+            link: "https://en.wikipedia.org/wiki/Transfer_Day",
+            country: "U.S. Virgin Islands",
         },
         {
             cal: "Gregorian",
@@ -2791,12 +2859,6 @@ function holidaycheck(thatday){
             cal: "Gregorian",
             day: ["2 February"],
             link: "https://en.wikipedia.org/wiki/Candlemas",
-        },
-        {
-            cal: "Gregorian",
-            day: ["24 June"],
-            link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
-            name: "Nativity of John the Baptist",
         },
         {
             cal: "Gregorian",
@@ -3730,12 +3792,6 @@ function holidaycheck(thatday){
             day: "10 Tevet",
         },
         {
-            name: "Twentieth of Sivan",
-            cal: "Hebrew",
-            link: "https://en.wikipedia.org/wiki/Twentieth_of_Sivan",
-            day: "20 Sivan",
-        },
-        {
             name: "Zayin Adar",
             cal: "Hebrew",
             link: "https://en.wikipedia.org/wiki/Seventh_of_Adar",
@@ -3866,6 +3922,13 @@ function holidaycheck(thatday){
             name: "Arba'in",
             day: ["20 Safar"],
             link: "https://en.wikipedia.org/wiki/Arba%27in",
+        },
+        {
+            sect: "Twelver Shia Islam",
+            cal: "Islamic Tabular",
+            name: "Islamic New Year",
+            day: ["1 Rabiʽ al-Awwal"],
+            link: "https://en.wikipedia.org/wiki/Islamic_New_Year#Alternative_date",
         },
         {
             sect: "Twelver Shia Islam",
@@ -4166,13 +4229,13 @@ function holidaycheck(thatday){
         {
             link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
             cal: "Gregorian",
-            name: "Nativity of Saint John the Baptist",
+            name: "Nativity of John the Baptist",
             day: ["24 June"],
         },
         {
             link: "https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist",
             cal: "Julian",
-            name: "Nativity of Saint John the Baptist",
+            name: "Nativity of Saint John the Forerunner",
             day: ["24 June"],
         },
         {
@@ -5131,7 +5194,7 @@ function reveal(subject){
     else{
         header.innerHTML = `<span onclick="reveal('menu')">Harris' Website</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname currencies bio trigonometry measure verb mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname currencies bio trigonometry measure adjective noun verb wikipedia mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
@@ -5184,9 +5247,12 @@ function reveal(subject){
         case "temperature":
         case "color":
         case "verb":
+        case "noun":
         case "mynews":
         case "trigonometry":
         case "bio":
+        case "wikipedia":
+        case "adjective":
             document.getElementById(subject).style.display = "block"
             break
         case "name":
@@ -5405,7 +5471,9 @@ function tempconvert(x){
 units = {
     Length: { //base unit: m
         Metric: {
-            "nanometer (μm)": .000000001,
+            "fermi/femtometer (fm)": .000000000000001,
+            "picometer (pm)": .000000000001,
+            "nanometer (nm)": .000000001,
             "micron/micrometer (μm)": .000001,
             "millimeter (mm)": .001,
             "centimeter (cm)": .01,
@@ -5429,6 +5497,7 @@ units = {
             "rack unit": .04445,
         },
         Scientific: {
+            "plank length": .00000000000000000000000000000000001616255,
             "x-unit": .00000000000010021,
             "ångström": .0000000001,
         },
@@ -5466,6 +5535,8 @@ units = {
             "microgram (μg)": .001,
             "milligram (mg)": 1,
             "gram (g)": 1000,
+            "dekagram (dkg)": 10000,
+            "hectogram (hg)": 10000,
             "carat (ct)": 200000,
             "kilogram (kg)": 1000000,
             "metric ton": 1000000000,
@@ -5479,6 +5550,9 @@ units = {
             "hundredweight (cwt) [U.K.]": 50802345,
             "ton [U.S.]": 907184740,
             "ton [U.K.]": 1016046909,
+        },
+        Scientific: {
+            "dalton (Da)": .00000000000000000000166054,
         },
         Troy: {
             "pennyweight (dwt)": 1555,
@@ -5507,14 +5581,21 @@ units = {
     },
     Volume: { //base unit mL
         Metric: {
+            "nanoliter (nL)": 0.000001,
+            "microliter (μL)": 0.001,
             "milliliter (mL)": 1,
             "metric teaspoon": 5,
             "centiliter (cL)": 10,
             "metric tablespoon": 15,
+            "deciliter (dL)": 10,
             "metric cup": 250,
             "metric fifth": 750,
             "liter (L)": 1000,
+            "hectoliter (hL)": 100000,
+            "kiloliter (hL)": 1000000,
             "cubic meter (m³)": 1000000,
+            "megaliter (ML)": 1000000000,
+            "gigaliter (GL)": 1000000000000,
         },
         Imperial: {
             "imperial fluid dram": 3.551632,
@@ -5530,7 +5611,6 @@ units = {
             "imperial tun":  954678.9,
             "cubic feet (ft³)": 28316.8,
             "cubic yard (yd³)": 764554.9,
-            "acre-foot (ac ft)": 12334818.375,
         },
         "U.S. Liquid Volume": {
             "U.S. fluid dram": 3.696691,
@@ -5544,7 +5624,7 @@ units = {
             "U.S. gallon (US gal)": 3785.41,
             "U.S. tun": 953923.7,
             "cubic ton (timber)": 113300,
-            "acre-foot": 1233480000,
+            "acre-foot (ac ft)": 12334818.375,
         },
         "U.S. Dry Volume": {
             "U.S. dry pint": 550.61047,
@@ -5572,6 +5652,11 @@ units = {
             "to (斗)": 18040,
             "koku (石)": 180400,
         },
+        Nepalese: {
+            "mutthi": 454.596,
+            "pathi": 4545.96,
+            "muri": 90919.2,
+        },
     },
     Speed: { //base unit m/s
         Metric: {
@@ -5586,23 +5671,48 @@ units = {
             "knots (kn)": 1.943844 
         },
     },
+    Force: {
+        "Metric": {
+            "newton (N)": 1,
+            "kilogram-force (kgf)": 9.80665,
+        },
+        "Imperial": {
+            "pound-force (lbf)": 4.448222,
+            "poundal": .138255,
+        },
+    },
     Pressure: { //base unit bar
         "Metric": { 
             "pascal": .00001,
             "millibar": .001,
             "hectopascal": .001,
             "kilopascal": .01,
+            "megapascal": 10,
+            "gigapascal": 10000,
             "millimeter of mercury (mmHg)": .00133322,
             "bar": 1,
         },
         "Imperial": {
-            "pouns per square inch (psi)": .06894757,
+            "megapound per square inch (Mpsi)": 68947.57,
+            "kilopound per square inch (psi)": 68.94757,
+            "pound per square inch (psi)": .06894757,
             "inch of mercury (inHg)": .0338639,
         },
         "Scientific": {
+            "barye": .000001,
             "torr": .001333224,
             "technical atmosphere (at)": .980665,
             "atmosphere (atm)": 1.01325,
+        },
+        "Diving": {
+            "meter sea water (msw)": 0.1,
+            "foot sea water (fsw)": 0.030643,
+        },
+        "Water": {
+            "millimeter of water":  0.0000980665,
+            "centimeter of water":  0.000980665,
+            "inch of water": .00249082,
+            "foot of water": .02989067,
         },
     },
     Power: { //base unit: W
@@ -5615,6 +5725,25 @@ units = {
             "imperial horsepower (hp)": 745.7,
             "refrigeration ton (RT)": 3516.85
         },
+    },
+    Energy: { //base unit: J
+        "Metric": {
+            "joule (J)": 1,
+            "watt-second": 1,
+            "kilojoule (kJ)": 1000,
+        },
+        "Scientific": {
+            "barrel of oil equivalent (BOE)": 6117863200,
+            "calorie": 4.184,
+            "kilocalorie": 4184,
+            "electronvolt": .0000000000000000001602176634,
+            "erg": .0000001,
+        },
+        "Imperial": {
+            "British thermal unit (Btu)": 1054.35,
+            "therm (thm)": 105435000,
+            "decatherm (dth)": 1054350000,
+        }
     },
     Area: { //base unit: m²
         "Metric": { 
@@ -5659,14 +5788,33 @@ units = {
             "jiǎ (甲)": 9699.2,
             "lí (犁)": 48496,
         },
+        "Korean": {
+            "chak (작)": .0330579,
+            "hop (홉)": .330579,
+            "p'yŏng (평)": 3.30579,
+            "myo (묘)": 99.174,
+            "tan (단)": 991.74,
+            "chŏng (정)": 9917.4,
+        },
+        "Nepalese": {
+            "dam": 1.98725409,
+            "paisa": 7.94901636,
+            "dhur": 16.93157904,
+            "aana": 31.79606544,
+            "kattha": 338.6315808,
+            "ropani": 508.737047,
+            "bigha": 6772.631616,
+            "khetmuri": 12718.42618,
+        },
         "Other Traditional": {
             "cent": 40.46856,
             "stremma": 1000,
             "jerib (Afghanistan)": 2000,
+            "jerib (Iran)": 10000,
             "cuerda (Puerto Rico)": 3930.395,
         },
     },
-    Angle: { //base unit arcsecond
+    "Plane Angle": { //base unit arcsecond
         "Traditional": {
             "turn": 1296000,
             "degree (°)": 3600,
@@ -5690,6 +5838,19 @@ units = {
             "nautical line": 40500,
         },
     },
+    "Solid Angle": { //base unit steradian
+        "Traditional": {
+            "spat (sp)": 12.5661,
+            "square degree (deg²)": .000304617,
+            "square arcminute": .0000000846158333,
+            "square arcsecond": .000000000023504398,
+        },
+        "Mathematical": {
+            "steradian": 1,
+            "millisteradian (msr)": .001,
+            "microsteradian (μsr)": .000001,
+        },
+    },
     Time: { //base unit
         "Common": {
             "second (s)": 1,
@@ -5706,6 +5867,10 @@ units = {
             "microsecond (μs)": .000001,
             "nanosecond (ns)": .000000001,
             "picosecond (ps)": .000000000001,
+            "femtosecond (fs)": .000000000000001,
+            "attosecond (as)": .000000000000000001,
+            "flick": 0.00000000141723356,
+            "shake": .00000001,
         }
     },
     Paper: {
@@ -5748,125 +5913,3 @@ function measureSetUp(unit){
 }
 
 measureSetUp("Length")
-
-
-function conjugate(){
-    infinitive = enterverb.value.toLowerCase()
-    verblist = ["zijn", "dichten", "spreken", "barbecueën", "cijferen", "aanvaarden", "bedoelen"]
-    recognizedverb.innerHTML = verblist.includes(infinitive) ? "recognized verb ✅" : "verb not recognized ❌"
-    dutchverbs = ["zijn", "spreken", "dichten"]
-    //present1
-    if(infinitive == "zijn") present1 = "ben"
-    else if(infinitive == "spreken") present1 = "spreek"
-    else present1 = infinitive.slice(0, -2)
-    //present2
-    if(infinitive == "zijn") present2= "bent"
-    else{
-        present2 = present1.endsWith("t") ? present1 : present1 + "t"
-    }
-    //present3
-    if(infinitive == "zijn") present3 = "is"
-    else{
-        present3 = present1.endsWith("t") ? present1 : present1 + "t"
-    }    
-    //present4
-    if(infinitive == "zijn") present4 = "zijt"
-    else{
-        present4 = present1.endsWith("t") ? present1 : present1 + "t"
-    }    
-    //present5
-    if(infinitive == "zijn") present5 = "is"
-    else{
-        present5 = present1.endsWith("t") ? present1 : present1 + "t"
-    }    
-    //past1
-    if(infinitive == "zijn") past1 = "was"
-    else if(infinitive == "spreken") past1 = "sprak"
-    else{
-        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) past1 = infinitive.slice(0, -2) + "de"
-        else past1 = infinitive.slice(0, -2) + "te"
-    }
-    //past2
-    if(infinitive == "zijn") past2 = "waart"
-    else if(infinitive == "spreken") past2 = "spraakt"
-    else{
-        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) past2 = infinitive.slice(0, -2) + "de"
-        else past2 = infinitive.slice(0, -2) + "te"
-    }
-    //past3
-    if(infinitive == "zijn") past3 = "waren"
-    else if(infinitive == "spreken") past3 = "spraken"
-    else past3 = past1 + "n"
-    //subj1
-    subj1 = infinitive.slice(0, -1)
-    //subj2
-    if(infinitive == "zijn") subj2 = "ware"
-    else if(infinitive == "spreken") subj2 = "sprake"
-    else{
-        if("aelr".includes(infinitive.charAt(infinitive.length - 3))) subj2 = infinitive.slice(0, -2) + "de"
-        else subj2 = infinitive.slice(0, -2) + "te"
-    }
-    //subj3
-    if(infinitive == "zijn") subj3 = "waren"
-    else if(infinitive == "spreken") subj3 = "spraken"
-    else subj3 = subj2 + "n"
-    //imp1
-    if(infinitive == "zijn") imp1 = "wees"
-    else imp1 = present1
-    //imp2
-    if(imp1.endsWith("t")) imp2 = imp1
-    else imp2 = imp1 + "t"
-    //participle1
-    participle1 = infinitive + "d"
-    //participle2
-    if(infinitive == "zijn") participle2 = "geweest"
-    else if(infinitive == "spreken") participle2 = "gesproken"
-    else{
-        if(present1.endsWith("t")) participle2 = "ge" + present1
-        else if(present1.startsWith("aa") || present1.startsWith("b")) participle2 = present1
-        else participle2 = "ge" + present1 + "d"
-    }
-    dutchverb.innerHTML = 
-`<tr>
-    <th>Present</th>
-    <td>${present1}</td>
-    <td>${present2}</td>
-    <td>${present3}</td>
-    <td>${present4}</td>
-    <td>${present5}</td>
-    <td>${infinitive}</td>
-</tr>
-<tr>
-    <th>Past</th>
-    <td>${past1}</td>
-    <td>${past1}</td>
-    <td>${past1}</td>
-    <td>${past2}</td>
-    <td>${past1}</td>
-    <td>${past3}</td>
-</tr>
-<tr>
-    <th>Subjunctive Present</th>
-    <td colspan="5">${subj1}</td>
-    <td>${infinitive}</td>
-</tr>
-<tr>
-    <th>Subjunctive Past</th>
-    <td colspan="5">${subj2}</td>
-    <td>${subj3}</td>
-</tr>
-<tr>
-    <th>Imperative</th>
-    <td colspan="5">${imp1}</td>
-    <td>${imp2}</td>
-</tr>
-<tr>
-    <th>Present Participle</th>
-    <td colspan="6">${participle1}</td>
-</tr>
-<tr>
-    <th>Past Participle</th>
-    <td colspan="6">${participle2}</td>
-</tr>`
-}
-conjugate()

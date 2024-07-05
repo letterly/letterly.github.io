@@ -37,7 +37,7 @@ function trig(){
         "haversin": (1 - Math.cos(Tangle)) / 2,
         "havercos": (1 + Math.cos(Tangle)) / 2,
         "hacoversin": (1 - Math.sin(Tangle)) / 2,
-        "hacovercos: ": (1 + Math.sin(Tangle)) / 2,
+        "hacovercos": (1 + Math.sin(Tangle)) / 2,
 
         "arcversin": Math.acos(1 - Tangle),
         "arcvercos": Math.acos(Tangle - 1),
@@ -46,7 +46,7 @@ function trig(){
         "archaversin": Math.acos(1 - 2 * Tangle),
         "archavercos": Math.acos(2 * Tangle - 1),
         "archacoversin": Math.asin(1 - 2 * Tangle),
-        "archacovercos: ": Math.asin(2 * Tangle - 1),
+        "archacovercos": Math.asin(2 * Tangle - 1),
 
         "exsec": 1 / Math.cos(Tangle) - 1,
         "excsc": 1 / Math.sin(Tangle) - 1,

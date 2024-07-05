@@ -1,8 +1,4 @@
 @font-face {
-    font-family: "Montserrat";
-    src: url(fonts/Mont.ttf);
-}
-@font-face {
     font-family: "Noto";
     src: url(fonts/Noto.ttf);
 }
@@ -16,15 +12,19 @@
 body{
     background-color: white;
 }
+#header{
+    margin: 5px;
+}
 #header span{
     color: black;
 }
 
 #menu h3{
-    margin: 5px;
+    margin: 12px;
+    margin-top: 18px;
 }
 
-#settings, #trigonometry, #bio, #temperature, #mynews, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#settings, #trigonometry, #bio, #temperature, #wikipedia, #mynews, #adjective, #noun, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
@@ -51,6 +51,26 @@ body{
     white-space: pre-wrap;
 }
 
+#mynews{
+    height: 80%;
+    overflow: scroll;
+}
+
+@media (pointer: fine) {
+    #viber1{
+        display: none;
+    }
+}
+@media (pointer: coarse) {
+    #viber2{
+        display: none;
+    }
+}
+
+#contactinfo p{
+    margin: 15px;
+}
+
 td{
     font-size: 24px;
     width: 30%;
@@ -60,7 +80,7 @@ td:first-child{
     text-align: right;
 }
 
-#conjugation td, #conjugation th{
+#conjugation td, #conjugation th, #declension td, #declension th{
     font-size: 20px;
     width: auto;
     text-align: center;
@@ -68,6 +88,18 @@ td:first-child{
     border-bottom: solid black 1px;
 }
 
+#declension table{
+    width: 20vw;
+    margin-left: 27vw;
+    margin-right: 27vw;
+}
+
+#settings h2{
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
 
 #settings button{
     font-size: 56px;
@@ -80,10 +112,15 @@ td:first-child{
 #menu button{
     font-size: 46px;
     background-color: #F8B55B;
-    margin: 2px;
+    margin: 5px;
     border: none;
-    border-radius: 20px;
     color: black;
+}
+.website, .meta, .converter{
+    color: white !important;
+}
+.website a, .meta a, .converter a{
+    color: white !important;
 }
 .math{
     background-color: #F09B4E !important;
@@ -95,11 +132,17 @@ td:first-child{
 .converter{
     background-color: #E26636 !important;
 }
-.meta{
+.website{
     background-color: #D3321D !important;
 }
-.website{
+.meta{
     background-color: #DA4C29 !important;
+}
+.website:hover, .meta:hover, .converter:hover{
+    color: black !important;
+}
+.website a:hover, .meta a:hover, .converter a:hover{
+    color: black !important;
 }
 #menu button:hover{
     color: white;
@@ -434,7 +477,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #trigonometry, #bio, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
+#sunrisesunset, #wikipedia, #trigonometry, #bio, #adjective, #noun, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -470,6 +513,6 @@ h2{
     margin: 10px;
 }
 
-#bio p{
+#bio p, #wikipedia p{
     font-size: 24px;
 }

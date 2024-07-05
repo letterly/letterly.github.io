@@ -246,13 +246,13 @@ news = [
         publisher: "Dziennik Bałtycki",
         country: "Republic of Poland 🇵🇱"
     },
-    {
+    /*{
         name: "Nowostka na slepych: Serbske Braille pismo",
         language: "Upper Sorbian",
         link: "https://www.mdr.de/serbski-program/rozhlos/aktualne-prinoski/audio-1646780.html",
         publisher: "Mitteldeutscher Rundfunk",
         country: "Federal Republic of Germany 🇩🇪"
-    },
+    },*/
     {
         name: "Студент из США бесплатно перевел гагаузский алфавит на шрифт Брайля",
         language: "Russian",
@@ -274,13 +274,13 @@ news = [
         publisher: "Tabalde",
         country: "Republic of Guinea 🇬🇳",
     },
-    {
+    /*{
         name: "Kaliforniska: Američan serbske Braille pismo wuwił",
         language: "Upper Sorbian",
         link: "https://www.mdr.de/serbski-program/rozhlos/powesce/nachrichten-3014.html#sprung2",
         publisher: "Central German Broadcasting",
         country: "Federal Republic of Germany 🇩🇪"
-    },
+    },*/
 ]
 
 for(var ne of news) mynews.innerHTML += `<div><a target="_blank" href="${ne.link}">${ne.name}</a><br>Language: ${ne.language}<br> Country: ${ne.country}<br> Publisher: ${ne.publisher}</div>`

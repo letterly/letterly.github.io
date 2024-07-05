@@ -156,7 +156,7 @@ emoji = {
     'Vietnam': '🇻🇳',
     'Vanuatu': '🇻🇺',
     'Wallis and Futuna': '🇼🇫',
-    'Samoa': '🇼🇸',
+    'American Samoa': '🇦🇸',
     'Yemen': '🇾🇪',
     'Andorra': '🇦🇩',
     'Albania': '🇦🇱',
