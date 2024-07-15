@@ -1,0 +1,40 @@
+COMPLETE
+Arabic
+Armenian
+Belarusian
+Bulgarian
+Central Atlas Tamazight
+Fulani
+Georgian
+Greek
+Hebrew
+Japanese [Hiragana]
+Macedonian
+Mongolian
+Osage
+Russian
+Rusyn
+Serbian
+Tajik
+Ukrainian
+Uyghur
+Yiddish
+
+IN PROGRESS
+Bangla
+Hindi
+Korean
+Persian
+Punjabi
+Urdu
+Uzbek
+Thaana
+
+TODO
+Inuktitut
+Cherokee
+Amharic
+Kyrgyz
+Kurdish
+Sinhalese
+Katakana
