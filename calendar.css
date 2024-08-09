@@ -7,7 +7,16 @@
     src: url(fonts/Mayan.ttf);
 }
 *{
-    font-family: 'Noto';
+    font-family: 'Noto', Verdana, sans-serif;
+}
+#electioninputs p, #electioninputs input{
+    font-size: 20px !important;
+}
+#threshold{
+    color: red;
+}
+#electionresult{
+    color: blue;
 }
 body{
     background-color: white;
@@ -24,7 +33,7 @@ body{
     margin-top: 18px;
 }
 
-#settings, #trigonometry, #bio, #temperature, #wikipedia, #mynews, #adjective, #noun, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
+#settings, #trigonometry, #bio, #temperature, #wikipedia, #elections, #mynews, #numbers, #ipa, #adjective, #orthography, #noun, #verb, #measure, #color, #changelog, #dayname, #namesearch, #format, #zmanim, #sunrisesunset, #prayertimes, #mandaictimes, #angles, #nationalholidays, #holidays, #observances, #monthly, #weekly, #answer, #selectblockfive, #selectblockone, #selectblocktwo, #contactinfo, #namediv, #timenow, #findany, #currencies{
     display: none;
 }
 #contactinfo{
@@ -71,6 +80,16 @@ body{
     margin: 15px;
 }
 
+textarea{
+    resize: none;
+    font-size: 20px;
+    width: 40%;
+    height: 75%;
+    outline: none;
+}
+
+
+
 td{
     font-size: 24px;
     width: 30%;
@@ -88,10 +107,10 @@ td:first-child{
     border-bottom: solid black 1px;
 }
 
-#declension table{
+#declension table, #inflection table{
     width: 20vw;
-    margin-left: 27vw;
-    margin-right: 27vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
 }
 
 #settings h2{
@@ -116,34 +135,18 @@ td:first-child{
     border: none;
     color: black;
 }
-.website, .meta, .converter{
+/*.website, .meta, .converter{
     color: white !important;
 }
 .website a, .meta a, .converter a{
     color: white !important;
-}
-.math{
-    background-color: #F09B4E !important;
-}
-
-.linguistics{
-    background-color: #FFCF67 !important;
-}
-.converter{
-    background-color: #E26636 !important;
-}
-.website{
-    background-color: #D3321D !important;
-}
-.meta{
-    background-color: #DA4C29 !important;
 }
 .website:hover, .meta:hover, .converter:hover{
     color: black !important;
 }
 .website a:hover, .meta a:hover, .converter a:hover{
     color: black !important;
-}
+}*/
 #menu button:hover{
     color: white;
 }
@@ -175,6 +178,14 @@ input, select{
     font-size: 40px;
     text-align: center;
 }
+.langselector{
+    border-bottom: fuchsia 2px solid;
+}
+
+#enterdigits, #enteripa, #enteradjective{
+    width: 80%;
+}
+
 #selectblockone{
     margin-left: calc((100% - 458.5px) / 2);
     margin-right: calc((100% - 458.5px) / 2);
@@ -477,7 +488,7 @@ h2{
     text-decoration: dotted underline !important;
 }
 
-#sunrisesunset, #wikipedia, #trigonometry, #bio, #adjective, #noun, #verb, #timenow, #zmanim, #prayertimes, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
+#sunrisesunset, #wikipedia, #trigonometry, #bio, #adjective, #ipa, #numbers, #orthography, #noun, #verb, #timenow, #zmanim, #prayertimes, #elections, #mandaictimes, #angles, #namediv, #format, #namesearch, #mynews, #measure, #currencies, #temperature{
     border-radius: 5px;
     width: 80vw;
     margin-left: 10vw;
@@ -488,6 +499,10 @@ h2{
 }
 #format{
     font-size: 54px !important;
+}
+
+#generatednumber{
+    font-size: 32px;
 }
 #sunrisesunset a, #angles a, #zmanim a, #prayertimes a, #mandaictimes a{
     text-decoration: dotted underline;

@@ -385,7 +385,7 @@ function suntimes(lat, lng, tz, angl, relativehours, minuto) {
 
 function locationChange(){
     city = loc.options[loc.selectedIndex].text
-    locinfo = loc.value.split(";")
+    locinfo = [locations[city].latitude, locations[city].longitude, locations[city].time_zone]
     astrotwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -18.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0]
     nauticaltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -12.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0]
     civiltwilight1.innerHTML = suntimes(locinfo[0], locinfo[1], locinfo[2], -6.833)[0] + " - " + suntimes(locinfo[0], locinfo[1], locinfo[2], -0.833)[0]
@@ -573,7 +573,7 @@ function locationChange(){
         </tr>
     </table>`
     dateify()
-    timeify(locinfo[2])
+    timeify(locations[city])
 }
 
 
@@ -953,7 +953,8 @@ function dateify(){
     }
     format.textContent = dateFormat[moji]
 }
-function timeify(tz){
+function timeify(cty){
+    tz = "" + cty.time
     paren = ""
     newdate = new Date()
     hr = newdate.getHours()
@@ -976,9 +977,9 @@ function timeify(tz){
        hr = 24 + hr
        paren = " (yesterday)"
     }
-    else if(hr > 24){
+    else if(hr >= 24){
         hr -= 24
-        parent = " (tomorrow)"
+        paren = " (tomorrow)"
     }
     if(hr < 10) hr = "0" + hr
     if(min < 10) min = "0" + min
@@ -997,7 +998,7 @@ function timeify(tz){
         }
     }
     tz = (tz < 0 ? tz : "+" + tz)
-    timenow.innerHTML = hr + ":" + min + appendage + paren + "<br><a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>UTC</a><a target='_blank' href='https://en.wikipedia.org/wiki/UTC" + tz.replace("+", "%2B").replace(".5", ":30") + "'>" + tz + "</a>"
+    timenow.innerHTML = hr + ":" + min + appendage + paren + "<br>" + `<a href='${cty.wiki}' target="_blank">${cty.TZ} (${cty.abbrev})</a>` + "<br>" + `<a target='_blank' href='https://en.wikipedia.org/wiki/UTC_offset'>Time offset:</a> <a target='_blank' href='https://en.wikipedia.org/wiki/UTC${tz.replace("+", "%2B").replace(".5", ":30")}'>${tz}</a>`
 }
 
 function holidaycheck(thatday){
@@ -2522,6 +2523,20 @@ function holidaycheck(thatday){
         },
         {
             cal: "Gregorian",
+            day: ["9 July"],
+            name: "Independence Day",
+            link: "https://en.wikipedia.org/wiki/Public_holidays_in_South_Sudan",
+            country: "South Sudan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["30 July"],
+            name: "Martyrs' Day",
+            link: "https://en.wikipedia.org/wiki/Martyrs%27_Day#South_Sudan",
+            country: "South Sudan",
+        },
+        {
+            cal: "Gregorian",
             day: ["12 October"],
             name: "National Day of Spain",
             link: "https://en.wikipedia.org/wiki/National_Day_of_Spain",
@@ -2533,6 +2548,20 @@ function holidaycheck(thatday){
             name: "Independence Day",
             link: "https://en.wikipedia.org/wiki/Independence_Day_(Sri_Lanka)",
             country: "Sri Lanka",
+        },
+        {
+            cal: "Gregorian",
+            day: ["1 January"],
+            name: "Independence Day",
+            link: "https://en.wikipedia.org/wiki/List_of_national_independence_days",
+            country: "Sudan",
+        },
+        {
+            cal: "Gregorian",
+            day: ["19 December"],
+            name: "Revolution Day",
+            link: "https://en.wikipedia.org/wiki/Revolution_Day",
+            country: "Sudan",
         },
         {
             cal: "Gregorian",
@@ -5194,7 +5223,7 @@ function reveal(subject){
     else{
         header.innerHTML = `<span onclick="reveal('menu')">Harris' Website</span>`
         menu.style.display = "block"
-        for(oooo of "settings dayname currencies bio trigonometry measure adjective noun verb wikipedia mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
+        for(oooo of "settings dayname currencies bio trigonometry measure adjective numbers ipa elections orthography noun verb wikipedia mynews temperature findany color changelog timenow namesearch zmanim format sunrisesunset prayertimes mandaictimes angles nationalholidays holidays observances monthly weekly answer selectblockfive selectblockone selectblocktwo contactinfo namediv".split(" ")) document.getElementById(oooo).style.display = "none"
     }
 
     switch(subject){
@@ -5239,22 +5268,6 @@ function reveal(subject){
             monthly.style.display = "block"
             weekly.style.display = "block"
             break
-        case "contactinfo":
-        case "changelog":
-        case "settings":
-        case "measure":
-        case "currencies":
-        case "temperature":
-        case "color":
-        case "verb":
-        case "noun":
-        case "mynews":
-        case "trigonometry":
-        case "bio":
-        case "wikipedia":
-        case "adjective":
-            document.getElementById(subject).style.display = "block"
-            break
         case "name":
             thecalendar.value = "Gregorian"
             nametable.innerHTML = ""
@@ -5277,7 +5290,10 @@ function reveal(subject){
             reset()
             timenow.style.display = "block"
             selectblockfive.style.display = "block"
-            timeify(loc.value.split(";")[2])
+            timeify(locations[loc.options[loc.selectedIndex].text])
+            break
+        default:
+            document.getElementById(subject).style.display = "block"
             break
     }
 
@@ -5500,9 +5516,10 @@ units = {
             "plank length": .00000000000000000000000000000000001616255,
             "x-unit": .00000000000010021,
             "ångström": .0000000001,
+            "Bohr radius": .0000000000529177210544
         },
         Astronomical: {
-            "lunar distance (LD)":    384398300,
+            "lunar distance (LD)": 384398300,
             "light-second": 299792458,
             "astronomical unit (au)": 149597870700,
             "light-year (ly)": 946073047258080,
@@ -5534,10 +5551,11 @@ units = {
         Metric: {
             "microgram (μg)": .001,
             "milligram (mg)": 1,
+            "point": 2,
             "gram (g)": 1000,
             "dekagram (dkg)": 10000,
             "hectogram (hg)": 10000,
-            "carat (ct)": 200000,
+            "carat (ct)": 200,
             "kilogram (kg)": 1000000,
             "metric ton": 1000000000,
         },
@@ -5550,6 +5568,12 @@ units = {
             "hundredweight (cwt) [U.K.]": 50802345,
             "ton [U.S.]": 907184740,
             "ton [U.K.]": 1016046909,
+            "slug": 14593902.937,
+        },
+        Astronomic: {
+            "Earth mass (M🜨)": 5972200000000000000000000,
+            "Jupiter mass (M♃)": 1898130000000000000000000000,
+            "Solar mass (M☉)": 1988920000000000000000000000000,
         },
         Scientific: {
             "dalton (Da)": .00000000000000000000166054,
@@ -5577,6 +5601,11 @@ units = {
             "kan (貫)": 3750000,
             "maru (丸)": 30000000,
             "tan (担)": 60000000,
+        },
+        Iberian: {
+            "arroba (@) [Dominican Republic]": 25000000,
+            "arroba (@) [Castilla]": 11500232.5,
+            "arroba (@) [Aragon]": 12126000,
         },
     },
     Volume: { //base unit mL
@@ -5609,7 +5638,7 @@ units = {
             "imperial peck": 9092.18,
             "imperial bushel (imp bsh)":  36368.72,
             "imperial tun":  954678.9,
-            "cubic feet (ft³)": 28316.8,
+            "cubic foot (ft³)": 28316.8,
             "cubic yard (yd³)": 764554.9,
         },
         "U.S. Liquid Volume": {
@@ -5674,11 +5703,69 @@ units = {
     Force: {
         "Metric": {
             "newton (N)": 1,
+            "kiloNewton (N)": 1000,
             "kilogram-force (kgf)": 9.80665,
         },
         "Imperial": {
             "pound-force (lbf)": 4.448222,
+            "kip": 4448.222,
             "poundal": .138255,
+        },
+    },
+    Radioactivity: { //base unit: bQ
+        "Metric": {
+            "becquerel (Bq)": 1,
+            "kilobecquerel (kBq)": 1000,
+            "megabecquerel (MBq)": 1000000,
+            "gigabecquerel (GBq)": 1000000000,
+            "terabecquerel (TBq)": 1000000000000,
+            "petabecquerel (PBq)": 1000000000000000,
+            "exabecquerel (EBq)": 1000000000000000000,
+        },
+        "Non-SI": {
+            "curie (Ci)": 37000000000,
+            "microcurie (μCi)": 37000,
+            "disintegrations per minute (dpm)": 1/60,
+        },
+    },
+    "Fuel Economy": {
+        "Metric": {
+            "kilometers per liter (km/L)": 1,
+            //"liters per 100 kilometers": 0,
+        },
+        "Imperial": {
+            "miles per gallon (mpg) [US]": 2.3521458329,
+            "miles per gallon (mpg) [Imperial]": 2.8248093628,
+        },
+    },
+    Torque: {
+        Metric: {
+            "Newton-metre (N⋅m)": 1,
+        },
+        Imperial: {
+            "pound-foot": 1.355818,
+            "inch-pound": 0.1129848,
+            //"ounce-inch": 0,
+        },
+    },
+    Density: { //base unit: kg/m³
+        "Metric": {
+            "kilogram per cubic meter (kg/m³)": 1,
+            "kilogram per liter (kg/L)": 1000,
+            "gram per milliliter (g/mL)": 1000,
+            "gram per cubic centimeter (g/cm³)": 1000,
+            "tonne per cubic meter (t/m³)": 1000,
+        },
+        "U.S. Customary": {
+            "ounce per cubic inch (oz/cu in)": 1729.994,
+            "ounce per fluid ounce (oz/fl oz)": 958.611,
+            "pound per cubic inch (lb/cu in)": 27679.9047,
+            "pound per cubic foot (lb/cu ft)": 16.018463,
+            "pound per cubic yard (lb/cu yd)": .5932764,
+            "pound per gallon (lb/gal)": 119.826,
+            "pound per bushel (lb/bu)": 12.8719,
+            "slug per cubic foot": 0.00194032,
+            "grains per gallon": .017118061,
         },
     },
     Pressure: { //base unit bar
@@ -5718,32 +5805,81 @@ units = {
     Power: { //base unit: W
         "Metric": { 
             "watt (W)": 1,
+            "volt-ampere (VA)": 1,
             "kilowatt (kW)": 1000,
             "metric horsepower": 735.49875,
         },
         "Imperial": {
             "imperial horsepower (hp)": 745.7,
-            "refrigeration ton (RT)": 3516.85
+            "refrigeration ton (RT)": 3516.85,
+            "BTU per hour (BTU/h)": 0.2931,
+            "thousands of BTU per hour (MBH)": 293.1,
         },
     },
     Energy: { //base unit: J
         "Metric": {
             "joule (J)": 1,
-            "watt-second": 1,
             "kilojoule (kJ)": 1000,
+            "watt-second": 1,
+            "kilowatt-hour (kWh)": 3.6e6,
+            "megawatt-hour (MWh)": 3.6e9,
+            "gigawatt-hour (gWh)": 3.6e12,
+            "terawatt-hour (tWh)": 3.6e15,
+        },
+        "Imperial": {
+            "foot-pound (ft⋅lbf)": 1.355818,
+            "British thermal unit (BTU)": 1054.35,
+            "Celsius heat unit (CHU)": 1899,
+            "therm (thm)": 105435000,
+            "decatherm (dth)": 1054350000,
+            "quad": 1054350000000000000,
         },
         "Scientific": {
+            "liter-atmosphere (l atm)": 101.325,
+            "ton of coal equivalent (TCE)": 2.9288e10,
+            "ton of oil equivalent (toe)": 4.1868e10,
             "barrel of oil equivalent (BOE)": 6117863200,
             "calorie": 4.184,
             "kilocalorie": 4184,
-            "electronvolt": .0000000000000000001602176634,
             "erg": .0000001,
+            "Rydberg (Ry)": 2.1798723611030e-18,
+        },
+        "Atomic": {
+            "electronvolt (eV)": .0000000000000000001602176634,
+            "hartree": .000000000000000004359744722206,
+        },
+        "Astronomic": {
+            "foe": 1e44,
+        },
+    },
+    "Electric Charge": { //base unit C
+        "Metric": {
+            "coulomb (C)": 1,
+            "abcoulomb (abC)": 10,
+            "ampere-hour (Ah)": 3600,
+            "milliampere-hour (mAh)": 3.6,
+        },
+        "Scientific": {
+            "statcoulomb (statC)": 3.33564e-10,
+            "faraday": 96485.3321233100184,
+        },
+        "Atomic": {
+            "elementary charge (e)": 1.602176634e-19,
+        },
+    },
+    Acceleration: { //base unit m/s²
+        "Metric": {
+            "m/s²": 1,
+            "gal": .01,
+            "milligal (mGal)": .00001,
+            "microgal (μGal)": .00000001,
         },
         "Imperial": {
-            "British thermal unit (Btu)": 1054.35,
-            "therm (thm)": 105435000,
-            "decatherm (dth)": 1054350000,
-        }
+            "ft/s²": .3048,
+        },
+        "Scientific": {
+            "standard gravity (g₀)": 9.80665,
+        },
     },
     Area: { //base unit: m²
         "Metric": { 
@@ -5753,6 +5889,7 @@ units = {
             "stremma": 1000,
             "hectare": 10000,
             "square kilometer (km²)": 1000000,
+            "circular millimeter (cmm)": 7.85398163e-7,
         },
         "Imperial": {
             "square inch (in²)": .00064516,
@@ -5761,6 +5898,7 @@ units = {
             "square [construction]": 9.29030,
             "square mile (mi²)": 2589990,
             "acre (ac)": 4046.856,
+            "circular mil (cmil)": 5.06707479e-10,
         },
         "Middle Eastern": {
             "kirat": 175,
@@ -5813,6 +5951,9 @@ units = {
             "jerib (Iran)": 10000,
             "cuerda (Puerto Rico)": 3930.395,
         },
+        "Scientific": {
+            "barn": 1e-28,
+        },
     },
     "Plane Angle": { //base unit arcsecond
         "Traditional": {
@@ -5836,6 +5977,12 @@ units = {
             "Swedish streck": 205.714286, 
             "Finnish streck": 216,
             "nautical line": 40500,
+        },
+        "Sections": {
+            "quadrant": 324000,
+            "sextant": 216000,
+            "octant": 162000,
+            "sign": 108000,
         },
     },
     "Solid Angle": { //base unit steradian
@@ -5861,6 +6008,10 @@ units = {
             "fortnight": 1209600,
             "common year": 31536000,
             "leap year": 31622400,
+            "year (yr)": 31556952,
+            "decade": 315569520,
+            "century": 3155695200,
+            "millenium": 31556952000,
         },
         "Scientific": {
             "millisecond (ms)": .001,
@@ -5869,6 +6020,7 @@ units = {
             "picosecond (ps)": .000000000001,
             "femtosecond (fs)": .000000000000001,
             "attosecond (as)": .000000000000000001,
+            "svedberg (S)": .0000000000001,
             "flick": 0.00000000141723356,
             "shake": .00000001,
         }
@@ -5913,3 +6065,7 @@ function measureSetUp(unit){
 }
 
 measureSetUp("Length")
+
+
+param = new URLSearchParams(location.search).get("section")
+if(param != undefined) reveal(param)

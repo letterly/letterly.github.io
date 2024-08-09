@@ -1,5 +1,14 @@
 InterBraille Updates
 
+17 July 2024
+Added drafts for Venetian and Genoese Braille
+
+15 July 2024
+Added a draft of Lombard Braille
+
+9 July 2024
+Revised my Sicilian Braille proposal
+
 5 July 2024
 Added Sicilian Braille
 

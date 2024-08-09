@@ -363,7 +363,7 @@ function printBraille(text){
 
 
 function changethelang(lang){
-    url = new URL("https://letterly.github.io/interbraille.html")
+    url = new URL(window.location.href)
     url.searchParams.set('lang', lang);
     history.pushState({}, "", url);
     changeLang(lang)
@@ -463,18 +463,9 @@ function changeLang(lang){
 
     thepunctuation = Object.entries(languages[lang]).filter(f => punc.includes(f[0].replace("\\", ""))).sort()
 
-    theletters.forEach(([k, v], i) => {
-        if(input.dir == "rtl"){
-            document.getElementById("t" + (5 - (i % 6))).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-        }
-        else{
-            document.getElementById("t" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-        }
-    })
+    theletters.forEach(([k, v], i) => document.getElementById("t" +  (input.dir == "rtl" ? (5 - (i % 6)) : (i % 6))  ).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` )
 
-    thepunctuation.forEach(([k, v], i) => {
-        document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` 
-    })
+    thepunctuation.forEach(([k, v], i) => document.getElementById("y" + (i % 6)).innerHTML += `<tr><td>${k.replace("\\", "")}</td><td><span class="brl">${v}</span></td></tr>` )
 
 
 

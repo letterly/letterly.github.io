@@ -5,8 +5,111 @@ Unit_Converter = "<span class='unit_converter_updates' style='color:purple'>Unit
 
 
 log = `<pre>
+<h3>8 August 2024</h3>
+>Election Psephology: New section where you can use vote percentages to mathematically determine the composition of parliament after an election; right now it only features the Georgian parliament system
+>Noun Decliner: Fixed the plural for Sicilian words ending in "ia"
+>Number Generator: Fixed some issues with Faroese numbers divided by 10
+>Number Generator: Now long-scale and short-scale values of numbers will be displayed side-by-side for a given language rather than being different options
+
+<h3>7 August 2024</h3>
+>Number Generator: Added Faroese numbers (only cardinal for now)
+>Number Generator: Extremaduran was misspelled as Extramaduran, which has now been fixed
+
+<h3>6 August 2024</h3>
+>Adjective Inflector: Added Sicilian adjectives
+>Noun Decliner: Added Sicilian nouns
+>Number Generator: Added Kazakh, Macedonian, and Turkmen numbers
+>Website: Now you can use the "section" parameter in the URL to link to a specific part of the website
+
+<h3>5 August 2024</h3>
+>Number Generator: Added two alternative ways to form large numbers for Esperanto and Spanish as well as long-form numbers for English
+>Number Generator: Added Extramaduran numbers
+>Number Generator: Fixed an issue with displaying some Osage numbers divisible by 10
+
+<h3>4 August 2024</h3>
+>Bio: Updated my bio to reflect that I will no longer reside in Washington, D.C. on a permanent basis
+>Braille Converter: Fixed a critical issue affecting Georgian Braille outputs
+>Noun Decliner: Added more irregular English plurals
+${Unit_Converter} Added some values for the Iberian unit of mass "arroba"
+
+<h3>24 July 2024</h3>
+>Number Generator: Fixed a glitch with large numbers ending in "10", fixed some words for Sicilian numbers
+
+<h3>23 July 2024</h3>
+>Color Converter: Temporarily hid the color converter because it has too many issues
+>Number Generator: Fixed a rare issue where large Spanish numbers gave incorrect ordinal forms
+>Number Generator: Added Sicilian numbers
+>Orthography Converter: New section that converts text between different orthographies (so far has Gagauz, Ladino, and Juhuri)
+>Time Now: Fixed an issue with times around midnight
+>Time Now: The name/abbreviation of the time zone is now displayed
+
+<h3>22 July 2024</h3>
+>Currency Converter: Fixed a bug that gave the inversed conversion of currencies
+>IPA Converter: Added Georgian pronunciation
+
+<h3>21 July 2024</h3>
+>Adjective Inflector: Improved the algorithm for forming comparitive/superlative forms of English adjectives
+>Number Generator: Added Osage numbers
+
+<h3>18 July 2024</h3>
+>Adjective Inflector: Changed the appearance/functionality a little and added English adjectives
+>Currency Converter: Updated/fixed functionality in the inputs of this section
+>IPA Converter: Added an error message if an unknown letter is present in the word
+>Numeral Converter: Added cardinal numbers for Spanish and Italian
+
+<h3>17 July 2024</h3>
+>Braille Converter: Added drafts for Genoese and Venetian Braille
+>Number Converter: Added cardinal numbers for English and Esperanto
+>Numeral Converter: Fixed a glitch where the number '0' wouldn't display
+>Numeral Converter: Spanish numerals have now moved from "mil millón" to "millardo", at least temporarily; and the limit for numerals has increased to anything under 10²⁴
+>Unit Converter: Added radioactive decay measurements "disintegrations per minute (dpm)" and exabecquerel (EBq) as well as the energy unit "liter-atmosphere"
+
+<h3>15 July 2024</h3>
+>Adjective Inflector: Fixed an issue with superlative forms of Spanish adjectives ending in "-és"
+>Braille Converter: Added a draft for Lombard Braille
+>IPA Converter: New section allows you to convert Hawaiian and Navajo text to the international phonetic alphabet
+>Learn Alphabets: Added a new lesson to the Mandaean alphabet course
+>Number Generator: New section that lets you convert digits like "1346457" to written-out numbers in English, Esperanto, and Spanish
+
+<h3>14 July 2024</h3>
+>Adjective Inflector: Improved the logic for Spanish adjectives and adding the comparitive/superlative forms
+>Website: Most text inputs execute programs more quickly now
+
+<h3>13 July 2024</h3>
+>Adjective Inflector: Esperanto Adjectives are now available
+>Menu: All buttons are the same color again
+>Menu: The parts are now organized alphabetically ("About Me" is now on top)
+>Noun Decliner: You can now see the different forms of Esperanto and Spanish nouns
+${Unit_Converter} Added four imperial units of power, energy, and density
+${Unit_Converter} Torque is now an included as a category within the Unit Converter
+${Unit_Converter} Added sections (sextant, quadrant, etc.) to the Plane Angle category
+${Unit_Converter} Fixed the value for carat and added its subdivision, the point
+${Unit_Converter} Added a few very large and small units of time and energy
+
+<h3>12 July 2024</h3>
+${Unit_Converter} Units of density are now available for conversion
+${Unit_Converter} Three small units of area were added as well as the Imperial unit of weight: slug
+
+<h3>11 July 2024</h3>
+>Currency Converter: Added twenty-five more currencies from around the world, covering nearly every country finally
+${Unit_Converter} Added an few units for energy, length, and force
+${Unit_Converter} Acceleration, electric charge, fuel economy, and radioactivity conversions are now available
+
+<h3>9 July 2024</h3>
+>Braille Converter: Revised my Sicilian Braille proposal
+>Currency Converter: Added twenty-eight more minor currencies from around the world
+${Holidays} Four holidays from Sudan and South Sudan were added
+
+<h3>8 July 2024</h3>
+>Adjective Inflector: A new section gives various forms of Spanish adjectives
+>Braille Converter: The link to this website now sends you to HARRISMOWBRAY.COM/INTERBRAILLE.HTML instead of LETTERLY.GITHUB.IO/INTERBRAILLE.HTML
+>Currency Converter: Added twenty-five minor currencies from around the world
+>Menu: Website Settings part is renamed to Website and the Website Code section is renamed to Code
+${Unit_Converter} Astronomical units of mass were added
+>Website: Began implementation of fallback fonts
+
 <h3>5 July 2024</h3>
->Braille Converter:
+>Braille Converter: Added a draft proposal for the Sicilian language
 ${Holidays} Added the Armenian holiday of Constitution Day
 
 <h3>4 July 2024</h3>
@@ -27,7 +130,7 @@ ${Unit_Converter} Now you can convert between Energy and Force units
 
 <h3>28 June 2024</h3>
 >Noun Decliner: Significantly improved the logic for generating irregular plurals, added some specific irregular ones (like tooth=>teeth, goose=>geese, etc.)
-${Unit_Converter} Solid Angles are now available for conversion (two-dimensional angles are now referred to as Plane Angles on the website)
+${Unit_Converter} Solid Angle degrees are now available for conversion (two-dimensional angles are now referred to as Plane Angle on the website)
 ${Unit_Converter} Many additional units for pressure were added
 
 <h3>25 June 2024</h3>
@@ -84,12 +187,12 @@ ${Updates} Continued visually dividing the types of updates into categories for 
 >Currency Converter: U.S. Dollar and Saudi Arabian Riyal are now automatically selected
 >Learn Coding: A website I previously made is now externally connected in the menu
 >Learn Languages: A website I previous made is now externally connected in the menu
->Menu: Religion/Calendars section renamed to Calendars & Religion, the Mathematics section is now Mathematics & Programming, Me section is now About Me, and About Me is now on the bottom of the menu
+>Menu: Religion/Calendars part renamed to Calendars & Religion, the Mathematics part is now Mathematics & Programming, Me part is now About Me, and About Me is now on the bottom of the menu
 >Trigonometric Functions: Added three more inverse hyperbolic functions as well as versed, inverse versed, and external trigonometric functions
 
 <h3>9 June 2024</h3>
 >${Holidays} Added U.S. Constitution Day and the Israeli Iron Sword War Memorial Day
->Menu: Organized all links into six new sections - Linguistics, Religion/Calendars, Mathematics, Other Converters, Me, and Website Settings
+>Menu: Organized all sections into six new parts - Linguistics, Religion/Calendars, Mathematics, Other Converters, Me, and Website Settings
 >Trigonometric Functions: Added a new Mathematics section that calculates various trigonometric functions
 ${Unit_Converter} Fixed the value for Astronomical Unit
 ${Unit_Converter} Added a few measurements for length and angles
@@ -630,11 +733,11 @@ ${Calendar_Converter} So far the program converts dates in the Gregorian, Armeni
 /*
 CATEGORIES TO MAKE
 
-Adjective Inflector
-Noun Decliner
-Number Generator
+Adjective Inflector [added]
+Noun Decliner [added]
+Number Generator [added]
 Orthography Converter
-IPA Converter
+IPA Converter [added]
 Learn Coding [added, needs replacement]
 Learn Braille
 Learn Languages [added, needs replacement]
