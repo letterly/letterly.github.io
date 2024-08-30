@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <style>
+            body{
+                font-family: Verdana;
+            }
+            h1{
+                text-align: center;
+            }
+            #metric{
+                display: none;
+            }
+        </style>
+        <script>
+            system = "imperial"
+            function switchSystem(){
+                document.getElementById(system).style.display = "none"
+                if(system == "imperial"){
+                    system = "metric"
+                    sistema.innerHTML = "Imperial | <b>Metric</b>"
+                }
+                else{
+                    system = "imperial"
+                    sistema.innerHTML = "<b>Imperial</b> | Metric"
+                }
+                document.getElementById(system).style.display = "block"
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Menlo Forward</h1>
+        <p>Leveraging a loophole in California’s housing laws, a mammoth project has been proposed for the former Sunset Magazine site on Willow Road in Menlo Park. The project includes 37-, 33-, and 18-story skyscrapers - with the largest to become the tallest building between San Francisco and Los Angeles. This site is in a quiet, residential neighborhood. We are opposed to this proposal and put forth the following:</p>
+        <ul>
+            <li><b>We support the City of Menlo Park’s state-approved housing development plan</b> that supports our diverse and growing community through the significant increase in availability and affordability of housing.</li>
+            <li><b>We support responsible, mixed-use development at 80 Willow Road</b> that aligns with Menlo Park’s approved housing development plan and provides for historic preservation.</li>
+            <li><b>We urge the City to fight this outrageous proposal</b> which overrides local regulations - and common sense. Providing far more business than residential space, the project is wildly out of scale for Menlo Park and will worsen the City’s housing deficit and traffic congestion. It will permanently alter the City’s quality of life and character, creating a nightmare for Menlo Park and the cities around us.</li>
+        </ul>
+        <p><span style="color:green">Join us! Together we can affect the outcome of this project.</span> We call on the residents of Menlo Park and neighboring communities to oppose this egregious proposal and work toward a solution that benefits all.</p>
+        <br><br>
+        <hr />
+        <p><a target="blank" href="https://menlopark.gov/Government/Departments/Community-Development/Projects/Under-review/80-Willow-Rd">City's Website</a></p>
+        <p><a target="blank" href="https://willowpark.life">Developer's Website</a></p>
+        <div id="imperial">
+            <ul>
+                <li>6.7 acre park-like site, alongside San Francisquito Creek, at the intersection of Willow and Middlefield Roads in Menlo Park, California</li>
+                <li>
+                    The proposal includes three high-rise towers:
+                    <ul>
+                        <li><b>37 stories</b>: 231 residential units and 130-room hotel; 446 ft. tall</li>
+                        <li><b>33 stories</b>: 434 residential units and 27k sf retail; 398 ft. tall</li>
+                        <li><b>18 stories</b>: 336k sf office; 12k sf retail; 301 ft. tall</li>
+                        <li>1,461 parking spaces, only 41% of the required 3,530 spaces</li>
+                    </ul>
+                </li>
+                <li>Total residential: 665 units and 956k sf (133 units reserved for low income housing)</li>
+                <li>Total non-residential: 336k sf office + 38k sf retail + 178k sf hotel + 4k sf other = 556k sf</li>
+            </ul>
+        </div>
+        <div id="metric">
+            <ul>
+                <li>2.7 hectare park-like site, alongside San Francisquito Creek, at the intersection of Willow and Middlefield Roads in Menlo Park, California</li>
+                <li>
+                    The proposal includes three high-rise towers:
+                    <ul>
+                        <li><b>37 stories</b>: 231 residential units and 130-room hotel; 146 m. tall</li>
+                        <li><b>33 stories</b>: 434 residential units and 2.5k m² retail; 121 m. tall</li>
+                        <li><b>18 stories</b>: 31k m² office; 1k m² retail; 92 m. tall</li>
+                        <li>1,461 parking spaces, only 41% of the required 3,530 spaces</li>
+                    </ul>
+                </li>
+                <li>Total residential: 665 units and 89k m² (133 units reserved for low income housing)</li>
+                <li>Total non-residential: 31k m² office + 3.5k m² retail + 16.5k m² hotel + 0.4k m² other = 51.4 m²</li>
+            </ul>
+        </div>
+        <button id="sistema" onclick="switchSystem()"><b>Imperial</b> | Metric</button>
+        <hr />
+        <p>Contact: <a href="mailto:info@menloforward.com">info@menloforward.com</a></p>
+    </body>
+</html>
