@@ -5,8 +5,9 @@ function ipagenerate(){
 
 function changelangtoipaize(ourlang){
     enteripa.value = {
-        "haw": "Leleākūhonua",
+        "haw": "leleākūhonua",
         "nv": "ínsadoobíídiiya",
+        "ka": "ვახტანგური",
     }[ourlang]
     ipagenerate()
 }
@@ -127,6 +128,7 @@ hawaiiankey = {
     "ka": {
         alphabet: {
             "ავ": {normal: "av"},
+            "ვა": {normal: "va"},
             "\\[ბ": {normal: "[b̥"},
             " ბ": {normal: " b̥"},
             "\\[დ": {normal: "[d̥"},
@@ -226,8 +228,9 @@ hawaiiankey = {
 }
 
 function hawaiianword(word){
-    //thelang = langtoipaize.value
-     thelang = "ka" //for testing!
+    
+    thelang = langtoipaize.value
+    // thelang = "ka" //for testing!
     word = word.trim()
     if(thelang != "ka") word = word.toUpperCase()
     word = word.replace(/ʼ/g, "`")
@@ -244,8 +247,8 @@ function hawaiianword(word){
     newprivarr = []
     for(priv = 0; priv < word.length; priv++){
         if(priv == word.length - 2) type = "emph"
-        else if(word.length > 4 && priv == 0 && "hʻ".includes(word[priv][0])) type = "semiemph"
-        else if(word.length >= 6 && priv % 2 == 0 && priv != word.length - 1) type = "semiemph"
+        //else if(word.length > 4 && priv == 0 && "hʻ".includes(word[priv][0])) type = "semiemph"
+        //else if(word.length >= 6 && priv % 2 == 0 && priv != word.length - 1) type = "semiemph"
         else type = "normal"
         ekis = word[priv] + ""
         for(haw of Object.entries(hawaiiankey[thelang].alphabet)){
@@ -272,7 +275,12 @@ function hawaiianword(word){
         newprivarr.push(ekis)
     }
     word = newprivarr.join("")
-    if(word != word.toLowerCase()) return "Error detected [usually caused by unknown letter"
+    if(word != word.toLowerCase()){
+        console.log(word)
+        return "Error detected [usually caused by unknown letter]"
+    }
+
+
     return word
 }
 

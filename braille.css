@@ -1,0 +1,69 @@
+textarea{
+    resize: none;
+    width: 32%;
+    margin: 0.2%;
+    height: 80%;
+    font-family: Verdana;
+    font-size: 32px;
+    border-radius: 10px;
+}
+
+.selectblock{
+    margin-left: calc((100% - 650px) / 2);
+    margin-right: calc((100% - 650px) / 2);
+    outline: none;
+}
+select{
+    border: none; 
+    outline: none;
+    border-bottom: blue 2px solid;
+    font-size: 34px;
+    text-align: center;
+    color: black;
+}
+
+h1, h3{
+    text-align: center;
+    font-family: Verdana;
+}
+.tables{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+table{
+    font-size: 24px;
+    font-family: Verdana;
+    float: left;
+    margin: 0.5vw;
+}
+td{
+    border: 0.1vw black solid;
+    width: 6vw;
+    height: 6vw;
+    text-align: center;
+    display: block;
+    float: left;
+    font-size: 4vw;
+    margin: 0.2vw;
+}
+.brl{
+    background-color: #d2d2d2;
+}
+#changelog, #link{
+    font-family: Verdana;
+    text-align: center;
+    margin: 0px;
+}
+#changelog a{
+    color: orangered;
+}
+#link a{
+    color: darkgreen;
+}
+#ascii{
+    font-size: 16px;
+}

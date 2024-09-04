@@ -1,236 +1,53 @@
 <html>
     <head>
-        <style>
-            h1,h2{
-                text-align: center;
-            }
-            textarea{
-                margin-left: 5%;
-                margin-right: 5%;
-                width: 39%;
-                font-size: 24px;
-                height: 300px;
-                resize: none;
-            }
-            *{
-                font-family: 'Verdana';
-            }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){ 
-                var typingTimer
-                var doneTypingInterval = 1000
-                var $inuk = document.getElementById("inuk")
-                var $braille = document.getElementById("braille")
-                $inuk.addEventListener('keyup', inukFunction)
-                brl.addEventListener('keyup', brlFunction)
-                function inukFunction () {
-                    inuk = $inuk.value
-
-                    for(e of Object.keys(inukKey)){
-                        var myRegExp = new RegExp(e, 'g')
-                        inuk = inuk.replace(myRegExp, inukKey[e])
-                    }
-                    $braille.value = "" + inuk
-                }
-
-                function brlFunction () {
-                    brlval = brl.value
-                    for(e of Object.keys(brlKey)){
-                        brlval = brlval.replace(new RegExp(e, 'g'), brlKey[e])
-                    }
-                    krtl.value = "" + brlval
-                }
-
-                inukKey = {
-                "ა": "⠁",
-                "ბ": "⠃",
-                "გ": "⠛",
-                "დ": "⠙",
-                "ე": "⠑",
-                "ვ": "⠺",
-                "ზ": "⠵",
-                "თ": "⠋",
-                "ი": "⠊",
-                "კ": "⠅",
-                "ლ": "⠇",
-                "მ": "⠍",
-                "ნ": "⠝",
-                "ო": "⠕",
-                "პ": "⠏",
-                "ჟ": "⠚",
-                "რ": "⠗",
-                "ს": "⠎",
-                "ტ": "⠞",
-                "უ": "⠥",
-                "ფ": "⠧",
-                "ქ": "⠻",
-                "ღ": "⠫",
-                "ყ": "⠮",
-                "შ": "⠱",
-                "ჩ": "⠟",
-                "ც": "⠉",
-                "ძ": "⠽",
-                "წ": "⠹",
-                "ჭ": "⠭",
-                "ხ": "⠓",
-                "ჯ": "⠪",
-                "ჰ": "⠯",
-                "\\'": "⠄",
-                "\\.": "⠲",
-                "\\,": "⠂",
-                "\\:": "⠒",
-                "\\;": "⠆",
-                "\\!": "⠖",
-                "\\?": "⠢",
-                "\\(": "⠶",
-                "\\)": "⠶",
-                "\\[": "⠣",
-                "\\]": "⠜",
-                "\\{": "⠷",
-                "\\}": "⠾",
-                "\\/": "⠌",
-                "\\\\": "⠡",
-                "\\$": "⠲",
-                "\\*": "⠔",
-                "\\#": "⠜",
-                "º": "⠤",
-                "₾": "⠬",
-                "„": "⠦",
-                "“": "⠴",
-                "—": "⠤",
-                    "-": "⠤",
-                    "_": "⠤",
-                    "=": "⠶",
-                    "@": "⠈",
-                    "<": "⠪",
-                    ">": "⠕",
-                    "\\+": "⠖",
-                    "&": "⠿",
-                    "%": "⠳",
-                    " 0": " ⠼⠚",
-                    " 1": " ⠼⠁",
-                    " 2": " ⠼⠃",
-                    " 3": " ⠼⠉",
-                    " 4": " ⠼⠙",
-                    " 5": " ⠼⠑",
-                    " 6": " ⠼⠋",
-                    " 7": " ⠼⠛",
-                    " 8": " ⠼⠓",
-                    " 9": " ⠼⠊",
-                    "0": "⠚",
-                    "1": "⠁",
-                    "2": "⠃",
-                    "3": "⠉",
-                    "4": "⠙",
-                    "5": "⠑",
-                    "6": "⠋",
-                    "7": "⠛",
-                    "8": "⠓",
-                    "9": "⠊",
-                    " ": "⠀",
-                }
-                brlKey = {
-                    "⠀": " ",
-                    "⠁": "ა",
-                    "⠃": "ბ",
-                    "⠛": "გ",
-                    "⠙": "დ",
-                    "⠑": "ე",
-                    "⠺": "ვ",
-                    "⠵": "ზ",
-                    "⠋": "თ",
-                    "⠊": "ი",
-                    "⠅": "კ",
-                    "⠇": "ლ",
-                    "⠍": "მ",
-                    "⠝": "ნ",
-                    "⠕": "ო",
-                    "⠏": "პ",
-                    "⠚": "ჟ",
-                    "⠗": "რ",
-                    "⠎": "ს",
-                    "⠞": "ტ",
-                    "⠥": "უ",
-                    "⠧": "ფ",
-                    "⠻": "ქ",
-                    "⠫": "ღ",
-                    "⠮": "ყ",
-                    "⠱": "შ",
-                    "⠟": "ჩ",
-                    "⠉": "ც",
-                    "⠽": "ძ",
-                    "⠹": "წ",
-                    "⠭": "ჭ",
-                    "⠓": "ხ",
-                    "⠪": "ჯ",
-                    "⠯": "ჰ",
-                    "⠄": "'",
-                    "⠲": ".",
-                    "⠂": ",",
-                    "⠒": ":",
-                    "⠆": ";",
-                    "⠖": "!",
-                    "⠢": "?",
-                    " ⠶ ": " = ",
-                    " ⠶": " (",
-                    "⠶ ": ") ",
-                    "\\[": "⠣",
-                    "\\]": "⠜",
-                    "⠷": "{",
-                    "⠾": "}",
-                    "⠌": "/",
-                    "⠡": "\\",
-                   // "\\$": "⠲",
-                    "⠔": "\\*",
-                //    "⠜": "#",
-                   // "º": "⠤",
-                    "⠬": "₾",
-                    "⠦": "„",
-                    "⠴": "“",
-                    "⠤": "-",
-                //    "-": "⠤",
-                //    "_": "⠤",
-                    "⠈": "@",
-                //    "<": "⠪",
-                //    ">": "⠕",
-                //    "\\+": "⠖",
-                    "⠿": "&",
-                    "⠳": "%",
-                    "⠶": ")",
-                    "⠼": "#", //FIX LATER
-            /*        " 0": " ⠼⠚",
-                    " 1": " ⠼⠁",
-                    " 2": " ⠼⠃",
-                    " 3": " ⠼⠉",
-                    " 4": " ⠼⠙",
-                    " 5": " ⠼⠑",
-                    " 6": " ⠼⠋",
-                    " 7": " ⠼⠛",
-                    " 8": " ⠼⠓",
-                    " 9": " ⠼⠊",
-                    "0": "⠚",
-                    "1": "⠁",
-                    "2": "⠃",
-                    "3": "⠉",
-                    "4": "⠙",
-                    "5": "⠑",
-                    "6": "⠋",
-                    "7": "⠛",
-                    "8": "⠓",
-                    "9": "⠊",*/
-                }
-            }, false);
-        </script>
-        <title>ქართული | ბრაილი</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="braille.css">
+        <link rel="shortcut icon" href="favicon.ico?">
+        <title>Braille</title>
     </head>
     <body>
-        <h1>ქართული → ბრაილი</h1>
-        <textarea spellcheck="false" id="inuk" placeholder="ტექსტი..."></textarea>
-        <textarea readonly id="braille" placeholder="⠞⠑⠻⠎⠞⠊⠲⠲⠲"></textarea>
-
-        <h1>ბრაილი → ქართული</h1>
-        <textarea spellcheck="false" id="brl" placeholder="⠞⠑⠻⠎⠞⠊⠲⠲⠲"></textarea>
-        <textarea readonly id="krtl" placeholder="ტექსტი..."></textarea>
+        <h1 id="title">Braille Conversion Website</h1>
+        <p id="link"><a id="harriswebsite" href="https://harrismowbray.com">By Harris Mowbray</a> | <a href="braille.txt" id="update">Updates</a></p>
+        <h3 id="choose">Choose a Language:</h3>
+        <div class="selectblock">
+            <select id="language" onchange="changethelang(this.value)"></select>
+        </div>
+        <br>
+        <textarea id="input" spellcheck="false" onkeyup="printBraille(this.value)"></textarea>
+        <textarea id="output" contenteditable="false"></textarea>
+        <textarea id="ascii" contenteditable="false" onkeyup="ASCIItoUnicode(this.value)"></textarea>   
+        <h1 id="brltype"></h1>
+            <div class="tables">
+                <table id="t0">
+                </table>
+                <table id="t1">
+                </table>
+                <table id="t2">
+                </table>
+                <table id="t3">
+                </table>
+                <table id="t4">
+                </table>
+                <table id="t5">
+                </table>
+            </div>
+            <h1 id="thebrltype"></h1>
+            <div class="tables">
+                <table id="y0">
+                </table>
+                <table id="y1">
+                </table>
+                <table id="y2">
+                </table>
+                <table id="y3">
+                </table>
+                <table id="y4">
+                </table>
+                <table id="y5">
+                </table>
+            </div>
+            <button onclick="bruh()">Download .BRL File</button>
     </body>
+    <script src="braille.js"></script>
+    <script src="braille-data.js"></script>
 </html>

@@ -182,7 +182,7 @@ input, select{
     border-bottom: fuchsia 2px solid;
 }
 
-#enterdigits, #enteripa, #enteradjective{
+#enterdigits, #enteripa, #enteradjective, #enterverb, #enternoun{
     width: 80%;
 }
 

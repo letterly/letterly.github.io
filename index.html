@@ -359,10 +359,16 @@
         <!-- VERB CONJUGATOR -->
         <div id="verb">
             <div id="conjugation">
-                <h1>Dutch Verb Conjugation</h1>
-                <input id="enterverb" value="spreken" onkeyup="conjugate('nl')" spellcheck="false" />
+                <h1>Verb Conjugation</h1>
+                <h1>
+                    <select id="langtoconjugate" class="langselector" onchange="changelangtoconjugate(this.value)"> 
+                        <option value="nl">Dutch</option>
+                        <option value="scn" selected>Sicilian</option>
+                    </select>
+                </h1>
+                <input id="enterverb" onkeyup="conjugate()" spellcheck="false" />
                 <h5 id="recognizedverb">recognized verb ✅</h5>
-                <table id="dutchverb"></table>
+                <div id="dutchverb"></div>
             </div>
         </div>
         <!-- NOUN DECLINER -->
@@ -370,14 +376,20 @@
             <div id="declension">
                 <h1>
                     <select id="langtodecline" class="langselector" onchange="changelangtodecline(this.value)"> 
+                        <option value="be">Belarusian Nouns</option>
                         <option value="en">English Nouns</option>
                         <option value="eo">Esperanto Nouns</option>
+                        <option value="ext">Extremaduran Nouns</option>
+                        <option value="fr">French Nouns</option>
+                        <option value="pl">Polish Nouns</option>
                         <option value="scn" selected>Sicilian Nouns</option>
                         <option value="es">Spanish Nouns</option>
                     </select>
                 </h1>
                 <input id="enternoun" onkeyup="decline()" spellcheck="false" />
-                <table id="englishnoun"></table>
+                <div id="englishnoun"></div>
+                <br>
+                <p id="notes"></p>
             </div>
         </div>
         <!-- ADJECTIVE INFLECTOR -->
@@ -400,6 +412,8 @@
         <div id="numbers">
             <h1>
                 <select id="langtonumeralize" class="langselector" onchange="metanumbergenerate(langtonumeralize.value)"> 
+                    <option value="en">Aragonese Numbers</option>
+                    <option value="be">Belarusian Numbers</option>
                     <option value="en">English Numbers</option>
                     <option value="eo">Esperanto Numbers</option>
                     <option value="ext">Extremaduran Numbers</option>
@@ -420,12 +434,12 @@
         <div id="ipa">
             <h1>
                 <select id="langtoipaize" class="langselector" onchange="changelangtoipaize(this.value)"> 
-                    <option value="haw">Hawaiian IPA</option>
-                    <option value="ka" selected>Georgian IPA</option>
+                    <option value="haw" selected>Hawaiian IPA</option>
+                    <option value="ka">Georgian IPA</option>
                     <option value="nv">Navajo IPA</option>
                 </select>
             </h1>
-            <input id="enteripa" spellcheck="false" value="Leleākūhonua" onkeyup="ipagenerate()" />
+            <input id="enteripa" spellcheck="false" value="leleākūhonua" onkeyup="ipagenerate()" />
             <p id="generatedipa">[le.le.jaː.kuː.hoˈnu.wə]</p>
         </div>
         <!-- ORTHOGRAPHY CONVERTER -->
@@ -442,6 +456,12 @@
         </div>
         <!-- ELECTION PSEPHOLOGY -->
         <div id="elections">
+            <h1>
+                <select id="electoralsystem" class="langselector" onchange="changeElectoralSystem(this.value)"> 
+                    <option value="Georgia" selected>Georgian Parliamentary Elections</option>
+                    <!-- <option value="Israel">Israeli Knesset Elections</option> -->
+                </select>
+            </h1>
             <div id="electioninputs">
                 <p>GD-PP: <input id="e0" name="GD-PP" onchange="electoralize()" value="324" /> ‰</p>
                 <p>Unity: <input id="e1" name="Unity" onchange="electoralize()" value="173" /> ‰</p>

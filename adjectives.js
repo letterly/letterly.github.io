@@ -124,7 +124,7 @@ function inflect(){
             superlativebase = singularmale.slice(0, -1) + "ísim"
         }
         else{
-            superlativebase = singularmale + "ísim"
+            superlativebase = singularmale.replace("ó", "o") + "ísim"
         }
         singularmalesuperlative = superlativebase + "o"
         singularfemalesuperlative = superlativebase + "a"

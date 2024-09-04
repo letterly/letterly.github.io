@@ -1,53 +1,13 @@
 <html>
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="interbraille.css">
-        <link rel="shortcut icon" href="favicon.ico?">
-        <title>Braille</title>
+        <script>
+            window.location.href = window.location.href.replace("interbraille", "braille").replace("letterly.github.io", "harrismowbray.com")
+        </script>
     </head>
-    <body>
-        <h1 id="title">Braille Conversion Website</h1>
-        <p id="link"><a id="harriswebsite" href="https://harrismowbray.com">By Harris Mowbray</a> | <a href="interbraille.txt" id="update">Updates</a></p>
-        <h3 id="choose">Choose a Language:</h3>
-        <div class="selectblock">
-            <select id="language" onchange="changethelang(this.value)"></select>
-        </div>
-        <br>
-        <textarea id="input" spellcheck="false" onkeyup="printBraille(this.value)"></textarea>
-        <textarea id="output" contenteditable="false"></textarea>
-        <textarea id="ascii" contenteditable="false" onkeyup="ASCIItoUnicode(this.value)"></textarea>   
-        <h1 id="brltype"></h1>
-            <div class="tables">
-                <table id="t0">
-                </table>
-                <table id="t1">
-                </table>
-                <table id="t2">
-                </table>
-                <table id="t3">
-                </table>
-                <table id="t4">
-                </table>
-                <table id="t5">
-                </table>
-            </div>
-            <h1 id="thebrltype"></h1>
-            <div class="tables">
-                <table id="y0">
-                </table>
-                <table id="y1">
-                </table>
-                <table id="y2">
-                </table>
-                <table id="y3">
-                </table>
-                <table id="y4">
-                </table>
-                <table id="y5">
-                </table>
-            </div>
-            <button onclick="bruh()">Download .BRL File</button>
-    </body>
-    <script src="interbraille.js"></script>
-    <script src="interbraille-data.js"></script>
 </html>
+
+<!--
+
+DEPRECATED ADDRESS
+
+-->
